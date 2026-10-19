@@ -15,11 +15,11 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 
 ## data
 
-- [nucleic acid database](http://ndbserver.rutgers.edu/) (NDB) 
+- [nucleic acid database](http://ndbserver.rutgers.edu/) (NDB)
 - [protein databank](https://www.rcsb.org/) (PDB)
 - rna
   - ~~[RNABase: an annotated database of RNA structures](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC165459/)~~ (2003) - no longer maintained
-  - Accurate SHAPE-directed RNA structure determination | PNAS ([deigan et al. 2009](https://www.pnas.org/content/106/1/97)) - chemical probing
+  - Accurate SHAPE-directed RNA structure determination \| PNAS ([deigan et al. 2009](https://www.pnas.org/content/106/1/97)) - chemical probing
 
 
 ## code
@@ -30,7 +30,6 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
   - neural nets
     - [spot rna](https://github.com/jaswindersingh2/SPOT-RNA) / [spot rna2](https://github.com/jaswindersingh2/SPOT-RNA2)
       - uses an Ensemble of Two-dimensional Deep Neural Networks and Transfer Learning
-
     - mxfold2 ([sato et al. 2021](https://github.com/keio-bioinformatics/mxfold2/))
 
 
@@ -55,15 +54,15 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
       - a lot of this comes from hydrogen bonds between pairs (watson-crick edge)
         - other parts of the pairs (e.g. the Hoogsteen- / CH-edge and the sugar edge) can also form bonds
     - tertiary - complete 3d structure (e.g. bends, twists)
-  - ![](../assets/rna_secondary.png)
-- [RNA-Seq - Wikipedia](https://en.wikipedia.org/wiki/RNA-Seq) - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome
+  - decomposition of an RNA secondary structure into structural elements. Energy contributions are assigned to the plane faces depending on their type and the nucleotides delimiting them. “Stem loops”, i.e., stacked pairs of base pairs, from the unit of helices <img style="width: 450px; max-width: 100%;" src="../assets/rna_secondary.svg" alt="RNA secondary structure elements"/>
+- [RNA-Seq](https://en.wikipedia.org/wiki/RNA-Seq) - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome
 
 ## algorithms
 
 - computational bio book ch 10 ([kellis, 2016](https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf))
-  - 2 main approaches to rna folding (i.e. predicting rna structure): 
-    - (1) thermodynamic stability of the molecule 
-    - (2) probabilistic models 
+  - 2 main approaches to rna folding (i.e. predicting rna structure):
+    - (1) thermodynamic stability of the molecule
+    - (2) probabilistic models
     - note: can use evolutionary (i.e. phylogenetic) data to improve either of these
       - some RNA changes still result in similar structures
       - consistent mutations - something mutates but structure doesn't change (e.g. AU -> G)
@@ -73,12 +72,12 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
     - dynamic programming approach: given energy value for each pair, minimize total energy by pairing up appropriate base pairs
       - **assumption**: no crossings - given a subsequence $[i,j]$, there is either no edge connecting to the ith base (meaning it is unpaired) or there is some edge connecting the ith base to the kth base where $i < k \leq j$ (meaning the ith base is paired to the kth base)
         - this induces a tree-structure to theh problem
-      - nussinov algorithm ([1978](https://www.pnas.org/content/77/11/6309.short)) 
+      - nussinov algorithm ([1978](https://www.pnas.org/content/77/11/6309.short))
         - ignores stacking interactions between neighboring pairs (i.e. assumes there are no pseudo-knots)
       - zuker algorithm ([1981](https://academic.oup.com/nar/article-abstract/9/1/133/1043226)) - includes stacking energies
   - probabilistic approach - uses more statistical likelihood
     - stochastic context-free grammer (SCFG) is like an extension of HMM that incorporates some RNA constraints (e.g. bonds must happen between pairs)
-- Recent advances in RNA folding - ScienceDirect ([fallmann et al. 2017](https://www.sciencedirect.com/science/article/pii/S0168165617315195))
+- Recent advances in RNA folding ([fallmann et al. 2017](https://www.sciencedirect.com/science/article/pii/S0168165617315195))
   - algorithmic advances
     - algorithmic constraints
       - locality - restrict maximal span of base pairs
@@ -94,20 +93,19 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 - Folding and Finding RNA Secondary Structure ([matthews et al. 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/))
 - new work drops the assumption of no knots (e.g. crossings)
   - project to topology (e.g. low/high genus) - e.g. projecting to a torus can remove crossings but still allow us to use dynamic programming
-
 - RNA secondary structure prediction using deep learning with thermodynamic integration ([sato et al. 2021](https://www.nature.com/articles/s41467-021-21194-4))
   - RNA-folding scores learnt using a DNN are integrated together with Turner’s nearest-neighbor free energy parameters
     - DNN predicts scores that are fed into zuker-style dynamic programming
 
 ## 3d rna structure prediction
 
-- Geometric deep learning of RNA structure  ([townshend, ..., dror 2021](https://www.science.org/doi/10.1126/science.abe5650) - atomic ai + stanford, *science*)
+- Geometric deep learning of RNA structure ([townshend, ..., dror 2021](https://www.science.org/doi/10.1126/science.abe5650) - atomic ai + stanford, *science*)
   - uses neural network as scoring mode (called ARES = Atomic Rotationally Equivariant Scorer)
     - this gives energy function for (primary sequence, structure) pair
   - architecture
     - captures rotational + translational symmetries
   - startup [atomic ai](https://atomic.ai/) works on this
-  -  trained with only 18 known RNA structures
+  - trained with only 18 known RNA structures
   - uses only atomic coordinates as inputs and incorporates no RNA-specific information
 - Review: RNA 3D Structure Prediction Using Coarse-Grained Model ([li & chen, 2021](https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full))
   - all-atom - more precise, each nucleotide models ~20 heavy atoms + ~10 hydrogen atoms - relatively rare
@@ -132,9 +130,8 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 ## protein basics
 
 - the standard way to obtain the 3D structure of a protein is X-ray crystallography
-  - takes ~1 year &  $120k to obtain the structure of a single protein through X-ray crystallography ([source](https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/))
+  - takes ~1 year & $120k to obtain the structure of a single protein through X-ray crystallography ([source](https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/))
   - alternative: nuclear magnetic resonance (NMR) spectroscopy
-  
 - on average, a protein is composed of 300 amino acids (residues)
   - 21 amino acid types
   - the first residue is fixed
@@ -151,15 +148,15 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
   - contact prediction - binary map for physical contacts in the final protein
     - common to predict this, evaluation uses binary metrics
   - protein folding - predict 3d positions of all amino acids in the output structure
-  - [Evaluating Protein Transfer Learning with TAPE](https://arxiv.org/abs/1906.08230) - given embeddings, 5 tasks to measure downstream performance (rao et al. 2019)
+  - Evaluating Protein Transfer Learning with TAPE ([rao et al. 2019](https://arxiv.org/abs/1906.08230)) - given embeddings, 5 tasks to measure downstream performance (rao et al. 2019)
     - tasks: structure (SS + contact), evolutionary (homology), engineering (fluorescence + stability)
   - future: interactions between molecules (e.g. protein-protein, environment, highly designed proteins)
 
 ## deep-learning papers
 
-- De novo protein design by deep network hallucination | Nature ([anishchenko...baker, 2021](https://www.nature.com/articles/s41586-021-04184-w))
+- De novo protein design by deep network hallucination \| Nature ([anishchenko...baker, 2021](https://www.nature.com/articles/s41586-021-04184-w))
   - deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins
-- Highly accurate protein structure prediction with AlphaFold | Nature ([jumper, ..., hassabis, 2021](https://www.nature.com/articles/s41586-021-03819-2))
+- Highly accurate protein structure prediction with AlphaFold \| Nature ([jumper, ..., hassabis, 2021](https://www.nature.com/articles/s41586-021-03819-2))
   - [supp](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf)
   - [best blog post](https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/) ([other blog post](https://towardsdatascience.com/unfolding-alphafold-683d576a54a3))
   - model overview
@@ -181,22 +178,18 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
   - output (contact prediction) is just linear combination of attention heads finetuned on relatively little data
   - some architecture tricks
     - attention is axial - applied to rows / columns rather than entire input
-- [EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction](https://arxiv.org/abs/2202.05146)
-
-
+- EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction ([stärk et al. 2022](https://arxiv.org/abs/2202.05146))
 
 ## covid
 
 - The Coronavirus Nucleocapsid Is a Multifunctional Protein ([mcbride et al. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/))
   - coronavirus nucleocapsid = N protein
 
-
-
 # TIPs - using viruses for treatment
 
 - videos
-  - [Leor Weinberger: Can we create vaccines that mutate and spread? | TED Talk](https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841)
-  - [Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium - YouTube](https://www.youtube.com/watch?v=Dh0RbiAf2jY)
+  - [Leor Weinberger: Can we create vaccines that mutate and spread?](https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841)
+  - [Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium](https://www.youtube.com/watch?v=Dh0RbiAf2jY)
 - 2 issues
   - mutation - viruses mutate, our drugs don't
   - transmission - adherence / deployment - hard to give certain the drugs
@@ -216,7 +209,6 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
   - can take before exposure as well (although harder to get approval for this)
 - note: HIV mutates very fast so a TIP in a single person sees a lot of variants
   - HIP also enters the genome (so corresponding TIP does this as well)
-
 - Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance ([chaturvedi...weinberger, 2021](https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor))
   - DIP = defective interfering particle = wild-type virus
   - single administration of TIP RNA inhibits SARS-CoV-2 sustainably in continuous cultures

@@ -20,16 +20,16 @@ subtitle: Some notes on information retrieval, based on UVA"s Info Retrieval cou
         - crawler and indexer - gathers the info constantly, takes the whole internet as input and outputs some representation of the document
             - web crawler - automatic program that systematically browses web
         - document analyzer - knows which section has what
-            -takes in the metadata and outputs the index (condensed), manage content to provide efficient access of web documents
+            - takes in the metadata and outputs the index (condensed), manage content to provide efficient access of web documents
     2. User
         - query parser - parses the search terms into managed system representation
     3. Ranking
         - ranking model
-            -takes in the query representation and the indices, sorts according to relevance, outputs the results
+            - takes in the query representation and the indices, sorts according to relevance, outputs the results
         - also need nice display
         - query logs - record user's search history
         - user modeling - assess user's satisfaction
-- steps ![](../assets/ir_architecture.png)
+- steps <img style="width: 450px; max-width: 100%;" src="../assets/ir_architecture.svg" alt="IR architecture"/>
     1. repository -> document representation
     2. query -> query representation
     3. ranking is performed between the 2 representations and given to the user
@@ -44,14 +44,13 @@ subtitle: Some notes on information retrieval, based on UVA"s Info Retrieval cou
 
 *they are all getting closer, database approximate search and information extraction converts unstructed data to structured:*
 
-database systems        | information retrieval
-
-- |
-structured data         | unstructured data
-semantics are well-defined |  semantics are subjective
+database systems | information retrieval
+--- | ---
+structured data | unstructured data
+semantics are well-defined | semantics are subjective
 structured query languages (ex. SQL) | simple keyword queries
-exact retrieval         | relevance-drive retrieval
-emphasis on efficiency  | emphasis on effectiveness
+exact retrieval | relevance-drive retrieval
+emphasis on efficiency | emphasis on effectiveness
 
 - natural language processing - currently the bottleneck
   - deep understainding of language
@@ -79,21 +78,18 @@ emphasis on efficiency  | emphasis on effectiveness
   - typically modeled in rows and columns in a series of tables
   - SQL is a programming language used by nearly all [relational databases](https://www.oracle.com/database/what-is-database/#relational) to query, manipulate, and define data, and to provide access control
   - types
-
     - **Relational databases.** Relational databases became dominant in the 1980s. Items in a relational database are organized as a set of tables with columns and rows. Relational database technology provides the most efficient and flexible way to access structured information.
     - **NoSQL databases.** A [NoSQL](https://www.oracle.com/database/nosql-cloud.html), or nonrelational database, allows unstructured and semistructured data to be stored and manipulated (in contrast to a relational database, which defines how all data inserted into the database must be composed). NoSQL databases grew popular as web applications became more common and more complex. Example: **MongoDB**
     - **Object-oriented databases.** Information in an object-oriented database is represented in the form of objects, as in object-oriented programming.
     - **Graph databases.** A graph database stores data in terms of entities and the relationships between entities.
     - **OLTP databases.** An OLTP database is a speedy, analytical database designed for large numbers of transactions performed by multiple users.
   - related concepts
-
     - **Distributed databases.** A distributed database consists of two or more files located in different sites. The database may be stored on multiple computers, located in the same physical location, or scattered over different networks.
     - **Data warehouses.** A central repository for data, a data warehouse is a type of database specifically designed for fast query and analysis.
   - examples
-
     - MySQL - simplest
 - sql
-  - the major commands:   `SELECT`, `UPDATE`, `DELETE`, `INSERT`, `WHERE`
+  - the major commands: `SELECT`, `UPDATE`, `DELETE`, `INSERT`, `WHERE`
   - SQL keywords are NOT case sensitive (i.e. can write `select`)
 - mongodb
   - Indexes are how MongoDB makes queries fast, and they're B-trees mapping field values to the locations of the documents containing them.

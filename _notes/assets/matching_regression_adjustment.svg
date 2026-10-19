@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 0 2630 430" role="img" aria-labelledby="title desc">
+  <title id="title">Regression adjustment vs. matching</title>
+  <desc id="desc">Three panels of outcome Y^T against covariate X_1 for control units (blue, Y^(T=0)) and treated units (red, Y^(T=1)). Observed data: both groups rise with X_1, controls above treated. Regression adjustment (linear): a line is fit to each group and used to impute unobserved counterfactuals, e.g. a control point's treated outcome is read off the red line and a treated point's control outcome off the blue line. Matching estimation (nearest-neighbor): each group's outcome is imputed by the nearest observed neighbor, giving step functions.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b0b0b0"/></marker>
+    <style>
+      text { fill: #2b2b2b; font-family: Helvetica, Arial, sans-serif; }
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 3; }
+      .lab { font-size: 28px; font-family: Georgia, "Times New Roman", serif; }
+      .ttl { font-size: 30px; }
+      .note { font-size: 24px; }
+    </style>
+  </defs>
+  <path class="ax" d="M55 411 V60" marker-end="url(#arrow)"/><path class="ax" d="M55 411 H760" marker-end="url(#arrow)"/>
+  <text class="lab" x="7" y="245.5"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18" font-style="italic">T</tspan></text>
+  <text class="lab" x="730" y="381"><tspan font-style="italic">X</tspan><tspan dy="8" font-size="18">1</tspan></text>
+  <text class="ttl" x="330" y="34" text-anchor="middle">Observed data</text>
+  <circle cx="72" cy="302" r="8" fill="#1f6fb2"/>
+  <circle cx="142" cy="291" r="8" fill="#1f6fb2"/>
+  <circle cx="176" cy="263" r="8" fill="#1f6fb2"/>
+  <circle cx="223" cy="249" r="8" fill="#1f6fb2"/>
+  <circle cx="238" cy="221" r="8" fill="#1f6fb2"/>
+  <circle cx="269" cy="207" r="8" fill="#1f6fb2"/>
+  <circle cx="291" cy="193" r="8" fill="#1f6fb2"/>
+  <circle cx="312" cy="192" r="8" fill="#1f6fb2"/>
+  <circle cx="339" cy="188" r="8" fill="#1f6fb2"/>
+  <circle cx="368" cy="168" r="8" fill="#1f6fb2"/>
+  <circle cx="436" cy="144" r="8" fill="#1f6fb2"/>
+  <circle cx="502" cy="102" r="8" fill="#1f6fb2"/>
+  <circle cx="616" cy="77" r="8" fill="#1f6fb2"/>
+  <circle cx="90" cy="376" r="8" fill="#d1342f"/>
+  <circle cx="189" cy="351" r="8" fill="#d1342f"/>
+  <circle cx="257" cy="308" r="8" fill="#d1342f"/>
+  <circle cx="331" cy="285" r="8" fill="#d1342f"/>
+  <circle cx="362" cy="264" r="8" fill="#d1342f"/>
+  <circle cx="391" cy="260" r="8" fill="#d1342f"/>
+  <circle cx="409" cy="260" r="8" fill="#d1342f"/>
+  <circle cx="431" cy="245" r="8" fill="#d1342f"/>
+  <circle cx="464" cy="231" r="8" fill="#d1342f"/>
+  <circle cx="478" cy="204" r="8" fill="#d1342f"/>
+  <circle cx="522" cy="189" r="8" fill="#d1342f"/>
+  <circle cx="554" cy="161" r="8" fill="#d1342f"/>
+  <circle cx="608" cy="150" r="8" fill="#d1342f"/>
+  <text class="lab" x="636" y="66" style="fill:#1f6fb2"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18"><tspan font-style="italic">T</tspan>=0</tspan></text>
+  <text class="lab" x="630" y="160" style="fill:#d1342f"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18"><tspan font-style="italic">T</tspan>=1</tspan></text>
+  <path class="ax" d="M972 411 V60" marker-end="url(#arrow)"/><path class="ax" d="M972 411 H1676" marker-end="url(#arrow)"/>
+  <text class="lab" x="924" y="245.5"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18" font-style="italic">T</tspan></text>
+  <text class="lab" x="1646" y="381"><tspan font-style="italic">X</tspan><tspan dy="8" font-size="18">1</tspan></text>
+  <text class="ttl" x="1250" y="34" text-anchor="middle">Regression adjustment (linear)</text>
+  <line x1="983" y1="306" x2="1540" y2="66" stroke="#9cc3e6" stroke-width="3"/>
+  <line x1="983" y1="389" x2="1556" y2="131" stroke="#eba5a3" stroke-width="3"/>
+  <line x1="1208" y1="203" x2="1208" y2="276" stroke="#b0b0b0" stroke-width="2" marker-end="url(#arrowG)"/>
+  <line x1="1471" y1="151" x2="1471" y2="108" stroke="#b0b0b0" stroke-width="2" marker-end="url(#arrowG)"/>
+  <circle cx="989" cy="302" r="8" fill="#1f6fb2"/>
+  <circle cx="1059" cy="291" r="8" fill="#1f6fb2"/>
+  <circle cx="1093" cy="263" r="8" fill="#1f6fb2"/>
+  <circle cx="1140" cy="249" r="8" fill="#1f6fb2"/>
+  <circle cx="1155" cy="221" r="8" fill="#1f6fb2"/>
+  <circle cx="1186" cy="207" r="8" fill="#1f6fb2"/>
+  <circle cx="1208" cy="193" r="8" fill="#1f6fb2"/>
+  <circle cx="1229" cy="192" r="8" fill="#1f6fb2"/>
+  <circle cx="1256" cy="188" r="8" fill="#1f6fb2"/>
+  <circle cx="1285" cy="168" r="8" fill="#1f6fb2"/>
+  <circle cx="1353" cy="144" r="8" fill="#1f6fb2"/>
+  <circle cx="1419" cy="102" r="8" fill="#1f6fb2"/>
+  <circle cx="1533" cy="77" r="8" fill="#1f6fb2"/>
+  <circle cx="1007" cy="376" r="8" fill="#d1342f"/>
+  <circle cx="1106" cy="351" r="8" fill="#d1342f"/>
+  <circle cx="1174" cy="308" r="8" fill="#d1342f"/>
+  <circle cx="1248" cy="285" r="8" fill="#d1342f"/>
+  <circle cx="1279" cy="264" r="8" fill="#d1342f"/>
+  <circle cx="1308" cy="260" r="8" fill="#d1342f"/>
+  <circle cx="1326" cy="260" r="8" fill="#d1342f"/>
+  <circle cx="1348" cy="245" r="8" fill="#d1342f"/>
+  <circle cx="1381" cy="231" r="8" fill="#d1342f"/>
+  <circle cx="1395" cy="204" r="8" fill="#d1342f"/>
+  <circle cx="1439" cy="189" r="8" fill="#d1342f"/>
+  <circle cx="1471" cy="161" r="8" fill="#d1342f"/>
+  <circle cx="1525" cy="150" r="8" fill="#d1342f"/>
+  <circle cx="1208" cy="288" r="9" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <circle cx="1471" cy="96" r="9" fill="#fff" stroke="#1f6fb2" stroke-width="2"/>
+  <line x1="1214" y1="294" x2="1262" y2="352" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="note" x="1272" y="330">Impute unobserved counterfactuals</text>
+  <text class="note" x="1272" y="358">using (linear) model</text>
+  <text class="lab" x="1540" y="50" style="fill:#1f6fb2"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18"><tspan font-style="italic">T</tspan>=0</tspan></text>
+  <text class="lab" x="1566" y="122" style="fill:#d1342f"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18"><tspan font-style="italic">T</tspan>=1</tspan></text>
+  <path class="ax" d="M1888 415 V60" marker-end="url(#arrow)"/><path class="ax" d="M1888 415 H2592" marker-end="url(#arrow)"/>
+  <text class="lab" x="1840" y="247.5"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18" font-style="italic">T</tspan></text>
+  <text class="lab" x="2562" y="385"><tspan font-style="italic">X</tspan><tspan dy="8" font-size="18">1</tspan></text>
+  <text class="ttl" x="2200" y="34" text-anchor="middle">Matching estimation (nearest-neighbor)</text>
+  <path d="M1898 302 H1940 M1940 302 V291 M1940 291 H1992 M1992 291 V263 M1992 263 H2032 M2032 263 V249 M2032 249 H2064 M2064 249 V221 M2064 221 H2086 M2086 221 V207 M2086 207 H2113 M2113 207 V193 M2113 193 H2134 M2134 193 V192 M2134 192 H2158 M2158 192 V188 M2158 188 H2186 M2186 188 V168 M2186 168 H2235 M2235 168 V144 M2235 144 H2302 M2302 144 V102 M2302 102 H2392 M2392 102 V77 M2392 77 H2461 " fill="none" stroke="#9cc3e6" stroke-width="3"/>
+  <path d="M1898 376 H1972 M1972 376 V351 M1972 351 H2056 M2056 351 V308 M2056 308 H2127 M2127 308 V285 M2127 285 H2180 M2180 285 V264 M2180 264 H2210 M2210 264 V260 M2210 260 H2233 M2233 260 V260 M2233 260 H2253 M2253 260 V245 M2253 245 H2280 M2280 245 V231 M2280 231 H2304 M2304 231 V204 M2304 204 H2333 M2333 204 V189 M2333 189 H2371 M2371 189 V161 M2371 161 H2414 M2414 161 V150 M2414 150 H2461 " fill="none" stroke="#eba5a3" stroke-width="3"/>
+  <circle cx="1905" cy="302" r="8" fill="#1f6fb2"/>
+  <circle cx="1975" cy="291" r="8" fill="#1f6fb2"/>
+  <circle cx="2009" cy="263" r="8" fill="#1f6fb2"/>
+  <circle cx="2056" cy="249" r="8" fill="#1f6fb2"/>
+  <circle cx="2071" cy="221" r="8" fill="#1f6fb2"/>
+  <circle cx="2102" cy="207" r="8" fill="#1f6fb2"/>
+  <circle cx="2124" cy="193" r="8" fill="#1f6fb2"/>
+  <circle cx="2145" cy="192" r="8" fill="#1f6fb2"/>
+  <circle cx="2172" cy="188" r="8" fill="#1f6fb2"/>
+  <circle cx="2201" cy="168" r="8" fill="#1f6fb2"/>
+  <circle cx="2269" cy="144" r="8" fill="#1f6fb2"/>
+  <circle cx="2335" cy="102" r="8" fill="#1f6fb2"/>
+  <circle cx="2449" cy="77" r="8" fill="#1f6fb2"/>
+  <circle cx="1923" cy="376" r="8" fill="#d1342f"/>
+  <circle cx="2022" cy="351" r="8" fill="#d1342f"/>
+  <circle cx="2090" cy="308" r="8" fill="#d1342f"/>
+  <circle cx="2164" cy="285" r="8" fill="#d1342f"/>
+  <circle cx="2195" cy="264" r="8" fill="#d1342f"/>
+  <circle cx="2224" cy="260" r="8" fill="#d1342f"/>
+  <circle cx="2242" cy="260" r="8" fill="#d1342f"/>
+  <circle cx="2264" cy="245" r="8" fill="#d1342f"/>
+  <circle cx="2297" cy="231" r="8" fill="#d1342f"/>
+  <circle cx="2311" cy="204" r="8" fill="#d1342f"/>
+  <circle cx="2355" cy="189" r="8" fill="#d1342f"/>
+  <circle cx="2387" cy="161" r="8" fill="#d1342f"/>
+  <circle cx="2441" cy="150" r="8" fill="#d1342f"/>
+  <text class="lab" x="2470" y="72" style="fill:#1f6fb2"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18"><tspan font-style="italic">T</tspan>=0</tspan></text>
+  <text class="lab" x="2460" y="140" style="fill:#d1342f"><tspan font-style="italic">Y</tspan><tspan dy="-12" font-size="18"><tspan font-style="italic">T</tspan>=1</tspan></text>
+</svg>

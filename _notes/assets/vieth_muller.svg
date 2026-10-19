@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 900 1540" role="img" aria-labelledby="title desc">
+  <title id="title">Vieth–Müller circle</title>
+  <desc id="desc">The Vieth–Müller circle passes through the left eye LE, the right eye RE, the fixation point P and another point P′. The inscribed angles θ at P and at P′ are equal, so P′ projects to the same angle α from the fovea in both eyes (zero disparity). Points Q and Q′ lie on the left eye's line of sight through P′ but off the circle; in the right eye they project to q_R and q′_R at angles β′ and β instead of α. Boxes below show the left-eye image (p_L and p′_L separated by α) and right-eye image (p_R and p′_R separated by α).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-dasharray: 10 8; }
+      .ang { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .pt { font: 50px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sm { font: 44px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sub { font-size: 30px; fill: #6a6a6a; }
+      .gk { font: 40px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .cap { font: 38px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .mid { text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Vieth–Müller circle -->
+  <circle class="ln" cx="450" cy="563" r="407"/>
+
+  <!-- lines of sight -->
+  <path class="ln" d="M520 163 L280.3 1090.0"/>  <!-- P through LE to p_L -->
+  <path class="ln" d="M60 50 L357.8 1090.0"/>  <!-- Q, Q′, P′ through LE to p′_L -->
+  <path class="ln" d="M520 163 L611.9 1190.0"/>  <!-- P through RE to p_R -->
+  <path class="ln" d="M133 308 L744.2 1160.0"/>  <!-- P′ through RE to p′_R -->
+  <path class="dash" d="M60 50 L738.0 1195.0"/>  <!-- Q through RE to q_R -->
+  <path class="dash" d="M193 515 L760.8 1130.0"/>  <!-- Q′ through RE to q′_R -->
+
+  <!-- equal inscribed angles θ -->
+  <path class="ang" d="M496.2 255.0 A95 95 0 0 0 528.5 257.6"/>
+  <text class="gk mid" x="509" y="300">θ</text>
+  <path class="ang" d="M159.2 399.3 A95 95 0 0 0 188.4 385.2"/>
+  <text class="gk mid" x="190" y="452">θ</text>
+
+  <!-- equal vertical angles at the crossing -->
+  <path class="ang" d="M366.7 633.5 A40 40 0 0 0 380.0 704.7"/>
+  <path class="ang" d="M360.2 674.4 L342.8 679.3"/>
+  <path class="ang" d="M359.1 668.9 L341.2 670.6"/>
+  <path class="ang" d="M413.3 698.5 A40 40 0 0 0 400.0 627.3"/>
+  <path class="ang" d="M419.8 657.6 L437.2 652.7"/>
+  <path class="ang" d="M420.9 663.1 L438.8 661.4"/>
+
+  <!-- angles at the eyes -->
+  <path class="ang" d="M302.0 1006.1 A60 60 0 0 0 333.6 1005.7"/>
+  <text class="gk mid" x="318" y="1036">α</text>
+  <path class="ang" d="M594.9 999.8 A55 55 0 0 0 622.1 989.7"/>
+  <text class="gk" x="597" y="1024">α</text>
+  <path class="ang" d="M599.4 1049.6 A105 105 0 0 0 661.2 1022.1"/>
+  <text class="gk" x="606" y="1078">β</text>
+  <path class="ang" d="M603.2 1092.4 A148 148 0 0 0 665.4 1072.3"/>
+  <text class="gk" x="630" y="1118">β′</text>
+
+  <!-- point labels -->
+  <text class="pt" x="4" y="78">Q</text>
+  <text class="pt" x="532" y="128">P</text>
+  <text class="pt" x="62" y="320">P′</text>
+  <text class="pt" x="128" y="535">Q′</text>
+  <text class="pt" x="155" y="1000">LE</text>
+  <text class="pt" x="735" y="975">RE</text>
+  <text class="sm mid" x="272" y="1140">p<tspan class="sub" dy="8">L</tspan></text>
+  <text class="sm mid" x="370" y="1140">p′<tspan class="sub" dy="8">L</tspan></text>
+  <text class="sm mid" x="608" y="1228">p<tspan class="sub" dy="8">R</tspan></text>
+  <text class="sm mid" x="734" y="1240">q<tspan class="sub" dy="8">R</tspan></text>
+  <text class="sm" x="752" y="1192">p′<tspan class="sub" dy="8">R</tspan></text>
+  <text class="sm" x="771" y="1150">q′<tspan class="sub" dy="8">R</tspan></text>
+
+  <!-- the two retinal images -->
+  <rect class="ln" x="72" y="1260" width="365" height="240"/>
+  <rect class="ln" x="487" y="1260" width="365" height="240"/>
+  <circle cx="200" cy="1353" r="7" fill="#2b2b2b"/>
+  <circle cx="277" cy="1353" r="7" fill="#2b2b2b"/>
+  <path class="ang" d="M200 1338 Q200 1320 220 1320 H228 Q238 1320 238.5 1306 Q239 1320 249 1320 H257 Q277 1320 277 1338"/>
+  <text class="gk mid" x="238.5" y="1298">α</text>
+  <text class="sm mid" x="200" y="1410">p<tspan class="sub" dy="8">L</tspan></text>
+  <text class="sm mid" x="290" y="1410">p′<tspan class="sub" dy="8">L</tspan></text>
+  <circle cx="630" cy="1353" r="7" fill="#2b2b2b"/>
+  <circle cx="707" cy="1353" r="7" fill="#2b2b2b"/>
+  <path class="ang" d="M630 1338 Q630 1320 650 1320 H658 Q668 1320 668.5 1306 Q669 1320 679 1320 H687 Q707 1320 707 1338"/>
+  <text class="gk mid" x="668.5" y="1298">α</text>
+  <text class="sm mid" x="630" y="1410">p<tspan class="sub" dy="8">R</tspan></text>
+  <text class="sm mid" x="720" y="1410">p′<tspan class="sub" dy="8">R</tspan></text>
+  <text class="cap" x="254.5" y="1548">Left Eye</text>
+  <text class="cap" x="669.5" y="1548">Right Eye</text>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1530 620" role="img" aria-labelledby="title desc">
+  <title id="title">Plasticity and complementary learning systems</title>
+  <desc id="desc">(a) Hebbian and homeostatic plasticity: a controller sends a control signal to a system and receives observations from it. Inside the system, synaptic strength and neural activity affect each other (plasticity). External stimuli feed into the system. (b) Complementary learning systems (CLS) theory: the hippocampus (episodic memory; fast learning of arbitrary information) and the neocortex (generalization; slow learning of structured knowledge) are linked by storage, retrieval, replay.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d9822b"/></marker>
+    <style>
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .fill { fill: #e4e4e4; stroke: #8a8a8a; stroke-width: 1.5; }
+      .t { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .h { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .pl { font: bold 34px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .w { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- ===== (a) ===== -->
+  <text class="pl" x="14" y="54">a)</text>
+  <text class="h" x="64" y="54">Hebbian and Homeostatic Plasticity</text>
+
+  <rect x="208" y="90" width="214" height="94" fill="#e4e4e4" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="t" x="315" y="148">Controller</text>
+
+  <rect class="box" x="132" y="232" width="386" height="268"/>
+  <text class="t" transform="translate(120 366) rotate(-90)">System</text>
+  <rect class="fill" x="156" y="256" width="334" height="70" rx="12"/>
+  <text class="t" x="323" y="302">Synaptic strength</text>
+  <rect class="fill" x="156" y="400" width="334" height="70" rx="12"/>
+  <text class="t" x="323" y="446">Neural activity</text>
+  <path class="w" stroke="#2b2b2b" d="M300 330 V394" marker-end="url(#ak)"/>
+  <path class="w" stroke="#2b2b2b" d="M346 396 V332" marker-end="url(#ak)"/>
+  <text class="h" x="376" y="378">Plasticity</text>
+
+  <path class="w" stroke="#d1342f" d="M208 137 H180 V226" marker-end="url(#ar)"/>
+  <text class="h" x="62" y="167" fill="#d1342f" style="fill:#d1342f">Control</text>
+  <text class="h" x="72" y="204" style="fill:#d1342f">signal</text>
+  <path class="w" stroke="#1f6fb2" d="M478 232 V137 H428" marker-end="url(#ab)"/>
+  <text class="h" x="488" y="190" style="fill:#1f6fb2">Observations</text>
+
+  <rect x="208" y="552" width="246" height="58" fill="#e4e4e4"/>
+  <text class="t" x="331" y="592">External stimuli</text>
+  <path class="w" stroke="#2b2b2b" d="M322 550 V506" marker-end="url(#ak)"/>
+
+  <!-- ===== (b) ===== -->
+  <text class="pl" x="742" y="54">b)</text>
+  <text class="h" x="800" y="54">Complementary Learning Systems (CLS) theory</text>
+
+  <text class="t" x="900" y="152">Hippocampus</text>
+  <rect class="box" x="752" y="172" width="290" height="358"/>
+  <rect x="786" y="204" width="218" height="104" fill="#e4e4e4"/>
+  <text class="t" x="895" y="246" style="fill:#1f8a4c">Episodic</text>
+  <text class="t" x="895" y="284" style="fill:#1f8a4c">Memory</text>
+  <text class="t" x="897" y="398" style="fill:#1f8a4c">Fast learning</text>
+  <text class="t" x="897" y="432" style="fill:#1f8a4c">of arbitrary</text>
+  <text class="t" x="897" y="466" style="fill:#1f8a4c">information</text>
+
+  <text class="t" x="1374" y="152">Neocortex</text>
+  <rect class="box" x="1228" y="172" width="290" height="358"/>
+  <rect x="1262" y="206" width="226" height="104" fill="#e4e4e4"/>
+  <text class="t" x="1375" y="270" style="fill:#7b4fb5">Generalization</text>
+  <text class="t" x="1375" y="398" style="fill:#7b4fb5">Slow learning</text>
+  <text class="t" x="1375" y="432" style="fill:#7b4fb5">of structured</text>
+  <text class="t" x="1375" y="466" style="fill:#7b4fb5">knowledge</text>
+
+  <path class="w" stroke="#d9822b" d="M1052 343 H1218" marker-start="url(#ao)" marker-end="url(#ao)"/>
+  <text class="t" x="1136" y="332">Storage,</text>
+  <text class="t" x="1136" y="372" dy="4">retrieval,</text>
+  <text class="t" x="1136" y="412">replay</text>
+</svg>

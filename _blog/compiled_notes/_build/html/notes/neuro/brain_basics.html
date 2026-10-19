@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,7 +58,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/neuro/brain_basics';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro_section.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="disease.html">7.1. disease</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vissci.html">7.3. vision</a></li>
@@ -655,18 +641,16 @@ document.write(`
 </ul>
 </li>
 </ul>
-<ol class="arabic simple">
-<li><p>neurons</p></li>
-</ol>
+<ol class="arabic">
+<li><p>neurons</p>
 <ul class="simple">
 <li><p>number of inputs reflects <em>convergence</em></p></li>
 <li><p>number of targets reflects <em>divergence</em></p></li>
 <li><p><em>local circuit neurons</em> = <em>interneurons</em> - short axons</p></li>
 <li><p><em>projection neurons</em> - long axons</p></li>
 </ul>
-<ol class="arabic simple" start="2">
-<li><p>glial cells - support and regeneration</p></li>
-</ol>
+</li>
+<li><p>glial cells - support and regeneration</p>
 <ul class="simple">
 <li><p>outnumber neurons 3:1</p></li>
 <li><p>they are stem cells - can generate new glia</p></li>
@@ -680,6 +664,8 @@ document.write(`
 <ul class="simple">
 <li><p>glial stem cells - make more glia and sometimes neurons</p></li>
 </ul>
+</li>
+</ol>
 </section>
 <section id="cellular-diversity">
 <h3><span class="section-number">7.2.4.3. </span>cellular diversity<a class="headerlink" href="#cellular-diversity" title="Link to this heading">#</a></h3>
@@ -716,8 +702,7 @@ document.write(`
 <li><p>spinal cord</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p><em>PNS</em></p></li>
-</ol>
+<li><p><em>PNS</em></p>
 <ul class="simple">
 <li><p>sensory neurons</p></li>
 <li><p><em>somatic</em> motor division - connect CNS to skeletal muscles</p></li>
@@ -729,6 +714,10 @@ document.write(`
 <li><p><em>parasympathetic</em> division - ganglia are found near organs they innervate</p></li>
 </ul>
 </li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
 <li><p>groupings</p>
 <ul>
 <li><p><em>ganglia</em> - accumulations of cell bodies / supporting cells</p></li>
@@ -827,7 +816,7 @@ document.write(`
 <li><p>ions want to spread out because of entropy (then they factor in charge difference)</p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(V_{ion} = 58/z * log(X_{out} / X_{in}) \)</span></p>
+<li><p><span class="math notranslate nohighlight">\(V_{ion} = 58/z * \log(X_{out} / X_{in}) \)</span></p>
 <ul class="simple">
 <li><p>calculate for each ion, if able to move</p></li>
 <li><p>z is charge on ion</p></li>
@@ -990,8 +979,7 @@ document.write(`
 <li><p>simple organisms have these</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>chemical synapses</p></li>
-</ol>
+<li><p>chemical synapses</p>
 <ul class="simple">
 <li><p><em>bouton</em> - end of presynaptic dendrite</p></li>
 <li><p><em>spines</em> - start of postsynaptic dendrite</p></li>
@@ -1004,6 +992,8 @@ document.write(`
 </li>
 <li><p>pumps get rid of neurotransmitters quickly</p></li>
 </ul>
+</li>
+</ol>
 </section>
 <section id="neurotransmitter-types">
 <h3><span class="section-number">7.2.8.2. </span>neurotransmitter types<a class="headerlink" href="#neurotransmitter-types" title="Link to this heading">#</a></h3>
@@ -1011,8 +1001,7 @@ document.write(`
 <li><p>released when Ca comes in due to depolarization</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>peptides</p></li>
-</ol>
+<li><p>peptides</p>
 <ul class="simple">
 <li><p>ex. oxytocin</p></li>
 <li><p>require long Ca exposure</p></li>
@@ -1020,7 +1009,7 @@ document.write(`
 <li><p>neurotransmitter diffuses away - doesn’t always have specific target</p></li>
 <li><p>can spread to all neurons in the area (ex. substance P)</p></li>
 </ul>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>small &amp; fast</p></li>
 </ol>
 <ul class="simple">
@@ -1162,8 +1151,122 @@ document.write(`
 </table>
 </div>
 </li>
-<li><p><img alt="" src="../../_images/6_1.png" /></p></li>
-<li><p><img alt="" src="../../_images/6_4.png" /></p></li>
+<li><p>functional features of the major neurotransmitters (table 6.1)</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>neurotransmitter</p></th>
+<th class="head"><p>postsynaptic effect</p></th>
+<th class="head"><p>precursor(s)</p></th>
+<th class="head"><p>rate-limiting step in synthesis</p></th>
+<th class="head"><p>removal mechanism</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ACh</p></td>
+<td><p>excitatory</p></td>
+<td><p>choline + acetyl CoA</p></td>
+<td><p>CAT</p></td>
+<td><p>AChEase</p></td>
+</tr>
+<tr class="row-odd"><td><p>glutamate</p></td>
+<td><p>excitatory</p></td>
+<td><p>glutamine</p></td>
+<td><p>glutaminase</p></td>
+<td><p>transporters</p></td>
+</tr>
+<tr class="row-even"><td><p>GABA</p></td>
+<td><p>inhibitory</p></td>
+<td><p>glutamate</p></td>
+<td><p>GAD</p></td>
+<td><p>transporters</p></td>
+</tr>
+<tr class="row-odd"><td><p>glycine</p></td>
+<td><p>inhibitory</p></td>
+<td><p>serine</p></td>
+<td><p>phosphoserine</p></td>
+<td><p>transporters</p></td>
+</tr>
+<tr class="row-even"><td><p>catecholamines (epinephrine, norepinephrine, dopamine)</p></td>
+<td><p></p></td>
+<td><p>tyrosine</p></td>
+<td><p>tyrosine hydroxylase</p></td>
+<td><p>transporters, MAO, COMT</p></td>
+</tr>
+<tr class="row-odd"><td><p>serotonin (5-HT)</p></td>
+<td><p></p></td>
+<td><p>tryptophan</p></td>
+<td><p>tryptophan hydroxylase</p></td>
+<td><p>transporters, MAO</p></td>
+</tr>
+<tr class="row-even"><td><p>histamine</p></td>
+<td><p></p></td>
+<td><p>histidine</p></td>
+<td><p>histidine decarboxylase</p></td>
+<td><p>transporters</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATP</p></td>
+<td><p></p></td>
+<td><p>ADP</p></td>
+<td><p>mitochondrial oxidative phosphorylation; glycolysis</p></td>
+<td><p>hydrolysis to AMP and adenosine</p></td>
+</tr>
+<tr class="row-even"><td><p>neuropeptides</p></td>
+<td><p></p></td>
+<td><p>amino acids (protein synthesis)</p></td>
+<td><p>synthesis and transport</p></td>
+<td><p>proteases</p></td>
+</tr>
+<tr class="row-odd"><td><p>endocannabinoids</p></td>
+<td><p></p></td>
+<td><p>membrane lipids</p></td>
+<td><p>enzymatic modification of lipids</p></td>
+<td><p>hydrolysis by FAAH</p></td>
+</tr>
+<tr class="row-even"><td><p>nitric oxide</p></td>
+<td><p></p></td>
+<td><p>arginine</p></td>
+<td><p>nitric oxide synthase</p></td>
+<td><p>spontaneous oxidation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><p>general architecture of ligand-gated receptors (fig 6.4)</p>
+<ul class="simple">
+<li><p>ionotropic</p>
+<ul>
+<li><p>AMPA (GluR-x): Na</p></li>
+<li><p>NMDA (NR-x): Na/Ca</p></li>
+<li><p>kainate: Na</p></li>
+<li><p>GABA-A: Cl</p></li>
+<li><p>glycine: Cl</p></li>
+<li><p>nicotinic ACh: Na</p></li>
+<li><p>5HT-3: Na</p></li>
+<li><p>purinergic: Na</p></li>
+</ul>
+</li>
+<li><p>metabotropic: mGlu-x, GABA-B, D-x, alpha/beta adrenergic, 5HT1-7 (but not 3), purinergic, muscarinic-x</p></li>
+<li><p>removal</p>
+<ul>
+<li><p>ACh: cholinesterase</p></li>
+<li><p>glutamate: glutamine cycle</p></li>
+<li><p>GABA: transporter</p></li>
+<li><p>serotonin, dopamine, noradrenaline: transporter &amp; MAO</p></li>
+</ul>
+</li>
+<li><p>pain -&gt; substance P</p></li>
+<li><p>analgesia -&gt; endorphin</p></li>
+<li><p>blood pressure -&gt; vasopressin</p></li>
+<li><p>metabolism -&gt; TRH</p></li>
+<li><p>mood -&gt; NPY</p></li>
+<li><p>anandamide: released by pyramidal glu-excitatory neurons</p>
+<ul>
+<li><p>retrograde signal; post back to pre; inhibit the inhibitor (CB1)</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="excitatory">
@@ -1179,8 +1282,7 @@ document.write(`
 <li><p>you have trouble controlling your eyes</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p><em>Glutamate</em> - excites pyramidal cells</p></li>
-</ol>
+<li><p><em>Glutamate</em> - excites pyramidal cells</p>
 <ul class="simple">
 <li><p>VGLUT pumps Glutamate into vesicles</p></li>
 <li><p>EATT transports extracellular Glutamate into presynaptic terminal / nearby Glial cells</p>
@@ -1196,12 +1298,13 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+</ol>
 </section>
 <section id="inhibitory">
 <h3><span class="section-number">7.2.9.3. </span>inhibitory<a class="headerlink" href="#inhibitory" title="Link to this heading">#</a></h3>
 <ol class="arabic simple" start="3">
-<li><p>,4. <em>GABA</em>/<em>glycine</em></p></li>
-</ol>
+<li><p>,4. <em>GABA</em>/<em>glycine</em></p>
 <ul class="simple">
 <li><p>have simple transporters that move released GABA into presynaptic terminal / Glia</p></li>
 <li><p>Ionotropic GABA receptors - depressants; shut down nervous system</p>
@@ -1210,6 +1313,10 @@ document.write(`
 <li><p>alcohol binds to this, shuts things down</p></li>
 </ul>
 </li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
 <li><p>immature neurons have high intracellular Cl - people don’t know why</p></li>
 </ul>
 </section>
@@ -1226,8 +1333,7 @@ document.write(`
 </li>
 </ul>
 <ol class="arabic simple" start="5">
-<li><p><em>catecholamines</em></p></li>
-</ol>
+<li><p><em>catecholamines</em></p>
 <ul class="simple">
 <li><p>pathway: DOPA -&gt; Dopamine -&gt; Norepinephrine -&gt; Epinephrine</p></li>
 <li><p>dopamine - forming of memories</p>
@@ -1242,21 +1348,19 @@ document.write(`
 </ul>
 </li>
 </ul>
-<ol class="arabic simple" start="6">
-<li><p><em>serotonin</em> = 5HT - happiness</p></li>
-</ol>
+</li>
+<li><p><em>serotonin</em> = 5HT - happiness</p>
 <ul class="simple">
 <li><p>Tryptophan -&gt; serotonin</p></li>
 <li><p>serotonin produced by Raphe nuclei</p></li>
 <li><p>affected by LSD</p></li>
 </ul>
-<ol class="arabic simple" start="7">
-<li><p><em>histamine</em> - not well-known</p></li>
-</ol>
+</li>
+<li><p><em>histamine</em> - not well-known</p>
 <ul class="simple">
 <li><p>antihistamines can make you hallucinate</p></li>
 </ul>
-<ol class="arabic simple" start="8">
+</li>
 <li><p><em>atp</em> - sensitivity to pain</p></li>
 <li><p><em>neuropeptides</em> - slow</p>
 <ul class="simple">
@@ -1270,14 +1374,13 @@ document.write(`
 <li><p>neuropeptide Y - mood/aggression</p></li>
 </ul>
 </li>
-<li><p><em>enndocannabinoids</em> - weed</p></li>
-</ol>
+<li><p><em>enndocannabinoids</em> - weed</p>
 <ul class="simple">
-<li><p>ex. anandamide  - binds to CB1 (cannabanoid 1 receptor)</p></li>
+<li><p>ex. anandamide - binds to CB1 (cannabanoid 1 receptor)</p></li>
 <li><p>retrograde signal - post back to pre - inhibit the inhibitor</p></li>
 <li><p>this increases the signal</p></li>
 </ul>
-<ol class="arabic simple" start="11">
+</li>
 <li><p><em>nitric oxide</em> - gas</p></li>
 </ol>
 <ul class="simple">
@@ -1361,36 +1464,33 @@ document.write(`
 <li><p>ex. TrkA NGF receptor - Tyrosine kinase</p></li>
 <li><p>once it binds, it becomes an enzyme</p></li>
 </ul>
-<ol class="arabic simple" start="3">
-<li><p><strong>metabotropic</strong> - G-protein-coupled receptors</p></li>
-</ol>
+<ol class="arabic" start="3">
+<li><p><strong>metabotropic</strong> - G-protein-coupled receptors</p>
 <ul class="simple">
 <li><p>ex. Glue metabotropic receptor</p></li>
 <li><p>activate G-protein that then does something</p></li>
 <li><p>these require energy for G-proteins</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>Heterotrimeric G-proteins
-- G-protein has 3 subunits: - <img alt="" src="../../_images/7_6.png" />
-1. Gs - binds norepinephrine</p>
-<ul class="simple">
-<li><ul>
-<li><p>cAMP</p></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>Heterotrimeric G-proteins</p></li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2. Gq - binds glutamate
-  - + DAG (diaglycerol) &amp; IP3
-3. Gi - binds dopamine
-  - inhibits cAMP
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Monomeric G-proteins
-- G-protein has just one subunit
-- ex. Ras</p></li>
+<ul class="simple">
+<li><p>G-protein has 3 subunits: - <img style="width: 720px; max-width: 100%;" src="../assets/7_6.svg" alt="Gs, Gq, Gi signaling pathways"/></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Gs - binds norepinephrine
+- + cAMP</p></li>
+<li><p>Gq - binds glutamate
+- + DAG (diaglycerol) &amp; IP3</p></li>
+<li><p>Gi - binds dopamine
+- inhibits cAMP</p></li>
+<li><p>Monomeric G-proteins</p></li>
+</ol>
+<ul class="simple">
+<li><p>G-protein has just one subunit</p></li>
+<li><p>ex. Ras</p></li>
+</ul>
+</li>
 <li><p><em>intracellular</em> receptors</p></li>
 </ol>
 <ul class="simple">
@@ -1729,11 +1829,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

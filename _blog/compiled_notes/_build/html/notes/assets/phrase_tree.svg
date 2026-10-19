@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 455" role="img" aria-labelledby="title desc">
+  <title id="title">Phrase-structure tree</title>
+  <desc id="desc">Constituency parse of 'the little bear saw the fine fat trout in the brook': S splits into NP (Det the, Nom: Adj little, N bear) and VP; VP splits into VP (V saw, NP: Det the, Nom: Adj fine, Adj fat, N trout) and PP (P in, NP: Det the, Nom: N brook).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <path class="line" d="M287 40 L93 78"/>
+  <path class="line" d="M287 40 L492 78"/>
+  <path class="line" d="M93 113 L35 148"/>
+  <path class="line" d="M93 113 L140 148"/>
+  <path class="line" d="M35 183 L35 218"/>
+  <path class="line" d="M140 183 L105 218"/>
+  <path class="line" d="M140 183 L182 218"/>
+  <path class="line" d="M105 253 L105 285"/>
+  <path class="line" d="M182 253 L182 285"/>
+  <path class="line" d="M492 113 L333 148"/>
+  <path class="line" d="M492 113 L660 148"/>
+  <path class="line" d="M333 183 L260 218"/>
+  <path class="line" d="M333 183 L400 218"/>
+  <path class="line" d="M260 253 L260 285"/>
+  <path class="line" d="M400 253 L333 285"/>
+  <path class="line" d="M400 253 L472 285"/>
+  <path class="line" d="M333 320 L333 353"/>
+  <path class="line" d="M472 320 L400 353"/>
+  <path class="line" d="M472 320 L470 353"/>
+  <path class="line" d="M472 320 L540 353"/>
+  <path class="line" d="M400 388 L400 419"/>
+  <path class="line" d="M470 388 L470 419"/>
+  <path class="line" d="M540 388 L540 419"/>
+  <path class="line" d="M660 183 L607 218"/>
+  <path class="line" d="M660 183 L708 218"/>
+  <path class="line" d="M607 253 L607 285"/>
+  <path class="line" d="M708 253 L665 285"/>
+  <path class="line" d="M708 253 L745 285"/>
+  <path class="line" d="M665 320 L665 353"/>
+  <path class="line" d="M745 320 L745 353"/>
+  <path class="line" d="M745 388 L745 419"/>
+  <text class="c b" x="287" y="32.0" font-size="25">S</text>
+  <text class="c b" x="93" y="105.0" font-size="25">NP</text>
+  <text class="c b" x="492" y="105.0" font-size="25">VP</text>
+  <text class="c b" x="35" y="175.0" font-size="25">Det</text>
+  <text class="c b" x="140" y="175.0" font-size="25">Nom</text>
+  <text class="c" x="35" y="245.0" font-size="25">the</text>
+  <text class="c b" x="105" y="245.0" font-size="25">Adj</text>
+  <text class="c b" x="182" y="245.0" font-size="25">N</text>
+  <text class="c" x="105" y="312.0" font-size="25">little</text>
+  <text class="c" x="182" y="312.0" font-size="25">bear</text>
+  <text class="c b" x="333" y="175.0" font-size="25">VP</text>
+  <text class="c b" x="660" y="175.0" font-size="25">PP</text>
+  <text class="c b" x="260" y="245.0" font-size="25">V</text>
+  <text class="c b" x="400" y="245.0" font-size="25">NP</text>
+  <text class="c" x="260" y="312.0" font-size="25">saw</text>
+  <text class="c b" x="333" y="312.0" font-size="25">Det</text>
+  <text class="c b" x="472" y="312.0" font-size="25">Nom</text>
+  <text class="c" x="333" y="380.0" font-size="25">the</text>
+  <text class="c b" x="400" y="380.0" font-size="25">Adj</text>
+  <text class="c b" x="470" y="380.0" font-size="25">Adj</text>
+  <text class="c b" x="540" y="380.0" font-size="25">N</text>
+  <text class="c" x="400" y="446.0" font-size="25">fine</text>
+  <text class="c" x="470" y="446.0" font-size="25">fat</text>
+  <text class="c" x="540" y="446.0" font-size="25">trout</text>
+  <text class="c b" x="607" y="245.0" font-size="25">P</text>
+  <text class="c b" x="708" y="245.0" font-size="25">NP</text>
+  <text class="c" x="607" y="312.0" font-size="25">in</text>
+  <text class="c b" x="665" y="312.0" font-size="25">Det</text>
+  <text class="c b" x="745" y="312.0" font-size="25">Nom</text>
+  <text class="c" x="665" y="380.0" font-size="25">the</text>
+  <text class="c b" x="745" y="380.0" font-size="25">N</text>
+  <text class="c" x="745" y="446.0" font-size="25">brook</text>
+</svg>

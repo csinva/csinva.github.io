@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 945 404" role="img" aria-labelledby="title desc">
+  <title id="title">Prompting hierarchy</title>
+  <desc id="desc">Nested boxes: all training methods contain parameter-efficient training (e.g. Adapters), which contains multi-layer continuous prompts (Prefix Tuning), which contain continuous prompts (e.g. Prompt Tuning), which contain discrete prompts (e.g. AutoPrompt), which contain natural language prompts (e.g. iPrompt). Only natural language prompts are human interpretable; the rest are not interpretable.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/>
+    </marker>
+    <style>
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .red { fill: #d1342f; fill-opacity: 0.15; stroke: #d1342f; stroke-width: 2; }
+      .lab { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .redlab { font: 24px Helvetica, Arial, sans-serif; fill: #d1342f; text-anchor: middle; }
+      .side { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .hi { font: bold 24px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .cap { font: 19px Helvetica, Arial, sans-serif; fill: #8a8a8a; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect class="box" x="0.0" y="10" width="660" height="346" rx="34"/>
+  <rect class="box" x="18.0" y="24" width="624" height="286" rx="30"/>
+  <rect class="box" x="36.0" y="38" width="588" height="226" rx="26"/>
+  <rect class="box" x="54.0" y="52" width="552" height="166" rx="22"/>
+  <rect class="box" x="72.0" y="66" width="516" height="106" rx="18"/>
+  <text class="lab" x="330" y="340">All training methods</text>
+  <text class="lab" x="330" y="294">Parameter-efficient training (e.g. Adapters)</text>
+  <text class="lab" x="330" y="248">Multi-layer continuous prompt (Prefix Tuning)</text>
+  <text class="lab" x="330" y="202">Continuous prompt (e.g. Prompt Tuning)</text>
+  <text class="lab" x="330" y="156">Discrete prompt (e.g. AutoPrompt)</text>
+  <rect class="red" x="90.0" y="80" width="480" height="44" rx="8"/>
+  <text class="redlab" x="330" y="110">Natural language prompt (e.g. iPrompt)</text>
+  <path d="M690.0 102 H576.0" stroke="#d1342f" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text class="hi" x="698.0" y="110">Human interpretable</text>
+  <text class="side" x="698.0" y="160">Not interpretable</text>
+  <text class="cap" x="330" y="396">Adapted from “A Taxonomy of Prompting Methods” (<tspan text-decoration="underline">Graham Neubig CMU</tspan>)</text>
+</svg>

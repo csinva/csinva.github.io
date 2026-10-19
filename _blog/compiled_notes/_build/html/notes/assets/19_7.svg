@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 530" role="img" aria-labelledby="title desc">
+  <title id="title">Cerebellar output to brainstem</title>
+  <desc id="desc">Cerebellar cortex projects to the deep cerebellar nuclei (fastigial) and directly to the vestibular nuclei. The fastigial nuclei project through the inferior cerebellar peduncle to the superior colliculus and reticular formation. Superior colliculus, reticular formation and vestibular nuclei project through the anterior-medial white matter of the spinal cord to lower motor neurons in the medial ventral horn. Highlight arrows mark the deep cerebellar nuclei and the superior colliculus.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <text x="10" y="22.0" font-size="17">(A)</text>
+  <rect x="210" y="75" width="200" height="55" rx="0" fill="#d3e9eb" stroke="#1f7f86" stroke-width="2"/>
+  <text class="c" x="310" y="108.7" font-size="19">Cerebellar cortex</text>
+  <path d="M400.0 102.0 L452.0 102.0 L452.0 305.0" fill="none" stroke="#7fbcc1" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="452.0,330.0 427.0,304.0 477.0,304.0" fill="#7fbcc1"/>
+  <path d="M310.0 130.0 L310.0 147.0" fill="none" stroke="#7fbcc1" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="310.0,172.0 282.0,146.0 338.0,146.0" fill="#7fbcc1"/>
+  <rect x="210" y="235" width="210" height="60" rx="0" fill="#e2e2e2" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="210" y="172" width="210" height="63" rx="0" fill="#e6dcf2" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="315" y="199.0" font-size="18">Deep cerebellar nuclei</text>
+  <text class="c" x="315" y="219.7" font-size="18">(fastigial)</text>
+  <path d="M252.0 235.0 L252.0 305.0" fill="none" stroke="#a98bd0" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="252.0,330.0 227.0,304.0 277.0,304.0" fill="#a98bd0"/>
+  <path d="M352.0 235.0 L352.0 305.0" fill="none" stroke="#a98bd0" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="352.0,330.0 327.0,304.0 377.0,304.0" fill="#a98bd0"/>
+  <rect x="210" y="400" width="290" height="55" rx="0" fill="#fbeec9" stroke="#d9822b" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="210" y="330" width="90" height="70" rx="0" fill="#d6e6f5" stroke="#1f6fb2" stroke-width="2"/>
+  <text class="c" x="255" y="360.9" font-size="18">Superior</text>
+  <text class="c" x="255" y="381.6" font-size="18">colliculus</text>
+  <rect x="305" y="330" width="95" height="70" rx="0" fill="#f7e0c8" stroke="#d9822b" stroke-width="2"/>
+  <text class="c" x="352" y="360.9" font-size="18">Reticular</text>
+  <text class="c" x="352" y="381.6" font-size="18">formation</text>
+  <rect x="405" y="330" width="95" height="70" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="452" y="360.9" font-size="18">Vestibular</text>
+  <text class="c" x="452" y="381.6" font-size="18">nuclei</text>
+  <path d="M255.0 400.0 L255.0 430.0" fill="none" stroke="#7fb0dd" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="255.0,455.0 230.0,429.0 280.0,429.0" fill="#7fb0dd"/>
+  <path d="M352.0 400.0 L352.0 430.0" fill="none" stroke="#e8a96a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="352.0,455.0 327.0,429.0 377.0,429.0" fill="#e8a96a"/>
+  <path d="M452.0 400.0 L452.0 430.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="452.0,455.0 427.0,429.0 477.0,429.0" fill="#7cc39a"/>
+  <rect x="210" y="455" width="290" height="65" rx="0" fill="#f6d6d5" stroke="#d1342f" stroke-width="2"/>
+  <text class="c" x="355" y="482.9" font-size="18">Lower motor neurons in</text>
+  <text class="c" x="355" y="503.6" font-size="18">medial ventral horn</text>
+  <text class="c" x="205" y="55.0" font-size="18">Midline</text>
+  <path class="mid" d="M204 64 V520"/>
+  <path d="M130.0 203.0 L155.0 203.0" fill="none" stroke="#7fb0dd" stroke-width="14" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="170.0,203.0 154.0,218.0 154.0,188.0" fill="#7fb0dd"/>
+  <path d="M145.0 365.0 L170.0 365.0" fill="none" stroke="#7fb0dd" stroke-width="14" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="185.0,365.0 169.0,380.0 169.0,350.0" fill="#7fb0dd"/>
+  <text x="10" y="262.0" font-size="18">Inferior cerebellar</text>
+  <text x="10" y="283.0" font-size="18">peduncle</text>
+  <path class="lead" d="M160 268 L222 262"/>
+  <text x="10" y="425.0" font-size="18">Anterior-medial</text>
+  <text x="10" y="446.0" font-size="18">white matter of</text>
+  <text x="10" y="467.0" font-size="18">spinal cord</text>
+  <path class="lead" d="M146 432 L222 420"/>
+</svg>

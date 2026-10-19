@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="title desc">
+  <title id="title">Quantile (pinball) losses</title>
+  <desc id="desc">Loss versus error for the 0.1, 0.5 and 0.9 quantile losses: for quantile tau the loss is tau times the error when the error is positive and (1 minus tau) times its magnitude when negative, so each is a V shape with slopes tau and 1 minus tau. Error axis from -2 to 2.1, loss axis from 0 to about 1.9.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .grid { stroke: #8a8a8a; stroke-width: 1; opacity: 0.35; }
+      .axis { stroke: #2b2b2b; stroke-width: 1.5; }
+      .tick { font: 20px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .lab { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .curve { fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+      .leg { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; dominant-baseline: central; }
+    </style>
+  </defs>
+  <line class="grid" x1="90.0" y1="30" x2="90.0" y2="320"/>
+  <text class="tick" x="90.0" y="350" text-anchor="middle">−2</text>
+  <line class="grid" x1="147.3" y1="30" x2="147.3" y2="320"/>
+  <text class="tick" x="147.3" y="350" text-anchor="middle">−1.5</text>
+  <line class="grid" x1="204.6" y1="30" x2="204.6" y2="320"/>
+  <text class="tick" x="204.6" y="350" text-anchor="middle">−1</text>
+  <line class="grid" x1="262.0" y1="30" x2="262.0" y2="320"/>
+  <text class="tick" x="262.0" y="350" text-anchor="middle">−0.5</text>
+  <text class="tick" x="319.3" y="350" text-anchor="middle">0</text>
+  <line class="grid" x1="376.6" y1="30" x2="376.6" y2="320"/>
+  <text class="tick" x="376.6" y="350" text-anchor="middle">0.5</text>
+  <line class="grid" x1="433.9" y1="30" x2="433.9" y2="320"/>
+  <text class="tick" x="433.9" y="350" text-anchor="middle">1</text>
+  <line class="grid" x1="491.2" y1="30" x2="491.2" y2="320"/>
+  <text class="tick" x="491.2" y="350" text-anchor="middle">1.5</text>
+  <line class="grid" x1="548.5" y1="30" x2="548.5" y2="320"/>
+  <text class="tick" x="548.5" y="350" text-anchor="middle">2</text>
+  <line class="grid" x1="90" y1="243.7" x2="560" y2="243.7"/>
+  <line class="grid" x1="90" y1="167.4" x2="560" y2="167.4"/>
+  <line class="grid" x1="90" y1="91.1" x2="560" y2="91.1"/>
+  <text class="tick" x="82" y="327.0" text-anchor="end">0</text>
+  <text class="tick" x="82" y="250.7" text-anchor="end">0.5</text>
+  <text class="tick" x="82" y="174.4" text-anchor="end">1</text>
+  <text class="tick" x="82" y="98.1" text-anchor="end">1.5</text>
+  <line class="axis" x1="90" y1="320" x2="560" y2="320"/>
+  <line class="axis" x1="319.3" y1="25" x2="319.3" y2="332"/>
+  <path class="curve" stroke="#1f6fb2" d="M90.0 45.3 L319.3 320.0 L560.0 287.9"/>
+  <path class="curve" stroke="#d9822b" d="M90.0 167.4 L319.3 320.0 L560.0 159.7"/>
+  <path class="curve" stroke="#1f8a4c" d="M90.0 289.5 L319.3 320.0 L560.0 31.5"/>
+  <line x1="600" y1="50" x2="640" y2="50" stroke="#1f6fb2" stroke-width="4" stroke-linecap="round"/>
+  <text class="leg" x="652" y="50">0.1 Quantile</text>
+  <line x1="600" y1="86" x2="640" y2="86" stroke="#d9822b" stroke-width="4" stroke-linecap="round"/>
+  <text class="leg" x="652" y="86">0.5 Quantile</text>
+  <line x1="600" y1="122" x2="640" y2="122" stroke="#1f8a4c" stroke-width="4" stroke-linecap="round"/>
+  <text class="leg" x="652" y="122">0.9 Quantile</text>
+  <text class="lab" x="319.3" y="388">Error</text>
+  <text class="lab" transform="translate(30 175.0) rotate(-90)">Loss</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 455" role="img" aria-labelledby="title desc">
+  <title id="title">Independent vector VAE</title>
+  <desc id="desc">An input image (a heart) goes through an encoder Enc into two latent vectors: discrete y for class factors (element y_k) and continuous z for style factors (element z_j); a decoder Dec reconstructs the image. Training terms: weak class supervision; vector independence, y ⊥ z; total correlation (TC), y1 ⊥ y2 and z1 ⊥ z2.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2b2b2b" stroke-width="1.6"/></marker>
+    <path id="heart" d="M0 12 C-22 -2 -24 -18 -12 -22 C-5 -24 -1 -19 0 -14 C1 -19 5 -24 12 -22 C24 -18 22 -2 0 12 Z"/>
+    <style>
+      .net { fill: #8a8a8a; fill-opacity: 0.4; stroke: #2b2b2b; stroke-width: 2.2; }
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 2.2; }
+      .img { fill: none; stroke: #2b2b2b; stroke-width: 2.2; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .yel { fill: #d9822b; fill-opacity: 0.3; }
+      .blu { fill: #1f6fb2; fill-opacity: 0.25; }
+      .t { font: 34px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .big { font: 42px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .m { font: italic 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .b { font-weight: bold; }
+      .s { font: 22px Helvetica, Arial, sans-serif; }
+      .r { text-anchor: end; }
+    </style>
+  </defs>
+  <!-- images -->
+  <rect class="img" x="22" y="146" width="96" height="96"/>
+  <use href="#heart" x="70" y="200" fill="#2b2b2b" transform="rotate(-10 70 196)"/>
+  <rect class="img" x="538" y="146" width="96" height="96"/>
+  <use href="#heart" x="586" y="200" fill="#2b2b2b" transform="rotate(-10 586 196)"/>
+  <path class="e" d="M118 195 H160" marker-end="url(#arrow)"/>
+  <rect class="net" x="162" y="118" width="98" height="154" rx="18"/>
+  <text class="big" x="211" y="196">Enc</text>
+  <!-- latent vectors -->
+  <rect class="box" x="304" y="62" width="50" height="112"/><path class="e" d="M304 118 H354"/>
+  <text class="m" x="314" y="156">y<tspan dy="7" font-size="22">k</tspan></text>
+  <rect class="box" x="304" y="220" width="50" height="112"/><path class="e" d="M304 276 H354"/>
+  <text class="m" x="314" y="312">z<tspan dy="7" font-size="22">j</tspan></text>
+  <path class="e" d="M260 195 L302 120" marker-end="url(#arrow)"/>
+  <path class="e" d="M260 195 L302 274" marker-end="url(#arrow)"/>
+  <path class="e" d="M354 120 L394 192" marker-end="url(#arrow)"/>
+  <path class="e" d="M354 274 L394 198" marker-end="url(#arrow)"/>
+  <rect class="net" x="396" y="118" width="98" height="154" rx="18"/>
+  <text class="big" x="445" y="196">Dec</text>
+  <path class="e" d="M494 195 H536" marker-end="url(#arrow)"/>
+  <!-- labels -->
+  <text class="t r" x="288" y="42">Discrete <tspan class="b">y</tspan></text>
+  <text class="t r" x="288" y="88">for <tspan class="b">class</tspan> factors</text>
+  <text class="t r" x="288" y="318">Continuous <tspan class="b">z</tspan></text>
+  <text class="t r" x="288" y="364">for <tspan class="b">style</tspan> factors</text>
+  <rect class="yel" x="396" y="44" width="462" height="62"/>
+  <text class="t" x="412" y="88">Weak Class Supervision</text>
+  <rect class="yel" x="396" y="290" width="398" height="62"/>
+  <text class="t" x="412" y="334">Vector Independence</text>
+  <text class="t" x="812" y="334"><tspan class="b">y</tspan> ⊥ <tspan class="b">z</tspan></text>
+  <rect class="blu" x="396" y="370" width="426" height="62"/>
+  <text class="t" x="412" y="414">Total Correlation (TC)</text>
+  <text class="m" x="836" y="396" style="font-size:36px">y<tspan class="s" dy="7">1</tspan><tspan dy="-7"> ⊥ y</tspan><tspan class="s" dy="7">2</tspan></text>
+  <text class="m" x="836" y="440" style="font-size:36px">z<tspan class="s" dy="7">1</tspan><tspan dy="-7"> ⊥ z</tspan><tspan class="s" dy="7">2</tspan></text>
+</svg>

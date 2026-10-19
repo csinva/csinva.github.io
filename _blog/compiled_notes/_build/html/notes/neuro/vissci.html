@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,7 +58,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/neuro/vissci';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro_section.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. vision</a></li>
@@ -555,11 +541,11 @@ document.write(`
 </section>
 <section id="electrophysiology">
 <h2><span class="section-number">7.3.2. </span>electrophysiology<a class="headerlink" href="#electrophysiology" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>EEG - whole brain</p></li>
 <li><p>ERG (electroretinogram) - whole retina</p></li>
 <li><p>single cell</p>
-<ul>
+<ul class="simple">
 <li><p>sharp micro-electrode - has problems</p>
 <ul>
 <li><p>high resistance</p></li>
@@ -577,13 +563,16 @@ document.write(`
 </li>
 <li><p>clamp</p>
 <ul>
-<li><p><img alt="" src="../../_images/clamp_main.png" /></p></li>
-<li><p><img alt="" src="../../_images/clamp_junction.png" /></p></li>
-<li><p><img alt="" src="../../_images/clamp_tip.png" /></p></li>
+<li><img style="width: 700px; max-width: 100%;" src="../assets/clamp_main.svg" alt="Single-cell recording"/>
+</li>
+<li><img style="width: 700px; max-width: 100%;" src="../assets/clamp_junction.svg" alt="Junction potentials"/>
+</li>
+<li><img style="width: 700px; max-width: 100%;" src="../assets/clamp_tip.svg" alt="Liquid junction potential"/>
+</li>
 </ul>
 </li>
 <li><p>types</p>
-<ul>
+<ul class="simple">
 <li><p>whole-cell</p></li>
 <li><p>cell-attached</p></li>
 <li><p>inside-out</p></li>
@@ -592,19 +581,20 @@ document.write(`
 </ul>
 </li>
 <li><p>recording types</p>
-<ul>
+<ul class="simple">
 <li><p>current-clamp - record potential</p></li>
 <li><p>voltage clamp - record current - most common</p></li>
 <li><p>conductance-clamp - complicated</p></li>
 </ul>
 </li>
 <li><p>IV curve - measured with voltage clamp</p>
-<ul>
+<ul class="simple">
 <li><p>V - voltage clamped at</p></li>
 <li><p>I - maximal current evoked by clamping at this voltage</p></li>
 </ul>
 </li>
-<li><p><img alt="" src="../../_images/circuit_model.png" /></p></li>
+<li><img style="width: 650px; max-width: 100%;" src="../assets/circuit_model.svg" alt="Circuit model"/>
+</li>
 </ul>
 </section>
 <section id="recording-imaging">
@@ -796,7 +786,7 @@ document.write(`
 <ul class="simple">
 <li><p>primate retina has 2 major types of ganglion cells</p>
 <ol class="arabic simple">
-<li><p>midget ganglion cells  (~75%) - majority, high spatial acuity</p>
+<li><p>midget ganglion cells (~75%) - majority, high spatial acuity</p>
 <ol class="arabic simple">
 <li><p>parvocellular pathway</p></li>
 </ol>
@@ -921,7 +911,7 @@ document.write(`
 <li><p>choroid - helps provide nutrients, cool retina</p></li>
 </ol>
 </li>
-<li><p>inner retinal blood supply  = central retinal artery</p>
+<li><p>inner retinal blood supply = central retinal artery</p>
 <ol class="arabic simple">
 <li><p>inner 2/3</p></li>
 <li><p>no inner capillaries in <em>foveal avascular zone</em> - area near fovea (these would block light)</p></li>
@@ -960,7 +950,7 @@ document.write(`
 <section id="age-related-macular-degeneration">
 <h3><span class="section-number">7.3.9.1. </span>age-related macular degeneration<a class="headerlink" href="#age-related-macular-degeneration" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>degenerates outer retina  (photoreceptors/RPE/choroid) in <strong>macula</strong> = central 5-6 mm of retina (contains fovea, which is central 1.5mm)</p></li>
+<li><p>degenerates outer retina (photoreceptors/RPE/choroid) in <strong>macula</strong> = central 5-6 mm of retina (contains fovea, which is central 1.5mm)</p></li>
 <li><p>leading cause of vision loss in &gt;50 yo</p></li>
 <li><p>big spot missing in center of visual field</p></li>
 <li><p>2 types</p>
@@ -1017,7 +1007,7 @@ document.write(`
 <li><p>diabetes types</p>
 <ul>
 <li><p>type 1 - autoimmune reaction destroys pancreating <span class="math notranslate nohighlight">\(\beta\)</span> cells that produces <strong>insulin</strong>: hyperglycemia + hypoglycemia</p></li>
-<li><p>type 2  - reduced insulin sensitivity: mainly hyperglycemia</p>
+<li><p>type 2 - reduced insulin sensitivity: mainly hyperglycemia</p>
 <ul>
 <li><p>need insulin injection</p></li>
 </ul>
@@ -1061,7 +1051,7 @@ document.write(`
 </section>
 <section id="experimental-methods">
 <h2><span class="section-number">7.3.10. </span>experimental methods<a class="headerlink" href="#experimental-methods" title="Link to this heading">#</a></h2>
-<p><img alt="" src="../../_images/method_coverage.png" /></p>
+<img style="width: 620px; max-width: 100%;" src="../assets/method_coverage.svg" alt="Spatiotemporal coverage of neuroscience methods"/>
 <ul class="simple">
 <li><p>7 dimensions</p>
 <ul>
@@ -1235,7 +1225,7 @@ document.write(`
 <ul>
 <li><p>activity -&gt; more oxygen use + cerebral blood flow -&gt; magnetic field distortions -&gt; MRI signal intensity</p>
 <ul>
-<li><p>activity make oxygen go down real quick then blood flow over compensates, then saturates <img alt="" src="../../_images/hrf.png" /></p></li>
+<li><p>activity make oxygen go down real quick then blood flow over compensates, then saturates <img style="width: 520px; max-width: 100%;" src="../assets/hrf.svg" alt="Hemodynamic response function (HRF)"/></p></li>
 <li><p>can’t separate excitatory / inhibitory</p></li>
 </ul>
 </li>
@@ -1317,9 +1307,12 @@ document.write(`
 <ul>
 <li><p>each visual areas has some retinotopic mapping</p></li>
 <li><p>moving points</p></li>
-<li><p><img alt="" src="../../_images/vmap.png" /></p></li>
+<li><p><img alt="" src="../../_images/vmap.png" /></p>
+<ul>
 <li><p>periodic mapping stimuli - rotating wedge / other things (fig left) <span class="math notranslate nohighlight">\(\implies\)</span> between visual areas (e.g. v1 + v2) mirror image tiling of locations (borders between regions are like mirrors)</p></li>
 <li><p>eccentricity mapping (fig right) - rings spread out evenly - no mirrors</p></li>
+</ul>
+</li>
 <li><p>cortical magnification - way more v1 for central locations</p>
 <ul>
 <li><p>more than proportion of retina dedicated to v1</p></li>
@@ -1425,15 +1418,15 @@ document.write(`
 </section>
 <section id="dynamic-range-of-rods-cones">
 <h2><span class="section-number">7.3.12. </span>dynamic range of rods + cones<a class="headerlink" href="#dynamic-range-of-rods-cones" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>spontaneous isomerizations determine lower limit of light detection</p></li>
 <li><p>rods</p>
-<ul>
+<ul class="simple">
 <li><p>saturate</p></li>
 </ul>
 </li>
 <li><p>cones</p>
-<ul>
+<ul class="simple">
 <li><p>turn on then off</p></li>
 </ul>
 </li>
@@ -1441,28 +1434,29 @@ document.write(`
 <li><p>horizontal cells</p>
 <ul>
 <li><p>HI (type B)</p>
-<ul>
+<ul class="simple">
 <li><p>dendrites contact rods, M/L cones</p></li>
 <li><p>connected via gap junctions</p></li>
 </ul>
 </li>
 <li><p>HII (type A)</p>
-<ul>
+<ul class="simple">
 <li><p>dendrites contact S, M/L cones</p></li>
 </ul>
 </li>
-<li><p><img alt="" src="../../_images/horizontal.png" /></p></li>
+<li><img style="width: 600px; max-width: 100%;" src="../assets/horizontal.svg" alt="Horizontal cell feedback"/>
+</li>
 </ul>
 </li>
 <li><p>bipolar cells</p>
-<ul>
+<ul class="simple">
 <li><p>rod v. cone</p></li>
 <li><p>on v. off</p></li>
 <li><p>midget v. diffuse</p></li>
 </ul>
 </li>
 <li><p>amacrine cells</p>
-<ul>
+<ul class="simple">
 <li><p>link bipolar cells to ganglion cells</p></li>
 </ul>
 </li>
@@ -1522,7 +1516,7 @@ document.write(`
 <li><p>optic nerve has pretty equal firing rates - don’t get pca type solns</p></li>
 </ul>
 </li>
-<li><p>tiling  - ratio varies with eccentricity (higher cone:ganglion ratio in periphery)</p>
+<li><p>tiling - ratio varies with eccentricity (higher cone:ganglion ratio in periphery)</p>
 <ul>
 <li><p>bipolar:ganglion is 1:1 in fovea</p></li>
 <li><p>dendritic field diameter increases linearly with eccentricity</p></li>
@@ -1543,10 +1537,11 @@ document.write(`
 <h2><span class="section-number">7.3.14. </span>visual pathways<a class="headerlink" href="#visual-pathways" title="Link to this heading">#</a></h2>
 <section id="id1">
 <h3><span class="section-number">7.3.14.1. </span>visual pathways<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><img alt="" src="../../_images/visual_pathways.png" /></p></li>
-<li><p>organization</p>
 <ul>
+<li><img style="width: 650px; max-width: 100%;" src="../assets/visual_pathways.svg" alt="Visual pathways"/>
+</li>
+<li><p>organization</p>
+<ul class="simple">
 <li><p>thalamus + cortex always work together = thalamocortical system</p></li>
 <li><p>midbrain - reptilian, old</p></li>
 <li><p>all sensory must pass through thalamus to get to cortex</p></li>
@@ -1555,7 +1550,7 @@ document.write(`
 </ul>
 </li>
 <li><p>6 main targets</p>
-<ul>
+<ul class="simple">
 <li><p>LGN (thalamus)</p>
 <ul>
 <li><p>has 6 layers</p></li>
@@ -1587,23 +1582,24 @@ document.write(`
 </section>
 <section id="lgn">
 <h3><span class="section-number">7.3.14.2. </span>lgn<a class="headerlink" href="#lgn" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p>has six layers</p></li>
 <li><p>parvocellular are upper 4 layers</p>
-<ul>
+<ul class="simple">
 <li><p>subdivided by on/off, left/right</p></li>
 <li><p>inputs from midget cells</p></li>
 </ul>
 </li>
 <li><p>magnocellular are bottom 2 layers</p>
-<ul>
+<ul class="simple">
 <li><p>inputs from parasol cells</p></li>
 </ul>
 </li>
 <li><p>losing magno seems to lose spatial frequency, control different temporal frequencies, parvo gives you color</p></li>
 <li><p><strong>important</strong> - different spatial/temporal frequencies - differentiate from the beginning</p>
 <ul>
-<li><p><img alt="" src="../../_images/magno_parvo.png" /></p></li>
+<li><img style="width: 550px; max-width: 100%;" src="../assets/magno_parvo.svg" alt="Parvo and magno coverage"/>
+</li>
 </ul>
 </li>
 </ul>
@@ -1696,7 +1692,7 @@ document.write(`
 <li><p>some inhibitory interneurons</p></li>
 </ul>
 </li>
-<li><p>cortex <img alt="column" src="../../_images/column.png" /></p>
+<li><p>cortex <img style="width: 460px; max-width: 100%;" src="../assets/column.svg" alt="Laminar connections of V1"/></p>
 <ul>
 <li><p>~2mm thick</p></li>
 <li><p>layer 1 - mostly axons</p></li>
@@ -1893,7 +1889,7 @@ document.write(`
 <section id="sparse-coding">
 <h2><span class="section-number">7.3.17. </span>sparse coding<a class="headerlink" href="#sparse-coding" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>THIS ISN”T REALLY SPARSE CODING MOVE ELSEWHERE</strong>: power spectrum falls off with frequency as <span class="math notranslate nohighlight">\(1/f^2\)</span>(amplitude falls as 1/f)</p>
+<li><p><strong>this isn’t really sparse coding, move elsewhere</strong>: power spectrum falls off with frequency as <span class="math notranslate nohighlight">\(1/f^2\)</span>(amplitude falls as 1/f)</p>
 <ul>
 <li><p>want to decorrelate - multiply by frequency that’s <span class="math notranslate nohighlight">\(f^2\)</span></p></li>
 <li><p>you can’t do this for very high frequencies otherwise you amplify noise</p></li>
@@ -1971,7 +1967,7 @@ similar to finding edges</p></li>
 <li><p>perception as inference</p>
 <ul>
 <li><p>generative model we’re trying to fit data too</p></li>
-<li><p>bayes rules: <span class="math notranslate nohighlight">\(P(E|D) \propto P(D|E) \cdot P(E)\)</span> where E is environment and D is data about environment</p></li>
+<li><p>bayes rules: $<span class="math notranslate nohighlight">\(P(E\vert D) \propto P(D\vert E) \cdot P(E)\)</span>$ where E is environment and D is data about environment</p></li>
 <li><p>lee + mumford, 2003 - hierarchical bayesian inference in visual cortex</p>
 <ul>
 <li><p>each area makes guesses and higher areas send back corrections</p></li>
@@ -2155,7 +2151,7 @@ similar to finding edges</p></li>
 <li><p>manifests in the eye</p></li>
 <li><p>two biomarkers - can find with PET or MRI</p>
 <ul>
-<li><p>amyloid <span class="math notranslate nohighlight">\(A\beta\)</span> plaque  proteins</p></li>
+<li><p>amyloid <span class="math notranslate nohighlight">\(A\beta\)</span> plaque proteins</p></li>
 <li><p>pTau proteins</p></li>
 </ul>
 </li>
@@ -2347,11 +2343,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

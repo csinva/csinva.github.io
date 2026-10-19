@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 30 1310 735" role="img" aria-labelledby="title desc">
+  <title id="title">Junction potentials</title>
+  <desc id="desc">Ag/AgCl electrode in saline. Saline in the recording chamber or patch-electrode needs a few mM chloride in both for stability. In the AgCl coating, AgCl(s) is in equilibrium with Ag+ and Cl−; Cl− exchanges with the saline, and Ag+ exchanges with Ag in the silver wire, where Ag is in equilibrium with an electron e− carried to the electronics. Overall reaction: AgCl(s) + e− ⇌ Ag(s) + Cl−. The junction potential cancels because it is roughly equal and opposite in the patch-electrode and bath ground electrode.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="pa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7b4fb5"/></marker>
+    <marker id="wa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#ffffff"/></marker>
+    <marker id="ya" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d6b21e"/></marker>
+    <style>
+      .ttl { font: 40px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .t { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sup { font-size: 17px; }
+      .s { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sup2 { font-size: 15px; }
+      .sw { font: italic bold 22px Helvetica, Arial, sans-serif; fill: #ffffff; }
+      .wl { font: bold 26px Helvetica, Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .saline { fill: #1f6fb2; fill-opacity: 0.16; }
+      .agcl { fill: #8a8a8a; fill-opacity: 0.35; }
+      .wire { fill: #2b2b2b; }
+      .rx { fill: none; stroke: #7b4fb5; stroke-width: 5; }
+      .rxw { fill: none; stroke: #ffffff; stroke-width: 5; }
+      .rxy { fill: none; stroke: #d6b21e; stroke-width: 5; }
+      .eq { fill: none; stroke: #2b2b2b; stroke-width: 3.5; }
+    </style>
+  </defs>
+  <text class="ttl" x="40" y="80">Junction potentials</text>
+  <!-- saline (bath / pipette solution) -->
+  <rect class="saline" x="28" y="135" width="655" height="620"/>
+  <text class="t" x="66" y="205">Saline in recording chamber or patch-</text>
+  <text class="t" x="66" y="241">electrode : a few mM Cl<tspan class="sup" dy="-12">−</tspan><tspan dy="12"> in both is</tspan></text>
+  <text class="t" x="66" y="277">required for stability.</text>
+  <text class="t" x="102" y="380">Positive current flow into / out of electrode</text>
+  <!-- AgCl coating -->
+  <rect class="agcl" x="150" y="475" width="467" height="176"/>
+  <!-- Ag wire -->
+  <rect class="wire" x="343" y="561" width="647" height="58"/>
+  <text class="wl" x="845" y="601">Ag wire</text>
+  <text class="t" x="1030" y="597">To electronics</text>
+  <!-- reactions -->
+  <text class="s" x="548" y="432">Cl<tspan class="sup2" dy="-10">−</tspan></text>
+  <path class="rx" d="M563 448 V494" marker-start="url(#pa)" marker-end="url(#pa)"/>
+  <text class="s" x="338" y="530">AgCl(s)</text>
+  <path class="rx" d="M424 522 H470" marker-start="url(#pa)" marker-end="url(#pa)"/>
+  <text class="s" x="488" y="530">Ag<tspan class="sup2" dy="-10">+</tspan><tspan dy="10"> + Cl</tspan><tspan class="sup2" dy="-10">−</tspan></text>
+  <path class="rxw" d="M506 545 V581" marker-start="url(#wa)" marker-end="url(#wa)"/>
+  <text class="sw" x="488" y="610">Ag</text>
+  <path class="rxy" d="M540 601 H590" marker-start="url(#ya)" marker-end="url(#ya)"/>
+  <text class="sw" x="612" y="610">e<tspan class="sup2" dy="-10">−</tspan></text>
+  <!-- explanation -->
+  <text class="t" x="760" y="166">Need to make a stable connection</text>
+  <text class="t" x="760" y="202">between electronics and physiological</text>
+  <text class="t" x="760" y="238">saline solutions.</text>
+  <text class="t" x="760" y="322">AgCl(s) + <tspan font-style="italic">e</tspan><tspan class="sup" dy="-12">−</tspan></text>
+  <path class="eq" d="M940 313 H978" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="t" x="1012" y="322">Ag(s) + Cl<tspan class="sup" dy="-12">−</tspan></text>
+  <text class="t" x="760" y="378">Junction potential cancels, as it is</text>
+  <text class="t" x="760" y="414">roughly equal and opposite in the patch-</text>
+  <text class="t" x="760" y="450">electrode and bath ground electrode.</text>
+</svg>

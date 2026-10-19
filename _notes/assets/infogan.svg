@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 8 894 362" role="img" aria-labelledby="title desc">
+  <title id="title">GAN vs InfoGAN</title>
+  <desc id="desc">GAN: X (data) and the generator G's output, where G takes Z (noise), feed the discriminator D, which answers "Which source?". InfoGAN: G takes both Z (noise) and C (code); X (data) and G's output feed a Shared ConvNet with two heads, "Which source?" and "What code?". The second head is cheap to compute.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="arrowbig" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .flow { fill: none; stroke: #2b2b2b; stroke-width: 1.8; stroke-linecap: round; }
+      .io { fill: none; stroke: #1f8a4c; stroke-width: 3; }
+      .code { fill: none; stroke: #d9822b; stroke-width: 3; }
+      .net { fill: none; stroke: #1f6fb2; stroke-width: 3; stroke-linejoin: round; }
+      .lab { font: 23px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .title { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .note { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+
+  <!-- ===== GAN ===== -->
+  <rect class="io" x="55" y="18" width="216" height="44" rx="6"/>
+  <text class="lab" x="163" y="40">Which source?</text>
+
+  <path class="net" d="M120 88 H206 L197 127 H129 Z"/>
+  <text class="lab" x="163" y="108">D</text>
+  <path class="flow" d="M163 88 V64" marker-end="url(#arrow)"/>
+
+  <rect class="io" x="18" y="174" width="144" height="42" rx="6"/>
+  <text class="lab" x="90" y="195">X (data)</text>
+
+  <path class="net" d="M192 173 H278 L269 215 H201 Z"/>
+  <text class="lab" x="235" y="194">G</text>
+
+  <rect class="io" x="162" y="260" width="148" height="42" rx="6"/>
+  <text class="lab" x="236" y="281">Z (noise)</text>
+
+  <path class="flow" d="M235 260 V217" marker-end="url(#arrow)"/>
+  <path class="flow" d="M90 174 C90 146 150 150 161 130" marker-end="url(#arrow)"/>
+  <path class="flow" d="M235 173 C235 146 176 150 165 130" marker-end="url(#arrow)"/>
+
+  <text class="title" x="165" y="362">GAN</text>
+
+  <!-- ===== InfoGAN ===== -->
+  <rect class="io" x="362" y="20" width="198" height="42" rx="6"/>
+  <text class="lab" x="461" y="41">Which source?</text>
+  <rect class="code" x="612" y="18" width="254" height="42" rx="6"/>
+  <text class="lab" x="739" y="39">What code?</text>
+
+  <path class="net" d="M500 90 H727 L715 130 H512 Z"/>
+  <text class="lab" x="613" y="110">Shared ConvNet</text>
+  <path class="flow" d="M560 90 C520 86 480 82 466 64" marker-end="url(#arrow)"/>
+  <path class="flow" d="M668 90 C705 86 730 80 740 62" marker-end="url(#arrow)"/>
+
+  <rect class="io" x="400" y="175" width="145" height="42" rx="6"/>
+  <text class="lab" x="472" y="196">X (data)</text>
+
+  <path class="net" d="M575 173 H668 L659 215 H584 Z"/>
+  <text class="lab" x="621" y="194">G</text>
+
+  <rect class="io" x="470" y="262" width="146" height="42" rx="6"/>
+  <text class="lab" x="543" y="283">Z (noise)</text>
+  <rect class="io" x="648" y="260" width="146" height="42" rx="6"/>
+  <text class="lab" x="721" y="281">C (code)</text>
+
+  <path class="flow" d="M472 175 C472 150 535 150 548 132" marker-end="url(#arrow)"/>
+  <path class="flow" d="M621 173 C621 154 600 148 596 132" marker-end="url(#arrow)"/>
+  <path class="flow" d="M621 173 C621 154 664 150 672 132" marker-end="url(#arrow)"/>
+  <path class="flow" d="M543 262 C543 236 610 236 620 217" marker-end="url(#arrow)"/>
+  <path class="flow" d="M721 260 C721 236 632 236 622 217" marker-end="url(#arrow)"/>
+
+  <path class="flow" d="M786 168 L762 70" style="stroke-width: 4" marker-end="url(#arrowbig)"/>
+  <text class="note" x="690" y="198">Cheap to compute!</text>
+
+  <text class="title" x="613" y="362">InfoGAN</text>
+</svg>

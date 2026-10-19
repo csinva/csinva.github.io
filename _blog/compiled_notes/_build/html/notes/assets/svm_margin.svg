@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 15 600 540" role="img" aria-labelledby="title desc">
+  <title id="title">SVM geometric margin</title>
+  <desc id="desc">Two classes of points in the plane: crosses above-right of a separating line and circles below-left. Vector w points perpendicular to the line toward the crosses. Point A, a cross, projects onto point B on the line; the segment AB is labeled gamma superscript (i), the geometric margin of that example.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .pt { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .tm { font: 30px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .gm { font: italic 26px "Times New Roman", Times, serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+
+  <path class="ln" d="M47 545 V30" marker-end="url(#arrow)"/>
+  <path class="ln" d="M18 528 H592" marker-end="url(#arrow)"/>
+  <line class="ln" x1="18" y1="142" x2="585" y2="492"/>
+  <path class="pt" d="M189 170 L205 186 M189 186 L205 170"/>
+  <path class="pt" d="M257 143 L273 159 M257 159 L273 143"/>
+  <path class="pt" d="M391 177 L407 193 M391 193 L407 177"/>
+  <path class="pt" d="M323 214 L339 230 M323 230 L339 214"/>
+  <path class="pt" d="M375 236 L391 252 M375 252 L391 236"/>
+  <path class="pt" d="M450 229 L466 245 M450 245 L466 229"/>
+  <path class="pt" d="M450 274 L466 290 M450 290 L466 274"/>
+  <path class="pt" d="M383 296 L399 312 M383 312 L399 296"/>
+  <circle class="pt" cx="152" cy="334" r="7.5"/>
+  <circle class="pt" cx="234" cy="342" r="7.5"/>
+  <circle class="pt" cx="197" cy="387" r="7.5"/>
+  <circle class="pt" cx="137" cy="409" r="7.5"/>
+  <circle class="pt" cx="264" cy="416" r="7.5"/>
+  <circle class="pt" cx="331" cy="424" r="7.5"/>
+  <circle class="pt" cx="167" cy="461" r="7.5"/>
+  <circle class="pt" cx="242" cy="461" r="7.5"/>
+  <circle class="pt" cx="391" cy="491" r="7.5"/>
+  <line class="ln" x1="200" y1="252" x2="265" y2="151"/>
+  <path class="ln" d="M259 290 L350 145" marker-end="url(#arrow)"/>
+  <text class="tm" x="245" y="138">A</text><text class="tm" x="184" y="276">B</text><text class="tm" x="362" y="140">w</text>
+  <text class="tm" x="234" y="222">γ<tspan font-size="19" dy="-11" font-style="normal">(</tspan><tspan font-size="19">i</tspan><tspan font-size="19" font-style="normal">)</tspan></text>
+</svg>

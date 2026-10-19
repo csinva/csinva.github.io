@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 8 640 320" role="img" aria-labelledby="title desc">
+  <title id="title">Three generative classification models</title>
+  <desc id="desc">Three graphical models. (a) Y points to X1, X2, ..., Xm, which are conditionally independent given Y. (b) Same, plus arrows between features: X2 to X1 and X2 to Xm. (c) A single node Y pointing to a single node X.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .node { fill: #9a9a9a; stroke: #2b2b2b; stroke-width: 2; }
+      .dot { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .nv { font: italic 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 19px; }
+      .cap { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <circle class="node" cx="130" cy="80" r="26"/>
+  <text class="nv" x="130" y="38">Y</text>
+  <circle class="node" cx="50" cy="205" r="26"/>
+  <line class="ln" x1="116" y1="101.9" x2="65.6" y2="180.6" marker-end="url(#arrow)"/>
+  <circle class="node" cx="125" cy="205" r="26"/>
+  <line class="ln" x1="129" y1="106" x2="126.2" y2="176" marker-end="url(#arrow)"/>
+  <circle class="node" cx="235" cy="205" r="26"/>
+  <line class="ln" x1="146.7" y1="99.9" x2="216.3" y2="182.8" marker-end="url(#arrow)"/>
+  <circle class="dot" cx="165" cy="205" r="3.5"/>
+  <circle class="dot" cx="180" cy="205" r="3.5"/>
+  <circle class="dot" cx="195" cy="205" r="3.5"/>
+  <text class="nv" x="50" y="272">X<tspan class="sub" dy="7">1</tspan></text>
+  <text class="nv" x="125" y="272">X<tspan class="sub" dy="7">2</tspan></text>
+  <text class="nv" x="235" y="272">X<tspan class="sub" dy="7">m</tspan></text>
+  <text class="cap" x="140" y="318">(a)</text>
+  <circle class="node" cx="420" cy="80" r="26"/>
+  <text class="nv" x="420" y="38">Y</text>
+  <circle class="node" cx="340" cy="205" r="26"/>
+  <line class="ln" x1="406" y1="101.9" x2="355.6" y2="180.6" marker-end="url(#arrow)"/>
+  <circle class="node" cx="415" cy="205" r="26"/>
+  <line class="ln" x1="419" y1="106" x2="416.2" y2="176" marker-end="url(#arrow)"/>
+  <circle class="node" cx="525" cy="205" r="26"/>
+  <line class="ln" x1="436.7" y1="99.9" x2="506.3" y2="182.8" marker-end="url(#arrow)"/>
+  <circle class="dot" cx="455" cy="205" r="3.5"/>
+  <circle class="dot" cx="470" cy="205" r="3.5"/>
+  <circle class="dot" cx="485" cy="205" r="3.5"/>
+  <text class="nv" x="340" y="272">X<tspan class="sub" dy="7">1</tspan></text>
+  <text class="nv" x="415" y="272">X<tspan class="sub" dy="7">2</tspan></text>
+  <text class="nv" x="525" y="272">X<tspan class="sub" dy="7">m</tspan></text>
+  <path class="ln" d="M400 182 Q378 150 358 181" marker-end="url(#arrow)"/>
+  <path class="ln" d="M430 182 Q470 130 508 182" marker-end="url(#arrow)"/>
+  <text class="cap" x="430" y="318">(b)</text>
+  <circle class="node" cx="620" cy="80" r="26"/>
+  <text class="nv" x="620" y="38">Y</text>
+  <circle class="node" cx="620" cy="205" r="26"/>
+  <line class="ln" x1="620" y1="106" x2="620" y2="176" marker-end="url(#arrow)"/>
+  <text class="nv" x="620" y="272">X</text>
+  <text class="cap" x="620" y="318">(c)</text>
+</svg>

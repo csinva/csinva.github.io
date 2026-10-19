@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="440 0 650 560" role="img" aria-labelledby="title desc">
+  <title id="title">Horn clauses and AND-OR graph</title>
+  <desc id="desc">(a) Horn clauses: P implies Q; L and M implies P; B and L implies M; A and P implies L; A and B implies L; A; B. (b) The corresponding AND-OR graph: leaves A and B at the bottom; arcs join the premises of each conjunction at a dot, with an arrow up to the conclusion: A and B to L, A and P (via a loop from P) to L, B and L to M, L and M to P, and P to Q.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .m { font: italic 34px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .r { font: 32px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+      .op { font-style: normal; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <text class="m" x="470" y="110" xml:space="preserve">P  <tspan class="op">⇒</tspan>  Q</text>
+  <text class="m" x="470" y="165" xml:space="preserve">L <tspan class="op">∧</tspan> M  <tspan class="op">⇒</tspan>  P</text>
+  <text class="m" x="470" y="220" xml:space="preserve">B <tspan class="op">∧</tspan> L  <tspan class="op">⇒</tspan>  M</text>
+  <text class="m" x="470" y="275" xml:space="preserve">A <tspan class="op">∧</tspan> P  <tspan class="op">⇒</tspan>  L</text>
+  <text class="m" x="470" y="330" xml:space="preserve">A <tspan class="op">∧</tspan> B  <tspan class="op">⇒</tspan>  L</text>
+  <text class="m" x="470" y="385" xml:space="preserve">A</text>
+  <text class="m" x="470" y="440" xml:space="preserve">B</text>
+  <text class="r" x="560" y="540">(a)</text><text class="r" x="900" y="540">(b)</text>
+  <path class="e" d="M905 468 L957 418"/>
+  <path class="e" d="M1040 468 L957 418"/>
+  <path class="e" d="M932.5 441.6 A34 34 0 0 0 986.1 435.5"/>
+  <path class="e" d="M957 418 L868 370" marker-end="url(#arrow)"/>
+  <path class="e" d="M905 468 L818 418"/>
+  <path class="e" d="M818 418 L845 372" marker-end="url(#arrow)"/>
+  <path class="e" d="M885 128 C 860 40, 760 50, 748 250 C 740 410, 770 470, 818 418"/>
+  <path class="e" d="M847.5 434.9 A34 34 0 0 1 796.4 444.2"/>
+  <path class="e" d="M860 320 L975 315"/>
+  <path class="e" d="M1040 468 L975 315"/>
+  <path class="e" d="M941.0 316.5 A34 34 0 0 0 988.3 346.3"/>
+  <path class="e" d="M975 315 L976 276" marker-end="url(#arrow)"/>
+  <path class="e" d="M860 320 L887 210"/>
+  <path class="e" d="M975 240 L887 210"/>
+  <path class="e" d="M878.9 243.0 A34 34 0 0 0 919.2 221.0"/>
+  <path class="e" d="M887 210 L887 170" marker-end="url(#arrow)"/>
+  <path class="e" d="M885 128 L885 48" marker-end="url(#arrow)"/>
+  <circle cx="818" cy="418" r="7" fill="#2b2b2b"/>
+  <circle cx="957" cy="418" r="7" fill="#2b2b2b"/>
+  <circle cx="975" cy="315" r="7" fill="#2b2b2b"/>
+  <circle cx="887" cy="210" r="7" fill="#2b2b2b"/>
+  <text class="m mid" x="905" y="502">A</text>
+  <text class="m mid" x="1040" y="502">B</text>
+  <text class="m mid" x="850" y="362">L</text>
+  <text class="m mid" x="978" y="260">M</text>
+  <text class="m mid" x="887" y="161">P</text>
+  <text class="m mid" x="884" y="38">Q</text>
+</svg>

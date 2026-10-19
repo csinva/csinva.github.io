@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 18 692 270" role="img" aria-labelledby="title desc">
+  <title id="title">Factor graph messages</title>
+  <desc id="desc">Left: variable node X_i connected to factors f_t, f_s, f_u; messages mu_ti(x_i) and mu_ui(x_i) flow into X_i and message nu_is(x_i) flows from X_i to f_s. Right: factor f_s connected to variables X_j, X_i, X_k; messages nu_js(x_j) and nu_ks(x_k) flow into f_s and message mu_si(x_i) flows from f_s to X_i.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .node { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #a0a0a0; stroke: #2b2b2b; stroke-width: 2; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 18px; font-family: "Times New Roman", Times, serif; }
+      .lab { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .fac { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .msg { font: 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .it { font-style: italic; }
+      .ar { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <line class="edge" stroke-width="1.5" x1="89.7" y1="142.6" x2="232.3" y2="54.9"/>
+  <line class="edge" stroke-width="1.5" x1="92.5" y1="152.5" x2="232.0" y2="152.5"/>
+  <line class="edge" stroke-width="1.5" x1="89.7" y1="162.4" x2="232.3" y2="250.1"/>
+  <circle class="node" cx="73.5" cy="152.5" r="19"/>
+  <rect class="fac" x="232.0" y="28.5" width="33.0" height="33.0"/>
+  <rect class="fac" x="232.0" y="136.0" width="33.0" height="33.0"/>
+  <rect class="fac" x="232.0" y="243.5" width="33.0" height="33.0"/>
+  <text class="var" x="30.0" y="160.5">X<tspan class="sub" dy="6">i</tspan></text>
+  <text class="var" x="287.5" y="55.5">f<tspan class="sub" dy="6">t</tspan></text>
+  <text class="var" x="287.5" y="162.0">f<tspan class="sub" dy="6">s</tspan></text>
+  <text class="var" x="287.5" y="269.5">f<tspan class="sub" dy="6">u</tspan></text>
+  <text class="msg" x="132.5" y="83.0">μ<tspan class="it sub" dy="6">ti</tspan><tspan dy="-6">(</tspan><tspan class="it">x</tspan><tspan class="it sub" dy="6">i</tspan><tspan dy="-6">)</tspan></text>
+  <line class="ar" x1="150.0" y1="97.5" x2="126.0" y2="111.0" marker-end="url(#arrow)"/>
+  <text class="msg" x="182.5" y="126.0">ν<tspan class="it sub" dy="6">is</tspan><tspan dy="-6">(</tspan><tspan class="it">x</tspan><tspan class="it sub" dy="6">i</tspan><tspan dy="-6">)</tspan></text>
+  <line class="ar" x1="164.0" y1="140.0" x2="200.0" y2="140.0" marker-end="url(#arrow)"/>
+  <text class="msg" x="132.5" y="245.5">μ<tspan class="it sub" dy="6">ui</tspan><tspan dy="-6">(</tspan><tspan class="it">x</tspan><tspan class="it sub" dy="6">i</tspan><tspan dy="-6">)</tspan></text>
+  <line class="ar" x1="154.0" y1="212.5" x2="126.0" y2="196.5" marker-end="url(#arrow)"/>
+  <line class="edge" stroke-width="1.5" x1="480.3" y1="58.8" x2="622.2" y2="143.8"/>
+  <line class="edge" stroke-width="1.5" x1="483.0" y1="153.5" x2="622.0" y2="153.5"/>
+  <line class="edge" stroke-width="1.5" x1="480.1" y1="252.4" x2="622.4" y2="163.6"/>
+  <circle class="node" cx="464.0" cy="49.0" r="19"/>
+  <circle class="node" cx="464.0" cy="153.5" r="19"/>
+  <circle class="node" cx="464.0" cy="262.5" r="19"/>
+  <rect class="fac" x="622.0" y="137.0" width="33.0" height="33.0"/>
+  <text class="var" x="421.5" y="57.0">X<tspan class="sub" dy="6">j</tspan></text>
+  <text class="var" x="421.5" y="163.0">X<tspan class="sub" dy="6">i</tspan></text>
+  <text class="var" x="421.5" y="272.0">X<tspan class="sub" dy="6">k</tspan></text>
+  <text class="var" x="677.5" y="166.0">f<tspan class="sub" dy="6">s</tspan></text>
+  <text class="msg" x="578.5" y="83.0">ν<tspan class="it sub" dy="6">js</tspan><tspan dy="-6">(</tspan><tspan class="it">x</tspan><tspan class="it sub" dy="6">j</tspan><tspan dy="-6">)</tspan></text>
+  <line class="ar" x1="560.0" y1="97.5" x2="591.0" y2="112.5" marker-end="url(#arrow)"/>
+  <text class="msg" x="534.0" y="126.0">μ<tspan class="it sub" dy="6">si</tspan><tspan dy="-6">(</tspan><tspan class="it">x</tspan><tspan class="it sub" dy="6">i</tspan><tspan dy="-6">)</tspan></text>
+  <line class="ar" x1="549.0" y1="140.0" x2="514.0" y2="140.0" marker-end="url(#arrow)"/>
+  <text class="msg" x="578.5" y="245.5">ν<tspan class="it sub" dy="6">ks</tspan><tspan dy="-6">(</tspan><tspan class="it">x</tspan><tspan class="it sub" dy="6">k</tspan><tspan dy="-6">)</tspan></text>
+  <line class="ar" x1="560.0" y1="215.0" x2="591.0" y2="199.0" marker-end="url(#arrow)"/>
+</svg>

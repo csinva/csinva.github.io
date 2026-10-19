@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Joint distribution as a matrix</title>
+  <desc id="desc">A joint distribution over X in {0,1} and Y in {00,11,01,10} with P(0,00)=1/7, P(0,11)=3/7, P(1,01)=1/7, P(1,10)=2/7 becomes the matrix M whose entries are the square roots: row 0 is sqrt(1/7), sqrt(3/7), 0, 0 and row 1 is 0, 0, sqrt(1/7), sqrt(2/7). M transpose M is 4 by 4 with diagonal 1/7, 3/7, 1/7, 2/7 (the marginal on Y) and off-diagonal entries sqrt3/7 and sqrt2/7; its eigenvectors contain conditional probabilities on Y. M M transpose is diag(4/7, 3/7), the marginal on X; its eigenvectors contain conditional probabilities on X.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .h { font: 36px Helvetica, Arial, sans-serif; fill: #6f6f6f; }
+      .n { font: 34px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+      .hd { font: 26px Helvetica, Arial, sans-serif; text-anchor: middle; }
+      .M { font: italic 40px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .br { fill: none; stroke: #2b2b2b; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <text class="h" x="60" y="60" style="fill:#6f6f6f">a joint distribution</text>
+  <text class="hd" x="175.0" y="105" style="fill:#1f6fb2">00</text>
+  <text class="hd" x="285.0" y="105" style="fill:#1f6fb2">11</text>
+  <text class="hd" x="395.0" y="105" style="fill:#1f6fb2">01</text>
+  <text class="hd" x="505.0" y="105" style="fill:#1f6fb2">10</text>
+  <text class="hd" x="90" y="169.0" style="fill:#c2407a">0</text>
+  <text class="hd" x="90" y="249.0" style="fill:#c2407a">1</text>
+  <rect class="br" x="120" y="120" width="440" height="160"/>
+  <line class="br" x1="230" y1="120" x2="230" y2="280"/>
+  <line class="br" x1="340" y1="120" x2="340" y2="280"/>
+  <line class="br" x1="450" y1="120" x2="450" y2="280"/>
+  <line class="br" x1="120" y1="200" x2="560" y2="200"/>
+  <text class="n" x="175.0" y="172.0" style="fill:#2b2b2b">1/7</text>
+  <text class="n" x="285.0" y="172.0" style="fill:#2b2b2b">3/7</text>
+  <text class="n" x="395.0" y="252.0" style="fill:#2b2b2b">1/7</text>
+  <text class="n" x="505.0" y="252.0" style="fill:#2b2b2b">2/7</text>
+  <path class="br" d="M650 205 q15 -18 30 0 t30 0 t30 0 t30 0 h20 m-14 -10 l14 10 l-14 10"/>
+  <text class="h" x="1010" y="60" style="fill:#6f6f6f">a matrix</text>
+  <text class="M" x="850" y="212">M =</text>
+  <path class="br" d="M954 130 H940 V290 H954 M1436 130 H1450 V290 H1436"/>
+  <text class="n" x="1010" y="190" style="fill:#2b2b2b">√<tspan text-decoration="overline">1/7</tspan></text>
+  <text class="n" x="1010" y="262" style="fill:#2b2b2b">0</text>
+  <text class="n" x="1135" y="190" style="fill:#2b2b2b">√<tspan text-decoration="overline">3/7</tspan></text>
+  <text class="n" x="1135" y="262" style="fill:#2b2b2b">0</text>
+  <text class="n" x="1260" y="190" style="fill:#2b2b2b">0</text>
+  <text class="n" x="1260" y="262" style="fill:#2b2b2b">√<tspan text-decoration="overline">1/7</tspan></text>
+  <text class="n" x="1385" y="190" style="fill:#2b2b2b">0</text>
+  <text class="n" x="1385" y="262" style="fill:#2b2b2b">√<tspan text-decoration="overline">2/7</tspan></text>
+  <text class="M" x="130" y="600">M<tspan font-size="26" dy="-18" font-style="normal">⊤</tspan><tspan dy="18">M =</tspan></text>
+  <text class="hd" x="420" y="435" style="fill:#1f6fb2">00</text>
+  <text class="hd" x="530" y="435" style="fill:#1f6fb2">11</text>
+  <text class="hd" x="640" y="435" style="fill:#1f6fb2">01</text>
+  <text class="hd" x="750" y="435" style="fill:#1f6fb2">10</text>
+  <path class="br" d="M369 460 H355 V760 H369 M786 460 H800 V760 H786"/>
+  <text class="n" x="420" y="510" style="fill:#1f6fb2">1/7</text>
+  <text class="n" x="530" y="510" style="fill:#2b2b2b">√<tspan text-decoration="overline">3</tspan>/7</text>
+  <text class="n" x="640" y="510" style="fill:#2b2b2b">0</text>
+  <text class="n" x="750" y="510" style="fill:#2b2b2b">0</text>
+  <text class="hd" x="840" y="505" style="fill:#1f6fb2">00</text>
+  <text class="n" x="420" y="585" style="fill:#2b2b2b">√<tspan text-decoration="overline">3</tspan>/7</text>
+  <text class="n" x="530" y="585" style="fill:#1f6fb2">3/7</text>
+  <text class="n" x="640" y="585" style="fill:#2b2b2b">0</text>
+  <text class="n" x="750" y="585" style="fill:#2b2b2b">0</text>
+  <text class="hd" x="840" y="580" style="fill:#1f6fb2">11</text>
+  <text class="n" x="420" y="660" style="fill:#2b2b2b">0</text>
+  <text class="n" x="530" y="660" style="fill:#2b2b2b">0</text>
+  <text class="n" x="640" y="660" style="fill:#1f6fb2">1/7</text>
+  <text class="n" x="750" y="660" style="fill:#2b2b2b">√<tspan text-decoration="overline">2</tspan>/7</text>
+  <text class="hd" x="840" y="655" style="fill:#1f6fb2">01</text>
+  <text class="n" x="420" y="735" style="fill:#2b2b2b">0</text>
+  <text class="n" x="530" y="735" style="fill:#2b2b2b">0</text>
+  <text class="n" x="640" y="735" style="fill:#2b2b2b">√<tspan text-decoration="overline">2</tspan>/7</text>
+  <text class="n" x="750" y="735" style="fill:#1f6fb2">2/7</text>
+  <text class="hd" x="840" y="730" style="fill:#1f6fb2">10</text>
+  <text class="h" x="960" y="500">diagonal is marginal</text><text class="h" x="960" y="550">probability on <tspan style="fill:#1f6fb2">Y</tspan></text>
+  <text class="h" x="960" y="645">eigenvectors contain conditional</text><text class="h" x="960" y="695">probabilities on <tspan style="fill:#1f6fb2">Y</tspan></text>
+  <text class="M" x="220" y="985">MM<tspan font-size="26" dy="-18" font-style="normal">⊤</tspan><tspan dy="18"> =</tspan></text>
+  <text class="hd" x="450" y="880" style="fill:#c2407a">0</text>
+  <text class="hd" x="560" y="880" style="fill:#c2407a">1</text>
+  <path class="br" d="M404 905 H390 V1060 H404 M606 905 H620 V1060 H606"/>
+  <text class="n" x="450" y="965" style="fill:#c2407a">4/7</text>
+  <text class="n" x="560" y="965" style="fill:#2b2b2b">0</text>
+  <text class="n" x="450" y="1035" style="fill:#2b2b2b">0</text>
+  <text class="n" x="560" y="1035" style="fill:#c2407a">3/7</text>
+  <text class="hd" x="655" y="960" style="fill:#c2407a">0</text>
+  <text class="hd" x="655" y="1030" style="fill:#c2407a">1</text>
+  <text class="h" x="960" y="920">diagonal is marginal</text><text class="h" x="960" y="970">probability on <tspan style="fill:#c2407a">X</tspan></text>
+  <text class="h" x="960" y="1050">eigenvectors contain conditional</text><text class="h" x="960" y="1100">probabilities on <tspan style="fill:#c2407a">X</tspan></text>
+</svg>

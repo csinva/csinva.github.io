@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" role="img" aria-labelledby="title desc">
+  <title id="title">Amyloid cascade in Alzheimer's disease</title>
+  <desc id="desc">Sporadic or alleles of APP, PS1 or PS2 lead to A-beta42 levels, then inflammation, then injury with more A-beta42, then inflammation. Notes: rare genetic forms of AD: APP. Treatment: anti-inflammation (too late?), A-beta42 blocking reagents (too late?). Management: cholinergic agonists/cholinesterase inhibitors.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <text x="14" y="42.0" font-size="32">Sporadic or alleles of APP, PS1 or PS2</text>
+  <path d="M110.0 54.0 L110.0 75.0" fill="none" stroke="#7fb0dd" stroke-width="22" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="110.0,92.0 88.0,74.0 132.0,74.0" fill="#7fb0dd"/>
+  <text x="14" y="124.0" font-size="32">A-beta42 levels</text>
+  <path d="M110.0 136.0 L110.0 157.0" fill="none" stroke="#7fb0dd" stroke-width="22" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="110.0,174.0 88.0,156.0 132.0,156.0" fill="#7fb0dd"/>
+  <text x="14" y="206.0" font-size="32">Inflammation</text>
+  <path d="M110.0 218.0 L110.0 239.0" fill="none" stroke="#7fb0dd" stroke-width="22" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="110.0,256.0 88.0,238.0 132.0,238.0" fill="#7fb0dd"/>
+  <text x="14" y="288.0" font-size="32">Injury – more A-beta42</text>
+  <path d="M110.0 300.0 L110.0 321.0" fill="none" stroke="#7fb0dd" stroke-width="22" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="110.0,338.0 88.0,320.0 132.0,320.0" fill="#7fb0dd"/>
+  <text x="14" y="370.0" font-size="32">Inflammation</text>
+  <text x="440" y="112.0" font-size="23">Rare genetic forms of AD: APP</text>
+  <text x="410" y="196.0" font-size="23">Treatment:</text>
+  <text x="410" y="223.0" font-size="23">Anti-inflammation: too late?</text>
+  <text x="410" y="250.0" font-size="23">A-beta42  blocking reagents: too late?</text>
+  <text x="410" y="320.0" font-size="23">Management:</text>
+  <text x="410" y="347.0" font-size="23">cholinergic agonists/cholinesterase inhibitors</text>
+</svg>

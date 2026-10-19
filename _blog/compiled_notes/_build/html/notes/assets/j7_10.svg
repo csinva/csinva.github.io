@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 8 300 300" role="img" aria-labelledby="title desc">
+  <title id="title">Discriminative classification model</title>
+  <desc id="desc">Graphical model: feature nodes X1, X2, ..., Xm each have an arrow pointing to the label node Y.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .node { fill: #9a9a9a; stroke: #2b2b2b; stroke-width: 2; }
+      .dot { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .nv { font: italic 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 19px; }
+      .cap { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <circle class="node" cx="200" cy="80" r="26"/>
+  <text class="nv" x="200" y="38">Y</text>
+  <circle class="node" cx="110" cy="215" r="26"/>
+  <line class="ln" x1="124.4" y1="193.4" x2="183.9" y2="104.1" marker-end="url(#arrow)"/>
+  <circle class="node" cx="200" cy="215" r="26"/>
+  <line class="ln" x1="200" y1="189" x2="200" y2="109" marker-end="url(#arrow)"/>
+  <circle class="node" cx="330" cy="215" r="26"/>
+  <line class="ln" x1="312" y1="196.3" x2="220.1" y2="100.9" marker-end="url(#arrow)"/>
+  <circle class="dot" cx="250" cy="215" r="3.5"/>
+  <circle class="dot" cx="265" cy="215" r="3.5"/>
+  <circle class="dot" cx="280" cy="215" r="3.5"/>
+  <text class="nv" x="110" y="283">X<tspan class="sub" dy="7">1</tspan></text>
+  <text class="nv" x="200" y="283">X<tspan class="sub" dy="7">2</tspan></text>
+  <text class="nv" x="330" y="283">X<tspan class="sub" dy="7">m</tspan></text>
+</svg>

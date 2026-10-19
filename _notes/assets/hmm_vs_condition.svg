@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 1300 640" role="img" aria-labelledby="title desc">
+  <title id="title">Generative vs discriminative sequence models</title>
+  <desc id="desc">Three graphical models over y_{t-1}, y_t and x_t. Generative HMM: y_{t-1} to y_t labeled P(y_t | y_{t-1}), y_t to x_t labeled P(x_t | y_t). Discriminative conditional model: y_{t-1} to y_t and x_t to y_t, labeled P(y_t | y_{t-1}, x_t). Discriminative global model: undirected edges y_{t-1} to y_t labeled f^T(y_t, y_{t-1}) and y_t to x_t labeled f^E(y_t, x_t). Below: Local: P is locally normalized to add up to one for each t. Global: the functions f^T and f^E are scores that are not normalized.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .rule { stroke: #2b2b2b; stroke-width: 2; }
+      .var { font: italic 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .lab { font: 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font-size: 19px; }
+      .t { font: 28px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .acc { fill: #1f6fb2; }
+    </style>
+  </defs>
+
+  <!-- dividers -->
+  <line class="rule" x1="420" y1="30" x2="420" y2="670"/>
+  <line class="rule" x1="40" y1="505" x2="1280" y2="505"/>
+  <line class="rule" x1="850" y1="505" x2="850" y2="670"/>
+
+  <!-- ===== HMM ===== -->
+  <circle class="node" cx="68" cy="158" r="46"/>
+  <text class="var" x="68" y="168">y<tspan class="sub" dy="6">t-1</tspan></text>
+  <circle class="node" cx="276" cy="158" r="46"/>
+  <text class="var" x="276" y="168">y<tspan class="sub" dy="6">t</tspan></text>
+  <circle class="node" cx="276" cy="318" r="46"/>
+  <text class="var" x="276" y="326">x<tspan class="sub" dy="6">t</tspan></text>
+  <path class="edge" d="M114 158 H226" marker-end="url(#arrow)"/>
+  <path class="edge" d="M276 204 V268" marker-end="url(#arrow)"/>
+  <text class="lab" x="102" y="94">P(y<tspan class="sub" dy="6">t</tspan><tspan dy="-6"> | y</tspan><tspan class="sub" dy="6">t-1</tspan><tspan dy="-6">)</tspan></text>
+  <text class="lab" x="284" y="250">P(x<tspan class="sub" dy="6">t</tspan><tspan dy="-6"> | y</tspan><tspan class="sub" dy="6">t</tspan><tspan dy="-6">)</tspan></text>
+  <text class="t" x="98" y="288">HMM</text>
+  <text class="t" x="196" y="468" text-anchor="middle">Generative</text>
+
+  <!-- ===== conditional model ===== -->
+  <circle class="node" cx="508" cy="160" r="46"/>
+  <text class="var" x="508" y="170">y<tspan class="sub" dy="6">t-1</tspan></text>
+  <circle class="node" cx="716" cy="160" r="46"/>
+  <text class="var" x="716" y="170">y<tspan class="sub" dy="6">t</tspan></text>
+  <circle class="node" cx="716" cy="322" r="46"/>
+  <text class="var" x="716" y="330">x<tspan class="sub" dy="6">t</tspan></text>
+  <path class="edge" d="M554 160 H666" marker-end="url(#arrow)"/>
+  <path class="edge" d="M716 276 V212" marker-end="url(#arrow)"/>
+  <text class="lab" x="636" y="88">P(y<tspan class="sub" dy="6">t</tspan><tspan dy="-6"> | y</tspan><tspan class="sub" dy="6">t-1</tspan><tspan dy="-6">, x</tspan><tspan class="sub" dy="6">t</tspan><tspan dy="-6">)</tspan></text>
+  <text class="t" x="492" y="290">Conditional</text>
+  <text class="t" x="492" y="332">model</text>
+
+  <!-- ===== global model ===== -->
+  <circle class="node" cx="924" cy="160" r="46"/>
+  <text class="var" x="924" y="170">y<tspan class="sub" dy="6">t-1</tspan></text>
+  <circle class="node" cx="1140" cy="160" r="46"/>
+  <text class="var" x="1140" y="170">y<tspan class="sub" dy="6">t</tspan></text>
+  <circle class="node" cx="1140" cy="322" r="46"/>
+  <text class="var" x="1140" y="330">x<tspan class="sub" dy="6">t</tspan></text>
+  <path class="edge" d="M970 160 H1094"/>
+  <path class="edge" d="M1140 206 V276"/>
+  <text class="lab" x="980" y="114">f<tspan class="sub" dy="-12">T</tspan><tspan dy="12">(y</tspan><tspan class="sub" dy="6">t</tspan><tspan dy="-6">, y</tspan><tspan class="sub" dy="6">t-1</tspan><tspan dy="-6">)</tspan></text>
+  <text class="lab" x="1150" y="252">f<tspan class="sub" dy="-12">E</tspan><tspan dy="12">(y</tspan><tspan class="sub" dy="6">t</tspan><tspan dy="-6">, x</tspan><tspan class="sub" dy="6">t</tspan><tspan dy="-6">)</tspan></text>
+  <text class="t" x="918" y="290">Global</text>
+  <text class="t" x="918" y="332">model</text>
+
+  <text class="t" x="850" y="468" text-anchor="middle">Discriminative</text>
+
+  <!-- ===== bottom notes ===== -->
+  <text class="t" x="466" y="548"><tspan class="acc">Local</tspan>: P is locally</text>
+  <text class="t" x="466" y="590">normalized to add up</text>
+  <text class="t" x="466" y="632">to one for each t</text>
+
+  <text class="t" x="900" y="548"><tspan class="acc">Global</tspan>: The functions f<tspan font-size="19" dy="-12">T</tspan></text>
+  <text class="t" x="900" y="590">and f<tspan font-size="19" dy="-12">E</tspan><tspan dy="12"> are scores that</tspan></text>
+  <text class="t" x="900" y="632">are not normalized</text>
+</svg>

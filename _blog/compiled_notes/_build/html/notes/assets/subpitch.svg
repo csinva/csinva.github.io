@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 6 380 350" role="img" aria-labelledby="title desc">
+  <title id="title">Subcritical pitchfork bifurcation</title>
+  <desc id="desc">Bifurcation diagram for dx/dt = λx + x³: the branch x = 0 is stable (solid) for λ &lt; 0 and unstable (dashed) for λ &gt; 0; two unstable branches x = ±√(−λ) exist for λ &lt; 0.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .axis { fill: none; stroke: #8a8a8a; stroke-width: 2; }
+      .stable { fill: none; stroke: #1f6fb2; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .unstable { fill: none; stroke: #1f6fb2; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 14 12; }
+      .ax { font: italic 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <path class="axis" d="M20 180 H385 M200 12 V348"/>
+  <text class="ax" x="212" y="34">x</text>
+  <text class="ax" x="368" y="214">λ</text>
+  <path class="stable" d="M30 180 H200"/>
+  <path class="unstable" d="M200 180 H372"/>
+  <path class="unstable" d="M200 180 L200 177.4 L199.8 174.8 L199.6 172.2 L199.2 169.6 L198.8 167 L198.3 164.4 L197.7 161.7 L197 159.1 L196.2 156.5 L195.3 153.9 L194.3 151.3 L193.2 148.7 L192 146.1 L190.7 143.5 L189.4 140.9 L187.9 138.3 L186.4 135.7 L184.7 133.1 L183 130.5 L181.1 127.8 L179.2 125.2 L177.1 122.6 L175 120 L172.8 117.4 L170.5 114.8 L168.1 112.2 L165.6 109.6 L163 107 L160.3 104.4 L157.5 101.8 L154.6 99.2 L151.6 96.6 L148.6 93.9 L145.4 91.3 L142.2 88.7 L138.8 86.1 L135.4 83.5 L131.8 80.9 L128.2 78.3 L124.4 75.7 L120.6 73.1 L116.7 70.5 L112.7 67.9 L108.6 65.3 L104.4 62.7 L100.1 60 L95.7 57.4 L91.2 54.8 L86.6 52.2 L81.9 49.6 L77.2 47 L72.3 44.4 L67.4 41.8 L62.3 39.2 L57.2 36.6 L51.9 34 L46.6 31.4 L41.1 28.8 L35.6 26.1 L30 23.5"/>
+  <path class="unstable" d="M200 180 L200 182.6 L199.8 185.2 L199.6 187.8 L199.2 190.4 L198.8 193 L198.3 195.6 L197.7 198.3 L197 200.9 L196.2 203.5 L195.3 206.1 L194.3 208.7 L193.2 211.3 L192 213.9 L190.7 216.5 L189.4 219.1 L187.9 221.7 L186.4 224.3 L184.7 226.9 L183 229.5 L181.1 232.2 L179.2 234.8 L177.1 237.4 L175 240 L172.8 242.6 L170.5 245.2 L168.1 247.8 L165.6 250.4 L163 253 L160.3 255.6 L157.5 258.2 L154.6 260.8 L151.6 263.4 L148.6 266.1 L145.4 268.7 L142.2 271.3 L138.8 273.9 L135.4 276.5 L131.8 279.1 L128.2 281.7 L124.4 284.3 L120.6 286.9 L116.7 289.5 L112.7 292.1 L108.6 294.7 L104.4 297.3 L100.1 300 L95.7 302.6 L91.2 305.2 L86.6 307.8 L81.9 310.4 L77.2 313 L72.3 315.6 L67.4 318.2 L62.3 320.8 L57.2 323.4 L51.9 326 L46.6 328.6 L41.1 331.2 L35.6 333.9 L30 336.5"/>
+</svg>

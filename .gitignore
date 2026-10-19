@@ -10,3 +10,6 @@ pres/ml_resources
 pres/ai_resources
 **hidden*
 **.obsidian
+
+# uv environment for the jupyter-book build
+_blog/compiled_notes/.venv/

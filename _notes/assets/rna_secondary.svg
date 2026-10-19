@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 720" role="img" aria-labelledby="title desc">
+  <title id="title">RNA secondary structure elements</title>
+  <desc id="desc">An RNA secondary structure drawn as a graph of nucleotides, decomposed into structural elements and colored by type: exterior loop (green, the unpaired 5' and 3' ends), stem loops (red, stacked base pairs forming helices), hairpin loops (teal, at the tips of the two side branches), a multi-loop (blue, joining the three helices), a bulge (dark red, two unpaired nucleotides on one strand of the left helix) and an interior loop (cyan, one unpaired nucleotide on each strand of the right helix). Solid lines are phospho-diester bonds along the backbone; dashed lines are hydrogen bonds between paired bases.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .bb { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+      .hb { stroke: #2b2b2b; stroke-width: 3; stroke-dasharray: 6 5; }
+      .leg { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; dominant-baseline: central; }
+    </style>
+  </defs>
+  <polyline class="bb" points="349.5,510.0 316.5,462.0 318.0,403.5 352.5,351.0 354.0,297.0 354.0,247.5 357.0,195.0 298.5,147.0 250.5,126.0 171.0,132.0 118.5,147.0 75.0,180.0 40.5,138.0 52.5,84.0 106.5,93.0 159.0,81.0 189.0,42.0 225.0,42.0 268.5,75.0 318.0,93.0 363.0,64.5 397.5,64.5 442.5,90.0 498.0,81.0 552.0,45.0 613.5,64.5 669.0,60.0 720.0,48.0 765.0,82.5 729.0,124.5 673.5,112.5 619.5,120.0 568.5,157.5 507.0,133.5 453.0,144.0 406.5,195.0 408.0,247.5 408.0,297.0 406.5,351.0 430.5,415.5"/>
+  <line class="hb" x1="106.5" y1="93.0" x2="118.5" y2="147.0"/>
+  <line class="hb" x1="159.0" y1="81.0" x2="171.0" y2="132.0"/>
+  <line class="hb" x1="268.5" y1="75.0" x2="250.5" y2="126.0"/>
+  <line class="hb" x1="318.0" y1="93.0" x2="298.5" y2="147.0"/>
+  <line class="hb" x1="442.5" y1="90.0" x2="453.0" y2="144.0"/>
+  <line class="hb" x1="498.0" y1="81.0" x2="507.0" y2="133.5"/>
+  <line class="hb" x1="613.5" y1="64.5" x2="619.5" y2="120.0"/>
+  <line class="hb" x1="669.0" y1="60.0" x2="673.5" y2="112.5"/>
+  <line class="hb" x1="357.0" y1="195.0" x2="406.5" y2="195.0"/>
+  <line class="hb" x1="354.0" y1="247.5" x2="408.0" y2="247.5"/>
+  <line class="hb" x1="354.0" y1="297.0" x2="408.0" y2="297.0"/>
+  <line class="hb" x1="352.5" y1="351.0" x2="406.5" y2="351.0"/>
+  <circle cx="349.5" cy="510.0" r="15" fill="#1f8a4c"/>
+  <circle cx="316.5" cy="462.0" r="15" fill="#1f8a4c"/>
+  <circle cx="318.0" cy="403.5" r="15" fill="#1f8a4c"/>
+  <circle cx="352.5" cy="351.0" r="15" fill="#d1342f"/>
+  <circle cx="354.0" cy="297.0" r="15" fill="#d1342f"/>
+  <circle cx="354.0" cy="247.5" r="15" fill="#d1342f"/>
+  <circle cx="357.0" cy="195.0" r="15" fill="#d1342f"/>
+  <circle cx="298.5" cy="147.0" r="15" fill="#d1342f"/>
+  <circle cx="250.5" cy="126.0" r="15" fill="#d1342f"/>
+  <circle cx="171.0" cy="132.0" r="15" fill="#d1342f"/>
+  <circle cx="118.5" cy="147.0" r="15" fill="#d1342f"/>
+  <circle cx="75.0" cy="180.0" r="15" fill="#157a6e"/>
+  <circle cx="40.5" cy="138.0" r="15" fill="#157a6e"/>
+  <circle cx="52.5" cy="84.0" r="15" fill="#157a6e"/>
+  <circle cx="106.5" cy="93.0" r="15" fill="#d1342f"/>
+  <circle cx="159.0" cy="81.0" r="15" fill="#d1342f"/>
+  <circle cx="189.0" cy="42.0" r="15" fill="#8b1a1a"/>
+  <circle cx="225.0" cy="42.0" r="15" fill="#8b1a1a"/>
+  <circle cx="268.5" cy="75.0" r="15" fill="#d1342f"/>
+  <circle cx="318.0" cy="93.0" r="15" fill="#d1342f"/>
+  <circle cx="363.0" cy="64.5" r="15" fill="#1f3fd1"/>
+  <circle cx="397.5" cy="64.5" r="15" fill="#1f3fd1"/>
+  <circle cx="442.5" cy="90.0" r="15" fill="#d1342f"/>
+  <circle cx="498.0" cy="81.0" r="15" fill="#d1342f"/>
+  <circle cx="552.0" cy="45.0" r="15" fill="#3fa9e0"/>
+  <circle cx="613.5" cy="64.5" r="15" fill="#d1342f"/>
+  <circle cx="669.0" cy="60.0" r="15" fill="#d1342f"/>
+  <circle cx="720.0" cy="48.0" r="15" fill="#157a6e"/>
+  <circle cx="765.0" cy="82.5" r="15" fill="#157a6e"/>
+  <circle cx="729.0" cy="124.5" r="15" fill="#157a6e"/>
+  <circle cx="673.5" cy="112.5" r="15" fill="#d1342f"/>
+  <circle cx="619.5" cy="120.0" r="15" fill="#d1342f"/>
+  <circle cx="568.5" cy="157.5" r="15" fill="#3fa9e0"/>
+  <circle cx="507.0" cy="133.5" r="15" fill="#d1342f"/>
+  <circle cx="453.0" cy="144.0" r="15" fill="#d1342f"/>
+  <circle cx="406.5" cy="195.0" r="15" fill="#d1342f"/>
+  <circle cx="408.0" cy="247.5" r="15" fill="#d1342f"/>
+  <circle cx="408.0" cy="297.0" r="15" fill="#d1342f"/>
+  <circle cx="406.5" cy="351.0" r="15" fill="#d1342f"/>
+  <circle cx="430.5" cy="415.5" r="15" fill="#1f8a4c"/>
+  <circle cx="40" cy="570" r="13" fill="#1f8a4c"/>
+  <text class="leg" x="64" y="570">Exterior loop</text>
+  <circle cx="40" cy="610" r="13" fill="#d1342f"/>
+  <text class="leg" x="64" y="610">Stem loop</text>
+  <circle cx="40" cy="650" r="13" fill="#157a6e"/>
+  <text class="leg" x="64" y="650">Hairpin loop</text>
+  <circle cx="40" cy="690" r="13" fill="#1f3fd1"/>
+  <text class="leg" x="64" y="690">Multi-loop</text>
+  <circle cx="400" cy="570" r="13" fill="#8b1a1a"/>
+  <text class="leg" x="424" y="570">Bulge</text>
+  <circle cx="400" cy="610" r="13" fill="#3fa9e0"/>
+  <text class="leg" x="424" y="610">Interior loop</text>
+  <line x1="382" y1="650" x2="414" y2="650" stroke="#2b2b2b" stroke-width="3"/><text class="leg" x="424" y="650">Phospho-diester bond</text>
+  <line class="hb" x1="382" y1="690" x2="414" y2="690"/><text class="leg" x="424" y="690">Hydrogen bond</text>
+</svg>

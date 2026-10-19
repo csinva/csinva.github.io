@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 14 900 412" role="img" aria-labelledby="title desc">
+  <title id="title">Four outcomes of a classifier</title>
+  <desc id="desc">An ellipse split horizontally into an upper and a lower half and cut by a diagonal decision line. Upper half: TP (true positive) on the left of the line, FN (false negative) on the right. Lower half: FP (false positive) on the left, TN (true negative) on the right. An arrow up and right of the line is labeled positive prediction; an arrow down and left is labeled negative prediction.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d9822b"/>
+    </marker>
+    <clipPath id="top"><rect x="300" y="100" width="480" height="132"/></clipPath>
+    <clipPath id="bot"><rect x="300" y="254" width="480" height="140"/></clipPath>
+    <!-- decision line from (375,335) to (690,155); offset 9 units each side -->
+    <clipPath id="left"><polygon points="0,0 0,600 270,600 370,322 685,142 685,0"/></clipPath>
+    <clipPath id="right"><polygon points="1000,0 1000,600 380,600 380,348 695,168 695,0"/></clipPath>
+    <style>
+      .lab { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .in { font: 32px Helvetica, Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .ttl { font: bold 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .pos { font: 30px Helvetica, Arial, sans-serif; fill: #1f8a4c; }
+      .neg { font: 30px Helvetica, Arial, sans-serif; fill: #d9822b; }
+    </style>
+  </defs>
+
+  <text class="ttl" x="540" y="56">Four outcomes of a classifier</text>
+
+  <!-- quadrants of the ellipse (centre 535,243) -->
+  <g clip-path="url(#top)">
+    <ellipse cx="535" cy="243" rx="178" ry="104" fill="#1f6fb2" clip-path="url(#left)"/>
+    <ellipse cx="535" cy="243" rx="178" ry="104" fill="#d9822b" clip-path="url(#right)"/>
+  </g>
+  <g clip-path="url(#bot)">
+    <ellipse cx="535" cy="243" rx="178" ry="104" fill="#5b9bd0" clip-path="url(#left)"/>
+    <ellipse cx="535" cy="243" rx="178" ry="104" fill="#d1342f" clip-path="url(#right)"/>
+  </g>
+
+  <text class="in" x="485" y="200">TP</text>
+  <text class="in" x="665" y="228">FN</text>
+  <text class="in" x="402" y="294">FP</text>
+  <text class="in" x="575" y="320">TN</text>
+
+  <!-- decision line -->
+  <line x1="375" y1="335" x2="690" y2="155" stroke="#2b2b2b" stroke-width="8" stroke-linecap="butt"/>
+
+  <!-- prediction arrows -->
+  <line x1="680" y1="150" x2="662" y2="114" stroke="#1f8a4c" stroke-width="7" marker-end="url(#ag)"/>
+  <text class="pos" x="698" y="108">Positive prediction</text>
+  <line x1="384" y1="342" x2="402" y2="378" stroke="#d9822b" stroke-width="7" marker-end="url(#ao)"/>
+  <text class="neg" x="76" y="412">Negative prediction</text>
+
+  <!-- outer labels -->
+  <text class="lab" x="315" y="200" text-anchor="end">true positive</text>
+  <text class="lab" x="315" y="288" text-anchor="end">false positive</text>
+  <text class="lab" x="732" y="222">false negative</text>
+  <text class="lab" x="732" y="310">true negative</text>
+</svg>

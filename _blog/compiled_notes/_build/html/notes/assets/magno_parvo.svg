@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 0 820 790" role="img" aria-labelledby="title desc">
+  <title id="title">Parvo and magno coverage</title>
+  <desc id="desc">Parvo and Magno cells encode complementary aspects of spatio-temporal structure. In a quarter disc of spatial frequency (vertical) by temporal frequency (horizontal), parvo cells (P, stippled) cover low temporal frequencies at all spatial frequencies. Magno cells (M, cross-hatched) cover higher temporal frequencies at low spatial frequencies (complete; linear). The high spatial and high temporal frequency region (hatched) is dynamic texture (incomplete; non-linear). P and M overlap in the middle.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background; region outlines simplified from a blurry scan -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <pattern id="stip" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1.6" fill="#2b2b2b"/><circle cx="7.5" cy="7.5" r="1.6" fill="#2b2b2b"/></pattern>
+    <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 6 H12" stroke="#2b2b2b" stroke-width="1.6"/></pattern>
+    <pattern id="cross" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 5.5 H11 M5.5 0 V11" stroke="#2b2b2b" stroke-width="1.8"/></pattern>
+    <mask id="mHatch" maskUnits="userSpaceOnUse" x="250" y="150" width="500" height="500"><rect x="250" y="150" width="500" height="500" fill="#fff"/><path d="M300 200 H430 C440 300 410 330 450 420 C470 480 455 560 440 610 H300 Z" fill="#000"/><path d="M372 610 C360 520 380 450 470 430 C540 425 580 440 640 425 V610 Z" fill="#000"/></mask>
+    <mask id="mP" maskUnits="userSpaceOnUse" x="250" y="150" width="500" height="500"><path d="M300 200 H430 C440 300 410 330 450 420 C470 480 455 560 440 610 H300 Z" fill="#fff"/><path d="M372 610 C360 520 380 450 470 430 C540 425 580 440 640 425 V610 Z" fill="#000"/></mask>
+    <mask id="lab" maskUnits="userSpaceOnUse" x="150" y="0" width="820" height="790"><rect x="150" y="0" width="820" height="790" fill="#fff"/><rect x="320" y="350" width="42" height="40" fill="#000"/><rect x="512" y="440" width="44" height="40" fill="#000"/></mask>
+    <clipPath id="disc"><path d="M300 608 V228 A322 380 0 0 1 622 608 Z"/></clipPath>
+    <style>
+      .ttl { font: 33px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .axl { font: bold 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; letter-spacing: 1px; }
+      .big { font: bold 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .n { font: bold 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .ld { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+    </style>
+  </defs>
+  <text class="ttl" x="560" y="56">Parvo and Magno cells encode complementary</text>
+  <text class="ttl" x="560" y="108">aspects of spatio-temporal structure</text>
+  <g clip-path="url(#disc)" mask="url(#lab)">
+    <!-- dynamic texture (hatched): high spatial + high temporal -->
+    <rect x="300" y="200" width="340" height="410" fill="url(#hatch)" mask="url(#mHatch)"/>
+    <!-- P (stippled): low temporal frequencies, all spatial frequencies -->
+    <rect x="300" y="200" width="340" height="410" fill="url(#stip)" opacity="0.7" mask="url(#mP)"/>
+    <!-- M (cross-hatched): higher temporal, low spatial -->
+    <path d="M372 610 C360 520 380 450 470 430 C540 425 580 440 640 425 V610 Z" fill="url(#cross)"/>
+    <!-- P/M overlap -->
+    <ellipse cx="420" cy="440" rx="55" ry="140" fill="#8a8a8a" fill-opacity="0.35"/>
+  </g>
+  <path class="ax" d="M622 608 A322 380 0 0 0 300 228"/>
+  <path class="ax" d="M300 200 V608 H740 M300 608 L190 775"/>
+  <text class="big" x="341" y="370">P</text>
+  <text class="big" x="534" y="460">M</text>
+  <text class="n" x="612" y="292">Dynamic Texture</text>
+  <text class="n" x="618" y="318">(incomplete;</text>
+  <text class="n" x="618" y="344">non-linear)</text>
+  <path class="ld" d="M610 300 L524 350" marker-end="url(#a)"/>
+  <text class="n" x="668" y="492">(complete;</text>
+  <text class="n" x="668" y="518">linear)</text>
+  <path class="ld" d="M664 488 L578 512" marker-end="url(#a)"/>
+  <text class="axl" x="475" y="664" text-anchor="middle">TEMPORAL FREQUENCY</text>
+  <text class="axl" x="262" y="440" text-anchor="middle" transform="rotate(-90 262 440)">SPATIAL FREQUENCY</text>
+</svg>

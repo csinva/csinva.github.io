@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 4 598 300" role="img" aria-labelledby="title desc">
+  <title id="title">Undirected vs directed independence structure</title>
+  <desc id="desc">Left: an undirected four-cycle W-X-Z-Y-W. Right: a directed v-structure X to Z from Y. Neither independence structure can be represented by the other kind of graph.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .node { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #a0a0a0; stroke: #2b2b2b; stroke-width: 2; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 18px; font-family: "Times New Roman", Times, serif; }
+      .lab { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <line class="edge" x1="128.8" y1="81.1" x2="66.2" y2="142.9"/>
+  <line class="edge" x1="157.4" y1="80.9" x2="221.6" y2="143.1"/>
+  <line class="edge" x1="66.4" y1="170.9" x2="128.6" y2="231.1"/>
+  <line class="edge" x1="221.5" y1="170.7" x2="157.5" y2="231.3"/>
+  <circle class="node" cx="143.0" cy="67.0" r="20"/>
+  <circle class="node" cx="52.0" cy="157.0" r="20"/>
+  <circle class="node" cx="236.0" cy="157.0" r="20"/>
+  <circle class="node" cx="143.0" cy="245.0" r="20"/>
+  <text class="var" x="143" y="32">W</text>
+  <text class="var" x="12" y="166">X</text>
+  <text class="var" x="276" y="166">Y</text>
+  <text class="var" x="143" y="295">Z</text>
+  <line class="edge" x1="407.1" y1="172.9" x2="449.3" y2="228.3" marker-end="url(#arrow)"/>
+  <line class="edge" x1="517.8" y1="172.8" x2="474.8" y2="228.4" marker-end="url(#arrow)"/>
+  <circle class="node" cx="395.0" cy="157.0" r="20"/>
+  <circle class="node" cx="530.0" cy="157.0" r="20"/>
+  <circle class="node" cx="462.0" cy="245.0" r="20"/>
+  <text class="var" x="353" y="166">X</text>
+  <text class="var" x="573" y="166">Y</text>
+  <text class="var" x="462" y="295">Z</text>
+</svg>

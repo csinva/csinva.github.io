@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 15 830 960" role="img" aria-labelledby="title desc">
+  <title id="title">LMS with three input vectors</title>
+  <desc id="desc">Three input vectors x1, x2 and x3, each with a dashed line of solutions perpendicular to it. The three lines intersect pairwise but have no common point, so in general no single θ solves all three.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-dasharray: 12 9; }
+      .m { font: italic 48px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font-size: 32px; font-style: normal; font-family: "Times New Roman", Times, serif; }
+    </style>
+  </defs>
+  <path class="ax" d="M52 678 V125" marker-end="url(#arrow)"/>
+  <path class="ax" d="M52 678 H775" marker-end="url(#arrow)"/>
+  <path class="ax" d="M52 678 L580 598" marker-end="url(#arrow)"/>
+  <path class="ax" d="M52 678 L352 215" marker-end="url(#arrow)"/>
+  <path class="ax" d="M52 678 L385 960" marker-end="url(#arrow)"/>
+  <path class="dash" d="M95 148 L840 620"/>
+  <path class="dash" d="M390 25 L530 850"/>
+  <path class="dash" d="M160 915 L655 350"/>
+  <text class="m" x="316" y="192">x<tspan class="sub" dy="12">2</tspan></text>
+  <text class="m" x="522" y="658">x<tspan class="sub" dy="12">1</tspan></text>
+  <text class="m" x="372" y="918">x<tspan class="sub" dy="12">3</tspan></text>
+</svg>

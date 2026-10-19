@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="14 10 1940 999" role="img" aria-labelledby="title desc">
+  <title id="title">The cortical column</title>
+  <desc id="desc">Two layer diagrams of a cortical column. Left, "Simple": layers L2/3, L4, L5, L6; input enters L4, flows up to L2/3 and down to L5 and L6; L2/3 sends the output. Right, detailed: layers L2, L3a, L3b, L4, L5 tt, L5 cc, L5 cc-ns, L6a, L6b, L6 ip, L6 mp, L6 bp; cortex and thalamus inputs enter L4 (annotated 10% and 50%), green feedforward arrows connect L3 to L5 and L5 upward, blue bidirectional arrows link L4 with L6a and L5 with L6b; outputs leave L3 directly and L5 tt via the thalamus. Citations: L5: Calloway et al., 2015; L6: Zhang and Deschenes, 1997; L5 CTC: Guillery, 1995; Constantinople and Bruno, 2013.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ga" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <marker id="ba" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .rule { fill: none; stroke: #2b2b2b; stroke-width: 3; }
+      .heavy { fill: none; stroke: #2b2b2b; stroke-width: 5; }
+      .dash { fill: none; stroke: #8a8a8a; stroke-width: 3; stroke-dasharray: 12 8; }
+      .g { fill: none; stroke: #1f8a4c; stroke-width: 7; stroke-linejoin: miter; }
+      .b { fill: none; stroke: #1f6fb2; stroke-width: 7; }
+      .L { font: bold 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .pct { font: 26px Helvetica, Arial, sans-serif; fill: #8a8a8a; }
+      .ref { font: 28px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <!-- left: simple column -->
+  <text class="L" x="347" y="53.2" text-anchor="middle">Simple</text>
+  <path class="heavy" d="M205 101.8 H495"/>
+  <path class="heavy" d="M190 907.8 H480"/>
+  <path class="rule" d="M237 101.8 V907.8" />
+  <path class="rule" d="M452 101.8 V907.8" />
+  <path class="rule" d="M237 154.5 H452"/>
+  <path class="rule" d="M237 297.6 H452"/>
+  <path class="rule" d="M237 483.9 H452"/>
+  <path class="rule" d="M237 674.2 H452"/>
+  <text class="L" x="464" y="242.2">L2/3</text>
+  <text class="L" x="464" y="408.2">L4</text>
+  <text class="L" x="464" y="593.2">L5</text>
+  <text class="L" x="464" y="786.2">L6</text>
+  <path class="g" d="M298 411 V232.8" marker-end="url(#ga)"/>
+  <path class="g" d="M370 232.8 V556.8" marker-end="url(#ga)"/>
+  <path class="g" d="M368 590.5 V772.8" marker-end="url(#ga)"/>
+  <path class="g" d="M528 227.4 H640" marker-end="url(#ga)"/>
+  <text class="L" x="656" y="242.2">Output</text>
+  <text class="L" x="24" y="984.7">Input</text>
+  <path class="g" d="M105 972.6 H167 V401.5 H278" marker-end="url(#ga)"/>
+  <!-- right: detailed column -->
+  <path class="heavy" d="M1022 104.5 H1312"/>
+  <path class="heavy" d="M1010 910.5 H1288"/>
+  <path class="rule" d="M1055 104.5 V910.5" />
+  <path class="rule" d="M1270 104.5 V910.5" />
+  <path class="rule" d="M1055 157.2 H1270"/>
+  <path class="rule" d="M1055 247.6 H1270"/>
+  <path class="rule" d="M1055 369.1 H1270"/>
+  <path class="rule" d="M1055 469 H1270"/>
+  <path class="rule" d="M1055 616.2 H1270"/>
+  <path class="dash" d="M1058 304.3 H1267"/>
+  <path class="dash" d="M1058 523 H1267"/>
+  <path class="dash" d="M1058 571.6 H1267"/>
+  <path class="dash" d="M1058 705.2 H1267"/>
+  <path class="dash" d="M1058 787.6 H1267"/>
+  <text class="L" x="1298" y="212.5">L2</text>
+  <text class="L" x="1298" y="297.6">L3a</text>
+  <text class="L" x="1298" y="348.9">L3b</text>
+  <text class="L" x="1298" y="442">L4</text>
+  <text class="L" x="1298" y="512.2">L5 tt</text>
+  <text class="L" x="1298" y="558.1">L5 cc</text>
+  <text class="L" x="1298" y="606.7">L5 cc-ns</text>
+  <text class="L" x="1298" y="685">L6a</text>
+  <text class="L" x="1298" y="756.6">L6b</text>
+  <text class="L" x="1298" y="826.8">L6 ip</text>
+  <text class="L" x="1298" y="867.2">L6 mp</text>
+  <text class="L" x="1298" y="907.8">L6 bp</text>
+  <text class="L" x="900" y="933.4" text-anchor="end">Cortex</text>
+  <text class="L" x="900" y="982" text-anchor="end">Thalamus</text>
+  <path class="g" d="M913 915.9 H973"/>
+  <path class="g" d="M913 969.9 H973 V421.8 H1080" marker-end="url(#ga)"/>
+  <text class="pct" x="996" y="396.1">10%</text>
+  <text class="pct" x="1100" y="408.2">50%</text>
+  <path class="g" d="M1090 408.2 V320.5" marker-end="url(#ga)"/>
+  <path class="g" d="M1178 338.1 V560.8" marker-end="url(#ga)"/>
+  <path class="g" d="M1228 550 V477.1" marker-end="url(#ga)"/>
+  <path class="b" d="M1120 428.5 V658" marker-start="url(#ba)" marker-end="url(#ba)"/>
+  <path class="b" d="M1203 556.8 V749.8" marker-start="url(#ba)" marker-end="url(#ba)"/>
+  <path class="g" d="M1440 316.5 H1530" marker-end="url(#ga)"/>
+  <text class="L" x="1546" y="331.3">Output, direct</text>
+  <path class="g" d="M1440 500.1 H1530" marker-end="url(#ga)"/>
+  <text class="L" x="1546" y="514.9">Output, via thalamus</text>
+  <text class="ref" x="1546" y="685">L5: Calloway et. al, 2015</text>
+  <text class="ref" x="1546" y="725.5">L6: Zhang and Deschenes, 1997</text>
+  <text class="ref" x="1546" y="813.2">L5 CTC: Guillery, 1995</text>
+  <text class="ref" x="1546" y="853.8">Constantinople and Bruno, 2013</text>
+</svg>

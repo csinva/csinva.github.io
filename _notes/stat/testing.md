@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Testing
+subtitle: Some notes on hypothesis testing, confidence intervals, and ANOVA.
 category: stat
 ---
 
@@ -15,8 +16,8 @@ category: stat
 - types
   - simple hypothesis $\theta = \theta_0$
   - composite hypothesis $\theta > \theta_0$ or $\theta < \theta_0$
-  - two-sided test: $H_0: \theta = \theta_0 \: vs. \: H_1 \theta \neq \theta_0$
-  - one-sided test: $H_0: \theta \leq \theta_0 \: vs. \: H_1: \theta > \theta_0$
+  - two-sided test: $$H_0: \theta = \theta_0 \: vs. \: H_1 \theta \neq \theta_0$$
+  - one-sided test: $$H_0: \theta \leq \theta_0 \: vs. \: H_1: \theta > \theta_0$$
 - significance levels
   - *stat. significant*: p = 0.05
   - *highly stat. significant*: p = 0.01
@@ -34,24 +35,24 @@ category: stat
 
 - normal theory: assume $\epsilon_i$ ~ $N(0, \sigma^2)$
 - distributions
-  - suppose $Z_1, ..., Z_n$ ~ iid N(0, 1)
+  - suppose $$Z_1, ..., Z_n$$ ~ iid N(0, 1)
   - **chi-squared**: $\chi_d^2$ ~ $\sum_i^d U_i^2$ w/ d degrees of freedom
     - $(d-1)S^2/\sigma^2 \text{ proportional to } \chi_{d-1}^2$
   - *student's t*: $U_{d+1} / \sqrt{d^{-1} \sum_1^d U_i^2}$ w/ d degress of freedom
 - **t-test**: test if mean is nonzero
-  - test null $\theta_k=0$ w/ $t = \hat{\theta}_k / \hat{SE}$ where $SE = \hat{\sigma} \cdot \sqrt{\Sigma_{kk}^{-1}}$
+  - test null $\theta_k=0$ w/ $$t = \hat{\theta}_k / \hat{SE}$$ where $$SE = \hat{\sigma} \cdot \sqrt{\Sigma_{kk}^{-1}}$$
   - t-test: reject if \|t\| is large
   - when n-p is large, t-test is called the z-test
   - under null hypothesis t follows t-distr with n-p degrees of freedom
   - here, $\hat{\theta}$ has a normal distr. with mean $\theta$ and cov matrix $\sigma^2 (X^TX)^{-1}$
-    - e independent of $\hat{\theta}$ and $\|\|e\|\|^2 ~ \sigma^2 \chi^2_d$ with d = n-p
+    - e independent of $\hat{\theta}$ and $$\vert \vert e\vert \vert ^2 ~ \sigma^2 \chi^2_d$$ with d = n-p
   - *observed stat. significance level* = *P-value* - area of normal curve beyond $\pm \hat{\theta_k} / \hat{SE}$
   - if 2 vars are statistically significant, said to have *independent effects* on Y
 - **f-test**: test if any of non-zero means
-  - null hypothesis: $\theta_i = 0,  i=p-p_0, ..., p$
-  - alternative hypothesis: for at least one $ i \in \{p-p_0, ..., p\}, \: \theta_i \neq 0$
-  - $F = \frac{(\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2) / p_0}{\|\|e\|\|^2 / (n-p)} $ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
-  - under null hypothesis, $\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2$ ~ $U$, $\|\|e\|\|^2$ ~ $V$, $F$ ~ $\frac{U/p_0}{V/(n-p)}$ where $ U \: indep \: V$, $U$ ~ $\sigma^2 \chi^2_{p_0}$, $V$ ~ $\sigma^2 \chi_{n-p}^2$
+  - null hypothesis: $$\theta_i = 0,  i=p-p_0, ..., p$$
+  - alternative hypothesis: for at least one $$ i \in \{p-p_0, ..., p\}, \: \theta_i \neq 0$$
+  - $$F = \frac{\cblue{(\vert \vert X\hat{\theta}\vert \vert ^2 - \vert \vert X\hat{\theta}^{(s)}\vert \vert ^2)} / p_0}{\corange{\vert \vert e\vert \vert ^2} / (n-p)} $$ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
+  - under null hypothesis, $$\cblue{\vert \vert X\hat{\theta}\vert \vert ^2 - \vert \vert X\hat{\theta}^{(s)}\vert \vert ^2}$$ ~ $\cblue{U}$, $$\corange{\vert \vert e\vert \vert ^2}$$ ~ $\corange{V}$, $F$ ~ $$\frac{\cblue{U}/p_0}{\corange{V}/(n-p)}$$ where $$ \cblue{U} \: indep \: \corange{V}$$, $\cblue{U}$ ~ $$\sigma^2 \chi^2_{p_0}$$, $\corange{V}$ ~ $$\sigma^2 \chi_{n-p}^2$$
   - there is also a *partial f-test*
 
 # statistical intervals
@@ -76,7 +77,7 @@ category: stat
 
 - confidence interval construction
   - confidence interval (CI) is range of values likely to include true value of a parameter of interest
-  - confidence level (CL) - probability that the procedure used to determine CI will provide an interval that covers the value of the parameter -  if we remade it 100 times, 95 would contain the true $\theta_1$
+  - confidence level (CL) - probability that the procedure used to determine CI will provide an interval that covers the value of the parameter - if we remade it 100 times, 95 would contain the true $\theta_1$
 - $\hat{\beta_0} \pm t_{n-2,\alpha /2} * s.e.(\hat{\beta_0}) $
   - for $\beta_1$
     - with known $\sigma$
@@ -90,7 +91,7 @@ category: stat
 
 - y - called dependent, response variable
 - x - independent, explanatory, predictor variable
-- notation: $E(Y\|x^*) = \mu_{Y\cdot x^*} = $ mean value of Y when x = $x^*$
+- notation: $$E(Y\vert x^*) = \mu_{Y\cdot x^*} = $$ mean value of Y when x = $x^*$
 - Y = f(x) + $\epsilon$
 - linear: $Y=\beta_0+\beta_1 x+\epsilon$
 - logistic: $odds = \frac{p(x)}{1-p(x)}=e^{\beta_0+\beta_1 x+\epsilon}$
@@ -101,13 +102,13 @@ category: stat
 - $S_{xx}=\sum x_i^2 - \frac{(\sum x_i)^2}{n}$
 - residuals: $y_i-\hat{y_i}$
 - SSE = $\sum y_i^2 - \hat{\beta}_0 \sum y_i - \hat{\beta}_1 \sum x_iy_i$
-- SST  = total sum of squares = $S_{yy} = \sum (y_i-\bar{y})^2 = \sum y_i^2 - (\sum y_i)^2/n$
-- $r^2 = 1-\frac{SSE}{SST}=\frac{SSR}{SST}$ - proportion of observed variation that can be explained by regression
+- SST = total sum of squares = $S_{yy} = \sum (y_i-\bar{y})^2 = \sum y_i^2 - (\sum y_i)^2/n$
+- $r^2 = 1-\frac{\corange{SSE}}{SST}=\frac{\cblue{SSR}}{SST}$ - proportion of observed variation that can be <span class="cblue">explained by regression</span>
 - $\hat{\sigma}^2 = \frac{SSE}{n-2}$
-- $T=\frac{\hat{\beta}_1-\beta_1}{S / \sqrt{S_{xx}}}$ has a t distr. with n-2 df
+- $$T=\frac{\hat{\beta}_1-\beta_1}{S / \sqrt{S_{xx}}}$$ has a t distr. with n-2 df
 - $s_{\hat{\beta_1}}=\frac{s}{\sqrt{S_{xx}}}$
-- $s_{\hat{\beta_0}+\hat{\beta_1}x^*} = s\sqrt{\frac{1}{n}+\frac{(x^*-\bar{x})^2}{S_{xx}}}$
-- sample correlation coefficient $r = \frac{S_{xy}}{\sqrt{S_xx}\sqrt{S_{yy}}}$
+- $$s_{\hat{\beta_0}+\hat{\beta_1}x^*} = s\sqrt{\frac{1}{n}+\frac{(x^*-\bar{x})^2}{S_{xx}}}$$<!-- -->
+- sample correlation coefficient $r = \frac{S_{xy}}{\sqrt{S_{xx}}\sqrt{S_{yy}}}$
 - this is a point estimate for population correlation coefficient = $\frac{Cov(X,Y)}{\sigma_X\sigma_Y}$
 - make fisher transformation - this test statistic also tests correlation
 - degrees of freedom

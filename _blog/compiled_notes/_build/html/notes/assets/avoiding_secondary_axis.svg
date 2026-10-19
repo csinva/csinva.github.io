@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 14 1270 560" role="img" aria-labelledby="title desc">
+  <title id="title">Avoiding a secondary y-axis</title>
+  <desc id="desc">Two alternatives to a dual-axis chart of quarterly revenue (bars, millions: 0.6, 0.5, 0.7, 0.9, 0.6, 0.6, 0.8, 1.0) and number of sales employees (line: 82, 91, 105, 112, 111, 109, 110, 110) for Q1 2013 to Q4 2014. Alternative 1 labels both series directly on one chart; alternative 2 pulls them apart into two vertically stacked charts with their own axes.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .bar { fill: #1f6fb2; }
+      .ln { fill: none; stroke: #1f3f6e; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
+      .dot { fill: #1f3f6e; }
+      .ax { fill: none; stroke: #8a8a8a; stroke-width: 1.5; }
+      .title { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .num { font: 21px Helvetica, Arial, sans-serif; fill: #1f3f6e; text-anchor: middle; }
+      .bl { font: bold 19px Helvetica, Arial, sans-serif; fill: #ffffff; text-anchor: middle; }
+      .lab { font: 21px Helvetica, Arial, sans-serif; }
+      .tick { font: 20px Helvetica, Arial, sans-serif; fill: #5a5a5a; }
+      .yl { font: 20px Helvetica, Arial, sans-serif; fill: #5a5a5a; text-anchor: middle; }
+    </style>
+  </defs>
+  <text class="title" x="12" y="50">Alternative 1: <tspan font-weight="bold">label directly</tspan></text>
+  <text class="title" x="690" y="50">Alternative 2: <tspan font-weight="bold">pull apart vertically</tspan></text>
+  <rect class="bar" x="37" y="331.5" width="57" height="147.5"/>
+  <text class="bl" x="65.5" y="361.5">$0.6</text>
+  <rect class="bar" x="106" y="349.5" width="57" height="129.5"/>
+  <text class="bl" x="134.5" y="379.5">$0.5</text>
+  <rect class="bar" x="175" y="301.3" width="57" height="177.7"/>
+  <text class="bl" x="203.5" y="331.3">$0.7</text>
+  <rect class="bar" x="244" y="250.0" width="57" height="229.0"/>
+  <text class="bl" x="272.5" y="280.0">$0.9</text>
+  <rect class="bar" x="313" y="313.4" width="57" height="165.6"/>
+  <text class="bl" x="341.5" y="343.4">$0.6</text>
+  <rect class="bar" x="382" y="317.8" width="57" height="161.2"/>
+  <text class="bl" x="410.5" y="347.8">$0.6</text>
+  <rect class="bar" x="451" y="266.7" width="57" height="212.3"/>
+  <text class="bl" x="479.5" y="296.7">$0.8</text>
+  <rect class="bar" x="520" y="229.0" width="57" height="250.0"/>
+  <text class="bl" x="548.5" y="259.0">$1.0</text>
+  <path class="ax" d="M30 479 H582 M30 479 V569 M306 479 V569 M582 479 V569"/>
+  <path class="ax" d="M99 479 V524"/>
+  <path class="ax" d="M168 479 V524"/>
+  <path class="ax" d="M237 479 V524"/>
+  <path class="ax" d="M375 479 V524"/>
+  <path class="ax" d="M444 479 V524"/>
+  <path class="ax" d="M513 479 V524"/>
+  <text class="tick" x="64.5" y="512" text-anchor="middle">Q1</text>
+  <text class="tick" x="133.5" y="512" text-anchor="middle">Q2</text>
+  <text class="tick" x="202.5" y="512" text-anchor="middle">Q3</text>
+  <text class="tick" x="271.5" y="512" text-anchor="middle">Q4</text>
+  <text class="tick" x="340.5" y="512" text-anchor="middle">Q1</text>
+  <text class="tick" x="409.5" y="512" text-anchor="middle">Q2</text>
+  <text class="tick" x="478.5" y="512" text-anchor="middle">Q3</text>
+  <text class="tick" x="547.5" y="512" text-anchor="middle">Q4</text>
+  <text class="tick" x="168" y="557" text-anchor="middle">2013</text>
+  <text class="tick" x="444" y="557" text-anchor="middle">2014</text>
+  <path class="ln" d="M64.5 253.0 L133.5 227.5 L202.5 187.8 L271.5 168.0 L340.5 170.8 L409.5 176.5 L478.5 173.7 L547.5 173.7"/>
+  <circle class="dot" cx="64.5" cy="253.0" r="8"/>
+  <text class="num" x="64.5" y="233.0">82</text>
+  <circle class="dot" cx="133.5" cy="227.5" r="8"/>
+  <text class="num" x="133.5" y="207.5">91</text>
+  <circle class="dot" cx="202.5" cy="187.8" r="8"/>
+  <text class="num" x="202.5" y="167.8">105</text>
+  <circle class="dot" cx="271.5" cy="168.0" r="8"/>
+  <text class="num" x="271.5" y="148.0">112</text>
+  <circle class="dot" cx="340.5" cy="170.8" r="8"/>
+  <text class="num" x="340.5" y="150.8">111</text>
+  <circle class="dot" cx="409.5" cy="176.5" r="8"/>
+  <text class="num" x="409.5" y="156.5">109</text>
+  <circle class="dot" cx="478.5" cy="173.7" r="8"/>
+  <text class="num" x="478.5" y="153.7">110</text>
+  <circle class="dot" cx="547.5" cy="173.7" r="8"/>
+  <text class="num" x="547.5" y="153.7">110</text>
+  <text class="lab" x="12" y="132" style="fill:#1f3f6e"># of Sales</text>
+  <text class="lab" x="12" y="162" style="fill:#1f3f6e">Employees</text>
+  <text class="lab" x="12" y="290" style="fill:#1f6fb2">Revenue</text>
+  <text class="lab" x="12" y="320" style="fill:#1f6fb2">(Millions)</text>
+  <rect class="bar" x="841" y="379.5" width="35" height="98.0"/>
+  <rect class="bar" x="895" y="391.5" width="35" height="86.0"/>
+  <rect class="bar" x="949" y="359.5" width="35" height="118.0"/>
+  <rect class="bar" x="1003" y="325.4" width="35" height="152.1"/>
+  <rect class="bar" x="1057" y="367.5" width="35" height="110.0"/>
+  <rect class="bar" x="1111" y="370.5" width="35" height="107.0"/>
+  <rect class="bar" x="1165" y="336.6" width="35" height="140.9"/>
+  <rect class="bar" x="1219" y="311.5" width="35" height="166.0"/>
+  <path class="ax" d="M830 303 V478"/>
+  <path class="ax" d="M825 477.5 H830"/>
+  <text class="tick" x="820" y="484.5" text-anchor="end">$0.0</text>
+  <path class="ax" d="M825 442.7 H830"/>
+  <text class="tick" x="820" y="449.7" text-anchor="end">$0.2</text>
+  <path class="ax" d="M825 407.9 H830"/>
+  <text class="tick" x="820" y="414.9" text-anchor="end">$0.4</text>
+  <path class="ax" d="M825 373.1 H830"/>
+  <text class="tick" x="820" y="380.1" text-anchor="end">$0.6</text>
+  <path class="ax" d="M825 338.3 H830"/>
+  <text class="tick" x="820" y="345.3" text-anchor="end">$0.8</text>
+  <path class="ax" d="M825 303.5 H830"/>
+  <text class="tick" x="820" y="310.5" text-anchor="end">$1.0</text>
+  <path class="ax" d="M830 478 H1262 M830 478 V568 M1046 478 V568 M1262 478 V568"/>
+  <path class="ax" d="M884 478 V523"/>
+  <path class="ax" d="M938 478 V523"/>
+  <path class="ax" d="M992 478 V523"/>
+  <path class="ax" d="M1100 478 V523"/>
+  <path class="ax" d="M1154 478 V523"/>
+  <path class="ax" d="M1208 478 V523"/>
+  <text class="tick" x="857.0" y="511" text-anchor="middle">Q1</text>
+  <text class="tick" x="911.0" y="511" text-anchor="middle">Q2</text>
+  <text class="tick" x="965.0" y="511" text-anchor="middle">Q3</text>
+  <text class="tick" x="1019.0" y="511" text-anchor="middle">Q4</text>
+  <text class="tick" x="1073.0" y="511" text-anchor="middle">Q1</text>
+  <text class="tick" x="1127.0" y="511" text-anchor="middle">Q2</text>
+  <text class="tick" x="1181.0" y="511" text-anchor="middle">Q3</text>
+  <text class="tick" x="1235.0" y="511" text-anchor="middle">Q4</text>
+  <text class="tick" x="938" y="556" text-anchor="middle">2013</text>
+  <text class="tick" x="1154" y="556" text-anchor="middle">2014</text>
+  <path class="ax" d="M830 104 V253"/>
+  <path class="ax" d="M825 252.5 H830"/>
+  <text class="tick" x="820" y="259.5" text-anchor="end">60</text>
+  <path class="ax" d="M825 203.2 H830"/>
+  <text class="tick" x="820" y="210.2" text-anchor="end">80</text>
+  <path class="ax" d="M825 153.8 H830"/>
+  <text class="tick" x="820" y="160.8" text-anchor="end">100</text>
+  <path class="ax" d="M825 104.5 H830"/>
+  <text class="tick" x="820" y="111.5" text-anchor="end">120</text>
+  <path class="ln" d="M857.0 198.2 L911.0 176.0 L965.0 141.5 L1019.0 124.2 L1073.0 126.7 L1127.0 131.6 L1181.0 129.2 L1235.0 129.2"/>
+  <circle class="dot" cx="857.0" cy="198.2" r="8"/>
+  <circle class="dot" cx="911.0" cy="176.0" r="8"/>
+  <circle class="dot" cx="965.0" cy="141.5" r="8"/>
+  <circle class="dot" cx="1019.0" cy="124.2" r="8"/>
+  <circle class="dot" cx="1073.0" cy="126.7" r="8"/>
+  <circle class="dot" cx="1127.0" cy="131.6" r="8"/>
+  <circle class="dot" cx="1181.0" cy="129.2" r="8"/>
+  <circle class="dot" cx="1235.0" cy="129.2" r="8"/>
+  <text class="yl" transform="translate(718 178) rotate(-90)"># of Sales</text>
+  <text class="yl" transform="translate(744 178) rotate(-90)">Employees</text>
+  <text class="yl" transform="translate(742 396) rotate(-90)">Revenue (Millions)</text>
+</svg>

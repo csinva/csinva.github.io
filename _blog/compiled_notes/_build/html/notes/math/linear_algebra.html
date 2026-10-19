@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.4. linear algebra</title>
+    <title>3.3. linear algebra</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/math/linear_algebra';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.5. signals" href="signals.html" />
-    <link rel="prev" title="3.3. real analysis" href="analysis.html" />
+    <link rel="next" title="3.4. signals" href="signals.html" />
+    <link rel="prev" title="3.2. real analysis" href="analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="math.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="math_section.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,23 +421,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-basics">3.4.1. linear basics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">3.4.1.1. notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity">3.4.1.2. linearity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-properties">3.4.1.3. matrix properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-basics">3.3.1. linear basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">3.3.1.1. notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-properties">3.3.1.2. matrix properties</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-calc">3.4.2. matrix calc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">3.4.3. norms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norms">3.4.3.1. vector norms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms">3.4.3.2. matrix norms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-calc">3.3.2. matrix calc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">3.3.3. norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norms">3.3.3.1. vector norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms">3.3.3.2. matrix norms</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenstuff">3.4.4. eigenstuff</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-intro-strang-5-1">3.4.4.1. eigenvalues intro - strang 5.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strang-5-2-diagonalization">3.4.4.2. strang 5.2 - diagonalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strang-6-3-singular-value-decomposition">3.4.4.3. strang 6.3 - singular value decomposition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strang-5-3-difference-eqs-and-power-a-k">3.4.4.4. strang 5.3 - difference eqs and power <span class="math notranslate nohighlight">\(A^k\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenstuff">3.3.4. eigenstuff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-intro-strang-5-1">3.3.4.1. eigenvalues intro - Strang 5.1</a></li>
 </ul>
 </li>
 </ul>
@@ -466,25 +448,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra">
-<h1><span class="section-number">3.4. </span>linear algebra<a class="headerlink" href="#linear-algebra" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3.3. </span>linear algebra<a class="headerlink" href="#linear-algebra" title="Link to this heading">#</a></h1>
 <section id="linear-basics">
-<h2><span class="section-number">3.4.1. </span>linear basics<a class="headerlink" href="#linear-basics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3.1. </span>linear basics<a class="headerlink" href="#linear-basics" title="Link to this heading">#</a></h2>
 <section id="notation">
-<h3><span class="section-number">3.4.1.1. </span>notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3><span class="section-number">3.3.1.1. </span>notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h3>
+<ul>
 <li><p><span class="math notranslate nohighlight">\(x \preceq y\)</span> - these are vectors and x is less than y elementwise</p></li>
 <li><p><span class="math notranslate nohighlight">\(X \preceq Y\)</span> - matrices, <span class="math notranslate nohighlight">\(Y-X\)</span> is PSD</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(v^TXv \leq v^TYv \:\: \forall v\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}v^TXv \leq v^TYv \:\: \forall v$$&lt;!-- --&gt;\\### linearity\\- inner product $$&lt;X, Y&gt; = \operatorname{tr}(X^TY) = \sum_i \sum_j X_{ij} Y_{ij}\end{aligned}\end{align} \]</div>
 </li>
-</ul>
-</section>
-<section id="linearity">
-<h3><span class="section-number">3.4.1.2. </span>linearity<a class="headerlink" href="#linearity" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>inner product <span class="math notranslate nohighlight">\(&lt;X, Y&gt; = tr(X^TY) = \sum_i \sum_j X_{ij} Y_{ij}\)</span></p>
-<ul>
 <li><p>like inner product if we collapsed into big vector</p></li>
 <li><p>linear</p></li>
 <li><p>symmetric</p></li>
@@ -507,21 +482,22 @@ document.write(`
 <li><p>det - sum of products including one element from each row / column with correct sign</p>
 <ul>
 <li><p>absolute value = area of parallelogram made by rows (or cols)</p></li>
-<li><p><img alt="220px-Area_parallellogram_as_determinant.svg" src="../../_images/220px-Area_parallellogram_as_determinant.svg.png" /></p></li>
+<li><img style="width: 340px; max-width: 100%;" src="../assets/area_parallelogram_determinant.svg" alt="Area of a parallelogram as a determinant"/>
+</li>
 </ul>
 </li>
 <li><p>lin independent: <span class="math notranslate nohighlight">\(c_1x_1+c_2x_2=0 \implies c_1=c_2=0\)</span></p></li>
-<li><p><em>cauchy-schwartz inequality</em>: <span class="math notranslate nohighlight">\(|x^T y| \leq ||x||_2 ||y|||_2\)</span></p>
-<ul>
-<li><p>implies <em>triangle inequality</em>: <span class="math notranslate nohighlight">\(||x+y||^2 \leq (||x|| + ||y||)^2\)</span></p></li>
+<li><p><em>cauchy-schwartz inequality</em>: $<span class="math notranslate nohighlight">\(\vert x^T y\vert  \leq \vert \vert x\vert \vert _2 \vert \vert y\vert \vert \vert _2\)</span>$</p>
+<ul class="simple">
+<li><p>implies <em>triangle inequality</em>: $<span class="math notranslate nohighlight">\(\vert \vert x+y\vert \vert ^2 \leq (\vert \vert x\vert \vert  + \vert \vert y\vert \vert )^2\)</span>$</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="matrix-properties">
-<h3><span class="section-number">3.4.1.3. </span>matrix properties<a class="headerlink" href="#matrix-properties" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.3.1.2. </span>matrix properties<a class="headerlink" href="#matrix-properties" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x^TAx = tr(xx^TA)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^TAx = \operatorname{tr}(xx^TA)\)</span></p></li>
 <li><p><em>nonsingular</em> = invertible = nonzero determinant = null space of zero</p>
 <ul>
 <li><p>only square matrices</p></li>
@@ -538,7 +514,7 @@ document.write(`
 <li><p><em>orthogonal matrix</em>: all columns are <em>orthonormal</em></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(A^{-1} = A^T\)</span></p></li>
-<li><p>preserves the Euclidean norm <span class="math notranslate nohighlight">\(||Ax||_2 = ||x||_2\)</span></p></li>
+<li><p>preserves the Euclidean norm $<span class="math notranslate nohighlight">\(\vert \vert Ax\vert \vert _2 = \vert \vert x\vert \vert _2\)</span>$</p></li>
 </ul>
 </li>
 <li><p>if diagonal, inverse is invert all elements</p></li>
@@ -570,7 +546,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(A^{-1} = adj(A) / \det(A)\)</span></p></li>
 </ul>
 </li>
-<li><p><em>Schur complement</em> of <span class="math notranslate nohighlight">\(X = \begin{bmatrix}  A &amp; B \\  C &amp; D\end{bmatrix}\)</span></p>
+<li><p><em>Schur complement</em> of $<span class="math notranslate nohighlight">\(X = \begin{bmatrix}  A &amp; B \\  C &amp; D\end{bmatrix}\)</span>$</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(M/D = A - BD^{-1}C\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(M/A = D-CA^{-1}B\)</span></p></li>
@@ -581,18 +557,18 @@ document.write(`
 </section>
 </section>
 <section id="matrix-calc">
-<h2><span class="section-number">3.4.2. </span>matrix calc<a class="headerlink" href="#matrix-calc" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<h2><span class="section-number">3.3.2. </span>matrix calc<a class="headerlink" href="#matrix-calc" title="Link to this heading">#</a></h2>
+<ul>
 <li><p>overview: imagine derivative <span class="math notranslate nohighlight">\(f(x + \Delta)\)</span></p></li>
 <li><p>function f: <span class="math notranslate nohighlight">\(\text{anything} \to \mathbb{R}^m\)</span></p>
-<ul>
+<ul class="simple">
 <li><p><em>gradient</em> vector <span class="math notranslate nohighlight">\(\nabla_A f(\mathbf{A})\)</span>- partial derivatives with respect to each element of A (vector or matrix)</p></li>
 <li><p>gradient = <span class="math notranslate nohighlight">\(\frac{\partial f}{\partial A}^T\)</span></p></li>
 </ul>
 </li>
 <li><p>these next 2 assume numerator layout (numerator-major order, so numerator constant along rows)</p></li>
 <li><p>function f: <span class="math notranslate nohighlight">\(\mathbb{R}^n \to \mathbb{R}^m\)</span></p>
-<ul>
+<ul class="simple">
 <li><p><strong>Jacobian matrix</strong>: $<span class="math notranslate nohighlight">\(\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} &amp; \cdots &amp; \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} &amp; \cdots &amp; \dfrac{\partial f_1}{\partial x_n}\\   \vdots &amp; \ddots &amp; \vdots\\    \dfrac{\partial f_m}{\partial x_1} &amp; \cdots &amp; \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}\)</span>$ - this is dim(f) x dim(x)</p></li>
 </ul>
 </li>
@@ -600,30 +576,26 @@ document.write(`
 <ul>
 <li><p>2nd derivative is <strong>Hessian matrix</strong></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} &amp; \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} &amp; \cdots &amp; \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} &amp; \dfrac{\partial^2 f}{\partial x_2^2} &amp; \cdots &amp; \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} &amp; \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} &amp; \cdots &amp; \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} &amp; \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} &amp; \cdots &amp; \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} &amp; \dfrac{\partial^2 f}{\partial x_2^2} &amp; \cdots &amp; \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} &amp; \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} &amp; \cdots &amp; \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$$&lt;!-- --&gt;
+- examples
+  - $\nabla_x a^T x = a$
+  - $\nabla_x x^TAx = 2Ax$ (if A symmetric, else $(A+A^T)x)$)
+  - $\nabla_x^2 x^TAx = 2A$ (if A symmetric, else $A+A^T$)
+  - $$\nabla_x \log \: \det X = X^{-1}$$&lt;!-- --&gt;
+- we can calculate derivs of quadratic forms by calculating derivs of traces
+  - $x^TAx = \operatorname{tr}[x^TAx] = \operatorname{tr}[xx^TA]$
+  - $\implies \frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} \operatorname{tr}[xx^TA] = [xx^T]^T = xx^T$
+  - useful result: $$\frac{\partial}{\partial A} \log\vert A\vert  = A^{-T}\end{split}\]</div>
 </li>
 </ul>
 </li>
-<li><p>examples</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\nabla_x a^T x = a\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\nabla_x x^TAx = 2Ax\)</span> (if A symmetric, else <span class="math notranslate nohighlight">\((A+A^T)x)\)</span>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\nabla_x^2 x^TAx = 2A\)</span> (if A symmetric, else <span class="math notranslate nohighlight">\(A+A^T\)</span>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\nabla_x \log \: \det X = X^{-1}\)</span></p></li>
-</ul>
-</li>
-<li><p>we can calculate derivs of quadratic forms by calculating derivs of traces</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(x^TAx = tr[x^TAx] = tr[xx^TA]\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\implies \frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} tr[xx^TA] = [xx^T]^T = xx^T\)</span></p></li>
-<li><p>useful result: <span class="math notranslate nohighlight">\(\frac{\partial}{\partial A} log|A| = A^{-T}\)</span></p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="norms">
-<h2><span class="section-number">3.4.3. </span>norms<a class="headerlink" href="#norms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3.3. </span>norms<a class="headerlink" href="#norms" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>def</p>
 <ol class="arabic simple">
@@ -640,24 +612,23 @@ document.write(`
 </li>
 </ul>
 <section id="vector-norms">
-<h3><span class="section-number">3.4.3.1. </span>vector norms<a class="headerlink" href="#vector-norms" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong><span class="math notranslate nohighlight">\(L_p-\)</span>norms</strong>: <span class="math notranslate nohighlight">\(||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}\)</span></p>
+<h3><span class="section-number">3.3.3.1. </span>vector norms<a class="headerlink" href="#vector-norms" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong><span class="math notranslate nohighlight">\(L_p-\)</span>norms</strong>: $<span class="math notranslate nohighlight">\(\vert \vert x\vert \vert _p = (\sum_{i=1}^n \vert x_i\vert ^p)^{1/p}\)</span>$</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(L_0\)</span> norm - number of nonzero elements (this is not actually a norm!)</p></li>
-<li><p><span class="math notranslate nohighlight">\(||x||_1 = \sum |x_i|\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(||x||_2\)</span> - Euclidean norm</p></li>
-<li><p><span class="math notranslate nohighlight">\(||x||_\infty = \max_i |x_i|\)</span> - also called <em>Cheybyshev norm</em></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[\vert \vert x\vert \vert _1 = \sum \vert x_i\vert $$&lt;!-- --&gt;
+  - $$\vert \vert x\vert \vert _2$$ - Euclidean norm
+  - $$\vert \vert x\vert \vert _\infty = \max_i \vert x_i\vert $$ - also called *Cheybyshev norm*
+- *quadratic norms*
+  - *P-quadratic norm*: $$\vert \vert x\vert \vert _P = (x^TPx)^{1/2} = \vert \vert  P^{1/2} x \vert \vert _2$$ where $$P \in S_{++}^n\]</div>
 </li>
-<li><p><em>quadratic norms</em></p>
-<ul>
-<li><p><em>P-quadratic norm</em>: <span class="math notranslate nohighlight">\(||x||_P = (x^TPx)^{1/2} = || P^{1/2} x ||_2\)</span> where <span class="math notranslate nohighlight">\(P \in S_{++}^n\)</span></p></li>
 </ul>
 </li>
 <li><p><em>dual norm</em></p>
-<ul>
-<li><p>given a norm <span class="math notranslate nohighlight">\(|| \cdot ||\)</span>, dual norm <span class="math notranslate nohighlight">\(||z||_* = sup\{ z^Tx \: | \: ||x|| \leq 1\}\)</span></p></li>
+<ul class="simple">
+<li><p>given a norm $<span class="math notranslate nohighlight">\(\vert \vert  \cdot \vert \vert \)</span><span class="math notranslate nohighlight">\(, dual norm \)</span><span class="math notranslate nohighlight">\(\vert \vert z\vert \vert _* = \sup\{ z^Tx \: \vert  \: \vert \vert x\vert \vert  \leq 1\}\)</span>$</p></li>
 <li><p>dual of the dual is the original</p></li>
 <li><p>dual of Euclidean is just Euclidean</p></li>
 <li><p>dual of <span class="math notranslate nohighlight">\(l_1\)</span> is <span class="math notranslate nohighlight">\(l_\infty\)</span></p></li>
@@ -667,14 +638,14 @@ document.write(`
 </ul>
 </section>
 <section id="matrix-norms">
-<h3><span class="section-number">3.4.3.2. </span>matrix norms<a class="headerlink" href="#matrix-norms" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.3.3.2. </span>matrix norms<a class="headerlink" href="#matrix-norms" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>schatten p-norms: <span class="math notranslate nohighlight">\(||X||_p = (\sum \sigma^p_i(A) )^{1/p}\)</span> - note this is nice for organization but this p is never really mentioned</p>
+<li><p>schatten p-norms: $<span class="math notranslate nohighlight">\(\vert \vert X\vert \vert _p = (\sum \sigma^p_i(A) )^{1/p}\)</span>$ - note this is nice for organization but this p is never really mentioned</p>
 <ul>
-<li><p>p=1: <strong>nuclear norm</strong> = <strong>trace norm</strong>: <span class="math notranslate nohighlight">\(||X||_* = \sum_i \sigma_i\)</span></p></li>
-<li><p>p=2: <strong>frobenius norm</strong> = <strong>euclidean norm</strong>: <span class="math notranslate nohighlight">\(||X||_F^2 = \sqrt {\sum_{ij} X_{ij}^2} = \sqrt{\sum_i \sigma_i^2}\)</span>
-- like vector <span class="math notranslate nohighlight">\(L_2\)</span> norm</p></li>
-<li><p>p=<span class="math notranslate nohighlight">\(\infty\)</span>: <strong>spectral norm</strong> = <strong><span class="math notranslate nohighlight">\(\mathbf{L_2}\)</span>-norm</strong> (of a matrix) = <span class="math notranslate nohighlight">\(||X||_2 = \sigma_\text{max}(X) \)</span></p></li>
+<li><p>p=1: <strong>nuclear norm</strong> = <strong>trace norm</strong>: $<span class="math notranslate nohighlight">\(\vert \vert X\vert \vert _* = \sum_i \sigma_i\)</span>$</p></li>
+<li><p>p=2: <strong>frobenius norm</strong> = <strong>euclidean norm</strong>: $<span class="math notranslate nohighlight">\(\vert \vert X\vert \vert _F^2 = \sqrt {\sum_{ij} X_{ij}^2} = \sqrt{\sum_i \sigma_i^2}\)</span>$</p></li>
+<li><p>like vector <span class="math notranslate nohighlight">\(L_2\)</span> norm</p></li>
+<li><p>p=<span class="math notranslate nohighlight">\(\infty\)</span>: <strong>spectral norm</strong> = <strong><span class="math notranslate nohighlight">\(\mathbf{L_2}\)</span>-norm</strong> (of a matrix) = $<span class="math notranslate nohighlight">\(\vert \vert X\vert \vert _2 = \sigma_\text{max}(X) \)</span>$</p></li>
 </ul>
 </li>
 <li><p>entrywise norms</p>
@@ -685,8 +656,8 @@ document.write(`
 </li>
 <li><p><em>operator norm</em></p>
 <ul>
-<li><p>let <span class="math notranslate nohighlight">\(||\cdot||_a\)</span> and <span class="math notranslate nohighlight">\(|| \cdot ||_b\)</span> be vector norms</p></li>
-<li><p>operator norm <span class="math notranslate nohighlight">\(||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}\)</span></p>
+<li><p>let $<span class="math notranslate nohighlight">\(\vert \vert \cdot\vert \vert _a\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(\vert \vert  \cdot \vert \vert _b\)</span>$ be vector norms</p></li>
+<li><p>operator norm $<span class="math notranslate nohighlight">\(\vert \vert X\vert \vert _{a,b} = \sup\{ \vert \vert Xu\vert \vert _a \: \vert  \: \vert \vert u\vert \vert _b \leq 1 \}\)</span>$</p>
 <ul>
 <li><p>represents the maximum stretching that X does to a vector u</p></li>
 </ul>
@@ -698,24 +669,24 @@ document.write(`
 </section>
 </section>
 <section id="eigenstuff">
-<h2><span class="section-number">3.4.4. </span>eigenstuff<a class="headerlink" href="#eigenstuff" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3.4. </span>eigenstuff<a class="headerlink" href="#eigenstuff" title="Link to this heading">#</a></h2>
 <section id="eigenvalues-intro-strang-5-1">
-<h3><span class="section-number">3.4.4.1. </span>eigenvalues intro - strang 5.1<a class="headerlink" href="#eigenvalues-intro-strang-5-1" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3><span class="section-number">3.3.4.1. </span>eigenvalues intro - Strang 5.1<a class="headerlink" href="#eigenvalues-intro-strang-5-1" title="Link to this heading">#</a></h3>
+<ul>
 <li><p><a class="reference external" href="http://setosa.io/ev/eigenvectors-and-eigenvalues/">nice viz</a></p></li>
 <li><p>elimination changes eigenvalues</p></li>
 <li><p>eigenvector application to diff eqs <span class="math notranslate nohighlight">\(\frac{du}{dt}=Au\)</span></p>
-<ul>
+<ul class="simple">
 <li><p>soln is exponential: <span class="math notranslate nohighlight">\(u(t) = c_1 e^{\lambda_1 t} x_1 + c_2 e^{\lambda_2 t} x_2\)</span></p></li>
 </ul>
 </li>
 <li><p><em>eigenvalue eqn</em>: <span class="math notranslate nohighlight">\(Ax = \lambda x \implies (A-\lambda I)x=0\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(det(A-\lambda I) = 0\)</span> yields <em>characteristic polynomial</em></p></li>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\det(A-\lambda I) = 0\)</span> yields <em>characteristic polynomial</em></p></li>
 </ul>
 </li>
 <li><p>eigenvalue properties</p>
-<ul>
+<ul class="simple">
 <li><p>0 eigenvalue <span class="math notranslate nohighlight">\(\implies\)</span> A is singular</p></li>
 <li><p>eigenvalues are on the main diagonal when the matrix is triangular</p></li>
 </ul>
@@ -723,147 +694,82 @@ document.write(`
 <li><p>expressions when <span class="math notranslate nohighlight">\(A \in \mathbb{S}\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\det(A) = \prod_i \lambda_i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(tr(A) = \sum_i \lambda_i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(||A||_2 = \max | \lambda_i |\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(||A||_F = \sqrt{\sum \lambda_i^2}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda_{max} (A) = \sup_{x \neq 0} \frac{x^T A x}{x^T x}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda_{min} (A) = \inf_{x \neq 0} \frac{x^T A x}{x^T x}\)</span></p></li>
-</ul>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{tr}(A) = \sum_i \lambda_i\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\vert \vert A\vert \vert _2 = \max \vert  \lambda_i \vert $$&lt;!-- --&gt;
+  - $$\vert \vert A\vert \vert _F = \sqrt{\sum \lambda_i^2}$$&lt;!-- --&gt;
+  - $\lambda_{\max} (A) = \sup_{x \neq 0} \frac{x^T A x}{x^T x}$
+  - $\lambda_{\min} (A) = \inf_{x \neq 0} \frac{x^T A x}{x^T x}$
+- *defective matrices* - lack a full set of eigenvalues
+- *positive semi-definite*: $A \in R^{nxn}$
+  - basically these are always *symmetric* $A=A^T$
+  - all eigenvalues are nonnegative
+  - if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
+    - like it curves up
+    - Note: $x^TAx = \sum_{i, j} x_iA_{i, j} x_j$
+  - if $\forall x \in R^n, x^TAx &gt; 0$ then A is positive definite (PD)
+    - PD $\to$ full rank, invertible
+  - PSD + symmetric $\implies$ can be written as *Gram matrix* $G = X^T X $
+    - if X full rank, then $G$ is PD
+  - PSD notation
+    - $S^n$ - set of symmetric matrices
+    - $S^n_+$ - set of PSD matrices
+    - $S^n_{++}$ - set of PD matrices\\### Strang 5.2 - diagonalization\\- *diagonalization* = *eigenvalue decomposition* = *spectral decomposition*
+- assume A (nxn) is symmetric
+  - $A = \cblue{Q} \corange{\Lambda} \cblue{Q^T}$
+  - &lt;span class=&quot;cblue&quot;&gt;Q := eigenvectors as columns&lt;/span&gt;, Q is orthonormal
+  - &lt;span class=&quot;corange&quot;&gt;$\Lambda$ := eigenvalues on diagonal&lt;/span&gt;
+- only diagonalizable if n independent eigenvectors
+  - not related to invertibility
+  - eigenvectors corresponding to different eigenvalues are lin. independent
+  - other Q matrices won't produce diagonal
+  - there are always n complex eigenvalues
+  - orthogonal matrix $Q^TQ=I$
+- examples
+  - if X, Y symmetric, $\operatorname{tr}(YX) = \operatorname{tr}(Y \sum \lambda_i q_i q_i^T)$
+  - lets us easily calculate $A^2$, $\sqrt{A}$
+  - eigenvalues of $A^2$ are squared, eigenvectors remain same
+  - eigenvalues of $A^{-1}$ are inverse eigenvalues
+  - eigenvalue of rotation matrix is $i$
+- eigenvalues for $AB$ only multiply when A and B share eigenvectors
+  - diagonalizable matrices *share the same eigenvector* matrix S iff $AB = BA$
+- *generalized eigenvalue decomposition* - for 2 symmetric matrices
+  - $A = V \Lambda V^T$, $B=VV^T$\\### Strang 6.3 - singular value decomposition\\- SVD for any nxp matrix: $X=\cblue{U} \corange{\Sigma} \cgreen{V^T}$
+  - &lt;span class=&quot;cblue&quot;&gt;U columns&lt;/span&gt; (nxn) are eigenvectors of $XX^T$
+  - &lt;span class=&quot;cgreen&quot;&gt;columns of V&lt;/span&gt; (pxp) are eigenvectors of $X^TX$
+  - r &lt;span class=&quot;corange&quot;&gt;singular values&lt;/span&gt; on diagonal of $\corange{\Sigma}$ (nxp) - square roots of nonzero eigenvalues of both $XX^T$ and $X^TX$
+  - like &lt;span class=&quot;cgreen&quot;&gt;rotating&lt;/span&gt;, &lt;span class=&quot;corange&quot;&gt;scaling&lt;/span&gt;, and &lt;span class=&quot;cblue&quot;&gt;rotating back&lt;/span&gt;
+  - SVD ex. $A=UDV^T \implies A^{-1} = VD^{-1} U^T$
+  - $X = \sum_i \sigma_i u_i v_i^T$
+- properties
+  1. for PD matrices, $\Sigma=\Lambda$, $U\Sigma V^T = Q \Lambda Q^T$
+  - for other symmetric matrices, any negative eigenvalues in $\Lambda$ become positive in $\Sigma$
+- applications
+  - very numerically stable because U and V are orthogonal matrices
+  - *condition number* of invertible nxn matrix = $\sigma_{\max} / \sigma_{\min}$
+  - $$A=\cblue{U}\corange{\Sigma} \cgreen{V^T} = \cblue{u_1} \corange{\sigma_1} \cgreen{v_1^T} + ... + \cblue{u_r} \corange{\sigma_r} \cgreen{v_r^T}$$&lt;!-- --&gt;
+    - we can throw away columns corresponding to small $\corange{\sigma_i}$
+  - pseudoinverse $A^+ = V \Sigma^+ U^T$\\### Strang 5.3 - difference eqs and power $A^k$\\- compound interest
+- solving for fibonacci numbers
+- Markov matrices
+  - steady-state Ax = x
+  - corresponds to $\lambda = 1$
+- stability of $u_{k+1} = A u_k$
+  - stable if all eigenvalues satisfy $$\vert \lambda_i\vert $$ &lt;1
+  - neutrally stable if some $$\vert \lambda_i\vert =1\end{aligned}\end{align} \]</div>
 </li>
-<li><p><em>defective matrices</em> - lack a full set of eigenvalues</p></li>
-<li><p><em>positive semi-definite</em>:  <span class="math notranslate nohighlight">\(A \in R^{nxn}\)</span></p>
-<ul>
-<li><p>basically these are always <em>symmetric</em> <span class="math notranslate nohighlight">\(A=A^T\)</span></p></li>
-<li><p>all eigenvalues are nonnegative</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(\forall x \in R^n, x^TAx \geq 0\)</span> then A is positive semi definite (PSD)</p>
-<ul>
-<li><p>like it curves up</p></li>
-<li><p>Note: <span class="math notranslate nohighlight">\(x^TAx = \sum_{i, j} x_iA_{i, j} x_j\)</span></p></li>
-</ul>
-</li>
-<li><p>if <span class="math notranslate nohighlight">\(\forall x \in R^n, x^TAx &gt; 0\)</span> then A is positive definite (PD)</p>
-<ul>
-<li><p>PD <span class="math notranslate nohighlight">\(\to\)</span> full rank, invertible</p></li>
-</ul>
-</li>
-<li><p>PSD + symmetric <span class="math notranslate nohighlight">\(\implies\)</span> can be written as <em>Gram matrix</em> <span class="math notranslate nohighlight">\(G = X^T X \)</span></p>
-<ul>
-<li><p>if X full rank, then <span class="math notranslate nohighlight">\(G\)</span> is PD</p></li>
-</ul>
-</li>
-<li><p>PSD notation</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(S^n\)</span> - set of symmetric matrices</p></li>
-<li><p><span class="math notranslate nohighlight">\(S^n_+\)</span> - set of PSD matrices</p></li>
-<li><p><span class="math notranslate nohighlight">\(S^n_{++}\)</span> - set of PD matrices</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="strang-5-2-diagonalization">
-<h3><span class="section-number">3.4.4.2. </span>strang 5.2 - diagonalization<a class="headerlink" href="#strang-5-2-diagonalization" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>diagonalization</em> = <em>eigenvalue decomposition</em> = <em>spectral decomposition</em></p></li>
-<li><p>assume A (nxn) is symmetric</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(A = Q \Lambda Q^T\)</span></p></li>
-<li><p>Q := eigenvectors as columns, Q is orthonormal</p></li>
-</ul>
-</li>
-<li><p>only diagonalizable if n independent eigenvectors</p>
-<ul>
-<li><p>not related to invertibility</p></li>
-<li><p>eigenvectors corresponding to different eigenvalues are lin. independent</p></li>
-<li><p>other Q matrices won’t produce diagonal</p></li>
-<li><p>there are always n complex eigenvalues</p></li>
-<li><p>orthogonal matrix <span class="math notranslate nohighlight">\(Q^TQ=I\)</span></p></li>
-</ul>
-</li>
-<li><p>examples</p>
-<ul>
-<li><p>if X, Y symmetric, <span class="math notranslate nohighlight">\(tr(YX) = tr(Y \sum \lambda_i q_i q_i^T)\)</span></p></li>
-<li><p>lets us easily calculate <span class="math notranslate nohighlight">\(A^2\)</span>, <span class="math notranslate nohighlight">\(sqrt(A)\)</span></p></li>
-<li><p>eigenvalues of <span class="math notranslate nohighlight">\(A^2\)</span> are squared, eigenvectors remain same</p></li>
-<li><p>eigenvalues of <span class="math notranslate nohighlight">\(A^{-1}\)</span> are inverse eigenvalues</p></li>
-<li><p>eigenvalue of rotation matrix is <span class="math notranslate nohighlight">\(i\)</span></p></li>
-</ul>
-</li>
-<li><p>eigenvalues for <span class="math notranslate nohighlight">\(AB\)</span> only multiply when A and B share eigenvectors</p>
-<ul>
-<li><p>diagonalizable matrices <em>share the same eigenvector</em> matrix S iff <span class="math notranslate nohighlight">\(AB = BA\)</span></p></li>
-</ul>
-</li>
-<li><p><em>generalized eigenvalue decomposition</em> - for 2 symmetric matrices</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(A = V \Lambda V^T\)</span>, <span class="math notranslate nohighlight">\(B=VV^T\)</span></p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="strang-6-3-singular-value-decomposition">
-<h3><span class="section-number">3.4.4.3. </span>strang 6.3 - singular value decomposition<a class="headerlink" href="#strang-6-3-singular-value-decomposition" title="Link to this heading">#</a></h3>
-<ul>
-<li><p>SVD for any nxp matrix: <span class="math notranslate nohighlight">\(X=U \Sigma V^T\)</span></p>
-<ul class="simple">
-<li><p>U columns (nxn) are eigenvectors of <span class="math notranslate nohighlight">\(XX^T\)</span></p></li>
-<li><p>columns of V (pxp) are eigenvectors of <span class="math notranslate nohighlight">\(X^TX\)</span></p></li>
-<li><p>r singular values on diagonal of <span class="math notranslate nohighlight">\(\Sigma\)</span> (nxp) - square roots of nonzero eigenvalues of both <span class="math notranslate nohighlight">\(XX^T\)</span> and <span class="math notranslate nohighlight">\(X^TX\)</span></p></li>
-<li><p>like rotating, scaling, and rotating back</p></li>
-<li><p>SVD ex. <span class="math notranslate nohighlight">\(A=UDV^T \implies A^{-1} = VD^{-1} U^T\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(X = \sum_i \sigma_i u_i v_i^T\)</span></p></li>
-</ul>
-</li>
-<li><p>properties</p>
-<ol class="arabic simple">
-<li><p>for PD matrices, <span class="math notranslate nohighlight">\(\Sigma=\Lambda\)</span>, <span class="math notranslate nohighlight">\(U\Sigma V^T = Q \Lambda Q^T\)</span></p></li>
-</ol>
-<ul class="simple">
-<li><p>for other symmetric matrices, any negative eigenvalues in <span class="math notranslate nohighlight">\(\Lambda\)</span> become positive in <span class="math notranslate nohighlight">\(\Sigma\)</span></p></li>
-</ul>
-</li>
-<li><p>applications</p>
-<ul class="simple">
-<li><p>very numerically stable because U and V are orthogonal matrices</p></li>
-<li><p><em>condition number</em> of invertible nxn matrix = <span class="math notranslate nohighlight">\(\sigma_{max} / \sigma_{min}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(A=U\Sigma V^T = u_1 \sigma_1 v_1^T + ... + u_r \sigma_r v_r^T\)</span></p>
-<ul>
-<li><p>we can throw away columns corresponding to small <span class="math notranslate nohighlight">\(\sigma_i\)</span></p></li>
-</ul>
-</li>
-<li><p>pseudoinverse <span class="math notranslate nohighlight">\(A^+ = V \Sigma^+ U^T\)</span></p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="strang-5-3-difference-eqs-and-power-a-k">
-<h3><span class="section-number">3.4.4.4. </span>strang 5.3 - difference eqs and power <span class="math notranslate nohighlight">\(A^k\)</span><a class="headerlink" href="#strang-5-3-difference-eqs-and-power-a-k" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>compound interest</p></li>
-<li><p>solving for fibonacci numbers</p></li>
-<li><p>Markov matrices</p>
-<ul>
-<li><p>steady-state Ax = x</p></li>
-<li><p>corresponds to <span class="math notranslate nohighlight">\(\lambda = 1\)</span></p></li>
-</ul>
-</li>
-<li><p>stability of <span class="math notranslate nohighlight">\(u_{k+1} = A u_k\)</span></p>
-<ul>
-<li><p>stable if all eigenvalues satisfy <span class="math notranslate nohighlight">\(|\lambda_i|\)</span>  &lt;1</p></li>
-<li><p>neutrally stable if some <span class="math notranslate nohighlight">\(|\lambda_i|=1\)</span></p></li>
-<li><p>unstable if at least one <span class="math notranslate nohighlight">\(|\lambda_i|\)</span> &gt; 1</p></li>
+<li><p>unstable if at least one $<span class="math notranslate nohighlight">\(\vert \lambda_i\vert \)</span>$ &gt; 1</p></li>
 </ul>
 </li>
 <li><p>Leontief’s input-output matrix</p></li>
 <li><p><strong>Perron-Frobenius thm</strong> - if A is a positive matrix (positive values), so is its largest eigenvalue and every component of the corresponding eigenvector is also positive</p>
-<ul>
+<ul class="simple">
 <li><p>useful for ranking, etc.</p></li>
 </ul>
 </li>
 <li><p><strong>power method</strong>: want to find eigenvector <span class="math notranslate nohighlight">\(v\)</span> corresponding to largest eigenvalue</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(v = \underset{n \to \infty}{\lim} \frac{A^n v_0}{|A^nv_0|}\)</span> where <span class="math notranslate nohighlight">\(v_0\)</span> is nonnegative</p></li>
+<ul class="simple">
+<li><p>$<span class="math notranslate nohighlight">\(v = \underset{n \to \infty}{\lim} \frac{A^n v_0}{\vert A^nv_0\vert }\)</span><span class="math notranslate nohighlight">\( where \)</span>v_0$ is nonnegative</p></li>
 </ul>
 </li>
 </ul>
@@ -907,7 +813,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>real analysis</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>real analysis</p>
       </div>
     </a>
     <a class="right-next"
@@ -915,7 +821,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>signals</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>signals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -935,23 +841,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-basics">3.4.1. linear basics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">3.4.1.1. notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity">3.4.1.2. linearity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-properties">3.4.1.3. matrix properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-basics">3.3.1. linear basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">3.3.1.1. notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-properties">3.3.1.2. matrix properties</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-calc">3.4.2. matrix calc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">3.4.3. norms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norms">3.4.3.1. vector norms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms">3.4.3.2. matrix norms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-calc">3.3.2. matrix calc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">3.3.3. norms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-norms">3.3.3.1. vector norms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-norms">3.3.3.2. matrix norms</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenstuff">3.4.4. eigenstuff</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-intro-strang-5-1">3.4.4.1. eigenvalues intro - strang 5.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strang-5-2-diagonalization">3.4.4.2. strang 5.2 - diagonalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strang-6-3-singular-value-decomposition">3.4.4.3. strang 6.3 - singular value decomposition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strang-5-3-difference-eqs-and-power-a-k">3.4.4.4. strang 5.3 - difference eqs and power <span class="math notranslate nohighlight">\(A^k\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenstuff">3.3.4. eigenstuff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues-intro-strang-5-1">3.3.4.1. eigenvalues intro - Strang 5.1</a></li>
 </ul>
 </li>
 </ul>
@@ -991,11 +893,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

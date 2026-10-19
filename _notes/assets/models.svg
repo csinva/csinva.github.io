@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 22 978 418" role="img" aria-labelledby="title desc">
+  <title id="title">Relationships among graphical models</title>
+  <desc id="desc">Generative models (top: naive Bayes, HMMs, generative directed models) and their conditional counterparts (bottom: logistic regression, linear-chain CRFs, general CRFs). Arrows labeled SEQUENCE and GENERAL GRAPHS go left to right; arrows labeled CONDITIONAL go from each top model down to its counterpart. Dark nodes are observed; small black squares are factors.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .node { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #a0a0a0; stroke: #2b2b2b; stroke-width: 2; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 18px; font-family: "Times New Roman", Times, serif; }
+      .lab { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .fac { fill: #2b2b2b; }
+      .big { fill: #ffffff; stroke: #2b2b2b; stroke-width: 1.5; stroke-linejoin: miter; }
+      .kw { font: bold 22px "Arial Narrow", Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; letter-spacing: 0.5px; stroke: #ffffff; stroke-width: 5px; paint-order: stroke; stroke-linejoin: round; }
+      .name { font: 18px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .note { font: 16px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <text class="note" x="154" y="44">Dark is observed</text>
+  <line class="edge" x1="88.6" y1="91.6" x2="66.5" y2="121.6" marker-end="url(#arrow)"/>
+  <line class="edge" x1="96.0" y1="94.0" x2="96.0" y2="131.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="103.4" y1="91.6" x2="125.5" y2="121.6" marker-end="url(#arrow)"/>
+  <circle class="node" cx="96.0" cy="81.5" r="12.5"/>
+  <circle class="obs" cx="58.5" cy="132.5" r="12.5"/>
+  <circle class="obs" cx="96.0" cy="145.0" r="12.5"/>
+  <circle class="obs" cx="133.5" cy="132.5" r="12.5"/>
+  <line class="edge" x1="418.5" y1="81.5" x2="455.0" y2="81.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="481.0" y1="81.5" x2="517.5" y2="81.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="406.0" y1="94.0" x2="406.0" y2="131.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="468.5" y1="94.0" x2="468.5" y2="131.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="531.0" y1="94.0" x2="531.0" y2="131.5" marker-end="url(#arrow)"/>
+  <circle class="node" cx="406.0" cy="81.5" r="12.5"/>
+  <circle class="node" cx="468.5" cy="81.5" r="12.5"/>
+  <circle class="node" cx="531.0" cy="81.5" r="12.5"/>
+  <circle class="obs" cx="406.0" cy="145.0" r="12.5"/>
+  <circle class="obs" cx="468.5" cy="145.0" r="12.5"/>
+  <circle class="obs" cx="531.0" cy="145.0" r="12.5"/>
+  <line class="edge" x1="811.0" y1="71.0" x2="860.0" y2="71.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="798.7" y1="83.5" x2="799.3" y2="130.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="840.6" y1="91.4" x2="862.0" y2="78.1" marker-end="url(#arrow)"/>
+  <line class="edge" x1="837.2" y1="108.2" x2="854.7" y2="133.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="841.3" y1="103.4" x2="912.8" y2="138.1" marker-end="url(#arrow)"/>
+  <line class="edge" x1="880.7" y1="81.2" x2="917.2" y2="133.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="812.0" y1="144.0" x2="849.0" y2="144.0" marker-end="url(#arrow)"/>
+  <circle class="node" cx="798.5" cy="71.0" r="12.5"/>
+  <circle class="node" cx="873.5" cy="71.0" r="12.5"/>
+  <circle class="node" cx="830.0" cy="98.0" r="12.5"/>
+  <circle class="obs" cx="799.5" cy="144.0" r="12.5"/>
+  <circle class="obs" cx="862.5" cy="144.0" r="12.5"/>
+  <circle class="obs" cx="925.0" cy="144.0" r="12.5"/>
+  <line class="edge" x1="96.0" y1="320.5" x2="58.5" y2="371.5"/>
+  <line class="edge" x1="96.0" y1="320.5" x2="96.0" y2="384.0"/>
+  <line class="edge" x1="96.0" y1="320.5" x2="133.5" y2="371.5"/>
+  <rect class="fac" x="72.25" y="341.0" width="10" height="10"/>
+  <rect class="fac" x="91.0" y="347.25" width="10" height="10"/>
+  <rect class="fac" x="109.75" y="341.0" width="10" height="10"/>
+  <circle class="node" cx="96.0" cy="320.5" r="12.5"/>
+  <circle class="obs" cx="58.5" cy="371.5" r="12.5"/>
+  <circle class="obs" cx="96.0" cy="384.0" r="12.5"/>
+  <circle class="obs" cx="133.5" cy="371.5" r="12.5"/>
+  <line class="edge" x1="406.0" y1="320.0" x2="531.0" y2="320.0"/>
+  <line class="edge" x1="406.0" y1="320.0" x2="406.0" y2="383.5"/>
+  <line class="edge" x1="468.5" y1="320.0" x2="468.5" y2="383.5"/>
+  <line class="edge" x1="531.0" y1="320.0" x2="531.0" y2="383.5"/>
+  <rect class="fac" x="432.25" y="315.0" width="10" height="10"/>
+  <rect class="fac" x="494.75" y="315.0" width="10" height="10"/>
+  <rect class="fac" x="401.0" y="346.5" width="10" height="10"/>
+  <rect class="fac" x="463.5" y="346.5" width="10" height="10"/>
+  <rect class="fac" x="526.0" y="346.5" width="10" height="10"/>
+  <circle class="node" cx="406.0" cy="320.0" r="12.5"/>
+  <circle class="node" cx="468.5" cy="320.0" r="12.5"/>
+  <circle class="node" cx="531.0" cy="320.0" r="12.5"/>
+  <circle class="obs" cx="406.0" cy="383.5" r="12.5"/>
+  <circle class="obs" cx="468.5" cy="383.5" r="12.5"/>
+  <circle class="obs" cx="531.0" cy="383.5" r="12.5"/>
+  <line class="edge" x1="798.5" y1="308.5" x2="892.0" y2="308.5"/>
+  <line class="edge" x1="841.0" y1="309.0" x2="841.5" y2="341.5"/>
+  <line class="edge" x1="798.5" y1="308.5" x2="798.5" y2="381.0"/>
+  <line class="edge" x1="841.5" y1="341.5" x2="874.0" y2="342.5"/>
+  <line class="edge" x1="874.0" y1="342.5" x2="892.0" y2="308.5"/>
+  <line class="edge" x1="874.0" y1="342.5" x2="913.5" y2="381.0"/>
+  <line class="edge" x1="841.5" y1="341.5" x2="825.5" y2="366.0"/>
+  <line class="edge" x1="825.5" y1="366.0" x2="798.5" y2="381.0"/>
+  <line class="edge" x1="825.5" y1="366.0" x2="857.5" y2="381.0"/>
+  <rect class="fac" x="836.0" y="304.0" width="10" height="10"/>
+  <rect class="fac" x="794.0" y="339.0" width="10" height="10"/>
+  <rect class="fac" x="869.0" y="337.5" width="10" height="10"/>
+  <rect class="fac" x="820.5" y="361.0" width="10" height="10"/>
+  <circle class="node" cx="798.5" cy="308.5" r="12.5"/>
+  <circle class="node" cx="892.0" cy="308.5" r="12.5"/>
+  <circle class="node" cx="841.5" cy="341.5" r="12.5"/>
+  <circle class="obs" cx="798.5" cy="381.0" r="12.5"/>
+  <circle class="obs" cx="857.5" cy="381.0" r="12.5"/>
+  <circle class="obs" cx="913.5" cy="381.0" r="12.5"/>
+  <path class="big" d="M233.0 98.0 H299.5 V81.0 L321.5 113.0 L299.5 145.0 V128.0 H233.0 Z"/>
+  <text class="kw" x="277" y="172.0">SEQUENCE</text>
+  <path class="big" d="M624.0 98.0 H690.5 V81.0 L712.5 113.0 L690.5 145.0 V128.0 H624.0 Z"/>
+  <text class="kw" x="666" y="158.0">GENERAL</text>
+  <text class="kw" x="666" y="184.0">GRAPHS</text>
+  <path class="big" d="M233.0 324.0 H299.5 V307.0 L321.5 339.0 L299.5 371.0 V354.0 H233.0 Z"/>
+  <text class="kw" x="277" y="394.0">SEQUENCE</text>
+  <path class="big" d="M624.0 324.0 H690.5 V307.0 L712.5 339.0 L690.5 371.0 V354.0 H624.0 Z"/>
+  <text class="kw" x="666" y="380.0">GENERAL</text>
+  <text class="kw" x="666" y="406.0">GRAPHS</text>
+  <path class="big" d="M79.0 219.0 H109.0 V265.0 H126.0 L94.0 281.0 L62.0 265.0 H79.0 Z"/>
+  <text class="kw" x="94.0" y="254">CONDITIONAL</text>
+  <path class="big" d="M452.5 219.0 H482.5 V265.0 H499.5 L467.5 281.0 L435.5 265.0 H452.5 Z"/>
+  <text class="kw" x="467.5" y="254">CONDITIONAL</text>
+  <path class="big" d="M831.5 219.0 H861.5 V265.0 H878.5 L846.5 281.0 L814.5 265.0 H831.5 Z"/>
+  <text class="kw" x="846.5" y="254">CONDITIONAL</text>
+  <text class="name" x="94.0" y="194.5">Naive Bayes</text>
+  <text class="name" x="467.0" y="194.5">HMMs</text>
+  <text class="name" x="860.0" y="194.5">Generative directed models</text>
+  <text class="name" x="95.0" y="427.5">Logistic Regression</text>
+  <text class="name" x="468.0" y="427.5">Linear-chain CRFs</text>
+  <text class="name" x="864.0" y="427.5">General CRFs</text>
+</svg>

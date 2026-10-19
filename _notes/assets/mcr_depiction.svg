@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" role="img" aria-labelledby="title desc">
+  <title id="title">Model class reliance</title>
+  <desc id="desc">Expected loss E L(f, Z) (vertical, less accurate at top, more accurate at bottom) against model reliance MR(f) (horizontal, rely less on X1 at left, more on X1 at right). A U-shaped curve bounds the model class F (gray). The population-level Rashomon set R(ε) (green) is the models within ε of the loss of a reference model f_ref. Its range of model reliance runs from MCR−(ε) to MCR+(ε), marked in blue on the horizontal axis.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2b2b2b" stroke-width="1.5"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/></marker>
+    <marker id="agr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/></marker>
+    <clipPath id="inside">
+      <path d="M262 138 C275 200 290 235 302 243 C340 290 380 330 430 330 C470 328 500 350 540 348 C600 345 640 290 665 243 C685 205 705 160 716 128 L716 100 L262 100 Z"/>
+    </clipPath>
+    <style>
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 4; }
+      .cv { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .dot { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 4; }
+      .t { font: 31px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .i { font-style: italic; }
+      .s { font-size: 21px; }
+      .gray { fill: #8a8a8a; }
+      .grn { fill: #1f8a4c; }
+      .blue { fill: #1f6fb2; }
+    </style>
+  </defs>
+  <g clip-path="url(#inside)">
+    <rect x="250" y="160" width="480" height="83" fill="#8a8a8a" fill-opacity="0.18"/>
+    <rect x="250" y="243" width="480" height="140" fill="#1f8a4c" fill-opacity="0.35"/>
+  </g>
+  <rect x="300" y="377" width="365" height="13" fill="#1f6fb2" fill-opacity="0.4"/>
+  <path class="ax" d="M172 383 V68" marker-end="url(#ah)"/>
+  <path class="ax" d="M172 383 H866" marker-end="url(#ah)"/>
+  <path class="cv" d="M262 138 C275 200 290 235 302 243 C340 290 380 330 430 330 C470 328 500 350 540 348 C600 345 640 290 665 243 C685 205 705 160 716 128" marker-start="url(#ahs)" marker-end="url(#ahs)"/>
+  <path class="dot" d="M300 243 H665 M300 243 V383 M665 243 V383 M512 243 V316"/>
+  <!-- epsilon brace -->
+  <path class="cv" d="M500 245 Q490 245 490 255 V270 Q490 280 482 280 Q490 280 490 290 V305 Q490 315 500 315" style="stroke-width:2.2"/>
+  <text class="t i" x="456" y="288">ϵ</text>
+  <circle cx="512" cy="318" r="6" fill="#2b2b2b"/>
+  <text class="t i" x="524" y="330">f<tspan class="s" font-style="normal" dy="7">ref</tspan></text>
+  <!-- labels -->
+  <text class="t" x="28" y="85">𝔼<tspan class="i">L</tspan>(<tspan class="i">f</tspan>, <tspan class="i">Z</tspan>)</text>
+  <text class="t" x="0" y="177">Less</text><text class="t" x="0" y="215">accurate</text>
+  <text class="t" x="0" y="355">More</text><text class="t" x="0" y="393">accurate</text>
+  <text class="t gray" x="260" y="40">Model</text><text class="t gray" x="260" y="78">class (<tspan class="i">ℱ</tspan>)</text>
+  <path d="M325 98 L378 178" stroke="#8a8a8a" stroke-width="4" marker-end="url(#ag)"/>
+  <text class="t grn" x="458" y="55">Population-level</text><text class="t grn" x="458" y="93">Rashomon</text><text class="t grn" x="458" y="131">set (<tspan class="i">ℛ</tspan>(<tspan class="i">ϵ</tspan>))</text>
+  <path d="M546 146 L596 266" stroke="#1f8a4c" stroke-width="4" marker-end="url(#agr)"/>
+  <text class="t i" x="760" y="362">MR</text><text class="t" x="815" y="362">(<tspan class="i">f</tspan>)</text>
+  <text class="t i blue" x="270" y="428">MCR<tspan class="s" font-style="normal" dy="7">−</tspan><tspan dy="-7" font-style="normal">(</tspan>ϵ<tspan font-style="normal">)</tspan></text>
+  <text class="t i blue" x="560" y="428">MCR<tspan class="s" font-style="normal" dy="7">+</tspan><tspan dy="-7" font-style="normal">(</tspan>ϵ<tspan font-style="normal">)</tspan></text>
+  <text class="t" x="172" y="425">Rely</text><text class="t" x="172" y="462">less</text><text class="t" x="172" y="499">on <tspan class="i">X</tspan><tspan class="s" dy="7">1</tspan></text>
+  <text class="t" x="752" y="425">Rely</text><text class="t" x="752" y="462">more</text><text class="t" x="752" y="499">on <tspan class="i">X</tspan><tspan class="s" dy="7">1</tspan></text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 665" role="img" aria-labelledby="title desc">
+  <title id="title">Basal ganglia circuit</title>
+  <desc id="desc">Schematic of the basal ganglia loop. Cortex excites (plus) the caudate and putamen (blue). Putamen inhibits (minus) the globus pallidus and the substantia nigra (green). Globus pallidus inhibits VA/VL of the thalamus (yellow), and VA/VL excites cortex (black). Dopamine from the substantia nigra excites the putamen and the caudate (red); the substantia nigra also inhibits a neighboring target. The subthalamic nucleus is shown below the thalamus.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker>
+    <marker id="ak" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/></marker>
+    <marker id="ay" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b88a00"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; font-size: 21px; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .sg { font-size: 32px; text-anchor: middle; dominant-baseline: central; }
+      .t1 { fill: #e4e4e4; }
+      .t2 { fill: #c9c9c9; }
+      .t3 { fill: #b3b3b3; }
+      .p { fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .red { fill: #d1342f; }
+    </style>
+  </defs>
+  <!-- tissue (simplified shapes) -->
+  <path d="M400 95 C330 15 125 25 82 160 C45 275 70 395 170 450 H320" fill="none" stroke="#e4e4e4" stroke-width="72" stroke-linecap="round"/>
+  <rect class="t1" x="232" y="425" width="92" height="140" rx="10"/>
+  <path class="t1" d="M325 330 V235 C325 185 360 172 395 172 C440 172 462 205 462 250 V330 Z"/>
+  <ellipse class="t1" cx="345" cy="555" rx="62" ry="58"/>
+  <rect class="t2" x="155" y="555" width="185" height="55" rx="6"/>
+  <circle class="t2" cx="308" cy="172" r="22"/>
+  <ellipse class="t2" cx="320" cy="262" rx="22" ry="50"/>
+  <ellipse class="t2" cx="370" cy="358" rx="50" ry="24"/>
+  <rect class="t2" x="140" y="304" width="150" height="62" rx="8" transform="rotate(-40 215 335)"/>
+  <rect class="t2" x="190" y="349" width="110" height="46" rx="8" transform="rotate(-40 245 372)"/>
+  <rect class="t2" x="236" y="384" width="62" height="42" rx="8" transform="rotate(-40 267 405)"/>
+  <rect class="t3" x="275" y="560" width="96" height="30" rx="5" transform="rotate(40 323 575)"/>
+  <ellipse class="t3" cx="380" cy="534" rx="24" ry="31" transform="rotate(25 380 534)"/>
+
+  <!-- connections -->
+  <path class="p" stroke="#1f6fb2" marker-end="url(#ab)" d="M100 135 C125 95 285 95 303 146"/>
+  <path class="p" stroke="#1f6fb2" marker-end="url(#ab)" d="M90 157 L215 312"/>
+  <path class="p" stroke="#2b2b2b" marker-end="url(#ak)" d="M305 238 L150 182"/>
+  <path class="p" stroke="#b88a00" marker-end="url(#ay)" d="M285 392 C305 392 314 380 314 306"/>
+  <path class="p" stroke="#1f8a4c" marker-end="url(#ag)" d="M245 320 C300 305 302 355 268 382"/>
+  <path class="p" stroke="#1f8a4c" marker-end="url(#ag)" d="M232 330 C230 410 270 470 297 548"/>
+  <path class="p" stroke="#d1342f" marker-end="url(#ar)" d="M303 560 C200 585 30 585 22 470 C15 385 110 360 155 362"/>
+  <path class="p" stroke="#d1342f" marker-end="url(#ar)" d="M312 555 C322 470 420 470 520 462 C625 452 620 320 592 275 C560 215 510 130 420 135 C380 140 350 158 334 168"/>
+  <path class="p" stroke="#d1342f" marker-end="url(#ar)" d="M322 572 L362 546"/>
+
+  <!-- signs -->
+  <text class="sg" x="128" y="176">+</text>
+  <text class="sg" x="316" y="172">+</text>
+  <text class="sg" x="226" y="320">+</text>
+  <text class="sg" x="165" y="362">+</text>
+  <text class="sg" x="318" y="298">−</text>
+  <text class="sg" x="266" y="398">−</text>
+  <text class="sg" x="300" y="562">−</text>
+  <text class="sg" x="381" y="537">−</text>
+
+  <!-- labels -->
+  <text class="e" x="284" y="181">Caudate</text>
+  <text class="e" x="290" y="256">VA/VL</text>
+  <text x="96" y="342">Putamen</text>
+  <text x="145" y="432">Globus</text>
+  <text x="145" y="456">pallidus</text>
+  <text x="372" y="395">Subthalamic</text>
+  <text x="372" y="419">nucleus</text>
+  <text class="c" x="318" y="634">Substantia</text>
+  <text class="c" x="318" y="658">nigra</text>
+  <text class="red" transform="translate(30 450) rotate(-16)">dopamine</text>
+  <text class="red" transform="translate(478 145) rotate(38)">dopamine</text>
+</svg>

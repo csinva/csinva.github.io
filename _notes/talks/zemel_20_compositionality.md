@@ -2,8 +2,6 @@
 
 **Richard Zemel, Vector Insitute (Toronto)**
 
-
-
 - compositional causal representations
   - causal graphs
   - compositional representations (decompose into simpler pieces, or factors)
@@ -24,23 +22,16 @@
 - future work - try to make it be succinct - draw sketches that can classify a sketch as quickly as possible
   - can we learn sketches without stroke info?
 
-
-
 ## causal discovery in time-series
 
 - amortized causal discovery - learning to infer causal graphs from time-series data
-
 - how can you infer the influence of one brain region on another (e.g. fmri)?
 
-  ![Screen Shot 2020-07-30 at 4.53.21 PM](assets/learning_causal_graphs.png)
-
+  <img style="width: 700px; max-width: 100%;" src="assets/learning_causal_graphs.svg" alt="Learning latent causal graphs"/>
 - encoder outputs causal graph given a time series
-
   - decoder outputs the future of the time series, given the value + causal graph
   - like granger causality
   - decoder is shared between many time series, encoder changes between time-series
-
 - key idea: train one model that can pool samples from different causal graphs
-
   - key assumption: this is possible assuming they share an underlying dynamics
 

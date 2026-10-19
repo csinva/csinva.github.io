@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 500" role="img" aria-labelledby="title desc">
+  <title id="title">Causation vs. association</title>
+  <desc id="desc">A diamond representing the population of interest is split into a treated half (white, left) and an untreated half (gray, right). Causation compares the whole population had everyone been treated, E[Y^(a=1)], with the whole population had no one been treated, E[Y^(a=0)]. Association compares the treated subset, E[Y | A = 1], with the untreated subset, E[Y | A = 0].</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .shape { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linejoin: round; }
+      .gray { fill: #c4c4c4; stroke: #2b2b2b; stroke-width: 2.5; stroke-linejoin: round; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .lab { font: 30px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+      .math { font: 28px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+      .v { font-style: italic; }
+    </style>
+  </defs>
+
+  <text class="lab" x="390" y="36">Population of interest</text>
+  <!-- top diamond: left half treated (white), right half untreated (gray) -->
+  <path class="gray" d="M396 50 L456 110 L396 170 Z"/>
+  <path class="shape" d="M390 50 L330 110 L390 170"/>
+  <text class="lab" x="250" y="120">Treated</text>
+  <text class="lab" x="540" y="120">Untreated</text>
+
+  <line class="edge" x1="360" y1="185" x2="250" y2="245" marker-end="url(#arrow)"/>
+  <line class="edge" x1="425" y1="185" x2="535" y2="245" marker-end="url(#arrow)"/>
+  <text class="lab" x="180" y="285">Causation</text>
+  <text class="lab" x="600" y="285">Association</text>
+
+  <!-- causation: everyone treated vs everyone untreated -->
+  <path class="shape" d="M75 330 L135 390 L75 450 L15 390 Z"/>
+  <text class="lab" x="180" y="400">vs.</text>
+  <path class="gray" d="M285 330 L345 390 L285 450 L225 390 Z"/>
+  <text class="math" x="75" y="490">E[<tspan class="v">Y</tspan><tspan dy="-12" font-size="19"><tspan class="v">a</tspan>=1</tspan><tspan dy="12">]</tspan></text>
+  <text class="math" x="285" y="490">E[<tspan class="v">Y</tspan><tspan dy="-12" font-size="19"><tspan class="v">a</tspan>=0</tspan><tspan dy="12">]</tspan></text>
+
+  <!-- association: treated half vs untreated half -->
+  <path class="shape" d="M540 330 L480 390 L540 450 Z"/>
+  <text class="lab" x="600" y="400">vs.</text>
+  <path class="gray" d="M665 330 L725 390 L665 450 Z"/>
+  <text class="math" x="515" y="490">E[<tspan class="v">Y</tspan> | <tspan class="v">A</tspan> = 1]</text>
+  <text class="math" x="700" y="490">E[<tspan class="v">Y</tspan> | <tspan class="v">A</tspan> = 0]</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 6 968 660" role="img" aria-labelledby="title desc">
+  <title id="title">Predictive coding</title>
+  <desc id="desc">Top: input minus a prediction gives a feedforward error signal into a predictive estimator, whose prediction is fed back and subtracted from the input. Bottom: neural implementation. Input minus prediction gives an error, passed through sensory error gain and feedforward synapses into recurrent synapses that hold the internal representation v (neural responses); v drives feedback synapses that send the prediction back to be subtracted from the input, and also feeds back into the recurrent synapses.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .w { fill: none; stroke: #1f6fb2; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .sum { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .x { stroke: #2b2b2b; stroke-width: 2; }
+      .minus { stroke: #2b2b2b; stroke-width: 4; stroke-linecap: round; }
+      .bigbox { fill: #1f6fb2; fill-opacity: 0.12; stroke: #2b2b2b; stroke-width: 2; }
+      .blk { fill: #d9b42b; fill-opacity: 0.25; stroke: #2b2b2b; stroke-width: 2; }
+      .est { fill: #1f6fb2; fill-opacity: 0.15; stroke: #2b2b2b; stroke-width: 2; }
+      .big { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .mid { font: 27px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sm { font: 20px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .side { font: 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .vec { font: bold 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <!-- top: generic predictive coding loop -->
+  <text class="mid c" x="520" y="34">Feedforward</text>
+  <text class="mid c" x="520" y="70">Error Signal</text>
+  <text class="big e" x="256" y="197">Input</text>
+  <path class="w" d="M264 186 H370" marker-end="url(#ab)"/>
+  <circle class="sum" cx="400" cy="186" r="28"/>
+  <path class="x" d="M380.2 166.2 L419.8 205.8 M419.8 166.2 L380.2 205.8"/>
+  <path class="minus" d="M393 203.4 H407"/>
+  <path class="w" d="M400 158 V100 H640 V138" marker-end="url(#ab)"/>
+  <rect class="est" x="560" y="140" width="160" height="96"/>
+  <text class="big c" x="640" y="180">Predictive</text>
+  <text class="big c" x="640" y="217">Estimator</text>
+  <path class="w" d="M640 236 V272 H400 V216" marker-end="url(#ab)"/>
+  <text class="mid c" x="520" y="306">Prediction</text>
+  <text class="mid c" x="520" y="342">(Feedback)</text>
+  <!-- bottom: neural implementation -->
+  <rect class="bigbox" x="372" y="392" width="596" height="268"/>
+  <text class="big" x="16" y="531">Input</text>
+  <path class="w" d="M106 520 H158" marker-end="url(#ab)"/>
+  <circle class="sum" cx="180" cy="520" r="20"/>
+  <path class="x" d="M165.9 505.9 L194.1 534.1 M194.1 505.9 L165.9 534.1"/>
+  <path class="minus" d="M175 532.4 H185"/>
+  <path class="w" d="M180 500 V430 H224" marker-end="url(#ab)"/>
+  <text class="big e" x="170" y="470">Error</text>
+  <rect class="blk" x="226" y="400" width="124" height="60"/>
+  <text class="sm" x="288.0" y="426.0">Sensory</text>
+  <text class="sm" x="288.0" y="448.0">Error Gain</text>
+  <path class="w" d="M350 430 H384" marker-end="url(#ab)"/>
+  <rect class="blk" x="386" y="400" width="124" height="60"/>
+  <text class="sm" x="448.0" y="426.0">Feedforward</text>
+  <text class="sm" x="448.0" y="448.0">Synapses</text>
+  <path class="w" d="M510 430 H596 V518 H638" marker-end="url(#ab)"/>
+  <rect class="blk" x="640" y="500" width="124" height="64"/>
+  <text class="sm" x="702.0" y="528.0">Recurrent</text>
+  <text class="sm" x="702.0" y="550.0">Synapses</text>
+  <text class="vec" x="773" y="524">v</text>
+  <path class="w" d="M764 540 H800 V618 H512" marker-end="url(#ab)"/>
+  <path class="w" d="M596 618 V548 H638" marker-end="url(#ab)"/>
+  <rect class="blk" x="386" y="588" width="124" height="60"/>
+  <text class="sm" x="448.0" y="614.0">Feedback</text>
+  <text class="sm" x="448.0" y="636.0">Synapses</text>
+  <path class="w" d="M386 618 H180 V542" marker-end="url(#ab)"/>
+  <text class="mid c" x="690" y="650">Prediction</text>
+  <text class="side" x="812" y="486">Internal</text>
+  <text class="side" x="812" y="516">Representation</text>
+  <text class="side" x="812" y="546">(Neural</text>
+  <text class="side" x="812" y="576">Responses)</text>
+</svg>

@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1975 815" role="img" aria-labelledby="title desc">
+  <title id="title">StyleGAN2 generator revisions</title>
+  <desc id="desc">(a) StyleGAN: blocks at 4×4 and 8×8 built from Const 4×4×512 or Upsample, Conv 3×3, noise inputs B added (⊕) and AdaIN layers driven by styles A. (b) StyleGAN detailed: AdaIN split into Norm mean/std and Mod mean/std; each style block has Mod mean/std (from A), Conv 3×3 with weights w, bias b and noise B added, then Norm mean/std; c1 is the constant input. (c) Revised architecture: only std is modulated and normalized (Mod std, Norm std), and bias b and noise B are added outside the style block. (d) Weight demodulation: Mod and Demod act on the conv weights w directly (Mod from A, then Demod) before Conv 3×3; bias and noise added after each block.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 L3 5 z" fill="#2b2b2b"/></marker>
+    <style>
+      .bg { fill: #8a8a8a; fill-opacity: 0.1; stroke: #8a8a8a; stroke-width: 2; }
+      .gray { fill: #8a8a8a; fill-opacity: 0.3; stroke: #2b2b2b; stroke-width: 2; }
+      .grn { fill: #1f8a4c; fill-opacity: 0.18; stroke: #2b2b2b; stroke-width: 2; }
+      .blu { fill: #1f6fb2; fill-opacity: 0.22; stroke: #2b2b2b; stroke-width: 2; }
+      .pl { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linejoin: round; }
+      .bl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .lab { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sm { font: 20px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .cap { font: 27px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .m { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font: 17px Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+<rect class="bg" x="90" y="15" width="245" height="315"/>
+<rect class="bg" x="90" y="343" width="245" height="374"/>
+<rect class="grn" x="107" y="28" width="213" height="34"/><text class="bl" x="213.5" y="46.0">Const 4×4×512</text>
+<path class="e" d="M213 62 V73"/>
+<circle class="pl" cx="213" cy="84" r="11"/><path class="pl" d="M202 84 H224 M213 73 V95"/>
+<path class="e" d="M213 95 V111"/>
+<rect class="grn" x="355" y="70" width="33" height="32"/><text class="bl" x="371.5" y="87.0">B</text>
+<path class="e" d="M355 86 H226" marker-end="url(#a)"/>
+<text class="lab" x="395" y="94" text-anchor="start">⋯</text>
+<rect class="grn" x="37" y="113" width="35" height="32"/><text class="bl" x="54.5" y="130.0">A</text>
+<path class="e" d="M72 129 H161" marker-end="url(#a)"/>
+<text class="lab" x="30" y="137" text-anchor="end">⋯</text>
+<rect class="blu" x="163" y="111" width="100" height="35"/><text class="bl" x="213.0" y="129.5">AdaIN</text>
+<path class="e" d="M213 146 V185" marker-end="url(#a)"/>
+<rect class="grn" x="107" y="187" width="213" height="34"/><text class="bl" x="213.5" y="205.0">Conv 3×3</text>
+<path class="e" d="M213 221 V233"/>
+<circle class="pl" cx="213" cy="244" r="11"/><path class="pl" d="M202 244 H224 M213 233 V255"/>
+<path class="e" d="M213 255 V271"/>
+<rect class="grn" x="355" y="230" width="33" height="32"/><text class="bl" x="371.5" y="247.0">B</text>
+<path class="e" d="M355 246 H226" marker-end="url(#a)"/>
+<text class="lab" x="395" y="254" text-anchor="start">⋯</text>
+<rect class="grn" x="37" y="273" width="35" height="32"/><text class="bl" x="54.5" y="290.0">A</text>
+<path class="e" d="M72 289 H161" marker-end="url(#a)"/>
+<text class="lab" x="30" y="297" text-anchor="end">⋯</text>
+<rect class="blu" x="163" y="271" width="100" height="35"/><text class="bl" x="213.0" y="289.5">AdaIN</text>
+<text class="sm" x="328" y="322" text-anchor="end">4×4</text>
+<path class="e" d="M213 306 V368" marker-end="url(#a)"/>
+<rect class="gray" x="107" y="370" width="213" height="34"/><text class="bl" x="213.5" y="388.0">Upsample</text>
+<path class="e" d="M213 404 V415"/>
+<rect class="grn" x="107" y="415" width="213" height="34"/><text class="bl" x="213.5" y="433.0">Conv 3×3</text>
+<path class="e" d="M213 449 V461"/>
+<circle class="pl" cx="213" cy="472" r="11"/><path class="pl" d="M202 472 H224 M213 461 V483"/>
+<path class="e" d="M213 483 V500"/>
+<rect class="grn" x="355" y="459" width="33" height="32"/><text class="bl" x="371.5" y="476.0">B</text>
+<path class="e" d="M355 475 H226" marker-end="url(#a)"/>
+<text class="lab" x="395" y="483" text-anchor="start">⋯</text>
+<rect class="grn" x="37" y="501" width="35" height="32"/><text class="bl" x="54.5" y="518.0">A</text>
+<path class="e" d="M72 517 H161" marker-end="url(#a)"/>
+<text class="lab" x="30" y="525" text-anchor="end">⋯</text>
+<rect class="blu" x="163" y="500" width="100" height="35"/><text class="bl" x="213.0" y="518.5">AdaIN</text>
+<path class="e" d="M213 535 V580" marker-end="url(#a)"/>
+<rect class="grn" x="107" y="582" width="213" height="34"/><text class="bl" x="213.5" y="600.0">Conv 3×3</text>
+<path class="e" d="M213 616 V628"/>
+<circle class="pl" cx="213" cy="639" r="11"/><path class="pl" d="M202 639 H224 M213 628 V650"/>
+<path class="e" d="M213 650 V667"/>
+<rect class="grn" x="355" y="625" width="33" height="32"/><text class="bl" x="371.5" y="642.0">B</text>
+<path class="e" d="M355 641 H226" marker-end="url(#a)"/>
+<text class="lab" x="395" y="649" text-anchor="start">⋯</text>
+<rect class="grn" x="37" y="668" width="35" height="32"/><text class="bl" x="54.5" y="685.0">A</text>
+<path class="e" d="M72 684 H161" marker-end="url(#a)"/>
+<text class="lab" x="30" y="692" text-anchor="end">⋯</text>
+<rect class="blu" x="163" y="667" width="100" height="35"/><text class="bl" x="213.0" y="685.5">AdaIN</text>
+<text class="sm" x="328" y="710" text-anchor="end">8×8</text>
+<path class="e" d="M213 702 V748" marker-end="url(#a)"/>
+<text class="lab" x="213" y="768" text-anchor="middle">⋯</text>
+<text class="cap" x="218" y="800" text-anchor="middle">(a) StyleGAN</text>
+<text class="m" x="570" y="30" text-anchor="start">c<tspan class="sub" dy="7">1</tspan></text>
+<path class="e" d="M592 24 H752 V50" marker-end="url(#a)"/>
+<text class="m" x="570" y="72" text-anchor="start">b<tspan class="sub" dy="7">1</tspan></text>
+<path class="e" d="M592 63 H739" marker-end="url(#a)"/>
+<circle class="pl" cx="752" cy="63" r="11"/><path class="pl" d="M741 63 H763 M752 52 V74"/>
+<rect class="grn" x="897" y="48" width="35" height="32"/><text class="bl" x="914.5" y="65.0">B</text>
+<path class="e" d="M897 64 H765" marker-end="url(#a)"/>
+<path class="e" d="M752 74 V84"/>
+<rect class="blu" x="670" y="84" width="165" height="34"/><text class="bl" x="752.5" y="102.0">Norm mean/std</text>
+<path class="e" d="M752 118 V143"/>
+<rect class="bg" x="551" y="130" width="327" height="175"/>
+<text class="sm" x="538" y="217.5" text-anchor="middle" transform="rotate(-90 538 217.5)">Style block</text>
+<rect class="grn" x="478" y="144" width="35" height="32"/><text class="bl" x="495.5" y="161.0">A</text>
+<path class="e" d="M513 160 H668" marker-end="url(#a)"/>
+<rect class="blu" x="670" y="143" width="165" height="34"/><text class="bl" x="752.5" y="161.0">Mod mean/std</text>
+<path class="e" d="M752 177 V190"/>
+<rect class="grn" x="646" y="190" width="212" height="32"/><text class="bl" x="752.0" y="207.0">Conv 3×3</text>
+<text class="m" x="560" y="216" text-anchor="start">w<tspan class="sub" dy="7">2</tspan></text>
+<path class="e" d="M590 208 H644" marker-end="url(#a)"/>
+<path class="e" d="M752 222 V231"/>
+<circle class="pl" cx="752" cy="242" r="11"/><path class="pl" d="M741 242 H763 M752 231 V253"/>
+<text class="m" x="560" y="254" text-anchor="start">b<tspan class="sub" dy="7">2</tspan></text>
+<path class="e" d="M590 242 H739" marker-end="url(#a)"/>
+<rect class="grn" x="897" y="226" width="35" height="32"/><text class="bl" x="914.5" y="243.0">B</text>
+<path class="e" d="M897 242 H765" marker-end="url(#a)"/>
+<path class="e" d="M752 253 V264"/>
+<rect class="blu" x="670" y="264" width="165" height="34"/><text class="bl" x="752.5" y="282.0">Norm mean/std</text>
+<path class="e" d="M752 298 V326"/>
+<rect class="bg" x="551" y="317" width="327" height="216"/>
+<text class="sm" x="538" y="425.0" text-anchor="middle" transform="rotate(-90 538 425.0)">Style block</text>
+<rect class="grn" x="478" y="328" width="35" height="32"/><text class="bl" x="495.5" y="345.0">A</text>
+<path class="e" d="M513 344 H668" marker-end="url(#a)"/>
+<rect class="blu" x="670" y="326" width="165" height="34"/><text class="bl" x="752.5" y="344.0">Mod mean/std</text>
+<path class="e" d="M752 360 V372"/>
+<rect class="gray" x="646" y="372" width="212" height="33"/><text class="bl" x="752.0" y="389.5">Upsample</text>
+<path class="e" d="M752 405 V418"/>
+<rect class="grn" x="646" y="418" width="212" height="33"/><text class="bl" x="752.0" y="435.5">Conv 3×3</text>
+<text class="m" x="560" y="443" text-anchor="start">w<tspan class="sub" dy="7">3</tspan></text>
+<path class="e" d="M590 435 H644" marker-end="url(#a)"/>
+<path class="e" d="M752 451 V459"/>
+<circle class="pl" cx="752" cy="470" r="11"/><path class="pl" d="M741 470 H763 M752 459 V481"/>
+<text class="m" x="560" y="482" text-anchor="start">b<tspan class="sub" dy="7">3</tspan></text>
+<path class="e" d="M590 470 H739" marker-end="url(#a)"/>
+<rect class="grn" x="897" y="454" width="35" height="32"/><text class="bl" x="914.5" y="471.0">B</text>
+<path class="e" d="M897 470 H765" marker-end="url(#a)"/>
+<path class="e" d="M752 481 V492"/>
+<rect class="blu" x="670" y="492" width="165" height="34"/><text class="bl" x="752.5" y="510.0">Norm mean/std</text>
+<path class="e" d="M752 526 V555"/>
+<rect class="bg" x="551" y="545" width="327" height="172"/>
+<text class="sm" x="538" y="631.0" text-anchor="middle" transform="rotate(-90 538 631.0)">Style block</text>
+<rect class="grn" x="478" y="556" width="35" height="32"/><text class="bl" x="495.5" y="573.0">A</text>
+<path class="e" d="M513 572 H668" marker-end="url(#a)"/>
+<rect class="blu" x="670" y="555" width="165" height="34"/><text class="bl" x="752.5" y="573.0">Mod mean/std</text>
+<path class="e" d="M752 589 V600"/>
+<rect class="grn" x="646" y="600" width="212" height="34"/><text class="bl" x="752.0" y="618.0">Conv 3×3</text>
+<text class="m" x="560" y="626" text-anchor="start">w<tspan class="sub" dy="7">4</tspan></text>
+<path class="e" d="M590 618 H644" marker-end="url(#a)"/>
+<path class="e" d="M752 634 V642"/>
+<circle class="pl" cx="752" cy="653" r="11"/><path class="pl" d="M741 653 H763 M752 642 V664"/>
+<text class="m" x="560" y="665" text-anchor="start">b<tspan class="sub" dy="7">4</tspan></text>
+<path class="e" d="M590 653 H739" marker-end="url(#a)"/>
+<rect class="grn" x="897" y="637" width="35" height="32"/><text class="bl" x="914.5" y="654.0">B</text>
+<path class="e" d="M897 653 H765" marker-end="url(#a)"/>
+<path class="e" d="M752 664 V675"/>
+<rect class="blu" x="670" y="675" width="165" height="34"/><text class="bl" x="752.5" y="693.0">Norm mean/std</text>
+<path class="e" d="M752 709 V748" marker-end="url(#a)"/>
+<text class="lab" x="752" y="768" text-anchor="middle">⋯</text>
+<text class="cap" x="708" y="800" text-anchor="middle">(b) StyleGAN (detailed)</text>
+<text class="m" x="1263" y="46" text-anchor="middle">c<tspan class="sub" dy="7">1</tspan></text>
+<path class="e" d="M1263 58 V130" marker-end="url(#a)"/>
+<rect class="bg" x="1062" y="104" width="326" height="164"/>
+<rect class="grn" x="1007" y="134" width="35" height="32"/><text class="bl" x="1024.5" y="151.0">A</text>
+<path class="e" d="M1042 150 H1198" marker-end="url(#a)"/>
+<rect class="blu" x="1200" y="132" width="125" height="35"/><text class="bl" x="1262.5" y="150.5">Mod std</text>
+<path class="e" d="M1263 167 V179"/>
+<rect class="grn" x="1157" y="179" width="212" height="33"/><text class="bl" x="1263.0" y="196.5">Conv 3×3</text>
+<text class="m" x="1075" y="204" text-anchor="start">w<tspan class="sub" dy="7">2</tspan></text>
+<path class="e" d="M1105 196 H1155" marker-end="url(#a)"/>
+<path class="e" d="M1263 212 V225"/>
+<rect class="blu" x="1200" y="225" width="125" height="34"/><text class="bl" x="1262.5" y="243.0">Norm std</text>
+<path class="e" d="M1263 259 V278"/>
+<circle class="pl" cx="1263" cy="289" r="11"/><path class="pl" d="M1252 289 H1274 M1263 278 V300"/>
+<text class="m" x="1075" y="301" text-anchor="start">b<tspan class="sub" dy="7">2</tspan></text>
+<path class="e" d="M1105 289 H1250" marker-end="url(#a)"/>
+<rect class="grn" x="1407" y="273" width="36" height="32"/><text class="bl" x="1425.0" y="290.0">B</text>
+<path class="e" d="M1407 289 H1276" marker-end="url(#a)"/>
+<path class="e" d="M1263 300 V315" marker-end="url(#a)"/>
+<rect class="bg" x="1062" y="308" width="326" height="189"/>
+<rect class="grn" x="1007" y="319" width="35" height="32"/><text class="bl" x="1024.5" y="336.0">A</text>
+<path class="e" d="M1042 335 H1198" marker-end="url(#a)"/>
+<rect class="blu" x="1200" y="317" width="125" height="34"/><text class="bl" x="1262.5" y="335.0">Mod std</text>
+<path class="e" d="M1263 351 V364"/>
+<rect class="gray" x="1157" y="364" width="212" height="33"/><text class="bl" x="1263.0" y="381.5">Upsample</text>
+<path class="e" d="M1263 397 V410"/>
+<rect class="grn" x="1157" y="410" width="212" height="33"/><text class="bl" x="1263.0" y="427.5">Conv 3×3</text>
+<text class="m" x="1075" y="434" text-anchor="start">w<tspan class="sub" dy="7">3</tspan></text>
+<path class="e" d="M1105 426 H1155" marker-end="url(#a)"/>
+<path class="e" d="M1263 443 V455"/>
+<rect class="blu" x="1200" y="455" width="125" height="34"/><text class="bl" x="1262.5" y="473.0">Norm std</text>
+<path class="e" d="M1263 489 V506"/>
+<circle class="pl" cx="1263" cy="517" r="11"/><path class="pl" d="M1252 517 H1274 M1263 506 V528"/>
+<text class="m" x="1075" y="529" text-anchor="start">b<tspan class="sub" dy="7">3</tspan></text>
+<path class="e" d="M1105 517 H1250" marker-end="url(#a)"/>
+<rect class="grn" x="1407" y="501" width="36" height="32"/><text class="bl" x="1425.0" y="518.0">B</text>
+<path class="e" d="M1407 517 H1276" marker-end="url(#a)"/>
+<path class="e" d="M1263 528 V546" marker-end="url(#a)"/>
+<rect class="bg" x="1062" y="537" width="326" height="147"/>
+<rect class="grn" x="1007" y="550" width="35" height="32"/><text class="bl" x="1024.5" y="567.0">A</text>
+<path class="e" d="M1042 566 H1198" marker-end="url(#a)"/>
+<rect class="blu" x="1200" y="548" width="125" height="34"/><text class="bl" x="1262.5" y="566.0">Mod std</text>
+<path class="e" d="M1263 582 V595"/>
+<rect class="grn" x="1157" y="595" width="212" height="33"/><text class="bl" x="1263.0" y="612.5">Conv 3×3</text>
+<text class="m" x="1075" y="620" text-anchor="start">w<tspan class="sub" dy="7">4</tspan></text>
+<path class="e" d="M1105 612 H1155" marker-end="url(#a)"/>
+<path class="e" d="M1263 628 V641"/>
+<rect class="blu" x="1200" y="641" width="125" height="34"/><text class="bl" x="1262.5" y="659.0">Norm std</text>
+<path class="e" d="M1263 675 V696"/>
+<circle class="pl" cx="1263" cy="707" r="11"/><path class="pl" d="M1252 707 H1274 M1263 696 V718"/>
+<text class="m" x="1075" y="719" text-anchor="start">b<tspan class="sub" dy="7">4</tspan></text>
+<path class="e" d="M1105 707 H1250" marker-end="url(#a)"/>
+<rect class="grn" x="1407" y="691" width="36" height="32"/><text class="bl" x="1425.0" y="708.0">B</text>
+<path class="e" d="M1407 707 H1276" marker-end="url(#a)"/>
+<path class="e" d="M1263 718 V748" marker-end="url(#a)"/>
+<text class="lab" x="1263" y="768" text-anchor="middle">⋯</text>
+<text class="cap" x="1230" y="800" text-anchor="middle">(c) Revised architecture</text>
+<text class="m" x="1800" y="46" text-anchor="middle">c<tspan class="sub" dy="7">1</tspan></text>
+<path class="e" d="M1800 58 V215" marker-end="url(#a)"/>
+<rect class="bg" x="1573" y="126" width="330" height="142"/>
+<text class="m" x="1645" y="145" text-anchor="middle">w<tspan class="sub" dy="7">2</tspan></text>
+<path class="e" d="M1645 155 V170"/>
+<rect class="grn" x="1520" y="171" width="35" height="32"/><text class="bl" x="1537.5" y="188.0">A</text>
+<path class="e" d="M1555 187 H1603" marker-end="url(#a)"/>
+<rect class="blu" x="1605" y="170" width="81" height="34"/><text class="bl" x="1645.5" y="188.0">Mod</text>
+<path class="e" d="M1645 204 V218"/>
+<rect class="blu" x="1605" y="218" width="81" height="34"/><text class="bl" x="1645.5" y="236.0">Demod</text>
+<path class="e" d="M1686 235.0 H1715" marker-end="url(#a)"/>
+<rect class="grn" x="1717" y="218" width="168" height="34"/><text class="bl" x="1801.0" y="236.0">Conv 3×3</text>
+<path class="e" d="M1800 252 V289"/>
+<circle class="pl" cx="1800" cy="300" r="11"/><path class="pl" d="M1789 300 H1811 M1800 289 V311"/>
+<text class="m" x="1612" y="312" text-anchor="start">b<tspan class="sub" dy="7">2</tspan></text>
+<path class="e" d="M1642 300 H1787" marker-end="url(#a)"/>
+<rect class="grn" x="1923" y="284" width="35" height="32"/><text class="bl" x="1940.5" y="301.0">B</text>
+<path class="e" d="M1923 300 H1813" marker-end="url(#a)"/>
+<path class="e" d="M1800 311 V376" marker-end="url(#a)"/>
+<rect class="bg" x="1573" y="333" width="330" height="141"/>
+<text class="m" x="1645" y="352" text-anchor="middle">w<tspan class="sub" dy="7">3</tspan></text>
+<path class="e" d="M1645 362 V378"/>
+<rect class="grn" x="1520" y="380" width="35" height="32"/><text class="bl" x="1537.5" y="397.0">A</text>
+<path class="e" d="M1555 396 H1603" marker-end="url(#a)"/>
+<rect class="blu" x="1605" y="378" width="81" height="34"/><text class="bl" x="1645.5" y="396.0">Mod</text>
+<path class="e" d="M1645 412 V424"/>
+<rect class="blu" x="1605" y="424" width="81" height="34"/><text class="bl" x="1645.5" y="442.0">Demod</text>
+<path class="e" d="M1686 441.0 H1715" marker-end="url(#a)"/>
+<rect class="gray" x="1717" y="378" width="168" height="34"/><text class="bl" x="1801.0" y="396.0">Upsample</text>
+<path class="e" d="M1800 412 V424"/>
+<rect class="grn" x="1717" y="424" width="168" height="34"/><text class="bl" x="1801.0" y="442.0">Conv 3×3</text>
+<path class="e" d="M1800 458 V496"/>
+<circle class="pl" cx="1800" cy="507" r="11"/><path class="pl" d="M1789 507 H1811 M1800 496 V518"/>
+<text class="m" x="1612" y="519" text-anchor="start">b<tspan class="sub" dy="7">3</tspan></text>
+<path class="e" d="M1642 507 H1787" marker-end="url(#a)"/>
+<rect class="grn" x="1923" y="491" width="35" height="32"/><text class="bl" x="1940.5" y="508.0">B</text>
+<path class="e" d="M1923 507 H1813" marker-end="url(#a)"/>
+<path class="e" d="M1800 518 V629" marker-end="url(#a)"/>
+<rect class="bg" x="1573" y="541" width="330" height="140"/>
+<text class="m" x="1645" y="560" text-anchor="middle">w<tspan class="sub" dy="7">4</tspan></text>
+<path class="e" d="M1645 570 V583"/>
+<rect class="grn" x="1520" y="582" width="35" height="32"/><text class="bl" x="1537.5" y="599.0">A</text>
+<path class="e" d="M1555 598 H1603" marker-end="url(#a)"/>
+<rect class="blu" x="1605" y="583" width="81" height="31"/><text class="bl" x="1645.5" y="599.5">Mod</text>
+<path class="e" d="M1645 614 V631"/>
+<rect class="blu" x="1605" y="631" width="81" height="34"/><text class="bl" x="1645.5" y="649.0">Demod</text>
+<path class="e" d="M1686 648.0 H1715" marker-end="url(#a)"/>
+<rect class="grn" x="1717" y="631" width="168" height="34"/><text class="bl" x="1801.0" y="649.0">Conv 3×3</text>
+<path class="e" d="M1800 665 V696"/>
+<circle class="pl" cx="1800" cy="707" r="11"/><path class="pl" d="M1789 707 H1811 M1800 696 V718"/>
+<text class="m" x="1612" y="719" text-anchor="start">b<tspan class="sub" dy="7">4</tspan></text>
+<path class="e" d="M1642 707 H1787" marker-end="url(#a)"/>
+<rect class="grn" x="1923" y="691" width="35" height="32"/><text class="bl" x="1940.5" y="708.0">B</text>
+<path class="e" d="M1923 707 H1813" marker-end="url(#a)"/>
+<path class="e" d="M1800 718 V748" marker-end="url(#a)"/>
+<text class="lab" x="1800" y="768" text-anchor="middle">⋯</text>
+<text class="cap" x="1736" y="800" text-anchor="middle">(d) Weight demodulation</text>
+<path d="M458 15 V760" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="8 8"/>
+<path d="M970 15 V760" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="8 8"/>
+<path d="M1481 15 V760" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="8 8"/>
+</svg>

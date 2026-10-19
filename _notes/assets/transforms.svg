@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 834 790" role="img" aria-labelledby="title desc">
+  <title id="title">Time-frequency tilings of signal transforms</title>
+  <desc id="desc">Four time-frequency diagrams. Time series: the plane is split into narrow vertical strips (perfect time resolution, no frequency resolution). Fourier transform: horizontal strips (frequency resolution, no time resolution). Short time FT: a uniform 4 by 4 grid. Wavelet transform: narrow tall cells at high frequency and wide short cells at low frequency, with one cell at each of two scales hatched.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#2b2b2b" stroke-width="2"/>
+    </pattern>
+    <style>
+      .cell { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .hatch { fill: url(#hatch); }
+      .axis { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .title { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .lab { font: 24px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <g>  <!-- Time Series -->
+    <text class="title" x="200.0" y="36">Time Series</text>
+    <rect class="cell" x="40.0" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="77.5" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="115.0" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="152.5" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="190.0" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="227.5" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="265.0" y="54.0" width="37.5" height="290.0"/>
+    <rect class="cell" x="302.5" y="54.0" width="37.5" height="290.0"/>
+    <path class="axis" d="M40 346 V12" marker-end="url(#arrow)"/>
+    <path class="axis" d="M38 344 H386" marker-end="url(#arrow)"/>
+    <text class="lab" transform="translate(26 199.0) rotate(-90)">frequency</text>
+    <text class="lab" x="190.0" y="374">time</text>
+  </g>
+  <g>  <!-- Fourier Transform -->
+    <text class="title" x="630.0" y="36">Fourier Transform</text>
+    <rect class="cell" x="470.0" y="54.0" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="90.2" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="126.5" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="162.8" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="199.0" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="235.2" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="271.5" width="300.0" height="36.2"/>
+    <rect class="cell" x="470.0" y="307.8" width="300.0" height="36.2"/>
+    <path class="axis" d="M470 346 V12" marker-end="url(#arrow)"/>
+    <path class="axis" d="M468 344 H816" marker-end="url(#arrow)"/>
+    <text class="lab" transform="translate(456 199.0) rotate(-90)">frequency</text>
+    <text class="lab" x="620.0" y="374">time</text>
+  </g>
+  <g>  <!-- Short Time FT -->
+    <text class="title" x="200.0" y="436">Short Time FT</text>
+    <rect class="cell" x="40.0" y="454.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="115.0" y="454.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="190.0" y="454.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="265.0" y="454.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="40.0" y="526.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="115.0" y="526.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="190.0" y="526.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="265.0" y="526.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="40.0" y="599.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="115.0" y="599.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="190.0" y="599.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="265.0" y="599.0" width="75.0" height="72.5"/>
+    <rect class="cell" x="40.0" y="671.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="115.0" y="671.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="190.0" y="671.5" width="75.0" height="72.5"/>
+    <rect class="cell" x="265.0" y="671.5" width="75.0" height="72.5"/>
+    <path class="axis" d="M40 746 V412" marker-end="url(#arrow)"/>
+    <path class="axis" d="M38 744 H386" marker-end="url(#arrow)"/>
+    <text class="lab" transform="translate(26 599.0) rotate(-90)">frequency</text>
+    <text class="lab" x="190.0" y="774">time</text>
+  </g>
+  <g>  <!-- Wavelet Transform -->
+    <text class="title" x="630.0" y="436">Wavelet Transform</text>
+    <rect class="cell" x="470.0" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell hatch" x="507.5" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="545.0" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="582.5" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="620.0" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="657.5" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="695.0" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="732.5" y="454.0" width="37.5" height="167.3"/>
+    <rect class="cell" x="470.0" y="621.3" width="75.0" height="70.5"/>
+    <rect class="cell" x="545.0" y="621.3" width="75.0" height="70.5"/>
+    <rect class="cell hatch" x="620.0" y="621.3" width="75.0" height="70.5"/>
+    <rect class="cell" x="695.0" y="621.3" width="75.0" height="70.5"/>
+    <rect class="cell" x="470.0" y="691.8" width="150.0" height="37.7"/>
+    <rect class="cell" x="620.0" y="691.8" width="150.0" height="37.7"/>
+    <rect class="cell" x="470.0" y="729.5" width="300.0" height="14.5"/>
+    <path class="axis" d="M470 746 V412" marker-end="url(#arrow)"/>
+    <path class="axis" d="M468 744 H816" marker-end="url(#arrow)"/>
+    <text class="lab" transform="translate(456 599.0) rotate(-90)">frequency</text>
+    <text class="lab" x="620.0" y="774">time</text>
+  </g>
+</svg>

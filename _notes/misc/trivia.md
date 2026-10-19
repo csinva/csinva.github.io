@@ -53,8 +53,6 @@
 45. donald trump (2017-2021)
 46. joe biden (2021-)
 
-
-
 # world history
 
 - WW1
@@ -70,27 +68,15 @@
 
 # actors
 
-
-
 # recent news
-
-
 
 # sports teams / mascots
 
-
-
 # brands
-
-
 
 # pop music
 
-
-
 # greek mythology
-
-
 
 # actors
 

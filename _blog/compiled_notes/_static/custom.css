@@ -1,0 +1,7 @@
+/* text colors matching the \cblue{...} etc. equation macros in _config.yml */
+.cblue { color: rgb(31, 111, 178); }
+.corange { color: rgb(217, 130, 43); }
+.cgreen { color: rgb(31, 138, 76); }
+.cpink { color: rgb(199, 60, 130); }
+.cpurple { color: rgb(123, 79, 181); }
+.cyellow { color: rgb(168, 132, 0); }

@@ -1,5 +1,3 @@
-[TOC]
-
 # success + challenges in modern ai
 
 **amnon shashua, Hebrew University**
@@ -66,7 +64,7 @@
 - alphago: prune search tree to just reasonable moves
 - when does it work (convert into suprvised learning)
   - environment is full of rewards and random agent gets them sometimes (e.g. atari)
-  - available human demonstrations at scale 
+  - available human demonstrations at scale
   - algorithmic ways to improve the policty (search for alphago)
   - you can simulate many trajectories fast
 - real-world problems
@@ -139,8 +137,6 @@
 - gain control vs batch normalization?
 - wishlist???
 
-
-
 # bruno
 
 - bruno says read this: **o regan & noe 2001 - philosophy paper on motors/actuators**
@@ -191,7 +187,7 @@
     - sgd on logistic reg. gives hard margin svm
     - deep linear net gives the same thing - doesn't actually changed anything
   - ex. [gunaskar, 2018](http://papers.nips.cc/paper/8156-implicit-bias-of-gradient-descent-on-linear-convolutional-networks)
-    - linear convnets give smth better - minimum l1 norm in discrete fourier transform 
+    - linear convnets give smth better - minimum l1 norm in discrete fourier transform
   - ex. savarese 2019
     - infinite width relu net 1-d input
     - weight decay minimization minimizes derivative of TV

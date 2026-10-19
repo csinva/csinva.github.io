@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 0 724 270" role="img" aria-labelledby="title desc">
+  <title id="title">Haar wavelet: scale and shift</title>
+  <desc id="desc">Left: the Haar mother wavelet psi(t), equal to 1 on the first half of [0, T] and -1 on the second half. A curved arrow labelled "scale &amp; shift" points to four copies: two at the original width (one starting at 0, one shifted right) and two at half the width (one starting at 0, one shifted right).</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .axis { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .wave { fill: none; stroke: #2b2b2b; stroke-width: 2.4; stroke-linejoin: miter; }
+      .lbl { font: 20px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .var { font: italic 21px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .ann { font: 19px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+
+  <!-- mother wavelet -->
+  <path class="axis" d="M24 40 V190"/>
+  <path class="axis" d="M8 128 H160"/>
+  <path class="wave" d="M24 128 V88 H82 V168 H144 V128"/>
+  <text class="var" x="0" y="30">ψ(t)</text>
+  <text class="lbl" x="4" y="95">1</text>
+  <text class="lbl" x="-2" y="175">−1</text>
+  <text class="var" x="134" y="120">T</text>
+  <text class="var" x="166" y="134">t</text>
+
+  <!-- scale & shift -->
+  <path class="axis" d="M200 112 Q250 52 316 94" marker-end="url(#arrow)"/>
+  <text class="ann" x="196" y="64">scale &amp; shift</text>
+
+  <!-- top-left: same width, no shift -->
+  <path class="axis" d="M352 4 V118"/>
+  <path class="axis" d="M336 62 H500"/>
+  <path class="wave" d="M352 62 V24 H392 V96 H430 V62"/>
+  <text class="var" x="506" y="68">t</text>
+
+  <!-- top-right: same width, shifted -->
+  <path class="axis" d="M544 4 V118"/>
+  <path class="axis" d="M528 62 H694"/>
+  <path class="wave" d="M544 62 H614 V24 H654 V96 H692 V62"/>
+  <text class="var" x="700" y="68">t</text>
+
+  <!-- bottom-left: half width, no shift -->
+  <path class="axis" d="M352 150 V266"/>
+  <path class="axis" d="M336 208 H500"/>
+  <path class="wave" d="M352 208 V168 H377 V246 H400 V208"/>
+  <text class="var" x="506" y="214">t</text>
+
+  <!-- bottom-right: half width, shifted -->
+  <path class="axis" d="M544 150 V266"/>
+  <path class="axis" d="M528 208 H694"/>
+  <path class="wave" d="M544 208 H576 V168 H601 V246 H624 V208"/>
+  <text class="var" x="700" y="214">t</text>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 0 950 385" role="img" aria-labelledby="title desc">
+  <title id="title">Counterfactual representation learning</title>
+  <desc id="desc">Context x (mixed red and blue points) maps to a representation Φ. Φ and treatment t feed the outcome error loss(h(Φ, t), y). Φ feeds the imbalance term disc(Φ_C, Φ_T); t feeds the imbalance term by a dashed arrow. The outcome-error icon is a fitted curve with residuals; the imbalance icon is two shifted distributions.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .rd { fill: #d1342f; fill-opacity: 0.75; }
+      .bl { fill: #1f6fb2; }
+      .k { fill: #2b2b2b; }
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .dsh { stroke-dasharray: 5 5; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .t { font: 32px "Times New Roman", Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+      .i { font-style: italic; }
+      .b { font-weight: bold; }
+      .s { font-size: 20px; }
+    </style>
+  </defs>
+<circle class="rd" cx="66" cy="34" r="6"/>
+<circle class="rd" cx="85" cy="36" r="6"/>
+<circle class="rd" cx="100" cy="25" r="6"/>
+<circle class="rd" cx="44" cy="59" r="6"/>
+<circle class="rd" cx="74" cy="57" r="6"/>
+<circle class="rd" cx="122" cy="48" r="6"/>
+<circle class="rd" cx="78" cy="76" r="6"/>
+<circle class="rd" cx="106" cy="73" r="6"/>
+<circle class="rd" cx="148" cy="68" r="6"/>
+<circle class="rd" cx="196" cy="64" r="6"/>
+<circle class="rd" cx="109" cy="96" r="6"/>
+<circle class="bl" cx="98" cy="52" r="6"/>
+<circle class="bl" cx="148" cy="43" r="6"/>
+<circle class="bl" cx="169" cy="25" r="6"/>
+<circle class="bl" cx="174" cy="48" r="6"/>
+<circle class="bl" cx="196" cy="48" r="6"/>
+<circle class="bl" cx="221" cy="31" r="6"/>
+<circle class="bl" cx="128" cy="68" r="6"/>
+<circle class="bl" cx="179" cy="74" r="6"/>
+<circle class="bl" cx="227" cy="64" r="6"/>
+<circle class="bl" cx="63" cy="90" r="6"/>
+<circle class="bl" cx="156" cy="92" r="6"/>
+<circle class="bl" cx="186" cy="98" r="6"/>
+<circle class="bl" cx="216" cy="92" r="6"/>
+<circle class="rd" cx="422" cy="31" r="6"/>
+<circle class="rd" cx="464" cy="25" r="6"/>
+<circle class="rd" cx="526" cy="28" r="6"/>
+<circle class="rd" cx="451" cy="48" r="6"/>
+<circle class="rd" cx="392" cy="59" r="6"/>
+<circle class="rd" cx="422" cy="68" r="6"/>
+<circle class="rd" cx="478" cy="68" r="6"/>
+<circle class="rd" cx="492" cy="60" r="6"/>
+<circle class="rd" cx="550" cy="62" r="6"/>
+<circle class="rd" cx="439" cy="96" r="6"/>
+<circle class="rd" cx="510" cy="96" r="6"/>
+<circle class="bl" cx="438" cy="22" r="6"/>
+<circle class="bl" cx="484" cy="13" r="6"/>
+<circle class="bl" cx="499" cy="25" r="6"/>
+<circle class="bl" cx="428" cy="52" r="6"/>
+<circle class="bl" cx="478" cy="43" r="6"/>
+<circle class="bl" cx="526" cy="48" r="6"/>
+<circle class="bl" cx="445" cy="68" r="6"/>
+<circle class="bl" cx="407" cy="78" r="6"/>
+<circle class="bl" cx="459" cy="85" r="6"/>
+<circle class="bl" cx="509" cy="74" r="6"/>
+<circle class="bl" cx="526" cy="82" r="6"/>
+<circle class="bl" cx="415" cy="100" r="6"/>
+<circle class="bl" cx="485" cy="93" r="6"/>
+<circle class="bl" cx="121" cy="270" r="6"/><circle class="rd" cx="145" cy="270" r="6"/>
+<path class="ln" d="M779.0 96.0 L780.1 94.4 L781.2 92.9 L782.3 91.3 L783.4 89.8 L784.4 88.4 L785.5 87.0 L786.6 85.6 L787.6 84.3 L788.7 83.0 L789.8 81.8 L790.8 80.6 L791.9 79.5 L793.0 78.4 L794.1 77.4 L795.1 76.5 L796.2 75.6 L797.3 74.8 L798.4 74.1 L799.5 73.5 L800.6 72.9 L801.7 72.4 L802.8 72.0 L803.9 71.7 L805.0 71.4 L806.2 71.3 L807.3 71.2 L808.5 71.3 L809.6 71.4 L810.8 71.7 L812.0 72.0 L812.0 72.0 L813.2 72.4 L814.4 72.9 L815.6 73.5 L816.8 74.1 L818.0 74.7 L819.2 75.4 L820.4 76.1 L821.6 76.8 L822.8 77.5 L824.0 78.2 L825.2 79.0 L826.4 79.7 L827.6 80.4 L828.8 81.1 L830.0 81.8 L831.2 82.4 L832.4 83.0 L833.6 83.5 L834.8 84.0 L836.0 84.4 L837.2 84.8 L838.4 85.1 L839.6 85.3 L840.8 85.4 L842.0 85.5 L843.2 85.4 L844.4 85.2 L845.6 84.9 L846.8 84.5 L848.0 84.0 L848.0 84.0 L849.2 83.3 L850.3 82.4 L851.4 81.3 L852.4 80.0 L853.4 78.6 L854.4 77.1 L855.3 75.4 L856.2 73.6 L857.1 71.7 L857.9 69.7 L858.8 67.6 L859.6 65.5 L860.4 63.4 L861.2 61.2 L862.0 59.0 L862.8 56.8 L863.6 54.6 L864.4 52.5 L865.2 50.4 L866.1 48.3 L866.9 46.3 L867.8 44.4 L868.7 42.6 L869.6 40.9 L870.6 39.4 L871.6 38.0 L872.6 36.7 L873.7 35.6 L874.8 34.7 L876.0 34.0 L876.0 34.0 L877.2 33.5 L878.4 33.0 L879.6 32.7 L880.8 32.5 L882.0 32.4 L883.2 32.4 L884.4 32.5 L885.7 32.7 L886.9 33.0 L888.1 33.3 L889.3 33.8 L890.6 34.3 L891.8 34.9 L893.1 35.5 L894.4 36.2 L895.7 37.0 L896.9 37.9 L898.2 38.8 L899.6 39.7 L900.9 40.7 L902.2 41.7 L903.6 42.7 L905.0 43.8 L906.3 44.9 L907.7 46.1 L909.2 47.2 L910.6 48.4 L912.0 49.6 L913.5 50.8 L915.0 52.0"/>
+<path class="ln" d="M787 85.6 V65"/><circle class="k" cx="787" cy="65" r="3.5"/>
+<path class="ln" d="M807 71.2 V84"/><circle class="k" cx="807" cy="84" r="3.5"/>
+<path class="ln" d="M848 84.0 V70"/><circle class="k" cx="848" cy="70" r="3.5"/>
+<path class="ln" d="M872 38.0 V28"/><circle class="k" cx="872" cy="28" r="3.5"/>
+<path class="ln" d="M897 37.9 V66"/><circle class="k" cx="897" cy="66" r="3.5"/>
+<path class="ln" d="M782.0 285.0 L783.3 285.0 L784.7 285.0 L786.0 285.0 L787.3 285.0 L788.7 284.9 L790.0 284.9 L791.3 284.8 L792.7 284.7 L794.0 284.5 L795.3 284.3 L796.7 283.9 L798.0 283.3 L799.3 282.6 L800.7 281.6 L802.0 280.3 L803.3 278.6 L804.7 276.5 L806.0 274.0 L807.3 271.0 L808.7 267.5 L810.0 263.7 L811.3 259.5 L812.7 255.1 L814.0 250.8 L815.3 246.6 L816.7 242.7 L818.0 239.5 L819.3 237.1 L820.7 235.5 L822.0 235.0 L823.3 235.5 L824.7 237.1 L826.0 239.5 L827.3 242.7 L828.7 246.6 L830.0 250.8 L831.3 255.1 L832.7 259.5 L834.0 263.7 L835.3 267.5 L836.7 271.0 L838.0 274.0 L839.3 276.5 L840.7 278.6 L842.0 280.3 L843.3 281.6 L844.7 282.6 L846.0 283.3 L847.3 283.9 L848.7 284.3 L850.0 284.5 L851.3 284.7 L852.7 284.8 L854.0 284.9 L855.3 284.9 L856.7 285.0 L858.0 285.0 L859.3 285.0 L860.7 285.0 L862.0 285.0"/>
+<path class="ln dsh" d="M828.0 285.0 L829.3 285.0 L830.7 285.0 L832.0 285.0 L833.3 285.0 L834.7 284.9 L836.0 284.9 L837.3 284.8 L838.7 284.7 L840.0 284.5 L841.3 284.3 L842.7 283.9 L844.0 283.3 L845.3 282.6 L846.7 281.6 L848.0 280.3 L849.3 278.6 L850.7 276.5 L852.0 274.0 L853.3 271.0 L854.7 267.5 L856.0 263.7 L857.3 259.5 L858.7 255.1 L860.0 250.8 L861.3 246.6 L862.7 242.7 L864.0 239.5 L865.3 237.1 L866.7 235.5 L868.0 235.0 L869.3 235.5 L870.7 237.1 L872.0 239.5 L873.3 242.7 L874.7 246.6 L876.0 250.8 L877.3 255.1 L878.7 259.5 L880.0 263.7 L881.3 267.5 L882.7 271.0 L884.0 274.0 L885.3 276.5 L886.7 278.6 L888.0 280.3 L889.3 281.6 L890.7 282.6 L892.0 283.3 L893.3 283.9 L894.7 284.3 L896.0 284.5 L897.3 284.7 L898.7 284.8 L900.0 284.9 L901.3 284.9 L902.7 285.0 L904.0 285.0 L905.3 285.0 L906.7 285.0 L908.0 285.0"/>
+<path class="ln" d="M822 231 H872" style="stroke-width:3.5"/>
+  <text class="t" x="128" y="142">Context</text><text class="t i" x="128" y="182">x</text>
+  <text class="t" x="459" y="148">Representation</text><text class="t i b" x="459" y="188">Φ</text>
+  <text class="t" x="850" y="148">Outcome error</text>
+  <text class="t" x="850" y="190"><tspan class="i">loss</tspan>(<tspan class="i">h</tspan> (<tspan class="i b">Φ</tspan>, t), y)</text>
+  <text class="t" x="128" y="325">Treatment</text><text class="t i" x="128" y="365">t</text>
+  <text class="t" x="848" y="330">Imbalance</text>
+  <text class="t" x="848" y="372"><tspan class="i">disc</tspan>(<tspan class="i b">Φ</tspan><tspan class="s i" dy="8">C</tspan><tspan dy="-8">, </tspan><tspan class="i b">Φ</tspan><tspan class="s i" dy="8">T</tspan><tspan dy="-8">)</tspan></text>
+  <path class="e" d="M208 150 H336" marker-end="url(#arrow)"/>
+  <path class="e" d="M578 150 H732" marker-end="url(#arrow)"/>
+  <path class="e" d="M578 150 L732 300" marker-end="url(#arrow)"/>
+  <path class="e" d="M208 330 L732 195" marker-end="url(#arrow)"/>
+  <path class="e" d="M208 331 H732" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+</svg>

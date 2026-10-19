@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. stat</title>
+    <title>4.1. stat basics</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/stat/stat';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.1. graphical models" href="graphical_models.html" />
-    <link rel="prev" title="3.9. math basics" href="../math/math_basics.html" />
+    <link rel="next" title="4.2. graphical models" href="graphical_models.html" />
+    <link rel="prev" title="4. stat" href="stat_section.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat_section.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -412,7 +398,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -423,11 +411,26 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>stat</h1>
+    <h1>stat basics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">4.1.1. basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-bars">4.1.1.1. error bars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rater-agreement">4.1.1.2. inter-rater agreement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequalities">4.1.1.3. inequalities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moment-generating-function">4.1.1.4. moment-generating function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">4.1.2. distributions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -437,10 +440,447 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="stat">
-<h1><span class="section-number">4. </span>stat<a class="headerlink" href="#stat" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="stat-basics">
+<h1><span class="section-number">4.1. </span>stat basics<a class="headerlink" href="#stat-basics" title="Link to this heading">#</a></h1>
+<section id="basics">
+<h2><span class="section-number">4.1.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>mutually exclusive: <span class="math notranslate nohighlight">\(P(AB)=0\)</span></p></li>
+<li><p>independence <span class="math notranslate nohighlight">\(A \perp B\)</span> means <span class="math notranslate nohighlight">\(P(AB) = P(A)P(B)\)</span></p>
+<ul class="simple">
+<li><p>conditional independence $<span class="math notranslate nohighlight">\(A \perp B\:\vert \:C\)</span><span class="math notranslate nohighlight">\( means \)</span>P(AB\vert C) = P(A\vert C) P(B\vert C)$</p></li>
+</ul>
+</li>
+<li><p>conditional prob: $<span class="math notranslate nohighlight">\(P(A\vert B) = \frac{P(AB)}{P(B)} = \frac{P(B\vert A)P(A)}{\sum P(B\vert A)P(A)}\)</span>$ (Bayes’ thm)</p></li>
+<li><p><span class="math notranslate nohighlight">\(E[X] = \int P(x)x dx\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E[h(X)] \approx h(E[X])\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2\)</span></p>
+<ul>
+<li><p>for unbiased estimate, divide by n-1</p></li>
+<li><p><span class="math notranslate nohighlight">\(V(X_1-X_2) = V(X_1) + V(X_2)\)</span> if <span class="math notranslate nohighlight">\(X_1,X_2\)</span> independent</p></li>
+<li><div class="math notranslate nohighlight">
+\[V(a_1X_1+...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$$&lt;!-- --&gt;
+  - $$V[h(X)] \approx h'(E[X])^2 V[X]$$&lt;!-- --&gt;
+  - standard deviation $\sigma(X)=\sqrt{V[X]}$
+  - standard error = error of the mean = $\sigma / \sqrt n$
+- $Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X]E[Y]$
+  - $Cov(aX+bY,Z) = aCov(X,Z)+bCov(Y,Z)$
+- $Corr(Y,X) = \rho = \frac{Cov(Y,X)}{s_xs_y}$
+  - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
+  - $R^2 = \rho^2$
+- skewness = $E[(\frac{X-\mu}{\sigma})^3]$
+- law of total expectation: $$E[X] = E_Y[E(X\vert Y)]\]</div>
+</li>
+</ul>
+</li>
+<li><p>law of total variance: $<span class="math notranslate nohighlight">\(V[Y] =\cblue{\underbrace{E[V(Y\vert X)]}_{\text{unexplained variance}}} + \corange{\underbrace{V(E[Y\vert X])}_{\text{explained variance}}}\)</span>$</p></li>
+</ul>
+<section id="error-bars">
+<h3><span class="section-number">4.1.1.1. </span>error bars<a class="headerlink" href="#error-bars" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>always write what you use: standard dev, standard error, or 95% confidence interval = 1.96 * standard error</p></li>
+<li><p>can get prediction intervals for on-line data using <a class="reference external" href="https://arxiv.org/abs/0706.3188">conformal prediction</a></p>
+<ul>
+<li><p><em>nonconformity measure</em> - how unusual an examples looks relative to previous examples</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inter-rater-agreement">
+<h3><span class="section-number">4.1.1.2. </span>inter-rater agreement<a class="headerlink" href="#inter-rater-agreement" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>cohen’s kappa - measures how well different raters agree (just taking fraction may be too simple, because they might agree by chance)</p>
+<ul>
+<li><p>from -1 to 1 (1 is perfect agreement)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\kappa = 1 - \frac{1 - p_o}{1-p_e}\)</span> where <span class="math notranslate nohighlight">\(p_o\)</span> is the relative observed agreement among raters (identical to <a class="reference external" href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers">accuracy</a>), and <span class="math notranslate nohighlight">\(p_e\)</span> is the hypothetical probability of chance agreement, using the observed data to calculate the probabilities of each observer randomly seeing each category</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inequalities">
+<h3><span class="section-number">4.1.1.3. </span>inequalities<a class="headerlink" href="#inequalities" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><em>cauchy-schwarz</em>: $<span class="math notranslate nohighlight">\(\vert x \cdot y\vert  \leq \vert \vert x\vert \vert \:\vert \vert y\vert \vert \)</span>$</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E[XY]^2 \leq E[X^2] E[Y^2]\)</span></p></li>
+</ul>
+</li>
+<li><p><em>jensen’s</em>: <span class="math notranslate nohighlight">\(f(E[X]) \leq E[f(X)]\)</span> for convex <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p><em>triangle</em>: <span class="math notranslate nohighlight">\(\vert \vert x + y \vert \vert \leq \vert \vert x \vert \vert + \vert \vert y \vert \vert\)</span></p></li>
+<li><p><em>markov’s</em>: <span class="math notranslate nohighlight">\(P(X \geq a) \leq \frac{E[X]}{a}\)</span></p>
+<ul>
+<li><p>X is typically running time of the algorithm</p></li>
+<li><p>if we don’t have E[X], can use upper bound for E[X]</p></li>
+</ul>
+</li>
+<li><p><em>chebyshev’s</em>: <span class="math notranslate nohighlight">\(P(\vert X-\mu\vert  \geq a) \leq \frac{Var[X]}{a^2}\)</span></p>
+<ul>
+<li><p>utilizes the variance to get a better bound</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="moment-generating-function">
+<h3><span class="section-number">4.1.1.4. </span>moment-generating function<a class="headerlink" href="#moment-generating-function" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M_X(t) = E(e^{tX})\)</span></p>
+<ul>
+<li><p>derivatives yield moments: <span class="math notranslate nohighlight">\(\frac{d^r}{dX^r} M_X (0) = E(X^r)\)</span></p></li>
+</ul>
+</li>
+<li><p>sometimes <span class="math notranslate nohighlight">\(\ln[M_x(t)]\)</span> yields <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(V(X)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Y = aX+b \implies M_y(t) = e^{bt}M_x(at)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Y = a_1X_1+a_2X_2 \implies M_Y(t) = M_{X_1}(a_1t)M_{X_2}(a_2t)\)</span> if <span class="math notranslate nohighlight">\(X_i\)</span> independent</p></li>
+<li><p><em>ordered statistics</em> - variables <span class="math notranslate nohighlight">\(Y_i\)</span> such that <span class="math notranslate nohighlight">\(Y_i\)</span> is the ith smalless</p></li>
+</ul>
+</section>
+</section>
+<section id="distributions">
+<h2><span class="section-number">4.1.2. </span>distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>PMF: <span class="math notranslate nohighlight">\(f_X(x) = P(X=x)\)</span></p></li>
+<li><p>PDF: <span class="math notranslate nohighlight">\(P(a \leq X \leq b) = \int_a^b f(x) dx\)</span></p></li>
+</ul>
+<p><em>these distributions are from the probability and statistics cookbook by matthias vallentin</em></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>discrete</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(F_X(x)\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(f_X(x)\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(\mathbb{E}[X]\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(\mathbb{V}[X]\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(M_X(s)\)</span>$</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>uniform $<span class="math notranslate nohighlight">\(\text{Unif}\{a, \dots, b\}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\begin{cases} 0 &amp; x &lt; a \\ \frac{\lfloor x \rfloor - a + 1}{b - a} &amp; a \le x \le b \\ 1 &amp; x &gt; b \end{cases}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{I(a \le x \le b)}{b - a + 1}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{a+b}{2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{(b-a+1)^2 - 1}{12}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{e^{as} - e^{-(b+1)s}}{s(b-a)}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>bernoulli $<span class="math notranslate nohighlight">\(\text{Bern}(p)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\((1-p)^{1-x}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(p^x (1-p)^{1-x}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(p\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(p(1-p)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(1 - p + pe^s\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>binomial $<span class="math notranslate nohighlight">\(\text{Bin}(n, p)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(I_{1-p}(n-x, x+1)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\binom{n}{x} p^x (1-p)^{n-x}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(np\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(np(1-p)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\((1 - p + pe^s)^n\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>multinomial $<span class="math notranslate nohighlight">\(\text{Mult}(n, p)\)</span>$</p></td>
+<td><p></p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{n!}{x_1! \dots x_k!} p_1^{x_1} \cdots p_k^{x_k} \quad \sum_{i=1}^k x_i = n\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(np_i\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(np_i(1-p_i)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\left(\sum_{i=0}^k p_i e^{s_i}\right)^n\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>hypergeometric $<span class="math notranslate nohighlight">\(\text{Hyp}(N, m, n)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\approx \Phi\left(\frac{x - np}{\sqrt{np(1-p)}}\right)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\binom{m}{x}\binom{N-m}{n-x}}{\binom{N}{n}}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{nm}{N}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{nm(N-n)(N-m)}{N^2(N-1)}\)</span>$</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>neg. binomial $<span class="math notranslate nohighlight">\(\text{NBin}(r, p)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(I_p(r, x+1)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\binom{x+r-1}{r-1} p^r (1-p)^x\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(r\frac{1-p}{p}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(r\frac{1-p}{p^2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\left(\frac{p}{1-(1-p)e^s}\right)^r\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>geometric $<span class="math notranslate nohighlight">\(\text{Geo}(p)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(1 - (1-p)^x \quad x \in \mathbb{N}^+\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(p(1-p)^{x-1} \quad x \in \mathbb{N}^+\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{p}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1-p}{p^2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{pe^s}{1-(1-p)e^s}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>poisson $<span class="math notranslate nohighlight">\(\text{Po}(\lambda)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(e^{-\lambda} \sum_{i=0}^x \frac{\lambda^i}{i!}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\lambda^x e^{-\lambda}}{x!}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\lambda\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\lambda\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(e^{\lambda(e^s - 1)}\)</span>$</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>continuous</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(F_X(x)\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(f_X(x)\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(\mathbb{E}[X]\)</span>$</p></th>
+<th class="head"><p>$<span class="math notranslate nohighlight">\(\mathbb{V}[X]\)</span>$</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>uniform $<span class="math notranslate nohighlight">\(\text{Unif}(a, b)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\begin{cases} 0 &amp; x &lt; a \\ \frac{x-a}{b-a} &amp; a &lt; x &lt; b \\ 1 &amp; x &gt; b \end{cases}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{I(a &lt; x &lt; b)}{b - a}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{a+b}{2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{(b-a)^2}{12}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>normal $<span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\Phi(x) = \int_{-\infty}^x \phi(t)\, dt\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\phi(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\mu\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\sigma^2\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>log-normal $<span class="math notranslate nohighlight">\(\ln\mathcal{N}(\mu, \sigma^2)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{2} + \frac{1}{2} \text{erf}\left[\frac{\ln x - \mu}{\sqrt{2\sigma^2}}\right]\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{x\sqrt{2\pi\sigma^2}} \exp\left\{-\frac{(\ln x - \mu)^2}{2\sigma^2}\right\}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(e^{\mu + \sigma^2/2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\((e^{\sigma^2} - 1) e^{2\mu + \sigma^2}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>multi norm $<span class="math notranslate nohighlight">\(\text{MVN}(\mu, \Sigma)\)</span>$</p></td>
+<td><p></p></td>
+<td><p>$<span class="math notranslate nohighlight">\((2\pi)^{-k/2} \vert\Sigma\vert^{-1/2} e^{-\frac{1}{2}(x-\mu)^T \Sigma^{-1} (x-\mu)}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\mu\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\Sigma\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>student’s t $<span class="math notranslate nohighlight">\(\text{Student}(\nu)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(I_x\left(\frac{\nu}{2}, \frac{\nu}{2}\right)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\,\Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{x^2}{\nu}\right)^{-(\nu+1)/2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(0\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\begin{cases} \frac{\nu}{\nu-2} &amp; \nu &gt; 2 \\ \infty &amp; 1 &lt; \nu \le 2 \end{cases}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>chi-square $<span class="math notranslate nohighlight">\(\chi^2_k\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{\Gamma(k/2)} \gamma\left(\frac{k}{2}, \frac{x}{2}\right)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{2^{k/2}\Gamma(k/2)} x^{k/2-1} e^{-x/2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(k\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(2k\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>F $<span class="math notranslate nohighlight">\(\text{F}(d_1, d_2)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(I_{\frac{d_1 x}{d_1 x + d_2}}\left(\frac{d_1}{2}, \frac{d_1}{2}\right)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\sqrt{\frac{(d_1 x)^{d_1} d_2^{d_2}}{(d_1 x + d_2)^{d_1 + d_2}}}}{x \text{B}\left(\frac{d_1}{2}, \frac{d_1}{2}\right)}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{d_2}{d_2 - 2}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{2 d_2^2 (d_1 + d_2 - 2)}{d_1 (d_2 - 2)^2 (d_2 - 4)}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>exponential $<span class="math notranslate nohighlight">\(\text{Exp}(\beta)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(1 - e^{-x/\beta}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{\beta} e^{-x/\beta}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\beta\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\beta^2\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>gamma $<span class="math notranslate nohighlight">\(\text{Gamma}(\alpha, \beta)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\gamma(\alpha, x/\beta)}{\Gamma(\alpha)}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{1}{\Gamma(\alpha)\beta^\alpha} x^{\alpha-1} e^{-x/\beta}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\alpha\beta\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\alpha\beta^2\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>inv. gamma $<span class="math notranslate nohighlight">\(\text{InvGamma}(\alpha, \beta)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\Gamma\left(\alpha, \frac{\beta}{x}\right)}{\Gamma(\alpha)}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\beta^\alpha}{\Gamma(\alpha)} x^{-\alpha-1} e^{-\beta/x}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\beta}{\alpha-1} \quad \alpha &gt; 1\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\beta^2}{(\alpha-1)^2(\alpha-2)} \quad \alpha &gt; 2\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>dirichlet $<span class="math notranslate nohighlight">\(\text{Dir}(\alpha)\)</span>$</p></td>
+<td><p></p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\Gamma\left(\sum_{i=1}^k \alpha_i\right)}{\prod_{i=1}^k \Gamma(\alpha_i)} \prod_{i=1}^k x_i^{\alpha_i - 1}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\alpha_i}{\sum_{i=1}^k \alpha_i}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\mathbb{E}[X_i](1 - \mathbb{E}[X_i])}{\sum_{i=1}^k \alpha_i + 1}\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>beta $<span class="math notranslate nohighlight">\(\text{Beta}(\alpha, \beta)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(I_x(\alpha, \beta)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha-1} (1-x)^{\beta-1}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\alpha}{\alpha+\beta}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}\)</span>$</p></td>
+</tr>
+<tr class="row-even"><td><p>weibull $<span class="math notranslate nohighlight">\(\text{Weibull}(\lambda, k)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(1 - e^{-(x/\lambda)^k}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1} e^{-(x/\lambda)^k}\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\lambda\Gamma\left(1 + \frac{1}{k}\right)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\lambda^2\Gamma\left(1 + \frac{2}{k}\right) - \mu^2\)</span>$</p></td>
+</tr>
+<tr class="row-odd"><td><p>pareto $<span class="math notranslate nohighlight">\(\text{Pareto}(x_m, \alpha)\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(1 - \left(\frac{x_m}{x}\right)^\alpha \quad x \ge x_m\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\alpha \frac{x_m^\alpha}{x^{\alpha+1}} \quad x \ge x_m\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{\alpha x_m}{\alpha - 1} \quad \alpha &gt; 1\)</span>$</p></td>
+<td><p>$<span class="math notranslate nohighlight">\(\frac{x_m^\alpha}{(\alpha-1)^2(\alpha-2)} \quad \alpha &gt; 2\)</span>$</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p>multivariate gaussian</p>
+<ul>
+<li><p>2 parameterizations (<span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span>)</p>
+<ol class="arabic simple">
+<li><p><em>canonical parameterization</em>: $<span class="math notranslate nohighlight">\(p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} \exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]\)</span>$</p></li>
+<li><p><em>moment parameterization</em>: $<span class="math notranslate nohighlight">\(p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)\)</span>$ ~ also called information parameterization</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Omega = \Sigma^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta = \Sigma^{-1} \mu\)</span></p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>joint distr - split parameters into block matrices</p></li>
+<li><p>want to <em>block diagonalize</em> the matrix</p>
+<ul>
+<li><p><em>Schur complement</em> of matrix M w.r.t. H: <span class="math notranslate nohighlight">\(M/H\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$$&lt;!-- --&gt;
+    - $$\Sigma = \begin{bmatrix} \Sigma_{11} &amp; \Sigma_{12}\\ \Sigma_{21} &amp; \Sigma_{22} \end{bmatrix}$$&lt;!-- --&gt;
+    - $$p(x_1, x_2) = \underbrace{p(x_1\vert x_2)}_{\text{conditional}}\cdot\underbrace{p(x_2)}_{\text{marginal}}$$&lt;!-- --&gt;
+      - marginal
+        - $\mu_2^m = \mu_2$
+        - $\Sigma_2^m = \Sigma_{22}$
+      - conditional
+        - $$\mu_{1\vert 2}^c = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1} (x_2 - \mu_2)$$&lt;!-- --&gt;
+        - $$\Sigma_{1\vert 2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$$&lt;!-- --&gt;\end{split}\\## law of large numbers\\### law of large numbers\\- equivalent statements
+  - $E(\bar{X}-\mu)^2 \to 0$ as $n \to \infty,$
+  - $P(\vert\bar{X}-\mu\vert \geq \epsilon) \to 0$ as $n \to \infty$
+  - $$T_o = X_1+...+X_n, E(T_o) = n\mu , V(T_o) = n\mu ^2$$&lt;!-- --&gt;
+- implications
+  - $E(\bar{X}) = \mu$
+  - $V(\bar{X}) = \frac{\sigma_x^2}{n}$\\### central limit thm\\- 2 characterizations
+  - random sample means have a normal distr. if n is large
+  - $\lim_{n\to\infty}P(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\leq z)=P(Z\leq z) = \Phi(z)$
+- implications
+  - $$X_1*..*X_n$$ has approximately lognormal distribution if all $P(X_i&gt;0)$\\## bias and point estimation\\- *point estimator* $\hat{\theta}$ - statistic that predicts a parameter
+  - *point estimate* - single number prediction
+- **bias**: $E(\hat{\theta}) - \theta$
+  - more complex models (more nonzero parameters) have lower bias, higher variance
+    - if high bias, train and test error will be very close (model isn't complex enough)
+  - after unbiased we want MVUE (minimum variance unbiased estimator)
+  - need *inductive inference property*: must make prior assumptions in order to classify unseen instances
+    - define *inductive bias* of a learner as the set of additional assumptions B sufficient to justify its inductive inferences as deductive inferences
+  - bias types
+    - *preference bias* = *search bias* - models can search entire space (e.g. NN, decision tree)
+    - *restriction bias* = *language bias* - models that can't express entire space (e.g. linear)
+- **consistent**: $$\hat{\theta_n} \to some \: value\end{aligned}\end{align} \]</div>
+</li>
+</ul>
+</li>
+<li><p>basically it converges to a number (can still be biased)</p></li>
+</ul>
+</li>
+<li><p><strong>bias/variance trade-off</strong></p>
+<ul>
+<li><p>MSE - mean squared error - <span class="math notranslate nohighlight">\(E[(\hat{\theta}-\theta)^2]\)</span> = <span class="math notranslate nohighlight">\(\cblue{V(\hat{\theta})}+\corange{[E(\hat{\theta})-\theta]^2}\)</span></p>
+<ul>
+<li><p>decomposition: $<span class="math notranslate nohighlight">\(MSE = \corange{Bias^2} + \cblue{Variance}\)</span>$</p>
+<p>which can be shown as follows</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+      \begin{aligned}
+      MSE(\hat{\theta}) &amp;= E\left[\hat{\theta} - \theta\right]^2 \\
+      &amp;= E\left[\hat{\theta} - E(\hat{\theta}) + E(\hat{\theta}) - \theta\right]^2 \quad \text{(add and subtract } E(\hat{\theta})\text{)} \\
+      &amp;= \cblue{E\left[\hat{\theta} - E(\hat{\theta})\right]^2} + \cgreen{2E\left[(\hat{\theta} - E(\hat{\theta}))(E(\hat{\theta}) - \theta)\right]} \\
+      &amp;\quad + \corange{E\left[E(\hat{\theta}) - \theta\right]^2} \\
+      &amp;= \cblue{Var(\hat{\theta})} + \cgreen{2(E(\hat{\theta}) - \theta)E\left[\hat{\theta} - E(\hat{\theta})\right]} \\
+      &amp;\quad + \corange{\left(E(\hat{\theta} - \theta)\right)^2} \quad \text{(} E(\hat{\theta}) \text{ and } \theta \text{ are constant)} \\
+      &amp;= \cblue{Var(\hat{\theta})} + \corange{Bias(\hat{\theta})^2}
+      \end{aligned}
+      \end{split}\]</div>
+<p>where the last equality follows from <span class="cgreen">the cross term vanishing</span>: $<span class="math notranslate nohighlight">\(\cgreen{E\left[\hat{\theta} - E(\hat{\theta})\right]} = E(\hat{\theta}) - E(\hat{\theta}) = 0\)</span>$</p>
+</li>
+</ul>
+</li>
+<li><p>defs</p>
+<ul class="simple">
+<li><p><span class="corange">bias</span> = <em>approximation err</em></p></li>
+<li><p><span class="cblue">variance</span> = <em>estimation err</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>confidence intervals</strong> - take sample data + produce a range of values that likely contains population parameter you are interested in</p></li>
+<li><p><a class="reference external" href="https://statisticsbyjim.com/glossary/confidence-interval-prediction/">confidence interval of the prediction</a> is a range that likely contains the mean value of the dependent variable given specific values of the independent variables - usually wider because it is one point, not a mean</p></li>
+<li><p>MLE example</p>
+<ul>
+<li><p>MLE - maximize likelihood $<span class="math notranslate nohighlight">\(L(\theta) = p(X_1,...,X_n;\theta_1,...\theta_m)\)</span>$ (the agreement with a chosen distribution)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\theta} = \)</span>argmax <span class="math notranslate nohighlight">\(  L(\theta)\)</span></p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$$&lt;!-- --&gt;
+      - $$\log \: L(\theta)= \ell(\theta) = \sum \log P(X_i\vert\theta)$$&lt;!-- --&gt;
+      - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
+  - **fisher information** $I(\theta)=V[\frac{\partial^2}{\partial\theta^2} \overbrace{\ln(f[x;\theta])}^{\text{Fisher score function}} ]$ (for n samples, multiply by n)
+      - higher info $\implies$ lower estimation error
+      - $\overbrace{\ln(f[x;\theta])}^{\text{Fisher score function}}$\\## overview - Jordan ch 5\\from Michael Jordan's &quot;An Introduction to Probabilistic Graphical Models&quot;\\\begin{split}- prob theory: given model $\theta$, infer data $X$
+- statistics: given data $X$, infer model $\theta$
+- 2 statistical schools of thought: *Bayesian* and *frequentist*
+  1. Bayesian: $\cgreen{\overbrace{p(\theta \vert x)}^{\text{posterior}}} = \frac{\cblue{\overbrace{p(x\vert\theta)}^{\text{likelihood}}} \corange{\overbrace{p(\theta)}^{\text{prior}}}}{p(x)}$
+     - assumes $\theta$ is a RV, find its distr.
+     - &lt;span class=&quot;corange&quot;&gt;prior probability&lt;/span&gt; $\corange{p(\theta)}$= *statistician's uncertainty*
+       - *&lt;span class=&quot;cgreen&quot;&gt;posterior&lt;/span&gt;* $$\cgreen{p(\theta\vert x)}$$ is what you don't observe
+     - $$\hat{\theta}_{Bayes} = \int \theta \: p(\theta \vert x) d\theta$$ ~ mean of the posterior
+     - $$\hat{\theta}_{MAP} = \underset{\theta}{\operatorname*{argmax}} \: \cgreen{p(\theta\vert x)} = \underset{\theta}{\operatorname*{argmax}} \: \cblue{p(x\vert \theta)} \corange{p(\theta)}  \\\ = \underset{\theta}{\operatorname*{argmax}} \: [ \cblue{\log \: p(x\vert\theta)} + \corange{\log \: p(\theta)} ]$$&lt;!-- --&gt;
+       - like *penalized likelihood*: &lt;span class=&quot;cblue&quot;&gt;log-likelihood&lt;/span&gt; + &lt;span class=&quot;corange&quot;&gt;log-prior&lt;/span&gt; penalty
+     - bayesians prefer whole distr. rather than parameter estimates
+  2. frequentist - use estimators (ex. MLE)
+     - no prior - only use priors when they correspond to objective frequencies of observing values
+     - neyman / pearson
+     - $$\hat{\theta}_{MLE} = \operatorname*{argmax}_\theta \: p(x\vert\theta)$$&lt;!-- --&gt;
+       - really likelihood is whatever we model (ex. for discriminative models would be $$p(y\vert x, \theta)$$)\end{split}\\### 3 problems\\1. *density estimation* - given samples of X, estimate P(X)
+   - ex. univariate Gaussian density estimation
+     - frequentist
+       - derive MLE for mean and variance
+     - bayesian
+       - assume distr. for $\mu$  
+         - ex. $p(\mu) \sim N(\mu_0, \tau^2)$
+       - derive MAP for mean and variance (assuming some prior)
+     - can use plate to show repeated element
+   - ex. discrete, multinomial prob. distr.
+     - derive MLE
+       - $$P(x\vert \theta) \sim $$multionomial distr.
+     - derive MAP
+       - want to be able to plug in posterior as prior recursively
+       - this requires a *Dirichlet prior* to multiply the multinomial
+         - Dirichlet: $p(\theta) = C(\alpha) \theta_1^{\alpha_1 - 1}\cdot \cdot \cdot \theta_M^{\alpha_M-1}$
+   - ex. *mixture models* - $p(x\vert\theta)=\sum_k \alpha_k f_k (x\vert\theta_k)$
+     - here $f_k$ represent densities (*mixture components*)
+     - $\alpha_k$ are weights (*mixing proportions*)
+     - can do inference on this - given x, figure out which cluster it fits into better
+     - learning requires EM
+     - can be used nonparametrically - *mixture seive*
+       - however, means are allowed to vary
+     - solving with random projection: project to low dim and keep track of means etc.
+   - ex. *nonparametric density estimation*
+     - ex. *kernel density estimator* - stacking up mass
+     - each point contributes a kernel function $k(x,x_n, \lambda)$
+       - $x_n$ is location, $\lambda$ is smoothing
+     - $\hat{p}(x) = \frac{1}{N}\sum_n k(x,x_n,\lambda)$
+     - nonparametric models sometimes called *infinite-dimensional*
+2. *regression* - want $p(y \vert x)$
+   - *conditional mixture model* - variable z can be used to pick out regions of input space where different regression functions are used
+     - $p(y_n\vert x_n,\theta) = \sum_k p(y_n\vert z_n^k = 1, x_n, \theta) \cdot  p(z_n^k=1\vert x_n,\theta)$
+   - *nonparametric regression*
+     - ex. *kernel regression* $\hat{f}(x) = \frac{\sum_{i=1}^N k(x, x_i) \cdot y_i}{\sum_{m=1}^N k(x, x_j)}$
+3. *classification*
+   - ex. Gaussian class-conditional densities
+     - posterior probability is *logistic function*
+   - *clustering* - use mixture models\\### model selection / averaging\\- bayesian
+  - for model m, want to maximize $p(m\vert x) = \frac{p(x\vert m) p(m)}{p(x)}$
+    - usually, just take $m$ that maximizes $p(m\vert x)$
+    - *model averaging*: $$p(x_{new}\vert x) = \int dm \int d\theta \: p(x_{new}\vert \theta, m) p(\theta\vert x, m) p(m\vert x)\end{aligned}\end{align} \]</div>
+</li>
+<li><p>otherwise integrate over <span class="math notranslate nohighlight">\(\theta, m\)</span> - <em>model averaging</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>frequentist</p>
+<ul class="simple">
+<li><p>can’t use MLE - will always prefer more complex models</p></li>
+<li><p>use some criteria such as KL-divergence, AIC, cross-validation</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -474,12 +914,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../math/math_basics.html"
+       href="stat_section.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.9. </span>math basics</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>stat</p>
       </div>
     </a>
     <a class="right-next"
@@ -487,7 +927,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.1. </span>graphical models</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>graphical models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -497,6 +937,28 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">4.1.1. basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-bars">4.1.1.1. error bars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-rater-agreement">4.1.1.2. inter-rater agreement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequalities">4.1.1.3. inequalities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moment-generating-function">4.1.1.4. moment-generating function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">4.1.2. distributions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -530,11 +992,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

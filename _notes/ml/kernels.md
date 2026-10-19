@@ -15,13 +15,11 @@ subtitle: An introduction to kernels and recent research.
   - PSD Gram matrix ($K_n = XX^T$)
 - [list of kernels](http://crsouza.com/2010/03/17/kernel-functions-for-machine-learning-applications/#spline)
 - [kernels wiki](https://en.wikipedia.org/wiki/Kernel_method#cite_note-4): kernel memorizes points then uses dists between points to classify
-- [learning deep kernels](https://arxiv.org/pdf/1811.08357v1.pdf)
-- [learning data-adaptive kernels](https://arxiv.org/abs/1901.07114)
+- learning deep kernels ([wenliang et al. 2018](https://arxiv.org/pdf/1811.08357v1.pdf))
+- learning data-adaptive kernels ([dou & liang 2019](https://arxiv.org/abs/1901.07114))
 - [kernels that mimic dl](https://cseweb.ucsd.edu/~saul/papers/nips09_kernel.pdf)
 - [kernel methods](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdfs)
 - [wavelet support vector machines](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.412.362&rep=rep1&type=pdf) - kernels using wavelets
-
-  
 
 ## ch 4 from [support vector machines book](https://link.springer.com/book/10.1007/978-0-387-77242-4)
 

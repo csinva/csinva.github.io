@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 0 930 1030" role="img" aria-labelledby="title desc">
+  <title id="title">LMS with two input vectors</title>
+  <desc id="desc">Two input vectors x1 and x2, each with a dashed line of solutions perpendicular to it. The lines intersect at θ*, the vector that solves the problem for both inputs. Starting from θ(0), LMS alternately moves along x1 and x2 onto each solution line, zig-zagging through θ(1) ... θ(6) toward θ*.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: round; }
+      .thin { fill: none; stroke: #2b2b2b; stroke-width: 1.8; stroke-linejoin: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-dasharray: 12 9; }
+      .m { font: italic 48px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font-size: 32px; font-style: normal; font-family: "Times New Roman", Times, serif; }
+      .sup { font-size: 30px; font-style: normal; font-family: "Times New Roman", Times, serif; }
+    </style>
+  </defs>
+  <path class="ax" d="M40.0 735.0 V125" marker-end="url(#arrow)"/>
+  <path class="ax" d="M40.0 735.0 H840" marker-end="url(#arrow)"/>
+  <path class="ax" d="M40.0 735.0 L627.2 645.1" marker-end="url(#arrow)"/>
+  <path class="ax" d="M40.0 735.0 L374.8 220.3" marker-end="url(#arrow)"/>
+  <path class="ax" d="M40.0 735.0 L355.0 945.0" marker-end="url(#arrow)"/>
+  <path class="dash" d="M419.0 12.5 L559.7 931.8"/>
+  <path class="dash" d="M92.4 147.2 L913.9 681.5"/>
+  <path class="thin" d="M355.0 945.0 L557.0 914.1 L769.4 587.5 L513.0 626.8 L607.2 482.0 L493.5 499.4 L535.3 435.3"/>
+  <path class="thin" d="M338 474 C360 448 380 424 398 434 C414 444 402 468 420 462 C436 456 448 436 472.4 402.8" marker-end="url(#arrow)"/>
+  <text class="m" x="330" y="200">x<tspan class="sub" dy="12">2</tspan></text>
+  <text class="m" x="562" y="708">x<tspan class="sub" dy="12">1</tspan></text>
+  <text class="m" x="547" y="407">θ<tspan class="sup" dy="-24">(6)</tspan></text>
+  <text class="m" x="262" y="530">θ<tspan class="sup" dy="-24">*</tspan></text>
+  <text class="m" x="595" y="944">θ<tspan class="sup" dy="-24">(1)</tspan></text>
+  <text class="m" x="292" y="1010">θ<tspan class="sup" dy="-24">(0)</tspan></text>
+</svg>

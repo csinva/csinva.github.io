@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.6. optimization</title>
+    <title>3.5. optimization</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/math/optimization';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.7. calculus" href="calculus.html" />
-    <link rel="prev" title="3.5. signals" href="signals.html" />
+    <link rel="next" title="3.6. calculus" href="calculus.html" />
+    <link rel="prev" title="3.4. signals" href="signals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="math.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="math_section.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signals.html">3.5. signals</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">3.4. signals</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,50 +421,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-optimization">3.6.1. convex optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-sets-boyd-2">3.6.1.1. convex sets (boyd 2)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">3.6.1.1.1. geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-optimization">3.5.1. convex optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-sets-boyd-2">3.5.1.1. convex sets (boyd 2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-funcs-boyd-3">3.5.1.2. convex funcs (boyd 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.5.1.3. convex optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-program">3.5.1.4. geometric program</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-funcs-boyd-3">3.6.1.2. convex funcs (boyd 3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-problems-boyd-4">3.6.1.3. optimization problems (boyd 4)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.6.1.4. optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.6.1.5. convex optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-optimization">3.6.1.6. linear optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-optimization">3.6.1.7. quadratic optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-program">3.6.1.8. geometric program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-boyd-5">3.5.2. duality (boyd 5)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-norm-problem">3.5.2.1. least norm problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularized-approximation">3.5.2.2. regularized approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-approximation">3.5.2.3. robust approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-fitting">3.5.2.4. function fitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descent-methods">3.5.2.5. descent methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-method">3.5.2.6. gd method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steepest-descent-method">3.5.2.7. steepest descent method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.5.2.8. newton’s method</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-boyd-5">3.6.2. duality (boyd 5)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-conditions">3.6.2.1. optimality conditions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thms-of-alternatives">3.6.2.2. thms of alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-algorithms">3.5.3. basic algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">3.5.4. misc</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-optimization">3.5.4.1. nn optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-it-hard">3.5.4.1.1. why is it hard?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complicated-is-simpler">3.5.4.1.2. complicated is simpler</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approx-fitting-boyd-6">3.6.3. approx + fitting (boyd 6)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-approx-problem">3.6.3.1. norm approx problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-norm-problem">3.6.3.2. least norm problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularized-approximation">3.6.3.3. regularized approximation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-approximation">3.6.3.4. robust approximation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-fitting">3.6.3.5. function fitting</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unconstrained-minimization-boyd-9">3.6.4. unconstrained minimization (boyd 9)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unconstrained-problems">3.6.4.1. unconstrained problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descent-methods">3.6.4.2. descent methods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-method">3.6.4.3. gd method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steepest-descent-method">3.6.4.4. steepest descent method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.6.4.5. newton’s method</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-algorithms">3.6.5. basic algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-maximization-j-11">3.6.6. expectation maximization - j 11</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">3.6.7. misc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-optimization">3.6.7.1. nn optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-it-hard">3.6.7.1.1. why is it hard?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complicated-is-simpler">3.6.7.1.2. complicated is simpler</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-integer-programming-mip">3.6.7.2. mixed integer programming (mip)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-integer-programming-mip">3.5.4.2. mixed integer programming (mip)</a></li>
 </ul>
 </li>
 </ul>
@@ -493,25 +461,25 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="optimization">
-<h1><span class="section-number">3.6. </span>optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3.5. </span>optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h1>
 <section id="convex-optimization">
-<h2><span class="section-number">3.6.1. </span>convex optimization<a class="headerlink" href="#convex-optimization" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5.1. </span>convex optimization<a class="headerlink" href="#convex-optimization" title="Link to this heading">#</a></h2>
 <section id="convex-sets-boyd-2">
-<h3><span class="section-number">3.6.1.1. </span>convex sets (boyd 2)<a class="headerlink" href="#convex-sets-boyd-2" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>affine set</em>: <span class="math notranslate nohighlight">\(x_1, x_2 \in C, \theta \in \mathbb{R} \implies \theta x_1 + (1 - \theta) x_2 \in C\)</span></p>
+<h3><span class="section-number">3.5.1.1. </span>convex sets (boyd 2)<a class="headerlink" href="#convex-sets-boyd-2" title="Link to this heading">#</a></h3>
 <ul>
-<li><p><em>affine hull</em>: aff C = {<span class="math notranslate nohighlight">\(\sum \theta_i x_i | x_i \in C, \sum \theta_i =1 \)</span>}</p></li>
+<li><p><em>affine set</em>: <span class="math notranslate nohighlight">\(x_1, x_2 \in C, \theta \in \mathbb{R} \implies \theta x_1 + (1 - \theta) x_2 \in C\)</span></p>
+<ul class="simple">
+<li><p><em>affine hull</em>: aff C = {$<span class="math notranslate nohighlight">\(\sum \theta_i x_i \vert  x_i \in C, \sum \theta_i =1 \)</span>$}</p></li>
 </ul>
 </li>
 <li><p><em>convex set</em>: <span class="math notranslate nohighlight">\(x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 \)</span></p>
-<ul>
-<li><p><em>convex hull</em>: conv C = {<span class="math notranslate nohighlight">\(\sum \theta_i x_i \: | x_i \in C, \theta_i \geq 0, \sum \theta_i = 1\)</span>}</p></li>
+<ul class="simple">
+<li><p><em>convex hull</em>: conv C = {$<span class="math notranslate nohighlight">\(\sum \theta_i x_i \: \vert  x_i \in C, \theta_i \geq 0, \sum \theta_i = 1\)</span>$}</p></li>
 </ul>
 </li>
 <li><p><em>cone</em>: <span class="math notranslate nohighlight">\(\theta \geq 0 \implies \theta x \in C\)</span></p></li>
 <li><p>operations that preserve convexity</p>
-<ul>
+<ul class="simple">
 <li><p>intersection (finite intersection of half-spaces)</p></li>
 <li><p>pointwise max of affine funcs</p></li>
 <li><p>composition</p></li>
@@ -521,7 +489,7 @@ document.write(`
 </ul>
 </li>
 <li><p>generalized inequalities:</p>
-<ul>
+<ul class="simple">
 <li><p><em>proper cone</em> K: convex, closed, pointed, solid</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(x \preceq_K y \iff y-x \in K\)</span></p></li>
@@ -529,32 +497,26 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>separating hyperplane thm</em>: C, D convex <span class="math notranslate nohighlight">\(C \cap D =\emptyset \implies \exists a \neq 0, b \: s.t. \\ a^Tx \leq b \forall x \in C, \\a^Tx \geq b \forall x \in D\)</span></p></li>
-<li><p><em>supporting hyperplane thm</em>: {<span class="math notranslate nohighlight">\(x|a^tx = a^t x_0\)</span>} where <span class="math notranslate nohighlight">\(x_0\)</span> on boundary of convex C</p></li>
-<li><p>dual cone <span class="math notranslate nohighlight">\(K^*\)</span> = {<span class="math notranslate nohighlight">\(y|x^Ty \geq 0 \: \forall x \in K\)</span>}</p>
+<li><p><em>separating hyperplane thm</em>: C, D convex $<span class="math notranslate nohighlight">\(C \cap D =\emptyset \implies \exists a \neq 0, b \: s.t. \\ a^Tx \leq b \forall x \in C, \\a^Tx \geq b \forall x \in D\)</span>$</p></li>
+<li><p><em>supporting hyperplane thm</em>: {$<span class="math notranslate nohighlight">\(x\vert a^tx = a^t x_0\)</span><span class="math notranslate nohighlight">\(} where \)</span>x_0$ on boundary of convex C</p></li>
+<li><p>dual cone <span class="math notranslate nohighlight">\(K^*\)</span> = {$<span class="math notranslate nohighlight">\(y\vert x^Ty \geq 0 \: \forall x \in K\)</span>$}</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\preceq_{K^*}\)</span> is dual of <span class="math notranslate nohighlight">\(\preceq_K\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x \preceq_K y \iff \lambda^T x \leq \lambda^T y \quad \forall \: \lambda \succeq_{K^*} 0\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}x \preceq_K y \iff \lambda^T x \leq \lambda^T y \quad \forall \: \lambda \succeq_{K^*} 0$$&lt;!-- --&gt;\\#### geometry
+- *ellipsoid*: {$$x \in \mathbb{R}^n \vert  (x-x_c)^T P^{-1} (x-x_c) \leq 1$$} where P symmetric, PSD
+  - {$$x_c + Au \vert  \vert \vert u\vert \vert _2 \leq 1$$}
+- *hyperplane*: {$$x\vert a^Tx = b$$} ~ creates a halfspace
+- *norm cone*: {$$(x, t)\vert  \: \vert \vert x\vert \vert  \leq t$$}
+- *polyhedron*: {x \| Ax=b, Cx=d} = $$\{ \sum_i^k \theta_i v_i \; \vert  \sum_i^m \theta_i = 1, \theta_i \geq 0 \} \: m \leq k\end{aligned}\end{align} \]</div>
 </li>
 </ul>
-<section id="geometry">
-<h4><span class="section-number">3.6.1.1.1. </span>geometry<a class="headerlink" href="#geometry" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><em>ellipsoid</em>: {<span class="math notranslate nohighlight">\(x \in \mathbb{R}^n | (x-x_c)^T P^{-1} (x-x_c) \leq 1\)</span>} where P symmetric, PSD</p>
-<ul>
-<li><p>{<span class="math notranslate nohighlight">\(x_c + Au | ||u||_2 \leq 1\)</span>}</p></li>
-</ul>
 </li>
-<li><p><em>hyperplane</em>: {<span class="math notranslate nohighlight">\(x|a^Tx = b\)</span>} ~ creates a halfspace</p></li>
-<li><p><em>norm cone</em>: {<span class="math notranslate nohighlight">\((x, t)| \: ||x|| \leq t\)</span>}</p></li>
-<li><p><em>polyhedron</em>: {x | Ax=b, Cx=d} = <span class="math notranslate nohighlight">\(\{ \sum_i^k \theta_i v_i \; | \sum_i^m \theta_i = 1, \theta_i \geq 0 \} \: m \leq k\)</span></p></li>
 <li><p><em>simplex</em>: conv{<span class="math notranslate nohighlight">\(v_{0:k}\)</span>}</p></li>
 </ul>
 </section>
-</section>
 <section id="convex-funcs-boyd-3">
-<h3><span class="section-number">3.6.1.2. </span>convex funcs (boyd 3)<a class="headerlink" href="#convex-funcs-boyd-3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.1.2. </span>convex funcs (boyd 3)<a class="headerlink" href="#convex-funcs-boyd-3" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>definitions</p>
 <ol class="arabic simple">
@@ -576,62 +538,46 @@ document.write(`
 </ol>
 </li>
 <li><p>concepts</p>
-<ul class="simple">
-<li><p><em>epigraph</em> epi f = <span class="math notranslate nohighlight">\(\{ (x, t) \; | \: x \in dom f, f(x) \leq t \}\)</span></p></li>
+<ul>
+<li><p><em>epigraph</em> epi f = $<span class="math notranslate nohighlight">\(\{ (x, t) \; \vert  \: x \in dom f, f(x) \leq t \}\)</span>$</p></li>
 <li><p><em>extended value extension</em>: <span class="math notranslate nohighlight">\(\tilde{f}(x) = f(x)\)</span> if <span class="math notranslate nohighlight">\(x \in dom f\)</span> else <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 <li><p><em>wide sense function</em> - can take on values <span class="math notranslate nohighlight">\(\pm \infty\)</span></p>
+<ul class="simple">
+<li><p>= dom f = {$<span class="math notranslate nohighlight">\(x \vert  f(x) &lt; \infty\)</span>$}</p></li>
+</ul>
+</li>
+<li><p><em>wide sense convex func</em>: $<span class="math notranslate nohighlight">\(f(x) = \inf \{ t \in \mathbb{R} \vert  (x, t) \in F\}\)</span><span class="math notranslate nohighlight">\( where \)</span>F \subseteq \mathbb{R}^{n+1}$</p>
 <ul>
-<li><p>= dom f = {<span class="math notranslate nohighlight">\(x | f(x) &lt; \infty\)</span>}</p></li>
-</ul>
-</li>
-<li><p><em>wide sense convex func</em>: <span class="math notranslate nohighlight">\(f(x) = inf \{ t \in \mathbb{R} | (x, t) \in F\}\)</span> where <span class="math notranslate nohighlight">\(F \subseteq \mathbb{R}^{n+1}\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(F(x) = inf \{ t \in \mathbb{R} | (x, t) \in F \}\)</span></p></li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>-sublevel set of convex func is convex</p></li>
-</ul>
-</li>
-<li><p>operations that preserve convexity</p>
-<ul class="simple">
-<li><p>nonnegative weighted sums ~ multiplies for logs</p></li>
-<li><p>affine map</p></li>
-<li><p>pointwise max of convex</p></li>
-<li><p>composition</p></li>
-<li><p>perspective</p></li>
-<li><p>minimization ~ sometimes</p></li>
-</ul>
-</li>
-<li><p><em>conjugate</em> of f</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(f^*(y) = \underset{x \in dom f}{sup} \: y^T x - f(x)\)</span></p></li>
-<li><p>dom <span class="math notranslate nohighlight">\(f^*\)</span> = {<span class="math notranslate nohighlight">\(y|f^*(y)\)</span> is finite}</p></li>
-<li><p>called <em>Legendre transform</em> when f differentiable</p></li>
-<li><p><em>fenchel’s inequality</em>: <span class="math notranslate nohighlight">\(f(x) + f^*(y) \geq x^ty\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(f^{**} = f\)</span> iff convex, closed</p></li>
-</ul>
-</li>
-<li><p>ex. <span class="math notranslate nohighlight">\(f(S) = log \: det X^{-1}\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(f^*(Y) = \underset{X}{sup} [tr(YX) + log \: det X]\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(= -n - log \: det(-Y) \)</span> if <span class="math notranslate nohighlight">\(-Y \in S^n_{++}\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[F(x) = \inf \{ t \in \mathbb{R} \vert  (x, t) \in F \}$$&lt;!-- --&gt;
+  - $\alpha$-sublevel set of convex func is convex
+- operations that preserve convexity
+  - nonnegative weighted sums ~ multiplies for logs
+  - affine map
+  - pointwise max of convex
+  - composition
+  - perspective
+  - minimization ~ sometimes
+- *conjugate* of f
+  - $$f^*(y) = \underset{x \in dom f}{\sup} \: y^T x - f(x)$$&lt;!-- --&gt;
+  - dom $f^*$ = {$$y\vert f^*(y)$$ is finite}
+  - called *Legendre transform* when f differentiable
+  - *fenchel's inequality*: $f(x) + f^*(y) \geq x^ty$
+  - $f^{**} = f$ iff convex, closed
+- ex. $$f(S) = \log \: \det X^{-1}\]</div>
 </li>
 </ul>
 </li>
-<li><p>can use conj. to go other way: <span class="math notranslate nohighlight">\(f(y) = \underset{x}{sup}(y^Tx - f^*(x))\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}f^*(Y) = \underset{X}{\sup} [\operatorname{tr}(YX) + \log \: \det X]$$&lt;!-- --&gt;
+    - $$= -n - \log \: \det(-Y) $$ if $-Y \in S^n_{++}$
+- can use conj. to go other way: $f(y) = \underset{x}{\sup}(y^Tx - f^*(x))$\\
+### optimization problems (boyd 4)\\### optimization\\\begin{split}- standard form: $$p^* = \min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ h_i(x) = 0\end{split}\end{aligned}\end{align} \]</div>
+</li>
 </ul>
-</section>
-<section id="optimization-problems-boyd-4">
-<h3><span class="section-number">3.6.1.3. </span>optimization problems (boyd 4)<a class="headerlink" href="#optimization-problems-boyd-4" title="Link to this heading">#</a></h3>
-</section>
-<section id="id1">
-<h3><span class="section-number">3.6.1.4. </span>optimization<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>standard form: <span class="math notranslate nohighlight">\(p^* = min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ h_i(x) = 0\)</span></p></li>
+</li>
 <li><p>equivalent problems</p>
-<ul>
+<ul class="simple">
 <li><p>change of vars</p></li>
 <li><p>constraint transformations</p></li>
 <li><p>slack vars</p></li>
@@ -639,110 +585,98 @@ document.write(`
 <li><p>eliminating linear equalities</p></li>
 <li><p>introducing equalities</p></li>
 <li><p>optimizing over some vars ~ ex. quadratic</p></li>
-<li><p>epigraph form: <span class="math notranslate nohighlight">\(min \: t \: s.t. \: f_0 \leq t\)</span></p></li>
+<li><p>epigraph form: $<span class="math notranslate nohighlight">\(\min \: t \: s.t. \: f_0 \leq t\)</span>$</p></li>
 <li><p>implicit + explicit constraints</p></li>
 </ul>
 </li>
 </ul>
 </section>
-<section id="id2">
-<h3><span class="section-number">3.6.1.5. </span>convex optimization<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>standard form: $<span class="math notranslate nohighlight">\(p^* = min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ a_i^Tx = b_i\)</span>$ where all f are convex</p></li>
+<section id="id1">
+<h3><span class="section-number">3.5.1.3. </span>convex optimization<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>standard form: $<span class="math notranslate nohighlight">\(p^* = \min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ a_i^Tx = b_i\)</span>$ where all f are convex</p></li>
 <li><p>optimality criteria (special cases of KKT)</p>
 <ul>
 <li><p>x optimal if</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>x is feasible</p></li>
-<li><p><span class="math notranslate nohighlight">\(\nabla f_0 (x)^T(y-x) \geq 0 \: \forall y \)</span> feasible</p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\nabla f_0 (x)^T(y-x) \geq 0 \: \forall y $$ feasible
+  - if unconstrained $\nabla f_0 (x) = 0$
+  - if equality only Ax=b, $\nabla f_0 (x) \perp N(A)$
+  - $x \succeq 0$, $\nabla f_0 (x) \succeq 0; x_i (\nabla f_0 (x))_i = 0$
+- equivalent convex problems
+  - eliminating equality constraints
+  - introducing equality constraints
+  - slack vars ~ for linear inequalities
+  - epigraph form
+  - minimizing over some vars\\\begin{split}### linear optimization
+- $$p^* = \min \: c^T x + d\\s.t. \: Gx \succeq h \\ Ax=b\end{split}\end{aligned}\end{align} \]</div>
+</li>
 </ol>
 </li>
-<li><p>if unconstrained <span class="math notranslate nohighlight">\(\nabla f_0 (x) = 0\)</span></p></li>
-<li><p>if equality only Ax=b, <span class="math notranslate nohighlight">\(\nabla f_0 (x) \perp N(A)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x \succeq 0\)</span>, <span class="math notranslate nohighlight">\(\nabla f_0 (x) \succeq 0; x_i (\nabla f_0 (x))_i = 0\)</span></p></li>
 </ul>
-</li>
-<li><p>equivalent convex problems</p>
-<ul>
-<li><p>eliminating equality constraints</p></li>
-<li><p>introducing equality constraints</p></li>
-<li><p>slack vars ~ for linear inequalities</p></li>
-<li><p>epigraph form</p></li>
-<li><p>minimizing over some vars</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="linear-optimization">
-<h3><span class="section-number">3.6.1.6. </span>linear optimization<a class="headerlink" href="#linear-optimization" title="Link to this heading">#</a></h3>
-<ul>
-<li><div class="math notranslate nohighlight">
-\[\begin{split}p^* = min \: c^T x + d\\s.t. \: Gx \succeq h \\ Ax=b\end{split}\]</div>
 </li>
 <li><p>standard form <span class="math notranslate nohighlight">\(x \succeq 0\)</span> is the only inequality</p></li>
 <li><p>standard dual: max <span class="math notranslate nohighlight">\(-b^T \nu\)</span> s.t. <span class="math notranslate nohighlight">\(A^T \nu + c \geq 0\)</span></p></li>
 <li><p><em>linear-fractional</em> program</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(min \: \frac{c^Tx + d}{e^tx+f} \\ s.t \: Gx \succeq h \\ Ax = b\)</span> ~ can be converted to LP</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="quadratic-optimization">
-<h3><span class="section-number">3.6.1.7. </span>quadratic optimization<a class="headerlink" href="#quadratic-optimization" title="Link to this heading">#</a></h3>
 <ul>
 <li><div class="math notranslate nohighlight">
-\[\begin{split}min \: 1/2 x^TPx + q^Txr \\s.t. \: Gx \succeq h$$ where $P \in S_+^n$
+\[ \begin{align}\begin{aligned}\begin{split}\min \: \frac{c^Tx + d}{e^tx+f} \\ s.t \: Gx \succeq h \\ Ax = b$$ ~ can be converted to LP\end{split}\\\begin{split}### quadratic optimization
+- $$\min \: 1/2 x^TPx + q^Txr \\s.t. \: Gx \succeq h$$ where $P \in S_+^n$
 - *QCQP* - inequality constraints also convex
-  - ex. $min \: ||Ax-b||_2^2$
-- *SOCP* - $$min f^Tx \\ s.t. \: ||A_ix+b_i||_2 \leq c_i^T + d_i \\ Fx=g\end{split}\]</div>
+  - ex. $$\min \: \vert \vert Ax-b\vert \vert _2^2\end{split}\end{aligned}\end{align} \]</div>
 </li>
+</ul>
+</li>
+<li><p><em>SOCP</em> - $<span class="math notranslate nohighlight">\(\min f^Tx \\ s.t. \: \vert \vert A_ix+b_i\vert \vert _2 \leq c_i^T + d_i \\ Fx=g\)</span>$</p></li>
 </ul>
 </section>
 <section id="geometric-program">
-<h3><span class="section-number">3.6.1.8. </span>geometric program<a class="headerlink" href="#geometric-program" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.1.4. </span>geometric program<a class="headerlink" href="#geometric-program" title="Link to this heading">#</a></h3>
 <ul>
 <li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}min \: f_0(x) \\ s.t. \: f_i(x) \leq 1 \: i = 1:m \\ h_i(x) = 1 \: i = 1:p$$ where $f_{0:m}$ posynomials, $h_i$ monomials
+\[ \begin{align}\begin{aligned}\begin{split}\min \: f_0(x) \\ s.t. \: f_i(x) \leq 1 \: i = 1:m \\ h_i(x) = 1 \: i = 1:p$$ where $f_{0:m}$ posynomials, $h_i$ monomials
   - *monomial* $f(x) = c x_1^{a_1} \cdot x_n^{a_n}, c&gt;0$
-  - posynomial ~ sum of monomials ~ can transform into convex w/ $y_i = log x_i$\end{split}\\\begin{split}### generalized inequality
-- $$min \: f_0(x)\\s.t. \: f_i(x) \preceq_{K_i} 0, i=1:m\\Ax=b\end{split}\end{aligned}\end{align} \]</div>
+  - posynomial ~ sum of monomials ~ can transform into convex w/ $y_i = \log x_i$\end{split}\\\begin{split}### generalized inequality
+- $$\min \: f_0(x)\\s.t. \: f_i(x) \preceq_{K_i} 0, i=1:m\\Ax=b\end{split}\end{aligned}\end{align} \]</div>
 </li>
-<li><p><em>conic form problem</em>: $<span class="math notranslate nohighlight">\(min \: c^Tx \\ s.t. \: Fx +g \preceq_K 0\\Ax=b\)</span><span class="math notranslate nohighlight">\( ~ set \)</span>K=S_+^K$</p></li>
-<li><p><em>SDP</em> = <em>semi-definite program</em>: $<span class="math notranslate nohighlight">\(min \: c^T x\\s.t. \: x_1F_1+...+x_nF_n+G \preceq 0\\Ax=b\)</span><span class="math notranslate nohighlight">\( ~ where \)</span>F_1, …, F_n \in S^k$</p>
+<li><p><em>conic form problem</em>: $<span class="math notranslate nohighlight">\(\min \: c^Tx \\ s.t. \: Fx +g \preceq_K 0\\Ax=b\)</span><span class="math notranslate nohighlight">\( ~ set \)</span>K=S_+^K$</p></li>
+<li><p><em>SDP</em> = <em>semi-definite program</em>: $<span class="math notranslate nohighlight">\(\min \: c^T x\\s.t. \: x_1F_1+...+x_nF_n+G \preceq 0\\Ax=b\)</span><span class="math notranslate nohighlight">\( ~ where \)</span><span class="math notranslate nohighlight">\(F_1, ..., F_n \in S^k\)</span>$</p>
 <ul class="simple">
-<li><p>standard form: <span class="math notranslate nohighlight">\(min \: tr(CX) \\ s.to \: tr(A_iX)=b_i \\ X \succeq 0\)</span></p></li>
+<li><p>standard form: $<span class="math notranslate nohighlight">\(\min \: \operatorname{tr}(CX) \\ s.to \: \operatorname{tr}(A_iX)=b_i \\ X \succeq 0\)</span>$</p></li>
 </ul>
 </li>
 </ul>
 </section>
 </section>
 <section id="duality-boyd-5">
-<h2><span class="section-number">3.6.2. </span>duality (boyd 5)<a class="headerlink" href="#duality-boyd-5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5.2. </span>duality (boyd 5)<a class="headerlink" href="#duality-boyd-5" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>consider <span class="math notranslate nohighlight">\(\min \: f_0 (x) \\ s.t. \: f_i(x) \leq 0 \\ h_i(x) = 0\)</span></p></li>
-<li><p><em>lagrangian</em> <span class="math notranslate nohighlight">\(L(x, \lambda, \nu) = f_0(x) + \sum \lambda_i f_i(x) + \sum \nu_i h_i(x)\)</span></p></li>
+<li><p>consider $<span class="math notranslate nohighlight">\(\min \: \cblue{f_0 (x)} \\ s.t. \: \corange{f_i(x) \leq 0} \\ \cgreen{h_i(x) = 0}\)</span>$</p></li>
+<li><p><em>lagrangian</em> $<span class="math notranslate nohighlight">\(L(x, \lambda, \nu) = \cblue{f_0(x)} + \corange{\sum \lambda_i f_i(x)} + \cgreen{\sum \nu_i h_i(x)}\)</span>$</p>
+<ul class="simple">
+<li><p><span class="cblue">objective</span> + <span class="corange">weighted inequality constraints</span> + <span class="cgreen">weighted equality constraints</span></p></li>
+</ul>
+</li>
 <li><p><em>dual function</em> <span class="math notranslate nohighlight">\(g(\lambda, \nu) = \underset{x \in D}{\inf} L(x, \lambda, \nu)\)</span> ~ g always concave</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda \succeq 0 \implies g(\lambda, \nu) \leq p^*\)</span></p></li>
 </ul>
 </li>
 <li><p><span class="math notranslate nohighlight">\((\lambda, \nu)\)</span> <em>dual feasible</em> if</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><span class="math notranslate nohighlight">\(\lambda \succeq 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((\lambda, \nu) \in dom \: g\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}(\lambda, \nu) \in dom \: g$$&lt;!-- --&gt;
+  - when $p^* = - \infty$, dual infeasible
+  - when $d^*=\infty$, primal infeasible
+- dual related to to conjugate func
+  - ex. min f(x) s.t. $x = 0 \implies g(\nu) = -f^*(-\nu)$
+- *lagrange dual problem*: $$\max \: g(\lambda, \nu)\\s.t. \: \lambda \succeq 0\end{split}\]</div>
+</li>
 </ol>
-<ul class="simple">
-<li><p>when <span class="math notranslate nohighlight">\(p^* = - \infty\)</span>, dual infeasible</p></li>
-<li><p>when <span class="math notranslate nohighlight">\(d^*=\infty\)</span>, primal infeasible</p></li>
-</ul>
 </li>
-<li><p>dual related to to conjugate func</p>
-<ul class="simple">
-<li><p>ex. min f(x) s.t. <span class="math notranslate nohighlight">\(x = 0 \implies g(\nu) = -f^*(-\nu)\)</span></p></li>
-</ul>
-</li>
-<li><p><em>lagrange dual problem</em>: <span class="math notranslate nohighlight">\(\max \: g(\lambda, \nu)\\s.t. \: \lambda \succeq 0\)</span></p></li>
 <li><p><em>weak duality</em>: <span class="math notranslate nohighlight">\(d^* \leq p^*\)</span></p>
 <ul class="simple">
 <li><p><em>optimal duality gap</em>: <span class="math notranslate nohighlight">\(p^* - d^*\)</span></p></li>
@@ -750,80 +684,51 @@ document.write(`
 </li>
 <li><p><em>strong duality</em>: <span class="math notranslate nohighlight">\(d^* = p^*\)</span> ~ requires more than convexity</p></li>
 <li><p><em>slater’s condition</em> ~ if problem convex <span class="math notranslate nohighlight">\(\implies\)</span> strong duality + <span class="math notranslate nohighlight">\(\exists\)</span> dual optimal point</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\exists x \in relint \: D\\f_i(x) &lt; 0\\Ax = b\)</span> ~ point is strictly feasible</p></li>
-<li><p>to weaken this, affine <span class="math notranslate nohighlight">\(f_i\)</span> can be <span class="math notranslate nohighlight">\(\leq 0\)</span></p></li>
-</ul>
-</li>
-<li><p><em>sion’s minimax thm</em>: <span class="math notranslate nohighlight">\(x \to f(x, y)\)</span> ~ conditions</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\implies \underset{x}{min} \: \underset{y}{sup} \: f(x,y) = \underset{y}{sup} \: \underset{x}{min} \: f(x,y)\)</span></p></li>
-</ul>
-</li>
-</ul>
-<section id="optimality-conditions">
-<h3><span class="section-number">3.6.2.1. </span>optimality conditions<a class="headerlink" href="#optimality-conditions" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>duality gap</em>: <span class="math notranslate nohighlight">\(f_0(x) - g(\lambda, \nu)\)</span></p></li>
-<li><p>can use stopping condition duality gap <span class="math notranslate nohighlight">\(\leq \epsilon_{abs}\)</span> to be <span class="math notranslate nohighlight">\(\epsilon_{abs}\)</span> - suboptimal</p></li>
-<li><p>strong duality yields <em>complementary slackness</em></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\lambda_i f_i(x^*)=0\)</span></p></li>
-</ul>
-</li>
-<li><p><em>KKT optimality conditions</em> ~ assume <span class="math notranslate nohighlight">\(f_0, f_i, h_i\)</span> differentiable, strong duality</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(f_i(x^*) \leq 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(h_i(x^*) = 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda_i^* \geq 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\lambda_i^*f(x_i^*) = 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\nabla f_0 (x^*) + \sum \lambda_i^* \nabla f_i (x_i^*) + \sum \nu_i^* \nabla h_i (x^*) = 0\)</span></p></li>
-</ol>
-</li>
-</ul>
-</section>
-<section id="thms-of-alternatives">
-<h3><span class="section-number">3.6.2.2. </span>thms of alternatives<a class="headerlink" href="#thms-of-alternatives" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>weak alternative</em> - at most one of 2 is true</p></li>
-<li><p><em>strong alternative</em> - exactly one is true</p>
-<ul>
-<li><p>ex. Fredholm alternative</p></li>
-<li><p>ex. Farkas’s lamma</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\exists x \: Ax \leq 0, c^Tx &lt; 0\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\exists y \: y \geq 0, A^Ty + c = 0\)</span></p></li>
-</ol>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}\exists x \in relint \: D\\f_i(x) &lt; 0\\Ax = b$$ ~ point is strictly feasible
+  - to weaken this, affine $f_i$ can be $\leq 0$
+- *sion's minimax thm*: $x \to f(x, y)$ ~ conditions
+  - $$\implies \underset{x}{\min} \: \underset{y}{\sup} \: f(x,y) = \underset{y}{\sup} \: \underset{x}{\min} \: f(x,y)$$&lt;!-- --&gt;\end{split}\\### optimality conditions
+- *duality gap*: $f_0(x) - g(\lambda, \nu)$
+- can use stopping condition duality gap $\leq \epsilon_{abs}$ to be $\epsilon_{abs}$ - suboptimal
+- strong duality yields *complementary slackness*
+  - $\lambda_i f_i(x^*)=0$
+- *KKT optimality conditions* ~ assume $f_0, f_i, h_i$ differentiable, strong duality
+  1. $f_i(x^*) \leq 0$
+  2. $h_i(x^*) = 0$
+  3. $\lambda_i^* \geq 0$
+  4. $$\lambda_i^*f(x_i^*) = 0$$&lt;!-- --&gt;
+  5. $$\nabla f_0 (x^*) + \sum \lambda_i^* \nabla f_i (x_i^*) + \sum \nu_i^* \nabla h_i (x^*) = 0$$&lt;!-- --&gt;\\
+### thms of alternatives
+- *weak alternative* - at most one of 2 is true
+- *strong alternative* - exactly one is true
+  - ex. Fredholm alternative
+  - ex. Farkas's lamma
+    1. $$\exists x \: Ax \leq 0, c^Tx &lt; 0$$&lt;!-- --&gt;
+    2. $$\exists y \: y \geq 0, A^Ty + c = 0$$&lt;!-- --&gt;\\## approx + fitting (boyd 6)\\### norm approx problem
+- minimize $$\vert \vert Ax-b\vert \vert \end{aligned}\end{align} \]</div>
 </li>
 </ul>
 </li>
-</ul>
-</section>
-</section>
-<section id="approx-fitting-boyd-6">
-<h2><span class="section-number">3.6.3. </span>approx + fitting (boyd 6)<a class="headerlink" href="#approx-fitting-boyd-6" title="Link to this heading">#</a></h2>
-<section id="norm-approx-problem">
-<h3><span class="section-number">3.6.3.1. </span>norm approx problem<a class="headerlink" href="#norm-approx-problem" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>minimize <span class="math notranslate nohighlight">\(||Ax-b||\)</span></p></li>
 <li><p>ex. weighted norm approx. min||W(Ax-b)||</p></li>
 <li><p>ex. least squares min ||Ax-b||<span class="math notranslate nohighlight">\(_2^2\)</span></p></li>
 <li><p>ex. chebyshev approx norm min||Ax-b||<span class="math notranslate nohighlight">\(_\infty\)</span></p></li>
-<li><p>ex. penalty function approx problem: <span class="math notranslate nohighlight">\(min \: \phi(r_1) + ... + \phi(r_m)\\s.t. \: r=Ax-b\)</span></p></li>
+<li><p>ex. penalty function approx problem: $<span class="math notranslate nohighlight">\(\min \: \phi(r_1) + ... + \phi(r_m)\\s.t. \: r=Ax-b\)</span>$</p></li>
 </ul>
-</section>
 <section id="least-norm-problem">
-<h3><span class="section-number">3.6.3.2. </span>least norm problem<a class="headerlink" href="#least-norm-problem" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.1. </span>least norm problem<a class="headerlink" href="#least-norm-problem" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>min <span class="math notranslate nohighlight">\(||x||\\s.t. \: Ax=b\)</span> ~ min <span class="math notranslate nohighlight">\(||x_0+ Zu||\)</span>, Z cols basis for N(A)</p></li>
+<li><p>min $<span class="math notranslate nohighlight">\(\vert \vert x\vert \vert \\s.t. \: Ax=b\)</span><span class="math notranslate nohighlight">\( ~ min \)</span><span class="math notranslate nohighlight">\(\vert \vert x_0+ Zu\vert \vert \)</span>$, Z cols basis for N(A)</p></li>
 </ul>
 </section>
 <section id="regularized-approximation">
-<h3><span class="section-number">3.6.3.3. </span>regularized approximation<a class="headerlink" href="#regularized-approximation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.2. </span>regularized approximation<a class="headerlink" href="#regularized-approximation" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>min <span class="math notranslate nohighlight">\(||Ax-b|| + \gamma ||x||\)</span></p></li>
-<li><p>min <span class="math notranslate nohighlight">\(||Ax-b||^2 + \gamma ||x||^2\)</span></p></li>
-<li><p><em>Tikhonov</em>: <span class="math notranslate nohighlight">\(min \: ||Ax-b||_2^2 + \gamma ||x||_2^2\)</span></p></li>
+<li><p><span class="cblue">residual</span> + <span class="corange">regularizer</span></p></li>
+<li><p>min $<span class="math notranslate nohighlight">\(\cblue{\vert \vert Ax-b\vert \vert}  + \corange{\gamma \vert \vert x\vert \vert} \)</span>$</p></li>
+<li><p>min $<span class="math notranslate nohighlight">\(\cblue{\vert \vert Ax-b\vert \vert ^2} + \corange{\gamma \vert \vert x\vert \vert ^2}\)</span>$</p></li>
+<li><p><em>Tikhonov</em>: $<span class="math notranslate nohighlight">\(\min \: \cblue{\vert \vert Ax-b\vert \vert _2^2} + \corange{\gamma \vert \vert x\vert \vert _2^2}\)</span>$</p></li>
 <li><p>examples</p>
 <ul>
 <li><p>ex. regularize w/ ||Dx||</p></li>
@@ -835,47 +740,39 @@ document.write(`
 </ul>
 </section>
 <section id="robust-approximation">
-<h3><span class="section-number">3.6.3.4. </span>robust approximation<a class="headerlink" href="#robust-approximation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.3. </span>robust approximation<a class="headerlink" href="#robust-approximation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(A = \bar{A} + U\)</span> ~ random w/ mean 0</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>stochastic robust approx problem: <span class="math notranslate nohighlight">\(min \: E||Ax-b||\)</span></p></li>
-<li><p>(worst-case) robust approx prob: <span class="math notranslate nohighlight">\(min \: sup ||Ax-b|| \: | A \in \mathcal{A}\)</span></p></li>
+<li><p>stochastic robust approx problem: $<span class="math notranslate nohighlight">\(\min \: E\vert \vert Ax-b\vert \vert \)</span>$</p></li>
+<li><p>(worst-case) robust approx prob: $<span class="math notranslate nohighlight">\(\min \: \sup \vert \vert Ax-b\vert \vert  \: \vert  A \in \mathcal{A}\)</span>$</p></li>
 </ol>
 </section>
 <section id="function-fitting">
-<h3><span class="section-number">3.6.3.5. </span>function fitting<a class="headerlink" href="#function-fitting" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(f(u) = x_1 f_1 (u) + .... + x_n f_n (u)\)</span> ~ <span class="math notranslate nohighlight">\(f_i\)</span> are basis funcs, <span class="math notranslate nohighlight">\(x_i\)</span> are coefficients</p></li>
-<li><p>sparse descriptions + basis pursuit</p></li>
-<li><p>interpolation</p></li>
-</ul>
-</section>
-</section>
-<section id="unconstrained-minimization-boyd-9">
-<h2><span class="section-number">3.6.4. </span>unconstrained minimization (boyd 9)<a class="headerlink" href="#unconstrained-minimization-boyd-9" title="Link to this heading">#</a></h2>
-<section id="unconstrained-problems">
-<h3><span class="section-number">3.6.4.1. </span>unconstrained problems<a class="headerlink" href="#unconstrained-problems" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x^* = \text{argmin} \: f(x) \implies \nabla f(x^*) = 0\)</span></p></li>
-<li><p>examples</p>
+<h3><span class="section-number">3.5.2.4. </span>function fitting<a class="headerlink" href="#function-fitting" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>ex. quadratic: <span class="math notranslate nohighlight">\(\min \: 1/2 x^TPX + q^Tx + r\)</span></p>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}f(u) = x_1 f_1 (u) + .... + x_n f_n (u)$$ ~ $f_i$ are basis funcs, $x_i$ are coefficients
+- sparse descriptions + basis pursuit
+- interpolation\\## unconstrained minimization (boyd 9)\\### unconstrained problems
+- $$x^* = \text{argmin} \: f(x) \implies \nabla f(x^*) = 0$$&lt;!-- --&gt;
+- examples
+  - ex. quadratic: $$\min \: 1/2 x^TPX + q^Tx + r\end{aligned}\end{align} \]</div>
 <ul>
 <li><p>solved w/ <span class="math notranslate nohighlight">\(Px^* + q = 0\)</span>, if <span class="math notranslate nohighlight">\(P \succeq 0\)</span>, unique soln <span class="math notranslate nohighlight">\(-P^{-1}q\)</span></p></li>
-</ul>
-</li>
 <li><p>ex. unconstrained geometric program</p></li>
 <li><p>ex. analytic center of linear inequalities</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\min \: f(x) = -\sum \: \log (b_i - a_i^Tx)\)</span> where dom f = <span class="math notranslate nohighlight">\(\{x|a_i^Tx&lt; b_i, i = 1:m\}\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[\min \: f(x) = -\sum \: \log (b_i - a_i^Tx)$$ where dom f = $$\{x\vert a_i^Tx&lt; b_i, i = 1:m\}\]</div>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>3 definitions of convexity</p>
-<ul>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(0 \leq \theta \leq 1\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(f(\theta x_1 + (1 - \theta) x_2) \leq \theta f(x_1) + (1 - \theta) f(x_2)\)</span></p></li>
@@ -885,40 +782,43 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1)\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(\color{red}0 \preceq \color{green}{\underset{\text{strong convexity}}{mI}} \preceq \nabla^2 \color{cornflowerblue}{f(x)} \preceq \underset{\text{smoothness}}{MI}\)</span></p>
+<li><p><span class="math notranslate nohighlight">\(0 \preceq \cgreen{\underset{\text{strong convexity}}{mI}} \preceq \nabla^2 f(x) \preceq \corange{\underset{\text{smoothness}}{MI}}\)</span></p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\kappa = M/m\)</span> bounds <em>condition number</em> of <span class="math notranslate nohighlight">\(\nabla^2 f = \frac{\lambda_{\max}(\nabla^2 f)}{\lambda_{\min}(\nabla^2 f)}\)</span></p></li>
-<li><p><em>strongly convex</em>: <span class="math notranslate nohighlight">\(\nabla^2 f(x) \succeq mI\)</span></p>
+<li><p><span class="cgreen">strongly convex</span>: <span class="math notranslate nohighlight">\(\nabla^2 f(x) \succeq \cgreen{mI}\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\implies f(x_2) \geq f(x_1) + \nabla f(x_1)^T(x_2-x_1) + m/2 ||x_2-x_1||_2^2\)</span></p></li>
-<li><p>minimizing yields <span class="math notranslate nohighlight">\(p^* \geq f(x) - 1/(2m) ||\nabla f(x)||_2^2\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[\implies f(x_2) \geq f(x_1) + \nabla f(x_1)^T(x_2-x_1) + \cgreen{m/2 \vert \vert x_2-x_1\vert \vert _2^2}$$&lt;!-- --&gt;
+    - minimizing yields $$p^* \geq f(x) - 1/(2m) \vert \vert \nabla f(x)\vert \vert _2^2\]</div>
+</li>
 <li><p>if the gradient of f at x is small enough, then the difference between f(x) and p⋆ is small</p></li>
 </ul>
 </li>
-<li><p><em>smooth</em>: <span class="math notranslate nohighlight">\(\exists \: M, \: \nabla^2f(x) \preceq MI\)</span></p>
+<li><p><span class="corange">smooth</span>: $<span class="math notranslate nohighlight">\(\exists \: M, \: \nabla^2f(x) \preceq \corange{MI}\)</span>$</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 ||y-x||_2^2\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + \corange{M/2 \vert \vert y-x\vert \vert _2^2}$$&lt;!-- --&gt;
+- cond(*C*) = $W_{\max}^2 / W_{\min}^2$
+  - *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $$\vert \vert q\vert \vert _2=1\]</div>
 </li>
 </ul>
 </li>
-<li><p>cond(<em>C</em>) = <span class="math notranslate nohighlight">\(W_{\max}^2 / W_{\min}^2\)</span></p>
-<ul>
-<li><p><em>width</em> of convex set <span class="math notranslate nohighlight">\(C \subset \mathbb{R}^n\)</span> in direction q with <span class="math notranslate nohighlight">\(||q||_2=1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz$$&lt;!-- --&gt;
+- *alpha-level subset*: $$C_\alpha = \{x\vert f(x) \leq \alpha\}\]</div>
+</li>
 </ul>
 </li>
-<li><p><em>alpha-level subset</em>: <span class="math notranslate nohighlight">\(C_\alpha = \{x|f(x) \leq \alpha\}\)</span></p></li>
 </ul>
 </section>
 <section id="descent-methods">
-<h3><span class="section-number">3.6.4.2. </span>descent methods<a class="headerlink" href="#descent-methods" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.5. </span>descent methods<a class="headerlink" href="#descent-methods" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>update rule <span class="math notranslate nohighlight">\(x = x + t \Delta x\)</span></p></li>
-<li><p><em>exact line search</em>: <span class="math notranslate nohighlight">\(t = \underset{s \geq 0}{\text{argmin}} \:f(x+s \Delta x)\)</span></p></li>
+<li><p><em>exact line search</em>: $<span class="math notranslate nohighlight">\(t = \underset{s \geq 0}{\text{argmin}} \:f(x+s \Delta x)\)</span>$</p></li>
 <li><p><em>backtracking line search</em></p>
 <ul>
-<li><p>given a descent direction <span class="math notranslate nohighlight">\(\Delta x \text{ for } f, x \in dom \: f, \alpha \in (0, 0.5), \beta \in (0, 1)\)</span></p></li>
+<li><p>given a descent direction $<span class="math notranslate nohighlight">\(\Delta x \text{ for } f, x \in dom \: f, \alpha \in (0, 0.5), \beta \in (0, 1)\)</span>$</p></li>
 <li><p>t:=1, <span class="math notranslate nohighlight">\(\alpha \in (0, 0.5), \beta \in (0, 1)\)</span></p></li>
 <li><p>while <span class="math notranslate nohighlight">\(f(x + t \Delta x) &gt; f(x) + \alpha t \nabla f(x)^T \Delta x\)</span></p>
 <ul>
@@ -931,7 +831,7 @@ document.write(`
 </ul>
 </section>
 <section id="gd-method">
-<h3><span class="section-number">3.6.4.3. </span>gd method<a class="headerlink" href="#gd-method" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.6. </span>gd method<a class="headerlink" href="#gd-method" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>convergence</p>
 <ul>
@@ -955,12 +855,12 @@ document.write(`
 </ul>
 </section>
 <section id="steepest-descent-method">
-<h3><span class="section-number">3.6.4.4. </span>steepest descent method<a class="headerlink" href="#steepest-descent-method" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.7. </span>steepest descent method<a class="headerlink" href="#steepest-descent-method" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>examples</p>
 <ul>
 <li><p>euclidean norm: <span class="math notranslate nohighlight">\(\Delta x_{sd} = - \nabla f(x)\)</span></p></li>
-<li><p>quadratic norm <span class="math notranslate nohighlight">\(||z||_P = (z^TPz)^{1/2} = ||P^{1/2}z||_2\)</span> where <span class="math notranslate nohighlight">\(P \in S_{++}^n\)</span></p>
+<li><p>quadratic norm $<span class="math notranslate nohighlight">\(\vert \vert z\vert \vert _P = (z^TPz)^{1/2} = \vert \vert P^{1/2}z\vert \vert _2\)</span><span class="math notranslate nohighlight">\( where \)</span><span class="math notranslate nohighlight">\(P \in S_{++}^n\)</span>$</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\Delta x_{sd} = -P^{-1} \nabla f(x)\)</span></p></li>
 </ul>
@@ -971,7 +871,7 @@ document.write(`
 </ul>
 </section>
 <section id="newton-s-method">
-<h3><span class="section-number">3.6.4.5. </span>newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.2.8. </span>newton’s method<a class="headerlink" href="#newton-s-method" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>Newton step</em> <span class="math notranslate nohighlight">\(\Delta x_{nt} = - \nabla^2 f(x)^{-1} \nabla f(x)\)</span></p>
 <ul>
@@ -990,21 +890,21 @@ document.write(`
 </section>
 </section>
 <section id="basic-algorithms">
-<h2><span class="section-number">3.6.5. </span>basic algorithms<a class="headerlink" href="#basic-algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5.3. </span>basic algorithms<a class="headerlink" href="#basic-algorithms" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>types: <em>batch</em> (have full data) vs <em>online</em></p></li>
 </ul>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>gradient descent = <em>batch gradient descent</em></p>
 <ul class="simple">
 <li><p><em>gradient</em> - vector that points to direction of maximum increase</p></li>
-<li><p>at every step, subtract gradient multiplied by learning rate: <span class="math notranslate nohighlight">\(x_k = x_{k-1} - \alpha \nabla_x F(x_{k-1})\)</span></p></li>
+<li><p>at every step, subtract <span class="cblue">gradient</span> multiplied by <span class="corange">learning rate</span>: $<span class="math notranslate nohighlight">\(x_k = x_{k-1} - \corange{\alpha} \cblue{\nabla_x F(x_{k-1})}\)</span>$</p></li>
 <li><p>alpha = 0.05 seems to work</p></li>
 <li><p><span class="math notranslate nohighlight">\(J(\theta) = 1/2 (\theta ^T X^T X \theta - 2 \theta^T X^T y + y^T y)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\nabla_\theta J(\theta) = X^T X \theta - X^T Y\)</span></p>
 <ul>
-<li><p>= <span class="math notranslate nohighlight">\(\sum_i  x_i  (x_i^T - y_i)\)</span></p></li>
-<li><p>this represents residuals * examples</p></li>
+<li><p>= $<span class="math notranslate nohighlight">\(\sum_i  \cblue{x_i}  \corange{(x_i^T - y_i)}\)</span>$</p></li>
+<li><p>this represents <span class="corange">residuals</span> * <span class="cblue">examples</span></p></li>
 </ul>
 </li>
 </ul>
@@ -1036,66 +936,51 @@ document.write(`
 </ul>
 </li>
 <li><p>newton’s method for optimization</p>
-<ul class="simple">
+<ul>
 <li><p><em>second-order</em> optimization - requires 1st &amp; 2nd derivatives</p></li>
-<li><p><span class="math notranslate nohighlight">\(\theta_{k+1} = \theta_k - H_K^{-1} g_k\)</span></p></li>
-<li><p>update with inverse of Hessian as alpha - this is an approximation to a taylor series</p></li>
-<li><p>finding inverse of Hessian can be hard / expensive</p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\theta_{k+1} = \theta_k - \corange{H_K^{-1}} \cblue{g_k}$$&lt;!-- --&gt;
+   - update with &lt;span class=&quot;corange&quot;&gt;inverse of Hessian&lt;/span&gt; as alpha - this is an approximation to a taylor series
+   - finding inverse of Hessian can be hard / expensive
+4. ADMM - *alternating direction method of multipliers* (ADMM) is an algorithm that solves convex optimization problems by breaking them into smaller pieces, each of which are then easier to handle\\## expectation maximization - Jordan ch 11\\from Michael Jordan's &quot;An Introduction to Probabilistic Graphical Models&quot;\\- method to maximize likelihood on model with observed X and hidden Z
+  1. *expectation step* - values of unobserved latent variables are filled in
+     - calculates prob of latent variables given observed variables and current param values
+  2. *maximization step* - parameters are adjusted based on filled-in variables
+- goal: maximize *complete log-likelihood*, but don't know z
+  - *expected complete log-likelihood* $$E_{p'}[l(\theta; x,z)] = \sum_z p'(z\vert x,\theta) \cdot \log \: p(x,z\vert \theta)\end{aligned}\end{align} \]</div>
 </li>
-<li><p>ADMM - <em>alternating direction method of multipliers</em> (ADMM) is an algorithm that solves convex optimization problems by breaking them into smaller pieces, each of which are then easier to handle</p></li>
-</ol>
-</section>
-<section id="expectation-maximization-j-11">
-<h2><span class="section-number">3.6.6. </span>expectation maximization - j 11<a class="headerlink" href="#expectation-maximization-j-11" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>method to maximize likelihood on model with observed X and hidden Z</p>
-<ol class="arabic simple">
-<li><p><em>expectation step</em> - values of unobserved latent variables are filled in</p>
-<ul>
-<li><p>calculates prob of latent variables given observed variables and current param values</p></li>
-</ul>
-</li>
-<li><p><em>maximization step</em> - parameters are adjusted based on filled-in variables</p></li>
-</ol>
-</li>
-<li><p>goal: maximize <em>complete log-likelihood</em>, but don’t know z</p>
-<ul>
-<li><p><em>expected complete log-likelihood</em> <span class="math notranslate nohighlight">\(E_{p'}[l(\theta; x,z)] = \sum_z p'(z|x,\theta) \cdot \log \: p(x,z|\theta)\)</span></p>
-<ul>
 <li><p>p’ distribution is assignment to z vars</p></li>
 </ul>
 </li>
-<li><p>deriving <em>auxilary function</em> <span class="math notranslate nohighlight">\(\mathcal L(q, \theta, x) = \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)}\)</span> - lower bound for the log likelihood</p></li>
-<li><p><span class="math notranslate nohighlight">\(\begin{align} l(\theta; x) &amp;= \log \: p(x|\theta) &amp; \text{incomplete log-likelihood} \\&amp;= \log \sum_z p(x,z|\theta) &amp;\text{complete log-likelihood}\\&amp;= \log\sum_z p'(z|x) \frac{p(x,z|\theta)}{p'(z|x)} &amp;\text{multiplying by 1} \\ &amp;\geq \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)} &amp;\text{Jensen's inequality}\\&amp;\triangleq \mathcal L (p', \theta) \end{align}\)</span></p></li>
-<li><p>this removes dependence on z</p></li>
-</ul>
-</li>
-<li><p>steps</p>
+</ol>
 <ul>
-<li><p>E: <span class="math notranslate nohighlight">\(p'(z|x, \theta) = \underset{p'}{\text{argmax}}\: \mathcal L(p',\theta, x)\)</span></p></li>
-<li><p>M: <span class="math notranslate nohighlight">\(\theta = \underset{\theta}{\text{argmax}} \: \mathcal L(p', \theta, x)\)</span></p></li>
+<li><p>deriving <em>auxilary function</em> $<span class="math notranslate nohighlight">\(\mathcal L(q, \theta, x) = \sum_z p'(z\vert x) \log \frac{p(x,z\vert \theta)}{p'(z\vert x)}\)</span>$ - lower bound for the log likelihood</p></li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} l(\theta; x) &amp;= \log \: p(x\vert \theta) &amp; \text{incomplete log-likelihood} \\&amp;= \log \sum_z p(x,z\vert \theta) &amp;\text{complete log-likelihood}\\&amp;= \log\sum_z p'(z\vert x) \frac{p(x,z\vert \theta)}{p'(z\vert x)} &amp;\text{multiplying by 1} \\ &amp;\geq \sum_z p'(z\vert x) \log \frac{p(x,z\vert \theta)}{p'(z\vert x)} &amp;\text{Jensen's inequality}\\&amp;\triangleq \mathcal L (p', \theta) \end{align}$$&lt;!-- --&gt;
+  - this removes dependence on z
+- steps
+  - E: $$p'(z\vert x, \theta) = \underset{p'}{\text{argmax}}\: \mathcal L(p',\theta, x)\end{split}\]</div>
+</li>
+<li><p>M: $<span class="math notranslate nohighlight">\(\theta = \underset{\theta}{\text{argmax}} \: \mathcal L(p', \theta, x)\)</span>$</p></li>
 <li><p>equivalent to maximizing expected complete log-likelihood</p></li>
 <li><p><em>stochastically</em> converges to <em>local</em> minimum</p></li>
-</ul>
-</li>
 <li><p>alternatively, can look at kl-divergences</p></li>
 </ul>
 </section>
 <section id="misc">
-<h2><span class="section-number">3.6.7. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5.4. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
 <section id="nn-optimization">
-<h3><span class="section-number">3.6.7.1. </span>nn optimization<a class="headerlink" href="#nn-optimization" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.4.1. </span>nn optimization<a class="headerlink" href="#nn-optimization" title="Link to this heading">#</a></h3>
 <section id="why-is-it-hard">
-<h4><span class="section-number">3.6.7.1.1. </span>why is it hard?<a class="headerlink" href="#why-is-it-hard" title="Link to this heading">#</a></h4>
-<ul class="simple">
+<h4><span class="section-number">3.5.4.1.1. </span>why is it hard?<a class="headerlink" href="#why-is-it-hard" title="Link to this heading">#</a></h4>
+<ul>
 <li><p>plateaus</p></li>
 <li><p>winding canyons</p></li>
 <li><p>cliffs</p></li>
 <li><p>local maxima to dodge</p></li>
 <li><p>saddle points (local max and local min)</p></li>
 <li><p>most popular</p>
-<ul>
+<ul class="simple">
 <li><p>sgd</p></li>
 <li><p>sgd + nesterov momentum</p></li>
 <li><p>adam</p></li>
@@ -1105,27 +990,35 @@ document.write(`
 </li>
 <li><p>adam - “adaptive moment estimation” (kingma_2015)</p>
 <ul>
+<li><div class="math notranslate nohighlight" id="equation-span-class-cblue-1st-moment-span">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-span-class-cblue-1st-moment-span" title="Link to this equation">#</a></span>\[\cblue{m_t}=\beta_1 \cblue{m_{t-1}}+\left(1-\beta_1\right) g_t\]</div>
+<div class="math notranslate nohighlight" id="equation-span-class-corange-2nd-moment-span">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-span-class-corange-2nd-moment-span" title="Link to this equation">#</a></span>\[\corange{v_t}=\beta_2 \corange{v_{t-1}}+\left(1-\beta_2\right) g_t^2\]</div>
+<div class="math notranslate nohighlight" id="equation-bias-correction">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-bias-correction" title="Link to this equation">#</a></span>\[\cblue{\widehat{m}_t}=\frac{\cblue{m_t}}{1-\beta_1^t}\]</div>
+<div class="math notranslate nohighlight" id="equation-bias-correction">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-bias-correction" title="Link to this equation">#</a></span>\[\corange{\hat{v}_t}=\frac{\corange{v_t}}{1-\beta_2^t}\]</div>
+<p>$<span class="math notranslate nohighlight">\(\theta_t=\theta_{t-1}-\alpha \frac{\cblue{\widehat{m}_t}}{\sqrt{\corange{\hat{v}_t}}+\epsilon}\)</span>$<!-- --></p>
+</li>
+<li><p>Hyperparameters: <span class="math notranslate nohighlight">\(\beta_1=0.9, \beta_2=0.999, \epsilon= 10^{-8}\)</span></p></li>
+<li><p>Intuition: <span class="math notranslate nohighlight">\(m_t\)</span> is an <span class="cblue">EMA of gradients (momentum)</span>, and <span class="math notranslate nohighlight">\(v_t\)</span> is an <span class="corange">EMA of squared gradients</span> (adaptive per-parameter scaling, like RMSProp). Dividing by <span class="math notranslate nohighlight">\(\sqrt{\hat{v}_t}\)</span> gives each parameter its own effective learning rate - large-gradient directions get damped, small-gradient directions get amplified. The bias-correction terms fix the fact that <span class="math notranslate nohighlight">\(m_t\)</span> and <span class="math notranslate nohighlight">\(v_t\)</span> are biased toward zero in early steps (since they’re initialized at zero) with <span class="math notranslate nohighlight">\(m_0=v_0=0\)</span>.</p></li>
 <li><p>keep track of per-parameter learning rate (based on first moment of gradients tracked) and per-parameter second moment (based on variance of gradients tracked)</p></li>
 <li><p>alpha - learning rate</p></li>
 <li><p>beta1 - exponential decay rate for first moment estimate</p>
-<ul>
+<ul class="simple">
 <li><p>default 0.9</p></li>
 </ul>
 </li>
 <li><p>beta2 - exponential decay rate for 2nd moment estimates (should be higher when gradients sparser)</p>
-<ul>
+<ul class="simple">
 <li><p>default 0.999</p></li>
 </ul>
 </li>
-<li><p>epsilon - small number to prevent division by zero</p>
-<ul>
-<li><p>default 1e-8 - usually requires tuning (ex. inception requires 1e-1) <img alt="Screen Shot 2018-10-11 at 8.07.56 AM" src="../../_images/adam.png" />visualization</p></li>
-</ul>
-</li>
+<li><p>epsilon - small number to prevent division by zero</p></li>
 </ul>
 </li>
 <li><p>requires low dims</p>
-<ul>
+<ul class="simple">
 <li><p>goodfellow 2015 “Qualitatively characterizing neural network optimization problems” plots loss on line from starting point to ending point</p></li>
 <li><p>could do PCA on params</p></li>
 </ul>
@@ -1133,7 +1026,7 @@ document.write(`
 </ul>
 </section>
 <section id="complicated-is-simpler">
-<h4><span class="section-number">3.6.7.1.2. </span>complicated is simpler<a class="headerlink" href="#complicated-is-simpler" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">3.5.4.1.2. </span>complicated is simpler<a class="headerlink" href="#complicated-is-simpler" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>ex. <span class="math notranslate nohighlight">\(x^3 \sin(x)\)</span> is simpler than just <span class="math notranslate nohighlight">\(x\)</span> on the domain [−0.01, 0.01]</p></li>
 <li><p>dropout is like ridge</p></li>
@@ -1141,7 +1034,7 @@ document.write(`
 </section>
 </section>
 <section id="mixed-integer-programming-mip">
-<h3><span class="section-number">3.6.7.2. </span>mixed integer programming (mip)<a class="headerlink" href="#mixed-integer-programming-mip" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.5.4.2. </span>mixed integer programming (mip)<a class="headerlink" href="#mixed-integer-programming-mip" title="Link to this heading">#</a></h3>
 <p>Notes from this <a class="reference external" href="https://www.gurobi.com/resource/mip-basics/">overview</a></p>
 <ul class="simple">
 <li><p>ex: minimize <span class="math notranslate nohighlight">\(c^{\top} x\)</span> s.t.</p>
@@ -1208,7 +1101,7 @@ constraints)</p></li>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>signals</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>signals</p>
       </div>
     </a>
     <a class="right-next"
@@ -1216,7 +1109,7 @@ constraints)</p></li>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.7. </span>calculus</p>
+        <p class="prev-next-title"><span class="section-number">3.6. </span>calculus</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1236,50 +1129,32 @@ constraints)</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-optimization">3.6.1. convex optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-sets-boyd-2">3.6.1.1. convex sets (boyd 2)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry">3.6.1.1.1. geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-optimization">3.5.1. convex optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-sets-boyd-2">3.5.1.1. convex sets (boyd 2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-funcs-boyd-3">3.5.1.2. convex funcs (boyd 3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.5.1.3. convex optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-program">3.5.1.4. geometric program</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convex-funcs-boyd-3">3.6.1.2. convex funcs (boyd 3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-problems-boyd-4">3.6.1.3. optimization problems (boyd 4)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.6.1.4. optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.6.1.5. convex optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-optimization">3.6.1.6. linear optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-optimization">3.6.1.7. quadratic optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-program">3.6.1.8. geometric program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-boyd-5">3.5.2. duality (boyd 5)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-norm-problem">3.5.2.1. least norm problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularized-approximation">3.5.2.2. regularized approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-approximation">3.5.2.3. robust approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-fitting">3.5.2.4. function fitting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descent-methods">3.5.2.5. descent methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-method">3.5.2.6. gd method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steepest-descent-method">3.5.2.7. steepest descent method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.5.2.8. newton’s method</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-boyd-5">3.6.2. duality (boyd 5)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimality-conditions">3.6.2.1. optimality conditions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thms-of-alternatives">3.6.2.2. thms of alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-algorithms">3.5.3. basic algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">3.5.4. misc</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-optimization">3.5.4.1. nn optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-it-hard">3.5.4.1.1. why is it hard?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complicated-is-simpler">3.5.4.1.2. complicated is simpler</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approx-fitting-boyd-6">3.6.3. approx + fitting (boyd 6)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-approx-problem">3.6.3.1. norm approx problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-norm-problem">3.6.3.2. least norm problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularized-approximation">3.6.3.3. regularized approximation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-approximation">3.6.3.4. robust approximation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-fitting">3.6.3.5. function fitting</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unconstrained-minimization-boyd-9">3.6.4. unconstrained minimization (boyd 9)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unconstrained-problems">3.6.4.1. unconstrained problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descent-methods">3.6.4.2. descent methods</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gd-method">3.6.4.3. gd method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steepest-descent-method">3.6.4.4. steepest descent method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">3.6.4.5. newton’s method</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-algorithms">3.6.5. basic algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-maximization-j-11">3.6.6. expectation maximization - j 11</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">3.6.7. misc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nn-optimization">3.6.7.1. nn optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-it-hard">3.6.7.1.1. why is it hard?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#complicated-is-simpler">3.6.7.1.2. complicated is simpler</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-integer-programming-mip">3.6.7.2. mixed integer programming (mip)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-integer-programming-mip">3.5.4.2. mixed integer programming (mip)</a></li>
 </ul>
 </li>
 </ul>
@@ -1319,11 +1194,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

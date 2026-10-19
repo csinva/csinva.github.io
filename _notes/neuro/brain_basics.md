@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: brain basics
+subtitle: notes from Purves et al. "Neuroscience", 5th edition (chapter numbers in headers) - neurons, electrical signaling, synapses, and neurotransmitters
 category: neuro
 ---
 
@@ -28,7 +29,7 @@ category: neuro
 
 # whole brain
 
-- *Cerebrum* - The cerebrum is the largest portion of the brain, and contains tools which are responsible for most of the brain's function. It is divided into four sections: 
+- *Cerebrum* - The cerebrum is the largest portion of the brain, and contains tools which are responsible for most of the brain's function. It is divided into four sections:
   - the temporal lobe
   - the occipital lobe
   - parietal lobe
@@ -69,6 +70,7 @@ category: neuro
 
 # 1 - introduction
 - ![](../assets/map.png)
+
 ## genomics
 
 - male Drosophila uses body position and environment to add rhythmic notes to song
@@ -98,19 +100,20 @@ category: neuro
   - Cajal uses Golgi's salt-staining method to show neurons are distinct
   - Sherrington finds synapses
   - there are rare *gap junctions* between neurons (where there are *electrical synapses*)
+
 1. neurons
-  - number of inputs reflects *convergence*
-  - number of targets reflects *divergence*
-  - *local circuit neurons* = *interneurons* - short axons
-  - *projection neurons* - long axons
+   - number of inputs reflects *convergence*
+   - number of targets reflects *divergence*
+   - *local circuit neurons* = *interneurons* - short axons
+   - *projection neurons* - long axons
 2. glial cells - support and regeneration
-  - outnumber neurons 3:1
-  - they are stem cells - can generate new glia
-  - maintaining ion gradients, modulating nerve signals, modulating synaptic action, scaffolding, aiding recovery
-  1. *astrocytes* - in CNS, maintain chemical environment, retain stem cell properties
-  2. *oligodendrocytes* - in CNS, lay down myelin - in PNS, *Schwann cells* do this
-  3. *microglial* cells - remove debris
-  - glial stem cells - make more glia and sometimes neurons
+   - outnumber neurons 3:1
+   - they are stem cells - can generate new glia
+   - maintaining ion gradients, modulating nerve signals, modulating synaptic action, scaffolding, aiding recovery
+   1. *astrocytes* - in CNS, maintain chemical environment, retain stem cell properties
+   2. *oligodendrocytes* - in CNS, lay down myelin - in PNS, *Schwann cells* do this
+   3. *microglial* cells - remove debris
+   - glial stem cells - make more glia and sometimes neurons
 
 ## cellular diversity
 
@@ -131,18 +134,18 @@ category: neuro
 ## organization of the human nervous system
 1. sensory systems
 2. motor systems
-
 3. *CNS*
   - brain
   - spinal cord
 4. *PNS*
-  - sensory neurons 
-  - *somatic* motor division - connect CNS to skeletal muscles
-  - *autonomic* or *visceral* motor division - innervate muscles / glands
-    - *autonomic ganglia* - peripheral motor neurons that take inputs from brainstem / spinal cord
-    - *enteric system* - small ganglia / neurons in gut that influence gastric motility and secretion
-    - *sympathetic* division - ganglia lie near the vertebral column and sent their axons to a variety of targets
-    - *parasympathetic* division - ganglia are found near organs they innervate
+   - sensory neurons
+   - *somatic* motor division - connect CNS to skeletal muscles
+   - *autonomic* or *visceral* motor division - innervate muscles / glands
+     - *autonomic ganglia* - peripheral motor neurons that take inputs from brainstem / spinal cord
+     - *enteric system* - small ganglia / neurons in gut that influence gastric motility and secretion
+     - *sympathetic* division - ganglia lie near the vertebral column and sent their axons to a variety of targets
+     - *parasympathetic* division - ganglia are found near organs they innervate
+
 - groupings
   - *ganglia* - accumulations of cell bodies / supporting cells
   - *nerve* - bundles of axons in PNS
@@ -194,7 +197,7 @@ category: neuro
   - generally 10:1 ratio between inside, outside
   - inside of cell has a bunch of negative proteins to balance chlorine
   - ions want to spread out because of entropy (then they factor in charge difference)
-- $V_{ion} = 58/z * log(X_{out} / X_{in}) $
+- $V_{ion} = 58/z * \log(X_{out} / X_{in}) $
   - calculate for each ion, if able to move
   - z is charge on ion
   - for potassium: 58/1 * log(.1) = -58mV
@@ -245,10 +248,8 @@ category: neuro
     - tetrodotoxin binds to outside of cell membrane
 - some channels are delayed
 - self-inactivating = *transient* - channels turn off by themselves
-
   - take 10-20 ms
 - voltage-gated channels
-
   - Na+, K+, Ca, Cl
 - frog Xenopus Ooctyes ion channels are studied
 - TRP channels gated by mechanical / heat
@@ -259,7 +260,6 @@ category: neuro
   4. inward rectifier - open at resting potential - establishes membrane potential
 - mitten model - protein rotates around
 - human genes: 10 Na, 10 Ca, 100K, ~5 Cl
-
   - there are more types of potassium channels
 - channel-opathies - diseases can be caused by altered ion channels
 - ion transporters
@@ -279,6 +279,7 @@ category: neuro
   - usually allow Na, K, Cl to flow in and out
 
 # 5 - synapses
+
 ## synapse types
 1. electrical synapses
   - gap junction channels
@@ -288,22 +289,22 @@ category: neuro
   - gap junction proteins have been showing up in diseases
   - simple organisms have these
 2. chemical synapses
-  - *bouton* - end of presynaptic dendrite
-  - *spines* - start of postsynaptic dendrite
-  - voltage-gated Ca comes in and causes vesicles to fuse with presynaptic membrane
-  - neurotransmitter released
-  - bind to ligand-gated channels which let ions flow through
-    - if Cl flows into postsynaptic cell - inhibition
-  - pumps get rid of neurotransmitters quickly
+   - *bouton* - end of presynaptic dendrite
+   - *spines* - start of postsynaptic dendrite
+   - voltage-gated Ca comes in and causes vesicles to fuse with presynaptic membrane
+   - neurotransmitter released
+   - bind to ligand-gated channels which let ions flow through
+     - if Cl flows into postsynaptic cell - inhibition
+   - pumps get rid of neurotransmitters quickly
 
 ## neurotransmitter types
 - released when Ca comes in due to depolarization
 1. peptides
-  - ex. oxytocin
-  - require long Ca exposure
-  - loaded into vesicles up by the cell body - can take days to get to bouton
-  - neurotransmitter diffuses away - doesn't always have specific target
-  - can spread to all neurons in the area (ex. substance P)
+   - ex. oxytocin
+   - require long Ca exposure
+   - loaded into vesicles up by the cell body - can take days to get to bouton
+   - neurotransmitter diffuses away - doesn't always have specific target
+   - can spread to all neurons in the area (ex. substance P)
 2. small & fast
   - glutamate, Ach, GABA
   - loaded into vesicles in bouton
@@ -335,6 +336,7 @@ category: neuro
 - can measure single ligand-gated channel by clamping it alone
 
 # 6 - neurotransmitters
+
 ## receptors
 - ionotropic
 
@@ -348,8 +350,46 @@ category: neuro
   |----------|-----------	|--------	|---------------------	|-------------------------	|---------------------	|------------------	|-------------------	|------------------	|
   | Abbrev   | Glutamate 	| GABA_B 	| Dopamine            	| NE,Epi                  	| Histamine           	| Serotonin        	| Purines           	| Muscarinic       	|
   | Function |           	|        	| cocaine, ADHD drugs 	| antianxiety             	| unkown, probs sleep 	| 3 is ionotropic! 	|                   	| mushroom drugs   	|
-- ![](../assets/6_1.png)
-- ![](../assets/6_4.png)
+- functional features of the major neurotransmitters (table 6.1)
+
+  | neurotransmitter | postsynaptic effect | precursor(s) | rate-limiting step in synthesis | removal mechanism |
+  | --- | --- | --- | --- | --- |
+  | ACh | excitatory | choline + acetyl CoA | CAT | AChEase |
+  | glutamate | excitatory | glutamine | glutaminase | transporters |
+  | GABA | inhibitory | glutamate | GAD | transporters |
+  | glycine | inhibitory | serine | phosphoserine | transporters |
+  | catecholamines (epinephrine, norepinephrine, dopamine) | | tyrosine | tyrosine hydroxylase | transporters, MAO, COMT |
+  | serotonin (5-HT) | | tryptophan | tryptophan hydroxylase | transporters, MAO |
+  | histamine | | histidine | histidine decarboxylase | transporters |
+  | ATP | | ADP | mitochondrial oxidative phosphorylation; glycolysis | hydrolysis to AMP and adenosine |
+  | neuropeptides | | amino acids (protein synthesis) | synthesis and transport | proteases |
+  | endocannabinoids | | membrane lipids | enzymatic modification of lipids | hydrolysis by FAAH |
+  | nitric oxide | | arginine | nitric oxide synthase | spontaneous oxidation |
+
+- general architecture of ligand-gated receptors (fig 6.4)
+  - ionotropic
+    - AMPA (GluR-x): Na
+    - NMDA (NR-x): Na/Ca
+    - kainate: Na
+    - GABA-A: Cl
+    - glycine: Cl
+    - nicotinic ACh: Na
+    - 5HT-3: Na
+    - purinergic: Na
+  - metabotropic: mGlu-x, GABA-B, D-x, alpha/beta adrenergic, 5HT1-7 (but not 3), purinergic, muscarinic-x
+  - removal
+    - ACh: cholinesterase
+    - glutamate: glutamine cycle
+    - GABA: transporter
+    - serotonin, dopamine, noradrenaline: transporter & MAO
+  - pain -> substance P
+  - analgesia -> endorphin
+  - blood pressure -> vasopressin
+  - metabolism -> TRH
+  - mood -> NPY
+  - anandamide: released by pyramidal glu-excitatory neurons
+    - retrograde signal; post back to pre; inhibit the inhibitor (CB1)
+
 ## excitatory
 1. *Acetylcholine* - excites muscle cells
   - receptors: nAch
@@ -358,20 +398,20 @@ category: neuro
   - Myasthinia is when you develop antibodies against your own nAch receptors
   - you have trouble controlling your eyes
 2. *Glutamate* - excites pyramidal cells
-  - VGLUT pumps Glutamate into vesicles
-  - EATT transports extracellular Glutamate into presynaptic terminal / nearby Glial cells
-    - Glial cells convert glutamate to glutamine (inactivates) and glutamine is taken up by the presynaptic terminal
-    - glutamate overload if you overload the inactivating pumps in the glial cells
-  - glutamate receptors
-    - AMPA - fast Na only
-    - NMDA - slow, Na and Ca and also requires depolarization
+   - VGLUT pumps Glutamate into vesicles
+   - EATT transports extracellular Glutamate into presynaptic terminal / nearby Glial cells
+     - Glial cells convert glutamate to glutamine (inactivates) and glutamine is taken up by the presynaptic terminal
+     - glutamate overload if you overload the inactivating pumps in the glial cells
+   - glutamate receptors
+     - AMPA - fast Na only
+     - NMDA - slow, Na and Ca and also requires depolarization
 
 ## inhibitory
 3. ,4. *GABA*/*glycine*
-  - have simple transporters that move released GABA into presynaptic terminal / Glia
-  - Ionotropic GABA receptors - depressants; shut down nervous system
-    - can bind steroids like estrogen - different effects in men / women
-    - alcohol binds to this, shuts things down
+   - have simple transporters that move released GABA into presynaptic terminal / Glia
+   - Ionotropic GABA receptors - depressants; shut down nervous system
+     - can bind steroids like estrogen - different effects in men / women
+     - alcohol binds to this, shuts things down
 - immature neurons have high intracellular Cl - people don't know why
 
 ## neuromodulators
@@ -380,34 +420,36 @@ category: neuro
   - reuptake: DAT, NET, SerT
   - breakdown: MAO
   - vesicular transport: VMAT
+
 5. *catecholamines*
-  - pathway: DOPA -> Dopamine -> Norepinephrine -> Epinephrine
-  - dopamine - forming of memories
-    - produced by substantia nigra
-    - loss of these neurons -> Parkinson's
-  - norepinephrine 
-    - produced by locus coeruleus
+   - pathway: DOPA -> Dopamine -> Norepinephrine -> Epinephrine
+   - dopamine - forming of memories
+     - produced by substantia nigra
+     - loss of these neurons -> Parkinson's
+   - norepinephrine
+     - produced by locus coeruleus
 6. *serotonin* = 5HT - happiness
-  - Tryptophan -> serotonin
-  - serotonin produced by Raphe nuclei
-  - affected by LSD
+   - Tryptophan -> serotonin
+   - serotonin produced by Raphe nuclei
+   - affected by LSD
 7. *histamine* - not well-known
-  - antihistamines can make you hallucinate
+   - antihistamines can make you hallucinate
 8. *atp* - sensitivity to pain
 9. *neuropeptides* - slow
    - substance P - pain
-   - alpha-endorphin - analgesia (block pain) 
-     - vasopressin - blood pressure 
-   - thyrotropin releasing hormone (TRH) - metabolism 
-   - neuropeptide Y - mood/aggression 
+   - alpha-endorphin - analgesia (block pain)
+     - vasopressin - blood pressure
+   - thyrotropin releasing hormone (TRH) - metabolism
+   - neuropeptide Y - mood/aggression
 10. *enndocannabinoids* - weed
-  - ex. anandamide  - binds to CB1 (cannabanoid 1 receptor)
-  - retrograde signal - post back to pre - inhibit the inhibitor
-  - this increases the signal
+    - ex. anandamide - binds to CB1 (cannabanoid 1 receptor)
+    - retrograde signal - post back to pre - inhibit the inhibitor
+    - this increases the signal
 11. *nitric oxide* - gas
    - binds to guanylyl cyclase
 
 # 7 - molecular signaling
+
 ## localization
 - chemical signaling mechanisms
   1. *synaptic* - local
@@ -439,20 +481,20 @@ category: neuro
   - ex. TrkA NGF receptor - Tyrosine kinase
   - once it binds, it becomes an enzyme
 3. **metabotropic** - G-protein-coupled receptors
-  - ex. Glue metabotropic receptor
-  - activate G-protein that then does something
-  - these require energy for G-proteins
-  1. Heterotrimeric G-proteins
-    - G-protein has 3 subunits: - ![](../assets/7_6.png)
-    1. Gs - binds norepinephrine
-      - + cAMP
-    2. Gq - binds glutamate
-      - + DAG (diaglycerol) & IP3
-    3. Gi - binds dopamine
-      - inhibits cAMP
-  2. Monomeric G-proteins
-    - G-protein has just one subunit
-    - ex. Ras
+   - ex. Glue metabotropic receptor
+   - activate G-protein that then does something
+   - these require energy for G-proteins
+   1. Heterotrimeric G-proteins
+     - G-protein has 3 subunits: - <img style="width: 720px; max-width: 100%;" src="../assets/7_6.svg" alt="Gs, Gq, Gi signaling pathways"/>
+     1. Gs - binds norepinephrine
+       - + cAMP
+     2. Gq - binds glutamate
+       - + DAG (diaglycerol) & IP3
+     3. Gi - binds dopamine
+       - inhibits cAMP
+   2. Monomeric G-proteins
+     - G-protein has just one subunit
+     - ex. Ras
 4. *intracellular* receptors
   - ex. estrogen receptors
   - activates intracellular transcription factors
@@ -490,7 +532,7 @@ category: neuro
   2. ras
   3. Phospholipase C
   - this displays divergence signaling
-- cerebellar synapses 
+- cerebellar synapses
   - mGlu inhibits AMPA with negative feedback
   - lets out Ca which depresses AMPA receptor
 - signal scaling - tyrosine hydroxylase makes dopamine
@@ -499,6 +541,7 @@ category: neuro
   - *use it or lose it*
 
   # 8 - synaptic plasticity
+
 ## short-term
 - measured by firing neuron before muscle and recording response
   1. synaptic facilitation - frequency-dependent plasticity - fire faster, get bigger EPSPS
@@ -513,11 +556,11 @@ category: neuro
   - *sensitization* - associate two stimuli together: ![](../assets/8_5.png)
 - mechanism
   - sensory neuron -> serotinergic neuromodulatary interneuon -> motor neuron
-  - interneuron releases serotonin 
+  - interneuron releases serotonin
   - cAMP produced in sensory neuron
-    -  long term - CREB in nucleus - synapse growth
-    -  central signal for LTM
-    -  activates PKA
+    - long term - CREB in nucleus - synapse growth
+    - central signal for LTM
+    - activates PKA
   - short term - decreases K+ current
 - sensory neuron doesn't learn, neuromuscular junction gets stronger
 - mutant genes associated with cAMP identified
@@ -537,7 +580,7 @@ category: neuro
   - NMDA -> Ca -> CAM kinase -> LTP
   - Mg blocks NMDA unless already depolarized
   - requires good timing!
-- silent synapses 
+- silent synapses
   - short-term - more AMPA receptors, long-term new synapses
   - all synapses born with only NMDA
   - protein synthesis needed for LTP (mostly making more AMPA)

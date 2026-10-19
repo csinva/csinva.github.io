@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 1150 610" role="img" aria-labelledby="title desc">
+  <title id="title">ALAE architecture</title>
+  <desc id="desc">Adversarial Latent Autoencoder. Training: z goes through F to w; w and noise η go through G to G(w, η); E maps it to a latent that D classifies as real or fake with target Fake. A loss Δ compares w with the output of E. A real x goes through E then D with target Real. Inference: x goes through E to w, then G with noise η produces G(w, η).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .var { fill: none; stroke: #8a8a8a; stroke-width: 2.5; }
+      .net { fill: #1f8a4c; fill-opacity: 0.14; stroke: #1f8a4c; stroke-width: 2.5; stroke-linejoin: round; }
+      .delta { fill: #d1342f; fill-opacity: 0.12; stroke: #8a8a8a; stroke-width: 2.5; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linejoin: round; }
+      .d { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 2 4; stroke-linecap: round; }
+      .sep { stroke: #8a8a8a; stroke-width: 2; }
+      .m { font: italic 36px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .lab { font: 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .hd { font: 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .t { font: 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .real { fill: #1f8a4c; }
+      .fake { fill: #d1342f; }
+    </style>
+  </defs>
+<circle class="var" cx="70" cy="200" r="40"/><text class="m" x="70" y="200">z</text>
+<path class="e" d="M110 200 H158" marker-end="url(#arrow)"/>
+<path class="net" d="M160 162 H212 L238 200 L212 238 H160 Z"/><text class="m" x="194" y="200">F</text>
+<path class="e" d="M240 200 H290" marker-end="url(#arrow)"/>
+<circle class="var" cx="332" cy="200" r="40"/><text class="m" x="332" y="200">w</text>
+<path class="e" d="M372 200 H418" marker-end="url(#arrow)"/>
+<path class="net" d="M420 162 H472 L498 200 L472 238 H420 Z"/><text class="m" x="454" y="200">G</text>
+<path class="e" d="M500 200 H530" marker-end="url(#arrow)"/>
+<rect class="var" x="535.0" y="160" width="150" height="80" rx="40"/><text class="m" x="610" y="200">G(w, η)</text>
+<path class="e" d="M687 200 H718" marker-end="url(#arrow)"/>
+<path class="net" d="M720 162 H772 L798 200 L772 238 H720 Z"/><text class="m" x="754" y="200">E</text>
+<path class="e" d="M800 200 H858" marker-end="url(#arrow)"/>
+<path class="net" d="M860 162 H912 L938 200 L912 238 H860 Z"/><text class="m" x="894" y="200">D</text>
+<path class="e" d="M940 200 H990" marker-end="url(#arrow)"/>
+<text class="t" x="998" y="192"><tspan class="real">Real</tspan>/<tspan class="fake">Fake</tspan></text>
+<text class="t" x="998" y="224">Target: <tspan class="fake">Fake</tspan></text>
+<circle class="var" cx="454" cy="305" r="28"/><text class="m" x="454" y="305">η</text>
+<path class="d" d="M454 277 V242" marker-end="url(#arrow)"/>
+<rect class="delta" x="545" y="40" width="54" height="44"/><text class="lab" x="572" y="63">Δ</text>
+<path class="e" d="M332 160 V62 H543" marker-end="url(#arrow)"/>
+<path class="e" d="M830 200 V62 H601" marker-end="url(#arrow)"/>
+<circle class="var" cx="630" cy="320" r="40"/><text class="m" x="630" y="320">x</text>
+<path class="e" d="M670 320 H718" marker-end="url(#arrow)"/>
+<path class="net" d="M720 282 H772 L798 320 L772 358 H720 Z"/><text class="m" x="754" y="320">E</text>
+<path class="e" d="M800 320 H858" marker-end="url(#arrow)"/>
+<path class="net" d="M860 282 H912 L938 320 L912 358 H860 Z"/><text class="m" x="894" y="320">D</text>
+<path class="e" d="M940 320 H990" marker-end="url(#arrow)"/>
+<text class="t" x="998" y="312"><tspan class="real">Real</tspan>/<tspan class="fake">Fake</tspan></text>
+<text class="t" x="998" y="344">Target: <tspan class="real">Real</tspan></text>
+<text class="hd" x="10" y="40">Training</text>
+<line class="sep" x1="10" y1="392" x2="1110" y2="392"/>
+<text class="hd" x="10" y="440">Inference</text>
+<circle class="var" cx="300" cy="480" r="40"/><text class="m" x="300" y="480">x</text>
+<path class="e" d="M340 480 H388" marker-end="url(#arrow)"/>
+<path class="net" d="M390 442 H442 L468 480 L442 518 H390 Z"/><text class="m" x="424" y="480">E</text>
+<path class="e" d="M470 480 H520" marker-end="url(#arrow)"/>
+<circle class="var" cx="562" cy="480" r="40"/><text class="m" x="562" y="480">w</text>
+<path class="e" d="M602 480 H648" marker-end="url(#arrow)"/>
+<path class="net" d="M650 442 H702 L728 480 L702 518 H650 Z"/><text class="m" x="684" y="480">G</text>
+<path class="e" d="M730 480 H760" marker-end="url(#arrow)"/>
+<rect class="var" x="765.0" y="440" width="150" height="80" rx="40"/><text class="m" x="840" y="480">G(w, η)</text>
+<circle class="var" cx="684" cy="585" r="28"/><text class="m" x="684" y="585">η</text>
+<path class="d" d="M684 557 V522" marker-end="url(#arrow)"/>
+</svg>

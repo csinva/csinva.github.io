@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Learning Theory
+subtitle: Some notes on computational learning theory and concept learning.
 category: ml
 ---
 
@@ -11,7 +12,7 @@ category: ml
 
 # evolution
 
-- performance is correlation  $Perf_D (h,c) = \sum h(x) \cdot c(x) \cdot P(x)$
+- performance is correlation $Perf_D (h,c) = \sum h(x) \cdot c(x) \cdot P(x)$
   - want $P(Perf_D(h,c) < Perf_D(c,c)-\epsilon) < \delta$
 
 # sample problems
@@ -42,10 +43,10 @@ category: ml
   - $err_D(h) = \underset{x\in D}{Pr}[c(x) \neq h(x)]$
 - getting $err_D(h)=0$ is infeasible
 - *PAC learnable* - consider concept class C defined over set of instances X of length n and a learner L using hypothesis space H
-  - C is PAC-learnable by L using H if for all $c \in C$, distributions D over X, $\epsilon$ s.t. 0 < $\epsilon$ < 1/2 $\delta$ s.t. $0<\delta<1/2$, learner L will with probability at least $(1-\delta)$ output a hypothesis $h \in H$ s.t $err_D(h) \leq \epsilon$
+  - C is PAC-learnable by L using H if for all $c \in C$, distributions D over X, $\epsilon$ s.t. 0 < $\epsilon$ < 1/2 $\delta$ s.t. $0<\delta<1/2$, learner L will with probability at least $\cblue{(1-\delta)}$ output a hypothesis $h \in H$ s.t $\corange{err_D(h) \leq \epsilon}$
 - *efficiently PAC learnable* - *time* that is polynomial in $1/\epsilon, 1/\delta, n, size(c )$
-  - *probably* - probability of failure bounded by some constant $\delta$
-  - *approximately correct* - err bounded by some constant $\epsilon$
+  - <span class="cblue">probably</span> - probability of failure bounded by some constant $\cblue{\delta}$
+  - <span class="corange">approximately correct</span> - err bounded by some constant $\corange{\epsilon}$
   - assumes H contains hypothesis with artbitraily small error for every target concept in C
 
 ## sample complexity for finite hypothesis space - Mitchell
@@ -64,13 +65,13 @@ category: ml
 ## VC dimension
 - *VC dimension* measures *capacity* of a space of functions that can be learend by a statistical classification algorithm
   - let H be set of sets and C be a set
-  - $H \cap C := \{ h \cap C \: \vert  h \in H \}$
+  - $$H \cap C := \{ h \cap C \: \vert  h \in H \}$$<!-- -->
   - a set C is *shattered* by H if $H \cap C$ contains all subsets of C
   - The VC dimension of $H$ is the largest integer $D$ such that there exists a set $C$ with cardinality $D$ that is shattered by $H$
 - VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)
 - VC dimension 0 -> hypothesis either always returns false or always returns true
 - *Sauer's lemma* - let $d \geq 0, m \geq 1$, $H$ hypothesis space, VC-dim(H) = d. Then, $\Pi_H(m) \leq \phi (d,m)$
-- fundamental theorem of learning theory provides bound of m that guarantees learning: $m \geq [\frac{4}{\epsilon} \cdot (d \cdot ln(\frac{12}{\epsilon}) + ln(\frac{2}{\delta}))]$
+- fundamental theorem of learning theory provides bound of m that guarantees learning: $m \geq [\frac{4}{\epsilon} \cdot (d \cdot \ln(\frac{12}{\epsilon}) + \ln(\frac{2}{\delta}))]$
 
 # concept learning and the general-to-specific ordering
 - definitions

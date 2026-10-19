@@ -1,4 +1,4 @@
-# Learning "Healthy" Models in Machine Learning for Health 
+# Learning "Healthy" Models in Machine Learning for Health
 
 **Marzyeh Ghassemi, UToronto**
 
@@ -14,7 +14,7 @@
     - heterogenous, sparse, and uncertain
 - representations
   - want representations to separate underlying factors (e.g. HR, BP)
-  - enable semi-supervised learning - factors explaining *P(X)* are useful for learning *P(Y|X)*
+  - enable semi-supervised learning - factors explaining *P(X)* are useful for learning *P(Y\|X)*
   - allow shared factors across many learning tasks
   - learn a good latent repr. using HHMs
 - differential privacy - add some noise + clipping to gradients of DNN during training

@@ -25,11 +25,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 1. bi-encoder: separately encode query & doc into a single vec
 
 2. late-interaction encoder: separately encode but keep a vector per token & learn some params on how to compute similarity between them
-
    - e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)) uses maxsim to compare, which keeps the vector for each token and then for each token in the query, finds the candidate token it matches best (highest cosine similarity), then averages those best-match scores across all query tokens
-  
    - Your Embedding Model is SMARTer Than You Think ([zhang...lee, 2026](https://arxiv.org/abs/2605.24938)) - use the maxsim score (along with the original last-token score) to do late interaction without requiring post-training
-
 3. cross-encoder: encode query and doc together
 
 # best practices for training
@@ -61,12 +58,10 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - hybrid retrieval, combining with BM-25
     - reranking with a cross-encoder for topk results
 
-
-
 # losses
-- $\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$
+- $$\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$$<!-- -->
   - large batch sizes are important, can speed up computation with gradcache ([gao et al. 2021](https://arxiv.org/abs/2101.06983)) (computes loss wrt embs, then backprops through whole computation different examples at at time)
-  - low temp. signals "focus on the hardest cases" while high temp says "treat all negatives equally" 
+  - low temp. signals "focus on the hardest cases" while high temp says "treat all negatives equally"
   - note: this is the same as cross-entropy loss using the exp(similarity score) as the probability
   - this is what is used in CLIP, SimCLR, most popular
   - issue: can be computationally annoying to have large batch sizes / compute the denominator
@@ -82,11 +77,11 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 - baseline simple models
   - BM25 - uses TF-IDF based on word counts and document frequences
-  -  Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang & ma, 2017](https://openreview.net/forum?id=SyK00v5xx))
+  - Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang & ma, 2017](https://openreview.net/forum?id=SyK00v5xx))
     - average word embeddings in a sentence, downweighting words by their frequency
     - to remove the "common background direction", compute the top pca component from many sentence embeddings then remove that direction
 - early models just trained with bi-encoders, e.g. SBERT=Sentence BERT ([reimers & gurevych, 2019](https://arxiv.org/abs/1908.10084)), SimCSE ([gao, yao & chen, 2021](https://arxiv.org/abs/2104.08821))
-  - PromptBERT ([jiang...furu wei...zhang, 2022](https://arxiv.org/abs/2201.04337)):  `This sentence: “ [text] ” means [MASK]` then use the embedding of the mask token - this prevents how all raw embeddings have similar cosine similarities
+  - PromptBERT ([jiang...furu wei...zhang, 2022](https://arxiv.org/abs/2201.04337)): `This sentence: “ [text] ” means [MASK]` then use the embedding of the mask token - this prevents how all raw embeddings have similar cosine similarities
     - Scaling Sentence Embeddings with LLMs ([jiang, ..., zhuang, 2023](https://arxiv.org/abs/2307.16645)): `This sentence: “ [text] ” means in one word:` then use the embedding of the final token
 - next era of models started using contrastive pre-training, e.g. E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533)), GTE ([li...zhang, 2023](https://arxiv.org/abs/2308.03281)), and BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
   - this era included instruction-conditioned embeddings, e.g. Instructor ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io))
@@ -147,27 +142,27 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - MoEMB ([sep 2026](https://arxiv.org/abs/2609.08663)) - finds one embedder trained jointly over all tasks underperforms per-task models (gradient interference or capacity), motivating sparse MoE embedders
   - Douyin Multimodal Embedding ([chen…dou; bytedance, aug 2026](https://arxiv.org/abs/2608.02148)) - industrial recipe: large-scale contrastive pretraining for a broad space, then a stage that recovers the fine-grained discrimination of CoT-based models without paying generation cost at serving time
 - visual document retrieval (embed page screenshots instead of extracted text)
-  + DSE: Document Screenshot Embedding ([ma…lin, 2024](https://arxiv.org/abs/2406.11251)) - single-vector version
-  + ColPali ([faysse…colombo, 2024](https://arxiv.org/abs/2407.01449)) - late interaction over VLM patch tokens: each page → ~1024 patch embeddings (128-d), scored with MaxSim against query tokens; introduced ViDoRe; skips chunking entirely
+  - DSE: Document Screenshot Embedding ([ma…lin, 2024](https://arxiv.org/abs/2406.11251)) - single-vector version
+  - ColPali ([faysse…colombo, 2024](https://arxiv.org/abs/2407.01449)) - late interaction over VLM patch tokens: each page → ~1024 patch embeddings (128-d), scored with MaxSim against query tokens; introduced ViDoRe; skips chunking entirely
     - family: ColQwen2/2.5/3 (Qwen-VL backbones), ColSmol, ColModernVBERT ([teiletche…, 2025](https://arxiv.org/abs/2510.01149)) - 250M params within 0.6 nDCG of ColPali, Nemotron ColEmbed V2 ([NVIDIA, 2026](https://arxiv.org/abs/2602.03992)) - Qwen3-VL 4B/8B with bidirectional attention; projecting to 128-d keeps ~95% accuracy at 3% storage, but 1M pages still need ~180GB
     - jina-embeddings-v4 outputs *both* a 2048-d dense vector (MRL-truncatable to 128) and 128-d per-token vectors from one model, so you can trade indexing cost for precision without switching models
     - MetaEmbed ([meta, 2025](https://arxiv.org/abs/2509.18095)) - append a small set of learnable "meta tokens" and train so any prefix of them works as a multi-vector embedding → test-time scaling of retrieval quality vs cost (matryoshka over *number* of vectors)
     - storage is the pain point → training-free multi-vector compression via token pooling / anchor pruning (e.g. Structural Anchor Pruning ([2026](https://arxiv.org/abs/2601.20107))), or MUVERA-style fixed-dimensional encodings that let multi-vector sets use standard ANN
     - visual-token efficiency for single-vector models: Magic-MM-Embedding ([li…liu, 2026](https://arxiv.org/abs/2602.05275)) reduces visual tokens before pooling
 - reasoning-driven embeddings - let the MLLM think before emitting the vector
-  + UME-R1 ([2025](https://arxiv.org/abs/2511.00405)) - generate a CoT then pool; RL-trained; big gains on compositional/instruction tasks but impractical to serve online
-  + Embed-RL ([jiang…tang, 2026](https://arxiv.org/abs/2602.13823)) - Embedder-Reasoner RL loop where the embedder supervises the reasoner so CoT traces stay aligned with embedding tasks
-  + PLUME ([he…wang, 2026](https://arxiv.org/abs/2604.02073)) - latent (non-verbal) reasoning tokens instead of explicit CoT to recover most of the gain at bi-encoder cost
+  - UME-R1 ([2025](https://arxiv.org/abs/2511.00405)) - generate a CoT then pool; RL-trained; big gains on compositional/instruction tasks but impractical to serve online
+  - Embed-RL ([jiang…tang, 2026](https://arxiv.org/abs/2602.13823)) - Embedder-Reasoner RL loop where the embedder supervises the reasoner so CoT traces stay aligned with embedding tasks
+  - PLUME ([he…wang, 2026](https://arxiv.org/abs/2604.02073)) - latent (non-verbal) reasoning tokens instead of explicit CoT to recover most of the gain at bi-encoder cost
 - omni-modal (text + image + video + audio in one space)
-  + Omni-Embed-Nemotron ([NVIDIA, 2025](https://arxiv.org/abs/2511.10954)), LCO-Embedding ([2025](https://arxiv.org/abs/2510.11693)) - language-centric omnimodal training on Qwen2.5-Omni
-  + Gemini Embedding 2 ([google deepmind, may 2026](https://arxiv.org/abs/2605.27295)) - native multimodal from Gemini; arbitrary interleaved text/image/video/audio/document inputs; multi-task multi-stage contrastive training; SoTA across unimodal, cross-modal, and mixed-modal retrieval simultaneously (69.9 MTEB multilingual, 84.0 MTEB code)
-  + jina-embeddings-v5-omni ([jina, 2026](https://jina.ai/news/jina-embeddings-v5-omni-multimodal-embeddings-for-text-image-audio-and-video/)) - nano (0.95B) / small (1.57B); bolts SigLIP2 vision + Whisper audio encoders onto the frozen v5 text model so text quality is bit-identical; small matches 7B omni baselines on average, video is the remaining gap
-  + Conan-embedding-v3 ([2026](https://arxiv.org/abs/2606.09331)) - *merge* separately trained modality-specialist backbones; works for vision/video/doc but audio regresses because the projector was calibrated to the audio-specialist backbone ("projector drift"), fixed by re-tuning the projector with backbone frozen
-  + Ovis-Omni-Embedding-3B - initialize from Qwen2.5-Omni Thinker (drop Talker + LM head), last-token pooling; leads MMEB-V3 aggregate
+  - Omni-Embed-Nemotron ([NVIDIA, 2025](https://arxiv.org/abs/2511.10954)), LCO-Embedding ([2025](https://arxiv.org/abs/2510.11693)) - language-centric omnimodal training on Qwen2.5-Omni
+  - Gemini Embedding 2 ([google deepmind, may 2026](https://arxiv.org/abs/2605.27295)) - native multimodal from Gemini; arbitrary interleaved text/image/video/audio/document inputs; multi-task multi-stage contrastive training; SoTA across unimodal, cross-modal, and mixed-modal retrieval simultaneously (69.9 MTEB multilingual, 84.0 MTEB code)
+  - jina-embeddings-v5-omni ([jina, 2026](https://jina.ai/news/jina-embeddings-v5-omni-multimodal-embeddings-for-text-image-audio-and-video/)) - nano (0.95B) / small (1.57B); bolts SigLIP2 vision + Whisper audio encoders onto the frozen v5 text model so text quality is bit-identical; small matches 7B omni baselines on average, video is the remaining gap
+  - Conan-embedding-v3 ([2026](https://arxiv.org/abs/2606.09331)) - *merge* separately trained modality-specialist backbones; works for vision/video/doc but audio regresses because the projector was calibrated to the audio-specialist backbone ("projector drift"), fixed by re-tuning the projector with backbone frozen
+  - Ovis-Omni-Embedding-3B - initialize from Qwen2.5-Omni Thinker (drop Talker + LM head), last-token pooling; leads MMEB-V3 aggregate
 - video - usually samples frames and embeds them rather than explicit temporal modeling
-  + voyage-multimodal-3.5 ([jan 2026](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/)) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens; first production video model with matryoshka dims
-  + VLM2Vec-V2 ([meng…chen, 2025](https://arxiv.org/abs/2507.04590)) - extends VLM2Vec to videos + visual docs, introduces MMEB-V2
-  + WAVE - unified audio-visual embeddings for audio↔video retrieva
+  - voyage-multimodal-3.5 ([jan 2026](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/)) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens; first production video model with matryoshka dims
+  - VLM2Vec-V2 ([meng…chen, 2025](https://arxiv.org/abs/2507.04590)) - extends VLM2Vec to videos + visual docs, introduces MMEB-V2
+  - WAVE - unified audio-visual embeddings for audio↔video retrieva
 
 
 # papers with a little trick
@@ -177,7 +172,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - then, use low-dim representation of both embeddings concatenated as the embedding
 - training-time
   - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
-  - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
+  - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc).
     - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
     - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/abs/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
   - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng & shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
@@ -208,7 +203,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets; newer and hopes to avoid MMTEB overfitting
   - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah & khattab, 2026](https://arxiv.org/abs/2605.06235))
   - EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge ([sun...butler, 2026](https://arxiv.org/abs/2605.05253))
-  - [MAIR (Massive Instructed Retrieval) benchmark](https://arxiv.org/abs/2410.10127) - dataset for instruction-informed retrieval
+  - MAIR (Massive Instructed Retrieval) benchmark ([sun et al. 2024](https://arxiv.org/abs/2410.10127)) - dataset for instruction-informed retrieval
     - BERRI: Task-aware Retrieval with Instructions ([asai...riedel, hajishirzi, & yih, 2023](https://aclanthology.org/2023.findings-acl.225/))
     - FollowIR ([weller...soldaini, 2024](https://arxiv.org/abs/2403.15246))
 - agentic search
@@ -217,14 +212,13 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - InfoDeepSeek: Benchmarking Agentic Information Seeking for RAG ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
 - Long context datasets
   - [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval)
-  - [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
+  - Jina Long Context Benchmark ([günther et al. 2023](https://arxiv.org/abs/2310.19923.pdf))
 - Misc minor
   - [TREC-RAG](https://trec-rag.github.io/) dataset
   - Instructor eval: Billboard, Prompt retrieval
 - Training datasets
   - Nomic 235M curated text pairs (mostly filtered from [here](https://huggingface.co/datasets/sentence-transformers/embedding-training-data))
     - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
-
   - MEDI (from Instructor paper): combines 300 datasets from Super-NaturalInstructions with 30 datasets from existing collections designed for embedding training
 
 # agentic search
@@ -238,21 +232,17 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - MemReranker: Reasoning-Aware Reranking for Agent Memory Retrieval ([li...li, 2026](https://arxiv.org/abs/2605.06132))
 - Are We Ready For An Agent-Native Memory System? ([zhou...wu, 2026](https://arxiv.org/abs/2606.24775))
   - MemoryBank: Enhancing LLMs with Long-Term Memory ([zhong...wang, 2023](https://arxiv.org/abs/2305.10250)) - maintains experiences as timestamped memory streams and periodically summarizes them into higher-level reflections
-
 - Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval ([yang, ma, chen & shrivastava, 2026](https://arxiv.org/abs/2605.06647))
   - asks which terms are likely to separate the desired evidence from corpus-level confusers
   - doc side: LLM enriches each document offline with missing search vocabulary
-  - query side: predicts evidence vocabulary omitted by the query &  document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin
+  - query side: predicts evidence vocabulary omitted by the query & document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin
   - final retrieval step is weighted BM25 call combining the original query with the validated expansion
 - GrepSeek: Training Search Agents for Direct Corpus Interaction ([salemi...zamani, 2026](https://arxiv.org/abs/2605.29307v1)) - trains a compact search agent to find, filter, and compose evidence
   from large text corpora
   - Is Grep All You Need? How Agent Harnesses Reshape Agentic Search ([sen...subbiah, 2026](https://arxiv.org/abs/2605.15184)) - grep generally outperforms vector retrieval in agentic RAG workflows, but overall accuracy depends heavily on agent harness
-
 - MemEx: A Programmable Scratchpad for LLM Agents ([databricks research team, 2026](https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents)) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time
-
 - Adapting Embedding Models for Agent Capability Retrieval ([chen...xu, 2026](https://arxiv.org/abs/2607.17347)) - fnetunes 3 retrieval models on synthetic capability-profile data
-
-- https://jbarrow.ai/2026-06-12-searching-fast-and-slow/: 
+- https://jbarrow.ai/2026-06-12-searching-fast-and-slow/:
   - ![IR-pareto-frontier](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg) ([ref](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/))
 
 
@@ -284,8 +274,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - product quantization ([jegou et al. 2011](https://ieeexplore.ieee.org/document/5432202)) - this speeds up the vector comparison time (different from everything else)
   - separate vector into subvectors (e.g. first half, second half), run k-means for each subvector, then replace the subvector with the index of its closest center mean
   - at inference time, split the query into the same subvectors, and pre-compute the squared distance to each of the center means for each subvector
-	  - then, for each vector, rather than doing the dot-product, just look up the pre-computed distances for each subvector (add them together to get the squared distance for the whole vector)
-	- note: splitting vectors and clustering struggles if there are lots of correlations between different subvector parts, one fix for this is [Optimized PQ](https://www.microsoft.com/en-us/research/wp-content/uploads/2013/11/pami13opq.pdf) (OPQ), which learns a rotation to apply before splitting so the variance is balanced and decorrelated across subspaces
+    - then, for each vector, rather than doing the dot-product, just look up the pre-computed distances for each subvector (add them together to get the squared distance for the whole vector)
+    - note: splitting vectors and clustering struggles if there are lots of correlations between different subvector parts, one fix for this is [Optimized PQ](https://www.microsoft.com/en-us/research/wp-content/uploads/2013/11/pami13opq.pdf) (OPQ), which learns a rotation to apply before splitting so the variance is balanced and decorrelated across subspaces
 <p float="left">
   <img src="../assets/pq_index_time_wide_dark_v2.svg" width="45%" />
   <img src="../assets/pq_query_time_wide_dark_v2.svg" width="45%" />
@@ -348,7 +338,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - similarity metrics
   - Anisotropy Decides Cosine vs. Rank Metrics for Text Embeddings ([parupudi, 2026](https://arxiv.org/abs/2606.29571)) - choice of similarity metric depends on embedding geometry: cosine is best when variance spreads evenly & L1-type metrics win when variance concentrates into a few directions
   - euclidean, cosine, and dot product are most common
-    - when embeddings normalized to have norm 1, euclidean and dot product yield the same rankings because $$\|q - d\|^2 = \|q\|^2 + \|d\|^2 - 2(q \cdot d) = 2 - 2(q \cdot d)$$
+    - when embeddings normalized to have norm 1, euclidean and dot product yield the same rankings because $$\Vert q - d\Vert ^2 = \Vert q\Vert ^2 + \Vert d\Vert ^2 - 2(q \cdot d) = 2 - 2(q \cdot d)$$
 
 
 # explainable embeddings
@@ -398,8 +388,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 # retrieval augmented generation (RAG)
 
 - RAG perspective paper ([asai, zhong, chen, koh, zettlemoyer, hajishirzi, & yih, 2024](https://arxiv.org/abs/2403.03187.pdf))
-
-  - |                            | Granularity | Incorporation | Frequency                  | Training                 | Data order              |
+  - | | Granularity | Incorporation | Frequency | Training | Data order |
     | :------------------------- | :---------- | :------------ | :------------------------- | :----------------------- | :---------------------- |
     | DrQA                       | Chunks      | Input         | One-time                   | Independent              | $O\left(10^9\right)$    |
     | REALM, RAG, ATLAS          | Chunks      | Input         | One-time                   | Joint                    | $O\left(10^9\right)$    |
@@ -409,19 +398,14 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     | kNN LM, TRIME              | Tokens      | Output        | Every token                | Independent*, Joint      | $O\left(10^9\right)$    |
     | NPM, Copy Generator        | Phrases     | Output        | Every phrase               | Joint                    | $O\left(10^9\right)$    |
     | SPALM, Adaptive kNN        | Tokens      | Output        | Adaptive                   | Independent*, Joint      | $O\left(10^9\right)$    |
-
   - RAGGED: Towards Informed Design of Retrieval Augmented Generation Systems ([hsia...neubig, 2024](https://arxiv.org/abs/2403.09040.pdf)) - gives benchmark of multi-hop QA questions for evaluating RAG systems holistically
-
   - https://pageindex.ai/ - popular system that replaces vector-based rag with table-of-contents based search for docs that are already well organized
-
   - Seven Failure Points When Engineering a Retrieval Augmented Generation System ([barnet...abdelrazek, 2024](https://arxiv.org/abs/2401.05856))
-
 - dynamic systems
-
-  - Active RAG ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) -  propose FLARE, which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
-  - Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection ([asai...hajishirzi, 2023](https://arxiv.org/abs/2310.11511)) -  train an LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection token
+  - Active RAG ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) - propose FLARE, which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
+  - Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection ([asai...hajishirzi, 2023](https://arxiv.org/abs/2310.11511)) - train an LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection token
   - Infer–Retrieve–Rank: In-Context Learning for Extreme Multi-Label Classification ([d’oosterlinck, ..., potts, 2024](https://arxiv.org/abs/2401.12178.pdf))
-    - Infer: an LM processes the input document and guesses a set of applicable terms 
+    - Infer: an LM processes the input document and guesses a set of applicable terms
     - Retrieve: a retriever relates each predicted term to the actual label space
     - Rank: Finally, an LM is used to rerank retrieved labels
   - Adaptive-RAG: Learning to Adapt Retrieval-Augmented LLMs through Question Complexity ([jeong...park, 2024](https://arxiv.org/abs/2403.14403)) - dynamically selects the most suitable retrieval-augmented strategy based on the predicted complexity level of input query
@@ -434,23 +418,21 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - DrQA ([chen, weston, bordes 2017](https://arxiv.org/abs/1704.00051))
     - ORQA ([lee...toutanova, 2019](https://arxiv.org/abs/1906.00300))
 - retrieval-augmented in-context learning (put retrieved info into context, or something very similar)
-  - RETRO ([deepmind, 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
+  - RETRO ([deepmind, 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention
   - Decomposed prompting ([khot et al., 2022](https://arxiv.org/abs/2210.02406.pdf)) - decompose tasks via prompting which are delegated to a shared library of prompting-based LLMs dedicated to these sub-tasks
   - retrieval-in-context approach ([shi, min et al. 2023](https://arxiv.org/abs/2301.12652); [ram…shoham, 2023](https://arxiv.org/abs/2302.00083)) - retrieve docs and preprend to the context
-  - LLM-Augmenter ([peng, galley...gao, 2023](https://arxiv.org/abs/2302.12813)) -  (1) consolidates evidence from external knowledge for the LLM to generate responses grounded in evidence, and (2) revising LLM’s (candidate) responses using automated feedback
-  - DRAGON: Diverse Augmentation Towards Generalizable Dense Retrieval [(Lin et al 2023)](https://arxiv.org/abs/2302.07452) 
+  - LLM-Augmenter ([peng, galley...gao, 2023](https://arxiv.org/abs/2302.12813)) - (1) consolidates evidence from external knowledge for the LLM to generate responses grounded in evidence, and (2) revising LLM’s (candidate) responses using automated feedback
+  - DRAGON: Diverse Augmentation Towards Generalizable Dense Retrieval [(Lin et al 2023)](https://arxiv.org/abs/2302.07452)
   - Knowledgeable Prompt-tuning ([hu et al. 2021](https://arxiv.org/abs/2108.02035)) - add knowledge-base info into the prompt search
   - Atlas: Few-shot Learning with Retrieval Augmented LMs ([meta, 2022](https://arxiv.org/abs/2208.03299))
-  - GRIT: Generative Representational Instruction Tuning ([muennighoff et al 2024](https://arxiv.org/abs/2402.09906)) - train same model for  text generation and retrieval tasks
+  - GRIT: Generative Representational Instruction Tuning ([muennighoff et al 2024](https://arxiv.org/abs/2402.09906)) - train same model for text generation and retrieval tasks
   - Fine-grained Hallucination Detection and Editing for LMs ([mishra, ..., hajishirzi, 2024](https://arxiv.org/abs/2401.06855)) - train a retrieval-augmented LM to correct fine-grained hallucinations
   - RAG can even outperform LMs fine-tuned on the downstream domain data on QA ([Ovadia et al., 2023](https://arxiv.org/abs/2312.05934); [Gupta et al., 2024](https://arxiv.org/abs/2401.08406))
 - Different ideas
   - Transformer Memory as a Differentiable Search Index ([tay at al 2022](https://arxiv.org/abs/2202.06991)) - Same model learns to encode documents and find closest search index (rather than retrieving with maximal inner product search)
     - Self-Retrieval: Building an Information Retrieval System with One LLM ([tang...li, 2024](https://arxiv.org/abs/2403.00801.pdf)) - LLM learns to generate retrieved document from query
   - xRAG: Extreme Context Compression for RAG with One Token ([cheng...furu wei...zhao, 2024](https://arxiv.org/abs/2405.13792))
-
 - interpretable RAG
-
   - PlugMem: A Task-Agnostic Plugin Memory Module for LLM Agents ([ke yang, ..., galley, wang, gao, han, & zhai, 2026](https://empathyang.github.io/files/PlugMem.pdf)) - optimize performance vs num tokens in memory
   - T-Retriever: Tree-based Hierarchical Retrieval Augmented Generation for Textual Graphs ([wei...chen, 2026](https://arxiv.org/abs/2601.04945))
 
@@ -462,7 +444,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning ([shani, jurafsky, lecun, & shwartz-ziv, 2025](https://arxiv.org/abs/2505.17117))
   - LLM-derived clusters significantly align with human-defined conceptual categories but only modest alignment with human-perceived fine-grained semantic distinctions
   - LLMs demonstrate markedly superior information-theoretic efficiency in their conceptual representations compared to human conceptual structures
-
 - The Platonic Representation Hypothesis ([huh, cheung, wang, & isola, 2024](https://arxiv.org/abs/2405.07987))
   - vec2vec ([jha, zhang, shmatikov, & morris, 2025](https://arxiv.org/abs/2505.12540)) - use cyclegan-style approach to translate embeddings from one space to another (without paired samples)
   - The Universal Weight Subspace Hypothesis ([kaushik...yuille, 2025](https://www.arxiv.org/abs/2512.05117))
@@ -478,12 +459,10 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 # embedding inversions
 
 - Generative Embedding Inversion Attack to Recover the Whole Sentence ([li...song, 2023](https://arxiv.org/abs/2305.03010)) - train projection to LM jointly to reconstruct input
-
   - Information Leakage from Embedding in LLMs ([wan...wang, 2024](https://arxiv.org/abs/2405.11916))
     - base embed inversion - directly pass hidden states to the LM head for generation
     - hotmap embed inversion - find input which yields embedding with greatest cosine similarity
-    - embed parrot - learn a linear mapping to embedding states that is then 
-
+    - embed parrot - learn a linear mapping to embedding states that is then
 - vec2text ([morris et al. 2023](https://arxiv.org/abs/2310.06816)) - invert embeddings to text without using gradients
   - logit2prompt ([morris, ..., rush, 2024](https://arxiv.org/abs/2311.13647)) - recover prompt from output logits
   - output2prompt ([zhang, morris, & shmatikov, 2024](https://arxiv.org/abs/2405.15012)) - recover prompt from long text outputs (by building a model of the sparse encodings of the outputs)
@@ -498,12 +477,9 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 - The AI Hippocampus: How Far are We From Human Memory? ([jia...zhu, 2026](https://arxiv.org/abs/2601.09113))
     - delineate implicit memory (neocortex, learned weights), explicit memory (hippocampus, episodic memory/RAG), agentic memory (PFC, state and scratchpad)
-
 - Memex(RL): Scaling Long-Horizon LLM Agents via Indexed Experience Memory ([wang...wei, 2026](https://arxiv.org/abs/2603.04257))
-
 - Engram: Conditional Memory via Scalable Lookup: A New Axis of Sparsity for LLMs ([cheng...liang; deepseek, 2026](https://arxiv.org/abs/2601.07372))
     - STEM: Scaling Transformers with Embedding Modules ([sadhukhan...chen, 2026](https://arxiv.org/abs/2601.10639))
-
 - MeMo: Memory as a Model ([quek...solar-lezama, 2026](https://arxiv.org/abs/2605.15156)) - train a model to learn a corpus (replacing retrieval piece in RAG), and then use it along with a frozen LLM to retrieve knowledge
 - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
   - at test time, you just need to index the entire context and the model will be able to use it

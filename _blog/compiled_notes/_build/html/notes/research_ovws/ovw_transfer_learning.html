@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_transfer_learning';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.2. disentanglement" href="ovw_disentanglement.html" />
-    <link rel="prev" title="1. research_ovws" href="research_ovws.html" />
+    <link rel="prev" title="1. research_ovws" href="research_ovws_section.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -436,14 +422,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">1.1.1. overviews</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-adaptation-algorithms">1.1.2. domain adaptation algorithms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-invariance">1.1.2.1. domain invariance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-learning">1.1.2.2. feature learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-selection">1.1.2.3. dynamic selection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-time-adaptation">1.1.2.4. test-time adaptation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adv-attacks">1.1.3. adv attacks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-adaptation-algorithms">1.1.2. domain adaptation algorithms</a></li>
 </ul>
             </nav>
         </div>
@@ -458,19 +437,19 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning">
 <h1><span class="section-number">1.1. </span>transfer learning<a class="headerlink" href="#transfer-learning" title="Link to this heading">#</a></h1>
 <p><em>See also notes on <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_causal_inference.html">📌 causal inference</a> for some close connections.</em></p>
-<p>For neural-net specific transferring see <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html#adaptation--transfer">📌 adaption/transfer</a>.</p>
+<p>For neural-net specific transferring see <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_llms.html#adaptation--transfer">📌 adaption/transfer</a>.</p>
 <section id="overviews">
 <h2><span class="section-number">1.1.1. </span>overviews<a class="headerlink" href="#overviews" title="Link to this heading">#</a></h2>
-<p><img alt="transfer_taxonomy" src="../../_images/transfer_taxonomy.png" /> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
+<p>the characteristics of different learning paradigms. Y: present, O: optional, n/a: not applicable <img style="width: 800px; max-width: 100%;" src="../assets/transfer_taxonomy.svg" alt="Characteristics of learning paradigms"/> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
 </section>
 <section id="domain-adaptation-algorithms">
 <h2><span class="section-number">1.1.2. </span>domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Link to this heading">#</a></h2>
 <p><em>Domain test bed available <a class="reference external" href="https://github.com/facebookresearch/DomainBed">here</a>, for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)</em></p>
-<ul class="simple">
+<ul>
 <li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
 <li><p>Invariant Risk Minimization (IRM, <a class="reference external" href="https://arxiv.org/abs/1907.02893">Arjovsky et al., 2019</a>) - learns a feature representation such that the optimal linear classifier on top of that representation matches across domains.</p></li>
 <li><p>distributional robust optimization</p>
-<ul>
+<ul class="simple">
 <li><p>instead of minimizing training err, minimize maximum training err over different perturbations</p></li>
 <li><p>Group Distributionally Robust Optimization (GroupDRO, <a class="reference external" href="https://arxiv.org/abs/1911.08731">Sagawa et al., 2020</a>) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. <a class="reference external" href="http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf">1</a>, <a class="reference external" href="https://arxiv.org/abs/1611.02041">2</a>)</p>
 <ul>
@@ -484,151 +463,70 @@ document.write(`
 <li><p>Marginal Transfer Learning (MTL, <a class="reference external" href="https://arxiv.org/abs/1711.07910">Blanchard et al., 2011-2020</a>) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem</p></li>
 <li><p>MAML (<a class="reference external" href="http://proceedings.mlr.press/v70/finn17a/finn17a.pdf">finn, abbeel, &amp; levine, 2017</a>) - minimize parameters for metalearning including finetuning as part of the process (intuitively, find parameters that improve performance on a task after finetuning on that task)</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\min _\theta \underbrace{\mathbb{E}_\tau }_{\text{average over tasks }  \tau}\left[\mathcal{L}_\tau\left(\underbrace{U_\tau(\theta)}_{\text{finetuned model}}\right)\right]\)</span>​</p>
-<ul>
-<li><p>compute finetuned models then take gradient wrt to held-out samples from the same tasks</p></li>
-</ul>
-</li>
-<li><p>Meta Learning Domain Generalization (MLDG, <a class="reference external" href="https://arxiv.org/abs/1710.03463">Li et al., 2017</a>) - use MAML to meta-learn how to generalize across domains</p></li>
-</ul>
-</li>
-<li><p>learning more diverse predictors</p>
-<ul>
-<li><p>Representation Self-Challenging (RSC, <a class="reference external" href="https://arxiv.org/abs/2007.02454">Huang et al., 2020</a>) - adds dropout-like regularization to important features, forcing model to depend on many features</p></li>
-<li><p>Spectral Decoupling (SD, <a class="reference external" href="https://arxiv.org/abs/2011.09468">Pezeshki et al., 2020</a>) - regularization which forces model to learn more predictive features, even when only a few suffice</p></li>
-</ul>
-</li>
-<li><p>embedding prior knowledge</p>
-<ul>
-<li><p>Style Agnostic Networks (SagNet, <a class="reference external" href="https://arxiv.org/abs/1910.11645">Nam et al., 2020</a>) - penalize style features (assumed to be spurious)</p></li>
-<li><p>Penalizing explanations (<a class="reference external" href="https://arxiv.org/abs/1909.13584">Rieger et al. 2020</a>) - penalize spurious features using prior knowledge</p></li>
-</ul>
-</li>
-<li><p>Domain adaptation under structural causal models (<a class="reference internal" href="#(https://arxiv.org/abs/2010.15764)"><span class="xref myst">chen &amp; buhlmann, 2020</span></a>)</p>
-<ul>
-<li><p>make clearer assumptions for domain adaptation to work</p></li>
-<li><p>introduce CIRM, which works better when both covariates and labels are perturbed in target data</p></li>
-</ul>
-</li>
-<li><p>kernel approach (<a class="reference external" href="https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf">blanchard, lee &amp; scott, 2011</a>) - find an appropriate RKHS and optimize a regularized empirical risk over the space</p></li>
-<li><p>In-N-Out (<a class="reference external" href="https://arxiv.org/abs/2012.04550">xie…lang, 2020</a>) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift</p></li>
-<li><p>Prospective Learning: Learning for a Dynamic Future (<a class="reference external" href="https://openreview.net/pdf?id=XEbPJUQzs3">de silva…voelstein, chaudhari, 2024</a>)</p>
-<ul>
-<li><p>define <em>prospective learning</em> as setting where optimal hypothesis changes over time (like multi-task, meta-, continual, and lifelong learning)</p></li>
-<li><p>introduce prospective ERM, which is shown to be consistent (unlike standard empirical risk minimization from PAC learning) - basically, incorporates time as an input in addition to the data</p></li>
-</ul>
-</li>
-</ul>
-<section id="domain-invariance">
-<h3><span class="section-number">1.1.2.1. </span>domain invariance<a class="headerlink" href="#domain-invariance" title="Link to this heading">#</a></h3>
-<p><em>key idea: want repr. to be invariant to domain label</em></p>
-<ul class="simple">
-<li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
-<li><p>same idea is used to <a class="reference external" href="https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf">learn fair representations</a>, but domain label is replaced with sensitive attribute</p></li>
-<li><p>Domain Adversarial Neural Network (DANN, <a class="reference external" href="https://arxiv.org/abs/1505.07818">Ganin et al., 2015</a>)</p></li>
-<li><p>Conditional Domain Adversarial Neural Network (CDANN, <a class="reference external" href="https://arxiv.org/abs/1807.08479">Li et al., 2018</a>) - variant of DANN matching the conditional distributions  across domains, for all labels</p></li>
-<li><p>Deep CORAL (CORAL, <a class="reference external" href="https://arxiv.org/abs/1607.01719">Sun and Saenko, 2016</a>) - match mean / covariance of feature distrs</p></li>
-<li><p>Maximum Mean Discrepancy (MMD, <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf">Li et al., 2018</a>)</p></li>
-<li><p>adversarial discriminative domain adaptation (ADDA <a class="reference external" href="https://arxiv.org/abs/1702.05464">tzeng et al. 2017</a>)</p></li>
-<li><p>balancing with <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;amp;rep=rep1&amp;amp;type=pdf">importance weighting</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1903.06256">Learning Robust Representations by Projecting Superficial Statistics Out</a> (wang et al. 2019)</p></li>
-</ul>
-</section>
-<section id="feature-learning">
-<h3><span class="section-number">1.1.2.2. </span>feature learning<a class="headerlink" href="#feature-learning" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/pdf/2212.07346.pdf">https://arxiv.org/pdf/2212.07346.pdf</a> (zhang &amp; bottou, 2022) - during training, concatenate the representations obtained with different random seeds</p></li>
-</ul>
-</section>
-<section id="dynamic-selection">
-<h3><span class="section-number">1.1.2.3. </span>dynamic selection<a class="headerlink" href="#dynamic-selection" title="Link to this heading">#</a></h3>
-<p><em>Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  <a class="reference external" href="https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf">review paper</a> (cruz et al. 2018), <a class="reference external" href="https://github.com/scikit-learn-contrib/DESlib">python package</a></em></p>
-<ol class="arabic simple">
-<li><p>define region of competence</p>
-<ol class="arabic simple">
-<li><p>clustering</p></li>
-<li><p>kNN - more refined than clustering</p></li>
-<li><p>decision space - e.g. a model’s classification boundary, internal splits in a model</p></li>
-<li><p>potential function - weight all the points (e.g. by their distance to the query point)</p></li>
-</ol>
-</li>
-<li><p>criteria for selection</p>
-<ol class="arabic simple">
-<li><p>individual scores: acc, prob. behavior, rank, meta-learning, complexity</p></li>
-<li><p>group: data handling, ambiguity, diversity</p></li>
-</ol>
-</li>
-<li><p>combination</p>
-<ol class="arabic simple">
-<li><p>non-trainable: mean, majority vote, product, median, etc.</p></li>
-<li><p>trainable: learn the combination of models</p>
-<ol class="arabic simple">
-<li><p>related: in mixture of experts models + combination are trained jointly</p></li>
-</ol>
-</li>
-<li><p>dynamic weighting: combine using local competence of base classifiers</p></li>
-<li><p>Oracle baseline - selects classifier predicts correct label, if such a classifier exists</p></li>
-</ol>
-</li>
-</ol>
-</section>
-<section id="test-time-adaptation">
-<h3><span class="section-number">1.1.2.4. </span>test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>test-time adaptation</p>
-<ul>
-<li><p>test-time augmentation</p></li>
-<li><p>batch normalization (AdaBN, <a class="reference external" href="https://arxiv.org/abs/1603.04779">li…hou, 2016</a>)</p></li>
-<li><p>label shift estimation (BBSE, <a class="reference external" href="https://arxiv.org/abs/1802.03916">lipton, wang, &amp; smola, 2018</a>) - <span class="math notranslate nohighlight">\(p(y)\)</span> shifts but <span class="math notranslate nohighlight">\(P(x|y)\)</span> does not</p></li>
-<li><p>entropy minimization (test-time entropy minimization, TENT, <a class="reference external" href="https://arxiv.org/abs/2006.10726">wang…olshausen, darrel, 2020</a>) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p>
-<ul>
-<li><p>Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models (<a class="reference external" href="https://arxiv.org/abs/2209.07511">shu…anandkumar, xiao, 2022</a>) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample</p></li>
-</ul>
-</li>
-<li><p>combining train-time and test-time adaptation: Adaptive Risk Minimization (ARM, <a class="reference external" href="https://arxiv.org/abs/2007.02931">zhang et al., 2020</a>) - combines groups at training time + <em>batches at test-time</em></p>
-<ul>
-<li><p><em>meta-train</em> the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong <em>post-adaptation</em> performance on each shift</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>TTT: Test-Time Training with Self-Supervision for Generalization under Distribution Shifts (<a class="reference external" href="https://arxiv.org/abs/1909.13231">sun…efros, hardt. 2020</a>) - at test-time, update parameters for self-supervised rotation prediction task then use for classification</p>
-<ul>
-<li><p>TTT with masked autoencoders (<a class="reference external" href="https://arxiv.org/abs/2209.07522">gandelsman, sun, …, efros, 2022</a>) - use reconstructed with masked autoencoder and improve performance on robustness tasks</p></li>
-<li><p>Test-Time Training on Video Streams (<a class="reference external" href="https://arxiv.org/abs/2307.05014">wang, sun, …, efros, wang, 2023</a>) - use masked autoencoder per-frame and incrementally update across each frame</p></li>
-<li><p>M-TTT: Learning to (Learn at Test Time) (<a class="reference external" href="https://arxiv.org/pdf/2407.04620">sun, li, dalal, …guestrin, 2024</a>)<img alt="mttt" src="../../_images/mttt.jpg" /></p></li>
-<li><p>analysis</p>
-<ul>
-<li><p>TTT for Reading Comprehension (<a class="reference external" href="https://arxiv.org/abs/2103.11263">banerjee et al. 2021</a>) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context</p></li>
-<li><p>TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive? (<a class="reference external" href="https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html">liu et al. 2021</a>) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors (<a class="reference external" href="https://arxiv.org/pdf/2310.02980">amos, berant, &amp; gupta, 2024</a>) - when transferring to a specific task, should first finetune the LM on the task before doing supervised finetuning</p></li>
-</ul>
-</section>
-</section>
-<section id="adv-attacks">
-<h2><span class="section-number">1.1.3. </span>adv attacks<a class="headerlink" href="#adv-attacks" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>Adversarial Attacks and Defenses in Images, Graphs and Text: A Review (<a class="reference external" href="https://arxiv.org/abs/1909.08072">xu et al. 2019</a>)</p></li>
-<li><p>attacks</p>
-<ul class="simple">
-<li><p>fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel’s channel to stay imperceptible)</p></li>
-<li><p>Barrage of Random Transforms for Adversarially Robust Defense (<a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf">raff et al. 2019</a>)</p></li>
-<li><p>DeepFool: a simple and accurate method to fool deep neural networks (<a class="reference external" href="https://arxiv.org/abs/1511.04599">Moosavi-Dezfooli et. al 2016</a>)</p></li>
-</ul>
-</li>
-<li><p>defenses</p>
-<ul>
-<li><p>Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)</p>
-<ul>
 <li><div class="math notranslate nohighlight">
-\[\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]\]</div>
-</li>
-<li><p>this perspective differs from “robust statistics” which is usually robustness against some kind of model misspecification/assumptions, not to distr. shift</p>
+\[ \begin{align}\begin{aligned}\min _\theta \underbrace{\mathbb{E}_\tau }_{\text{average over tasks }  \tau}\left[\mathcal{L}_\tau\left(\underbrace{U_\tau(\theta)}_{\text{finetuned model}}\right)\right]$$​
+    - compute finetuned models then take gradient wrt to held-out samples from the same tasks
+  - Meta Learning Domain Generalization (MLDG, [Li et al., 2017](https://arxiv.org/abs/1710.03463)) - use MAML to meta-learn how to generalize across domains
+- learning more diverse predictors
+  - Representation Self-Challenging (RSC, [Huang et al., 2020](https://arxiv.org/abs/2007.02454)) - adds dropout-like regularization to important features, forcing model to depend on many features
+  - Spectral Decoupling (SD, [Pezeshki et al., 2020](https://arxiv.org/abs/2011.09468)) - regularization which forces model to learn more predictive features, even when only a few suffice
+- embedding prior knowledge
+  - Style Agnostic Networks (SagNet, [Nam et al., 2020](https://arxiv.org/abs/1910.11645)) - penalize style features (assumed to be spurious)
+  - Penalizing explanations ([rieger et al. 2020](https://arxiv.org/abs/1909.13584)) - penalize spurious features using prior knowledge
+- Domain adaptation under structural causal models ([chen &amp; buhlmann, 2020](https://arxiv.org/abs/2010.15764))
+  - make clearer assumptions for domain adaptation to work
+  - introduce CIRM, which works better when both covariates and labels are perturbed in target data
+- kernel approach ([blanchard, lee &amp; scott, 2011](https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf)) - find an appropriate RKHS and optimize a regularized empirical risk over the space
+- In-N-Out ([xie...lang, 2020](https://arxiv.org/abs/2012.04550)) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift
+- Prospective Learning: Learning for a Dynamic Future ([de silva...voelstein, chaudhari, 2024](https://openreview.net/pdf?id=XEbPJUQzs3))
+  - define *prospective learning* as setting where optimal hypothesis changes over time (like multi-task, meta-, continual, and lifelong learning)
+  - introduce prospective ERM, which is shown to be consistent (unlike standard empirical risk minimization from PAC learning) - basically, incorporates time as an input in addition to the data\\### domain invariance\\*key idea: want repr. to be invariant to domain label*\\- &lt;img style=&quot;width: 750px; max-width: 100%;&quot; src=&quot;../assets/domain_adv_training.svg&quot; alt=&quot;Domain-adversarial training&quot;/&gt;
+- same idea is used to [learn fair representations](https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf), but domain label is replaced with sensitive attribute
+- Domain Adversarial Neural Network (DANN, [Ganin et al., 2015](https://arxiv.org/abs/1505.07818))
+- Conditional Domain Adversarial Neural Network (CDANN, [Li et al., 2018](https://arxiv.org/abs/1807.08479)) - variant of DANN matching the conditional distributions across domains, for all labels
+- Deep CORAL (CORAL, [Sun and Saenko, 2016](https://arxiv.org/abs/1607.01719)) - match mean / covariance of feature distrs
+- Maximum Mean Discrepancy (MMD, [Li et al., 2018](https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf))
+- adversarial discriminative domain adaptation (ADDA [tzeng et al. 2017](https://arxiv.org/abs/1702.05464))
+- balancing with [importance weighting](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;rep=rep1&amp;type=pdf)
+- Learning Robust Representations by Projecting Superficial Statistics Out ([wang et al. 2019](https://arxiv.org/abs/1903.06256))\\### feature learning\\- https://arxiv.org/pdf/2212.07346.pdf (zhang &amp; bottou, 2022) - during training, concatenate the representations obtained with different random seeds\\### dynamic selection\\*Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time review paper ([cruz et al. 2018](https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf)), [python package](https://github.com/scikit-learn-contrib/DESlib)*\\1. define region of competence
+   1. clustering
+   2. kNN - more refined than clustering
+   3. decision space - e.g. a model's classification boundary, internal splits in a model
+   4. potential function - weight all the points (e.g. by their distance to the query point)
+2. criteria for selection
+   1. individual scores: acc, prob. behavior, rank, meta-learning, complexity
+   2. group: data handling, ambiguity, diversity
+3. combination
+   1. non-trainable: mean, majority vote, product, median, etc.
+   2. trainable: learn the combination of models
+      1. related: in mixture of experts models + combination are trained jointly
+   3. dynamic weighting: combine using local competence of base classifiers
+   4. Oracle baseline - selects classifier predicts correct label, if such a classifier exists\\### test-time adaptation\\- test-time adaptation
+  - test-time augmentation
+  - batch normalization (AdaBN, [li...hou, 2016](https://arxiv.org/abs/1603.04779))
+  - label shift estimation (BBSE, [lipton, wang, &amp; smola, 2018](https://arxiv.org/abs/1802.03916)) - $p(y)$ shifts but $$P(x\vert y)$$ does not
+  - entropy minimization (test-time entropy minimization, TENT, [wang...olshausen, darrel, 2020](https://arxiv.org/abs/2006.10726)) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
+    - Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models ([shu...anandkumar, xiao, 2022](https://arxiv.org/abs/2209.07511)) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample
+  - combining train-time and test-time adaptation: Adaptive Risk Minimization (ARM, [zhang et al., 2020](https://arxiv.org/abs/2007.02931)) - combines groups at training time + *batches at test-time*
+    - *meta-train* the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong *post-adaptation* performance on each shift
+- TTT: Test-Time Training with Self-Supervision for Generalization under Distribution Shifts ([sun...efros, hardt. 2020](https://arxiv.org/abs/1909.13231)) - at test-time, update parameters for self-supervised rotation prediction task then use for classification
+  - TTT with masked autoencoders ([gandelsman, sun, ..., efros, 2022](https://arxiv.org/abs/2209.07522)) - use reconstructed with masked autoencoder and improve performance on robustness tasks
+  - Test-Time Training on Video Streams ([wang, sun, ..., efros, wang, 2023](https://arxiv.org/abs/2307.05014)) - use masked autoencoder per-frame and incrementally update across each frame
+  - M-TTT: Learning to (Learn at Test Time) ([sun, li, dalal, ...guestrin, 2024](https://arxiv.org/pdf/2407.04620))&lt;img style=&quot;width: 800px; max-width: 100%;&quot; src=&quot;../assets/ttt_lm.svg&quot; alt=&quot;Test-time training (TTT) layer&quot;/&gt;
+  - analysis
+    - TTT for Reading Comprehension ([banerjee et al. 2021](https://arxiv.org/abs/2103.11263)) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context
+    - TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive? ([liu et al. 2021](https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html)) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning
+- Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors ([amos, berant, &amp; gupta, 2024](https://arxiv.org/pdf/2310.02980)) - when transferring to a specific task, should first finetune the LM on the task before doing supervised finetuning\\## adv attacks\\- Adversarial Attacks and Defenses in Images, Graphs and Text: A Review ([xu et al. 2019](https://arxiv.org/abs/1909.08072))
+- attacks
+  - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
+  - Barrage of Random Transforms for Adversarially Robust Defense ([raff et al. 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf))
+  - DeepFool: a simple and accurate method to fool deep neural networks ([moosavi-dezfooli et. al 2016](https://arxiv.org/abs/1511.04599))
+- defenses
+  - Adversarial training - training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)
+    - $$\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\Vert \delta\Vert _{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]\end{aligned}\end{align} \]</div>
 <ul class="simple">
+<li><p>this perspective differs from “robust statistics” which is usually robustness against some kind of model misspecification/assumptions, not to distr. shift</p>
+<ul>
 <li><p>robust stat usually assumes a generative distr. as well</p></li>
 <li><p>still often ends up with the same soln (e.g. ridge regr. corresponds to certain robusteness)</p></li>
 </ul>
@@ -641,7 +539,7 @@ document.write(`
 <li><p>Regularization in the loss function: an additional penalty term is added to the optimized objective function to upper bound or to approximate the adversarial loss (Hein and Andriushchenko, 2017; Yan et al., 2018)</p></li>
 <li><p>constraint</p>
 <ul>
-<li><p>robustness as a constraint not a loss (<a class="reference external" href="https://arxiv.org/abs/2103.05134">Constrained Learning with Non-Convex Losses</a> (chamon et al. 2021))</p>
+<li><p>robustness as a constraint not a loss (Constrained Learning with Non-Convex Losses (<a class="reference external" href="https://arxiv.org/abs/2103.05134">chamon et al. 2021</a>))</p>
 <ul>
 <li><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -654,32 +552,32 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p>a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as <em>analysis by synthesis</em> (<a class="reference external" href="https://arxiv.org/abs/1805.09190">Schott et al., 2019</a>)</p></li>
+<li><p>a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as <em>analysis by synthesis</em> (<a class="reference external" href="https://arxiv.org/abs/1805.09190">schott et al., 2019</a>)</p></li>
 </ul>
 </li>
 <li><p>robustness vs accuracy</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">robustness may be at odds with accuracy</a> (tsipiras…madry, 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2002.10477">Precise Tradeoffs in Adversarial Training for Linear Regression</a> (javanmard et al. 2020) - linear regression with gaussian features</p>
+<li><p>robustness may be at odds with accuracy (<a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">tsipiras…madry, 2019</a>)</p></li>
+<li><p>Precise Tradeoffs in Adversarial Training for Linear Regression (<a class="reference external" href="https://arxiv.org/abs/2002.10477">javanmard et al. 2020</a>) - linear regression with gaussian features</p>
 <ul>
 <li><p>use adv. training formula above</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1901.08573">Theoretically Principled Trade-off between Robustness and Accuracy</a> (Zhang, …, el ghaoui, Jordan, 2019)</p></li>
+<li><p>Theoretically Principled Trade-off between Robustness and Accuracy (<a class="reference external" href="https://arxiv.org/abs/1901.08573">zhang, …, el ghaoui, jordan, 2019</a>)</p></li>
 </ul>
 </li>
 <li><p>adversarial examples</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf">Decision Boundary Analysis of Adversarial Examples </a>(He, Li, &amp; Song 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.07174">Natural Adversarial Examples</a> (Hendrycks, Zhao, Basart, Steinhardt, &amp; Song 2020)</p></li>
-<li><p><a class="reference external" href="https://openreview.net/pdf?id=Bygh9j09KX">Image-Net-Trained CNNs Are Biased Towards Texture</a> (Geirhos et al. 2019)</p></li>
+<li><p>Decision Boundary Analysis of Adversarial Examples (<a class="reference external" href="https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf">he, li, &amp; song 2019</a>)</p></li>
+<li><p>Natural Adversarial Examples (<a class="reference external" href="https://arxiv.org/abs/1907.07174">hendrycks, zhao, basart, steinhardt, &amp; song 2020</a>)</p></li>
+<li><p>Image-Net-Trained CNNs Are Biased Towards Texture (<a class="reference external" href="https://openreview.net/pdf?id=Bygh9j09KX">geirhos et al. 2019</a>)</p></li>
 </ul>
 </li>
 <li><p>adversarial transferability</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1605.07277">Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples</a> (papernot, mcdaniel, &amp; goodfellow, 2016)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1705.07204.pdf">Ensemble Adversarial Training: Attacks and Defenses</a> (tramer et al. 2018)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1901.08846.pdf">Improving Adversarial Robustness via Promoting Ensemble Diversity</a> (pang et al. 2019)</p>
+<li><p>Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples (<a class="reference external" href="https://arxiv.org/abs/1605.07277">papernot, mcdaniel, &amp; goodfellow, 2016</a>)</p></li>
+<li><p>Ensemble Adversarial Training: Attacks and Defenses (<a class="reference external" href="https://arxiv.org/pdf/1705.07204.pdf">tramer et al. 2018</a>)</p></li>
+<li><p>Improving Adversarial Robustness via Promoting Ensemble Diversity (<a class="reference external" href="https://arxiv.org/pdf/1901.08846.pdf">pang et al. 2019</a>)</p>
 <ul>
 <li><p>encourage diversity in non-maximal predictions</p></li>
 </ul>
@@ -731,7 +629,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="research_ovws.html"
+       href="research_ovws_section.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -765,14 +663,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">1.1.1. overviews</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-adaptation-algorithms">1.1.2. domain adaptation algorithms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-invariance">1.1.2.1. domain invariance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-learning">1.1.2.2. feature learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-selection">1.1.2.3. dynamic selection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-time-adaptation">1.1.2.4. test-time adaptation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adv-attacks">1.1.3. adv attacks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-adaptation-algorithms">1.1.2. domain adaptation algorithms</a></li>
 </ul>
   </nav></div>
 
@@ -810,11 +701,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

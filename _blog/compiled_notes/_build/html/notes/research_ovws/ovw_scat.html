@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,12 +58,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_scat';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.9. ml in medicine" href="ovw_ml_medicine.html" />
+    <link rel="next" title="1.9. embeddings" href="ovw_embeddings.html" />
     <link rel="prev" title="1.7. dl theory" href="ovw_dl_theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -489,52 +475,52 @@ document.write(`
 <section id="review-type">
 <h2><span class="section-number">1.8.2. </span>review-type<a class="headerlink" href="#review-type" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1601.04920">Understanding deep convolutional networks</a> (mallat 2016)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1712.04741">Mathematics of deep learning</a> (vidal et al. 2017)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1611.08097">Geometric deep learning: going beyond euclidean data</a> (bronstein et al. 2017)</p></li>
+<li><p>Understanding deep convolutional networks (<a class="reference external" href="https://arxiv.org/abs/1601.04920">mallat 2016</a>)</p></li>
+<li><p>Mathematics of deep learning (<a class="reference external" href="https://arxiv.org/abs/1712.04741">vidal et al. 2017</a>)</p></li>
+<li><p>Geometric deep learning: going beyond euclidean data (<a class="reference external" href="https://arxiv.org/abs/1611.08097">bronstein et al. 2017</a>)</p></li>
 </ul>
 </section>
 <section id="initial-papers">
 <h2><span class="section-number">1.8.3. </span>initial papers<a class="headerlink" href="#initial-papers" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1011.3023">classification with scattering operators</a> (bruna &amp; mallat 2010)</p></li>
-<li><p><a class="reference external" href="https://www.di.ens.fr/data/publications/papers/Eusipco2010InterConfPap.pdf">recursive interferometric repr.</a> (mallat 2010)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1101.2286">group invariant scattering</a> (mallat 2012)</p>
+<li><p>classification with scattering operators (<a class="reference external" href="https://arxiv.org/abs/1011.3023">bruna &amp; mallat 2010</a>)</p></li>
+<li><p>recursive interferometric repr. (<a class="reference external" href="https://www.di.ens.fr/data/publications/papers/Eusipco2010InterConfPap.pdf">mallat 2010</a>)</p></li>
+<li><p>group invariant scattering (<a class="reference external" href="https://arxiv.org/abs/1101.2286">mallat 2012</a>)</p>
 <ul>
 <li><p>introduces scat transform</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1312.5940">Generic deep networks with wavelet scattering</a> (oyallan et al. 2013)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1203.1513">Invariant Scattering Convolution Networks</a> (bruna &amp; mallat 2012)</p>
+<li><p>Generic deep networks with wavelet scattering (<a class="reference external" href="https://arxiv.org/abs/1312.5940">oyallan et al. 2013</a>)</p></li>
+<li><p>Invariant Scattering Convolution Networks (<a class="reference external" href="https://arxiv.org/abs/1203.1513">bruna &amp; mallat 2012</a>)</p>
 <ul>
 <li><p>introduces the scattering transform implemented as a cnn</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1304.6763">Deep scattering spectrum</a> (anden &amp; mallat 2013)</p></li>
+<li><p>Deep scattering spectrum (<a class="reference external" href="https://arxiv.org/abs/1304.6763">anden &amp; mallat 2013</a>)</p></li>
 </ul>
 <section id="scat-conv">
 <h3><span class="section-number">1.8.3.1. </span>scat_conv<a class="headerlink" href="#scat-conv" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1412.8659">Deep roto-translation scattering for object classification</a> (oyallan &amp; mallat 2014)</p>
+<li><p>Deep roto-translation scattering for object classification (<a class="reference external" href="https://arxiv.org/abs/1412.8659">oyallan &amp; mallat 2014</a>)</p>
 <ul>
 <li><p>use 1x1 conv on top of scattering coefs (only 1 layer)</p></li>
 <li><p>can capture rounded figures</p></li>
 <li><p>can further impose robustness to rotation variability (although not full rotation invariance)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1811.06115.pdf">Deep learning in the wavelet domain</a> (cotter &amp; kingbury, 2017)- each conv layer is replaced by scattering transform + 1x1 conv</p></li>
+<li><p>Deep learning in the wavelet domain (<a class="reference external" href="https://arxiv.org/pdf/1811.06115.pdf">cotter &amp; kingbury, 2017</a>)- each conv layer is replaced by scattering transform + 1x1 conv</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1709.01355.pdf">Visualizing and improving scattering networks</a> (cotter et al. 2017)</p>
+<li><p>Visualizing and improving scattering networks (<a class="reference external" href="https://arxiv.org/pdf/1709.01355.pdf">cotter et al. 2017</a>)</p>
 <ul>
 <li><p>add deconvnet to visualize</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://hal.inria.fr/hal-01837587/document">Scattering Networks for Hybrid Representation Learning</a> (oyallon et al. 2018)</p>
+<li><p>Scattering Networks for Hybrid Representation Learning (<a class="reference external" href="https://hal.inria.fr/hal-01837587/document">oyallon et al. 2018</a>)</p>
 <ul>
 <li><p>using early layers scat is good enough</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1802.07088">i-RevNet: Deep Invertible Networks</a> (jacobsen et al. 2018)</p></li>
-<li><p><a class="reference external" href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Oyallon_Scaling_the_Scattering_ICCV_2017_paper.pdf">Scaling the scattering transform: Deep hybrid networks</a> (oyallon et al. 2017)</p>
+<li><p>i-RevNet: Deep Invertible Networks (<a class="reference external" href="https://arxiv.org/abs/1802.07088">jacobsen et al. 2018</a>)</p></li>
+<li><p>Scaling the scattering transform: Deep hybrid networks (<a class="reference external" href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Oyallon_Scaling_the_Scattering_ICCV_2017_paper.pdf">oyallon et al. 2017</a>)</p>
 <ul>
 <li><p>use 1x1 convolutions to collapse accross channels</p></li>
 </ul>
@@ -545,7 +531,7 @@ document.write(`
 </ul>
 </li>
 <li><p>cheng_16 “Deep Haar scattering networks”</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1910.03561">Deep Network Classification by Scattering and Homotopy Dictionary Learning</a> (zarka et al. 2019) - scat followed by sparse coding then linear</p></li>
+<li><p>Deep Network Classification by Scattering and Homotopy Dictionary Learning (<a class="reference external" href="https://arxiv.org/abs/1910.03561">zarka et al. 2019</a>) - scat followed by sparse coding then linear</p></li>
 </ul>
 </section>
 <section id="neuro-style">
@@ -577,21 +563,21 @@ document.write(`
 <section id="wavelet-style-transfer">
 <h3><span class="section-number">1.8.3.4. </span>wavelet style transfer<a class="headerlink" href="#wavelet-style-transfer" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1903.09760v1.pdf">Photorealistic Style Transfer via Wavelet Transforms&gt;</a></p></li>
+<li><p>Photorealistic Style Transfer via Wavelet Transforms&gt; (<a class="reference external" href="https://arxiv.org/pdf/1903.09760v1.pdf">yoo et al. 2019</a>)</p></li>
 </ul>
 </section>
 </section>
 <section id="adaptive-wavelet-papers">
 <h2><span class="section-number">1.8.4. </span>adaptive wavelet papers<a class="headerlink" href="#adaptive-wavelet-papers" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://ieeexplore-ieee-org.libproxy.berkeley.edu/stamp/stamp.jsp?tp=&amp;amp;arnumber=9096125&amp;amp;tag=1">Parameterized Wavelets for Convolutional Neural Networks</a> (2020) - a discrete wavelet CNN</p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231220311644">An End-to-End Multi-Level Wavelet Convolutional Neural Networks for heart diseases diagnosis </a> (el bouny et al. 2020) - stationary wavelet CNN</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2105.00899">Fully Learnable Deep Wavelet Transform for Unsupervised Monitoring of High-Frequency Time Series</a> (michau et al. 2021)</p></li>
+<li><p>Parameterized Wavelets for Convolutional Neural Networks (<a class="reference external" href="https://ieeexplore-ieee-org.libproxy.berkeley.edu/stamp/stamp.jsp?tp=&amp;amp;arnumber=9096125&amp;amp;tag=1">2020</a>) - a discrete wavelet CNN</p></li>
+<li><p>An End-to-End Multi-Level Wavelet Convolutional Neural Networks for heart diseases diagnosis (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231220311644">el bouny et al. 2020</a>) - stationary wavelet CNN</p></li>
+<li><p>Fully Learnable Deep Wavelet Transform for Unsupervised Monitoring of High-Frequency Time Series (<a class="reference external" href="https://arxiv.org/abs/2105.00899">michau et al. 2021</a>)</p></li>
 </ul>
 <section id="helmut-lab-papers">
 <h3><span class="section-number">1.8.4.1. </span>helmut lab papers<a class="headerlink" href="#helmut-lab-papers" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1504.05487">Deep Convolutional Neural Networks Based on Semi-Discrete Frames</a> (wiatowski et al. 2015)</p>
+<li><p>Deep Convolutional Neural Networks Based on Semi-Discrete Frames (<a class="reference external" href="https://arxiv.org/abs/1504.05487">wiatowski et al. 2015</a>)</p>
 <ul>
 <li><p>allowing for different and, most importantly, general semidiscrete frames (such as, e.g., Gabor frames, wavelets, curvelets, shearlets, ridgelets) in distinct network layers</p></li>
 <li><p>translation-invariant, and we develop deformation stability results</p></li>
@@ -608,7 +594,7 @@ document.write(`
 <li><p>deformation sensitivity bounds that apply to signal classes such as, e.g., band-limited functions, cartoon functions, and Lipschitz functions.</p></li>
 </ul>
 </li>
-<li><p>wiatowski_18 “<a class="reference external" href="https://arxiv.org/pdf/1704.03636.pdf">Energy Propagation in Deep Convolutional Neural Networks</a>”</p></li>
+<li><p>wiatowski_18 “Energy Propagation in Deep Convolutional Neural Networks” (<a class="reference external" href="https://arxiv.org/pdf/1704.03636.pdf">wiatowski et al. 2017</a>)</p></li>
 </ul>
 </section>
 </section>
@@ -640,21 +626,23 @@ document.write(`
 </ul>
 <section id="l2-functions">
 <h3><span class="section-number">1.8.5.1. </span>l2 functions<a class="headerlink" href="#l2-functions" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(L^2\)</span> function is a function <span class="math notranslate nohighlight">\(f: X \to \mathbb{R}\)</span> that is square integrable: <span class="math notranslate nohighlight">\(|f|^2 = \int_X |f|^2 d\mu\)</span> with respect to the measure <span class="math notranslate nohighlight">\(\mu\)</span></p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(|f|\)</span> is its <span class="math notranslate nohighlight">\(L^2\)</span>-norm</p></li>
+<li><p><span class="math notranslate nohighlight">\(L^2\)</span> function is a function <span class="math notranslate nohighlight">\(f: X \to \mathbb{R}\)</span> that is square integrable: $<span class="math notranslate nohighlight">\(\vert f\vert ^2 = \int_X \vert f\vert ^2 d\mu\)</span><span class="math notranslate nohighlight">\( with respect to the measure \)</span>\mu$</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\vert f\vert $$ is its $L^2$-norm
+- **measure** = nonnegative real function from a delta-ring F such that $m(\empty) = 0$ and $m(A) = \sum_n m(A_n)$
+- **Hilbert space** H: a vectors space with an innor product $$&lt;f, g&gt;$$ such that the following norm turns H into a complete metric space: $$\vert f\vert  = \sqrt{&lt;f, f&gt;}\]</div>
+</li>
 </ul>
 </li>
-<li><p>**measure ** = nonnegative real function from a delta-ring F such that <span class="math notranslate nohighlight">\(m(\empty) = 0\)</span> and <span class="math notranslate nohighlight">\(m(A) = \sum_n m(A_n)\)</span></p></li>
-<li><p><strong>Hilbert space</strong> H: a vectors space with an innor product <span class="math notranslate nohighlight">\(&lt;f, g&gt;\)</span> such that the following norm turns H into a complete metric space: <span class="math notranslate nohighlight">\(|f| = \sqrt{&lt;f, f&gt;}\)</span></p></li>
 <li><p><strong>diffeomorphism</strong> is an <a class="reference external" href="https://en.wikipedia.org/wiki/Isomorphism">isomorphism</a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_manifold">smooth manifolds</a>. It is an <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_function">invertible function</a> that <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(mathematics)">maps</a> one <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiable_manifold">differentiable manifold</a> to another such that both the function and its inverse are <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_function">smooth</a>.</p></li>
 </ul>
 </section>
 <section id="reversible-invertible-models">
 <h3><span class="section-number">1.8.5.2. </span>reversible/invertible models<a class="headerlink" href="#reversible-invertible-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1806.00400">williams  inverting w/ autoregressive models</a></p></li>
+<li><p>williams  inverting w/ autoregressive models (<a class="reference external" href="https://arxiv.org/abs/1806.00400">nash et al. 2018</a>)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1511.05653.pdf">arora reversibility</a></p></li>
 <li><p>iResNet</p></li>
 </ul>
@@ -702,11 +690,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="ovw_ml_medicine.html"
+       href="ovw_embeddings.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.9. </span>ml in medicine</p>
+        <p class="prev-next-title"><span class="section-number">1.9. </span>embeddings</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -781,11 +769,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

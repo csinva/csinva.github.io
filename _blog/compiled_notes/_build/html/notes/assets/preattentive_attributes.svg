@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 10 1440 840" role="img" aria-labelledby="title desc">
+  <title id="title">Preattentive attributes</title>
+  <desc id="desc">Twelve small panels of marks, each with one mark differing: orientation (one tilted line), shape (one square), line length (one shorter line), line width (one thicker line), size (one large dot), curvature (one straight mark among curves), added marks (one line with a crossbar), enclosure (one line boxed), hue (one yellow dot), intensity (one light gray dot), spatial position (one dot offset), motion (a curved arrow).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .m { stroke: #555555; stroke-width: 4.5; stroke-linecap: butt; fill: none; }
+      .lab { font: 32px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <line class="m" x1="52.0" y1="25" x2="52.0" y2="100"/>
+  <line class="m" x1="97.5" y1="25" x2="97.5" y2="100"/>
+  <line class="m" x1="143.0" y1="25" x2="143.0" y2="100"/>
+  <line class="m" x1="188.5" y1="25" x2="188.5" y2="100"/>
+  <line class="m" x1="234.0" y1="25" x2="234.0" y2="100"/>
+  <line class="m" x1="279.5" y1="25" x2="279.5" y2="100"/>
+  <line class="m" x1="52" y1="125" x2="52" y2="201"/>
+  <line class="m" x1="98" y1="125" x2="98" y2="201"/>
+  <line class="m" x1="190" y1="125" x2="190" y2="201"/>
+  <line class="m" x1="235" y1="125" x2="235" y2="201"/>
+  <line class="m" x1="280" y1="125" x2="280" y2="201"/>
+  <line class="m" x1="123" y1="196" x2="165" y2="132"/>
+  <line class="m" x1="433" y1="25" x2="433" y2="100"/>
+  <line class="m" x1="479" y1="25" x2="479" y2="100"/>
+  <line class="m" x1="525" y1="25" x2="525" y2="100"/>
+  <line class="m" x1="615" y1="25" x2="615" y2="100"/>
+  <line class="m" x1="660" y1="25" x2="660" y2="100"/>
+  <rect class="m" x="555" y="47" width="30" height="31"/>
+  <line class="m" x1="435.0" y1="125" x2="435.0" y2="201"/>
+  <line class="m" x1="480.5" y1="125" x2="480.5" y2="201"/>
+  <line class="m" x1="526.0" y1="125" x2="526.0" y2="201"/>
+  <line class="m" x1="571.5" y1="125" x2="571.5" y2="201"/>
+  <line class="m" x1="617.0" y1="125" x2="617.0" y2="201"/>
+  <line class="m" x1="662.5" y1="125" x2="662.5" y2="201"/>
+  <line class="m" x1="819.0" y1="25" x2="819.0" y2="201"/>
+  <line class="m" x1="864.5" y1="25" x2="864.5" y2="201"/>
+  <line class="m" x1="910.0" y1="25" x2="910.0" y2="201"/>
+  <line class="m" x1="955.5" y1="25" x2="955.5" y2="131"/>
+  <line class="m" x1="1001.0" y1="25" x2="1001.0" y2="201"/>
+  <line class="m" x1="1046.5" y1="25" x2="1046.5" y2="201"/>
+  <line class="m" x1="1203.0" y1="25" x2="1203.0" y2="201"/>
+  <line class="m" x1="1248.5" y1="25" x2="1248.5" y2="201"/>
+  <line class="m" x1="1294.0" y1="25" x2="1294.0" y2="201"/>
+  <line class="m" x1="1339.5" y1="25" x2="1339.5" y2="201"/>
+  <line class="m" x1="1430.5" y1="25" x2="1430.5" y2="201"/>
+  <line x1="1385.0" y1="25" x2="1385.0" y2="201" stroke="#333333" stroke-width="11"/>
+  <circle cx="55" cy="347" r="7" fill="#555555"/>
+  <circle cx="94" cy="347" r="18" fill="#555555"/>
+  <circle cx="137" cy="347" r="7" fill="#555555"/>
+  <circle cx="178" cy="347" r="7" fill="#555555"/>
+  <circle cx="219" cy="347" r="7" fill="#555555"/>
+  <circle cx="260" cy="347" r="7" fill="#555555"/>
+  <circle cx="55" cy="406" r="7" fill="#555555"/>
+  <circle cx="96" cy="406" r="7" fill="#555555"/>
+  <circle cx="137" cy="406" r="7" fill="#555555"/>
+  <circle cx="178" cy="406" r="7" fill="#555555"/>
+  <circle cx="219" cy="406" r="7" fill="#555555"/>
+  <circle cx="260" cy="406" r="7" fill="#555555"/>
+  <circle cx="55" cy="465" r="7" fill="#555555"/>
+  <circle cx="96" cy="465" r="7" fill="#555555"/>
+  <circle cx="137" cy="465" r="7" fill="#555555"/>
+  <circle cx="178" cy="465" r="7" fill="#555555"/>
+  <circle cx="219" cy="465" r="7" fill="#555555"/>
+  <circle cx="260" cy="465" r="7" fill="#555555"/>
+  <path class="m" stroke-width="3.5" d="M437.0 334 Q451.0 357 437.0 380"/>
+  <path class="m" stroke-width="3.5" d="M485.5 334 Q499.5 357 485.5 380"/>
+  <path class="m" stroke-width="3.5" d="M534.0 334 Q548.0 357 534.0 380"/>
+  <path class="m" stroke-width="3.5" d="M582.5 334 Q596.5 357 582.5 380"/>
+  <path class="m" stroke-width="3.5" d="M631.0 334 Q645.0 357 631.0 380"/>
+  <path class="m" stroke-width="3.5" d="M679.5 334 Q693.5 357 679.5 380"/>
+  <path class="m" stroke-width="3.5" d="M437.0 418 Q451.0 441 437.0 464"/>
+  <line class="m" stroke-width="3.5" x1="489.5" y1="418" x2="489.5" y2="464"/>
+  <path class="m" stroke-width="3.5" d="M534.0 418 Q548.0 441 534.0 464"/>
+  <path class="m" stroke-width="3.5" d="M582.5 418 Q596.5 441 582.5 464"/>
+  <path class="m" stroke-width="3.5" d="M631.0 418 Q645.0 441 631.0 464"/>
+  <path class="m" stroke-width="3.5" d="M679.5 418 Q693.5 441 679.5 464"/>
+  <line class="m" x1="819.0" y1="311" x2="819.0" y2="386"/>
+  <line class="m" x1="864.5" y1="311" x2="864.5" y2="386"/>
+  <line class="m" x1="910.0" y1="311" x2="910.0" y2="386"/>
+  <line class="m" x1="955.5" y1="311" x2="955.5" y2="386"/>
+  <line class="m" x1="1001.0" y1="311" x2="1001.0" y2="386"/>
+  <line class="m" x1="1046.5" y1="311" x2="1046.5" y2="386"/>
+  <line class="m" x1="842" y1="347" x2="884" y2="347"/>
+  <line class="m" x1="819.0" y1="411" x2="819.0" y2="487"/>
+  <line class="m" x1="864.5" y1="411" x2="864.5" y2="487"/>
+  <line class="m" x1="910.0" y1="411" x2="910.0" y2="487"/>
+  <line class="m" x1="955.5" y1="411" x2="955.5" y2="487"/>
+  <line class="m" x1="1001.0" y1="411" x2="1001.0" y2="487"/>
+  <line class="m" x1="1046.5" y1="411" x2="1046.5" y2="487"/>
+  <line class="m" x1="1203.0" y1="311" x2="1203.0" y2="386"/>
+  <line class="m" x1="1248.5" y1="311" x2="1248.5" y2="386"/>
+  <line class="m" x1="1294.0" y1="311" x2="1294.0" y2="386"/>
+  <line class="m" x1="1339.5" y1="311" x2="1339.5" y2="386"/>
+  <line class="m" x1="1385.0" y1="311" x2="1385.0" y2="386"/>
+  <line class="m" x1="1430.5" y1="311" x2="1430.5" y2="386"/>
+  <line class="m" x1="1203.0" y1="411" x2="1203.0" y2="487"/>
+  <line class="m" x1="1248.5" y1="411" x2="1248.5" y2="487"/>
+  <line class="m" x1="1294.0" y1="411" x2="1294.0" y2="487"/>
+  <line class="m" x1="1339.5" y1="411" x2="1339.5" y2="487"/>
+  <line class="m" x1="1385.0" y1="411" x2="1385.0" y2="487"/>
+  <line class="m" x1="1430.5" y1="411" x2="1430.5" y2="487"/>
+  <rect class="m" stroke-width="3.5" x="1232" y="402" width="34" height="96"/>
+  <circle cx="55" cy="635" r="7" fill="#555555"/>
+  <circle cx="96" cy="635" r="7" fill="#555555"/>
+  <circle cx="137" cy="635" r="7" fill="#555555"/>
+  <circle cx="178" cy="635" r="7" fill="#555555"/>
+  <circle cx="219" cy="635" r="7" fill="#555555"/>
+  <circle cx="260" cy="635" r="7" fill="#555555"/>
+  <circle cx="55" cy="694" r="7" fill="#555555"/>
+  <circle cx="96" cy="694" r="7" fill="#555555"/>
+  <circle cx="137" cy="694" r="7" fill="#555555"/>
+  <circle cx="178" cy="694" r="7" fill="#d4a017"/>
+  <circle cx="219" cy="694" r="7" fill="#555555"/>
+  <circle cx="260" cy="694" r="7" fill="#555555"/>
+  <circle cx="55" cy="753" r="7" fill="#555555"/>
+  <circle cx="96" cy="753" r="7" fill="#555555"/>
+  <circle cx="137" cy="753" r="7" fill="#555555"/>
+  <circle cx="178" cy="753" r="7" fill="#555555"/>
+  <circle cx="219" cy="753" r="7" fill="#555555"/>
+  <circle cx="260" cy="753" r="7" fill="#555555"/>
+  <circle cx="439" cy="635" r="7" fill="#555555"/>
+  <circle cx="480" cy="635" r="7" fill="#555555"/>
+  <circle cx="521" cy="635" r="7" fill="#555555"/>
+  <circle cx="562" cy="635" r="7" fill="#555555"/>
+  <circle cx="603" cy="635" r="7" fill="#555555"/>
+  <circle cx="644" cy="635" r="7" fill="#555555"/>
+  <circle cx="439" cy="694" r="7" fill="#555555"/>
+  <circle cx="480" cy="694" r="7" fill="#b5b5b5"/>
+  <circle cx="521" cy="694" r="7" fill="#555555"/>
+  <circle cx="562" cy="694" r="7" fill="#555555"/>
+  <circle cx="603" cy="694" r="7" fill="#555555"/>
+  <circle cx="644" cy="694" r="7" fill="#555555"/>
+  <circle cx="439" cy="753" r="7" fill="#555555"/>
+  <circle cx="480" cy="753" r="7" fill="#555555"/>
+  <circle cx="521" cy="753" r="7" fill="#555555"/>
+  <circle cx="562" cy="753" r="7" fill="#555555"/>
+  <circle cx="603" cy="753" r="7" fill="#555555"/>
+  <circle cx="644" cy="753" r="7" fill="#555555"/>
+  <circle cx="825" cy="694" r="7" fill="#555555"/>
+  <circle cx="907" cy="694" r="7" fill="#555555"/>
+  <circle cx="948" cy="694" r="7" fill="#555555"/>
+  <circle cx="989" cy="694" r="7" fill="#555555"/>
+  <circle cx="1030" cy="694" r="7" fill="#555555"/>
+  <circle cx="866" cy="753" r="7" fill="#555555"/>
+  <path class="m" stroke-width="4" d="M1202 631 C1270 631 1305 650 1307 685 C1309 720 1350 740 1405 743"/>
+  <path class="m" stroke-width="4" d="M1384 731 L1408 743 L1384 753"/>
+  <text class="lab" x="50" y="258">Orientation</text>
+  <text class="lab" x="430" y="258">Shape</text>
+  <text class="lab" x="814" y="258">Line length</text>
+  <text class="lab" x="1198" y="258">Line width</text>
+  <text class="lab" x="46" y="548">Size</text>
+  <text class="lab" x="430" y="548">Curvature</text>
+  <text class="lab" x="814" y="548">Added marks</text>
+  <text class="lab" x="1198" y="548">Enclosure</text>
+  <text class="lab" x="46" y="836">Hue</text>
+  <text class="lab" x="430" y="836">Intensity</text>
+  <text class="lab" x="814" y="836">Spatial position</text>
+  <text class="lab" x="1198" y="836">Motion</text>
+</svg>

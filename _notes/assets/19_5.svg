@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 615 385" role="img" aria-labelledby="title desc">
+  <title id="title">Cerebellar inputs</title>
+  <desc id="desc">Frontal/parietal cortex projects to the pontine nuclei, which cross the midline through the middle cerebellar peduncle to the cerebellar cortex/deep nuclei. Inferior olive, spinal cord and vestibular nucleus project to the cerebellum through the inferior cerebellar peduncle.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <text x="10" y="22.0" font-size="17">(A)</text>
+  <rect x="10" y="40" width="225" height="62" rx="0" fill="#d6e6f5" stroke="#1f6fb2" stroke-width="2"/>
+  <text class="c" x="122" y="66.7" font-size="19">Frontal/parietal</text>
+  <text class="c" x="122" y="88.6" font-size="19">cortex</text>
+  <rect x="10" y="150" width="235" height="65" rx="0" fill="#f7e0c8" stroke="#d9822b" stroke-width="2"/>
+  <text class="c" x="115" y="189.7" font-size="19">Pontine nuclei</text>
+  <path d="M122.0 102.0 L122.0 123.0" fill="none" stroke="#7fb0dd" stroke-width="34" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="122.0,150.0 90.0,122.0 154.0,122.0" fill="#7fb0dd"/>
+  <rect x="245" y="148" width="65" height="69" rx="0" fill="#fbeec9" stroke="#d9822b" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="310" y="150" width="296" height="70" rx="0" fill="#d3e9eb" stroke="#1f7f86" stroke-width="2"/>
+  <text class="c" x="458" y="180.7" font-size="19">Cerebellar cortex/</text>
+  <text class="c" x="458" y="202.6" font-size="19">Deep nuclei</text>
+  <rect x="310" y="220" width="296" height="70" rx="0" fill="#e6f3ea" stroke="#1f8a4c" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M240.0 183.0 L289.0 183.0" fill="none" stroke="#e8a96a" stroke-width="40" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="320.0,183.0 288.0,217.0 288.0,149.0" fill="#e8a96a"/>
+  <rect x="310" y="290" width="85" height="80" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="352" y="325.9" font-size="18">Inferior</text>
+  <text class="c" x="352" y="346.6" font-size="18">olive</text>
+  <rect x="403" y="290" width="85" height="80" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="445" y="325.9" font-size="18">Spinal</text>
+  <text class="c" x="445" y="346.6" font-size="18">cord</text>
+  <rect x="496" y="290" width="110" height="80" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="551" y="325.9" font-size="18">Vestibular</text>
+  <text class="c" x="551" y="346.6" font-size="18">nucleus</text>
+  <path d="M352.0 290.0 L352.0 249.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="352.0,222.0 377.0,250.0 327.0,250.0" fill="#7cc39a"/>
+  <path d="M445.0 290.0 L445.0 249.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="445.0,222.0 470.0,250.0 420.0,250.0" fill="#7cc39a"/>
+  <path d="M551.0 290.0 L551.0 249.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="551.0,222.0 576.0,250.0 526.0,250.0" fill="#7cc39a"/>
+  <text class="c" x="272" y="28.0" font-size="18">Midline</text>
+  <path class="mid" d="M272 38 V380"/>
+  <text x="338" y="54.0" font-size="18">Middle cerebellar</text>
+  <text x="338" y="75.0" font-size="18">peduncle</text>
+  <path class="lead" d="M336 82 L292 148"/>
+  <text x="36" y="340.0" font-size="18">Inferior cerebellar</text>
+  <text x="36" y="361.0" font-size="18">peduncle</text>
+  <path class="lead" d="M196 334 L318 262"/>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 400" role="img" aria-labelledby="title desc">
+  <title id="title">Basal ganglia output pathways</title>
+  <desc id="desc">Caudate and putamen inhibit (minus) substantia nigra pars reticulata and globus pallidus internal. Substantia nigra pars reticulata inhibits the superior colliculus; globus pallidus internal inhibits the VA/VL complex of the thalamus, which excites (plus) frontal cortex.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <text x="10" y="24.0" font-size="18">(B)</text>
+  <rect x="30" y="45" width="270" height="60" rx="0" fill="#f7e0c8" stroke="#d9822b" stroke-width="2"/>
+  <text class="c" x="165" y="82.0" font-size="20">Caudate and putamen</text>
+  <rect x="30" y="165" width="160" height="80" rx="0" fill="#e6dcf2" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="110" y="201.0" font-size="18">Substantia nigra</text>
+  <text class="c" x="110" y="221.7" font-size="18">pars reticulata</text>
+  <rect x="205" y="165" width="95" height="100" rx="0" fill="#e6dcf2" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="252" y="200.6" font-size="18">Globus</text>
+  <text class="c" x="252" y="221.3" font-size="18">pallidus</text>
+  <text class="c" x="252" y="242.0" font-size="18">internal</text>
+  <rect x="30" y="315" width="160" height="75" rx="0" fill="#d6e6f5" stroke="#1f6fb2" stroke-width="2"/>
+  <text class="c" x="110" y="347.5" font-size="20">Superior</text>
+  <text class="c" x="110" y="370.5" font-size="20">colliculus</text>
+  <rect x="325" y="10" width="150" height="55" rx="0" fill="#d6e6f5" stroke="#1f6fb2" stroke-width="2"/>
+  <text class="c" x="400" y="43.3" font-size="18">Frontal cortex</text>
+  <rect x="325" y="115" width="150" height="85" rx="0" fill="#dcdcf2" stroke="#4a4fa8" stroke-width="2"/>
+  <text class="c" x="400" y="153.0" font-size="18">VA/VL complex</text>
+  <text class="c" x="400" y="173.7" font-size="18">(thalamus)</text>
+  <path d="M110.0 105.0 L110.0 140.0" fill="none" stroke="#e8a96a" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="110.0,165.0 82.0,139.0 138.0,139.0" fill="#e8a96a"/>
+  <path d="M252.0 105.0 L252.0 140.0" fill="none" stroke="#e8a96a" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="252.0,165.0 224.0,139.0 280.0,139.0" fill="#e8a96a"/>
+  <path d="M110.0 245.0 L110.0 290.0" fill="none" stroke="#a98bd0" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="110.0,315.0 82.0,289.0 138.0,289.0" fill="#a98bd0"/>
+  <path d="M252.0 265.0 L252.0 355.0 L400.0 355.0 L400.0 225.0" fill="none" stroke="#a98bd0" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="400.0,200.0 428.0,226.0 372.0,226.0" fill="#a98bd0"/>
+  <path d="M400.0 115.0 L400.0 88.0" fill="none" stroke="#9a9ad6" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="400.0,65.0 428.0,89.0 372.0,89.0" fill="#9a9ad6"/>
+  <circle cx="68" cy="135" r="10" fill="#2b2b2b"/>
+  <path d="M62.5 135 H73.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="208" cy="135" r="10" fill="#2b2b2b"/>
+  <path d="M202.5 135 H213.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="68" cy="285" r="10" fill="#2b2b2b"/>
+  <path d="M62.5 285 H73.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="357" cy="230" r="10" fill="#2b2b2b"/>
+  <path d="M351.5 230 H362.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="357" cy="92" r="10" fill="#1f8a4c"/>
+  <path d="M351.5 92 H362.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M357 86.5 V97.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -211,7 +211,6 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - Where $\vert X\vert $ is the number of bits (i.e., file size) of X
 - Huffman coding
   - Compression
-
     1. Determine frequencies
     2. Build a tree of prefix codes
 
@@ -221,7 +220,6 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     3. Write the prefix codes to the output
     4. reread source file and write prefix code to the output file
   - Decompression
-
     1. read in prefix code - build tree
     2. read in one bit at a time and follow tree
 - ASCII characters - 7 bits, 128 characters (extended ASCII uses 8 bits, 256 characters)
@@ -239,7 +237,6 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
 
 - java: load factor = .75, default init capacity: 16, uses buckets
 - string hash function: s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1] where n is length mod (table_size)
-
   - Standard set of operations: find, insert, delete
   - No ordering property!
   - Thus, no findMin or findMax
@@ -247,10 +244,8 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
   - Each value has a specific key associated with it
 - fixed size array of some size, usually a prime number
 - A hash function takes in a "thing" (string, int, object, etc.)
-
   - returns hash value - an unsigned integer value which is then mod'ed by the size of the hash table to yield a spot within the bounds of the hash table array
 - Three required properties
-
   1. Must be deterministic
      - Meaning it must return the same value each time for the same "thing"
   2. Must be fast
@@ -259,18 +254,14 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
 
   - Technically, only the first is required for correctness, but the other two are required for fast running times
 - A perfect hash function has:
-
   - No blanks (i.e., no empty cells)
   - No collisions
 - Lookup table is at best logarithmic
 - We can't just make a very large array - we assume the key space is too large
-
   - you can't just hash by social security number
 - $hash(s)=(\sum_{i=0}^{k−1} s_i * 37^i)$ mod table_size
-
   - you would precompute the powers of 37
 - collision - putting two things into same spot in hash table
-
   - Two primary ways to resolve collisions:
     1. Separate Chaining (make each spot in the table a 'bucket' or a collection)
     2. Open Addressing, of which there are 3 types:
@@ -278,7 +269,6 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     2. Quadratic probing
     3. Double hashing
 - Separate Chaining
-
   - each bucket contains a data structure (like a linked list)
   - analysis of find
     - The load factor, λ, of a hash table is the ratio of the number of elements divided by the table size
@@ -300,7 +290,6 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
       - λ = 0.5
         - Uses more memory, but fewer collisions
 - Open Addressing: The general idea with all of them is that, if a spot is occupied, to 'probe', or try, other spots in the table to use
-
   - 3 Types:
     - General: pi(k) = (hash(k) + f(i)) mod table_size
       1.Linear Probing: f(i) = i
@@ -315,7 +304,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
         - cannot have a load factor > 1, as you get close to 1, you get a lot of collisions
         - clustering - large blocks of occupied cells
         - "holes" when an element is removed
-          2.Quadratic:  f(i) = i^2
+          2.Quadratic: f(i) = i^2
       - hash(k)
       - hash(k)+1
       - hash(k)+4
@@ -349,7 +338,6 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
       - gets filled with these quickly
       - perhaps rehash after a certain number of deletes
 - hash functions
-
   - MD5 is a good hash function (given a string or file contents)
     - generates 128 bit hash
     - when you download something, you download the MD5, your computer computes the MD5 and they are compared to make sure it downloaded correctly
@@ -357,3 +345,100 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - you can lookup a MD5 hash in a rainbow table - gives you what the password probably is based on the MD5 hash
   - SHA (secure Hash algorithm) is much more secure
     - generates hash up to 512 bits
+
+# graphs
+
+- Edges are of the form (v1, v2)
+  - Can be ordered pair or unordered pair
+- Definitions
+  - A *weight* or cost can be associated with each edge - this is determined by the application
+  - w is adjacent to v iff (v, w) $\in$ E
+  - path: sequence of vertices w1, w2, w3, ..., wn such that (wi, wi+1) ∈ E for 1 ≤ i < n
+  - length of a path: number of edges in the path
+  - simple path: all vertices are distinct
+  - cycle:
+    - directed graph: path of length $\geq$ 1 such that w1 = wn
+    - undirected graph: same, except all edges are distinct
+  - connected: there is a path from every vertex to every other vertex
+  - loop: (v, v) $\in$ E
+  - complete graph: there is an edge between every pair of vertices
+- digraph
+  - directed acyclic graph: no cycles; often called a "DAG"
+  - strongly connected: there is a path from every vertex to every other vertex
+  - weakly connected: the underlying undirected graph is connected
+- For Google Maps, an adjacency matrix would be infeasible - almost all zeros (sparse)
+  - an adjacency list would work much better
+  - an adjacency matrix would work for airline routes
+- detect cycle
+  - dfs from every vertex and keep track of visited, if repeat then cycle
+- Topological Sort
+  - Given a directed acyclic graph, construct an ordering of the vertices such that if there is a path from vi to vj, then vj appears after vi in the ordering
+  - The result is a linear list of vertices
+  - indegree of v: number of edges (u, v) -- meaning the number of incoming edges
+  - Algorithm
+    - start with something of indegree 0
+    - take it out, and take out the edges that start from it
+    - keep doing this as we take out more and more edges
+  - can have multiple possible topological sorts
+- Shortest Path
+  - single-source - start somewhere, get shortest path to everywhere
+  - unweighted shortest path - breadth first search
+  - Weighted Shortest Path
+    - We assume no negative weight edges
+    - Dijkstra's algorithm: uses similar ideas as the unweighted case
+    - Greedy algorithms: do what seems to be best at every decision point
+    - Dijkstra: v^2
+      - Initialize each vertex's distance as infinity
+      - Start at a given vertex s
+        - Update s's distance to be 0
+      - Repeat
+        - Pick the next unknown vertex with the shortest distance to be the next v
+        - If no more vertices are unknown, terminate loop
+      - Mark v as known
+      - For each edge from v to adjacent unknown vertices w
+        - If the total distance to w is less than the current distance to w
+        - Update w's distance and the path to w
+      - It picks the unvisited vertex with the lowest-distance, calculates the distance through it to each unvisited neighbor, and updates the neighbor's distance if smaller. Mark visited (set to red) when done with neighbors.
+  - Shortest path from a start node to a finish node
+    - 1. We can just run Dijkstra until we get to the finish node
+    - 1. Have different kinds of nodes
+      - Assume you are starting on a "side road"
+      - Transition to a "main road"
+      - Transition to a "highway"
+      - Get as close as you can to your destination via the highway system
+      - Transition to a "main road", and get as close as you can to your destination
+      - Transition to a "side road", and go to your destination
+- Traveling Salesman
+  - Given a number of cities and the costs of traveling from any city to any other city, what is the least-cost round-trip route that visits each city exactly once and then returns to the starting city?
+  - Hamiltonian path: a path in a connected graph that visits each vertex exactly once
+  - Hamiltonian cycle: a Hamiltonian path that ends where it started
+  - The traveling salesperson problem is thus to find the least weight Hamiltonian path (cycle) in a connected, weighted graph
+- Minimum Spanning Tree
+  - Want fully connected
+  - Want to minimize number of links used
+    - We won't have cycles
+  - Any solution is a tree
+  - Slow algorithm: Construct a spanning tree:
+    - Start with the graph
+    - Remove an edge from each cycle
+    - What remains has the same set of vertices but is a tree
+    - Spanning Trees
+- Minimal-weight spanning tree: spanning tree with the minimal total weight
+  - Generic Minimum Spanning Tree Algorithm
+    - KnownVertices <- {}
+    - while KnownVertices does not form a spanning tree, loop:
+      - find edge (u,v) that is "safe" for KnownVertices
+      - KnownVertices <- KnownVertices U {(u,v)}
+    - end loop
+  - Prim's algorithm
+    - Idea: Grow a tree by adding an edge to the "known" vertices from the "unknown" vertices. Pick the edge with the smallest weight.
+    - Pick one node as the root,
+    - Incrementally add edges that connect a "new" vertex to the tree.
+    - Pick the edge (u,v) where:
+    - u is in the tree, v is not, AND
+    - where the edge weight is the smallest of all edges (where u is in the tree and v is not)
+    - Running time: Same as Dijkstra's: Θ(e log v)
+  - Kruskal's algorithm
+    - Idea: Grow a forest out of edges that do not create a cycle. Pick an edge with the smallest weight.
+    - When optimized, it has the same running time as Prim's and Dijkstra's: Θ(e log v)
+    - unoptimized: v^2

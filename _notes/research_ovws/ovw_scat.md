@@ -12,7 +12,7 @@ subtitle: Some papers involving the scattering transform and similar development
 
 # goals
 
-- benefits        
+- benefits
    - all filters are defined
    - more interpretable
    - more biophysically plausible
@@ -68,12 +68,12 @@ subtitle: Some papers involving the scattering transform and similar development
 
 ## wavelet style transfer
 
-- [Photorealistic Style Transfer via Wavelet Transforms>](https://arxiv.org/pdf/1903.09760v1.pdf)
+- Photorealistic Style Transfer via Wavelet Transforms> ([yoo et al. 2019](https://arxiv.org/pdf/1903.09760v1.pdf))
 
 # adaptive wavelet papers
 
 - Parameterized Wavelets for Convolutional Neural Networks ([2020](https://ieeexplore-ieee-org.libproxy.berkeley.edu/stamp/stamp.jsp?tp=&arnumber=9096125&tag=1)) - a discrete wavelet CNN
-- An End-to-End Multi-Level Wavelet Convolutional Neural Networks for heart diseases diagnosis  ([el bouny et al. 2020](https://www.sciencedirect.com/science/article/abs/pii/S0925231220311644)) - stationary wavelet CNN
+- An End-to-End Multi-Level Wavelet Convolutional Neural Networks for heart diseases diagnosis ([el bouny et al. 2020](https://www.sciencedirect.com/science/article/abs/pii/S0925231220311644)) - stationary wavelet CNN
 - Fully Learnable Deep Wavelet Transform for Unsupervised Monitoring of High-Frequency Time Series ([michau et al. 2021](https://arxiv.org/abs/2105.00899))
 
 ## helmut lab papers
@@ -86,7 +86,7 @@ subtitle: Some papers involving the scattering transform and similar development
     - all of these elements can be different in different network layers.
   - translation invariance result of vertical nature in the sense of the features becoming progressively more translation-invariant with increasing network depth
   - deformation sensitivity bounds that apply to signal classes such as, e.g., band-limited functions, cartoon functions, and Lipschitz functions.
-- wiatowski_18 "[Energy Propagation in Deep Convolutional Neural Networks](https://arxiv.org/pdf/1704.03636.pdf)"
+- wiatowski_18 "Energy Propagation in Deep Convolutional Neural Networks" ([wiatowski et al. 2017](https://arxiv.org/pdf/1704.03636.pdf))
 
 # nano papers
 
@@ -103,16 +103,15 @@ subtitle: Some papers involving the scattering transform and similar development
 
 ## l2 functions
 
-- $L^2$ function is a function $f: X \to \mathbb{R}$ that is square integrable: $|f|^2 = \int_X |f|^2 d\mu$ with respect to the measure $\mu$
-  - $|f|$ is its $L^2$-norm
-- **measure ** = nonnegative real function from a delta-ring F such that $m(\empty) = 0$ and $m(A) = \sum_n m(A_n)$
-- **Hilbert space** H: a vectors space with an innor product $<f, g>$ such that the following norm turns H into a complete metric space: $|f| = \sqrt{<f, f>}$
+- $L^2$ function is a function $f: X \to \mathbb{R}$ that is square integrable: $$\vert f\vert ^2 = \int_X \vert f\vert ^2 d\mu$$ with respect to the measure $\mu$
+  - $$\vert f\vert $$ is its $L^2$-norm
+- **measure** = nonnegative real function from a delta-ring F such that $m(\empty) = 0$ and $m(A) = \sum_n m(A_n)$
+- **Hilbert space** H: a vectors space with an innor product $$<f, g>$$ such that the following norm turns H into a complete metric space: $$\vert f\vert  = \sqrt{<f, f>}$$
 - **diffeomorphism** is an [isomorphism](https://en.wikipedia.org/wiki/Isomorphism) of [smooth manifolds](https://en.wikipedia.org/wiki/Smooth_manifold). It is an [invertible function](https://en.wikipedia.org/wiki/Invertible_function) that [maps](https://en.wikipedia.org/wiki/Map_(mathematics)) one [differentiable manifold](https://en.wikipedia.org/wiki/Differentiable_manifold) to another such that both the function and its inverse are [smooth](https://en.wikipedia.org/wiki/Smooth_function).
 
 
 ## reversible/invertible models
 
-- [williams  inverting w/ autoregressive models](https://arxiv.org/abs/1806.00400)
-
+- williams  inverting w/ autoregressive models ([nash et al. 2018](https://arxiv.org/abs/1806.00400))
 - [arora reversibility](https://arxiv.org/pdf/1511.05653.pdf)
 - iResNet

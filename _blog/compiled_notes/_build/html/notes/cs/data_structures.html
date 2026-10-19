@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.2. data structures</title>
+    <title>2.1. data structures</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/cs/data_structures';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.3. languages" href="languages.html" />
-    <link rel="prev" title="2.1. info retrieval" href="retrieval.html" />
+    <link rel="next" title="2.2. quantum" href="quantum.html" />
+    <link rel="prev" title="2. cs" href="cs_section.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs_section.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,21 +421,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">2.2.1. lists</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">2.2.1.1. arrays and strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">2.2.1.2. queue - linkedlist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">2.2.1.3. stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">2.1.1. lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">2.1.1.1. arrays and strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">2.1.1.2. queue - linkedlist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">2.1.1.3. stack</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.2.2. trees</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">2.2.2.1. AVL Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">2.2.2.2. Red-Black Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">2.2.2.3. Splay Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">2.2.2.4. other trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.1.2. trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">2.1.2.1. AVL Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">2.1.2.2. Red-Black Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">2.1.2.3. Splay Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">2.1.2.4. other trees</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">2.2.3. heaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">2.2.4. Hash tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">2.1.3. heaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">2.1.4. Hash tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">2.1.5. graphs</a></li>
 </ul>
             </nav>
         </div>
@@ -462,25 +449,25 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-structures">
-<h1><span class="section-number">2.2. </span>data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">2.1. </span>data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h1>
 <section id="lists">
-<h2><span class="section-number">2.2.1. </span>lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.1.1. </span>lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
 <section id="arrays-and-strings">
-<h3><span class="section-number">2.2.1.1. </span>arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.1.1. </span>arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>start by checking for null, length 0</p></li>
 <li><p><em>ascii</em> is 128, extended is 256</p></li>
 </ul>
 </section>
 <section id="queue-linkedlist">
-<h3><span class="section-number">2.2.1.2. </span>queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.1.2. </span>queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>has insert at back (enqueue) and remove from front (dequeue)</p></li>
 </ul>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">Node</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
-<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
-<span class="w">	</span><span class="kd">public</span><span class="w"> </span><span class="nf">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="nf">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -495,22 +482,22 @@ document.write(`
 </ul>
 </section>
 <section id="stack">
-<h3><span class="section-number">2.2.1.3. </span>stack<a class="headerlink" href="#stack" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.1.3. </span>stack<a class="headerlink" href="#stack" title="Link to this heading">#</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Stack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">	</span><span class="n">Node</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
-<span class="w">	</span><span class="n">Node</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">top</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">			</span><span class="n">Object</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">.</span><span class="na">data</span><span class="p">;</span><span class="w"> </span>
-<span class="w">			</span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">.</span><span class="na">next</span><span class="p">;</span>
-<span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
-<span class="w">		</span><span class="p">}</span>
-<span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">	</span><span class="p">}</span>
-<span class="w">	</span><span class="kt">void</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">		</span><span class="n">Node</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-<span class="w">		</span><span class="n">t</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
-<span class="w">		</span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
-<span class="w">	</span><span class="p">}</span><span class="w"> </span>
+<span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
+<span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">top</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">Object</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">.</span><span class="na">data</span><span class="p">;</span><span class="w"> </span>
+<span class="w">   </span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">.</span><span class="na">next</span><span class="p">;</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="n">Node</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="w">  </span><span class="n">t</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
+<span class="w">  </span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -525,12 +512,11 @@ document.write(`
 </li>
 <li><p>stack with min - each el stores min of things below it</p></li>
 <li><p>queue with 2 stacks - keep popping everything off of one and putting them on the other</p></li>
-<li><p>sort with 2 stacks</p></li>
 </ul>
 </section>
 </section>
 <section id="trees">
-<h2><span class="section-number">2.2.2. </span>trees<a class="headerlink" href="#trees" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.1.2. </span>trees<a class="headerlink" href="#trees" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Balanced binary trees are generally logarithmic</p>
 <ul>
@@ -571,11 +557,11 @@ document.write(`
 <ul class="simple">
 <li><p>BST Remove</p>
 <ul>
-<li><p>if no children: remove node (reclaiming memory), set parent pointer to null
-- one child: Adjust pointer of parent to point at child, and reclaim memory
-- two children: successor is min of right subtree
-- replace node with successor, then remove successor from tree</p>
+<li><p>if no children: remove node (reclaiming memory), set parent pointer to null</p>
 <ul>
+<li><p>one child: Adjust pointer of parent to point at child, and reclaim memory</p></li>
+<li><p>two children: successor is min of right subtree</p></li>
+<li><p>replace node with successor, then remove successor from tree</p></li>
 <li><p>worst-case depth = n-1 (this happens when the data is already sorted)</p></li>
 <li><p>maximum number of nodes in tree of height h is 2^(h+1) - 1</p></li>
 <li><p>minimum height h ≥ log(n+1)-1</p></li>
@@ -591,7 +577,7 @@ document.write(`
 </li>
 </ul>
 <section id="avl-tree">
-<h3><span class="section-number">2.2.2.1. </span>AVL Tree<a class="headerlink" href="#avl-tree" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.2.1. </span>AVL Tree<a class="headerlink" href="#avl-tree" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For every node in the tree, the height of the left and right sub-trees differs at most by 1</p>
 <ul>
@@ -611,7 +597,7 @@ document.write(`
 </ul>
 </section>
 <section id="red-black-trees">
-<h3><span class="section-number">2.2.2.2. </span>Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.2.2. </span>Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>definition</p>
 <ol class="arabic simple">
@@ -659,7 +645,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="splay-trees">
-<h3><span class="section-number">2.2.2.3. </span>Splay Trees<a class="headerlink" href="#splay-trees" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.2.3. </span>Splay Trees<a class="headerlink" href="#splay-trees" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A self-balancing tree that keeps “recently” used nodes close to the top</p>
 <ul>
@@ -683,7 +669,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="other-trees">
-<h3><span class="section-number">2.2.2.4. </span>other trees<a class="headerlink" href="#other-trees" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.1.2.4. </span>other trees<a class="headerlink" href="#other-trees" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>to go through <em>bst (without recursion) in order</em>, use stacks</p>
 <ul>
@@ -705,7 +691,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 <li><p>create pointers to nodes on the right</p></li>
 </ul>
 </li>
-<li><p><em>balanced tree</em>  = any 2 nodes differ in height by more than 1</p>
+<li><p><em>balanced tree</em> = no 2 nodes differ in height by more than 1</p>
 <ul>
 <li><p>(maxDepth - minDepth) &lt;=1</p></li>
 </ul>
@@ -725,56 +711,41 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </section>
 </section>
 <section id="heaps">
-<h2><span class="section-number">2.2.3. </span>heaps<a class="headerlink" href="#heaps" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>used for <em>priority queue</em></p></li>
-<li><p>peek(): just look at the root node</p></li>
-<li><p>add(val): put it at correct spot, percolate up</p>
+<h2><span class="section-number">2.1.3. </span>heaps<a class="headerlink" href="#heaps" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>percolate - Repeatedly exchange node with its parent if needed</p></li>
-<li><p>expected run time: ∑i=1..n 1/2^n∗n=2</p></li>
-</ul>
-</li>
-<li><p>pop(): put last leaf at root, percolate down</p>
-<ul>
-<li><p>Remove root (that is always the min!)</p></li>
-<li><p>Put “last” leaf node at root</p></li>
-<li><p>Repeatedly find smallest child and swap node with smallest child if needed.</p></li>
-</ul>
-</li>
 <li><p>Priority Queue - Binary Heap is always used for Priority Queue</p>
 <ol class="arabic simple">
 <li><p>insert</p>
-<ul>
+<ul class="simple">
 <li><p>inserts with a priority</p></li>
 </ul>
 </li>
 <li><p>findMin</p>
-<ul>
+<ul class="simple">
 <li><p>finds the minimum element</p></li>
 </ul>
 </li>
 <li><p>deleteMin</p>
-<ul>
+<ul class="simple">
 <li><p>finds, returns, and removes minimum element</p></li>
 </ul>
 </li>
 </ol>
 </li>
 <li><p>perfect (or complete) binary tree - binary tree with all leaf nodes at the same depth; all internal nodes have 2 children.</p>
-<ul>
+<ul class="simple">
 <li><p>height h, 2h+1-1 nodes, 2h-1 non-leaves, and 2h leaves</p></li>
 </ul>
 </li>
 <li><p>Full Binary Tree</p>
-<ul>
+<ul class="simple">
 <li><p>A binary tree in which each node has exactly zero or two children.</p></li>
 </ul>
 </li>
 <li><p>Min-heap - parent is min</p>
 <ol class="arabic simple">
-<li><p>Heap Structure Property: A binary heap is an almost complete binary tree, which is a binary tree that is completely filled, with the possible exception of the bottom level, which is filled left to right.</p>
-<ul>
+<li><p>Heap Structure Property: A binary heap is an almost complete binary tree, which is a binary tree that is completely filled, with the possible exception of the bottom level, which is filled left to right</p>
+<ul class="simple">
 <li><p>in an array - this is faster than pointers</p>
 <ul>
 <li><p>left child: 2*i</p></li>
@@ -786,16 +757,16 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </li>
 </ul>
 </li>
-<li><p>Heap ordering property: For every non-root node X, the key in the parent of X is less than (or equal to) the key in X. Thus, the tree is partially ordered.</p></li>
+<li><p>Heap ordering property: For every non-root node X, the key in the parent of X is less than (or equal to) the key in X. Thus, the tree is partially ordered</p></li>
 </ol>
 </li>
 <li><p>Heap operations</p>
-<ul>
+<ul class="simple">
 <li><p>findMin: just look at the root node</p></li>
 <li><p>insert(val): put it at correct spot, percolate up</p>
 <ul>
 <li><p>percolate - Repeatedly exchange node with its parent if needed</p></li>
-<li><p>expecteed run time: ∑i=1..n 1/2^n∗n=2</p></li>
+<li><p>expected run time: ∑i=1..n 1/2^n∗n=2</p></li>
 </ul>
 </li>
 <li><p>deleteMin: put last leaf at root, percolate down</p>
@@ -808,7 +779,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </li>
 <li><p>Compression</p>
-<ul>
+<ul class="simple">
 <li><p>Lossless compression: X = X’</p></li>
 <li><p>Lossy compression: X != X’</p>
 <ul>
@@ -827,12 +798,13 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 <li><p>Compression</p>
 <ol class="arabic simple">
 <li><p>Determine frequencies</p></li>
-<li><p>Build a tree of prefix codes</p>
-<ul>
+<li><p>Build a tree of prefix codes</p></li>
+</ol>
+<ul class="simple">
 <li><p>no code is a prefix of another code</p></li>
 <li><p>start with minheap, then keep putting trees together</p></li>
 </ul>
-</li>
+<ol class="arabic simple" start="3">
 <li><p>Write the prefix codes to the output</p></li>
 <li><p>reread source file and write prefix code to the output file</p></li>
 </ol>
@@ -845,14 +817,14 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </li>
 </ul>
 </li>
-<li><p>ASCII characters - 8 bits, 2^7 = 128 characters</p>
-<ul>
+<li><p>ASCII characters - 7 bits, 128 characters (extended ASCII uses 8 bits, 256 characters)</p>
+<ul class="simple">
 <li><p>cost - total number of bits</p></li>
 <li><p>“straight cost” - bits / character = log2(numDistinctChars)</p></li>
 </ul>
 </li>
 <li><p>Priority Queue Example</p>
-<ul>
+<ul class="simple">
 <li><p>insert (x)</p></li>
 <li><p>deleteMin()</p></li>
 <li><p>findMin()</p></li>
@@ -864,7 +836,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="hash-tables">
-<h2><span class="section-number">2.2.4. </span>Hash tables<a class="headerlink" href="#hash-tables" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.1.4. </span>Hash tables<a class="headerlink" href="#hash-tables" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>java: load factor = .75, default init capacity: 16, uses buckets</p></li>
 <li><p>string hash function: s[0]*31^(n-1) + s[1]*31^(n-2) + … + s[n-1] where n is length mod (table_size)</p>
@@ -922,13 +894,10 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 <li><p>Two primary ways to resolve collisions:</p>
 <ol class="arabic simple">
 <li><p>Separate Chaining (make each spot in the table a ‘bucket’ or a collection)</p></li>
-<li><p>Open Addressing, of which there are 3 types:</p>
-<ol class="arabic simple">
+<li><p>Open Addressing, of which there are 3 types:</p></li>
 <li><p>Linear probing</p></li>
 <li><p>Quadratic probing</p></li>
 <li><p>Double hashing</p></li>
-</ol>
-</li>
 </ol>
 </li>
 </ul>
@@ -1000,10 +969,10 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 <li><p>find - keep going until you find an empty cell (or get back)</p></li>
 <li><p>problems</p>
 <ul>
-<li><p>cannot have a load factor &gt; 1, as you get close to 1, you get a lot of collisons</p></li>
+<li><p>cannot have a load factor &gt; 1, as you get close to 1, you get a lot of collisions</p></li>
 <li><p>clustering - large blocks of occupied cells</p></li>
 <li><p>“holes” when an element is removed
-2.Quadratic:  f(i) = i^2</p></li>
+2.Quadratic: f(i) = i^2</p></li>
 </ul>
 </li>
 <li><p>hash(k)</p></li>
@@ -1065,7 +1034,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </li>
 </ul>
 </li>
-<li><p>has functions</p>
+<li><p>hash functions</p>
 <ul class="simple">
 <li><p>MD5 is a good hash function (given a string or file contents)</p>
 <ul>
@@ -1078,6 +1047,185 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 <li><p>SHA (secure Hash algorithm) is much more secure</p>
 <ul>
 <li><p>generates hash up to 512 bits</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="graphs">
+<h2><span class="section-number">2.1.5. </span>graphs<a class="headerlink" href="#graphs" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Edges are of the form (v1, v2)</p>
+<ul class="simple">
+<li><p>Can be ordered pair or unordered pair</p></li>
+</ul>
+</li>
+<li><p>Definitions</p>
+<ul class="simple">
+<li><p>A <em>weight</em> or cost can be associated with each edge - this is determined by the application</p></li>
+<li><p>w is adjacent to v iff (v, w) <span class="math notranslate nohighlight">\(\in\)</span> E</p></li>
+<li><p>path: sequence of vertices w1, w2, w3, …, wn such that (wi, wi+1) ∈ E for 1 ≤ i &lt; n</p></li>
+<li><p>length of a path: number of edges in the path</p></li>
+<li><p>simple path: all vertices are distinct</p></li>
+<li><p>cycle:</p>
+<ul>
+<li><p>directed graph: path of length <span class="math notranslate nohighlight">\(\geq\)</span> 1 such that w1 = wn</p></li>
+<li><p>undirected graph: same, except all edges are distinct</p></li>
+</ul>
+</li>
+<li><p>connected: there is a path from every vertex to every other vertex</p></li>
+<li><p>loop: (v, v) <span class="math notranslate nohighlight">\(\in\)</span> E</p></li>
+<li><p>complete graph: there is an edge between every pair of vertices</p></li>
+</ul>
+</li>
+<li><p>digraph</p>
+<ul class="simple">
+<li><p>directed acyclic graph: no cycles; often called a “DAG”</p></li>
+<li><p>strongly connected: there is a path from every vertex to every other vertex</p></li>
+<li><p>weakly connected: the underlying undirected graph is connected</p></li>
+</ul>
+</li>
+<li><p>For Google Maps, an adjacency matrix would be infeasible - almost all zeros (sparse)</p>
+<ul class="simple">
+<li><p>an adjacency list would work much better</p></li>
+<li><p>an adjacency matrix would work for airline routes</p></li>
+</ul>
+</li>
+<li><p>detect cycle</p>
+<ul class="simple">
+<li><p>dfs from every vertex and keep track of visited, if repeat then cycle</p></li>
+</ul>
+</li>
+<li><p>Topological Sort</p>
+<ul class="simple">
+<li><p>Given a directed acyclic graph, construct an ordering of the vertices such that if there is a path from vi to vj, then vj appears after vi in the ordering</p></li>
+<li><p>The result is a linear list of vertices</p></li>
+<li><p>indegree of v: number of edges (u, v) – meaning the number of incoming edges</p></li>
+<li><p>Algorithm</p>
+<ul>
+<li><p>start with something of indegree 0</p></li>
+<li><p>take it out, and take out the edges that start from it</p></li>
+<li><p>keep doing this as we take out more and more edges</p></li>
+</ul>
+</li>
+<li><p>can have multiple possible topological sorts</p></li>
+</ul>
+</li>
+<li><p>Shortest Path</p>
+<ul>
+<li><p>single-source - start somewhere, get shortest path to everywhere</p></li>
+<li><p>unweighted shortest path - breadth first search</p></li>
+<li><p>Weighted Shortest Path</p>
+<ul class="simple">
+<li><p>We assume no negative weight edges</p></li>
+<li><p>Dijkstra’s algorithm: uses similar ideas as the unweighted case</p></li>
+<li><p>Greedy algorithms: do what seems to be best at every decision point</p></li>
+<li><p>Dijkstra: v^2</p>
+<ul>
+<li><p>Initialize each vertex’s distance as infinity</p></li>
+<li><p>Start at a given vertex s</p>
+<ul>
+<li><p>Update s’s distance to be 0</p></li>
+</ul>
+</li>
+<li><p>Repeat</p>
+<ul>
+<li><p>Pick the next unknown vertex with the shortest distance to be the next v</p></li>
+<li><p>If no more vertices are unknown, terminate loop</p></li>
+</ul>
+</li>
+<li><p>Mark v as known</p></li>
+<li><p>For each edge from v to adjacent unknown vertices w</p>
+<ul>
+<li><p>If the total distance to w is less than the current distance to w</p></li>
+<li><p>Update w’s distance and the path to w</p></li>
+</ul>
+</li>
+<li><p>It picks the unvisited vertex with the lowest-distance, calculates the distance through it to each unvisited neighbor, and updates the neighbor’s distance if smaller. Mark visited (set to red) when done with neighbors.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Shortest path from a start node to a finish node</p>
+<ul>
+<li><ol class="arabic simple">
+<li><p>We can just run Dijkstra until we get to the finish node</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple">
+<li><p>Have different kinds of nodes</p></li>
+</ol>
+<ul class="simple">
+<li><p>Assume you are starting on a “side road”</p></li>
+<li><p>Transition to a “main road”</p></li>
+<li><p>Transition to a “highway”</p></li>
+<li><p>Get as close as you can to your destination via the highway system</p></li>
+<li><p>Transition to a “main road”, and get as close as you can to your destination</p></li>
+<li><p>Transition to a “side road”, and go to your destination</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Traveling Salesman</p>
+<ul class="simple">
+<li><p>Given a number of cities and the costs of traveling from any city to any other city, what is the least-cost round-trip route that visits each city exactly once and then returns to the starting city?</p></li>
+<li><p>Hamiltonian path: a path in a connected graph that visits each vertex exactly once</p></li>
+<li><p>Hamiltonian cycle: a Hamiltonian path that ends where it started</p></li>
+<li><p>The traveling salesperson problem is thus to find the least weight Hamiltonian path (cycle) in a connected, weighted graph</p></li>
+</ul>
+</li>
+<li><p>Minimum Spanning Tree</p>
+<ul class="simple">
+<li><p>Want fully connected</p></li>
+<li><p>Want to minimize number of links used</p>
+<ul>
+<li><p>We won’t have cycles</p></li>
+</ul>
+</li>
+<li><p>Any solution is a tree</p></li>
+<li><p>Slow algorithm: Construct a spanning tree:</p>
+<ul>
+<li><p>Start with the graph</p></li>
+<li><p>Remove an edge from each cycle</p></li>
+<li><p>What remains has the same set of vertices but is a tree</p></li>
+<li><p>Spanning Trees</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Minimal-weight spanning tree: spanning tree with the minimal total weight</p>
+<ul class="simple">
+<li><p>Generic Minimum Spanning Tree Algorithm</p>
+<ul>
+<li><p>KnownVertices &lt;- {}</p></li>
+<li><p>while KnownVertices does not form a spanning tree, loop:</p>
+<ul>
+<li><p>find edge (u,v) that is “safe” for KnownVertices</p></li>
+<li><p>KnownVertices &lt;- KnownVertices U {(u,v)}</p></li>
+</ul>
+</li>
+<li><p>end loop</p></li>
+</ul>
+</li>
+<li><p>Prim’s algorithm</p>
+<ul>
+<li><p>Idea: Grow a tree by adding an edge to the “known” vertices from the “unknown” vertices. Pick the edge with the smallest weight.</p></li>
+<li><p>Pick one node as the root,</p></li>
+<li><p>Incrementally add edges that connect a “new” vertex to the tree.</p></li>
+<li><p>Pick the edge (u,v) where:</p></li>
+<li><p>u is in the tree, v is not, AND</p></li>
+<li><p>where the edge weight is the smallest of all edges (where u is in the tree and v is not)</p></li>
+<li><p>Running time: Same as Dijkstra’s: Θ(e log v)</p></li>
+</ul>
+</li>
+<li><p>Kruskal’s algorithm</p>
+<ul>
+<li><p>Idea: Grow a forest out of edges that do not create a cycle. Pick an edge with the smallest weight.</p></li>
+<li><p>When optimized, it has the same running time as Prim’s and Dijkstra’s: Θ(e log v)</p></li>
+<li><p>unoptimized: v^2</p></li>
 </ul>
 </li>
 </ul>
@@ -1117,20 +1265,20 @@ Therefore, a black node is the only possible parent for a red node</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="retrieval.html"
+       href="cs_section.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>info retrieval</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>cs</p>
       </div>
     </a>
     <a class="right-next"
-       href="languages.html"
+       href="quantum.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.3. </span>languages</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>quantum</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1150,21 +1298,22 @@ Therefore, a black node is the only possible parent for a red node</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">2.2.1. lists</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">2.2.1.1. arrays and strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">2.2.1.2. queue - linkedlist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">2.2.1.3. stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">2.1.1. lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">2.1.1.1. arrays and strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">2.1.1.2. queue - linkedlist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">2.1.1.3. stack</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.2.2. trees</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">2.2.2.1. AVL Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">2.2.2.2. Red-Black Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">2.2.2.3. Splay Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">2.2.2.4. other trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.1.2. trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">2.1.2.1. AVL Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">2.1.2.2. Red-Black Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">2.1.2.3. Splay Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">2.1.2.4. other trees</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">2.2.3. heaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">2.2.4. Hash tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">2.1.3. heaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">2.1.4. Hash tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">2.1.5. graphs</a></li>
 </ul>
   </nav></div>
 
@@ -1202,11 +1351,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

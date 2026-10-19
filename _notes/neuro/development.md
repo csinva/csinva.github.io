@@ -2,7 +2,7 @@
 layout: notes
 title: Development
 category: neuro
-subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
+subtitle: notes from Purves et al. "Neuroscience", 5th edition (chapter numbers in headers) + Intro to neurobiology course at UVA
 ---
 
 {:toc}
@@ -18,6 +18,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- most sensitive time for mom
 	- month 2-5 - cells being born
 	- up to year 2 - axon guidance / synapse formation
+
 1. *gastrulation* - process by which early embryo undergoes folds = shapes of NS
 	- diseases
 		- *spina bifida* - neural tube fails to seal
@@ -45,6 +46,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 	- floor plate loses function after embryogenesis except glioblastoma
 	- measure BMP and HH gradient to figure out where you are
 		- treat ALS by adding HH to make more alpha motor neurons
+
 	1. dorsal direction
 		- roofplate makes BMP
 		- low HH - interneurons, sensory neurons (ex. nociceptors)
@@ -53,6 +55,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- *floorplate* makes HH (hedge hog)
 	2. axial specification (anterior/posterior)
 		- tube swells into bulbs that become cerebellum, superior colliculus, cortex
+
 	- *homeotic genes* = *hox genes* - set of genes (transcription factors) in order on chromosome
 		- order corresponds to order of your body parts
 		- *rhombomeres* - segments in brainstem made by hox gene patterns
@@ -72,7 +75,6 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- *cortical dysplasia* - missing a layer / duplicating a layer
 			- small part with 2 layer 3s - severe epilepsy
 5. *cell death*
-	
 	- 1/2 of cells die in development
 6. *axon guidance* (ch 23)
 	- each cell born and axon grows and are guided to a target
@@ -81,7 +83,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 	- pruning and plasticity
 	- NMDA receptor type
 	- form synapses and if they don’t look right - get rid of them
-	- K1/K-1 synapses breaking and forming 
+	- K1/K-1 synapses breaking and forming
 	- after age 21, K-1 starts increasing and net loss of synapses
 
 # 23 circuit formation
@@ -154,7 +156,26 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- want to keep neurotrophins local, because there aren't that many of them
 
 # 24 plasticity in systems
-- experience-dependent plasticity - ![](../assets/24_1.png)
+- experience-dependent plasticity - critical periods and molecular regulators for some neural systems (table 24.1)
+
+  | system | species | critical period (postnatal) | confirmed molecular regulators |
+  | --- | --- | --- | --- |
+  | neuromuscular junction | mouse | prior to day 12 | ACh |
+  | cerebellum | mouse | day 15–16 | NMDA, mGluR1, G<sub>q</sub>, PLCβ, PKCγ |
+  | lateral geniculate nucleus layers | mouse, ferret, cat | prior to day 10 | ACh, cAMP, MAOA, NO, MHC1, CREB |
+  | **ocular dominance** | cat, rat, mouse, ferret | 3 weeks–months | GABA, NMDA, PKA, ERK, CaMKII, CREB, BDNF, tPA, protein synthesis, NE, ACh |
+  | orientation bias | cat, mouse | prior to day 28 | NR1, NR2A, PSD95 |
+  | somatosensory map | mouse, rat | prior to day 7–16 | NR1, MAOA, 5HT<sub>1B</sub>, cAMP, mGluR5, PLCβ, FGF8 |
+  | **tonotopic map (cortex)** | rat | days 16–50 | ACh |
+  | absolute pitch | human | before 7 years | unknown |
+  | taste, olfaction | mouse | none | GABA, mGluR2, NO, neurogenesis |
+  | imprinting | chick | 14–42 hours | catecholamines |
+  | **stress, anxiety** | rat, mouse | prior to day 21 | hormones, 5HT<sub>1A</sub> |
+  | slow-wave sleep | cat, mouse | day 40–60 | NMDA |
+  | **sound localization** | barn owl | prior to day 200 | GABA, NMDA |
+  | **birdsong** | zebra finch | prior to day 100 | GABA, hormones, neurogenesis |
+  | language | human | 0–12 years | unknown |
+
 	- ex. ducks imprinting is non-reversable
 	- learning is crystallized during *critical period*
 		- *CREB* and protein synthesis
@@ -187,7 +208,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- *birdsong*
 			- hear song 10-20 times when young - crystallized
 			- afterwards can't learn new skills
-	3. *stress* 
+	3. *stress*
 		- early stress sets stress points later in life
 		- uses serotonin
 - shifts
@@ -230,8 +251,8 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- fish retina always making new cells
 		- canary brain part has stem cells that learn new song every year
 	- small C14 incorporation after early development
-			- suggests we don't regenerate neurons
-			- C14 was from nuclear testing
+		- suggests we don't regenerate neurons
+		- C14 was from nuclear testing
 	- human areas that do regenerate
 		1. *hippocampus*
 			- memories you store temporarily

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.5. info theory</title>
+    <title>4.6. info theory</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/stat/info_theory';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.6. linear models" href="linear_models.html" />
-    <link rel="prev" title="4.4. causal inference" href="causal_inference.html" />
+    <link rel="next" title="4.7. linear models" href="linear_models.html" />
+    <link rel="prev" title="4.5. causal inference" href="causal_inference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat_section.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,19 +421,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.5.1. overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-relative-entropy-and-mutual-info">4.5.2. entropy, relative entropy, and mutual info</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">4.5.2.1. entropy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-entropy-mutual-info">4.5.2.2. relative entropy / mutual info</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-rules">4.5.2.3. chain rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomatic-approach">4.5.2.4. axiomatic approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.6.1. overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-relative-entropy-and-mutual-info">4.6.2. entropy, relative entropy, and mutual info</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">4.6.2.1. entropy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-rules">4.6.2.2. chain rules</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-inequalities">4.5.3. basic inequalities</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-inequality">4.5.3.1. jensen’s inequality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-inequalities">4.6.3. basic inequalities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-inequality">4.6.3.1. jensen’s inequality</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdl">4.5.4. mdl</a></li>
 </ul>
             </nav>
         </div>
@@ -460,9 +443,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="info-theory">
-<h1><span class="section-number">4.5. </span>info theory<a class="headerlink" href="#info-theory" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4.6. </span>info theory<a class="headerlink" href="#info-theory" title="Link to this heading">#</a></h1>
 <section id="overview">
-<h2><span class="section-number">4.5.1. </span>overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6.1. </span>overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>with small number of points, estimated mutual information is too high</p></li>
 <li><p>founded with claude shannon 1948</p></li>
@@ -471,150 +454,100 @@ document.write(`
 </ul>
 </section>
 <section id="entropy-relative-entropy-and-mutual-info">
-<h2><span class="section-number">4.5.2. </span>entropy, relative entropy, and mutual info<a class="headerlink" href="#entropy-relative-entropy-and-mutual-info" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6.2. </span>entropy, relative entropy, and mutual info<a class="headerlink" href="#entropy-relative-entropy-and-mutual-info" title="Link to this heading">#</a></h2>
 <section id="entropy">
-<h3><span class="section-number">4.5.2.1. </span>entropy<a class="headerlink" href="#entropy" title="Link to this heading">#</a></h3>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(H(X) = - \sum p(x) \:\log p(x) = E[h(p)]\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(h(p)= - \log(p)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H(p)\)</span> implies p is binary</p></li>
-<li><p>usually for discrete variables only</p></li>
-<li><p>assume 0 log 0 = 0</p></li>
-</ul>
-</li>
-<li><p>intuition</p>
-<ul class="simple">
-<li><p>higher entropy <span class="math notranslate nohighlight">\(\implies\)</span> more uniform</p></li>
-<li><p>lower entropy <span class="math notranslate nohighlight">\(\implies\)</span> more pure</p></li>
-</ul>
-<ol class="arabic simple">
-<li><p>expectation of variable <span class="math notranslate nohighlight">\(W=W(X)\)</span>, which assumes the value <span class="math notranslate nohighlight">\(-\log(p_i)\)</span> with probability <span class="math notranslate nohighlight">\(p_i\)</span></p></li>
-<li><p>minimum, average number of binary questions (like is X=1?) required to determine value is between <span class="math notranslate nohighlight">\(H(X)\)</span> and <span class="math notranslate nohighlight">\(H(X)+1\)</span></p></li>
-<li><p>related to asymptotic behavior of sequence of i.i.d. random variables</p></li>
-</ol>
-</li>
-<li><p>properties</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H(X) \geq 0\)</span> since <span class="math notranslate nohighlight">\(p(x) \in [0, 1]\)</span></p></li>
-<li><p>funtion of distr. only, not the specific values the RV takes (the support of the RV)</p></li>
-<li><p>gaussian has max entropy s.t. variance constraint</p></li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\(H(Y\|X)=\sum p(x) H(Y\|X=x) =- \sum_x p(x) \sum_y  p(y|x) \log \: p(y|x)\)</span></p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(H(X,Y)=H(X)+H(Y\|X) =H(Y)+H(X\|Y)\)</span></p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="relative-entropy-mutual-info">
-<h3><span class="section-number">4.5.2.2. </span>relative entropy / mutual info<a class="headerlink" href="#relative-entropy-mutual-info" title="Link to this heading">#</a></h3>
-<ul>
-<li><p><em>relative entropy</em> = <em>KL divergence</em> - measures distance between 2 distributions</p>
+<h3><span class="section-number">4.6.2.1. </span>entropy<a class="headerlink" href="#entropy" title="Link to this heading">#</a></h3>
 <ul>
 <li><div class="math notranslate nohighlight">
-\[D(p\|\|q) = \sum_x p(x) \log \frac{p(x)}{q(x)} = \mathbb E_p \log \frac{p(X)}{q(X)} = \mathbb E_p[-\log q(X)] - H(p)	\]</div>
-</li>
-<li><p>if we knew the true distribution p of the random variable, we could construct a code with average description length <span class="math notranslate nohighlight">\(H(p)\)</span></p></li>
-<li><p>If, instead, we used the code for a distribution q, we would need H(p) + D(p||q) bits on average to describe the random variable.</p></li>
-<li><p><span class="math notranslate nohighlight">\(D(p\|\|q) \neq D(q\|\|p)\)</span></p></li>
-<li><p>properties</p>
-<ul class="simple">
-<li><p>nonnegative</p></li>
-<li><p>not symmetric</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><em>mutual info I(X; Y)</em>: how much you can predict about one given the other</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(I(X; Y) = \sum_X \sum_y p(x,y) \log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\|\|p(x) p(y))\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(I(X; Y) =  -H(X,Y) + H(X) + H(Y))\)</span></p>
+\[ \begin{align}\begin{aligned}H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$$&lt;!-- --&gt;
+  - $h(p)= - \log(p)$
+  - $H(p)$ implies p is binary
+  - usually for discrete variables only
+  - assume 0 log 0 = 0
+- intuition
+  - higher entropy $\implies$ more uniform
+  - lower entropy $\implies$ more pure
+  1. expectation of variable $W=W(X)$, which assumes the value $-\log(p_i)$ with probability $p_i$
+  2. minimum, average number of binary questions (like is X=1?) required to determine value is between $H(X)$ and $H(X)+1$
+  3. related to asymptotic behavior of sequence of i.i.d. random variables
+- properties
+  - $H(X) \geq 0$ since $p(x) \in [0, 1]$
+  - funtion of distr. only, not the specific values the RV takes (the support of the RV)
+  - gaussian has max entropy s.t. variance constraint
+- $$H(Y\vert X)=\sum p(x) H(Y\vert X=x) =- \sum_x p(x) \sum_y  p(y\vert x) \log \: p(y\vert x)$$&lt;!-- --&gt;
+  - $$H(X,Y)=H(X)+H(Y\vert X) =H(Y)+H(X\vert Y)$$&lt;!-- --&gt;\\### relative entropy / mutual info\\- *relative entropy* = *KL divergence* - measures distance between 2 distributions
+  - $$D(p\Vert \Vert q) = \sum_x p(x) \log \frac{p(x)}{q(x)} = \mathbb E_p \log \frac{p(X)}{q(X)} = \cblue{\mathbb E_p[-\log q(X)]} - \corange{H(p)}	\end{aligned}\end{align} \]</div>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(=I(Y|X)\)</span></p></li>
-</ul>
+<li><p>if we knew the true distribution p of the random variable, we could construct a code with <span class="corange">average description length <span class="math notranslate nohighlight">\(\corange{H(p)}\)</span></span></p></li>
+<li><p>If, instead, we used the code for a distribution q, we would need <span class="cblue">H(p) + D(p||q) bits</span> on average to describe the random variable.</p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}D(p\vert \vert q) \neq D(q\vert \vert p)$$&lt;!-- --&gt;
+  - properties
+    - nonnegative
+    - not symmetric
+- *mutual info I(X; Y)*: how much you can predict about one given the other
+  - $$I(X; Y) = \sum_X \sum_y p(x,y) \log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\vert \vert p(x) p(y))$$&lt;!-- --&gt;
+  - $I(X; Y) =  -H(X,Y) + H(X) + H(Y))$
+    - $$=I(Y\vert X)$$&lt;!-- --&gt;
+  - $I(X; X) = H(X)$ so entropy sometimes called *self-information*\\
+&lt;img style=&quot;width: 420px; max-width: 100%;&quot; src=&quot;../assets/entropy_venn_diagram.svg&quot; alt=&quot;Entropy Venn diagram&quot;/&gt;\\- cross-entropy: $$H_q(p) = -\sum_x p(x) \: \log \: q(x)\end{aligned}\end{align} \]</div>
 </li>
-<li><p><span class="math notranslate nohighlight">\(I(X; X) = H(X)\)</span> so entropy sometimes called <em>self-information</em></p></li>
 </ul>
-</li>
-</ul>
-<p><img alt="entropy-venn-diagram" src="../../_images/entropy-venn-diagram.png" /></p>
-<ul>
-<li><p>cross-entropy: <span class="math notranslate nohighlight">\(H_q(p) = -\sum_x p(x) \: \log \: q(x)\)</span></p>
-<p><img alt="Screen Shot 2018-07-02 at 11.26.42 AM" src="../../_images/cross_entropy.png" /></p>
+<img style="width: 420px; max-width: 100%;" src="../assets/cross_entropy.svg" alt="Cross-entropy decomposition"/>
 </li>
 </ul>
 </section>
 <section id="chain-rules">
-<h3><span class="section-number">4.5.2.3. </span>chain rules<a class="headerlink" href="#chain-rules" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>entropy</em> <span class="math notranslate nohighlight">\(H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1) = H(X_n \| X_{n-1}, ..., X_1) + ... + H(X_1)\)</span></p></li>
-<li><p><em>conditional mutual info</em> <span class="math notranslate nohighlight">\(I(X; Y\|Z) = H(X\|Z) - H(X\|Y,Z)\)</span></p>
+<h3><span class="section-number">4.6.2.2. </span>chain rules<a class="headerlink" href="#chain-rules" title="Link to this heading">#</a></h3>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\|X_{i-1}, ... , X_1)\)</span></p></li>
-</ul>
-</li>
-<li><p><em>conditional relative entropy</em> <span class="math notranslate nohighlight">\(D(p(y\|x) \|\| q(y\|x)) = \sum_x p(x) \sum_y p(y\|x) \log \frac{p(y\|x)}{q(y\|x)}\)</span></p>
+<li><p><em>entropy</em> $<span class="math notranslate nohighlight">\(H(X_1, ..., X_n) = \sum_i H(X_i \vert  X_{i-1}, ..., X_1) = H(X_n \vert  X_{n-1}, ..., X_1) + ... + H(X_1)\)</span>$</p></li>
+<li><p><em>conditional mutual info</em> $<span class="math notranslate nohighlight">\(I(X; Y\vert Z) = H(X\vert Z) - H(X\vert Y,Z)\)</span>$</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(D(p(x, y)\|\|q(x, y)) = D(p(x)\|\|q(x)) + D(p(y\|x)\|\|q(y\|x))\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\vert X_{i-1}, ... , X_1)$$&lt;!-- --&gt;
+- *conditional relative entropy* $$D(p(y\vert x) \vert \vert  q(y\vert x)) = \sum_x p(x) \sum_y p(y\vert x) \log \frac{p(y\vert x)}{q(y\vert x)}\]</div>
 </li>
-</ul>
-</section>
-<section id="axiomatic-approach">
-<h3><span class="section-number">4.5.2.4. </span>axiomatic approach<a class="headerlink" href="#axiomatic-approach" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>fundamental theorem of information theory</em> - it is possible to transmit information through a noisy channel at any rate less than channel capacity with an arbitrarily small probability of error</p>
-<ul>
-<li><p>to achieve arbitrarily high reliability, it is necessary to reduce the transmission rate to the <em>channel capacity</em></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}D(p(x, y)\vert \vert q(x, y)) = D(p(x)\vert \vert q(x)) + D(p(y\vert x)\vert \vert q(y\vert x))$$&lt;!-- --&gt;\\### axiomatic approach\\- *fundamental theorem of information theory* - it is possible to transmit information through a noisy channel at any rate less than channel capacity with an arbitrarily small probability of error
+  - to achieve arbitrarily high reliability, it is necessary to reduce the transmission rate to the *channel capacity*
+- uncertainty measure axioms
+  1. $$H(1/M,...,1/M)=f(M)$$ is a montonically increasing function of M
+  2. $f(ML) = f(M)+f(L)$ where $M,L \in \mathbb{Z}^+$
+  3. *grouping axiom*
+  4. $H(p,1-p)$ is continuous function of $p$
+- $$H(p_1,...,p_M) = - \sum p_i \log p_i = E[h(p_i)]$$&lt;!-- --&gt;
+  - $h(p_i)= - \log(p_i)$
+  - only solution satisfying above axioms
+  - H(p,1-p) has max at 1/2
+- *lemma* - Let $$p_1,...,p_M$$ and $$q_1,...,q_M$$ be arbitrary positive numbers with $\sum p_i = \sum q_i = 1$. Then $-\sum p_i \log p_i \leq - \sum p_i \log q_i$. Only equal if $$p_i = q_i \: \forall i\end{aligned}\end{align} \]</div>
 </li>
-<li><p>uncertainty measure axioms</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(H(1/M,...,1/M)=f(M)\)</span> is a montonically increasing function of M</p></li>
-<li><p><span class="math notranslate nohighlight">\(f(ML) = f(M)+f(L)\)</span> where <span class="math notranslate nohighlight">\(M,L \in \mathbb{Z}^+\)</span></p></li>
-<li><p><em>grouping axiom</em></p></li>
-<li><p><span class="math notranslate nohighlight">\(H(p,1-p)\)</span> is continuous function of <span class="math notranslate nohighlight">\(p\)</span></p></li>
-</ol>
-</li>
-<li><p><span class="math notranslate nohighlight">\(H(p_1,...,p_M) = - \sum p_i \log p_i = E[h(p_i)]\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(h(p_i)= - \log(p_i)\)</span></p></li>
-<li><p>only solution satisfying above axioms</p></li>
-<li><p>H(p,1-p) has max at 1/2</p></li>
-</ul>
-</li>
-<li><p><em>lemma</em> - Let <span class="math notranslate nohighlight">\(p_1,...,p_M\)</span> and <span class="math notranslate nohighlight">\(q_1,...,q_M\)</span> be arbitrary positive numbers with <span class="math notranslate nohighlight">\(\sum p_i = \sum q_i = 1\)</span>. Then <span class="math notranslate nohighlight">\(-\sum p_i \log p_i \leq - \sum p_i \log q_i\)</span>. Only equal if <span class="math notranslate nohighlight">\(p_i = q_i \: \forall i\)</span></p>
-<ul>
 <li><p>intuitively, <span class="math notranslate nohighlight">\(\sum p_i \log q_i\)</span> is maximized when <span class="math notranslate nohighlight">\(p_i=q_i\)</span>, like a dot product</p></li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(H(p_1,...,p_M) \leq \log M\)</span> with equality iff  all <span class="math notranslate nohighlight">\(p_i = 1/M\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(H(X,Y) \leq H(X) + H(Y)\)</span> with equality iff X and Y are independent</p></li>
-<li><p><span class="math notranslate nohighlight">\(I(X,Y)=H(Y)-H(Y\|X)\)</span></p></li>
-<li><p>sometimes allow p=0 by saying 0log0 = 0</p></li>
-<li><p>information <span class="math notranslate nohighlight">\(I(x)=log_2 \frac{1}{p(x)}=-log_2p(x)\)</span></p></li>
-<li><p>reduction in uncertainty (amount of surprise in the outcome)</p></li>
-<li><p>if the probability of event happening is small and it happens the info is large</p>
+<li><div class="math notranslate nohighlight">
+\[H(p_1,...,p_M) \leq \log M$$ with equality iff all $p_i = 1/M$
+- $H(X,Y) \leq H(X) + H(Y)$ with equality iff X and Y are independent
+- $$I(X,Y)=H(Y)-H(Y\vert X)$$&lt;!-- --&gt;
+- sometimes allow p=0 by saying 0log0 = 0
+- information $I(x)=\log_2 \frac{1}{p(x)}=-\log_2p(x)$
+- reduction in uncertainty (amount of surprise in the outcome)
+- if the probability of event happening is small and it happens the info is large
+    - entropy $H(X)=E[I(X)]=\sum_i p(x_i)I(x_i)=-\sum_i p(x_i)\log_2 p(x_i)$
+- information gain $$IG(X,Y)=H(Y)-H(Y\vert X)\]</div>
 <ul>
-<li><p>entropy <span class="math notranslate nohighlight">\(H(X)=E[I(X)]=\sum_i p(x_i)I(x_i)=-\sum_i p(x_i)log_2 p(x_i)\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[=-\sum_j p(x_j) \sum_i p(y_i\vert x_j) \log_2 p(y_i\vert x_j)$$&lt;!-- --&gt;
+- parts
+  1. random variable X taking on $$x_1,...,x_M$$ with probabilities $$p_1,...,p_M\]</div>
 </li>
-<li><p>information gain <span class="math notranslate nohighlight">\(IG(X,Y)=H(Y)-H(Y\|X)\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(=-\sum_j p(x_j) \sum_i p(y_i\|x_j) log_2 p(y_i\|x_j)\)</span></p></li>
 </ul>
-</li>
-<li><p>parts</p>
-<ol class="arabic simple">
-<li><p>random variable X taking on <span class="math notranslate nohighlight">\(x_1,...,x_M\)</span> with probabilities <span class="math notranslate nohighlight">\(p_1,...,p_M\)</span></p></li>
-<li><p>code alphabet = set <span class="math notranslate nohighlight">\(a_1,...,a_D\)</span> . Each symbol <span class="math notranslate nohighlight">\(x_i\)</span> is assigned to finite sequence of code characters called <em>code word</em> associated with <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
+<ol class="arabic simple" start="2">
+<li><p>code alphabet = set $<span class="math notranslate nohighlight">\(a_1,...,a_D\)</span><span class="math notranslate nohighlight">\( . Each symbol \)</span>x_i<span class="math notranslate nohighlight">\( is assigned to finite sequence of code characters called *code word* associated with \)</span>x_i$</p></li>
 <li><p><em>objective</em> - minimize the average word length <span class="math notranslate nohighlight">\(\sum p_i n_i\)</span> where <span class="math notranslate nohighlight">\(n_i\)</span> is average word length of <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
 </ol>
 </li>
 <li><p>code is <em>uniquely decipherable</em> if every finite sequence of code characters corresponds to at most one message</p>
-<ul>
+<ul class="simple">
 <li><p><em>instantaneous code</em> - no code word is a prefix of another code word</p></li>
 </ul>
 </li>
@@ -622,112 +555,69 @@ document.write(`
 </section>
 </section>
 <section id="basic-inequalities">
-<h2><span class="section-number">4.5.3. </span>basic inequalities<a class="headerlink" href="#basic-inequalities" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6.3. </span>basic inequalities<a class="headerlink" href="#basic-inequalities" title="Link to this heading">#</a></h2>
 <section id="jensen-s-inequality">
-<h3><span class="section-number">4.5.3.1. </span>jensen’s inequality<a class="headerlink" href="#jensen-s-inequality" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>convex</em> - function lies below any chord</p>
+<h3><span class="section-number">4.6.3.1. </span>jensen’s inequality<a class="headerlink" href="#jensen-s-inequality" title="Link to this heading">#</a></h3>
 <ul>
+<li><p><em>convex</em> - function lies below any chord</p>
+<ul class="simple">
 <li><p>has positive 2nd deriv</p></li>
 <li><p>linear functions are both convex and concave</p></li>
 </ul>
 </li>
 <li><p><em>Jensen’s inequality</em> - if f is a convex function and X is an R.V., <span class="math notranslate nohighlight">\(f(E[X]) \leq E[f(X)]\)</span></p>
-<ul>
+<ul class="simple">
 <li><p>if f strictly convex, equality <span class="math notranslate nohighlight">\(\implies X=E[X]\)</span></p></li>
 </ul>
 </li>
 <li><p>implications</p>
 <ul>
-<li><p><em>information inequality</em> <span class="math notranslate nohighlight">\(D(p\|\|q) \geq 0\)</span> with equality iff p(x)=q(x) for all x</p></li>
-<li><p><span class="math notranslate nohighlight">\(H(X) \leq log \|X\|\)</span> where |X| denotes the number of elements in the range of X, with equality if and only X has a uniform distr</p></li>
-<li><p><span class="math notranslate nohighlight">\(H(X\|Y) \leq H(X)\)</span> - information can’t hurt</p></li>
-<li><p><span class="math notranslate nohighlight">\(H(X_1, ..., X_n) \leq \sum_i H(X_i)\)</span></p></li>
-</ul>
+<li><p><em>information inequality</em> $<span class="math notranslate nohighlight">\(D(p\vert \vert q) \geq 0\)</span>$ with equality iff p(x)=q(x) for all x</p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}H(X) \leq \log \vert X\vert $$ where \|X\| denotes the number of elements in the range of X, with equality if and only X has a uniform distr
+  - $$H(X\vert Y) \leq H(X)$$ - information can't hurt
+  - $$H(X_1, ..., X_n) \leq \sum_i H(X_i)$$&lt;!-- --&gt;\\## [mdl](https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf)\\- chapter 1: overview
+  - explain data given limited observations
+  - benefits
+    - occam's razor
+    - no overfitting (can pick both form of model and params), without need for ad hoc penalties
+    - bayesian interpretation
+    - no need for underlying truth
+  - description - in terms of some description method
+    - e.g. a python program which prints a sequence then halts = Kolmogorov complexity
+      - invariance thm - as long as sequence is long enough, choice of programming language doesn't matter) - (kolmogorov 1965, chaitin 1969, solomonoff 1964)
+      - not computable in general
+      - for small samples in practice, depends on choice of programming language
+    - in practice, we don't use general programming languages but rather select a description method which we know we can get the length of the shortest description in that class (e.g. linear models)
+      - trade-off: we may fail to minimally compress some sequences which have regularity
+    - knowing data-generating process can help compress (e.g. recording times for something to fall from a height, generating digits of $\pi$ via taylor expansion, compressing natural language based on correct grammar)
+  - simplest version - let $\corange{\theta}$ be the &lt;span class=&quot;corange&quot;&gt;model&lt;/span&gt; and $\cblue{X}$ be the &lt;span class=&quot;cblue&quot;&gt;data&lt;/span&gt;
+    - 2-part MDL: minimize $$\corange{L(\theta)} + \cblue{L(X\vert \theta)}\end{aligned}\end{align} \]</div>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\cblue{L(X\vert \theta)} = - \log P(X\vert \theta)$$ - &lt;span class=&quot;cblue&quot;&gt;Shannon code&lt;/span&gt;
+      - $\corange{L(\theta)}$ - hard to get this, basic problem with 2-part codes
+        - have to do this for each model, not model-class (e.g. different linear models with same number of parameters would have different $L(\theta)$
+    - stochastic complexity (&quot;refined mdl&quot;): $$\bar{L}(X\vert \theta)$$ - only construct one code
+      - ex. $$\bar L(X\vert \theta) = \vert \theta\vert _0 + L(X\vert \theta)$$ - like 2-part code but breaks up $\theta$ space into different sets (e.g. same number of parameters) and assigns them equal codelength
+    - normalized maximum likelihood - most recent version - select from among a set of codes
+- chapter 2.2.1 background
+  - in mdl, we only work with prefix codes (i.e. no codeword is a prefix of any other codeword)
+    - these are uniquely decodable
+    - in fact, any uniquely decodable code can be rewritten as a prefix code which achieves the same code length
+- chapter 2.2.2: **probability mass functions correspond to codelength functions**
+  - coding: $x \sim P(X)$, codelengths $\ell(x)$
+    - **Kraft inequality**: $\sum_x 2^{-\ell(x)} \leq 1$
+  - given a code $C$ and a prob distr. $P$, we can construct a code so short codewords get high probs and vice versa
+    - given $P$, $$\exists C, \forall z \: L_C(z) \leq \lceil -\log P(z) \rceil\]</div>
 </li>
-</ul>
-</section>
-</section>
-<section id="mdl">
-<h2><span class="section-number">4.5.4. </span><a class="reference external" href="https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf">mdl</a><a class="headerlink" href="#mdl" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>chapter 1: overview</p>
-<ul>
-<li><p>explain data given limited observations</p></li>
-<li><p>benefits</p>
-<ul>
-<li><p>occam’s razor</p></li>
-<li><p>no overfitting (can pick both form of model and params), without need for ad hoc penalties</p></li>
-<li><p>bayesian interpretation</p></li>
-<li><p>no need for underlying truth</p></li>
-</ul>
-</li>
-<li><p>description - in terms of some description method</p>
-<ul>
-<li><p>e.g. a python program which prints a sequence then halts = Kolmogorov complexity</p>
-<ul>
-<li><p>invariance thm - as long as sequence is long enough, choice of programming language doesn’t matter) - (kolmogorov 1965, chaitin 1969, solomonoff 1964)</p></li>
-<li><p>not computable in general</p></li>
-<li><p>for small samples in practice, depends on choice of programming language</p></li>
-</ul>
-</li>
-<li><p>in practice, we don’t use general programming languages but rather select a description method which we know we can get the length of the shortest description in that class (e.g. linear models)</p>
-<ul>
-<li><p>trade-off: we may fail to minimally compress some sequences which have regularity</p></li>
-</ul>
-</li>
-<li><p>knowing data-generating process can help compress (e.g. recording times for something to fall from a height, generating digits of <span class="math notranslate nohighlight">\(\pi\)</span> via taylor expansion, compressing natural language based on correct grammar)</p></li>
-</ul>
-</li>
-<li><p>simplest version - let <span class="math notranslate nohighlight">\(\theta\)</span> be the model and <span class="math notranslate nohighlight">\(X\)</span> be the data</p>
-<ul>
-<li><p>2-part MDL: minimize <span class="math notranslate nohighlight">\(L(\theta) + L(X|\theta)\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(L(X|\theta) = - \log P(X|\theta)\)</span>  - Shannon code</p></li>
-<li><p><span class="math notranslate nohighlight">\(L(\theta)\)</span> - hard to get this, basic problem with 2-part codes</p>
-<ul>
-<li><p>have to do this for each model, not model-class (e.g. different linear models with same number of parameters would have different <span class="math notranslate nohighlight">\(L(\theta)\)</span></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>stochastic complexity (“refined mdl”): <span class="math notranslate nohighlight">\(\bar{L}(X|\theta)\)</span> - only construct one code</p>
-<ul>
-<li><p>ex. <span class="math notranslate nohighlight">\(\bar L(X|\theta) = |\theta|_0 + L(X|\theta)\)</span> - like 2-part code but breaks up <span class="math notranslate nohighlight">\(\theta\)</span> space into different sets (e.g. same number of parameters) and assigns them equal codelength</p></li>
-</ul>
-</li>
-<li><p>normalized maximum likelihood - most recent version - select from among a set of codes</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>chapter 2.2.1 background</p>
-<ul>
-<li><p>in mdl, we only work with prefix codes (i.e. no codeword is a prefix of any other codeword)</p>
-<ul>
-<li><p>these are uniquely decodable</p></li>
-<li><p>in fact, any uniquely decodable code can be rewritten as a prefix code which achieves the same code length</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>chapter 2.2.2: <strong>probability mass functions correspond to codelength functions</strong></p>
-<ul>
-<li><p>coding: <span class="math notranslate nohighlight">\(x \sim P(X)\)</span>, codelengths <span class="math notranslate nohighlight">\(\ell(x)\)</span></p>
-<ul>
-<li><p><strong>Kraft inequality</strong>: <span class="math notranslate nohighlight">\(\sum_x 2^{-\ell(x)} \leq 1\)</span></p></li>
-</ul>
-</li>
-<li><p>given a code <span class="math notranslate nohighlight">\(C\)</span> and a prob distr. <span class="math notranslate nohighlight">\(P\)</span>, we can construct a code so short codewords get high probs and vice versa</p>
-<ul>
-<li><p>given <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(\exists C, \forall z \: L_C(z) \leq \lceil -\log P(z) \rceil\)</span></p></li>
-<li><p>given <span class="math notranslate nohighlight">\(C'\)</span>, <span class="math notranslate nohighlight">\(\exists P' \: \forall z -\log P(z) = L_{C'}(z)\)</span></p></li>
+<li><p>given $<span class="math notranslate nohighlight">\(C'\)</span><span class="math notranslate nohighlight">\(, \)</span><span class="math notranslate nohighlight">\(\exists P' \: \forall z -\log P(z) = L_{C'}(z)\)</span>$</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>we redefine codelength so it doesn’t require actual integer lengths</p>
-<ul>
+<ul class="simple">
 <li><p>we don’t care about the actual encodings, only the codelengths</p></li>
 <li><p>given a sample space <span class="math notranslate nohighlight">\(\mathcal Z\)</span>, the set of all codelength functions <span class="math notranslate nohighlight">\(L_\mathcal Z\)</span> is the set of functions <span class="math notranslate nohighlight">\(L\)</span> on <span class="math notranslate nohighlight">\(\mathcal Z\)</span> where <span class="math notranslate nohighlight">\(\exists \,Q\)</span> (distr), such that <span class="math notranslate nohighlight">\(\sum_z Q(z) \leq 1\)</span> and <span class="math notranslate nohighlight">\(\forall z,\; L(z) = -\log Q(z)\)</span></p></li>
 <li><p>uniform distr. - every codeword just has same length (fixed-length)</p></li>
@@ -737,28 +627,28 @@ document.write(`
 </ul>
 </li>
 <li><p>chapter 2.2.3 - <strong>the information inequality</strong>: <span class="math notranslate nohighlight">\(E_P[-\log Q(X)] &gt; E_P[-\log P(X)]\)</span></p>
-<ul>
+<ul class="simple">
 <li><p>if <span class="math notranslate nohighlight">\(X\)</span> was generated by <span class="math notranslate nohighlight">\(P\)</span>, then codes with length <span class="math notranslate nohighlight">\(-\log P(X)\)</span> give the shortest encodings on average</p></li>
 <li><p>not surprising - in a large sample, X will occur with frequency proportial to <span class="math notranslate nohighlight">\(P(X)\)</span>, so we want to give it a short codelength <span class="math notranslate nohighlight">\(-\log P(X)\)</span></p></li>
 <li><p>consequently, ideal mean length = <span class="math notranslate nohighlight">\(H(X)\)</span></p></li>
 </ul>
 </li>
-<li><p>chapter 2.4: crude mdl ex. pick order of markov chain by minimizing <span class="math notranslate nohighlight">\(L(H) + L(D|H)\)</span> where <span class="math notranslate nohighlight">\(D\)</span> is data, <span class="math notranslate nohighlight">\(H\)</span> is hypothesis</p>
-<ul>
-<li><p>we get to pick codes for <span class="math notranslate nohighlight">\(L(H)\)</span> and <span class="math notranslate nohighlight">\(L(D|H)\)</span></p></li>
-<li><p>let <span class="math notranslate nohighlight">\(L(x^n|H) = -\log P(x^n|H)\)</span> (length of data is just negative log-likelihood)</p></li>
+<li><p>chapter 2.4: crude mdl ex. pick order of markov chain by minimizing $<span class="math notranslate nohighlight">\(\corange{L(H)} + \cblue{L(D\vert H)}\)</span><span class="math notranslate nohighlight">\( where \)</span>\cblue{D}<span class="math notranslate nohighlight">\( is &lt;span class=&quot;cblue&quot;&gt;data&lt;/span&gt;, \)</span>\corange{H}$ is <span class="corange">hypothesis</span></p>
+<ul class="simple">
+<li><p>we get to pick codes for <span class="math notranslate nohighlight">\(L(H)\)</span> and $<span class="math notranslate nohighlight">\(L(D\vert H)\)</span>$</p></li>
+<li><p>let $<span class="math notranslate nohighlight">\(L(x^n\vert H) = -\log P(x^n\vert H)\)</span>$ (length of data is just negative log-likelihood)</p></li>
 <li><p>for <span class="math notranslate nohighlight">\(L(H)\)</span>, describe length of chain <span class="math notranslate nohighlight">\(k\)</span> with code for integers, then <span class="math notranslate nohighlight">\(k\)</span> parameters between 0 and 1 by describing the counts generated by the params in n samples - this tends to be harder to do well</p></li>
 </ul>
 </li>
 <li><p>chapter 2.5: universal codes + models</p>
-<ul>
+<ul class="simple">
 <li><p>note: these codes are only universal relative to the set of considered codes <span class="math notranslate nohighlight">\(\mathcal L\)</span></p></li>
 <li><p><em>universal model</em> - prob. distr corresponding to universal codes</p>
 <ul>
 <li><p>(different from how we use model in statistics)</p></li>
 </ul>
 </li>
-<li><p>given a set of codes <span class="math notranslate nohighlight">\(\mathcal L = \{ L_1, L_2, ... \}\)</span>, given a squences <span class="math notranslate nohighlight">\(x^n\)</span>, one of the codes <span class="math notranslate nohighlight">\(L \in \mathcal L\)</span> has the shortest length for that sequence <span class="math notranslate nohighlight">\(\bar L(x^n)\)</span></p>
+<li><p>given a set of codes $<span class="math notranslate nohighlight">\(\mathcal L = \{ L_1, L_2, ... \}\)</span><span class="math notranslate nohighlight">\(, given a squences \)</span>x^n<span class="math notranslate nohighlight">\(, one of the codes \)</span>L \in \mathcal L<span class="math notranslate nohighlight">\( has the shortest length for that sequence \)</span>\bar L(x^n)$</p>
 <ul>
 <li><p>however, we have to pick one <span class="math notranslate nohighlight">\(L\)</span>, before we see <span class="math notranslate nohighlight">\(x^n\)</span></p></li>
 </ul>
@@ -772,9 +662,9 @@ document.write(`
 </li>
 <li><p>ex. <strong>nml</strong> is an optimal (minimizes worst-case regret) universal model</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\bar P_{\text{nml}} (x^n) = \frac{P(x^n | \hat \theta (x^n))}{\sum_{z^n \in \mathcal X^n} P(z^n | \hat \theta (z^n))}\)</span></p></li>
-<li><p>literally a normalized likelihood</p></li>
-<li><p><strong>regret</strong> of <span class="math notranslate nohighlight">\(\bar P\)</span> relative to <span class="math notranslate nohighlight">\(M\)</span>:  <span class="math notranslate nohighlight">\(−\log \bar P(x^n)− \min_{P \in M} -\log P(x^n )\)</span></p>
+<li><p>$<span class="math notranslate nohighlight">\(\bar P_{\text{nml}} (x^n) = \frac{\cblue{P(x^n \vert  \hat \theta (x^n))}}{\corange{\sum_{z^n \in \mathcal X^n} P(z^n \vert  \hat \theta (z^n))}}\)</span>$<!-- --></p></li>
+<li><p>literally a <span class="corange">normalized</span> <span class="cblue">likelihood</span></p></li>
+<li><p><strong>regret</strong> of <span class="math notranslate nohighlight">\(\bar P\)</span> relative to <span class="math notranslate nohighlight">\(M\)</span>: <span class="math notranslate nohighlight">\(−\log \bar P(x^n)− \min_{P \in M} -\log P(x^n )\)</span></p>
 <ul>
 <li><p>measures the performance of universal models relative to a set of candidate sources M</p></li>
 <li><p><span class="math notranslate nohighlight">\(\bar P\)</span> is a probability distribution on <span class="math notranslate nohighlight">\(\mathcal X^n\)</span> (<span class="math notranslate nohighlight">\(P\)</span> is not necessarily in <span class="math notranslate nohighlight">\(M\)</span>)</p></li>
@@ -786,6 +676,7 @@ document.write(`
 </ul>
 </li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -825,7 +716,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.4. </span>causal inference</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>causal inference</p>
       </div>
     </a>
     <a class="right-next"
@@ -833,7 +724,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.6. </span>linear models</p>
+        <p class="prev-next-title"><span class="section-number">4.7. </span>linear models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -853,19 +744,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.5.1. overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-relative-entropy-and-mutual-info">4.5.2. entropy, relative entropy, and mutual info</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">4.5.2.1. entropy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-entropy-mutual-info">4.5.2.2. relative entropy / mutual info</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-rules">4.5.2.3. chain rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomatic-approach">4.5.2.4. axiomatic approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.6.1. overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-relative-entropy-and-mutual-info">4.6.2. entropy, relative entropy, and mutual info</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy">4.6.2.1. entropy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-rules">4.6.2.2. chain rules</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-inequalities">4.5.3. basic inequalities</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-inequality">4.5.3.1. jensen’s inequality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-inequalities">4.6.3. basic inequalities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-inequality">4.6.3.1. jensen’s inequality</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdl">4.5.4. mdl</a></li>
 </ul>
   </nav></div>
 
@@ -903,11 +791,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

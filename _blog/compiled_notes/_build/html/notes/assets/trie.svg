@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 6 818 610" role="img" aria-labelledby="title desc">
+  <title id="title">Huffman codeword trie</title>
+  <desc id="desc">Huffman code for ABRACADABRA!. Codeword table: ! = 101, A = 0, B = 1111, C = 110, D = 100, R = 1110. The trie: from the root, 0 leads to leaf A; 1 leads to a node whose 0-child has leaves D (0) and ! (1), and whose 1-child has leaf C (0) and a node with leaves R (0) and B (1). Compressed bitstring 011111110011001000111111100101 (30 bits), segmented as A B R A C A D A B R A !.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/>
+    </marker>
+    <style>
+      .head { font: bold 25px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .colh { font: italic 28px Georgia, "Times New Roman", serif; fill: #d1342f; text-anchor: middle; }
+      .key { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .val { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .tedge { stroke: #2b2b2b; stroke-width: 4; stroke-linecap: round; }
+      .tnode { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .leg { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: round; }
+      .leaf { font: 28px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .bit { font: bold 20px Helvetica, Arial, sans-serif; fill: #d1342f; text-anchor: middle; }
+      .bits { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .under { stroke: #d1342f; stroke-width: 3.5; }
+      .sym { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .note { font: italic 30px "Times New Roman", Times, serif; fill: #d1342f; }
+    </style>
+  </defs>
+
+  <!-- codeword table -->
+  <text class="head" x="22" y="40">Codeword table</text>
+  <text class="colh" x="78" y="96">key</text>
+  <text class="colh" x="160" y="96">value</text>
+  <text class="key" x="78" y="136">!</text><text class="val" x="130" y="136">101</text>
+  <text class="key" x="78" y="183">A</text><text class="val" x="130" y="183">0</text>
+  <text class="key" x="78" y="230">B</text><text class="val" x="130" y="230">1111</text>
+  <text class="key" x="78" y="277">C</text><text class="val" x="130" y="277">110</text>
+  <text class="key" x="78" y="324">D</text><text class="val" x="130" y="324">100</text>
+  <text class="key" x="78" y="371">R</text><text class="val" x="130" y="371">1110</text>
+
+  <!-- trie -->
+  <text class="head" x="410" y="36">Trie representation</text>
+  <line class="tedge" x1="392.1" y1="116.2" x2="357.9" y2="169.8"/>
+  <line class="tedge" x1="424.8" y1="109.5" x2="520.2" y2="174.5"/>
+  <line class="tedge" x1="526.7" y1="208.0" x2="493.3" y2="258.0"/>
+  <line class="tedge" x1="559.2" y1="202.4" x2="640.8" y2="263.6"/>
+  <line class="tedge" x1="470.3" y1="299.9" x2="449.7" y2="346.1"/>
+  <line class="tedge" x1="491.7" y1="299.0" x2="518.3" y2="347.0"/>
+  <line class="tedge" x1="649.3" y1="299.5" x2="625.7" y2="346.5"/>
+  <line class="tedge" x1="675.4" y1="296.4" x2="719.6" y2="349.6"/>
+  <line class="tedge" x1="725.3" y1="389.9" x2="704.7" y2="436.1"/>
+  <line class="tedge" x1="746.7" y1="389.0" x2="773.3" y2="437.0"/>
+  <text class="bit" x="364" y="139">0</text>
+  <text class="bit" x="478" y="139">1</text>
+  <text class="bit" x="499" y="230">0</text>
+  <text class="bit" x="606" y="230">1</text>
+  <text class="bit" x="447" y="320">0</text>
+  <text class="bit" x="517" y="320">1</text>
+  <text class="bit" x="625" y="320">0</text>
+  <text class="bit" x="708" y="320">1</text>
+  <text class="bit" x="702" y="410">0</text>
+  <text class="bit" x="772" y="410">1</text>
+  <circle class="tnode" cx="405" cy="96" r="24"/>
+  <circle class="tnode" cx="345" cy="190" r="24"/>
+  <text class="leaf" x="345" y="191">A</text>
+  <path class="leg" d="M334 211 L325 228 M356 211 L365 228"/>
+  <circle class="tnode" cx="540" cy="188" r="24"/>
+  <circle class="tnode" cx="480" cy="278" r="24"/>
+  <circle class="tnode" cx="660" cy="278" r="24"/>
+  <circle class="tnode" cx="440" cy="368" r="24"/>
+  <text class="leaf" x="440" y="369">D</text>
+  <path class="leg" d="M429 389 L420 406 M451 389 L460 406"/>
+  <circle class="tnode" cx="530" cy="368" r="24"/>
+  <text class="leaf" x="530" y="369">!</text>
+  <path class="leg" d="M519 389 L510 406 M541 389 L550 406"/>
+  <circle class="tnode" cx="615" cy="368" r="24"/>
+  <text class="leaf" x="615" y="369">C</text>
+  <path class="leg" d="M604 389 L595 406 M626 389 L635 406"/>
+  <circle class="tnode" cx="735" cy="368" r="24"/>
+  <circle class="tnode" cx="695" cy="458" r="24"/>
+  <text class="leaf" x="695" y="459">R</text>
+  <path class="leg" d="M684 479 L675 496 M706 479 L715 496"/>
+  <circle class="tnode" cx="785" cy="458" r="24"/>
+  <text class="leaf" x="785" y="459">B</text>
+  <path class="leg" d="M774 479 L765 496 M796 479 L805 496"/>
+
+  <!-- compressed bitstring -->
+  <text class="head" x="22" y="524">Compressed bitstring</text>
+  <text class="bits" x="50.2 70.8 91.2 111.8 132.2 152.8 173.2 193.8 214.2 234.8 255.2 275.8 296.2 316.8 337.2 357.8 378.2 398.8 419.2 439.8 460.2 480.8 501.2 521.8 542.2 562.8 583.2 603.8 624.2 644.8" y="560">011111110011001000111111100101</text>
+  <line class="under" x1="43.0" y1="572" x2="57.5" y2="572"/>
+  <text class="sym" x="50.2" y="602">A</text>
+  <line class="under" x1="63.5" y1="572" x2="139.5" y2="572"/>
+  <text class="sym" x="101.5" y="602">B</text>
+  <line class="under" x1="145.5" y1="572" x2="221.5" y2="572"/>
+  <text class="sym" x="183.5" y="602">R</text>
+  <line class="under" x1="227.5" y1="572" x2="242.0" y2="572"/>
+  <text class="sym" x="234.8" y="602">A</text>
+  <line class="under" x1="248.0" y1="572" x2="303.5" y2="572"/>
+  <text class="sym" x="275.8" y="602">C</text>
+  <line class="under" x1="309.5" y1="572" x2="324.0" y2="572"/>
+  <text class="sym" x="316.8" y="602">A</text>
+  <line class="under" x1="330.0" y1="572" x2="385.5" y2="572"/>
+  <text class="sym" x="357.8" y="602">D</text>
+  <line class="under" x1="391.5" y1="572" x2="406.0" y2="572"/>
+  <text class="sym" x="398.8" y="602">A</text>
+  <line class="under" x1="412.0" y1="572" x2="488.0" y2="572"/>
+  <text class="sym" x="450.0" y="602">B</text>
+  <line class="under" x1="494.0" y1="572" x2="570.0" y2="572"/>
+  <text class="sym" x="532.0" y="602">R</text>
+  <line class="under" x1="576.0" y1="572" x2="590.5" y2="572"/>
+  <text class="sym" x="583.2" y="602">A</text>
+  <line class="under" x1="596.5" y1="572" x2="652.0" y2="572"/>
+  <text class="sym" x="624.2" y="602">!</text>
+  <line x1="720" y1="551" x2="662" y2="551" stroke="#d1342f" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text class="note" x="726" y="560">30 bits</text>
+</svg>

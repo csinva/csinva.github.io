@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: time series
+subtitle: Some notes on time series analysis, mostly following two textbooks (linked below).
 category: stat
 ---
 
@@ -19,7 +20,7 @@ category: stat
 - stationarity - mean, variance, and autocorrelation structure do not change over time
 - **endogenous variable = x** = independent variable
 - **exogenous variable = y** = dependent variable
-- changepoint detection / [Change detection ](https://en.wikipedia.org/wiki/Change_detection) - tries to identify times when the probability distribution of a stochastic process or time series changes
+- changepoint detection / [Change detection](https://en.wikipedia.org/wiki/Change_detection) - tries to identify times when the probability distribution of a stochastic process or time series changes
 
 ## libraries
 
@@ -34,7 +35,7 @@ category: stat
   - frequency-based methods - e.g. look at spectral plot
   - (AR) autoregressive models - linear regression of current value of one or more prior values of the series
   - (MA) moving-average models - require fitting the noise terms
-  - (ARMA) box-jenkins approach 
+  - (ARMA) box-jenkins approach
 - moving averages
   - simple moving average - just average over a window
   - cumulative moving average - mean is calculated using previous mean
@@ -82,53 +83,52 @@ category: stat
   - ex. the process has a constant mean (a type of stationarity)
   - ex. the dependencies in the time-series are short-term
 - autocorrelation plots: plot correlation of series vs series offset by different lags
-- formal definitions of stationarity for time series $\{X_t\}$
+- formal definitions of stationarity for time series $$\{X_t\}$$
   - **strict stationarity** - the distribution is the same across time
-  - **second-order / weak stationarity** -  mean is constant for all t and, for any t and k, the covariance between $X_t$ and $X_{t+k}$ only depends on the lag difference k
+  - **second-order / weak stationarity** - mean is constant for all t and, for any t and k, the covariance between $X_t$ and $X_{t+k}$ only depends on the lag difference k
     - In other words, there exists a function $c: \mathbb Z \to \mathbb R$ such that for all t and k we have $c(k) = \text{cov} (X_t, X_{t+k})$
-    - strict stationary and $E|X_T^2| < \infty \implies$ second-order stationary
-  - **ergodic** - stronger condition, says samples approach the expectation of functions on the time series: for any function $g$ and shift $\tau_1, ... \tau_k$:
-    - $\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]$
+    - strict stationary and $$E\vert X_T^2\vert  < \infty \implies$$ second-order stationary
+  - **ergodic** - stronger condition, says samples approach the expectation of functions on the time series: for any function $g$ and shift $$\tau_1, ... \tau_k$$:
+    - $$\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]$$<!-- -->
 - **causal** - can predict given only past values (for Gaussian processes no difference)
 
 ## ch 3 - linear time series
 
 **note: can just assume all have 0 mean (otherwise add a constant)**
 
-- **AR model** $AR(p)$:  $$ X_t = \sum_{i=1}^p \phi_i X_{t-i}+ \varepsilon_t $$
-  - $\phi_1, \ldots, \phi_p$ are parameters
-  - $\varepsilon_t$ is white noise
-  - stationary assumption places constraints on param values (e.g. processes in the $AR(1)$ model with $|\phi_1| \ge 1$ are not stationary)
+- **AR model** $AR(p)$: $$ X_t = \sum_{i=1}^p \cblue{\phi_i} X_{t-i}+ \corange{\varepsilon_t} $$
+  - $$\cblue{\phi_1, \ldots, \phi_p}$$ are <span class="cblue">parameters</span>
+  - $$\corange{\varepsilon_t}$$ is <span class="corange">white noise</span>
+  - stationary assumption places constraints on param values (e.g. processes in the $AR(1)$ model with $$\vert \phi_1\vert  \ge 1$$ are not stationary)
   - looks just like linear regression, but is more complex
     - if we don't account for issues, things can go wrong
       - model will not be stationary
       - model may be misspecified
-      - $E(\epsilon_t|X_{t-p}) \neq 0$
+      - $$E(\epsilon_t\vert X_{t-p}) \neq 0$$<!-- -->
     - this represents a set of difference equations, and as such, must have a solution
-  - ex. $AR(1)$ model - if $|\phi| < 0$, then soln is in terms of past values of {$\epsilon_t$}, otherwise it is in terms of future values
-    - ex. simulating - if we know $\phi$ and $\{\epsilon_t\}$, we still need to use the backshift operator to solve for  $\{ X_t \}$
-  - ex. $AR(p)$ model - if $\sum_j |\phi_j|$< 1, and $\mathbb E |\epsilon_t| < \infty$, then will have a causal stationary solution
+  - ex. $AR(1)$ model - if $$\vert \phi\vert  < 0$$, then soln is in terms of past values of {$\epsilon_t$}, otherwise it is in terms of future values
+    - ex. simulating - if we know $\phi$ and $$\{\epsilon_t\}$$, we still need to use the backshift operator to solve for $$\{ X_t \}$$
+  - ex. $AR(p)$ model - if $$\sum_j \vert \phi_j\vert $$< 1, and $$\mathbb E \vert \epsilon_t\vert  < \infty$$, then will have a causal stationary solution
   - **backshift operator** $B^kX_t=X_{t-k}$
     - solving requires using the backshift operator, because we need to solve for what all the residuals are
   - **characteristic polynomial** $\phi(a) = 1 - \sum_{j=1}^p \phi_j a^j$
     - $\phi(B) X_t = \epsilon_t$
     - $X_t=\phi(B)^{-1} \epsilon_t$
-  - can represent $AR(p)$ as a vector $AR(1)$ using the vector $\bar X_t = (X_t, ..., X_{t-p+1})$
+  - can represent $AR(p)$ as a vector $AR(1)$ using the vector $$\bar X_t = (X_t, ..., X_{t-p+1})$$
   - note: can reparametrize in terms of frequencies
-- **MA model** $MA(q)$: $ X_t = \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t$
-  - $\theta_1 ... \theta_q$ are params
-  - $\varepsilon_t$, $\varepsilon_{t-1}$ are white noise error terms
+- **MA model** $MA(q)$: $$ X_t = \sum_{i=1}^q \cgreen{\theta_i} \corange{\varepsilon_{t-i}} + \corange{\varepsilon_t}$$
+  - $$\cgreen{\theta_1 ... \theta_q}$$ are <span class="cgreen">params</span>
+  - $$\corange{\varepsilon_t}$$, $$\corange{\varepsilon_{t-1}}$$ are <span class="corange">white noise error terms</span>
   - harder to fit, because the lagged error terms are not visible (also means can't make preds on new time-series)
   - $E[\epsilon_t] = 0$, $Var[\epsilon_t] = 1$
   - much harder to estimate these parameters
   - $X_t = \theta (B) \epsilon_t$ (assuming $\theta_0=1$)
-- **ARMA model**: $ARMA(p, q)$: $X_t = \sum_{i=1}^p \phi_i X_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t$
-  - $\{X_t\}$ is stationary
+- **ARMA model**: $ARMA(p, q)$: $$X_t = \sum_{i=1}^p \cblue{\phi_i} X_{t-i} + \sum_{i=1}^q \cgreen{\theta_i} \corange{\varepsilon_{t-i}} + \corange{\varepsilon_t}$$
+  - $$\{X_t\}$$ is stationary
   - $\phi (B) X_t = \theta(B) \varepsilon_t$
   - $\phi(B) = 1 - \sum_{j=1}^p \phi_j B^j$
   - $\theta(B) = 1 + \sum_{j=1}^{q}\theta_jz^j$
-  - **causal** if $\exists \{ \psi_j \}$ such that $X_t = \sum_{j=0}^\infty \psi_j Z_{t-j}$ for all t
-
+  - **causal** if $$\exists \{ \psi_j \}$$ such that $X_t = \sum_{j=0}^\infty \psi_j Z_{t-j}$ for all t
 - **ARIMA model**: $ARIMA(p, d, q)$: - generalizes ARMA model to non-stationarity (using differencing)
 
 ## ch 4 + 8 - the autocovariance function + parameter estimation
@@ -141,17 +141,27 @@ category: stat
     - innovations algorithm
     - hannan-rissanen algorithm
 - autocovariance function: {$\gamma(k): k \in \mathbb Z$} where $\gamma(k) = \text{Cov}(X_{t+h}. X_t) =  \mathbb E (X_0 X_k)$ (assuming mean 0)
-- ![Screen Shot 2020-01-11 at 5.29.15 PM](../assets/durbin-levinson.png)
-- **Yule-Walker equations** (assuming AR(p) process): $\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$
+- **durbin-levinson algorithm**: the coefficients $\phi_{n1}, \dots, \phi_{nn}$ can be computed recursively from the equations
+
+  $$\phi_{nn} = \left[\gamma(n) - \sum_{j=1}^{n-1} \phi_{n-1,j}\, \gamma(n-j)\right] v_{n-1}^{-1} \tag{2.5.20}$$
+
+  $$\begin{bmatrix} \phi_{n1} \\ \vdots \\ \phi_{n,n-1} \end{bmatrix} = \begin{bmatrix} \phi_{n-1,1} \\ \vdots \\ \phi_{n-1,n-1} \end{bmatrix} - \phi_{nn} \begin{bmatrix} \phi_{n-1,n-1} \\ \vdots \\ \phi_{n-1,1} \end{bmatrix} \tag{2.5.21}$$
+
+  and
+
+  $$v_n = v_{n-1}\left[1 - \phi_{nn}^2\right] \tag{2.5.22}$$
+
+  where $$\phi_{11} = \gamma(1)/\gamma(0)$$ and $$v_0 = \gamma(0)$$
+
+- **Yule-Walker equations** (assuming AR(p) process): $$\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$$
   - ex. MA covariance becomes 0 with lag > num params
 - can rewrite the Yule-Walker equations
-
   - $\gamma(i) = \sum_{j=1}^p \phi_j \gamma(i -j)$
   - $\underline\gamma_p = \Gamma_p \underline \phi_p$
     - $(\Gamma_p)_{i, j} = \gamma(i - j)$
     - $\hat{\Gamma}_p$ is nonegative definite (and nonsingular if there is at least one nonzero $Y_i$)
-  - $\underline \gamma_p = [\gamma(1), ..., \gamma(p)]$
-  - $\underline \phi_p = (\phi_1, ..., \phi_p)$
+  - $$\underline \gamma_p = [\gamma(1), ..., \gamma(p)]$$<!-- -->
+  - $$\underline \phi_p = (\phi_1, ..., \phi_p)$$<!-- -->
     - this minimizes the mse $\mathbb E [X_{t+1} - \sum_{j=1}^p \phi_j X_{t+1-j}]^2$
 - use estimates to solve: $\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p $
 - the innovations algorithm
@@ -161,14 +171,10 @@ category: stat
   - eq. 5.2.9: Gaussian likelihood for an ARMA process
   - $r_n = \mathbb E[(W_{n+1} - \hat W_{n+1})^2]$
 
-
-
 # multivariate time-series ch 7
 
 - vector-valued time-series has dependencies between variables across time
   - just modeling as univariate fails to take into account possible dependencies between the series
-
-
 
 # neural modeling
 

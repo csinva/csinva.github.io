@@ -5,8 +5,6 @@
 - same genes + same environments - people still die at different times
 - risk of death (probability of dying in a given year) doubles every 8 years (gompertz law)
 
-
-
 ## senescent cells
 
 - senescenent cells are damaged cells that stop dividing

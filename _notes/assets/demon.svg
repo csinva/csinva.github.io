@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1144 960" role="img" aria-labelledby="title desc">
+  <title id="title">Maxwell's demon sketch</title>
+  <desc id="desc">Two gas chambers, tau 1 on the left (red wall, mostly slow red molecules with short arrows) and tau 2 on the right (blue wall, mostly fast blue molecules with long arrows), joined by a channel closed by an orange door. An arrow above the door points up (door opening). A slow red molecule approaches the door from the left and another sits just past it on the right; a fast blue molecule in the left chamber heads away to the left.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .w { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .tau { font: italic 92px "Times New Roman", Times, serif; }
+      .sb { font-size: 56px; font-style: normal; }
+    </style>
+  </defs>
+
+  <defs><marker id="md1342f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#d1342f" stroke-width="2"/></marker><marker id="m1f6fb2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1f6fb2" stroke-width="2"/></marker><marker id="m13817f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#13817f" stroke-width="2"/></marker></defs>
+  <path class="w" stroke="#d1342f" d="M470 110 V600 M470 735 V1000"/>
+  <path class="w" stroke="#1f6fb2" d="M725 55 V600 M725 735 V1000"/>
+  <path class="w" stroke="#1f6fb2" d="M470 605 H725 M470 730 H725"/>
+  <rect x="578" y="550" width="26" height="188" fill="none" stroke="#d9822b" stroke-width="5"/>
+  <path class="w" stroke="#13817f" d="M590 510 V380" marker-end="url(#m13817f)"/>
+  <text class="tau" x="140" y="470" style="fill:#d1342f">τ<tspan class="sb" dy="20">1</tspan></text>
+  <text class="tau" x="930" y="470" style="fill:#1f6fb2">τ<tspan class="sb" dy="20">2</tspan></text>
+  <circle cx="115" cy="185" r="24" fill="#d1342f" stroke="#d1342f" stroke-width="5"/>
+  <path class="w" stroke="#d1342f" d="M135 199 L225 260" marker-end="url(#md1342f)"/>
+  <circle cx="270" cy="110" r="24" fill="#d1342f" stroke="#d1342f" stroke-width="5"/>
+  <path class="w" stroke="#d1342f" d="M267 134 L255 230" marker-end="url(#md1342f)"/>
+  <circle cx="165" cy="940" r="24" fill="#d1342f" stroke="#d1342f" stroke-width="5"/>
+  <path class="w" stroke="#d1342f" d="M165 916 L165 830" marker-end="url(#md1342f)"/>
+  <circle cx="355" cy="910" r="24" fill="#d1342f" stroke="#d1342f" stroke-width="5"/>
+  <path class="w" stroke="#d1342f" d="M344 889 L315 830" marker-end="url(#md1342f)"/>
+  <circle cx="330" cy="668" r="24" fill="#1f6fb2" stroke="#1f6fb2" stroke-width="5"/>
+  <path class="w" stroke="#1f6fb2" d="M306 670 L20 693" marker-end="url(#m1f6fb2)"/>
+  <circle cx="462" cy="650" r="18" fill="#d1342f" stroke="#d1342f" stroke-width="5"/>
+  <path class="w" stroke="#d1342f" d="M480 650 L537 650" marker-end="url(#md1342f)"/>
+  <circle cx="712" cy="680" r="18" fill="#d1342f" stroke="#d1342f" stroke-width="5"/>
+  <path class="w" stroke="#d1342f" d="M730 680 L782 680" marker-end="url(#md1342f)"/>
+  <circle cx="935" cy="195" r="24" fill="#1f6fb2" stroke="#1f6fb2" stroke-width="5"/>
+  <path class="w" stroke="#1f6fb2" d="M946 174 L995 75" marker-end="url(#m1f6fb2)"/>
+  <circle cx="1045" cy="620" r="24" fill="#1f6fb2" stroke="#1f6fb2" stroke-width="5"/>
+  <path class="w" stroke="#1f6fb2" d="M1021 623 L765 650" marker-end="url(#m1f6fb2)"/>
+  <circle cx="860" cy="685" r="24" fill="#1f6fb2" stroke="#1f6fb2" stroke-width="5"/>
+  <path class="w" stroke="#1f6fb2" d="M856 661 L840 555" marker-end="url(#m1f6fb2)"/>
+  <circle cx="1100" cy="700" r="24" fill="#1f6fb2" stroke="#1f6fb2" stroke-width="5"/>
+  <path class="w" stroke="#1f6fb2" d="M1092 723 L1050 850" marker-end="url(#m1f6fb2)"/>
+</svg>

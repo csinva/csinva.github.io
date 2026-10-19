@@ -25,8 +25,8 @@ subtitle: Some <i>very limited</i> notes on quantum computing
 
 # basics
 
-- An n-bit computer has 2^n states and is in one of them with probability 1.  You can think of it as having 2^n coefficients, one of which is 0 and the rest of which are 1.  Operations on it are multiplying these coefficients by stochastic matrices.  Only produces n bits of info.
-- an n-qubit quantum computer is described by 2^n complex coefficients.  The sum of their squares sums to 1.  It’s 2^n complex coefficients must be multiplied by unitary matrices (they preserve that the sum of the squares add up to 1.)
+- An n-bit computer has 2^n states and is in one of them with probability 1. You can think of it as having 2^n coefficients, one of which is 0 and the rest of which are 1. Operations on it are multiplying these coefficients by stochastic matrices. Only produces n bits of info.
+- an n-qubit quantum computer is described by 2^n complex coefficients. The sum of their squares sums to 1. It’s 2^n complex coefficients must be multiplied by unitary matrices (they preserve that the sum of the squares add up to 1.)
 - Problem: **Decoherence** – results from interaction with the outside world
 - Properties:  
   - Superposition – an object is in more than one state at once
@@ -43,7 +43,7 @@ subtitle: Some <i>very limited</i> notes on quantum computing
 - probability with minus signs
 - *amplitudes* - used to calculate probabilites, but can be negative / complex
 
-![](../assets/double_slit.png)
+<img style="width: 450px; max-width: 100%;" src="../assets/double_slit.svg" alt="Double-slit experiment"/>
 
 - applications
   - quantum simulation
@@ -72,7 +72,7 @@ subtitle: Some <i>very limited</i> notes on quantum computing
 - separate 2 samples (one hot, one cold) with insulator
   - **idea**: demon makes all fast particles go to hot side, all slow particles go to slow side - **this is against entropy**
   - demon controls door between the samples
-  - ![](../assets/demon.png)
+  - <img style="width: 350px; max-width: 100%;" src="../assets/demon.svg" alt="Maxwell&#x27;s demon sketch"/>
     - demon opens door whenever high temperature particle comes from cold sample, then closes
     - demon opens door for slow particles from hot sample, then closes
 - problem: demon has to track all the particles (which would generate a lot of heat)
@@ -80,7 +80,5 @@ subtitle: Some <i>very limited</i> notes on quantum computing
 # quantum probability
 
 - based on this [blog post](https://www.math3ma.com/blog/a-first-look-at-quantum-probability-part-1)
-
   - marginal prob. loses information but we don't need to
-- ![Screen Shot 2019-08-17 at 10.36.26 AM](../assets/matrix_prob.png)
-  
+- we then observed that the matrix M^T M contains the marginal probability distribution of Y along its diagonal. Moreover its eigenvectors define conditional probability distributions on Y. Likewise, M M^T contains marginals on X along its diagonal, and its eigenvectors define conditional probability distributions on X <img style="width: 560px; max-width: 100%;" src="../assets/matrix_prob.svg" alt="Joint distribution as a matrix"/>

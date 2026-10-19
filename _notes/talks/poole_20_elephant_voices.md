@@ -2,8 +2,6 @@
 
 **Joyce Poole, ElephantVoices**
 
-
-
 - african savanna elephants
   - large social network
   - mothers/daughters associated for life

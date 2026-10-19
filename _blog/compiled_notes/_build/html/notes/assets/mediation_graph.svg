@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 180" role="img" aria-labelledby="title desc">
+  <title id="title">Mediation graph</title>
+  <desc id="desc">Causal graph: X points to Z, M and Y. Z points to M and directly to Y via a curved edge. M points to Y.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 L3 5 z" fill="#2b2b2b"/></marker>
+    <style>
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .v { font: italic 32px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+  <text class="v" x="195" y="26">X</text>
+  <text class="v" x="22" y="118">Z</text>
+  <text class="v" x="195" y="118">M</text>
+  <text class="v" x="368" y="118">Y</text>
+  <path class="e" d="M175 38 L42 106" marker-end="url(#arrow)"/>
+  <path class="e" d="M195 48 V94" marker-end="url(#arrow)"/>
+  <path class="e" d="M215 38 L348 106" marker-end="url(#arrow)"/>
+  <path class="e" d="M42 118 H168" marker-end="url(#arrow)"/>
+  <path class="e" d="M222 118 H344" marker-end="url(#arrow)"/>
+  <path class="e" d="M40 134 Q195 210 350 132" marker-end="url(#arrow)"/>
+</svg>

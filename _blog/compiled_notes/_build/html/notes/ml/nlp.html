@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,7 +58,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ml/nlp';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml_section.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -438,7 +424,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">5.2.1. benchmarks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">5.2.1.1. tasks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">5.2.1.2. datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-metrics">5.2.1.3. eval metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-training-metrics">5.2.1.3. eval/training metrics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-tasks">5.2.2. individual tasks</a><ul class="nav section-nav flex-column">
@@ -494,23 +480,23 @@ document.write(`
 <p><strong>open-ended</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2009.03300">MMLU</a>: Measuring Massive Multitask Language Understanding (hendrycks, …, song, steinhardt, 2021) - 57 tasks such as elementary math, clinical knowledge, global facts</p></li>
-<li><p><a class="reference external" href="https://github.com/allenai/natural-instructions">NLI: allenai natural language instructions</a> (v1: mishra et al. 2022; v2: wang et al. 2022) - 1600+ diverse NLP tasks</p>
+<li><p>NLI: allenai natural language instructions (<a class="reference external" href="https://github.com/allenai/natural-instructions">v1: mishra et al. 2022; v2: wang et al. 2022</a>) - 1600+ diverse NLP tasks</p>
 <ul>
 <li><p>Definition which describes the task</p></li>
 <li><p>For each example: (input text, output (varies), explanation*) - explanation only for some tasks</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/google/BIG-bench">Big-bench</a> (2022) - crowdsourced diverse (but random) NLP tasks</p>
+<li><p>Big-bench (<a class="reference external" href="https://github.com/google/BIG-bench">2022</a>) - crowdsourced diverse (but random) NLP tasks</p>
 <ul>
 <li><p>No task definitions or explanations: the “definition” is instead concatenated to each example’s input</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2206.04301">Unveiling Transformers with LEGO: a synthetic reasoning task</a> (zhang, …, bubeck, …, wagner, 2022) - synthetic reasoning task</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2206.10498">Large Language Models Still Can’t Plan (A Benchmark for LLMs on Planning and Reasoning about Change)</a></p></li>
+<li><p>Unveiling Transformers with LEGO: a synthetic reasoning task (<a class="reference external" href="https://arxiv.org/abs/2206.04301">zhang, …, bubeck, …, wagner, 2022</a>) - synthetic reasoning task</p></li>
+<li><p>Large Language Models Still Can’t Plan (A Benchmark for LLMs on Planning and Reasoning about Change) (<a class="reference external" href="https://arxiv.org/abs/2206.10498">valmeekam et al. 2022</a>)</p></li>
 </ul>
 <p><strong>very popular</strong></p>
 <ul>
-<li><p><a class="reference external" href="https://super.gluebenchmark.com/">SuperGLUE Benchmark</a> (2019)</p>
+<li><p>SuperGLUE Benchmark (<a class="reference external" href="https://super.gluebenchmark.com/">2019</a>)</p>
 <ul class="simple">
 <li><p>8 NLU tasks (keeps two hardest from GLUE, marked with ***) extending to coreference resolution and question-answering</p></li>
 <li><p><a class="reference external" href="https://github.com/google-research-datasets/boolean-questions">BoolQ</a> (Boolean Questions) - answer a yes/no question about a text passage.</p></li>
@@ -523,13 +509,16 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(^\dagger\)</span><a class="reference external" href="https://cs.nyu.edu/~davise/papers/WinogradSchemas/WS.html">WSC</a> (Winograd Schema Challenge) - coreference resolution task in which examples consist of a sentence with a pronoun and a list of noun phrases from the sentence. The system must determine the correct referent of the pronoun from among the provided choices.</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://gluebenchmark.com/">GLUE Benchmark</a> (2019) = General language understanding evaluation</p>
+<li><p>GLUE Benchmark (<a class="reference external" href="https://gluebenchmark.com/">2019</a>) = General language understanding evaluation</p>
 <ul class="simple">
 <li><p>9 NLU tasks including question answering, sentiment analysis, text similarity and textual entailment</p></li>
-<li><p>single-sentence tasks</p></li>
+<li><p>single-sentence tasks</p>
+<ul>
 <li><p><a class="reference external" href="https://nyu-mll.github.io/CoLA/">CoLA</a> (Corpus of Linguistic Acceptability) - determine if sentence is grammatically correct</p></li>
 <li><p><a class="reference external" href="https://nlp.stanford.edu/sentiment/index.html">SST-2</a> (Stanford Sentiment Treebank) - determine if the sentence has a positive or negative sentiment</p></li>
-<li><p>similarity +  paraphrase tasks</p>
+</ul>
+</li>
+<li><p>similarity + paraphrase tasks</p>
 <ul>
 <li><p><a class="reference external" href="https://www.microsoft.com/en-us/download/details.aspx?id=52398">MRPC</a> (Microsoft Research Paraphrase Corpus) - determine if two sentences are paraphrases from one another.</p></li>
 <li><p><a class="reference external" href="https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs">QQP</a> (Quora Question Pairs)- determine if two questions are semantically equivalent or not.</p></li>
@@ -554,14 +543,14 @@ document.write(`
 <li><p>570k human-annotated sentence pairs where people ask about entailment</p></li>
 </ul>
 </li>
-<li><p>FEVER: Fact Extraction and VERification (<a class="reference external" href="https://aclanthology.org/N18-1074/">Thorne et al., 2018</a>)</p></li>
+<li><p>FEVER: Fact Extraction and VERification (<a class="reference external" href="https://aclanthology.org/N18-1074/">thorne et al., 2018</a>)</p></li>
 <li><p>SciTail (<a class="reference external" href="https://ojs.aaai.org/index.php/AAAI/article/view/12022">khot et al. 2018</a>) - textual entailment derived from science-question answering</p></li>
 </ul>
 </li>
 <li><p>QA</p>
 <ul class="simple">
-<li><p>SQuAD 2.0 (<a class="reference external" href="https://arxiv.org/abs/1806.03822">Rajpurkar…liang, 2018</a>) - adds 50k unanswerable questions; system must know when it can’t answer</p></li>
-<li><p>SQuAD (<a class="reference external" href="https://arxiv.org/abs/1606.05250">Rajpurkar…liang, 2016</a>) - Stanford Question Answering Dataset (SQuAD)  - 100k questions from 23k passages in 500 wikipedia articles</p></li>
+<li><p>SQuAD 2.0 (<a class="reference external" href="https://arxiv.org/abs/1806.03822">rajpurkar…liang, 2018</a>) - adds 50k unanswerable questions; system must know when it can’t answer</p></li>
+<li><p>SQuAD (<a class="reference external" href="https://arxiv.org/abs/1606.05250">rajpurkar…liang, 2016</a>) - Stanford Question Answering Dataset (SQuAD) - 100k questions from 23k passages in 500 wikipedia articles</p></li>
 </ul>
 </li>
 <li><p>Text classification datasets (used in <a class="reference external" href="https://arxiv.org/pdf/2310.14034">Tree-Prompt</a> and <a class="reference external" href="https://www.nature.com/articles/s41467-023-43713-1">Aug-imodels</a>)</p>
@@ -665,13 +654,17 @@ document.write(`
 <li><p>then Wikipedia</p></li>
 </ul>
 </section>
-<section id="eval-metrics">
-<h3><span class="section-number">5.2.1.3. </span>eval metrics<a class="headerlink" href="#eval-metrics" title="Link to this heading">#</a></h3>
+<section id="eval-training-metrics">
+<h3><span class="section-number">5.2.1.3. </span>eval/training metrics<a class="headerlink" href="#eval-training-metrics" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>perplexity (PP)</strong> - inverse probability of the test set, normalized by the number of words (want to minimize it)</p>
+<li><p><strong>loss</strong>: cross-entropy (with binary labels) ends up just the likelihood of the data:</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(PP(W_{test}) = P(w_1, ..., w_N)^{-1/N}\)</span></p></li>
-<li><p>can think of this as the weighted average branching factor of a language</p></li>
+<li><p>$<span class="math notranslate nohighlight">\(-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{&lt;t}\right)\)</span>$<!-- --></p></li>
+</ul>
+</li>
+<li><p><strong>perplexity (PP)</strong> - exponent of the loss</p>
+<ul>
+<li><p>$<span class="math notranslate nohighlight">\(\begin{array}{r}\operatorname{PPL}=\exp \left(-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{&lt;t}\right)\right) \\ =\left(\prod_{t=1}^T p_\theta\left(x_t \mid x_{&lt;t}\right)\right)^{-1 / T}\end{array}\)</span>$<!-- --></p></li>
 <li><p>should only be compared across models w/ same vocab</p></li>
 </ul>
 </li>
@@ -697,6 +690,7 @@ document.write(`
 <li><p><strong>subword-based</strong> - break apart meaningful subparts of words, most popular (2022)</p>
 <ul>
 <li><p>many more (e.g. byte-level BPE, used in GPT-2)</p></li>
+<li><p>BPE basic algo: take all current tokens (originally characters), see the most frequently recurring pair, make it a token, tokenize everything, then repeat</p></li>
 </ul>
 </li>
 <li><p>character-based - very little prior, generally sequences are too long</p></li>
@@ -714,6 +708,11 @@ document.write(`
 </ul>
 </li>
 <li><p>lemmatization - smarter version that takes into account vocab / morphological analysis (e.g. “am, are, is” -&gt; “be”)</p></li>
+</ul>
+</li>
+<li><p>inference time</p>
+<ul>
+<li><p>standard algo is to start from left and look for longest substring that is a token, use it, then iterate</p></li>
 </ul>
 </li>
 </ul>
@@ -735,14 +734,14 @@ document.write(`
 <li><p>the weights are the embeddings</p></li>
 </ul>
 </li>
-<li><p>word2vec paper I: <a class="reference external" href="https://arxiv.org/abs/1301.3781">initial word2vec</a> (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings</p>
+<li><p>word2vec paper I: initial word2vec (<a class="reference external" href="https://arxiv.org/abs/1301.3781">mikolov et al. 2013</a>) - simplifies neural language models for efficient training of word embeddings</p>
 <ul>
 <li><p>maximizing the probabilities of words being predicted by their context words (with a DNN)</p></li>
 <li><p>continuous bag-of-words (CBOW) - predict current word from window (order doesn’t matter)</p></li>
 <li><p>skipgram - use current word to predict surrounding window – nearby context words weighted more heavily</p></li>
 </ul>
 </li>
-<li><p>word2vec paper II: <a class="reference external" href="https://arxiv.org/abs/1310.4546">Distributed Representations of Words and Phrases and their Compositionality</a> (mikolov et al. 2013) - word2vec improvements</p>
+<li><p>word2vec paper II: Distributed Representations of Words and Phrases and their Compositionality (<a class="reference external" href="https://arxiv.org/abs/1310.4546">mikolov et al. 2013</a>) - word2vec improvements</p>
 <ul>
 <li><p>identify key ngrams and give them their own vecs</p></li>
 </ul>
@@ -776,40 +775,41 @@ document.write(`
 <section id="grammar-parse-tree-exraction">
 <h3><span class="section-number">5.2.2.5. </span>grammar / parse-tree exraction<a class="headerlink" href="#grammar-parse-tree-exraction" title="Link to this heading">#</a></h3>
 <p><em>notes/figures from <a class="reference external" href="https://www.nltk.org/book/">nltk book ch 8/9</a></em></p>
-<ul class="simple">
-<li><p>language -  set of all grammatical sentences</p></li>
+<ul>
+<li><p>language - set of all grammatical sentences</p></li>
 <li><p>grammar - formal notation that can be used for “generating” the members of this set</p></li>
 <li><p>phrases</p>
-<ul>
+<ul class="simple">
 <li><p>noun phrases</p></li>
 <li><p>adjective phrase</p></li>
 </ul>
 </li>
 <li><p>structures</p>
-<ul>
+<ul class="simple">
 <li><p><strong>constituent structure</strong> - words combine with other words to form units which are substitutable</p>
 <ul>
-<li><p>e.g.  the fact that we can substitute <em>He</em> for <em>The little bear</em> indicates that the latter sequence is a unit</p></li>
+<li><p>e.g. the fact that we can substitute <em>He</em> for <em>The little bear</em> indicates that the latter sequence is a unit</p></li>
 </ul>
 </li>
 <li><p>coordinate structure: if <span class="math notranslate nohighlight">\(v_{1}\)</span> and <span class="math notranslate nohighlight">\(v_{2}\)</span> are both phrases of grammatical category <span class="math notranslate nohighlight">\(X\)</span>, then <span class="math notranslate nohighlight">\(v_{1}\)</span> and <span class="math notranslate nohighlight">\(v_{2}\)</span> is also a phrase of category <span class="math notranslate nohighlight">\(X\)</span></p></li>
 </ul>
 </li>
-<li><p><strong>context-free grammar</strong> - set  of grammar rules that define a gramm</p>
-<ul>
+<li><p><strong>context-free grammar</strong> - set of grammar rules that define a gramm</p>
+<ul class="simple">
 <li><p>e.g. <span class="math notranslate nohighlight">\(S \to NP\; VP\)</span></p></li>
 <li><p>rules can be probabilities (so we search for the most probable parse tree, rather than returning all)</p></li>
 </ul>
 </li>
 <li><p>phrase tree</p>
 <ul>
-<li><p><img alt="phrase_tree" src="../../_images/phrase_tree.png" /></p></li>
-<li><p><span class="math notranslate nohighlight">\(\begin{array}{lll}\text { Symbol } &amp; \text { Meaning } &amp; \text { Example } \\ \text { S } &amp; \text { sentence } &amp; \text { the man walked } \\ \text { NP } &amp; \text { noun phrase } &amp; \text { a dog } \\ \text { VP } &amp; \text { verb phrase } &amp; \text { saw a park } \\ \text { PP } &amp; \text { prepositional phrase } &amp; \text { with a telescope } \\ \text { Det } &amp; \text { determiner } &amp; \text { the } \\ \text { N }&amp; \text { noun } &amp; \text { dog } \\ \text { V } &amp; \text { verb } &amp; \text { walked } \\ \text{ P} &amp; \text { preposition } &amp; \text { in }\end{array}\)</span></p></li>
+<li><img style="width: 560px; max-width: 100%;" src="../assets/phrase_tree.svg" alt="Phrase-structure tree"/>
+</li>
+<li><p>$<span class="math notranslate nohighlight">\(\begin{array}{lll}\text { Symbol } &amp; \text { Meaning } &amp; \text { Example } \\ \text { S } &amp; \text { sentence } &amp; \text { the man walked } \\ \text { NP } &amp; \text { noun phrase } &amp; \text { a dog } \\ \text { VP } &amp; \text { verb phrase } &amp; \text { saw a park } \\ \text { PP } &amp; \text { prepositional phrase } &amp; \text { with a telescope } \\ \text { Det } &amp; \text { determiner } &amp; \text { the } \\ \text { N }&amp; \text { noun } &amp; \text { dog } \\ \text { V } &amp; \text { verb } &amp; \text { walked } \\ \text{ P} &amp; \text { preposition } &amp; \text { in }\end{array}\)</span>$<!-- --></p></li>
 <li><p>note: chunking yields a similar partition of a sequence rather than a tree</p></li>
 </ul>
 </li>
 <li><p>algorithms</p>
-<ul>
+<ul class="simple">
 <li><p>top-down parsing (e.g. recursive descent parsing) - starts from <span class="math notranslate nohighlight">\(S\)</span> , and keep expanding the grammar rules until finding a match</p>
 <ul>
 <li><p>RecursiveDescentParser is unable to handle <strong>left-recursive</strong> productions of the form X -&gt; X Y</p></li>
@@ -826,20 +826,22 @@ document.write(`
 <li><p><strong>dependency grammar</strong> focuses on how words relate to other words</p>
 <ul>
 <li><p>relation between <em>head</em> (usually tensed verb) and its <em>dependents</em> (rest of the words)</p></li>
-<li><p><img alt="dep_grammar" src="../../_images/dep_grammar.png" /></p></li>
+<li><img style="width: 650px; max-width: 100%;" src="../assets/dep_grammar.svg" alt="Dependency structure"/>
+</li>
 <li><p>this can also be displayed as a tree</p>
 <ul>
-<li><p><img alt="dep_tree" src="../../_images/dep_tree.png" /></p></li>
+<li><img style="width: 560px; max-width: 100%;" src="../assets/dep_tree.svg" alt="Two dependency trees"/>
+</li>
 </ul>
 </li>
 <li><p>a dependency graph is <strong>projective</strong> if, when all the words are written in order, the edges can be drawn above the words without crossing</p>
-<ul>
+<ul class="simple">
 <li><p>equivalent to saying that a word and all its descendants (dependents and dependents of its dependents, etc.) form a contiguous sequence of words within the sentence</p></li>
 <li><p>above graph is projective</p></li>
 </ul>
 </li>
 <li><p><strong>valencies</strong> - sometimes certain things in a class are allowed buothers are not</p>
-<ul>
+<ul class="simple">
 <li><p>e.g. “Buster was frightened” ✅ but “Buster saw frightened” :x:</p></li>
 <li><p>need subcategories of things (e.g. intransitive verb vs transitive verb vs dative verb) to know what symbols are allowed in rules</p></li>
 <li><p>verbs specifically have <strong>complements</strong> associated with them – unlike <strong>modifiers</strong> (like the word “really”), complemetes are not optional and usually not selected in the same way by the head</p></li>
@@ -867,7 +869,7 @@ document.write(`
 <li><p>What we mean when we say semantic: Toward a multidisciplinary semantic glossary (<a class="reference external" href="https://link.springer.com/article/10.3758/s13423-024-02556-7">reilly…venson, 2024</a>) - when a linguist refers to semantics, they are talking about word meaning, but a semantic memory is typically referencing concepts</p>
 <ul>
 <li><p>abstract - The quality of a concept (or word) whose meaning is understood primarily on the basis of language, but also draws from interoceptive experiences, including emotion, introspection, and metacognition</p></li>
-<li><p>Concepts -  coherent, relatively stable (but not static) units of knowledge in long-term memory that provide the elements from which more complex thoughts can be constructed. A concept captures commonalities and distinctions between a set of objects, events, relations, properties, and
+<li><p>Concepts - coherent, relatively stable (but not static) units of knowledge in long-term memory that provide the elements from which more complex thoughts can be constructed. A concept captures commonalities and distinctions between a set of objects, events, relations, properties, and
 states. Concepts allow for the transfer and generalization of information without requiring explicit learning of every new instance</p></li>
 </ul>
 </li>
@@ -942,7 +944,7 @@ states. Concepts allow for the transfer and generalization of information withou
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">5.2.1. benchmarks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">5.2.1.1. tasks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">5.2.1.2. datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-metrics">5.2.1.3. eval metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eval-training-metrics">5.2.1.3. eval/training metrics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-tasks">5.2.2. individual tasks</a><ul class="nav section-nav flex-column">
@@ -991,11 +993,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

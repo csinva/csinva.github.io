@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 422" role="img" aria-labelledby="title desc">
+  <title id="title">Explanation of behaviour</title>
+  <desc id="desc">EXPLANATION in the centre receives four arrows: information requirements and functional capacities (from the explanatory tool), information access and pragmatic goals (from the explainer). Left column: information processes; right column: impression management processes.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="fat" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect x="10" y="10" width="660" height="100" rx="16" fill="#e2e2e2" stroke="#8a8a8a" stroke-width="2"/>
+  <rect x="10" y="312" width="660" height="100" rx="16" fill="#e2e2e2" stroke="#8a8a8a" stroke-width="2"/>
+  <rect x="35" y="25" width="180" height="372" rx="16" fill="#ffffff" stroke="#8a8a8a" stroke-width="2"/>
+  <rect x="465" y="25" width="180" height="372" rx="16" fill="#ffffff" stroke="#8a8a8a" stroke-width="2"/>
+  <rect x="225" y="172" width="230" height="76" rx="14" fill="#ffffff" stroke="#8a8a8a" stroke-width="2.5"/>
+  <text class="c" x="125" y="56.8" font-size="23">Information</text>
+  <text class="c" x="125" y="83.3" font-size="23">requirements</text>
+  <text class="c" x="340" y="70.0" font-size="23">Explanatory tool</text>
+  <text class="c" x="555" y="56.8" font-size="23">Functional</text>
+  <text class="c" x="555" y="83.3" font-size="23">capacities</text>
+  <text class="c b" x="125" y="204.6" font-size="24">Information</text>
+  <text class="c b" x="125" y="232.2" font-size="24">processes</text>
+  <text class="c b" x="555" y="190.8" font-size="24">Impression</text>
+  <text class="c b" x="555" y="218.4" font-size="24">management</text>
+  <text class="c b" x="555" y="246.0" font-size="24">processes</text>
+  <text class="c" x="340" y="218.8" font-size="25">EXPLANATION</text>
+  <text class="c" x="125" y="354.8" font-size="23">Information</text>
+  <text class="c" x="125" y="381.3" font-size="23">access</text>
+  <text class="c" x="340" y="370.1" font-size="23">Explainer</text>
+  <text class="c" x="555" y="354.8" font-size="23">Pragmatic</text>
+  <text class="c" x="555" y="381.3" font-size="23">goals</text>
+  <path d="M190 92 L258 160" stroke="#2b2b2b" stroke-width="8" stroke-linecap="butt" marker-end="url(#fat)"/>
+  <path d="M490 92 L422 160" stroke="#2b2b2b" stroke-width="8" stroke-linecap="butt" marker-end="url(#fat)"/>
+  <path d="M190 330 L258 262" stroke="#2b2b2b" stroke-width="8" stroke-linecap="butt" marker-end="url(#fat)"/>
+  <path d="M490 330 L422 262" stroke="#2b2b2b" stroke-width="8" stroke-linecap="butt" marker-end="url(#fat)"/>
+</svg>

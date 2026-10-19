@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 450" role="img" aria-labelledby="title desc">
+  <title id="title">Structured prediction with soft constraints</title>
+  <desc id="desc">General case with soft constraints: argmax over y of w transpose phi(x, y) minus the sum over k of rho_k times d(y, I of C_k(x)). Annotations: w^T phi(x, y) is the model score for the structure; rho_k is the penalty for violating the constraint (if the constraint is hard, penalty = 1); d(y, I_{C_k(x)}) is how far the structure y is from satisfying constraint C_k, in the most simple case 0 if satisfied and 1 if not.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#1f6fb2" stroke-width="1.6"/>
+    </marker>
+    <style>
+      .m { font: 34px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .v { font-style: italic; }
+      .b { font-weight: bold; font-style: normal; }
+      .s { font-size: 22px; }
+      .ss { font-size: 16px; }
+      .box { fill: none; stroke: #1f6fb2; stroke-width: 2; }
+      .lead { fill: none; stroke: #1f6fb2; stroke-width: 2; stroke-dasharray: 6 5; }
+      .t { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .h { font: 28px Helvetica, Arial, sans-serif; fill: #1f6fb2; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <text class="h" x="525" y="36">General case: with soft constraints</text>
+
+  <!-- equation -->
+  <text class="m" x="20" y="112">arg max</text>
+  <text class="m b s" x="90" y="140">y</text>
+
+  <rect class="box" x="148" y="68" width="176" height="62"/>
+  <text class="m" x="156" y="112"><tspan class="b">w</tspan><tspan class="v s" dy="-14">T</tspan><tspan class="v" dy="14" dx="4">ϕ</tspan>(<tspan class="b">x</tspan>, <tspan class="b">y</tspan>)</text>
+
+  <text class="m" x="334" y="112">−</text>
+  <text class="m" x="370" y="118" style="font-size:48px">∑</text>
+  <text class="m v s" x="380" y="150">k</text>
+
+  <rect class="box" x="424" y="68" width="48" height="62"/>
+  <text class="m v" x="430" y="112">ρ<tspan class="s" dy="7">k</tspan></text>
+
+  <rect class="box" x="478" y="68" width="166" height="62"/>
+  <text class="m" x="484" y="112"><tspan class="v">d</tspan>(<tspan class="b">y</tspan>, <tspan class="v">I</tspan><tspan class="v s" dy="8">C</tspan><tspan class="v ss" dy="5">k</tspan><tspan class="s" dy="-5">(</tspan><tspan class="b s">x</tspan><tspan class="s">)</tspan><tspan dy="-8">)</tspan></text>
+
+  <!-- leader lines -->
+  <path class="lead" d="M236 130 V170 H60 V214" marker-end="url(#arrow)"/>
+  <path class="lead" d="M448 130 V286" marker-end="url(#arrow)"/>
+  <path class="lead" d="M561 130 V166 H840 V214" marker-end="url(#arrow)"/>
+
+  <!-- annotations -->
+  <text class="t" x="20" y="248">The model score for the structure</text>
+
+  <text class="t" x="400" y="320">Penalty for violating the</text>
+  <text class="t" x="400" y="350">constraint</text>
+  <text class="t" x="400" y="404">If the constraint is hard,</text>
+  <text class="t" x="400" y="434">penalty = 1.</text>
+
+  <text class="t" x="730" y="252">How far is the structure <tspan font-weight="bold">y</tspan> from</text>
+  <text class="t" x="730" y="282">satisfying the constraint C<tspan font-size="16" dy="5">k</tspan></text>
+  <text class="t" x="730" y="336">The most simple case:</text>
+  <text class="t" x="730" y="366">0: If satisfied</text>
+  <text class="t" x="730" y="396">1: If not</text>
+</svg>

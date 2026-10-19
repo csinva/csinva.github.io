@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 1440 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Line charts by category</title>
+  <desc id="desc">Five small line charts, one per funding area, of percent of funders from 2010 to 2015: health 67% to 75%, education 73% to 60%, human services 60% to 55%, arts and culture 20% to 43%, other 53% to 30%.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #1f6fb2; stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+      .dot { fill: #1f6fb2; }
+      .sep { stroke: #c8c8c8; stroke-width: 3; }
+      .cat { font: 44px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: end; }
+      .yr { font: 31px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .v0 { font: 26px Helvetica, Arial, sans-serif; fill: #1f6fb2; text-anchor: end; }
+      .v1 { font: bold 38px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .unit { font: 26px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+    </style>
+  </defs>
+  <text class="yr" x="453" y="72">2010</text>
+  <text class="yr" x="573" y="72">2011</text>
+  <text class="yr" x="691" y="72">2012</text>
+  <text class="yr" x="810" y="72">2013</text>
+  <text class="yr" x="929" y="72">2014</text>
+  <text class="yr" x="1048" y="72">2015</text>
+  <line x1="1093" y1="40" x2="1093" y2="78" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="unit" x="1105" y="73">% of funders</text>
+  <line class="sep" x1="10" y1="107" x2="1432" y2="107"/>
+  <line class="sep" x1="10" y1="312" x2="1432" y2="312"/>
+  <line class="sep" x1="10" y1="517" x2="1432" y2="517"/>
+  <line class="sep" x1="10" y1="721" x2="1432" y2="721"/>
+  <line class="sep" x1="10" y1="926" x2="1432" y2="926"/>
+  <line class="sep" x1="10" y1="1131" x2="1432" y2="1131"/>
+  <path class="ln" d="M455.0 165.0 L575.0 194.5 L693.0 177.5 L812.0 169.0 L931.0 158.0 L1050.0 147.5"/>
+  <circle class="dot" cx="455" cy="165" r="10"/>
+  <circle class="dot" cx="1050" cy="147.5" r="15"/>
+  <text class="v0" x="428" y="175">67%</text>
+  <text class="v1" x="1080" y="161.5">75%</text>
+  <text class="cat" x="279" y="225">Health</text>
+  <path class="ln" d="M455.0 368.0 L575.0 354.0 L693.0 366.0 L812.0 374.0 L931.0 388.0 L1050.0 394.0"/>
+  <circle class="dot" cx="455" cy="368" r="10"/>
+  <circle class="dot" cx="1050" cy="394" r="15"/>
+  <text class="v0" x="428" y="378">73%</text>
+  <text class="v1" x="1080" y="408">60%</text>
+  <text class="cat" x="279" y="429">Education</text>
+  <path class="ln" d="M455.0 599.0 L575.0 549.0 L693.0 563.0 L812.0 599.0 L931.0 603.0 L1050.0 609.0"/>
+  <circle class="dot" cx="455" cy="599" r="10"/>
+  <circle class="dot" cx="1050" cy="609" r="15"/>
+  <text class="v0" x="428" y="609">60%</text>
+  <text class="v1" x="1080" y="623">55%</text>
+  <text class="cat" x="279" y="606">Human</text>
+  <text class="cat" x="279" y="664">services</text>
+  <path class="ln" d="M455.0 884.0 L575.0 874.0 L693.0 868.0 L812.0 840.0 L931.0 864.0 L1050.0 838.0"/>
+  <circle class="dot" cx="455" cy="884" r="10"/>
+  <circle class="dot" cx="1050" cy="838" r="15"/>
+  <text class="v0" x="428" y="894">20%</text>
+  <text class="v1" x="1080" y="852">43%</text>
+  <text class="cat" x="279" y="811">Arts &amp;</text>
+  <text class="cat" x="279" y="868">culture</text>
+  <path class="ln" d="M455.0 1022.0 L575.0 1067.5 L693.0 1038.5 L812.0 1067.5 L931.0 1038.5 L1050.0 1068.0"/>
+  <circle class="dot" cx="455" cy="1022" r="10"/>
+  <circle class="dot" cx="1050" cy="1068" r="15"/>
+  <text class="v0" x="428" y="1032">53%</text>
+  <text class="v1" x="1080" y="1082">30%</text>
+  <text class="cat" x="279" y="1043">Other</text>
+</svg>

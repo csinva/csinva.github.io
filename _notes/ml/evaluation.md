@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Evaluation
+subtitle: Some notes on evaluating models - losses, metrics, cross-validation, and stability.
 category: ml
 ---
 
@@ -9,16 +10,16 @@ category: ml
 # losses
 
 - define a loss function $\mathcal{L}$
-  - 0-1 loss: $\vert C-f(X)\vert$  - hard to minimize (combinatorial)
+  - 0-1 loss: $\vert C-f(X)\vert$ - hard to minimize (combinatorial)
   - $L_2$ loss: $[C-f(X)]^2$
 - *risk* = $E_{(x,y)\sim D}[\mathcal L(f(X), y) ]$
 - optimal classifiers
   - Bayes classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=\max_f P(f\vert X)$
-  - KNN minimizes $L_2$ loss: $\hat{f}(X)=E(Y\vert X)$ 
+  - KNN minimizes $L_2$ loss: $\hat{f}(X)=E(Y\vert X)$
 - classification cost functions
   1. misclassification error - not differentiable
-  2. Gini index: $\sum_{i != j} p_i q_j$
-  3. cross-entropy: $-\sum_x p(x)\: \log \: \hat p(x) $, where $p(x)$ are usually labels and $\hat p(x)$ are softmax outputs
+  2. Gini index: $\sum_{i \neq j} p_i q_j$
+  3. cross-entropy: $$-\sum_x p(x)\: \log \: \hat p(x) $$, where $p(x)$ are usually labels and $\hat p(x)$ are softmax outputs
      1. only penalizes target class (others penalized implicitly because of softmax)
      2. for binary, $- p \log \hat p - (1-p) \log (1-\hat p)$
 
@@ -26,14 +27,14 @@ category: ml
 
 *goodness of fit* - how well does the learned distribution represent the real distribution?
 
-![Screen Shot 2019-06-30 at 8.27.56 PM](../assets/eval_metrics.png)
+classification of a test dataset produces four outcomes – true positive, false positive, true negative, and false negative <img style="width: 560px; max-width: 100%;" src="../assets/eval_metrics.svg" alt="Four outcomes of a classifier"/>
 
 - accuracy-based
   - accuracy = (TP + TN) / (P + N)
     - correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP / P + TN / N)
 - denominator is total pos/neg
-  - **recall** = **sensitivity** =  **true-positive rate** = TP / P = TP / (TP + FN)
+  - **recall** = **sensitivity** = **true-positive rate** = TP / P = TP / (TP + FN)
     - what fraction of the real positives do we return?
   - **specificity** = true negative rate = TN / N = TN / (TN + FP)
     - what fraction of the real negatives do we return?
@@ -42,13 +43,11 @@ category: ml
 - fraction is total predictions
   - **precision** = **positive predictive value** = TP / (TP + FP)
     - what fraction of the prediction positives are true positives?
-
   - **negative predictive value** = TN / (FN + TN)
     - what fraction of predicted negatives are true negatives?
 - **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
 - [NRI](https://en.wikipedia.org/wiki/Net_reclassification_improvement) (controversial): compares 2 model's binary predictions
 - curves - easiest is often to just plot TP vs TN or FP vs FN
-
   - roc curve: true-positive rate (recall) vs. false-positive rate
     - perfect is recall = 1, false positive rate = 0
   - precision-recall curve
@@ -57,8 +56,8 @@ category: ml
 - **concordance** = inter-rate reliability
    - exact concordance - percentage where cohort is in total agreement (i.e. accuracy)
    - Cohen's kappa coefficient - 0 is uncorrelated, 1 is perfect, negative is inverse correlation
-      - $\kappa \equiv \frac{p_{o}-p_{e}}{1-p_{e}}=1-\frac{1-p_{o}}{1-p_{e}}$
-      - $p_o$ is relative observed agreement and $p_e$ is chance expected agreement
+      - $\kappa \equiv \frac{\cblue{p_{o}}-\corange{p_{e}}}{1-\corange{p_{e}}}=1-\frac{1-\cblue{p_{o}}}{1-\corange{p_{e}}}$
+      - $\cblue{p_o}$ is <span class="cblue">relative observed agreement</span> and $\corange{p_e}$ is <span class="corange">chance expected agreement</span>
    - weighted kappa coefficient - used when ordering for predicted labels (being off by more is given bigger weight)
 
 # comparing two things
@@ -110,7 +109,7 @@ category: ml
 - computational cost
 - interpretability
 - model-selection criteria
-  - *adjusted $R^2_p$* - penalty 
+  - *adjusted $R^2_p$* - penalty
   - *Mallow's $C_p$*
   - *$AIC_p$*
   - *$BIC_p$*
@@ -122,12 +121,10 @@ category: ml
 - ROUGE, BLEU
 - BERTScore, BLEURTScore
 
-
-
 # ranking
 
 - mean reciprocal rank
 - normalized discounted cumulative gain (NCDG)
-  - discounted cumulative gain: $\sum_{i=1}^p \frac{r e l_i}{\log _2(i+1)}$, where $rel_i$ is usually binary and denominator emphasizes putting higher relevance results first
+  - discounted cumulative gain: $\sum_{i=1}^p \frac{\cblue{r e l_i}}{\corange{\log _2(i+1)}}$, where $\cblue{rel_i}$ is usually binary and <span class="corange">denominator</span> emphasizes putting higher relevance results first
   - normalized CDG normalizes this by the ideal (so just putting all ones in the numerator)
   - sometimes, when $rel_i \in (0, 1)$ rather than binary, people use $2^{rel_i} - 1$ to further incentivize relevances closer to 1

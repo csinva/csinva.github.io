@@ -1,0 +1,71 @@
+# Order of notes on the homepage, simplest -> most complex, per column (by note filename).
+# Notes not listed here still show up, appended alphabetically at the end of their column.
+research:
+  - ovw_interesting_science
+  - ovw_ml_medicine
+  - ovw_embeddings
+  - ovw_llms
+  - ovw_transfer_learning
+  - ovw_uncertainty
+  - ovw_interp
+  - ovw_generalization
+  - ovw_disentanglement
+  - ovw_causal_inference
+  - ovw_omics
+  - ovw_scat
+  - ovw_complexity
+  - ovw_dl_theory
+ai:
+  - search
+  - rl_decisions
+  - llms
+  - psychology
+  - cogsci
+  - philosophy
+  - fairness_sts
+  - ai_futures
+cs:
+  - data_structures
+  - algo
+  - languages_parallel
+  - arch
+  - os
+  - retrieval_databases
+  - comp_theory
+  - quantum
+math:
+  - math_basics
+  - calculus
+  - linear_algebra
+  - differential_equations
+  - analysis
+  - optimization
+  - signals
+  - chaos
+ml:
+  - classification
+  - evaluation
+  - unsupervised
+  - kernels
+  - deep_learning
+  - comp_vision
+  - nlp
+  - learning_theory
+neuro:
+  - brain_basics
+  - sensory_input
+  - vissci
+  - motor
+  - memory
+  - development
+  - disease
+  - comp_neuro
+stat:
+  - stat
+  - data_analysis
+  - testing
+  - linear_models
+  - time_series
+  - info_theory
+  - graphical_models
+  - causal_inference

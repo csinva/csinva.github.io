@@ -12,7 +12,7 @@ subtitle: Some notes on algorithms following the book <a href="https://en.wikipe
   - big-oh: O(g): functions that grow no faster than g - upper bound, runs in time less than g
     - $f(n) \leq c\cdot g(n)$ for some c, large n
     - set of functions s.t. there exists c,k>0, 0 ≤ f(n) ≤ c*g(n), for all n > k
-  - big-theta:  $\Theta (g)$: functions that grow at the same rate as g
+  - big-theta: $\Theta (g)$: functions that grow at the same rate as g
     - big-oh(g) and big-omega(g) - asymptotic tight bound
   - big-omega: $\Omega(g)$: functions that grow at least as fast as g
     - f(n) $\geq$ c*g(n) for some c, large n
@@ -30,7 +30,7 @@ subtitle: Some notes on algorithms following the book <a href="https://en.wikipe
 - add 2 functions, growth rate will be $O(\max(g_1(n), g_2(n)))$ (same for sequential code)
 - recurrence thm: $f(n) = O(n^c) \Rightarrow T(n) = O(n^c)$
   - $T(n) = a*T(n/b) + f(n)$
-  - $c = log_b(a)$
+  - $c = \log_b(a)$
 - over bounded number of elements, almost everything is constant time
 
 # recursion
@@ -81,114 +81,88 @@ return K[n][W];
   - considerations: worst case, average, in practice, input distribution, stability (order coming in is preserved for things with same keys), in-situ (in-place), stack depth, having to read/write to disk (disk is much slower), parallelizable, online (more data coming in)
 - adaptive - changes its behavior based on input (ex. bubble sort will stop)
 
-## comparised-based
+## comparison-based
 
-### bubble sort
-
-- keep swapping adjacent pairs
-
-```java
-for i=1:n-1
- if a[i+1]<a[i]
-  swap(a,i,i+1)
-```
-
-- have a flag that tells if you did no swaps - done
-- number of passes ~ how far elements are from their final positions
-- O(n^2)
-
-### odd-even sort
-
-- swap even pairs
-- then swap odd pairs
-- parallelizable
-
-### selection sort
-
-- move largest to current position
-  for i=1:n-1
-  for j=1:n
-  x = max(x,a[j])
-  jmax = j
-  swap(a,i,j)
-- O(n^2)
-
-### insertion sort
-
-- insert each item into lists
-  for i=2:n
-  insert a[i] into a[1..(i-1)]
-  shift
-- O(n^2), O(nk) where k is max dist from final position
-- best when almost sorted
-
-### heap sort
-
-- insert everything into heap
-- keep removing max
-- can do in place by storing everything in array
-- can use any height-balanced tree instead of heap
-  - traverse tree to get order
-  - ex. B-tree: multi-rotations occur infrequently, average O(log n) height
-- O(n log n)
-
-### smooth sort
-
-- adaptive heapsort
-- collection of heaps (each one is a factor larger than the one before)
-- can add and remove in essentially constant time if data is in order
-
-### merge sort
-
-- split into smaller arrays, sort, merge
-- T(n) = 2T(n/2) + n = O(n log n)
-- stable, parallelizable (if parallel, not in place)
-
-### quicksort
-
-- split on pivot, put smaller elements on left, larger on right
-- O(n log n) average, O(n^2) worst
-- O(log n) space
-
-### shell sort
-
-- generalize insertion sort
-- insertion-sort all items i apart where i starts big and then becomes small
-  - sorted after last pass (i=1)
-- O(n^2), O(n^(3/2)), ... unsure what complexity is
-  - no matter what must be more than n log n
-- not used much in practice
+- **bubble sort**
+  - keep swapping adjacent pairs
+    ```java
+    for i=1:n-1
+     if a[i+1]<a[i]
+      swap(a,i,i+1)
+    ```
+  - have a flag that tells if you did no swaps - done
+  - number of passes ~ how far elements are from their final positions
+  - O(n^2)
+- **odd-even sort**
+  - swap even pairs
+  - then swap odd pairs
+  - parallelizable
+- **selection sort**
+  - move largest to current position
+    for i=1:n-1
+    for j=1:n
+    x = max(x,a[j])
+    jmax = j
+    swap(a,i,j)
+  - O(n^2)
+- **insertion sort**
+  - insert each item into lists
+    for i=2:n
+    insert a[i] into a[1..(i-1)]
+    shift
+  - O(n^2), O(nk) where k is max dist from final position
+  - best when almost sorted
+- **heap sort**
+  - insert everything into heap
+  - keep removing max
+  - can do in place by storing everything in array
+  - can use any height-balanced tree instead of heap
+    - traverse tree to get order
+    - ex. B-tree: multi-rotations occur infrequently, average O(log n) height
+  - O(n log n)
+- **smooth sort**
+  - adaptive heapsort
+  - collection of heaps (each one is a factor larger than the one before)
+  - can add and remove in essentially constant time if data is in order
+- **merge sort**
+  - split into smaller arrays, sort, merge
+  - T(n) = 2T(n/2) + n = O(n log n)
+  - stable, parallelizable (if parallel, not in place)
+- **quicksort**
+  - split on pivot, put smaller elements on left, larger on right
+  - O(n log n) average, O(n^2) worst
+  - O(log n) space
+- **shell sort**
+  - generalize insertion sort
+  - insertion-sort all items i apart where i starts big and then becomes small
+    - sorted after last pass (i=1)
+  - O(n^2), O(n^(3/2)), ... unsure what complexity is
+    - no matter what must be more than n log n
+  - not used much in practice
 
 ## not comparison-based
 
-### counting sort
-
-- use values as array indices in new sort
-- keep count of number of times at each index
-- for specialized data only, need small values
-- O(n) time, O(k) space
-
-### bucket sort
-
-- spread data into buckets based on value
-- sort the buckets
-- O(n+k) time
-- buckets could be trees
-
-### radix sort
-
-- sort each digit in turn
-- stable sort on each digit
-  - like bucket sort d times
-- O(d*n) time, O(k+n) space
-
-### meta sort
-
-- like quicksort, but O(n log n) worst case
-- run quicksort, mergesort in parallel
-  - stop when one stops
-- there is an overhead but doesn't affect big-oh analysis
-- ave, worst-cast = O(n log n)
+- **counting sort**
+  - use values as array indices in new sort
+  - keep count of number of times at each index
+  - for specialized data only, need small values
+  - O(n) time, O(k) space
+- **bucket sort**
+  - spread data into buckets based on value
+  - sort the buckets
+  - O(n+k) time
+  - buckets could be trees
+- **radix sort**
+  - sort each digit in turn
+  - stable sort on each digit
+    - like bucket sort d times
+  - O(d*n) time, O(k+n) space
+- **meta sort**
+  - like quicksort, but O(n log n) worst case
+  - run quicksort, mergesort in parallel
+    - stop when one stops
+  - there is an overhead but doesn't affect big-oh analysis
+  - ave, worst-cast = O(n log n)
 
 ## sorting overview
 
@@ -345,15 +319,12 @@ for i=1:n-1
       - Euclidean minimum spanning tree is a subset of the Delaunay triangulation (can be computed easily)
   - calculating Voronoi diagram
     - discrete case / bitmap - expand breadth-first waves from all points
-
       - time is O(bitmap size)
       - time is independent of #points
     - intersecting half planes
-
       - Voronoi cell of a point is intersection of all half-planes induced by the perpendicular bisectors w.r.t all other points
       - use intersection of convex polygons to intersect half-planes (nlogn time per cell)
     - can be computed in nlogn total time
-
       1. idea divide and conquer
 
       - merging is complex

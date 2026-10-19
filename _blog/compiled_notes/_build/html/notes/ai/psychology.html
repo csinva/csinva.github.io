@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.9. psychology</title>
+    <title>6.8. psychology</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ai/psychology';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.10. representations" href="knowledge_rep.html" />
-    <link rel="prev" title="6.8. philosophy" href="philosophy.html" />
+    <link rel="next" title="7. neuro" href="../neuro/neuro_section.html" />
+    <link rel="prev" title="6.7. philosophy" href="philosophy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai.html">6. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai_section.html">6. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,92 +421,45 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanations">6.9.1. explanations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psychology-of-xai-miller-2006">6.9.1.1. psychology of xai (miller, 2006)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-structure-and-function-of-explanations-lombrozo-2006">6.9.1.2. The structure and function of explanations (lombrozo 2006)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-explanation-lombrozo-vasilyeva-2017">6.9.1.3. Causal Explanation (lombrozo &amp; vasilyeva 2017)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-inference-w-explanations">6.9.1.3.1. causal <em>inference</em> w/ explanations</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-discovery-w-explanations">6.9.1.3.2. causal <em>discovery</em> w/ explanations</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-responsibility-w-explanations">6.9.1.3.3. causal <em>responsibility</em> w/ explanations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanations">6.8.1. explanations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psychology-of-xai-miller-2006">6.8.1.1. psychology of xai (miller, 2006)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-structure-and-function-of-explanations-lombrozo-2006">6.8.1.2. The structure and function of explanations (lombrozo 2006)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-explanation-lombrozo-vasilyeva-2017">6.8.1.3. Causal Explanation (lombrozo &amp; vasilyeva 2017)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-taxonomy">6.8.1.4. explanation taxonomy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanisms">6.8.1.5. causal mechanisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-explanation-work">6.8.1.6. misc explanation work</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-taxonomy">6.9.1.4. explanation taxonomy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanisms">6.9.1.5. causal mechanisms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-explanation-work">6.9.1.6. misc explanation work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-invisible-gorilla">6.8.2. the invisible gorilla</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-moral-animal">6.8.3. the moral animal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sex-romance-and-love">6.8.3.1. sex, romance, and love</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-cement">6.8.3.2. social cement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-strife">6.8.3.3. social strife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morals-of-the-story">6.8.3.4. morals of the story</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-invisible-gorilla">6.9.2. the invisible gorilla</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-moral-animal">6.9.3. the moral animal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sex-romance-and-love">6.9.3.1. sex, romance, and love</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-comes-of-age">6.9.3.1.1. darwin comes of age</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#male-and-female">6.9.3.1.2. male and female</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gender-differences-in-evolution">6.9.3.1.3. gender differences in evolution</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-marriage-market">6.9.3.1.4. the marriage market</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-righteous-mind-why-good-people-are-divided-by-politics-and-religion">6.8.4. The Righteous Mind: Why Good People Are Divided by Politics and Religion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuitions-come-first-strategic-reasoning-second">6.8.4.1. intuitions come first, strategic reasoning second</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-s-more-to-morality-than-harm-and-fairness">6.8.4.2. there’s more to morality than harm and fairness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morality-binds-and-blinds">6.8.4.3. morality binds and blinds</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-cement">6.9.3.2. social cement</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#families">6.9.3.2.1. families</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-and-the-savages">6.9.3.2.2. darwin and the savages</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#friends">6.9.3.2.3. friends</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-s-conscience">6.9.3.2.4. darwin’s conscience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-brief-history-of-intelligence-max-bennett">6.8.5. a brief history of intelligence (max bennett)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homo-deus">6.8.6. homo deus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-problems-famine-war-plague">6.8.6.1. old problems: famine, war, plague</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-goals-immortality-happiness-and-divinity">6.8.6.2. new goals: immortality, happiness and divinity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-homo-sapiens-conquers-the-world">6.8.6.3. PART I – <em>Homo sapiens</em> Conquers the World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-homo-sapiens-gives-meaning-to-the-world">6.8.6.4. PART II <em>Homo Sapiens</em> Gives Meaning to the World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-homo-sapiens-loses-control">6.8.6.5. PART III <em>Homo Sapiens</em> Loses Control</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-strife">6.9.3.3. social strife</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-s-delay">6.9.3.3.1. darwin’s delay</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#social-status">6.9.3.3.2. social status</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deception-and-self-deception">6.9.3.3.3. deception and self-deception</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-s-triumph">6.9.3.3.4. darwin’s triumph</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morals-of-the-story">6.9.3.4. morals of the story</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwinian-and-freudian-cynicism">6.9.3.4.1. darwinian (and freudian) cynicism</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evolutionary-ethics">6.9.3.4.2. evolutionary ethics</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blaming-the-victim">6.9.3.4.3. blaming the victim</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-gets-religion">6.9.3.4.4. darwin gets religion</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-tips">6.9.3.4.5. general tips</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-righteous-mind-why-good-people-are-divided-by-politics-and-religion">6.9.4. The Righteous Mind: Why Good People Are Divided by Politics and Religion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuitions-come-first-strategic-reasoning-second">6.9.4.1. intuitions come first, strategic reasoning second</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-morality-come-from">6.9.4.1.1. where does morality come from</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intuitive-dog-and-rational-tail">6.9.4.1.2. intuitive dog and rational tail</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elephants-rule">6.9.4.1.3. elephants rule</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vote-for-me-and-here-s-why">6.9.4.1.4. vote for me (and here’s why)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-s-more-to-morality-than-harm-and-fairness">6.9.4.2. there’s more to morality than harm and fairness</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-weird-mentality">6.9.4.2.1. beyond WEIRD mentality</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#taste-buds-of-the-righteous-mind-7-the-moral-foundations-of-politics">6.9.4.2.2. taste buds of the righteous mind / 7 - the moral foundations of politics</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conservative-advantage">6.9.4.2.3. the conservative advantage</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morality-binds-and-blinds">6.9.4.3. morality binds and blinds</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-we-so-groupish">6.9.4.3.1. why are we so groupish</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hive-switch">6.9.4.3.2. the hive switch</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#religion-is-a-team-sport">6.9.4.3.3. religion is a team sport</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disagreeing-more-constructively">6.9.4.3.4. disagreeing more constructively</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-brief-history-of-intelligence-max-bennett">6.9.5. a brief history of intelligence (max bennett)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homo-deus">6.9.6. homo deus</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-problems-famine-war-plague">6.9.6.1. old problems: famine, war, plague</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-goals-immortality-happiness-and-divinity">6.9.6.2. new goals: immortality, happiness and divinity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-homo-sapiens-conquers-the-world">6.9.6.3. PART I – <em>Homo sapiens</em> Conquers the World</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-homo-sapiens-gives-meaning-to-the-world">6.9.6.4. PART II <em>Homo Sapiens</em> Gives Meaning to the World</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-homo-sapiens-loses-control">6.9.6.5. PART III <em>Homo Sapiens</em> Loses Control</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictably-irrational">6.9.7. Predictably Irrational</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maybe-you-should-talk-to-someone">6.9.8. maybe you should talk to someone</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gifted-child-alice-miller">6.9.9. the gifted child (alice miller)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attached-amir-levine-rachel-heller">6.9.10. attached (amir levine &amp; rachel heller)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarization-ezra-klein">6.9.11. polarization (ezra klein)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freud">6.9.12. freud</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">6.9.13. misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictably-irrational">6.8.7. Predictably Irrational</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maybe-you-should-talk-to-someone">6.8.8. maybe you should talk to someone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gifted-child-alice-miller">6.8.9. the gifted child (alice miller)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attached-amir-levine-rachel-heller">6.8.10. attached (amir levine &amp; rachel heller)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarization-ezra-klein">6.8.11. polarization (ezra klein)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freud">6.8.12. freud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">6.8.13. misc</a></li>
 </ul>
             </nav>
         </div>
@@ -533,15 +472,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="psychology">
-<h1><span class="section-number">6.9. </span>psychology<a class="headerlink" href="#psychology" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6.8. </span>psychology<a class="headerlink" href="#psychology" title="Link to this heading">#</a></h1>
 <section id="explanations">
-<h2><span class="section-number">6.9.1. </span>explanations<a class="headerlink" href="#explanations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.1. </span>explanations<a class="headerlink" href="#explanations" title="Link to this heading">#</a></h2>
 <section id="psychology-of-xai-miller-2006">
-<h3><span class="section-number">6.9.1.1. </span>psychology of xai (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0004370218305988">miller, 2006</a>)<a class="headerlink" href="#psychology-of-xai-miller-2006" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3><span class="section-number">6.8.1.1. </span>psychology of xai (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0004370218305988">miller, 2006</a>)<a class="headerlink" href="#psychology-of-xai-miller-2006" title="Link to this heading">#</a></h3>
+<ul>
 <li><p>people employ certain biases (kahneman, 2011) and social expectations (hilton, 1990) when they generate and evaluate explanation</p></li>
 <li><p>4 properties</p>
-<ul>
+<ul class="simple">
 <li><p><strong>Explanations are contrastive</strong> — they are sought in response to particular counter- factual cases – people do not ask why event P happened, but rather why event P happened instead of some event Q</p></li>
 <li><p><strong>Explanation are selected (in a biased manner)</strong> — people use cognitive biases to expect and give specific causes rather than all the possible real causes</p></li>
 <li><p><strong>Probabilities probably don’t matter</strong> — while truth and likelihood are important in explanation and probabilities really do matter, referring to probabilities or statistical relationships in explanation is not as effective as referring to causes</p></li>
@@ -549,7 +488,7 @@ document.write(`
 </ul>
 </li>
 <li><p>philosophical foundations</p>
-<ul>
+<ul class="simple">
 <li><p>“To explain an event is to provide some information about its causal history…”</p></li>
 <li><p>2 types of causal definitions: dependence (e.g. probabilistic model) or transference (physical causation)</p></li>
 <li><p>2 types of (perceived) causes: internal (due to an actor) vs external (due to situation / environment)</p></li>
@@ -557,7 +496,7 @@ document.write(`
 </li>
 <li><p>explanation is an answer to a <em>why-question</em></p></li>
 <li><p><em>abductive reasoning</em> - deriving a hypothesis to explain observed phenomenon</p>
-<ul>
+<ul class="simple">
 <li><p>“inference to the best explanation” (harman)</p></li>
 <li><p>contrasts with <em>inductive reasoning</em> - accepting a hypothesis via scientific experiments</p></li>
 </ul>
@@ -565,7 +504,7 @@ document.write(`
 <li><p>contrasts - lots of possible contrasts given a question, often communicated using tone</p></li>
 <li><p>overton gives 5 categories and 4 relations that define building blocks for any scientific explanation</p></li>
 <li><p>social attribution - big emphasis on intentionality</p>
-<ul>
+<ul class="simple">
 <li><p>folk psychology does not describe how we think; it describes how we think we think</p></li>
 <li><p>while people attribute less intentionality to aggregate groups than to individuals, they attribute more intention- ality to jointly acting groups than to individuals (o’laughlin &amp; malle)</p></li>
 <li><p>side-effect effect = knobe effect - asymmetry of responses of side effects in harm/help scenarios - moral character of consequences influences how non-moral aspects (e.g. intentionality) are judged</p>
@@ -577,28 +516,29 @@ document.write(`
 </li>
 <li><p>cognitive processes used in explanation</p>
 <ul>
-<li><p><img alt="behaviour_explanation" src="../../_images/behaviour_explanation.png" /></p></li>
+<li><img style="width: 560px; max-width: 100%;" src="../assets/behaviour_explanation.svg" alt="Explanation of behaviour"/>
+</li>
 <li><p><em>causal connection</em> - process people use to identify the causes of events</p>
-<ul>
+<ul class="simple">
 <li><p>explaining (which forces people to think more systematically about the abduction process) is good for fostering generalisations, but this comes at a cost of over-generalisation (williams et al.)</p></li>
 <li><p>“Identifying something as an instance of a kind and explaining some of its properties in terms of its being the kind of thing it is are not two distinct activities, but a single cognitive activity.” (prasada)</p></li>
 <li><p>people tend to focus more on abnormal causes and also differ based on their perspective (kahneman &amp; tversky)</p></li>
 </ul>
 </li>
 <li><p><em>explanation selection</em> - process people use to select a small subset of identified causes as the explanation</p>
-<ul>
+<ul class="simple">
 <li><p>contrastive, abnormality, intentionality, functionality, necessity, sufficienty, robustness, responsibility, blame</p></li>
 </ul>
 </li>
 <li><p><em>explanation evaluation</em> - processes an explainee uses to evaluate the quality of an explanation</p>
-<ul>
+<ul class="simple">
 <li><p>probability, simplicity, generalizability, and coherence with prior beliefs.</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>explanation is social - often is conversational</p>
-<ul>
+<ul class="simple">
 <li><p>Grice’s maxims of conversation: quality, quantity, relation, and manner</p>
 <ul>
 <li><p>only say what you believe; only say as much as is necessary; only say what is relevant; and say it in a nice way</p></li>
@@ -609,7 +549,7 @@ document.write(`
 </ul>
 </section>
 <section id="the-structure-and-function-of-explanations-lombrozo-2006">
-<h3><span class="section-number">6.9.1.2. </span><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1364661306002117">The structure and function of explanations</a> (lombrozo 2006)<a class="headerlink" href="#the-structure-and-function-of-explanations-lombrozo-2006" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.1.2. </span>The structure and function of explanations (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1364661306002117">lombrozo 2006</a>)<a class="headerlink" href="#the-structure-and-function-of-explanations-lombrozo-2006" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>explanation structures</p>
 <ul class="simple">
@@ -642,8 +582,7 @@ document.write(`
 <li><p>“when generated from true beliefs, explanations provide an invaluable source of constraint; when generated from false beliefs, explanations can perpetuate inaccuracy.”</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>generalization of properties</p></li>
-</ol>
+<li><p>generalization of properties</p>
 <ul class="simple">
 <li><p>basics of generalization</p>
 <ul>
@@ -653,7 +592,7 @@ document.write(`
 </li>
 <li><p>explanations can override these basics</p></li>
 </ul>
-<ol class="arabic simple" start="3">
+</li>
 <li><p>generalization of knowledge systems</p></li>
 </ol>
 <ul class="simple">
@@ -672,14 +611,12 @@ document.write(`
 </ul>
 </section>
 <section id="causal-explanation-lombrozo-vasilyeva-2017">
-<h3><span class="section-number">6.9.1.3. </span>Causal Explanation (lombrozo &amp; vasilyeva 2017)<a class="headerlink" href="#causal-explanation-lombrozo-vasilyeva-2017" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.1.3. </span>Causal Explanation (lombrozo &amp; vasilyeva 2017)<a class="headerlink" href="#causal-explanation-lombrozo-vasilyeva-2017" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>explanations appeal to causes (although not all explanations are causal e.g. mathematics)</p></li>
 <li><p>causal inference here not the same as the way it is used in statistics</p></li>
-</ul>
-<section id="causal-inference-w-explanations">
-<h4><span class="section-number">6.9.1.3.1. </span>causal <em>inference</em> w/ explanations<a class="headerlink" href="#causal-inference-w-explanations" title="Link to this heading">#</a></h4>
-<ul class="simple">
+<li><p><strong>causal inference w/ explanations</strong></p>
+<ul>
 <li><p>“inference to the best explanation” - believe hypothesis that <em>best explains</em> the data</p>
 <ul>
 <li><p>this is not just bayesian inference (a common assumption)</p>
@@ -709,10 +646,9 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="causal-discovery-w-explanations">
-<h4><span class="section-number">6.9.1.3.2. </span>causal <em>discovery</em> w/ explanations<a class="headerlink" href="#causal-discovery-w-explanations" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>causal discovery w/ explanations</strong></p>
+<ul>
 <li><p>causal discovery = causal model learning</p></li>
 <li><p>engaging in explanation influences causal model learning</p>
 <ul>
@@ -726,7 +662,7 @@ document.write(`
 <li><p>reasons why explanation alters causal learning</p>
 <ul>
 <li><p><strong>attention</strong> - explanation doesn’t just boost attention - leads to specific benefits / deficits</p></li>
-<li><p><strong>motivation</strong> - explaining plays a motivational role  (e.g. gopnik 2000 “Explanation as orgasm”)</p>
+<li><p><strong>motivation</strong> - explaining plays a motivational role (e.g. gopnik 2000 “Explanation as orgasm”)</p>
 <ul>
 <li><p>i.e. people seeking good explanations motivates causal understanding</p></li>
 </ul>
@@ -736,10 +672,9 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="causal-responsibility-w-explanations">
-<h4><span class="section-number">6.9.1.3.3. </span>causal <em>responsibility</em> w/ explanations<a class="headerlink" href="#causal-responsibility-w-explanations" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>causal responsibility w/ explanations</strong></p>
+<ul>
 <li><p><strong>causal responsibility</strong> = to which cause(s) do we attribute a given effect?</p>
 <ul>
 <li><p>ex. “why did she slip?” - either “she is clumsy!” or “the staircase is slippery!”</p></li>
@@ -752,10 +687,11 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
+</li>
+</ul>
 </section>
 <section id="explanation-taxonomy">
-<h3><span class="section-number">6.9.1.4. </span>explanation taxonomy<a class="headerlink" href="#explanation-taxonomy" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.1.4. </span>explanation taxonomy<a class="headerlink" href="#explanation-taxonomy" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Aristotle’s 4 “causes” or modes of explanation</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -816,7 +752,7 @@ document.write(`
 </ul>
 </section>
 <section id="causal-mechanisms">
-<h3><span class="section-number">6.9.1.5. </span>causal mechanisms<a class="headerlink" href="#causal-mechanisms" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.1.5. </span>causal mechanisms<a class="headerlink" href="#causal-mechanisms" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>mechanism</strong> - spells out the intermediate steps between some cause and some effect</p>
 <ul>
@@ -832,7 +768,7 @@ document.write(`
 </ul>
 </section>
 <section id="misc-explanation-work">
-<h3><span class="section-number">6.9.1.6. </span>misc explanation work<a class="headerlink" href="#misc-explanation-work" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.1.6. </span>misc explanation work<a class="headerlink" href="#misc-explanation-work" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Evaluating computational models of explanation using human judgments (pacer, williams, chen, lombrozo, &amp; griffiths, 2013) [<a class="reference external" href="http://cocosci.princeton.edu/tom/papers/FormalExplanationModelUAI2013.pdf">PDF</a>]</p>
 <ul>
@@ -883,7 +819,7 @@ document.write(`
 </section>
 </section>
 <section id="the-invisible-gorilla">
-<h2><span class="section-number">6.9.2. </span>the invisible gorilla<a class="headerlink" href="#the-invisible-gorilla" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.2. </span>the invisible gorilla<a class="headerlink" href="#the-invisible-gorilla" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We think we experience much more of our physical world than we do</p></li>
 <li><p>We generally only see what we’re looking for</p></li>
@@ -896,12 +832,12 @@ document.write(`
 </ul>
 </section>
 <section id="the-moral-animal">
-<h2><span class="section-number">6.9.3. </span>the moral animal<a class="headerlink" href="#the-moral-animal" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.3. </span>the moral animal<a class="headerlink" href="#the-moral-animal" title="Link to this heading">#</a></h2>
 <p><strong>Why We Are, the Way We Are: The New Science of Evolutionary Psychology</strong> - Robert Wright, 1965. Notes in this section are not an endorsement of the author’s views.</p>
 <section id="sex-romance-and-love">
-<h3><span class="section-number">6.9.3.1. </span>sex, romance, and love<a class="headerlink" href="#sex-romance-and-love" title="Link to this heading">#</a></h3>
-<section id="darwin-comes-of-age">
-<h4><span class="section-number">6.9.3.1.1. </span>darwin comes of age<a class="headerlink" href="#darwin-comes-of-age" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">6.8.3.1. </span>sex, romance, and love<a class="headerlink" href="#sex-romance-and-love" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>darwin comes of age</strong></p>
 <ul class="simple">
 <li><p><em>Emile Durkheim</em> - father of modern sociology</p></li>
 <li><p><em>Wilson</em> - initial book sociobiology was vehemently opposed</p>
@@ -920,9 +856,8 @@ document.write(`
 </ol>
 </li>
 </ul>
-</section>
-<section id="male-and-female">
-<h4><span class="section-number">6.9.3.1.2. </span>male and female<a class="headerlink" href="#male-and-female" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>male and female</strong></p>
 <ul class="simple">
 <li><p>have to consider environment of evolutionary adaptation (EEA)</p></li>
 <li><p>many studies on !Kung San of the Kalahari desert in Africa</p></li>
@@ -945,9 +880,8 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="gender-differences-in-evolution">
-<h4><span class="section-number">6.9.3.1.3. </span>gender differences in evolution<a class="headerlink" href="#gender-differences-in-evolution" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>gender differences in evolution</strong></p>
 <ul>
 <li><p>ideas that humans are a <em>pair-bonding species</em></p>
 <ul class="simple">
@@ -996,9 +930,8 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="the-marriage-market">
-<h4><span class="section-number">6.9.3.1.4. </span>the marriage market<a class="headerlink" href="#the-marriage-market" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>the marriage market</strong></p>
 <ul class="simple">
 <li><p>polygamy, initially, seems to benefit males</p>
 <ul>
@@ -1024,13 +957,14 @@ document.write(`
 <li><p>current divorce rates are high, hurting all alike</p></li>
 <li><p>Charles Darwin focused on wealth, Emma focused on looks, they were married happily</p></li>
 </ul>
-</section>
+</li>
+</ul>
 </section>
 <section id="social-cement">
-<h3><span class="section-number">6.9.3.2. </span>social cement<a class="headerlink" href="#social-cement" title="Link to this heading">#</a></h3>
-<section id="families">
-<h4><span class="section-number">6.9.3.2.1. </span>families<a class="headerlink" href="#families" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">6.8.3.2. </span>social cement<a class="headerlink" href="#social-cement" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><strong>families</strong></p>
+<ul>
 <li><p>altruism makes sense for kin - wasps, ants</p>
 <ul>
 <li><p>part of kin selection theory by Hamilton</p></li>
@@ -1066,17 +1000,15 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-<section id="darwin-and-the-savages">
-<h4><span class="section-number">6.9.3.2.2. </span>darwin and the savages<a class="headerlink" href="#darwin-and-the-savages" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>darwin and the savages</strong></p>
+<ul>
 <li><p>evolution: kin-selection -&gt; reciprocal altruism (tit for tat) -&gt; higher morals</p></li>
 <li><p>against group selection - even if it helped a group, it would start to decay within the group</p></li>
 </ul>
-</section>
-<section id="friends">
-<h4><span class="section-number">6.9.3.2.3. </span>friends<a class="headerlink" href="#friends" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>friends</strong></p>
+<ul>
 <li><p>helping others is not zero-sum</p>
 <ul>
 <li><p>lets you catch big game, spread information</p></li>
@@ -1098,10 +1030,9 @@ document.write(`
 </li>
 <li><p>once reciprocal altruism is entrenched, can have “good for the group” type genes</p></li>
 </ul>
-</section>
-<section id="darwin-s-conscience">
-<h4><span class="section-number">6.9.3.2.4. </span>darwin’s conscience<a class="headerlink" href="#darwin-s-conscience" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>darwin’s conscience</strong></p>
+<ul>
 <li><p>moral guidance is made to be guided by peers / parents</p></li>
 <li><p>lying can be useful</p>
 <ul>
@@ -1114,19 +1045,19 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
-</section>
-<section id="social-strife">
-<h3><span class="section-number">6.9.3.3. </span>social strife<a class="headerlink" href="#social-strife" title="Link to this heading">#</a></h3>
-<section id="darwin-s-delay">
-<h4><span class="section-number">6.9.3.3.1. </span>darwin’s delay<a class="headerlink" href="#darwin-s-delay" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p>darwin studies barnacles for a while, probably because he was afraid to unveil his iconoclastic theory</p></li>
+</li>
 </ul>
 </section>
-<section id="social-status">
-<h4><span class="section-number">6.9.3.3.2. </span>social status<a class="headerlink" href="#social-status" title="Link to this heading">#</a></h4>
+<section id="social-strife">
+<h3><span class="section-number">6.8.3.3. </span>social strife<a class="headerlink" href="#social-strife" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><strong>darwin’s delay</strong></p>
+<ul>
+<li><p>darwin studies barnacles for a while, probably because he was afraid to unveil his iconoclastic theory</p></li>
+</ul>
+</li>
+<li><p><strong>social status</strong></p>
+<ul>
 <li><p>hierarchy exists almost everywhere</p></li>
 <li><p>even societies that have shared resources didn’t share social status, females, etc.</p></li>
 <li><p>group-selection for hierarchy doesn’t make sense - individual fitness in anarchy is fine</p></li>
@@ -1161,10 +1092,9 @@ document.write(`
 <li><p><em>Machiavellianism</em> is “the employment of cunning and duplicity in statecraft or in general conduct”</p></li>
 <li><p>what we call cultural values are expedients to social success</p></li>
 </ul>
-</section>
-<section id="deception-and-self-deception">
-<h4><span class="section-number">6.9.3.3.3. </span>deception and self-deception<a class="headerlink" href="#deception-and-self-deception" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>deception and self-deception</strong></p>
+<ul>
 <li><p>it is more important to give the appearance of altruism than actually be altruistic</p></li>
 <li><p>some of our motives are hidden from us not incidentally but by design, so that we can credibly act as if they aren’t what they are</p></li>
 <li><p>low <em>self-esteem</em> - way to reconcile people to subordinate status</p></li>
@@ -1189,19 +1119,19 @@ document.write(`
 </li>
 <li><p>NYT quote: “In a week’s time, both sides have constructed deeply emotional stories explaining their roles, one-sided accounts that are offered with impassioned conviction, although in many respects they do not stand up, in either case, under careful scrutiny.”</p></li>
 </ul>
-</section>
-<section id="darwin-s-triumph">
-<h4><span class="section-number">6.9.3.3.4. </span>darwin’s triumph<a class="headerlink" href="#darwin-s-triumph" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>darwin’s triumph</strong></p>
+<ul>
 <li><p>people were willing to profess incorrect opinions about the relative length of two lines if placed in a room with other people who professed them</p></li>
 </ul>
-</section>
+</li>
+</ul>
 </section>
 <section id="morals-of-the-story">
-<h3><span class="section-number">6.9.3.4. </span>morals of the story<a class="headerlink" href="#morals-of-the-story" title="Link to this heading">#</a></h3>
-<section id="darwinian-and-freudian-cynicism">
-<h4><span class="section-number">6.9.3.4.1. </span>darwinian (and freudian) cynicism<a class="headerlink" href="#darwinian-and-freudian-cynicism" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">6.8.3.4. </span>morals of the story<a class="headerlink" href="#morals-of-the-story" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><strong>darwinian (and freudian) cynicism</strong></p>
+<ul>
 <li><p>Freud</p>
 <ol class="arabic simple">
 <li><p>id - animal</p></li>
@@ -1210,17 +1140,15 @@ document.write(`
 </ol>
 </li>
 </ul>
-</section>
-<section id="evolutionary-ethics">
-<h4><span class="section-number">6.9.3.4.2. </span>evolutionary ethics<a class="headerlink" href="#evolutionary-ethics" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>evolutionary ethics</strong></p>
+<ul>
 <li><p>John Mill’s <em>utilitarianism</em> is a good starting point</p></li>
 <li><p>morality best preserves non-zero sumness</p></li>
 </ul>
-</section>
-<section id="blaming-the-victim">
-<h4><span class="section-number">6.9.3.4.3. </span>blaming the victim<a class="headerlink" href="#blaming-the-victim" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>blaming the victim</strong></p>
+<ul>
 <li><p>“genetic determinism” pops up in court cases (cases like insanity)</p>
 <ul>
 <li><p>notion of free will is shrinking</p></li>
@@ -1229,10 +1157,9 @@ document.write(`
 <li><p>less retributive of justice - more emphasis on deterrence, improving utilitarianism</p></li>
 <li><p>rage of juries may wane as they come to believe that male philandering is “natural”</p></li>
 </ul>
-</section>
-<section id="darwin-gets-religion">
-<h4><span class="section-number">6.9.3.4.4. </span>darwin gets religion<a class="headerlink" href="#darwin-gets-religion" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>darwin gets religion</strong></p>
+<ul>
 <li><p>doctrines thus far likely have “harmony” with human nature</p></li>
 <li><p>we are designed to believe that next rung on ladder will bring bliss, but in reality it will evaporate shortly after we get there</p></li>
 <li><p>why religion</p>
@@ -1243,20 +1170,20 @@ document.write(`
 </ol>
 </li>
 </ul>
-</section>
-<section id="general-tips">
-<h4><span class="section-number">6.9.3.4.5. </span>general tips<a class="headerlink" href="#general-tips" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>general tips</strong></p>
 <ol class="arabic simple">
 <li><p>distinguish between behavior and mental organ governing it</p></li>
 <li><p>remember that mental organ, not behavior, is what was actually designed by natural selection</p></li>
 <li><p>these organs may no longer ba daptive</p></li>
 <li><p>human mind is incredibly complex</p></li>
 </ol>
-</section>
+</li>
+</ul>
 </section>
 </section>
 <section id="the-righteous-mind-why-good-people-are-divided-by-politics-and-religion">
-<h2><span class="section-number">6.9.4. </span>The Righteous Mind: Why Good People Are Divided by Politics and Religion<a class="headerlink" href="#the-righteous-mind-why-good-people-are-divided-by-politics-and-religion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.4. </span>The Righteous Mind: Why Good People Are Divided by Politics and Religion<a class="headerlink" href="#the-righteous-mind-why-good-people-are-divided-by-politics-and-religion" title="Link to this heading">#</a></h2>
 <p><strong>jonathan haidt, 2012</strong></p>
 <ul class="simple">
 <li><p>questions</p>
@@ -1270,23 +1197,18 @@ document.write(`
 <li><p><em>parochial</em> - having a limited or narrow outlook or scope; of or relating to a church parish</p></li>
 </ul>
 <section id="intuitions-come-first-strategic-reasoning-second">
-<h3><span class="section-number">6.9.4.1. </span>intuitions come first, strategic reasoning second<a class="headerlink" href="#intuitions-come-first-strategic-reasoning-second" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3><span class="section-number">6.8.4.1. </span>intuitions come first, strategic reasoning second<a class="headerlink" href="#intuitions-come-first-strategic-reasoning-second" title="Link to this heading">#</a></h3>
+<ul>
 <li><p>elephant and rider metaphor</p></li>
-</ul>
-<section id="where-does-morality-come-from">
-<h4><span class="section-number">6.9.4.1.1. </span>where does morality come from<a class="headerlink" href="#where-does-morality-come-from" title="Link to this heading">#</a></h4>
+<li><p><strong>where does morality come from</strong></p>
 <ol class="arabic simple">
 <li><p><strong>nativist</strong> - morality is innate</p></li>
 <li><p><strong>empiricist</strong> - morality is from childhood learning</p></li>
-<li><p><strong>rationalist</strong> - morality is self-constructed by children on the basis of their experience with harm</p>
+<li><p><strong>rationalist</strong> - morality is self-constructed by children on the basis of their experience with harm</p></li>
+</ol>
 <ul class="simple">
 <li><p>kids know harm is wrong because they hate to be harmed and learn its is wrong to harm others</p></li>
 <li><p>came to reject this answer</p></li>
-</ul>
-</li>
-</ol>
-<ul class="simple">
 <li><p>new study</p>
 <ul>
 <li><p>moral domain <em>varies by culture</em></p>
@@ -1301,9 +1223,8 @@ document.write(`
 </li>
 <li><p>in fact, morality is probably some combination of 1 &amp; 2</p></li>
 </ul>
-</section>
-<section id="intuitive-dog-and-rational-tail">
-<h4><span class="section-number">6.9.4.1.2. </span>intuitive dog and rational tail<a class="headerlink" href="#intuitive-dog-and-rational-tail" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>intuitive dog and rational tail</strong></p>
 <ol class="arabic simple">
 <li><p>Plato - reason (mind) is master of emotions</p></li>
 <li><p>Hume - reason is the servant of passions</p></li>
@@ -1317,16 +1238,15 @@ document.write(`
 <li><p>where difficult to reason without emotion - too many choices</p></li>
 </ul>
 </li>
-<li><p><em>intuitionism</em> - calls  reasoning <em>rider</em> and intution <em>elephant</em></p>
+<li><p><em>intuitionism</em> - calls reasoning <em>rider</em> and intution <em>elephant</em></p>
 <ul>
 <li><p>rider developed to help elephant</p></li>
 <li><p><em>social intuitionism</em> - other people can alter intuitions</p></li>
 </ul>
 </li>
 </ul>
-</section>
-<section id="elephants-rule">
-<h4><span class="section-number">6.9.4.1.3. </span>elephants rule<a class="headerlink" href="#elephants-rule" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>elephants rule</strong></p>
 <ul class="simple">
 <li><p>brain can make snap judgements in 1/10 second</p>
 <ul>
@@ -1336,9 +1256,8 @@ document.write(`
 <li><p>intuitions come first, strategic reasoning second</p></li>
 <li><p>smells etc can influence our moral judgements</p></li>
 </ul>
-</section>
-<section id="vote-for-me-and-here-s-why">
-<h4><span class="section-number">6.9.4.1.4. </span>vote for me (and here’s why)<a class="headerlink" href="#vote-for-me-and-here-s-why" title="Link to this heading">#</a></h4>
+</li>
+<li><p><strong>vote for me (and here’s why)</strong></p>
 <ul class="simple">
 <li><p>conscious reasoning immediately justifies intuitive response</p></li>
 <li><p>self-esteem doesn’t make evolutionary sense, since being in groups was what mattered</p>
@@ -1349,16 +1268,15 @@ document.write(`
 <li><p>experimental evidence for confirmation bias</p></li>
 <li><p>moral/political matters - we are often <em>groupish</em> rather than selfish</p></li>
 </ul>
-</section>
+</li>
+</ul>
 </section>
 <section id="there-s-more-to-morality-than-harm-and-fairness">
-<h3><span class="section-number">6.9.4.2. </span>there’s more to morality than harm and fairness<a class="headerlink" href="#there-s-more-to-morality-than-harm-and-fairness" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.4.2. </span>there’s more to morality than harm and fairness<a class="headerlink" href="#there-s-more-to-morality-than-harm-and-fairness" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>be suspicious of moral monomists</p></li>
-</ul>
-<section id="beyond-weird-mentality">
-<h4><span class="section-number">6.9.4.2.1. </span>beyond WEIRD mentality<a class="headerlink" href="#beyond-weird-mentality" title="Link to this heading">#</a></h4>
-<ul class="simple">
+<li><p><strong>beyond WEIRD mentality</strong></p>
+<ul>
 <li><p>WEIRD - western, educated, industrialized, rich, democratic - outliars, but often used</p></li>
 <li><p>Schweder’s three ethics</p>
 <ol class="arabic simple">
@@ -1369,10 +1287,9 @@ document.write(`
 </li>
 <li><p>there is more to morality than harm and fairness</p></li>
 </ul>
-</section>
-<section id="taste-buds-of-the-righteous-mind-7-the-moral-foundations-of-politics">
-<h4><span class="section-number">6.9.4.2.2. </span>taste buds of the righteous mind / 7 - the moral foundations of politics<a class="headerlink" href="#taste-buds-of-the-righteous-mind-7-the-moral-foundations-of-politics" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>taste buds of the righteous mind / ch 7 - the moral foundations of politics</strong></p>
+<ul>
 <li><p><em>deontology</em> - rule-based ethics</p></li>
 <li><p>moral psychology should be empirical - how the mind works, not how it ought to work</p></li>
 <li><p>Moral Foundations Theory</p>
@@ -1408,20 +1325,20 @@ document.write(`
 </ol>
 </li>
 </ul>
-</section>
-<section id="the-conservative-advantage">
-<h4><span class="section-number">6.9.4.2.3. </span>the conservative advantage<a class="headerlink" href="#the-conservative-advantage" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>the conservative advantage</strong></p>
+<ul>
 <li><p>Durkheim - basic unit is family, not individual</p></li>
 <li><p>liberals only really value first three moral foundations</p></li>
 </ul>
-</section>
+</li>
+</ul>
 </section>
 <section id="morality-binds-and-blinds">
-<h3><span class="section-number">6.9.4.3. </span>morality binds and blinds<a class="headerlink" href="#morality-binds-and-blinds" title="Link to this heading">#</a></h3>
-<section id="why-are-we-so-groupish">
-<h4><span class="section-number">6.9.4.3.1. </span>why are we so groupish<a class="headerlink" href="#why-are-we-so-groupish" title="Link to this heading">#</a></h4>
+<h3><span class="section-number">6.8.4.3. </span>morality binds and blinds<a class="headerlink" href="#morality-binds-and-blinds" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><strong>why are we so groupish</strong></p>
+<ul>
 <li><p>group selection is controversial</p></li>
 <li><p>here are 3 exhibits defending it</p>
 <ol class="arabic simple">
@@ -1436,10 +1353,9 @@ document.write(`
 </ol>
 </li>
 </ul>
-</section>
-<section id="the-hive-switch">
-<h4><span class="section-number">6.9.4.3.2. </span>the hive switch<a class="headerlink" href="#the-hive-switch" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>the hive switch</strong></p>
+<ul>
 <li><p>two candidates for hive switch</p>
 <ol class="arabic simple">
 <li><p>oxytocin genes</p></li>
@@ -1448,10 +1364,9 @@ document.write(`
 </li>
 <li><p>hive switch doesn’t seem to be for everyone, but rather just for one’s group</p></li>
 </ul>
-</section>
-<section id="religion-is-a-team-sport">
-<h4><span class="section-number">6.9.4.3.3. </span>religion is a team sport<a class="headerlink" href="#religion-is-a-team-sport" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>religion is a team sport</strong></p>
+<ul>
 <li><p>descriptive definitions - describe what people think are moral</p></li>
 <li><p>normative definitions - describe what is truly right</p>
 <ul>
@@ -1462,21 +1377,21 @@ document.write(`
 <li><p>belief in supernatural - could be accidental as by-product of hypersensitive agency detection device</p></li>
 <li><p>religion can effectively surpress free-rider problem</p></li>
 </ul>
-</section>
-<section id="disagreeing-more-constructively">
-<h4><span class="section-number">6.9.4.3.4. </span>disagreeing more constructively<a class="headerlink" href="#disagreeing-more-constructively" title="Link to this heading">#</a></h4>
-<ul class="simple">
+</li>
+<li><p><strong>disagreeing more constructively</strong></p>
+<ul>
 <li><p>people are predisposed to ideologies</p></li>
 <li><p>then there is serious confirmation bias</p></li>
 <li><p>liberals and conservatives are both necessary to balance each other out</p></li>
 <li><p><em>Manichaeism</em> - polarization, believing one side only</p></li>
 <li><p>imagine world with no countries, religion -&gt; would probably be chaos</p></li>
 </ul>
-</section>
+</li>
+</ul>
 </section>
 </section>
 <section id="a-brief-history-of-intelligence-max-bennett">
-<h2><span class="section-number">6.9.5. </span>a brief history of intelligence (max bennett)<a class="headerlink" href="#a-brief-history-of-intelligence-max-bennett" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.5. </span>a brief history of intelligence (max bennett)<a class="headerlink" href="#a-brief-history-of-intelligence-max-bennett" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>5 breakthroughs</p>
 <ul>
@@ -1597,9 +1512,9 @@ document.write(`
 </ul>
 </section>
 <section id="homo-deus">
-<h2><span class="section-number">6.9.6. </span>homo deus<a class="headerlink" href="#homo-deus" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.6. </span>homo deus<a class="headerlink" href="#homo-deus" title="Link to this heading">#</a></h2>
 <section id="old-problems-famine-war-plague">
-<h3><span class="section-number">6.9.6.1. </span>old problems: famine, war, plague<a class="headerlink" href="#old-problems-famine-war-plague" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.6.1. </span>old problems: famine, war, plague<a class="headerlink" href="#old-problems-famine-war-plague" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>famine, war, plague are less common now – what will take their place?</p>
 <ul>
@@ -1639,7 +1554,7 @@ document.write(`
 </ul>
 </section>
 <section id="new-goals-immortality-happiness-and-divinity">
-<h3><span class="section-number">6.9.6.2. </span>new goals: immortality, happiness and divinity<a class="headerlink" href="#new-goals-immortality-happiness-and-divinity" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.6.2. </span>new goals: immortality, happiness and divinity<a class="headerlink" href="#new-goals-immortality-happiness-and-divinity" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>immortality</p>
 <ul>
@@ -1681,7 +1596,7 @@ document.write(`
 </ul>
 </section>
 <section id="part-i-homo-sapiens-conquers-the-world">
-<h3><span class="section-number">6.9.6.3. </span>PART I – <em>Homo sapiens</em> Conquers the World<a class="headerlink" href="#part-i-homo-sapiens-conquers-the-world" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.6.3. </span>PART I – <em>Homo sapiens</em> Conquers the World<a class="headerlink" href="#part-i-homo-sapiens-conquers-the-world" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>emotions are algorithms imbued by genes</p></li>
 <li><p>religions sprung up w agriculture justifying animal cruelty</p></li>
@@ -1701,7 +1616,7 @@ document.write(`
 </ul>
 </section>
 <section id="part-ii-homo-sapiens-gives-meaning-to-the-world">
-<h3><span class="section-number">6.9.6.4. </span>PART II <em>Homo Sapiens</em> Gives Meaning to the World<a class="headerlink" href="#part-ii-homo-sapiens-gives-meaning-to-the-world" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.6.4. </span>PART II <em>Homo Sapiens</em> Gives Meaning to the World<a class="headerlink" href="#part-ii-homo-sapiens-gives-meaning-to-the-world" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Religion</strong> is <em>anything</em> that confers superhuman legitimacy on human social structures. It legitimises human norms and values by arguing that they reflect superhuman laws</p>
 <ul>
@@ -1736,7 +1651,7 @@ document.write(`
 </ul>
 </section>
 <section id="part-iii-homo-sapiens-loses-control">
-<h3><span class="section-number">6.9.6.5. </span>PART III <em>Homo Sapiens</em> Loses Control<a class="headerlink" href="#part-iii-homo-sapiens-loses-control" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.8.6.5. </span>PART III <em>Homo Sapiens</em> Loses Control<a class="headerlink" href="#part-iii-homo-sapiens-loses-control" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>can people choose their desires in the first place?</p>
 <ul>
@@ -1757,7 +1672,7 @@ document.write(`
 </section>
 </section>
 <section id="predictably-irrational">
-<h2><span class="section-number">6.9.7. </span>Predictably Irrational<a class="headerlink" href="#predictably-irrational" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.7. </span>Predictably Irrational<a class="headerlink" href="#predictably-irrational" title="Link to this heading">#</a></h2>
 <p><strong>by Dan Ariely, 2008</strong></p>
 <ul class="simple">
 <li><p><strong>arbitrary coherence</strong> - market prices themselves that influence consumers’ willingness to pay. What this means is that demand is not, in fact, a completely separate force from supply.</p></li>
@@ -1787,7 +1702,7 @@ document.write(`
 </ul>
 </section>
 <section id="maybe-you-should-talk-to-someone">
-<h2><span class="section-number">6.9.8. </span>maybe you should talk to someone<a class="headerlink" href="#maybe-you-should-talk-to-someone" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.8. </span>maybe you should talk to someone<a class="headerlink" href="#maybe-you-should-talk-to-someone" title="Link to this heading">#</a></h2>
 <p><strong>by Lori Gottlieb, 2019</strong></p>
 <ul class="simple">
 <li><p>happiness is statistically abnormal</p></li>
@@ -1843,7 +1758,7 @@ document.write(`
 </ul>
 </section>
 <section id="the-gifted-child-alice-miller">
-<h2><span class="section-number">6.9.9. </span>the gifted child (alice miller)<a class="headerlink" href="#the-gifted-child-alice-miller" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.9. </span>the gifted child (alice miller)<a class="headerlink" href="#the-gifted-child-alice-miller" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>“A child cannot run away from her as her own mother once did. A child can be so brought up that it becomes what she wants it to be.”</p></li>
 <li><p>“a child can never see through unconscious manipulation. It is like the air he breathes; he knows no other, and it appears to him to be the only normal possiblity”</p></li>
@@ -1864,7 +1779,7 @@ document.write(`
 </ul>
 </section>
 <section id="attached-amir-levine-rachel-heller">
-<h2><span class="section-number">6.9.10. </span>attached (amir levine &amp; rachel heller)<a class="headerlink" href="#attached-amir-levine-rachel-heller" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.10. </span>attached (amir levine &amp; rachel heller)<a class="headerlink" href="#attached-amir-levine-rachel-heller" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>3 main attachment styles</p>
 <ul>
@@ -1897,7 +1812,7 @@ document.write(`
 </ul>
 </section>
 <section id="polarization-ezra-klein">
-<h2><span class="section-number">6.9.11. </span>polarization (ezra klein)<a class="headerlink" href="#polarization-ezra-klein" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.11. </span>polarization (ezra klein)<a class="headerlink" href="#polarization-ezra-klein" title="Link to this heading">#</a></h2>
 <p>Central thesis is that all politics is <em>identity politics</em> (i.e. based on group membership) rather than based on ideology. The separation of parties and people’s groups (+media consumption) are a positive-feedback cycle which reinforces further polarization.</p>
 <ul class="simple">
 <li><p>Most people who voted chose the same party in 2016 that they’d chosen in 2012.
@@ -2009,7 +1924,7 @@ parties, and particularly the Republican Party, are losing control of whom they 
 </ul>
 </section>
 <section id="freud">
-<h2><span class="section-number">6.9.12. </span>freud<a class="headerlink" href="#freud" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.12. </span>freud<a class="headerlink" href="#freud" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Id – set of instinctual trends</p>
 <ul>
@@ -2022,7 +1937,7 @@ parties, and particularly the Republican Party, are losing control of whom they 
 </ul>
 </section>
 <section id="misc">
-<h2><span class="section-number">6.9.13. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.8.13. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nytimes.com/2021/04/19/well/mind/covid-mental-health-languishing.html?action=click&amp;amp;algo=identity&amp;amp;block=editors_picks_recirc&amp;amp;fellback=false&amp;amp;imp_id=508025631&amp;amp;impression_id=e587de31-ac2b-11eb-b303-61e8deb00e32&amp;amp;index=1&amp;amp;pgtype=Article&amp;amp;pool=editors-picks-ls&amp;amp;region=ccolumn&amp;amp;req_id=656302536&amp;amp;surface=home-featured&amp;amp;variant=holdout_home-featured&amp;amp;action=click&amp;amp;module=editorContent&amp;amp;pgtype=Article&amp;amp;region=CompanionColumn&amp;amp;contentCollection=Trending">Feeling Blah During the Pandemic? It’s Called Languishing - The New York Times</a></p></li>
 </ul>
@@ -2065,15 +1980,15 @@ parties, and particularly the Republican Party, are losing control of whom they 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.8. </span>philosophy</p>
+        <p class="prev-next-title"><span class="section-number">6.7. </span>philosophy</p>
       </div>
     </a>
     <a class="right-next"
-       href="knowledge_rep.html"
+       href="../neuro/neuro_section.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.10. </span>representations</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>neuro</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2093,92 +2008,45 @@ parties, and particularly the Republican Party, are losing control of whom they 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanations">6.9.1. explanations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psychology-of-xai-miller-2006">6.9.1.1. psychology of xai (miller, 2006)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-structure-and-function-of-explanations-lombrozo-2006">6.9.1.2. The structure and function of explanations (lombrozo 2006)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-explanation-lombrozo-vasilyeva-2017">6.9.1.3. Causal Explanation (lombrozo &amp; vasilyeva 2017)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-inference-w-explanations">6.9.1.3.1. causal <em>inference</em> w/ explanations</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-discovery-w-explanations">6.9.1.3.2. causal <em>discovery</em> w/ explanations</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-responsibility-w-explanations">6.9.1.3.3. causal <em>responsibility</em> w/ explanations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanations">6.8.1. explanations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psychology-of-xai-miller-2006">6.8.1.1. psychology of xai (miller, 2006)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-structure-and-function-of-explanations-lombrozo-2006">6.8.1.2. The structure and function of explanations (lombrozo 2006)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-explanation-lombrozo-vasilyeva-2017">6.8.1.3. Causal Explanation (lombrozo &amp; vasilyeva 2017)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-taxonomy">6.8.1.4. explanation taxonomy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanisms">6.8.1.5. causal mechanisms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-explanation-work">6.8.1.6. misc explanation work</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-taxonomy">6.9.1.4. explanation taxonomy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanisms">6.9.1.5. causal mechanisms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-explanation-work">6.9.1.6. misc explanation work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-invisible-gorilla">6.8.2. the invisible gorilla</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-moral-animal">6.8.3. the moral animal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sex-romance-and-love">6.8.3.1. sex, romance, and love</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-cement">6.8.3.2. social cement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-strife">6.8.3.3. social strife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morals-of-the-story">6.8.3.4. morals of the story</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-invisible-gorilla">6.9.2. the invisible gorilla</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-moral-animal">6.9.3. the moral animal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sex-romance-and-love">6.9.3.1. sex, romance, and love</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-comes-of-age">6.9.3.1.1. darwin comes of age</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#male-and-female">6.9.3.1.2. male and female</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gender-differences-in-evolution">6.9.3.1.3. gender differences in evolution</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-marriage-market">6.9.3.1.4. the marriage market</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-righteous-mind-why-good-people-are-divided-by-politics-and-religion">6.8.4. The Righteous Mind: Why Good People Are Divided by Politics and Religion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuitions-come-first-strategic-reasoning-second">6.8.4.1. intuitions come first, strategic reasoning second</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-s-more-to-morality-than-harm-and-fairness">6.8.4.2. there’s more to morality than harm and fairness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morality-binds-and-blinds">6.8.4.3. morality binds and blinds</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-cement">6.9.3.2. social cement</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#families">6.9.3.2.1. families</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-and-the-savages">6.9.3.2.2. darwin and the savages</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#friends">6.9.3.2.3. friends</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-s-conscience">6.9.3.2.4. darwin’s conscience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-brief-history-of-intelligence-max-bennett">6.8.5. a brief history of intelligence (max bennett)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homo-deus">6.8.6. homo deus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-problems-famine-war-plague">6.8.6.1. old problems: famine, war, plague</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-goals-immortality-happiness-and-divinity">6.8.6.2. new goals: immortality, happiness and divinity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-homo-sapiens-conquers-the-world">6.8.6.3. PART I – <em>Homo sapiens</em> Conquers the World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-homo-sapiens-gives-meaning-to-the-world">6.8.6.4. PART II <em>Homo Sapiens</em> Gives Meaning to the World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-homo-sapiens-loses-control">6.8.6.5. PART III <em>Homo Sapiens</em> Loses Control</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#social-strife">6.9.3.3. social strife</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-s-delay">6.9.3.3.1. darwin’s delay</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#social-status">6.9.3.3.2. social status</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deception-and-self-deception">6.9.3.3.3. deception and self-deception</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-s-triumph">6.9.3.3.4. darwin’s triumph</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morals-of-the-story">6.9.3.4. morals of the story</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwinian-and-freudian-cynicism">6.9.3.4.1. darwinian (and freudian) cynicism</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evolutionary-ethics">6.9.3.4.2. evolutionary ethics</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blaming-the-victim">6.9.3.4.3. blaming the victim</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#darwin-gets-religion">6.9.3.4.4. darwin gets religion</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-tips">6.9.3.4.5. general tips</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-righteous-mind-why-good-people-are-divided-by-politics-and-religion">6.9.4. The Righteous Mind: Why Good People Are Divided by Politics and Religion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuitions-come-first-strategic-reasoning-second">6.9.4.1. intuitions come first, strategic reasoning second</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-morality-come-from">6.9.4.1.1. where does morality come from</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intuitive-dog-and-rational-tail">6.9.4.1.2. intuitive dog and rational tail</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elephants-rule">6.9.4.1.3. elephants rule</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vote-for-me-and-here-s-why">6.9.4.1.4. vote for me (and here’s why)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-s-more-to-morality-than-harm-and-fairness">6.9.4.2. there’s more to morality than harm and fairness</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-weird-mentality">6.9.4.2.1. beyond WEIRD mentality</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#taste-buds-of-the-righteous-mind-7-the-moral-foundations-of-politics">6.9.4.2.2. taste buds of the righteous mind / 7 - the moral foundations of politics</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conservative-advantage">6.9.4.2.3. the conservative advantage</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morality-binds-and-blinds">6.9.4.3. morality binds and blinds</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-we-so-groupish">6.9.4.3.1. why are we so groupish</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hive-switch">6.9.4.3.2. the hive switch</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#religion-is-a-team-sport">6.9.4.3.3. religion is a team sport</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disagreeing-more-constructively">6.9.4.3.4. disagreeing more constructively</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-brief-history-of-intelligence-max-bennett">6.9.5. a brief history of intelligence (max bennett)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homo-deus">6.9.6. homo deus</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-problems-famine-war-plague">6.9.6.1. old problems: famine, war, plague</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-goals-immortality-happiness-and-divinity">6.9.6.2. new goals: immortality, happiness and divinity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-homo-sapiens-conquers-the-world">6.9.6.3. PART I – <em>Homo sapiens</em> Conquers the World</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-homo-sapiens-gives-meaning-to-the-world">6.9.6.4. PART II <em>Homo Sapiens</em> Gives Meaning to the World</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-homo-sapiens-loses-control">6.9.6.5. PART III <em>Homo Sapiens</em> Loses Control</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictably-irrational">6.9.7. Predictably Irrational</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maybe-you-should-talk-to-someone">6.9.8. maybe you should talk to someone</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gifted-child-alice-miller">6.9.9. the gifted child (alice miller)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attached-amir-levine-rachel-heller">6.9.10. attached (amir levine &amp; rachel heller)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarization-ezra-klein">6.9.11. polarization (ezra klein)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freud">6.9.12. freud</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">6.9.13. misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictably-irrational">6.8.7. Predictably Irrational</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maybe-you-should-talk-to-someone">6.8.8. maybe you should talk to someone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gifted-child-alice-miller">6.8.9. the gifted child (alice miller)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attached-amir-levine-rachel-heller">6.8.10. attached (amir levine &amp; rachel heller)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarization-ezra-klein">6.8.11. polarization (ezra klein)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freud">6.8.12. freud</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">6.8.13. misc</a></li>
 </ul>
   </nav></div>
 
@@ -2216,11 +2084,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

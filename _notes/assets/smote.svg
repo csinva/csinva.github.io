@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-28 6 978 380" role="img" aria-labelledby="title desc">
+  <title id="title">SMOTE oversampling</title>
+  <desc id="desc">Scatter of sepal width vs sepal length. Four minority-class points (dark red) are connected by line segments to their neighbors; synthetic minority instances (red) lie on these segments. Thirteen majority-class points (green) lie below.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .edge { stroke: #111111; stroke-width: 3; stroke-linecap: round; }
+      .tick { font: 15px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .axl { font: 19px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .min { fill: #c4c4c4; stroke: #8b1a1a; stroke-width: 5.5; }
+      .syn { fill: #c4c4c4; stroke: #d1342f; stroke-width: 3.5; }
+      .maj { fill: #c4c4c4; stroke: #1f6b2e; stroke-width: 5.5; }
+      .lmin { font: 22px Helvetica, Arial, sans-serif; fill: #8b1a1a; text-anchor: middle; }
+      .lsyn { font: 15px Helvetica, Arial, sans-serif; fill: #d1342f; text-anchor: middle; }
+      .lmaj { font: 22px Helvetica, Arial, sans-serif; fill: #1f6b2e; text-anchor: middle; }
+    </style>
+  </defs>
+  <path class="ax" d="M44 22 V322"/>
+  <path class="ax" d="M86 336.5 H930"/>
+  <path class="ax" d="M40 322.0 H44"/>
+  <text class="tick" x="37" y="327.0" text-anchor="end">2.0</text>
+  <path class="ax" d="M40 272.0 H44"/>
+  <text class="tick" x="37" y="277.0" text-anchor="end">2.4</text>
+  <path class="ax" d="M40 222.0 H44"/>
+  <text class="tick" x="37" y="227.0" text-anchor="end">2.8</text>
+  <path class="ax" d="M40 172.0 H44"/>
+  <text class="tick" x="37" y="177.0" text-anchor="end">3.2</text>
+  <path class="ax" d="M40 122.0 H44"/>
+  <text class="tick" x="37" y="127.0" text-anchor="end">3.6</text>
+  <path class="ax" d="M40 72.0 H44"/>
+  <text class="tick" x="37" y="77.0" text-anchor="end">4.0</text>
+  <path class="ax" d="M40 22.0 H44"/>
+  <text class="tick" x="37" y="27.0" text-anchor="end">4.4</text>
+  <path class="ax" d="M86.0 336.5 V341"/>
+  <text class="tick" x="86.0" y="356" text-anchor="middle">4.4</text>
+  <path class="ax" d="M280.8 336.5 V341"/>
+  <text class="tick" x="280.8" y="356" text-anchor="middle">5.0</text>
+  <path class="ax" d="M443.1 336.5 V341"/>
+  <text class="tick" x="443.1" y="356" text-anchor="middle">5.5</text>
+  <path class="ax" d="M605.4 336.5 V341"/>
+  <text class="tick" x="605.4" y="356" text-anchor="middle">6.0</text>
+  <path class="ax" d="M767.7 336.5 V341"/>
+  <text class="tick" x="767.7" y="356" text-anchor="middle">6.5</text>
+  <path class="ax" d="M930.0 336.5 V341"/>
+  <text class="tick" x="930.0" y="356" text-anchor="middle">7.0</text>
+  <text class="axl" x="508" y="378">Sepal length</text>
+  <text class="axl" transform="translate(-6 172) rotate(-90)">Sepal width</text>
+  <line class="edge" x1="86.0" y1="209.5" x2="150.9" y2="122.0"/>
+  <line class="edge" x1="150.9" y1="122.0" x2="248.3" y2="197.0"/>
+  <line class="edge" x1="86.0" y1="209.5" x2="248.3" y2="197.0"/>
+  <line class="edge" x1="150.9" y1="122.0" x2="508.0" y2="22.0"/>
+  <line class="edge" x1="86.0" y1="209.5" x2="508.0" y2="22.0"/>
+  <line class="edge" x1="248.3" y1="197.0" x2="508.0" y2="22.0"/>
+  <rect x="150" y="150" width="134" height="18" fill="#ffffff"/>
+  <text class="lsyn" x="216" y="165">Synthetic minority instances</text>
+  <circle class="syn" cx="113.5" cy="173.0" r="5.5"/>
+  <circle class="syn" cx="131.0" cy="206.0" r="5.5"/>
+  <circle class="syn" cx="252.5" cy="136.0" r="5.5"/>
+  <circle class="syn" cx="301.0" cy="80.0" r="5.5"/>
+  <circle class="syn" cx="378.0" cy="80.0" r="5.5"/>
+  <circle class="syn" cx="407.5" cy="50.5" r="5.5"/>
+  <circle class="syn" cx="417.5" cy="83.5" r="5.5"/>
+  <circle class="syn" cx="466.5" cy="34.0" r="5.5"/>
+  <circle class="min" cx="86.0" cy="209.5" r="8.5"/>
+  <circle class="min" cx="150.9" cy="122.0" r="8.5"/>
+  <circle class="min" cx="248.3" cy="197.0" r="8.5"/>
+  <circle class="min" cx="508.0" cy="22.0" r="8.5"/>
+  <circle class="maj" cx="248.5" cy="272.5" r="8.5"/>
+  <circle class="maj" cx="281.0" cy="322.5" r="8.5"/>
+  <circle class="maj" cx="345.5" cy="234.5" r="8.5"/>
+  <circle class="maj" cx="443.0" cy="285.0" r="8.5"/>
+  <circle class="maj" cx="508.0" cy="222.5" r="8.5"/>
+  <circle class="maj" cx="573.0" cy="197.5" r="8.5"/>
+  <circle class="maj" cx="605.5" cy="297.5" r="8.5"/>
+  <circle class="maj" cx="703.0" cy="160.0" r="8.5"/>
+  <circle class="maj" cx="735.5" cy="172.5" r="8.5"/>
+  <circle class="maj" cx="768.0" cy="222.5" r="8.5"/>
+  <circle class="maj" cx="800.5" cy="210.0" r="8.5"/>
+  <circle class="maj" cx="898.0" cy="185.0" r="8.5"/>
+  <circle class="maj" cx="930.0" cy="172.5" r="8.5"/>
+  <text class="lmin" x="216" y="68">Minority class</text>
+  <text class="lmaj" x="606" y="268">Majority class</text>
+</svg>

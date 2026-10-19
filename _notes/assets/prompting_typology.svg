@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 12 1116 1582" role="img" aria-labelledby="title desc">
+  <title id="title">Typology of prompting methods</title>
+  <desc id="desc">Tree of prompting methods with example works. Pre-trained models: left-to-right LM (GPT, GPT-2, GPT-3), masked LM (BERT, RoBERTa), prefix LM (UniLM1, UniLM2), encoder-decoder (T5, MASS, BART). Prompt engineering: shape (cloze, prefix) and human effort (hand-crafted; automated, discrete or continuous). Answer engineering: shape (token, span, sentence) and human effort (hand-crafted; automated, discrete or continuous). Multi-prompt learning: prompt ensemble, augmentation, composition, decomposition, sharing. Prompt-based training strategies: parameter updating (promptless fine-tuning, tuning-free prompting, fixed-LM prompt tuning, fixed-prompt LM tuning, prompt+LM tuning) and training sample size (few/zero-shot, full-data).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .t { font: 19px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <path class="e" d="M151 580.0 H163"/>
+  <path class="e" d="M163 103.0 V1302.0"/>
+  <path class="e" d="M163 103.0 H175"/>
+  <path class="e" d="M163 258.0 H175"/>
+  <path class="e" d="M163 579.5 H175"/>
+  <path class="e" d="M163 957.0 H175"/>
+  <path class="e" d="M163 1302.0 H175"/>
+  <path class="e" d="M303 103.0 H315"/>
+  <path class="e" d="M315 47.0 V202.5"/>
+  <path class="e" d="M315 47.0 H327"/>
+  <path class="e" d="M315 103.0 H327"/>
+  <path class="e" d="M315 148.5 H327"/>
+  <path class="e" d="M315 202.5 H327"/>
+  <path class="e" d="M303 258.0 H315"/>
+  <path class="e" d="M315 257.5 V373.0"/>
+  <path class="e" d="M315 257.5 H327"/>
+  <path class="e" d="M315 373.0 H327"/>
+  <path class="e" d="M455 257.5 H467"/>
+  <path class="e" d="M467 257.5 V316.0"/>
+  <path class="e" d="M467 258.0 H479"/>
+  <path class="e" d="M467 316.0 H479"/>
+  <path class="e" d="M455 373.0 H467"/>
+  <path class="e" d="M467 373.0 V419.0"/>
+  <path class="e" d="M467 373.0 H479"/>
+  <path class="e" d="M467 419.0 H479"/>
+  <path class="e" d="M607 419.0 H619"/>
+  <path class="e" d="M619 419.0 V477.0"/>
+  <path class="e" d="M619 419.0 H631"/>
+  <path class="e" d="M619 477.0 H631"/>
+  <path class="e" d="M303 579.5 H315"/>
+  <path class="e" d="M315 579.5 V672.5"/>
+  <path class="e" d="M315 580.0 H327"/>
+  <path class="e" d="M315 672.5 H327"/>
+  <path class="e" d="M455 580.0 H467"/>
+  <path class="e" d="M467 534.5 V626.0"/>
+  <path class="e" d="M467 534.5 H479"/>
+  <path class="e" d="M467 580.0 H479"/>
+  <path class="e" d="M467 626.0 H479"/>
+  <path class="e" d="M455 672.5 H467"/>
+  <path class="e" d="M467 672.5 V718.5"/>
+  <path class="e" d="M467 672.5 H479"/>
+  <path class="e" d="M467 718.5 H479"/>
+  <path class="e" d="M607 718.5 H619"/>
+  <path class="e" d="M619 718.0 V764.0"/>
+  <path class="e" d="M619 718.0 H631"/>
+  <path class="e" d="M619 764.0 H631"/>
+  <path class="e" d="M303 957.0 H315"/>
+  <path class="e" d="M315 821.0 V1094.5"/>
+  <path class="e" d="M315 821.0 H327"/>
+  <path class="e" d="M315 888.5 H327"/>
+  <path class="e" d="M315 957.0 H327"/>
+  <path class="e" d="M315 1025.5 H327"/>
+  <path class="e" d="M315 1094.5 H327"/>
+  <path class="e" d="M303 1302.0 H315"/>
+  <path class="e" d="M315 1301.5 V1517.5"/>
+  <path class="e" d="M315 1301.5 H327"/>
+  <path class="e" d="M315 1517.5 H327"/>
+  <path class="e" d="M455 1301.5 H467"/>
+  <path class="e" d="M467 1153.0 V1450.5"/>
+  <path class="e" d="M467 1153.0 H479"/>
+  <path class="e" d="M467 1221.5 H479"/>
+  <path class="e" d="M467 1301.0 H479"/>
+  <path class="e" d="M467 1381.5 H479"/>
+  <path class="e" d="M467 1450.5 H479"/>
+  <path class="e" d="M455 1517.5 H467"/>
+  <path class="e" d="M467 1517.5 V1571.0"/>
+  <path class="e" d="M467 1517.5 H479"/>
+  <path class="e" d="M467 1571.0 H479"/>
+  <path class="e" d="M455 47.0 H480"/>
+  <rect x="480" y="33" width="328" height="28" rx="5" fill="#e8e8fb"/>
+  <text class="t" x="644.0" y="54.0">GPT [139]; GPT-2 [140]; GPT-3 [16]</text>
+  <path class="e" d="M455 103.0 H480"/>
+  <rect x="480" y="89" width="328" height="28" rx="5" fill="#e8e8fb"/>
+  <text class="t" x="644.0" y="110.0">BERT [32]; RoBERTa [105]</text>
+  <path class="e" d="M455 148.5 H480"/>
+  <rect x="480" y="134" width="328" height="28" rx="5" fill="#e8e8fb"/>
+  <text class="t" x="644.0" y="155.0">UniLM1 [35]; UniLM2 [6]</text>
+  <path class="e" d="M455 202.5 H480"/>
+  <rect x="480" y="187" width="328" height="28" rx="5" fill="#e8e8fb"/>
+  <text class="t" x="644.0" y="208.0">T5 [141]; MASS [162]; BART [94]</text>
+  <path class="e" d="M607 258.0 H632"/>
+  <rect x="632" y="243" width="328" height="28" rx="5" fill="#fae6e4"/>
+  <text class="t" x="796.0" y="264.0">LAMA [133]; TemplateNER [29]</text>
+  <path class="e" d="M607 316.0 H632"/>
+  <rect x="632" y="290" width="328" height="51" rx="5" fill="#fae6e4"/>
+  <text class="t" x="796.0" y="311.5">Prefix-Tuning [96];</text>
+  <text class="t" x="796.0" y="333.5">PromptTuning [91]</text>
+  <path class="e" d="M607 373.0 H632"/>
+  <rect x="632" y="359" width="328" height="28" rx="5" fill="#fae6e4"/>
+  <text class="t" x="796.0" y="380.0">LAMA [133]; GPT-3 [16]</text>
+  <path class="e" d="M759 419.0 H783"/>
+  <rect x="783" y="404" width="329" height="29" rx="5" fill="#fae6e4"/>
+  <text class="t" x="947.5" y="425.5">AdvTrigger [177]; AutoPrompt [159]</text>
+  <path class="e" d="M759 477.0 H783"/>
+  <rect x="783" y="451" width="329" height="51" rx="5" fill="#fae6e4"/>
+  <text class="t" x="947.5" y="472.5">Prefix-Tuning [96];</text>
+  <text class="t" x="947.5" y="494.5">PromptTuning [91]</text>
+  <path class="e" d="M607 534.5 H632"/>
+  <rect x="632" y="520" width="328" height="28" rx="5" fill="#e4f2fa"/>
+  <text class="t" x="796.0" y="541.0">LAMA [133]; WARP [55]</text>
+  <path class="e" d="M607 580.0 H632"/>
+  <rect x="632" y="566" width="328" height="28" rx="5" fill="#e4f2fa"/>
+  <text class="t" x="796.0" y="587.0">PET-GLUE [154]; X-FACTR [66]</text>
+  <path class="e" d="M607 626.0 H632"/>
+  <rect x="632" y="612" width="328" height="28" rx="5" fill="#e4f2fa"/>
+  <text class="t" x="796.0" y="633.0">GPT-3 [16]; Prefix-Tuning [96]</text>
+  <path class="e" d="M607 672.5 H632"/>
+  <rect x="632" y="658" width="328" height="28" rx="5" fill="#e4f2fa"/>
+  <text class="t" x="796.0" y="679.0">PET-TC [153]; PET-GLUE [154]</text>
+  <path class="e" d="M759 718.0 H783"/>
+  <rect x="783" y="703" width="329" height="29" rx="5" fill="#e4f2fa"/>
+  <text class="t" x="947.5" y="724.5">AutoPrompt [159]; LM-BFF [46]</text>
+  <path class="e" d="M759 764.0 H783"/>
+  <rect x="783" y="750" width="329" height="28" rx="5" fill="#e4f2fa"/>
+  <text class="t" x="947.5" y="771.0">WARP [55]</text>
+  <path class="e" d="M455 821.0 H480"/>
+  <rect x="480" y="796" width="328" height="50" rx="5" fill="#fcf0e4"/>
+  <text class="t" x="644.0" y="817.0">LPAQA [68]; PET-</text>
+  <text class="t" x="644.0" y="839.0">TC [153]; BARTScore [193]</text>
+  <path class="e" d="M455 888.5 H480"/>
+  <rect x="480" y="862" width="328" height="53" rx="5" fill="#fcf0e4"/>
+  <text class="t" x="644.0" y="884.5">GPT-3 [16]; KATE [100];</text>
+  <text class="t" x="644.0" y="906.5">LM-BFF [46]</text>
+  <path class="e" d="M455 957.0 H480"/>
+  <rect x="480" y="943" width="328" height="28" rx="5" fill="#fcf0e4"/>
+  <text class="t" x="644.0" y="964.0">PTR [56]</text>
+  <path class="e" d="M455 1025.5 H480"/>
+  <rect x="480" y="1011" width="328" height="28" rx="5" fill="#fcf0e4"/>
+  <text class="t" x="644.0" y="1032.0">TemplateNER [29]</text>
+  <path class="e" d="M455 1094.5 H480"/>
+  <rect x="480" y="1080" width="328" height="28" rx="5" fill="#fcf0e4"/>
+  <text class="t" x="644.0" y="1101.0">Example Fig. 5</text>
+  <path class="e" d="M607 1153.0 H632"/>
+  <rect x="632" y="1138" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1159.0">BERT [32]; RoBERTa [105]</text>
+  <path class="e" d="M607 1221.5 H632"/>
+  <rect x="632" y="1207" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1228.0">GPT-3 [16]; BARTScore [193]</text>
+  <path class="e" d="M607 1301.0 H632"/>
+  <rect x="632" y="1287" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1308.0">Prefix-Tuning [96]; WARP [55]</text>
+  <path class="e" d="M607 1381.5 H632"/>
+  <rect x="632" y="1368" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1389.0">T5 [141]; PET-TC [154]</text>
+  <path class="e" d="M607 1450.5 H632"/>
+  <rect x="632" y="1436" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1457.0">P-Tuning [103]; PTR [56]</text>
+  <path class="e" d="M607 1517.5 H632"/>
+  <rect x="632" y="1503" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1524.0">GPT-3 [16]; PET-TC [153]</text>
+  <path class="e" d="M607 1571.0 H632"/>
+  <rect x="632" y="1557" width="328" height="28" rx="5" fill="#f8e4ee"/>
+  <text class="t" x="796.0" y="1578.0">PTR [56]; AdaPrompt [21]</text>
+  <rect x="11" y="556" width="140" height="48" rx="6" fill="#efefef" stroke="#8a8a8a" stroke-width="2"/>
+  <text class="t" x="81.0" y="576.0">Prompting</text>
+  <text class="t" x="81.0" y="598.0">Method</text>
+  <rect x="175" y="78" width="128" height="50" rx="6" fill="#fff" stroke="#3b3bd6" stroke-width="2"/>
+  <text class="t" x="239.0" y="99.0">Pre-trained</text>
+  <text class="t" x="239.0" y="121.0">Models §3</text>
+  <rect x="175" y="231" width="128" height="54" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="239.0" y="254.0">Prompt En-</text>
+  <text class="t" x="239.0" y="276.0">gineering §4</text>
+  <rect x="175" y="553" width="128" height="53" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="239.0" y="575.5">Answer En-</text>
+  <text class="t" x="239.0" y="597.5">gineering §5</text>
+  <rect x="175" y="930" width="128" height="54" rx="6" fill="#fff" stroke="#d9822b" stroke-width="2"/>
+  <text class="t" x="239.0" y="953.0">Multi-Prompt</text>
+  <text class="t" x="239.0" y="975.0">Learning §6</text>
+  <rect x="175" y="1264" width="128" height="76" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="239.0" y="1287.0">Prompt-based</text>
+  <text class="t" x="239.0" y="1309.0">Training</text>
+  <text class="t" x="239.0" y="1331.0">Strategies §7</text>
+  <rect x="327" y="20" width="128" height="54" rx="6" fill="#fff" stroke="#3b3bd6" stroke-width="2"/>
+  <text class="t" x="391.0" y="43.0">Left-to-</text>
+  <text class="t" x="391.0" y="65.0">Right LM</text>
+  <rect x="327" y="90" width="128" height="26" rx="6" fill="#fff" stroke="#3b3bd6" stroke-width="2"/>
+  <text class="t" x="391.0" y="110.0">Masked LM</text>
+  <rect x="327" y="135" width="128" height="27" rx="6" fill="#fff" stroke="#3b3bd6" stroke-width="2"/>
+  <text class="t" x="391.0" y="155.5">Prefix LM</text>
+  <rect x="327" y="178" width="128" height="49" rx="6" fill="#fff" stroke="#3b3bd6" stroke-width="2"/>
+  <text class="t" x="391.0" y="198.5">Encoder-</text>
+  <text class="t" x="391.0" y="220.5">Decoder</text>
+  <rect x="327" y="243" width="128" height="29" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="391.0" y="264.5">Shape</text>
+  <rect x="327" y="359" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="391.0" y="380.0">Human Effort</text>
+  <rect x="479" y="244" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="543.0" y="265.0">Cloze</text>
+  <rect x="479" y="302" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="543.0" y="323.0">Prefix</text>
+  <rect x="479" y="359" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="543.0" y="380.0">Hand-crafted</text>
+  <rect x="479" y="405" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="543.0" y="426.0">Automated</text>
+  <rect x="631" y="405" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="695.0" y="426.0">Discrete</text>
+  <rect x="631" y="463" width="128" height="28" rx="6" fill="#fff" stroke="#d1342f" stroke-width="2"/>
+  <text class="t" x="695.0" y="484.0">Continuous</text>
+  <rect x="327" y="565" width="128" height="30" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="391.0" y="587.0">Shape</text>
+  <rect x="327" y="659" width="128" height="27" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="391.0" y="679.5">Human Effort</text>
+  <rect x="479" y="521" width="128" height="27" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="543.0" y="541.5">Token</text>
+  <rect x="479" y="565" width="128" height="30" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="543.0" y="587.0">Span</text>
+  <rect x="479" y="612" width="128" height="28" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="543.0" y="633.0">Sentence</text>
+  <rect x="479" y="659" width="128" height="27" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="543.0" y="679.5">Hand-crafted</text>
+  <rect x="479" y="705" width="128" height="27" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="543.0" y="725.5">Automated</text>
+  <rect x="631" y="704" width="128" height="28" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="695.0" y="725.0">Discrete</text>
+  <rect x="631" y="750" width="128" height="28" rx="6" fill="#fff" stroke="#3aa0d6" stroke-width="2"/>
+  <text class="t" x="695.0" y="771.0">Continuous</text>
+  <rect x="327" y="796" width="128" height="50" rx="6" fill="#fff" stroke="#d9822b" stroke-width="2"/>
+  <text class="t" x="391.0" y="817.0">Prompt</text>
+  <text class="t" x="391.0" y="839.0">Ensemble</text>
+  <rect x="327" y="862" width="128" height="53" rx="6" fill="#fff" stroke="#d9822b" stroke-width="2"/>
+  <text class="t" x="391.0" y="884.5">Prompt</text>
+  <text class="t" x="391.0" y="906.5">Augmentation</text>
+  <rect x="327" y="930" width="128" height="54" rx="6" fill="#fff" stroke="#d9822b" stroke-width="2"/>
+  <text class="t" x="391.0" y="953.0">Prompt</text>
+  <text class="t" x="391.0" y="975.0">Composition</text>
+  <rect x="327" y="999" width="128" height="53" rx="6" fill="#fff" stroke="#d9822b" stroke-width="2"/>
+  <text class="t" x="391.0" y="1021.5">Prompt De-</text>
+  <text class="t" x="391.0" y="1043.5">composition</text>
+  <rect x="327" y="1068" width="128" height="53" rx="6" fill="#fff" stroke="#d9822b" stroke-width="2"/>
+  <text class="t" x="391.0" y="1090.5">Prompt</text>
+  <text class="t" x="391.0" y="1112.5">Sharing</text>
+  <rect x="327" y="1275" width="128" height="53" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="391.0" y="1297.5">Parameter</text>
+  <text class="t" x="391.0" y="1319.5">Updating</text>
+  <rect x="327" y="1491" width="128" height="53" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="391.0" y="1513.5">Training</text>
+  <text class="t" x="391.0" y="1535.5">Sample Size</text>
+  <rect x="479" y="1126" width="128" height="54" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1149.0">Promptless</text>
+  <text class="t" x="543.0" y="1171.0">Fine-tuning</text>
+  <rect x="479" y="1195" width="128" height="53" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1217.5">Tuning-free</text>
+  <text class="t" x="543.0" y="1239.5">Prompting</text>
+  <rect x="479" y="1264" width="128" height="74" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1286.0">Fixed-LM</text>
+  <text class="t" x="543.0" y="1308.0">Prompt</text>
+  <text class="t" x="543.0" y="1330.0">Tuning</text>
+  <rect x="479" y="1355" width="128" height="53" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1377.5">Fixed-prompt</text>
+  <text class="t" x="543.0" y="1399.5">LM Tuning</text>
+  <rect x="479" y="1424" width="128" height="53" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1446.5">Prompt+LM</text>
+  <text class="t" x="543.0" y="1468.5">Tuning</text>
+  <rect x="479" y="1491" width="128" height="53" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1513.5">Few/zero-</text>
+  <text class="t" x="543.0" y="1535.5">shot</text>
+  <rect x="479" y="1557" width="128" height="28" rx="6" fill="#fff" stroke="#c2186b" stroke-width="2"/>
+  <text class="t" x="543.0" y="1578.0">Full-data</text>
+</svg>

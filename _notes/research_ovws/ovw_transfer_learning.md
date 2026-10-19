@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: transfer learning
+subtitle: Some papers on transfer learning, domain adaptation, and adversarial attacks.
 category: research
 ---
 
@@ -9,11 +10,11 @@ category: research
 
 *See also notes on [📌 causal inference](https://csinva.io/notes/research_ovws/ovw_causal_inference.html) for some close connections.*
 
-For neural-net specific transferring see [📌 adaption/transfer](https://csinva.io/notes/research_ovws/ovw_transformers.html#adaptation--transfer).
+For neural-net specific transferring see [📌 adaption/transfer](https://csinva.io/notes/research_ovws/ovw_llms.html#adaptation--transfer).
 
 # overviews
 
-![transfer_taxonomy](../assets/transfer_taxonomy.png) (from [this paper](https://arxiv.org/pdf/2109.14501v1.pdf))
+the characteristics of different learning paradigms. Y: present, O: optional, n/a: not applicable <img style="width: 800px; max-width: 100%;" src="../assets/transfer_taxonomy.svg" alt="Characteristics of learning paradigms"/> (from [this paper](https://arxiv.org/pdf/2109.14501v1.pdf))
 
 # domain adaptation algorithms
 
@@ -29,18 +30,16 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 - Interdomain Mixup (Mixup, [Yan et al., 2020](https://arxiv.org/abs/2001.00677)) - ERM on linear interpolations of examples from random pairs of domains + their labels
 - Marginal Transfer Learning (MTL, [Blanchard et al., 2011-2020](https://arxiv.org/abs/1711.07910)) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem
 - MAML ([finn, abbeel, & levine, 2017](http://proceedings.mlr.press/v70/finn17a/finn17a.pdf)) - minimize parameters for metalearning including finetuning as part of the process (intuitively, find parameters that improve performance on a task after finetuning on that task)
-  - $\min _\theta \underbrace{\mathbb{E}_\tau }_{\text{average over tasks }  \tau}\left[\mathcal{L}_\tau\left(\underbrace{U_\tau(\theta)}_{\text{finetuned model}}\right)\right]$​
+  - $$\min _\theta \underbrace{\mathbb{E}_\tau }_{\text{average over tasks }  \tau}\left[\mathcal{L}_\tau\left(\underbrace{U_\tau(\theta)}_{\text{finetuned model}}\right)\right]$$​
     - compute finetuned models then take gradient wrt to held-out samples from the same tasks
   - Meta Learning Domain Generalization (MLDG, [Li et al., 2017](https://arxiv.org/abs/1710.03463)) - use MAML to meta-learn how to generalize across domains
-
-
 - learning more diverse predictors
   - Representation Self-Challenging (RSC, [Huang et al., 2020](https://arxiv.org/abs/2007.02454)) - adds dropout-like regularization to important features, forcing model to depend on many features
   - Spectral Decoupling (SD, [Pezeshki et al., 2020](https://arxiv.org/abs/2011.09468)) - regularization which forces model to learn more predictive features, even when only a few suffice
 - embedding prior knowledge
   - Style Agnostic Networks (SagNet, [Nam et al., 2020](https://arxiv.org/abs/1910.11645)) - penalize style features (assumed to be spurious)
   - Penalizing explanations ([rieger et al. 2020](https://arxiv.org/abs/1909.13584)) - penalize spurious features using prior knowledge
-- Domain adaptation under structural causal models ([chen & buhlmann, 2020]((https://arxiv.org/abs/2010.15764)))
+- Domain adaptation under structural causal models ([chen & buhlmann, 2020](https://arxiv.org/abs/2010.15764))
   - make clearer assumptions for domain adaptation to work
   - introduce CIRM, which works better when both covariates and labels are perturbed in target data
 - kernel approach ([blanchard, lee & scott, 2011](https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf)) - find an appropriate RKHS and optimize a regularized empirical risk over the space
@@ -53,10 +52,10 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 
 *key idea: want repr. to be invariant to domain label*
 
-- ![Screen Shot 2020-11-10 at 12.05.12 PM](../assets/domain_adv_training.png)
+- <img style="width: 750px; max-width: 100%;" src="../assets/domain_adv_training.svg" alt="Domain-adversarial training"/>
 - same idea is used to [learn fair representations](https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf), but domain label is replaced with sensitive attribute
 - Domain Adversarial Neural Network (DANN, [Ganin et al., 2015](https://arxiv.org/abs/1505.07818))
-- Conditional Domain Adversarial Neural Network (CDANN, [Li et al., 2018](https://arxiv.org/abs/1807.08479)) - variant of DANN matching the conditional distributions  across domains, for all labels 
+- Conditional Domain Adversarial Neural Network (CDANN, [Li et al., 2018](https://arxiv.org/abs/1807.08479)) - variant of DANN matching the conditional distributions across domains, for all labels
 - Deep CORAL (CORAL, [Sun and Saenko, 2016](https://arxiv.org/abs/1607.01719)) - match mean / covariance of feature distrs
 - Maximum Mean Discrepancy (MMD, [Li et al., 2018](https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf))
 - adversarial discriminative domain adaptation (ADDA [tzeng et al. 2017](https://arxiv.org/abs/1702.05464))
@@ -69,7 +68,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 
 ## dynamic selection
 
-*Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  review paper ([cruz et al. 2018](https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf)), [python package](https://github.com/scikit-learn-contrib/DESlib)*
+*Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time review paper ([cruz et al. 2018](https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf)), [python package](https://github.com/scikit-learn-contrib/DESlib)*
 
 1. define region of competence
    1. clustering
@@ -84,14 +83,14 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
    2. trainable: learn the combination of models
       1. related: in mixture of experts models + combination are trained jointly
    3. dynamic weighting: combine using local competence of base classifiers
-   4. Oracle baseline - selects classifier predicts correct label, if such a classifier exists 
+   4. Oracle baseline - selects classifier predicts correct label, if such a classifier exists
 
 ## test-time adaptation
 
 - test-time adaptation
   - test-time augmentation
   - batch normalization (AdaBN, [li...hou, 2016](https://arxiv.org/abs/1603.04779))
-  - label shift estimation (BBSE, [lipton, wang, & smola, 2018](https://arxiv.org/abs/1802.03916)) - $p(y)$ shifts but $P(x|y)$ does not
+  - label shift estimation (BBSE, [lipton, wang, & smola, 2018](https://arxiv.org/abs/1802.03916)) - $p(y)$ shifts but $$P(x\vert y)$$ does not
   - entropy minimization (test-time entropy minimization, TENT, [wang...olshausen, darrel, 2020](https://arxiv.org/abs/2006.10726)) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
     - Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models ([shu...anandkumar, xiao, 2022](https://arxiv.org/abs/2209.07511)) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample
   - combining train-time and test-time adaptation: Adaptive Risk Minimization (ARM, [zhang et al., 2020](https://arxiv.org/abs/2007.02931)) - combines groups at training time + *batches at test-time*
@@ -99,7 +98,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 - TTT: Test-Time Training with Self-Supervision for Generalization under Distribution Shifts ([sun...efros, hardt. 2020](https://arxiv.org/abs/1909.13231)) - at test-time, update parameters for self-supervised rotation prediction task then use for classification
   - TTT with masked autoencoders ([gandelsman, sun, ..., efros, 2022](https://arxiv.org/abs/2209.07522)) - use reconstructed with masked autoencoder and improve performance on robustness tasks
   - Test-Time Training on Video Streams ([wang, sun, ..., efros, wang, 2023](https://arxiv.org/abs/2307.05014)) - use masked autoencoder per-frame and incrementally update across each frame
-  - M-TTT: Learning to (Learn at Test Time) ([sun, li, dalal, ...guestrin, 2024](https://arxiv.org/pdf/2407.04620))![mttt](../assets/mttt.jpg)
+  - M-TTT: Learning to (Learn at Test Time) ([sun, li, dalal, ...guestrin, 2024](https://arxiv.org/pdf/2407.04620))<img style="width: 800px; max-width: 100%;" src="../assets/ttt_lm.svg" alt="Test-time training (TTT) layer"/>
   - analysis
     - TTT for Reading Comprehension ([banerjee et al. 2021](https://arxiv.org/abs/2103.11263)) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context
     - TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive? ([liu et al. 2021](https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html)) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning
@@ -107,14 +106,14 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 
 # adv attacks
 
-- Adversarial Attacks and Defenses in Images, Graphs and Text: A Review ([xu et al. 2019](https://arxiv.org/abs/1909.08072)) 
+- Adversarial Attacks and Defenses in Images, Graphs and Text: A Review ([xu et al. 2019](https://arxiv.org/abs/1909.08072))
 - attacks
   - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
-  - Barrage of Random Transforms for Adversarially Robust Defense ([raff et al. 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf)) 
+  - Barrage of Random Transforms for Adversarially Robust Defense ([raff et al. 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf))
   - DeepFool: a simple and accurate method to fool deep neural networks ([moosavi-dezfooli et. al 2016](https://arxiv.org/abs/1511.04599))
 - defenses
-  - Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)
-    - $$\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]$$
+  - Adversarial training - training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)
+    - $$\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\Vert \delta\Vert _{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]$$
     - this perspective differs from "robust statistics" which is usually robustness against some kind of model misspecification/assumptions, not to distr. shift
       - robust stat usually assumes a generative distr. as well
       - still often ends up with the same soln (e.g. ridge regr. corresponds to certain robusteness)
@@ -136,7 +135,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
     - use adv. training formula above
   - Theoretically Principled Trade-off between Robustness and Accuracy ([zhang, ..., el ghaoui, jordan, 2019](https://arxiv.org/abs/1901.08573))
 - adversarial examples
-  - Decision Boundary Analysis of Adversarial Examples  ([he, li, & song 2019](https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf))
+  - Decision Boundary Analysis of Adversarial Examples ([he, li, & song 2019](https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf))
   - Natural Adversarial Examples ([hendrycks, zhao, basart, steinhardt, & song 2020](https://arxiv.org/abs/1907.07174))
   - Image-Net-Trained CNNs Are Biased Towards Texture ([geirhos et al. 2019](https://openreview.net/pdf?id=Bygh9j09KX))
 - adversarial transferability

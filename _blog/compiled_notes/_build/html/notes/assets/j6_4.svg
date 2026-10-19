@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 10 935 670" role="img" aria-labelledby="title desc">
+  <title id="title">Geometry of linear regression</title>
+  <desc id="desc">The column space col(X) is drawn as a shaded plane containing the column vectors X(1) and X(2). The data vector y points out of the plane; its orthogonal projection onto col(X) is ŷ, with a dotted line from y to ŷ meeting the plane at a right angle.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .plane { fill: #d4d4d4; stroke: #2b2b2b; stroke-width: 2; stroke-linejoin: round; }
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .thin { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .dot { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 5 5; }
+      .m { font: italic 40px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .r { font: 40px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sup { font-size: 26px; font-style: normal; font-family: "Times New Roman", Times, serif; }
+    </style>
+  </defs>
+  <path class="plane" d="M170 355 L940 158 L798 475 L25 670 Z"/>
+  <path class="ax" d="M272.0 498.0 L522.0 68.0" marker-end="url(#arrow)"/>
+  <path class="ax" d="M272.0 498.0 L497 330" marker-end="url(#arrow)"/>
+  <path class="ax" d="M272.0 498.0 L597.0 378.0" marker-end="url(#arrow)"/>
+  <path class="ax" d="M272.0 498.0 L603 490" marker-end="url(#arrow)"/>
+  <path class="dot" d="M522.0 68.0 L597.0 378.0"/>
+  <path class="thin" d="M574.5 386.3 L568.8 363.0 L591.4 354.7"/>
+  <text class="m" x="530" y="46">y</text>
+  <text class="m" x="492" y="318">X<tspan class="sup" dy="-20">(1)</tspan></text>
+  <text class="m" x="612" y="392">ŷ</text>
+  <text class="m" x="610" y="505">X<tspan class="sup" dy="-20">(2)</tspan></text>
+  <text class="r" x="120" y="592">col(<tspan class="m">X</tspan>)</text>
+</svg>

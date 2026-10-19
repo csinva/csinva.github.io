@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 1790 795" role="img" aria-labelledby="title desc">
+  <title id="title">Rule-based models</title>
+  <desc id="desc">Three rule model types with their partitions of the (X1, X2) plane. Rule set: IF X1 &lt; 6 and X2 &gt; 6: p(+) = 0.8; IF X1 &lt; 5 and X2 &lt; 7: p(+) = 0.3; IF X1 &gt; 4 and X2 &lt; 4: p(+) = 0.8 (regions may overlap). Rule list: IF X1 &lt; 5: p(+) = 0.3; ELSE IF X2 &lt; 4: p(+) = 0.9; ELSE IF X1 &gt; 6: p(+) = 0.7; ELSE p(+) = 0.5. (Decision) rule tree: IF X1 &gt; 5, then IF X2 &gt; 6 or IF X2 &gt; 4, with leaves p(+) = 0.2, 0.9, 0.8, 0.6.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .h { font: bold 52px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .t { font: 32px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .b { font-weight: bold; }
+      .s { font-size: 21px; }
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .sep { stroke: #8a8a8a; stroke-width: 2; stroke-dasharray: 8 8; }
+      .blu { fill: #1f6fb2; fill-opacity: 0.35; stroke: #1f6fb2; stroke-width: 2; }
+      .lblu { fill: #1f6fb2; fill-opacity: 0.14; stroke: #1f6fb2; stroke-width: 2; }
+      .ora { fill: #d9822b; fill-opacity: 0.45; stroke: #2b2b2b; stroke-width: 2; }
+      .gry { fill: #8a8a8a; fill-opacity: 0.15; stroke: #1f6fb2; stroke-width: 2; }
+    </style>
+  </defs>
+<text class="h" x="298" y="70">Rule set</text>
+<text class="h" x="893" y="70">Rule list</text>
+<text class="h" x="1490" y="70">(Decision) Rule tree</text>
+<path class="sep" d="M596 20 V800 M1192 20 V800"/>
+<text class="t" x="40" y="200"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">1</tspan><tspan dy="-8"> &lt; 6</tspan> and X<tspan class="s" dy="8">2</tspan><tspan dy="-8"> &gt; 6</tspan>:</text>
+<text class="t" x="420" y="200">p(+) = 0.8</text>
+<text class="t" x="40" y="262"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">1</tspan><tspan dy="-8"> &lt; 5</tspan> and X<tspan class="s" dy="8">2</tspan><tspan dy="-8"> &lt; 7</tspan>:</text>
+<text class="t" x="420" y="262">p(+) = 0.3</text>
+<text class="t" x="40" y="324"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">1</tspan><tspan dy="-8"> &gt; 4</tspan> and X<tspan class="s" dy="8">2</tspan><tspan dy="-8"> &lt; 4</tspan>:</text>
+<text class="t" x="420" y="324">p(+) = 0.8</text>
+<rect class="blu" x="150" y="419" width="211" height="126"/>
+<rect class="ora" x="150" y="503" width="167" height="210"/>
+<rect class="blu" x="290" y="587" width="209" height="126"/>
+<g transform="translate(0,-75)">
+<path class="ax" d="M133 470 V805 H515"/>
+<text class="t" x="82" y="652">X<tspan class="s" dy="8">2</tspan></text>
+<text class="t" x="306" y="852">X<tspan class="s" dy="8">1</tspan></text>
+</g>
+<text class="t" x="635" y="200"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">1</tspan><tspan dy="-8"> &lt; 5</tspan>:</text><text class="t" x="975" y="200">p(+) = 0.3</text>
+<text class="t" x="635" y="254"><tspan class="b">ELSE</tspan> IF X<tspan class="s" dy="8">2</tspan><tspan dy="-8"> &lt; 4</tspan>:</text><text class="t" x="975" y="254">p(+) = 0.9</text>
+<text class="t" x="635" y="308"><tspan class="b">ELSE</tspan> IF X<tspan class="s" dy="8">1</tspan><tspan dy="-8"> &gt; 6</tspan>:</text><text class="t" x="975" y="308">p(+) = 0.7</text>
+<text class="t" x="635" y="362"><tspan class="b">ELSE</tspan></text><text class="t" x="975" y="362">p(+) = 0.5</text>
+<rect class="ora" x="746" y="419" width="166" height="294"/>
+<rect class="lblu" x="912" y="419" width="44" height="168"/>
+<rect class="gry" x="956" y="419" width="138" height="168"/>
+<rect class="blu" x="912" y="587" width="182" height="126"/>
+<g transform="translate(0,-75)">
+<path class="ax" d="M728 470 V805 H1110"/>
+<text class="t" x="677" y="652">X<tspan class="s" dy="8">2</tspan></text>
+<text class="t" x="901" y="852">X<tspan class="s" dy="8">1</tspan></text>
+</g>
+<text class="t c" x="1490" y="160"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">1</tspan><tspan dy="-8"> &gt; 5</tspan></text>
+<text class="t c" x="1370" y="262"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">2</tspan><tspan dy="-8"> &gt; 6</tspan></text>
+<text class="t c" x="1620" y="262"><tspan class="b">IF</tspan> X<tspan class="s" dy="8">2</tspan><tspan dy="-8"> &gt; 4</tspan></text>
+<path class="ax" d="M1380 210 L1490 180 L1610 210 M1310 312 L1370 290 L1440 312 M1560 312 L1620 290 L1690 312"/>
+<text class="t" x="1198" y="360">p(+):</text>
+<text class="t c" x="1310" y="360">0.2</text>
+<text class="t c" x="1440" y="360">0.9</text>
+<text class="t c" x="1560" y="360">0.8</text>
+<text class="t c" x="1690" y="360">0.6</text>
+<rect class="blu" x="1342" y="417" width="167" height="104"/>
+<rect class="ora" x="1342" y="521" width="167" height="192"/>
+<rect class="gry" x="1509" y="417" width="184" height="168"/>
+<rect class="blu" x="1509" y="585" width="184" height="128"/>
+<g transform="translate(0,-75)">
+<path class="ax" d="M1323 470 V805 H1705"/>
+<text class="t" x="1272" y="652">X<tspan class="s" dy="8">2</tspan></text>
+<text class="t" x="1496" y="852">X<tspan class="s" dy="8">1</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 50 1048 666" role="img" aria-labelledby="title desc">
+  <title id="title">Characteristics of learning paradigms</title>
+  <desc id="desc">Table of learning scenarios (rows) grouped as in distribution / out of distribution and batch / streaming, versus characteristics (columns): unlabeled data, labeled data, more than one dataset, more than one task, unobserved tasks, streaming tasks, streaming priorities and resources, streaming data, computational constraints. Y: present, O: optional, n/a: not applicable.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .grid { stroke: #2b2b2b; stroke-width: 1; fill: none; }
+      .outer { stroke: #2b2b2b; stroke-width: 2; fill: none; }
+      .head { font: bold 15px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .grp { font: bold 19px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .sub { font: 18px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .sc { font: 18px Helvetica, Arial, sans-serif; fill: #2b2b2b; dominant-baseline: central; }
+      .v { font: bold 19px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .na { font: 18px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .y { fill: #cfe0b4; } .o { fill: #f1ece0; } .n { fill: #f3d3dc; }
+      .leg { font: 18px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <rect class="y" x="356" y="190" width="68" height="34"/>
+  <text class="v" x="390.0" y="208.0">Y</text>
+  <rect class="o" x="424" y="190" width="68" height="34"/>
+  <text class="sc" x="152" y="207.0">point estimation</text>
+  <rect class="y" x="356" y="224" width="68" height="34"/>
+  <text class="v" x="390.0" y="242.0">Y</text>
+  <rect class="o" x="424" y="224" width="68" height="34"/>
+  <text class="sc" x="152" y="241.0">unsupervised learning</text>
+  <rect class="y" x="356" y="258" width="68" height="34"/>
+  <text class="v" x="390.0" y="276.0">Y</text>
+  <rect class="o" x="424" y="258" width="68" height="34"/>
+  <text class="v" x="458.0" y="276.0">O</text>
+  <text class="sc" x="152" y="275.0">hypothesis testing</text>
+  <rect class="y" x="356" y="292" width="68" height="34"/>
+  <text class="v" x="390.0" y="310.0">Y</text>
+  <rect class="y" x="424" y="292" width="68" height="34"/>
+  <text class="v" x="458.0" y="310.0">Y</text>
+  <rect class="o" x="900" y="292" width="68" height="34"/>
+  <text class="v" x="934.0" y="310.0">O</text>
+  <text class="sc" x="152" y="309.0">supervised learning</text>
+  <rect class="y" x="356" y="326" width="68" height="34"/>
+  <text class="v" x="390.0" y="344.0">Y</text>
+  <rect class="y" x="424" y="326" width="68" height="34"/>
+  <text class="v" x="458.0" y="344.0">Y</text>
+  <text class="sc" x="152" y="343.0">causal learning</text>
+  <rect class="y" x="356" y="360" width="68" height="34"/>
+  <text class="v" x="390.0" y="378.0">Y</text>
+  <rect class="o" x="424" y="360" width="68" height="34"/>
+  <text class="v" x="458.0" y="378.0">O</text>
+  <rect class="y" x="832" y="360" width="68" height="34"/>
+  <text class="v" x="866.0" y="378.0">Y</text>
+  <rect class="y" x="900" y="360" width="68" height="34"/>
+  <text class="v" x="934.0" y="378.0">Y</text>
+  <text class="sc" x="152" y="377.0">streaming learning</text>
+  <rect class="y" x="356" y="394" width="68" height="34"/>
+  <text class="v" x="390.0" y="412.0">Y</text>
+  <rect class="o" x="424" y="394" width="68" height="34"/>
+  <text class="v" x="458.0" y="412.0">O</text>
+  <rect class="y" x="832" y="394" width="68" height="34"/>
+  <text class="v" x="866.0" y="412.0">Y</text>
+  <text class="sc" x="152" y="411.0">online learning</text>
+  <rect class="y" x="356" y="428" width="68" height="34"/>
+  <text class="v" x="390.0" y="446.0">Y</text>
+  <rect class="y" x="424" y="428" width="68" height="34"/>
+  <text class="v" x="458.0" y="446.0">Y</text>
+  <rect class="y" x="832" y="428" width="68" height="34"/>
+  <text class="v" x="866.0" y="446.0">Y</text>
+  <rect class="o" x="900" y="428" width="68" height="34"/>
+  <text class="v" x="934.0" y="446.0">O</text>
+  <text class="sc" x="152" y="445.0">reinforcement learning</text>
+  <rect class="y" x="356" y="462" width="68" height="34"/>
+  <text class="v" x="390.0" y="480.0">Y</text>
+  <rect class="o" x="424" y="462" width="68" height="34"/>
+  <text class="v" x="458.0" y="480.0">O</text>
+  <rect class="y" x="492" y="462" width="68" height="34"/>
+  <text class="v" x="526.0" y="480.0">Y</text>
+  <rect class="o" x="832" y="462" width="68" height="34"/>
+  <text class="v" x="866.0" y="480.0">O</text>
+  <rect class="o" x="900" y="462" width="68" height="34"/>
+  <text class="v" x="934.0" y="480.0">O</text>
+  <text class="sc" x="152" y="479.0">transfer learning</text>
+  <rect class="y" x="356" y="496" width="68" height="34"/>
+  <text class="v" x="390.0" y="514.0">Y</text>
+  <rect class="o" x="424" y="496" width="68" height="34"/>
+  <text class="v" x="458.0" y="514.0">O</text>
+  <rect class="y" x="492" y="496" width="68" height="34"/>
+  <text class="v" x="526.0" y="514.0">Y</text>
+  <rect class="y" x="560" y="496" width="68" height="34"/>
+  <text class="v" x="594.0" y="514.0">Y</text>
+  <rect class="o" x="832" y="496" width="68" height="34"/>
+  <text class="v" x="866.0" y="514.0">O</text>
+  <rect class="o" x="900" y="496" width="68" height="34"/>
+  <text class="v" x="934.0" y="514.0">O</text>
+  <text class="sc" x="152" y="513.0">multitask learning</text>
+  <rect class="y" x="356" y="530" width="68" height="34"/>
+  <text class="v" x="390.0" y="548.0">Y</text>
+  <rect class="o" x="424" y="530" width="68" height="34"/>
+  <text class="v" x="458.0" y="548.0">O</text>
+  <rect class="y" x="492" y="530" width="68" height="34"/>
+  <text class="v" x="526.0" y="548.0">Y</text>
+  <rect class="y" x="560" y="530" width="68" height="34"/>
+  <text class="v" x="594.0" y="548.0">Y</text>
+  <rect class="y" x="628" y="530" width="68" height="34"/>
+  <text class="v" x="662.0" y="548.0">Y</text>
+  <rect class="o" x="832" y="530" width="68" height="34"/>
+  <text class="v" x="866.0" y="548.0">O</text>
+  <rect class="o" x="900" y="530" width="68" height="34"/>
+  <text class="v" x="934.0" y="548.0">O</text>
+  <text class="sc" x="152" y="547.0">meta-learning</text>
+  <rect class="y" x="356" y="564" width="68" height="34"/>
+  <text class="v" x="390.0" y="582.0">Y</text>
+  <rect class="o" x="424" y="564" width="68" height="34"/>
+  <text class="v" x="458.0" y="582.0">O</text>
+  <rect class="y" x="492" y="564" width="68" height="34"/>
+  <text class="v" x="526.0" y="582.0">Y</text>
+  <rect class="y" x="560" y="564" width="68" height="34"/>
+  <text class="v" x="594.0" y="582.0">Y</text>
+  <rect class="y" x="628" y="564" width="68" height="34"/>
+  <text class="v" x="662.0" y="582.0">Y</text>
+  <rect class="y" x="696" y="564" width="68" height="34"/>
+  <text class="v" x="730.0" y="582.0">Y</text>
+  <rect class="o" x="832" y="564" width="68" height="34"/>
+  <text class="v" x="866.0" y="582.0">O</text>
+  <rect class="y" x="900" y="564" width="68" height="34"/>
+  <text class="v" x="934.0" y="582.0">Y</text>
+  <text class="sc" x="152" y="581.0">continual learning</text>
+  <rect class="y" x="356" y="598" width="68" height="34"/>
+  <text class="v" x="390.0" y="616.0">Y</text>
+  <rect class="o" x="424" y="598" width="68" height="34"/>
+  <text class="v" x="458.0" y="616.0">O</text>
+  <rect class="y" x="492" y="598" width="68" height="34"/>
+  <text class="v" x="526.0" y="616.0">Y</text>
+  <rect class="y" x="560" y="598" width="68" height="34"/>
+  <text class="v" x="594.0" y="616.0">Y</text>
+  <rect class="y" x="628" y="598" width="68" height="34"/>
+  <text class="v" x="662.0" y="616.0">Y</text>
+  <rect class="y" x="696" y="598" width="68" height="34"/>
+  <text class="v" x="730.0" y="616.0">Y</text>
+  <rect class="y" x="764" y="598" width="68" height="34"/>
+  <text class="v" x="798.0" y="616.0">Y</text>
+  <rect class="o" x="832" y="598" width="68" height="34"/>
+  <text class="v" x="866.0" y="616.0">O</text>
+  <rect class="y" x="900" y="598" width="68" height="34"/>
+  <text class="v" x="934.0" y="616.0">Y</text>
+  <text class="sc" x="152" y="615.0">lifelong learning</text>
+  <rect class="y" x="356" y="632" width="68" height="34"/>
+  <text class="v" x="390.0" y="650.0">Y</text>
+  <rect class="o" x="424" y="632" width="68" height="34"/>
+  <text class="v" x="458.0" y="650.0">O</text>
+  <rect class="y" x="492" y="632" width="68" height="34"/>
+  <text class="v" x="526.0" y="650.0">Y</text>
+  <rect class="n" x="560" y="632" width="68" height="34"/>
+  <text class="na" x="594.0" y="650.0">n/a</text>
+  <rect class="n" x="628" y="632" width="68" height="34"/>
+  <text class="na" x="662.0" y="650.0">n/a</text>
+  <rect class="n" x="696" y="632" width="68" height="34"/>
+  <text class="na" x="730.0" y="650.0">n/a</text>
+  <rect class="y" x="764" y="632" width="68" height="34"/>
+  <text class="v" x="798.0" y="650.0">Y</text>
+  <rect class="y" x="832" y="632" width="68" height="34"/>
+  <text class="v" x="866.0" y="650.0">Y</text>
+  <rect class="y" x="900" y="632" width="68" height="34"/>
+  <text class="v" x="934.0" y="650.0">Y</text>
+  <text class="sc" x="152" y="649.0">biological learning</text>
+  <line class="grid" x1="140" y1="224" x2="968" y2="224"/>
+  <line class="grid" x1="140" y1="258" x2="968" y2="258"/>
+  <line class="grid" x1="140" y1="292" x2="968" y2="292"/>
+  <line class="grid" x1="140" y1="326" x2="968" y2="326"/>
+  <line class="grid" x1="60" y1="360" x2="968" y2="360"/>
+  <line class="grid" x1="140" y1="394" x2="968" y2="394"/>
+  <line class="grid" x1="140" y1="428" x2="968" y2="428"/>
+  <line class="grid" x1="0" y1="462" x2="968" y2="462"/>
+  <line class="grid" x1="140" y1="496" x2="968" y2="496"/>
+  <line class="grid" x1="140" y1="530" x2="968" y2="530"/>
+  <line class="grid" x1="60" y1="564" x2="968" y2="564"/>
+  <line class="grid" x1="140" y1="598" x2="968" y2="598"/>
+  <line class="grid" x1="140" y1="632" x2="968" y2="632"/>
+  <line class="grid" x1="60" y1="190" x2="60" y2="666"/>
+  <line class="grid" x1="140" y1="190" x2="140" y2="666"/>
+  <line class="grid" x1="356" y1="190" x2="356" y2="666"/>
+  <line class="grid" x1="424" y1="190" x2="424" y2="666"/>
+  <line class="grid" x1="492" y1="190" x2="492" y2="666"/>
+  <line class="grid" x1="560" y1="190" x2="560" y2="666"/>
+  <line class="grid" x1="628" y1="190" x2="628" y2="666"/>
+  <line class="grid" x1="696" y1="190" x2="696" y2="666"/>
+  <line class="grid" x1="764" y1="190" x2="764" y2="666"/>
+  <line class="grid" x1="832" y1="190" x2="832" y2="666"/>
+  <line class="grid" x1="900" y1="190" x2="900" y2="666"/>
+  <rect class="outer" x="0" y="190" width="968" height="476"/>
+  <text class="grp" transform="translate(30.0 326.0) rotate(-90)">in distribution</text>
+  <text class="grp" transform="translate(30.0 564.0) rotate(-90)">out of distribution</text>
+  <text class="sub" transform="translate(100.0 275.0) rotate(-45)">batch</text>
+  <text class="sub" transform="translate(100.0 411.0) rotate(-45)">streaming</text>
+  <text class="sub" transform="translate(100.0 513.0) rotate(-45)">batch</text>
+  <text class="sub" transform="translate(100.0 615.0) rotate(-45)">streaming</text>
+  <text class="head" transform="translate(28.0 182) rotate(-55)">in / out</text>
+  <text class="head" transform="translate(89.5 182) rotate(-55)">batch /</text>
+  <text class="head" transform="translate(106.5 182) rotate(-55)">streaming</text>
+  <text class="head" transform="translate(223.5 182) rotate(-55)">learning</text>
+  <text class="head" transform="translate(240.5 182) rotate(-55)">scenario</text>
+  <text class="head" transform="translate(377.5 182) rotate(-55)">unlabeled</text>
+  <text class="head" transform="translate(394.5 182) rotate(-55)">data</text>
+  <text class="head" transform="translate(445.5 182) rotate(-55)">labeled</text>
+  <text class="head" transform="translate(462.5 182) rotate(-55)">data</text>
+  <text class="head" transform="translate(522.0 182) rotate(-55)">&gt;1 datasets</text>
+  <text class="head" transform="translate(590.0 182) rotate(-55)">&gt;1 tasks</text>
+  <text class="head" transform="translate(649.5 182) rotate(-55)">unobserved</text>
+  <text class="head" transform="translate(666.5 182) rotate(-55)">tasks</text>
+  <text class="head" transform="translate(717.5 182) rotate(-55)">streaming</text>
+  <text class="head" transform="translate(734.5 182) rotate(-55)">tasks</text>
+  <text class="head" transform="translate(777.0 182) rotate(-55)">streaming</text>
+  <text class="head" transform="translate(794.0 182) rotate(-55)">priorities &amp;</text>
+  <text class="head" transform="translate(811.0 182) rotate(-55)">resources</text>
+  <text class="head" transform="translate(853.5 182) rotate(-55)">streaming</text>
+  <text class="head" transform="translate(870.5 182) rotate(-55)">data</text>
+  <text class="head" transform="translate(921.5 182) rotate(-55)">computational</text>
+  <text class="head" transform="translate(938.5 182) rotate(-55)">constraints</text>
+  <text class="leg" x="0" y="700">Y: present, O: optional, n/a: not applicable</text>
+</svg>

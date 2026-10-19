@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 2 590 326" role="img" aria-labelledby="title desc">
+  <title id="title">Active and inactive triples</title>
+  <desc id="desc">Active triples (left): a chain with unobserved middle node, a common cause with unobserved parent, a v-structure with observed child, and a v-structure whose child has an observed descendant. Inactive triples (right): a chain with observed middle node, a common cause with observed parent, and a v-structure with unobserved child. Shaded nodes are observed.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .node { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #a0a0a0; stroke: #2b2b2b; stroke-width: 2; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 18px; font-family: "Times New Roman", Times, serif; }
+      .lab { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <!-- active -->
+  <line class="edge" x1="36.5" y1="48.5" x2="69.5" y2="48.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="101.5" y1="48.5" x2="134.5" y2="48.5" marker-end="url(#arrow)"/>
+  <circle class="node" cx="21.0" cy="48.5" r="15.5"/>
+  <circle class="node" cx="86.0" cy="48.5" r="15.5"/>
+  <circle class="node" cx="151.0" cy="48.5" r="15.5"/>
+  <line class="edge" x1="227.3" y1="33.0" x2="202.9" y2="63.2" marker-end="url(#arrow)"/>
+  <line class="edge" x1="246.7" y1="33.1" x2="270.7" y2="63.1" marker-end="url(#arrow)"/>
+  <circle class="node" cx="237.0" cy="21.0" r="15.5"/>
+  <circle class="node" cx="192.5" cy="76.0" r="15.5"/>
+  <circle class="node" cx="281.0" cy="76.0" r="15.5"/>
+  <line class="edge" x1="51.1" y1="141.2" x2="75.2" y2="169.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="120.0" y1="141.3" x2="96.7" y2="168.9" marker-end="url(#arrow)"/>
+  <circle class="node" cx="41.0" cy="129.5" r="15.5"/>
+  <circle class="node" cx="130.0" cy="129.5" r="15.5"/>
+  <circle class="obs" cx="86.0" cy="181.5" r="15.5"/>
+  <line class="edge" x1="202.5" y1="140.3" x2="226.3" y2="168.4" marker-end="url(#arrow)"/>
+  <line class="edge" x1="271.0" y1="140.4" x2="247.6" y2="168.4" marker-end="url(#arrow)"/>
+  <circle class="node" cx="192.5" cy="128.5" r="15.5"/>
+  <circle class="node" cx="281.0" cy="128.5" r="15.5"/>
+  <circle class="node" cx="237.0" cy="181.0" r="15.5"/>
+  <line class="edge" x1="237" y1="196.5" x2="237" y2="206" marker-end="url(#arrow)"/>
+  <circle cx="237" cy="211" r="1.4" fill="#2b2b2b"/>
+  <circle cx="237" cy="216" r="1.4" fill="#2b2b2b"/>
+  <circle cx="237" cy="221" r="1.4" fill="#2b2b2b"/>
+  <line class="edge" x1="237" y1="225" x2="237" y2="234.5" marker-end="url(#arrow)"/>
+  <circle class="obs" cx="237.0" cy="251.5" r="15.5"/>
+  <!-- inactive -->
+  <line class="edge" x1="425.0" y1="37.0" x2="471.0" y2="37.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="503.0" y1="37.0" x2="549.0" y2="37.0" marker-end="url(#arrow)"/>
+  <circle class="node" cx="409.5" cy="37.0" r="15.5"/>
+  <circle class="obs" cx="487.5" cy="37.0" r="15.5"/>
+  <circle class="node" cx="565.5" cy="37.0" r="15.5"/>
+  <line class="edge" x1="478.0" y1="95.7" x2="452.1" y2="129.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="497.1" y1="95.6" x2="523.7" y2="129.1" marker-end="url(#arrow)"/>
+  <circle class="obs" cx="487.5" cy="83.5" r="15.5"/>
+  <circle class="node" cx="442.0" cy="142.0" r="15.5"/>
+  <circle class="node" cx="534.0" cy="142.0" r="15.5"/>
+  <line class="edge" x1="451.9" y1="199.9" x2="477.0" y2="230.3" marker-end="url(#arrow)"/>
+  <line class="edge" x1="524.0" y1="199.8" x2="498.2" y2="230.4" marker-end="url(#arrow)"/>
+  <circle class="node" cx="442.0" cy="188.0" r="15.5"/>
+  <circle class="node" cx="534.0" cy="188.0" r="15.5"/>
+  <circle class="node" cx="487.5" cy="243.0" r="15.5"/>
+  <text class="lab" x="161" y="318">Active triples</text>
+  <text class="lab" x="489" y="318">Inactive triples</text>
+</svg>

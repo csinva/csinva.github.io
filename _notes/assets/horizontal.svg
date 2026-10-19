@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 30 790 490" role="img" aria-labelledby="title desc">
+  <title id="title">Horizontal cell feedback</title>
+  <desc id="desc">Five cones above a row of horizontal cells coupled by gap junctions. The center cone excites the horizontal cell H (+); H feeds back negatively (−) to the center cone and to the surrounding cones. Neighboring horizontal cells are excited through gap junctions (+) and also send negative feedback (−) to the cones above them.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background; simplified redraw of a textbook illustration -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .cell { fill: #d9822b; fill-opacity: 0.18; stroke: #2b2b2b; stroke-width: 2; stroke-linejoin: round; }
+      .inner { fill: #d1342f; fill-opacity: 0.18; stroke: #2b2b2b; stroke-width: 1.5; }
+      .nuc { fill: #d9822b; fill-opacity: 0.35; stroke: #2b2b2b; stroke-width: 1.5; }
+      .comb { fill: none; stroke: #2b2b2b; stroke-width: 2.2; }
+      .hc { fill: #d9822b; fill-opacity: 0.1; stroke: #2b2b2b; stroke-width: 2; }
+      .hcH { fill: #d9822b; fill-opacity: 0.45; stroke: #2b2b2b; stroke-width: 2; }
+      .nucH { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .eb { fill: none; stroke: #2b2b2b; stroke-width: 4; }
+      .lab { font: 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sg { font: bold 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .gj { font: italic 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+    <g id="cone">
+      <path class="cell" d="M-36 110 Q-36 104 -30 104 H30 Q36 104 36 110 V170 Q36 180 26 184 Q22 190 22 200 Q22 222 9 232 V268 Q11 288 35 302 Q52 310 52 326 V350 H-52 V326 Q-52 310 -35 302 Q-11 288 -9 268 V232 Q-22 222 -22 200 Q-22 190 -26 184 Q-36 180 -36 170 Z"/>
+      <rect class="inner" x="-27" y="112" width="54" height="66" rx="8"/>
+      <ellipse class="nuc" cx="0" cy="205" rx="15" ry="19"/>
+      <path class="comb" d="M-28 40 V104 M-28 42 H-18.0 M-28 48 H-13.6 M-28 54 H-9.2 M-28 60 H-4.8 M-28 66 H-0.4 M-28 72 H4.0 M-28 78 H8.4 M-28 84 H12.8 M-28 90 H17.2 M-28 96 H21.6 M-28 102 H26.0 M-28 108 H30.4 "/>
+    </g>
+    <g id="coneW">
+      <path class="cell" d="M-36 110 Q-36 104 -30 104 H30 Q36 104 36 110 V170 Q36 180 26 184 Q22 190 22 200 Q22 222 9 232 V268 Q11 288 63 302 Q80 310 80 326 V350 H-80 V326 Q-80 310 -63 302 Q-11 288 -9 268 V232 Q-22 222 -22 200 Q-22 190 -26 184 Q-36 180 -36 170 Z"/>
+      <rect class="inner" x="-27" y="112" width="54" height="66" rx="8"/>
+      <ellipse class="nuc" cx="0" cy="205" rx="15" ry="19"/>
+      <path class="comb" d="M-28 40 V104 M-28 42 H-18.0 M-28 48 H-13.6 M-28 54 H-9.2 M-28 60 H-4.8 M-28 66 H-0.4 M-28 72 H4.0 M-28 78 H8.4 M-28 84 H12.8 M-28 90 H17.2 M-28 96 H21.6 M-28 102 H26.0 M-28 108 H30.4 "/>
+    </g>
+  </defs>
+<use href="#cone" x="92" y="0"/>
+<use href="#cone" x="237" y="0"/>
+<use href="#coneW" x="410" y="-10"/>
+<use href="#cone" x="582" y="0"/>
+<use href="#cone" x="725" y="0"/>
+<text class="lab" x="132" y="165">cone</text>
+<text class="lab" x="277" y="165">cone</text>
+<text class="lab" x="622" y="165">cone</text>
+<text class="lab" x="765" y="165">cone</text>
+  <!-- horizontal cell row -->
+  <rect class="hc" x="176" y="418" width="102" height="66" rx="10"/>
+  <rect class="hcH" x="278" y="414" width="130" height="72" rx="10"/>
+  <rect class="hc" x="408" y="418" width="138" height="66" rx="10"/>
+  <rect class="hc" x="546" y="418" width="104" height="66" rx="10"/>
+  <rect class="nucH" x="198" y="430" width="56" height="40" rx="8"/>
+  <rect class="nucH" x="320" y="430" width="50" height="40" rx="8"/>
+  <text class="lab" x="335" y="459">H</text>
+  <rect class="nucH" x="450" y="432" width="56" height="40" rx="8"/>
+  <rect class="nucH" x="582" y="432" width="52" height="40" rx="8"/>
+  <!-- feedback (−) to cones -->
+  <path class="e" d="M205 418 L118 365" marker-end="url(#a)"/><text class="sg" x="160" y="378">-</text>
+  <path class="e" d="M205 418 V356" marker-end="url(#a)"/><text class="sg" x="220" y="383">-</text>
+  <path class="e" d="M388 414 L238 360" marker-end="url(#a)"/><text class="sg" x="300" y="370">-</text>
+  <path class="e" d="M388 414 L582 360" marker-end="url(#a)"/><text class="sg" x="518" y="368">-</text>
+  <path class="e" d="M500 418 L590 362" marker-end="url(#a)"/><text class="sg" x="533" y="390">-</text>
+  <path class="e" d="M605 418 V356" marker-end="url(#a)"/><text class="sg" x="592" y="384">-</text>
+  <path class="e" d="M615 418 L700 360" marker-end="url(#a)"/><text class="sg" x="665" y="376">-</text>
+  <!-- center cone <-> H -->
+  <path class="eb" d="M345 342 V412" marker-end="url(#a)"/><text class="sg" x="331" y="386" style="font-size:20px;font-weight:normal">+</text>
+  <path class="eb" d="M387 412 V348" marker-end="url(#a)"/><text class="sg" x="372" y="352">−</text>
+  <!-- gap junctions (+) -->
+  <path class="e" d="M276 452 H248" marker-end="url(#a)"/><text class="sg" x="264" y="434">+</text>
+  <path class="e" d="M392 452 H436" marker-end="url(#a)"/><text class="sg" x="425" y="432">+</text>
+  <path class="e" d="M518 452 H556" marker-end="url(#a)"/><text class="sg" x="560" y="437">+</text>
+  <path d="M440 494 L410 470" stroke="#8a8a8a" stroke-width="1.5"/>
+  <text class="gj" x="440" y="512">gap junction</text>
+</svg>

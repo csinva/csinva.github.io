@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: ai futures
+subtitle: Some thoughts on AGI and where AI is headed, plus notes on Human Compatible and Possible Minds.
 category: ai
 ---
 
@@ -8,11 +9,10 @@ category: ai
 
 # 🤖 AGI thoughts
 
-- nice AGI definition:  AI systems are fully substitutable for human labor (or have a comparably large impact)
+- nice AGI definition: AI systems are fully substitutable for human labor (or have a comparably large impact)
 - AI risk by deliberate human actors (i.e. concentrating power) seems to be a greater risk than unintended use (i.e. loss of control) [see some thought-out risks [here](https://cdn.openai.com/openai-preparedness-framework-beta.pdf)]
     - Caveat: AGI risk may still be high - nefarious use can easily be worse than accidental misuse
     - alignment research seems to be technically more interesting than safety research…
-
 - Data limitations (e.g. in medicine) will limit rapid general advancements
 
 # human compatible
@@ -65,7 +65,7 @@ category: ai
 
 ## possible solns
 
-- oracle AI - can only answer yes/no/probabilistic questions,  otherwise no output to the real world
+- oracle AI - can only answer yes/no/probabilistic questions, otherwise no output to the real world
 - inverse RL
   - ai should be uncertain about utitilies
   - utilties should be inferred from human preferences
@@ -120,7 +120,7 @@ category: ai
   - something about relationship...
 - correlations, causes, explanations (moral/rational) - biologically biased towards this?
   - beliefs + desires cause actions
-- pretty cool that different people follow  norms (e.g. come to class at 4pm)
+- pretty cool that different people follow norms (e.g. come to class at 4pm)
   - could you do this with ai?
 - facebook chatbot ex.
 - paperclip machine, ads on social media
@@ -143,7 +143,7 @@ category: ai
 
 - 2 eras: before/after digital computers
   - before: thomas hobbes, gottfried wilhelm leibniz
-  - after: 
+  - after:
     - alan turing - intelligent machines
     - john von neumann - reproducing machines
     - claude shannon - communicate reliably
@@ -203,7 +203,7 @@ category: ai
 - curiosity is dangerous
 - 3 reasons ai danger is downplayed
     1. people downplay danger because it makes their research seem good - "It is difficult to get a man to understand something, when his salary depends on his not understanding it" - Upton Sinclair
-    	- **luddite** - person opposoed to new technology or ways of working - stems from secret organization of english textile workers who protested
+       - **luddite** - person opposoed to new technology or ways of working - stems from secret organization of english textile workers who protested
     2. it's an abstract threat
     3. it feels hopeless to think about
 - AI safety research must precede AI developments
@@ -260,19 +260,13 @@ category: ai
 ## the artificial use of human beings (tom griffiths)
 
 - believes key to ml is human learning
-
-- we now have good models of images/text, but not of 
-
+- we now have good models of images/text, but not of
 - value alignment
-
 - inverse rl: look at actions of intelligent agent, learn reward
-
 - accuracy (heuristics) vs generalizability (often assumes rationality)
   - however, people are often not rational - people follow simple heuristics
   - ex. don't calculate probabilities, just try to remember examples
-
 - people usually tradeoff time with how important a decision is - **bounded optimality**
-
 - could ai actually produce more leisure?
 
 ## making the invisible visible (hans ulrich obrist)

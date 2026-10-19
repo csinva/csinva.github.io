@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ai/llms';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.2. search" href="search.html" />
-    <link rel="prev" title="6. ai" href="ai.html" />
+    <link rel="next" title="6.2. search and logic" href="search.html" />
+    <link rel="prev" title="6. ai" href="ai_section.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai.html">6. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai_section.html">6. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -462,6 +448,9 @@ document.write(`
 <h2><span class="section-number">6.1.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
 <p>Here is my best diagram of essential components of transformer sizes (I find it very useful to remember the shapes of all the matrices):
 <img src="../assets/transformer_sizes.png" alt="transformer_sizes" style="width:100%;"/></p>
+<ul class="simple">
+<li><p>Note that query is “what is the token looking for” and key is more like the index</p></li>
+</ul>
 <p>Here is a follow-up diagram showing how key-value caching works during inference to speed things up:
 <img src="../assets/kv_caching_diagram.png" alt="kv_caching_diagram" style="width:100%;"/></p>
 <ul class="simple">
@@ -482,7 +471,7 @@ document.write(`
 <ul>
 <li><p>attention is all you need (<a class="reference external" href="https://arxiv.org/abs/1706.03762">vaswani et al. 2017</a>) - initial transformer</p>
 <ul>
-<li><p>encoder-decoder transformer for seq-to-seq (most new models don’t have  special encoder-decoder structure for translation)</p></li>
+<li><p>encoder-decoder transformer for seq-to-seq (most new models don’t have special encoder-decoder structure for translation)</p></li>
 <li><p>Semi-supervised Sequence Learning (<a class="reference external" href="https://arxiv.org/abs/1511.01432">dai &amp; quoc le, 2015</a>) - context vector is weighted sum of context vector at each word</p></li>
 </ul>
 </li>
@@ -524,14 +513,14 @@ document.write(`
 </li>
 <li><p>LongNet: Scaling Transformers to 1,000,000,000 Tokens (<a class="reference external" href="https://arxiv.org/abs/2307.02486">ding, …, wei, 2023</a>) - multiscale attention similar to wavelets</p>
 <ul>
-<li><p>Longformer: The Long-Document Transformer (<a class="reference external" href="https://arxiv.org/abs/2004.05150">Beltagy, Peters, &amp; Cohan 2020</a>) - processes very long contexts</p></li>
+<li><p>Longformer: The Long-Document Transformer (<a class="reference external" href="https://arxiv.org/abs/2004.05150">beltagy, peters, &amp; cohan 2020</a>) - processes very long contexts</p></li>
 </ul>
 </li>
-<li><p>PaLM: Scaling Language Modeling with Pathways (<a class="reference external" href="https://arxiv.org/abs/2204.02311">Google 2022</a>) - 540 Billion params</p>
+<li><p>PaLM: Scaling Language Modeling with Pathways (<a class="reference external" href="https://arxiv.org/abs/2204.02311">google 2022</a>) - 540 Billion params</p>
 <ul>
 <li><p>pathways hardware center allows for fast/efficient training</p></li>
 <li><p>discontinuous improvements - at some point large model improves</p></li>
-<li><p>Chinchilla: Training Compute-Optimal LLMs (<a class="reference external" href="https://arxiv.org/abs/2203.15556">DeepMind 2022</a>)</p>
+<li><p>Chinchilla: Training Compute-Optimal LLMs (<a class="reference external" href="https://arxiv.org/abs/2203.15556">deepmind 2022</a>)</p>
 <ul>
 <li><p>“chinchilla scaling laws” - for compute-optimal training, the model size and the number of training tokens should be scaled equally</p></li>
 </ul>
@@ -576,8 +565,8 @@ document.write(`
 <ul>
 <li><p>ChatDoctor (finetuned LLAMA) (<a class="reference external" href="https://arxiv.org/abs/2303.14070">yunxiang, …, you, 2023</a>)</p></li>
 <li><p>PubMedGPT (2.7B): (<a class="reference external" href="https://crfm.stanford.edu/2022/12/15/pubmedgpt.html">bolton, hall, …, manning, liang, 2022</a>) -&gt; renamed to <em>BioMedLM</em></p></li>
-<li><p>BioBERT: <a class="reference external" href="https://arxiv.org/abs/1901.08746">A pre-trained biomedical language representation model for biomedical text mining</a> (2019)</p></li>
-<li><p>PubMedBERT: <a class="reference external" href="https://arxiv.org/abs/2007.15779">Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing</a> (gu…gao, poon, 2021)</p></li>
+<li><p>BioBERT: A pre-trained biomedical language representation model for biomedical text mining (<a class="reference external" href="https://arxiv.org/abs/1901.08746">2019</a>)</p></li>
+<li><p>PubMedBERT: Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing (<a class="reference external" href="https://arxiv.org/abs/2007.15779">gu…gao, poon, 2021</a>)</p></li>
 <li><p>Med-PaLM 2 (<a class="reference external" href="https://arxiv.org/abs/2305.09617">google, 2023</a>) - state of the art QA</p>
 <ul>
 <li><p>LLMs Encode Clinical Knowledge (<a class="reference external" href="https://arxiv.org/abs/2212.13138">singhal, …, natarajan, 2022, google/deepmind</a>) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM</p></li>
@@ -605,7 +594,7 @@ document.write(`
 <li><p>note: empirically works better with very large batch size</p></li>
 </ul>
 </li>
-<li><p>DALL-E 2 (<a class="reference external" href="https://openai.com/dall-e-2/">OpenAI, 2022</a>)</p>
+<li><p>DALL-E 2 (<a class="reference external" href="https://openai.com/dall-e-2/">openai, 2022</a>)</p>
 <ul>
 <li><p>clip is foundation as generative model</p></li>
 <li><p>generates text + image embeddings</p></li>
@@ -618,7 +607,7 @@ document.write(`
 <li><p>BLIP-2 (<a class="reference external" href="https://arxiv.org/abs/2301.12597">salesforce, 2023</a>) - Bootstrapping Language-Image Pre-training with Frozen Image Encoders and LLMs</p>
 <ul>
 <li><p>BEiT-3 (<a class="reference external" href="https://arxiv.org/abs/2208.10442">2022</a>) - treat vision as language and large-scale multimodal training</p></li>
-<li><p>outperforms <a class="reference external" href="https://arxiv.org/abs/2204.14198">Flamingo</a> (2022), which uses more domain knowledge to connect vision &amp; language</p></li>
+<li><p>outperforms Flamingo (<a class="reference external" href="https://arxiv.org/abs/2204.14198">2022</a>), which uses more domain knowledge to connect vision &amp; language</p></li>
 </ul>
 </li>
 <li><p>video</p>
@@ -690,10 +679,10 @@ document.write(`
 </li>
 <li><p>CODEX: Evaluating LLMs Trained on Code (<a class="reference external" href="https://arxiv.org/abs/2107.03374">2021, openai</a>)</p>
 <ul>
-<li><p>Repair Is Nearly Generation: Multilingual Program Repair with LLMs (<a class="reference external" href="https://arxiv.org/abs/2208.11640">Joshi et al. 2022</a>)</p></li>
-<li><p>Improving automatically generated code from Codex via Automated Program Repair (<a class="reference external" href="https://arxiv.org/abs/2205.10583">Fan et al. 2022</a>) - use automated program repair to tweak codex outputs to make them better</p></li>
-<li><p>Generating Question Titles for Stack Overflow from Mined Code Snippets (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0">Gao et al. 2020</a>)</p></li>
-<li><p>Automatic Program Repair with OpenAI’s Codex: Evaluating QuixBugs (<a class="reference external" href="https://arxiv.org/abs/2111.03922">Prenner &amp; Robbes, 2021</a>)</p>
+<li><p>Repair Is Nearly Generation: Multilingual Program Repair with LLMs (<a class="reference external" href="https://arxiv.org/abs/2208.11640">joshi et al. 2022</a>)</p></li>
+<li><p>Improving automatically generated code from Codex via Automated Program Repair (<a class="reference external" href="https://arxiv.org/abs/2205.10583">fan et al. 2022</a>) - use automated program repair to tweak codex outputs to make them better</p></li>
+<li><p>Generating Question Titles for Stack Overflow from Mined Code Snippets (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0">gao et al. 2020</a>)</p></li>
+<li><p>Automatic Program Repair with OpenAI’s Codex: Evaluating QuixBugs (<a class="reference external" href="https://arxiv.org/abs/2111.03922">prenner &amp; robbes, 2021</a>)</p>
 <ul>
 <li><p>use prompt like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#### fix the bug in the following function</span>
@@ -733,10 +722,10 @@ document.write(`
 <li><p>Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens (<a class="reference external" href="https://arxiv.org/pdf/2401.17377.pdf">liu, min, zettlemoyer, choic, &amp; hajishirzi, 2024</a>)</p>
 <ul>
 <li><p>motivation: hard to scale ngram models to large datasets and large data lengths</p></li>
-<li><p>soln 1: backoff (<a class="reference external" href="https://scholar.google.com/citations?view_op=view_citation&amp;amp;hl=en&amp;amp;user=uZg9l58AAAAJ&amp;amp;citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC">Jurafsky &amp; Martin, 2000</a>) - select <em>n</em> based on the longest suffix of the prompt that has a non-zero count in the corpus</p>
+<li><p>soln 1: backoff (<a class="reference external" href="https://scholar.google.com/citations?view_op=view_citation&amp;amp;hl=en&amp;amp;user=uZg9l58AAAAJ&amp;amp;citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC">jurafsky &amp; martin, 2000</a>) - select <em>n</em> based on the longest suffix of the prompt that has a non-zero count in the corpus</p>
 <ul>
 <li><p>counts of the next token yield the prob. of the next token</p></li>
-<li><p>Katz backoff (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/1165125">Katz, 1987</a>) discounts probs to yield valid prob. distr.</p></li>
+<li><p>Katz backoff (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/1165125">katz, 1987</a>) discounts probs to yield valid prob. distr.</p></li>
 </ul>
 </li>
 <li><p>soln 2: represent prob. table in <a class="reference external" href="https://en.wikipedia.org/wiki/Suffix_array">suffix array</a> to make things very fast</p>
@@ -775,11 +764,11 @@ document.write(`
 <section id="mathematical-overview-of-transformers">
 <h2><span class="section-number">6.1.4. </span>mathematical overview of transformers<a class="headerlink" href="#mathematical-overview-of-transformers" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>based on <a class="reference external" href="https://arxiv.org/abs/2207.09238?utm_source=substack&amp;amp;utm_medium=email">Formal Algorithms for Transformers</a></p></li>
+<li><p>based on Formal Algorithms for Transformers (<a class="reference external" href="https://arxiv.org/abs/2207.09238?utm_source=substack&amp;amp;utm_medium=email">phuong &amp; hutter 2022</a>)</p></li>
 <li><p>tasks</p>
 <ul>
-<li><p><em>sequence modeling</em>: learn <span class="math notranslate nohighlight">\(p(x)\)</span>, usually factorized as <span class="math notranslate nohighlight">\(p(x_i|x_1,...,x_{i-1})\)</span></p></li>
-<li><p><em>sequence-to-sequence</em>: learn <span class="math notranslate nohighlight">\(p(z|x)\)</span>, e.g. transalation, speech-to-text, question answering</p></li>
+<li><p><em>sequence modeling</em>: learn <span class="math notranslate nohighlight">\(p(x)\)</span>, usually factorized as $<span class="math notranslate nohighlight">\(p(x_i\vert x_1,...,x_{i-1})\)</span>$</p></li>
+<li><p><em>sequence-to-sequence</em>: learn $<span class="math notranslate nohighlight">\(p(z\vert x)\)</span>$, e.g. transalation, speech-to-text, question answering</p></li>
 </ul>
 </li>
 <li><p>preprocessing</p>
@@ -828,15 +817,15 @@ document.write(`
 </section>
 <section id="visual-explanation-of-self-attention">
 <h2><span class="section-number">6.1.5. </span>visual explanation of self-attention<a class="headerlink" href="#visual-explanation-of-self-attention" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>based on article by jay allamar</p></li>
 <li><p><strong>self-attention</strong> - layer that lets word learn its relation to other layers</p>
-<ul>
+<ul class="simple">
 <li><p>for each word, want score telling how much importance to place on each other word (queries <span class="math notranslate nohighlight">\(\cdot\)</span> keys)</p></li>
 <li><p>we get an encoding for each word</p>
 <ul>
 <li><p>the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)</p></li>
-<li><p>softmax this and use it to do weighted sum of values<img alt="Screen Shot 2019-08-17 at 2.51.53 PM" src="../../_images/attention.png" /></p></li>
+<li><p>softmax this and use it to do weighted sum of values<img style="width: 450px; max-width: 100%;" src="../assets/attention.svg" alt="Self-attention worked example"/></p></li>
 </ul>
 </li>
 <li><p>(optional) implementation details</p>
@@ -869,18 +858,19 @@ document.write(`
 <ul>
 <li><p>specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)</p></li>
 <li><p>this is fed to a feedforward net to output a word</p></li>
-<li><p><img alt="Screen Shot 2019-04-11 at 7.57.14 PM" src="../../_images/nmt.png" /></p></li>
+<li><img style="width: 640px; max-width: 100%;" src="../assets/nmt.svg" alt="Seq2seq with attention, decoding"/>
+</li>
 </ul>
 </li>
 <li><p>at a high level we have <span class="math notranslate nohighlight">\(Q, K, V\)</span> and compute <span class="math notranslate nohighlight">\(\text{softmax}(QK^T)V\)</span></p>
-<ul>
+<ul class="simple">
 <li><p>instead could simplify it and do <span class="math notranslate nohighlight">\(\text{softmax}(XX^T)V\)</span> - this would then be based on kernel</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p><strong>transformer</strong></p>
-<ul>
+<ul class="simple">
 <li><p>uses many self-attention layers</p></li>
 <li><p>many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)</p></li>
 <li><p>details</p>
@@ -963,7 +953,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ai.html"
+       href="ai_section.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -976,7 +966,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.2. </span>search</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>search and logic</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1042,11 +1032,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

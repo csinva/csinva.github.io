@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" role="img" aria-labelledby="title desc">
+  <title id="title">Backpropagation on f = (x + y) z</title>
+  <desc id="desc">Computation graph: x and y feed an addition node producing q, which with z feeds a multiplication node producing f. Forward values in green above each wire, gradients from backpropagation in red below.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .wire { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .op { font: 34px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .var { font: italic 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .fwd { font: 600 26px Helvetica, Arial, sans-serif; fill: #1f8a4c; }
+      .grad { font: 600 26px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .legend { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+
+  <!-- inputs -->
+  <text class="var" x="6" y="70">x</text>
+  <path class="wire" d="M36 60 H120 L190 96" marker-end="url(#arrow)"/>
+  <text class="fwd" x="48" y="48">−2</text>
+  <text class="grad" x="48" y="92">−4</text>
+
+  <text class="var" x="6" y="160">y</text>
+  <path class="wire" d="M36 150 H120 L190 116" marker-end="url(#arrow)"/>
+  <text class="fwd" x="48" y="138">5</text>
+  <text class="grad" x="48" y="182">−4</text>
+
+  <text class="var" x="6" y="250">z</text>
+  <path class="wire" d="M36 240 H120 L393 180" marker-end="url(#arrow)"/>
+  <text class="fwd" x="48" y="228">−4</text>
+  <text class="grad" x="48" y="272">3</text>
+
+  <!-- + node -->
+  <circle class="node" cx="217" cy="106" r="28"/>
+  <text class="op" x="217" y="105">+</text>
+
+  <!-- q wire -->
+  <path class="wire" d="M245 106 H318 L397 150" marker-end="url(#arrow)"/>
+  <text class="var" x="252" y="94">q</text>
+  <text class="fwd" x="278" y="94">3</text>
+  <text class="grad" x="270" y="138">−4</text>
+
+  <!-- × node -->
+  <circle class="node" cx="420" cy="166" r="28"/>
+  <text class="op" x="420" y="165">×</text>
+
+  <!-- output -->
+  <path class="wire" d="M448 166 H588" marker-end="url(#arrow)"/>
+  <text class="var" x="458" y="154">f</text>
+  <text class="fwd" x="482" y="154">−12</text>
+  <text class="grad" x="482" y="198">1</text>
+
+  <!-- legend -->
+  <circle cx="16" cy="313" r="7" fill="#1f8a4c"/>
+  <text class="legend" x="30" y="320">forward value</text>
+  <circle cx="196" cy="313" r="7" fill="#d1342f"/>
+  <text class="legend" x="210" y="320">gradient</text>
+</svg>

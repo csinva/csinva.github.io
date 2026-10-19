@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 8 412 346" role="img" aria-labelledby="title desc">
+  <title id="title">Distribute message passing</title>
+  <desc id="desc">Tree fragment: node i above node j, which has children k, ..., and another child. Distribute phase: SendMessage arrow between j and i points down (i sends to j), and the Distribute arrows along the edges from j's children point down toward the children.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .var { font: italic bold 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sc { font: 20px Georgia, "Times New Roman", serif; font-variant: small-caps; letter-spacing: 0.5px; fill: #2b2b2b; }
+      .dots { font: bold 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <line class="edge" x1="200.0" y1="57.0" x2="200.0" y2="153.0"/>
+  <line class="edge" x1="188.4" y1="193.7" x2="121.6" y2="301.3"/>
+  <line class="edge" x1="211.6" y1="193.7" x2="278.4" y2="301.3"/>
+  <circle class="node" cx="200" cy="35" r="22"/>
+  <circle class="node" cx="200" cy="175" r="22"/>
+  <circle class="node" cx="110" cy="320" r="22"/>
+  <circle class="node" cx="290" cy="320" r="22"/>
+  <line class="edge" x1="178" y1="92" x2="178" y2="124" marker-end="url(#arrow)"/>
+  <line class="edge" x1="150.5" y1="220.6" x2="128.9" y2="255.4" marker-end="url(#arrow)"/>
+  <line class="edge" x1="249.5" y1="220.6" x2="271.1" y2="255.4" marker-end="url(#arrow)"/>
+
+  <text class="var" x="232" y="45">i</text>
+  <text class="var" x="230" y="186">j</text>
+  <text class="var" x="60" y="330">k</text>
+  <text class="dots" x="200" y="326">…</text>
+  <text class="sc" x="164" y="115" text-anchor="end">SendMessage</text>
+  <text class="sc" x="102" y="258" text-anchor="end">Distribute</text>
+  <text class="sc" x="298" y="258">Distribute</text>
+</svg>

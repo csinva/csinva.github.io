@@ -17,16 +17,15 @@
         <div class="main notes-layout">
             <div id="content" class="markdown note-box">
                 <!-- <hr> -->
-                <p class="title" style="font-size: xx-large; text-align: left; margin-bottom: 0px;">
-                    {{ page.title }} <a class="btn btn-primary"
-                        href="https://github.com/csinva/csinva.github.io/blob/master/{{ page.path }}">view
-                        markdown <i class="fa fa-github fa-fw"></i></a>
-                    {% if page.subtitle %}
-                <p class="subtitle" style="font-size: large; text-align: left;">{{page.subtitle }}</p>
-                {% endif %}
+                <p class="title">
+                    {{ page.title }} <a class="md-source"
+                        href="https://github.com/csinva/csinva.github.io/blob/master/{{ page.path }}"><i class="fa fa-github fa-fw"></i> view markdown</a>
                 </p>
-                <hr style="width: 100%;">
-                {{ page.content | markdownify }}
+                {% if page.subtitle %}
+                <p class="subtitle">{{page.subtitle }}</p>
+                {% endif %}
+                <hr class="title-rule" style="width: 100%;">
+                {{ content }}
                 <!-- Check if page has attribute subtitle -->
 
                 <hr>
@@ -41,7 +40,29 @@
 
 <!--js-->
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+    MathJax.Hub.Config({ TeX: {
+        equationNumbers: { autoNumber: "all" },
+        extensions: ["cancel.js", "color.js"],
+        // KaTeX/LaTeX shorthands used in the notes that MathJax 2 doesn't define
+        Macros: {
+            bold: ["\\mathbf{#1}", 1],
+            underbar: ["\\underline{#1}", 1],
+            ra: "\\rightarrow",
+            empty: "\\emptyset",
+            // color-coding for parts of equations; same colors as the .cblue etc. text classes in notes.css
+            cblue: ["{\\color[RGB]{91,192,222}{#1}}", 1],
+            corange: ["{\\color[RGB]{240,163,94}{#1}}", 1],
+            cgreen: ["{\\color[RGB]{123,216,143}{#1}}", 1],
+            cpink: ["{\\color[RGB]{244,114,182}{#1}}", 1],
+            cpurple: ["{\\color[RGB]{179,157,219}{#1}}", 1],
+            cyellow: ["{\\color[RGB]{230,211,106}{#1}}", 1]
+        }
+    } });
+    // always use MathJax's own TeX web fonts: partial local STIX installs (e.g. macOS)
+    // are missing alphabets like \mathcal and render them as empty boxes
+    MathJax.Hub.Config({
+        "HTML-CSS": { availableFonts: [], preferredFont: null, webFont: "TeX", imageFont: null }
+    });
     MathJax.Hub.Config({
         tex2jax: {
          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -49,7 +70,7 @@
         }
     });
 </script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
     type="text/javascript"></script>
 
 <script src="{{ site.baseurl }}/assets/js/particles-bg.js"></script>

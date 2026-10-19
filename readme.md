@@ -48,7 +48,6 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 <details>
 <summary>The <a href="_notes">_notes</a> folder contains markdown notes and <a href="_notes/cheat_sheets">cheat-sheets</a> for many different courses and areas between computer science, statistics, and neuroscience</summary>
 <ul>
-  <li><a href="https://csinva.io/notes/cheat_sheets/interp.svg">Interpretability cheat sheet</a></li>
   <li><a href="https://csinva.io/notes/neuro/comp_neuro.html">Computational neuroscience</a></li>
   <li><a href="https://csinva.io/notes/stat/causal_inference.html">Causal inference notes</a></li>
   <li><a href="https://csinva.io/notes/ml/classification.html">Classification</a></li>
@@ -58,8 +57,6 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
   <li><a href="https://csinva.io/#:~:text=A%20rough%20set%20of%20notes%20which%20may%20serve%20as%20useful%20reference%20for%20people%20in%20machine%20learning%20/%20neuroscience.">Way more notes here</a></li>
 </ul>
 </details>
-
-![notes](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
 
 ## Posts
 

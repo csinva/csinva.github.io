@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 510" role="img" aria-labelledby="title desc">
+  <title id="title">Nucleus of the solitary tract</title>
+  <desc id="desc">Visceral sensory input goes to the nucleus of the solitary tract. The nucleus projects up to the medial and ventral forebrain (central integration), which produces hormonal and behavioral responses, and down via the vagus nerve to preganglionic neurons, which produce visceral motor responses (reflex activity).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect x="12" y="7" width="500" height="256" rx="0" fill="#fbeec9" stroke="#d9822b" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="40" y="263" width="308" height="240" rx="0" fill="#e3edf7" stroke="#1f6fb2" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="40" y="146" width="308" height="117" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="170" y="21" width="202" height="93" rx="0" fill="#f7d3ad" stroke="#d9822b" stroke-width="2"/>
+  <text class="c" x="271" y="62.7" font-size="19">Medial and</text>
+  <text class="c" x="271" y="84.6" font-size="19">ventral forebrain</text>
+  <rect x="208" y="160" width="126" height="93" rx="0" fill="#a9d6b9" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="271" y="202.2" font-size="17">Nucleus of the</text>
+  <text class="c" x="271" y="221.7" font-size="17">solitary tract</text>
+  <rect x="52" y="296" width="126" height="92" rx="0" fill="#b9d3ec" stroke="#1f6fb2" stroke-width="2"/>
+  <text class="c" x="115" y="326.8" font-size="19">Visceral</text>
+  <text class="c" x="115" y="348.6" font-size="19">sensory</text>
+  <text class="c" x="115" y="370.5" font-size="19">input</text>
+  <rect x="208" y="296" width="126" height="92" rx="0" fill="#d4c4ea" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="271" y="338.2" font-size="17">Preganglionic</text>
+  <text class="c" x="271" y="357.7" font-size="17">neurons</text>
+  <path d="M271.0 160.0 L271.0 139.0" fill="none" stroke="#7cc39a" stroke-width="28" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="271.0,114.0 299.0,140.0 243.0,140.0" fill="#7cc39a"/>
+  <path d="M271.0 253.0 L271.0 271.0" fill="none" stroke="#7cc39a" stroke-width="28" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="271.0,296.0 243.0,270.0 299.0,270.0" fill="#7cc39a"/>
+  <path d="M115.0 296.0 L115.0 208.0 L179.0 208.0" fill="none" stroke="#7fb0dd" stroke-width="28" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="208.0,208.0 178.0,236.0 178.0,180.0" fill="#7fb0dd"/>
+  <path d="M271.0 388.0 L271.0 425.0" fill="none" stroke="#a98bd0" stroke-width="28" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="271.0,452.0 243.0,424.0 299.0,424.0" fill="#a98bd0"/>
+  <path d="M372.0 66.0 L450.0 66.0 L450.0 425.0" fill="none" stroke="#e8a96a" stroke-width="28" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="450.0,452.0 422.0,424.0 478.0,424.0" fill="#e8a96a"/>
+  <path d="M133.0 171.0 L145.0 171.0" fill="none" stroke="#e88a87" stroke-width="7" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="152.0,171.0 144.0,178.0 144.0,164.0" fill="#e88a87"/>
+  <text class="c b" x="89" y="59.7" font-size="19">Central</text>
+  <text class="c b" x="89" y="81.6" font-size="19">integration</text>
+  <text class="c b" x="89" y="475.7" font-size="19">Reflex</text>
+  <text class="c b" x="89" y="497.6" font-size="19">activity</text>
+  <text class="c" x="271" y="478.0" font-size="19" style="fill:#1f6fb2">Visceral motor</text>
+  <text class="c" x="271" y="499.9" font-size="19" style="fill:#1f6fb2">response</text>
+  <text class="c" x="458" y="478.0" font-size="19" style="fill:#1f6fb2">Hormonal and</text>
+  <text class="c" x="458" y="499.9" font-size="19" style="fill:#1f6fb2">behavioral response</text>
+  <text class="note" x="304" y="286.0" font-size="22">Vagus nerve</text>
+  <text class="note" x="484" y="295.0" font-size="24">Nucleus of</text>
+  <text class="note" x="484" y="325.0" font-size="24">solitary</text>
+  <text class="note" x="484" y="355.0" font-size="24">tract:</text>
+  <text class="note" x="484" y="385.0" font-size="24">visceral</text>
+  <text class="note" x="484" y="415.0" font-size="24">input output</text>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 50 1490 1160" role="img" aria-labelledby="title desc">
+  <title id="title">Stereo with parallel optical axes</title>
+  <desc id="desc">Parallel optical axes (fixation at infinity). The cyclopean eye CE is the origin, with the X axis along the baseline and the Z axis pointing forward. The left eye LE and right eye RE sit b/2 either side of CE; each has an image plane a focal length f behind it. A point P = (X, Y, Z) projects through LE to x_L and through RE to x_R, giving x_L/f = (X + b/2)/Z and x_R/f = (X − b/2)/Z, so disparity = x_l − x_r = bf/Z.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="arrow-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <marker id="arrow-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/>
+    </marker>
+    <style>
+      .title { font: 64px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .axis { fill: none; stroke: #2b2b2b; stroke-width: 5; stroke-linecap: round; }
+      .ray { fill: none; stroke: #1f6fb2; stroke-width: 4; stroke-linecap: round; }
+      .img { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-linecap: round; }
+      .dimg { fill: none; stroke: #1f8a4c; stroke-width: 5; stroke-linecap: round; }
+      .drop { fill: none; stroke: #1f8a4c; stroke-width: 4; stroke-dasharray: 14 10; }
+      .lbl { font: 56px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .red { font: 58px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .rvar { font: italic 62px "Times New Roman", Times, Georgia, serif; fill: #d1342f; }
+      .gvar { font: italic 62px "Times New Roman", Times, Georgia, serif; fill: #1f8a4c; }
+      .green { font: 56px Helvetica, Arial, sans-serif; fill: #1f8a4c; }
+      .var { font: italic 60px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .sub { font-size: 40px; }
+      .mid { text-anchor: middle; }
+      .eq { font: 64px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+
+  <text class="title" x="770" y="120">Parallel Optical Axes (fixation at infinity)</text>
+
+  <!-- point P in cyclopean-eye coordinates -->
+  <circle cx="280" cy="372" r="8" fill="#2b2b2b"/>
+  <text class="rvar" x="185" y="400">P</text>
+  <text class="red" x="60" y="300">[X, Y, Z]</text>
+  <text class="red" x="40" y="520">Cyclopean</text>
+  <text class="red" x="40" y="584">Eye</text>
+  <path class="drop" d="M280 380 V725"/>
+
+  <!-- axes: origin at the cyclopean eye CE -->
+  <path class="axis" d="M695 728 V385" marker-end="url(#arrow)"/>
+  <path class="axis" d="M440 728 H1160" marker-end="url(#arrow)"/>
+  <text class="lbl" x="500" y="440"><tspan class="var">Z</tspan> axis</text>
+  <text class="lbl" x="1180" y="748"><tspan class="var">X</tspan> axis</text>
+  <circle cx="695" cy="728" r="9" fill="#d1342f"/>
+  <circle cx="443" cy="728" r="9" fill="#d1342f"/>
+  <circle cx="945" cy="728" r="9" fill="#d1342f"/>
+  <text class="red mid" x="695" y="800">CE</text>
+  <text class="red" x="305" y="700">LE</text>
+  <text class="red" x="990" y="700">RE</text>
+
+  <!-- image planes, a focal length f behind each eye -->
+  <path class="img" d="M443 728 V940"/>
+  <path class="img" d="M443 940 H730" marker-end="url(#arrow)"/>
+  <path class="img" d="M945 728 V940 H1330"/>
+
+  <!-- rays from P through each eye -->
+  <path class="ray" d="M280 372 L555 940"/>
+  <path class="ray" d="M280 372 L1330 940"/>
+  <circle cx="555" cy="940" r="7" fill="#d1342f"/>
+  <circle cx="1330" cy="940" r="7" fill="#d1342f"/>
+  <text class="rvar" x="560" y="995">x<tspan class="sub" dy="12">L</tspan></text>
+  <text class="rvar" x="1300" y="995">x<tspan class="sub" dy="12">R</tspan></text>
+
+  <!-- f and b dimensions -->
+  <path class="dimg" d="M395 740 V928" marker-start="url(#arrow-g)" marker-end="url(#arrow-g)"/>
+  <text class="gvar" x="345" y="850">f</text>
+  <path class="dimg" d="M905 740 V928" marker-start="url(#arrow-g)" marker-end="url(#arrow-g)"/>
+  <text class="gvar" x="855" y="850">f</text>
+  <path class="dimg" d="M670 1040 H455" marker-end="url(#arrow-g)"/>
+  <path class="dimg" d="M720 1040 H933" marker-end="url(#arrow-g)"/>
+  <text class="gvar mid" x="695" y="1058">b</text>
+
+  <!-- projection equations -->
+  <text class="rvar mid" x="985" y="330">x<tspan class="sub" dy="12">L</tspan></text>
+  <path d="M945 355 H1030" stroke="#d1342f" stroke-width="4"/>
+  <text class="rvar mid" x="988" y="420">f</text>
+  <text class="red" x="1050" y="375">=</text>
+  <text class="rvar mid" x="1240" y="330">X + b/2</text>
+  <path d="M1120 355 H1360" stroke="#d1342f" stroke-width="4"/>
+  <text class="rvar mid" x="1240" y="420">Z</text>
+
+  <text class="rvar mid" x="985" y="500">x<tspan class="sub" dy="12">R</tspan></text>
+  <path d="M945 525 H1030" stroke="#d1342f" stroke-width="4"/>
+  <text class="rvar mid" x="988" y="590">f</text>
+  <text class="red" x="1050" y="545">=</text>
+  <text class="rvar mid" x="1240" y="500">X − b/2</text>
+  <path d="M1120 525 H1360" stroke="#d1342f" stroke-width="4"/>
+  <text class="rvar mid" x="1240" y="590">Z</text>
+  <path d="M1440 355 V525" fill="none" stroke="#d1342f" stroke-width="4" marker-start="url(#arrow-r)" marker-end="url(#arrow-r)"/>
+
+  <!-- legend -->
+  <text class="green" x="150" y="1120"><tspan class="gvar">b</tspan>  baseline</text>
+  <text class="green" x="640" y="1120"><tspan class="gvar">f</tspan>  focal length</text>
+  <text class="eq" x="640" y="1192">disparity = <tspan font-style="italic" font-family="Times New Roman, Times, serif">x</tspan><tspan font-size="44" dy="10">l</tspan><tspan dy="-10"> − </tspan><tspan font-style="italic" font-family="Times New Roman, Times, serif">x</tspan><tspan font-size="44" dy="10">r</tspan><tspan dy="-10"> = </tspan><tspan font-style="italic" font-family="Times New Roman, Times, serif">bf</tspan>/<tspan font-style="italic" font-family="Times New Roman, Times, serif">Z</tspan></text>
+</svg>

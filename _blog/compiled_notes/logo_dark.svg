@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190 250" role="img" aria-labelledby="title">
+  <title id="title">ML-AI Guide</title>
+  <defs>
+    <radialGradient id="lens" cx="0.38" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.6" stop-color="#e3eef8"/>
+      <stop offset="1" stop-color="#b9d0e6"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9aa6b2"/>
+      <stop offset="1" stop-color="#4a5560"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .ml { font: 800 150px "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #f2f2f2; letter-spacing: -2px; }
+    .guide { font: 700 128px "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #8cb8ee; }
+    .brace { font: 300 150px "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #8cb8ee; }
+  </style>
+  <!-- magnifying glass -->
+  <g transform="translate(100 120)">
+    <line x1="38" y1="38" x2="88" y2="88" stroke="#1d2329" stroke-width="30" stroke-linecap="round"/>
+    <circle r="62" fill="url(#lens)" stroke="url(#rim)" stroke-width="14"/>
+    <path d="M -36 -18 A 40 40 0 0 1 -14 -40" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+  </g>
+  <text class="ml" x="235" y="178">ML-AI</text>
+  <text class="brace" x="680" y="170">{</text>
+  <text class="guide" x="752" y="170">Guide</text>
+  <text class="brace" x="1122" y="170">}</text>
+</svg>

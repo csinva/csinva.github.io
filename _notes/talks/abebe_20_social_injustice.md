@@ -25,13 +25,10 @@
   - build partnerships and trust w/ domain experts
   - representation in computing matters
 
-
-
 ## martha minow
 
-- **“the master’s tools will never dismantle the master’s house.”** 
+- **“the master’s tools will never dismantle the master’s house.”**
 - code is law
-
 - huge imbalance in legal representation based on wealth - can we help this with tech?
 - same for collecting claims (e.g. veteran's benefits)
 - how to change things - cannot try what was tried before?

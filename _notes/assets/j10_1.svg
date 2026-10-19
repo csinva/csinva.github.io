@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 270" role="img" aria-labelledby="title desc">
+  <title id="title">Mixture model as a graphical model</title>
+  <desc id="desc">Two nodes: an unshaded latent node Z with an arrow down to a shaded observed node X. The latent variable Z is a multinomial node taking on one of K values.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .node { stroke: #2b2b2b; stroke-width: 2.5; }
+      .var { font: italic 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <text class="var" x="60" y="34">Z</text>
+  <circle class="node" cx="60" cy="74" r="26" fill="none"/>
+  <path class="edge" d="M60 100 V166" marker-end="url(#arrow)"/>
+  <circle class="node" cx="60" cy="196" r="26" fill="#8a8a8a"/>
+  <text class="var" x="60" y="258">X</text>
+</svg>

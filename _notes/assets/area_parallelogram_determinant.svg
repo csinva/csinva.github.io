@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 18 346 362" role="img" aria-labelledby="title desc">
+  <title id="title">Area of a parallelogram as a determinant</title>
+  <desc id="desc">Parallelogram with vertices (0,0), (a,b), (a+c,b+d) and (c,d), shaded, with its area labelled ad minus bc.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .axis { fill: none; stroke: #8a8a8a; stroke-width: 2; }
+      .para { fill: #e377b6; fill-opacity: 0.55; stroke: #2b2b2b; stroke-width: 2.5; stroke-linejoin: round; }
+      .pt { font: 22px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .it { font-style: italic; }
+    </style>
+  </defs>
+  <path class="axis" d="M61 18 V386 M22 341 H330"/>
+  <path class="para" d="M61 341 L224 301 L283 59 L120 99 Z"/>
+  <text class="pt" x="6" y="368">(0,0)</text>
+  <text class="pt" x="226" y="328">(<tspan class="it">a</tspan>,<tspan class="it">b</tspan>)</text>
+  <text class="pt" x="120" y="86" text-anchor="middle">(<tspan class="it">c</tspan>,<tspan class="it">d</tspan>)</text>
+  <text class="pt" x="276" y="44" text-anchor="middle">(<tspan class="it">a</tspan>+<tspan class="it">c</tspan>,<tspan class="it">b</tspan>+<tspan class="it">d</tspan>)</text>
+  <text class="pt" x="172" y="208" text-anchor="middle"><tspan class="it">ad</tspan>−<tspan class="it">bc</tspan></text>
+</svg>

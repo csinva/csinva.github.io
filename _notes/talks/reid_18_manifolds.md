@@ -1,7 +1,7 @@
 # physiology, connectivity, represention, and manifolds
 
 - clay reid, ABA, at Simons Institute
-- ![Screen Shot 2018-09-03 at 7.06.46 PM](assets/neuro_representations.png)
+- <img style="width: 520px; max-width: 100%;" src="assets/neuro_representations.svg" alt="Connectivity, physiology and representation"/>
 - how can we learn from only connectivity?
   - correlated connectivity instead of correlated activity
 - calcium-imaging of lots of neurons at same time at color by orientation

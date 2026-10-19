@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 625 525" role="img" aria-labelledby="title desc">
+  <title id="title">Cerebellar output organization</title>
+  <desc id="desc">Cerebellar cortex (cerebrocerebellum, spinocerebellum, vestibulocerebellum) projects to deep cerebellar nuclei: dentate nucleus to premotor cortex (motor planning); interposed and fastigial nuclei to motor cortex and brainstem (motor execution); vestibular nuclei to lower motor neurons in spinal cord and brainstem (balance and vestibulo-ocular regulation). The first two pass through pathways to upper motor neurons. A highlight arrow marks the deep cerebellar nuclei.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect x="170" y="15" width="440" height="80" rx="0" fill="#d3e9eb" stroke="#1f7f86" stroke-width="2"/>
+  <text class="c" x="240" y="50.5" font-size="20">Cerebro-</text>
+  <text class="c" x="240" y="73.5" font-size="20">cerebellum</text>
+  <text class="c" x="390" y="50.5" font-size="20">Spino-</text>
+  <text class="c" x="390" y="73.5" font-size="20">cerebellum</text>
+  <text class="c" x="545" y="50.5" font-size="20">Vestibulo-</text>
+  <text class="c" x="545" y="73.5" font-size="20">cerebellum</text>
+  <rect x="170" y="255" width="305" height="62" rx="0" fill="#e2e2e2" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="170" y="160" width="305" height="95" rx="0" fill="#e6dcf2" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="240" y="202.5" font-size="20">Dentate</text>
+  <text class="c" x="240" y="225.5" font-size="20">nucleus</text>
+  <text class="c" x="390" y="191.0" font-size="20">Interposed</text>
+  <text class="c" x="390" y="214.0" font-size="20">and fastigial</text>
+  <text class="c" x="390" y="237.0" font-size="20">nuclei</text>
+  <rect x="490" y="160" width="120" height="95" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="550" y="202.5" font-size="20">Vestibular</text>
+  <text class="c" x="550" y="225.5" font-size="20">nuclei</text>
+  <path d="M240.0 95.0 L240.0 133.0" fill="none" stroke="#7fbcc1" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="240.0,160.0 212.0,132.0 268.0,132.0" fill="#7fbcc1"/>
+  <path d="M390.0 95.0 L390.0 133.0" fill="none" stroke="#7fbcc1" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="390.0,160.0 362.0,132.0 418.0,132.0" fill="#7fbcc1"/>
+  <path d="M550.0 95.0 L550.0 133.0" fill="none" stroke="#7fbcc1" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="550.0,160.0 522.0,132.0 578.0,132.0" fill="#7fbcc1"/>
+  <path d="M240.0 255.0 L240.0 298.0" fill="none" stroke="#a98bd0" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="240.0,325.0 212.0,297.0 268.0,297.0" fill="#a98bd0"/>
+  <path d="M390.0 255.0 L390.0 298.0" fill="none" stroke="#a98bd0" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="390.0,325.0 362.0,297.0 418.0,297.0" fill="#a98bd0"/>
+  <path d="M550.0 255.0 L550.0 298.0" fill="none" stroke="#7cc39a" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="550.0,325.0 522.0,297.0 578.0,297.0" fill="#7cc39a"/>
+  <text class="c" x="240" y="350.0" font-size="19">Premotor</text>
+  <text class="c" x="240" y="372.0" font-size="19">cortex</text>
+  <text class="c" x="240" y="394.0" font-size="19">(motor</text>
+  <text class="c" x="240" y="416.0" font-size="19">planning)</text>
+  <text class="c" x="390" y="350.0" font-size="19">Motor</text>
+  <text class="c" x="390" y="372.0" font-size="19">cortex and</text>
+  <text class="c" x="390" y="394.0" font-size="19">brainstem</text>
+  <text class="c" x="390" y="416.0" font-size="19">(motor</text>
+  <text class="c" x="390" y="438.0" font-size="19">execution)</text>
+  <text class="c" x="550" y="350.0" font-size="19">Lower motor</text>
+  <text class="c" x="550" y="372.0" font-size="19">neurons in</text>
+  <text class="c" x="550" y="394.0" font-size="19">spinal cord and</text>
+  <text class="c" x="550" y="416.0" font-size="19">brainstem</text>
+  <text class="c" x="550" y="438.0" font-size="19">(balance</text>
+  <text class="c" x="550" y="460.0" font-size="19">and vestibulo-</text>
+  <text class="c" x="550" y="482.0" font-size="19">ocular</text>
+  <text class="c" x="550" y="504.0" font-size="19">regulation)</text>
+  <text x="62" y="50.0" font-size="19">Cerebellar</text>
+  <text x="62" y="72.0" font-size="19">cortex</text>
+  <text x="62" y="190.0" font-size="19">Deep</text>
+  <text x="62" y="212.0" font-size="19">cerebellar</text>
+  <text x="62" y="234.0" font-size="19">nuclei</text>
+  <path d="M10.0 205.0 L35.0 205.0" fill="none" stroke="#7fb0dd" stroke-width="14" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="50.0,205.0 34.0,220.0 34.0,190.0" fill="#7fb0dd"/>
+  <text x="62" y="350.0" font-size="19">Pathways to</text>
+  <text x="62" y="372.0" font-size="19">upper</text>
+  <text x="62" y="394.0" font-size="19">motor neurons</text>
+  <path class="lead" d="M168 340 L190 314"/>
+</svg>

@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 20 1975 1700" role="img" aria-labelledby="title desc">
+  <title id="title">StyleGAN generator</title>
+  <desc id="desc">(a) Traditional generator: latent z ∈ 𝒵 is normalized and fed to the first layer; each resolution block (4×4, 8×8, ...) stacks fully-connected or upsample, conv 3×3 and PixelNorm layers. (b) Style-based generator: a mapping network f (normalize then 8 FC layers) maps z to w ∈ 𝒲. The synthesis network g starts from a learned constant 4×4×512; at each block, per-layer noise is scaled by B and added (⊕), then AdaIN applies a style computed from w by an affine transform A; conv 3×3 and upsample layers between them, blocks at 4×4, 8×8, ...</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 L3 5 z" fill="#2b2b2b"/></marker>
+    <style>
+      .bg { fill: #8a8a8a; fill-opacity: 0.1; stroke: #8a8a8a; stroke-width: 3; }
+      .gray { fill: #8a8a8a; fill-opacity: 0.3; stroke: #2b2b2b; stroke-width: 3; }
+      .grn { fill: #1f8a4c; fill-opacity: 0.18; stroke: #2b2b2b; stroke-width: 3; }
+      .blu { fill: #1f6fb2; fill-opacity: 0.22; stroke: #2b2b2b; stroke-width: 3; }
+      .pl { fill: none; stroke: #2b2b2b; stroke-width: 3; }
+      .cloud { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linejoin: round; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 3.5; stroke-linejoin: round; }
+      .bl { font: 46px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .lab { font: 54px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sm { font: 44px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .cap { font: 56px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .bm { font-family: Georgia, "Times New Roman", serif; font-weight: bold; }
+      .it { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .cal { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+    </style>
+  </defs>
+<text class="lab" x="268" y="95" text-anchor="middle">Latent <tspan class="bm">z</tspan> ∈ <tspan class="cal">𝒵</tspan></text>
+<path class="e" d="M268 108 V166" marker-end="url(#a)"/>
+<rect class="gray" x="120" y="170" width="294" height="74"/>
+<text class="bl" x="267.0" y="209.0">Normalize</text>
+<path class="e" d="M268 244 V321" marker-end="url(#a)"/>
+<rect class="bg" x="40" y="279" width="458" height="505"/>
+<rect class="grn" x="68" y="325" width="398" height="71"/>
+<text class="bl" x="267.0" y="362.5">Fully-connected</text>
+<path class="e" d="M268 396 V425"/>
+<rect class="gray" x="120" y="425" width="294" height="73"/>
+<text class="bl" x="267.0" y="463.5">PixelNorm</text>
+<path class="e" d="M268 498 V527"/>
+<rect class="grn" x="68" y="527" width="398" height="71"/>
+<text class="bl" x="267.0" y="564.5">Conv 3×3</text>
+<path class="e" d="M268 598 V627"/>
+<rect class="gray" x="120" y="627" width="294" height="71"/>
+<text class="bl" x="267.0" y="664.5">PixelNorm</text>
+<text class="lab" x="486" y="765" text-anchor="end">4×4</text>
+<path class="e" d="M268 698 V854" marker-end="url(#a)"/>
+<rect class="bg" x="40" y="806" width="458" height="659"/>
+<rect class="gray" x="68" y="856" width="398" height="71"/>
+<text class="bl" x="267.0" y="893.5">Upsample</text>
+<path class="e" d="M268 927 V967"/>
+<rect class="grn" x="68" y="967" width="398" height="70"/>
+<text class="bl" x="267.0" y="1004.0">Conv 3×3</text>
+<path class="e" d="M268 1037 V1077"/>
+<rect class="gray" x="120" y="1077" width="294" height="73"/>
+<text class="bl" x="267.0" y="1115.5">PixelNorm</text>
+<path class="e" d="M268 1150 V1190"/>
+<rect class="grn" x="68" y="1190" width="398" height="70"/>
+<text class="bl" x="267.0" y="1227.0">Conv 3×3</text>
+<path class="e" d="M268 1260 V1300"/>
+<rect class="gray" x="120" y="1300" width="294" height="73"/>
+<text class="bl" x="267.0" y="1338.5">PixelNorm</text>
+<text class="lab" x="486" y="1450" text-anchor="end">8×8</text>
+<path class="e" d="M268 1373 V1528" marker-end="url(#a)"/>
+<text class="lab" x="268" y="1592" text-anchor="middle">• • •</text>
+<text class="cap" x="270" y="1690" text-anchor="middle">(a) Traditional</text>
+<path d="M570 30 V1590" stroke="#8a8a8a" stroke-width="3" stroke-dasharray="14 12"/>
+<text class="lab" x="820" y="95" text-anchor="middle">Latent <tspan class="bm">z</tspan> ∈ <tspan class="cal">𝒵</tspan></text>
+<path class="e" d="M820 108 V166" marker-end="url(#a)"/>
+<rect class="gray" x="672" y="170" width="294" height="74"/>
+<text class="bl" x="819.0" y="209.0">Normalize</text>
+<text class="lab" x="834" y="305" text-anchor="start">Mapping</text>
+<text class="lab" x="834" y="375" text-anchor="start">network <tspan class="it">f</tspan></text>
+<rect class="bg" x="642" y="396" width="355" height="764"/>
+<path class="e" d="M820 244 V451" marker-end="url(#a)"/>
+<rect class="grn" x="672" y="453" width="294" height="70"/>
+<text class="bl" x="819.0" y="490.0">FC</text>
+<path class="e" d="M820 523 V539"/>
+<rect class="grn" x="672" y="539" width="294" height="70"/>
+<text class="bl" x="819.0" y="576.0">FC</text>
+<path class="e" d="M820 609 V625"/>
+<rect class="grn" x="672" y="625" width="294" height="70"/>
+<text class="bl" x="819.0" y="662.0">FC</text>
+<path class="e" d="M820 695 V711"/>
+<rect class="grn" x="672" y="711" width="294" height="70"/>
+<text class="bl" x="819.0" y="748.0">FC</text>
+<path class="e" d="M820 781 V797"/>
+<rect class="grn" x="672" y="797" width="294" height="70"/>
+<text class="bl" x="819.0" y="834.0">FC</text>
+<path class="e" d="M820 867 V883"/>
+<rect class="grn" x="672" y="883" width="294" height="70"/>
+<text class="bl" x="819.0" y="920.0">FC</text>
+<path class="e" d="M820 953 V969"/>
+<rect class="grn" x="672" y="969" width="294" height="70"/>
+<text class="bl" x="819.0" y="1006.0">FC</text>
+<path class="e" d="M820 1039 V1055"/>
+<rect class="grn" x="672" y="1055" width="294" height="70"/>
+<text class="bl" x="819.0" y="1092.0">FC</text>
+<path class="e" d="M820 1125 V1220" marker-end="url(#a)"/>
+<path class="cloud" d="M700 1250 C690 1205 760 1190 790 1225 C810 1185 880 1185 895 1230 C930 1200 985 1230 965 1275 C1010 1290 1005 1350 975 1365 C1010 1400 980 1450 935 1440 C930 1490 860 1500 835 1465 C805 1505 735 1495 725 1450 C680 1465 640 1425 665 1395 C625 1380 625 1320 665 1310 C640 1280 665 1240 700 1250 Z"/>
+<text class="lab" x="820" y="1360" text-anchor="middle"><tspan class="bm">w</tspan> ∈ <tspan class="cal">𝒲</tspan></text>
+<text class="lab" x="1235" y="120" text-anchor="start">Synthesis network <tspan class="it">g</tspan></text>
+<rect class="bg" x="1275" y="147" width="447" height="573"/>
+<rect class="bg" x="1275" y="762" width="447" height="701"/>
+<rect class="grn" x="1305" y="180" width="387" height="70"/>
+<text class="bl" x="1498.5" y="217.0">Const 4×4×512</text>
+<path class="e" d="M1498 250 V272"/>
+<circle class="pl" cx="1498" cy="297" r="25"/><path class="e" d="M1483 297 H1513 M1498 282 V312" style="stroke-width:3"/>
+<path class="e" d="M1498 322 V343"/>
+<rect class="blu" x="1396" y="343" width="204" height="73"/>
+<text class="bl" x="1498.0" y="381.5">AdaIN</text>
+<path class="e" d="M1498 416 V450"/>
+<rect class="grn" x="1305" y="450" width="387" height="70"/>
+<text class="bl" x="1498.5" y="487.0">Conv 3×3</text>
+<path class="e" d="M1498 520 V541"/>
+<circle class="pl" cx="1498" cy="566" r="25"/><path class="e" d="M1483 566 H1513 M1498 551 V581" style="stroke-width:3"/>
+<path class="e" d="M1498 591 V613"/>
+<rect class="blu" x="1396" y="613" width="204" height="72"/>
+<text class="bl" x="1498.0" y="651.0">AdaIN</text>
+<text class="lab" x="1712" y="705" text-anchor="end">4×4</text>
+<path class="e" d="M1498 685 V810" marker-end="url(#a)"/>
+<rect class="gray" x="1305" y="815" width="387" height="70"/>
+<text class="bl" x="1498.5" y="852.0">Upsample</text>
+<path class="e" d="M1498 885 V920"/>
+<rect class="grn" x="1305" y="920" width="387" height="71"/>
+<text class="bl" x="1498.5" y="957.5">Conv 3×3</text>
+<path class="e" d="M1498 991 V1012"/>
+<circle class="pl" cx="1498" cy="1037" r="25"/><path class="e" d="M1483 1037 H1513 M1498 1022 V1052" style="stroke-width:3"/>
+<path class="e" d="M1498 1062 V1083"/>
+<rect class="blu" x="1396" y="1083" width="204" height="73"/>
+<text class="bl" x="1498.0" y="1121.5">AdaIN</text>
+<path class="e" d="M1498 1156 V1190"/>
+<rect class="grn" x="1305" y="1190" width="387" height="70"/>
+<text class="bl" x="1498.5" y="1227.0">Conv 3×3</text>
+<path class="e" d="M1498 1260 V1281"/>
+<circle class="pl" cx="1498" cy="1306" r="25"/><path class="e" d="M1483 1306 H1513 M1498 1291 V1321" style="stroke-width:3"/>
+<path class="e" d="M1498 1331 V1353"/>
+<rect class="blu" x="1396" y="1353" width="204" height="72"/>
+<text class="bl" x="1498.0" y="1391.0">AdaIN</text>
+<text class="lab" x="1712" y="1450" text-anchor="end">8×8</text>
+<path class="e" d="M1498 1425 V1528" marker-end="url(#a)"/>
+<text class="lab" x="1498" y="1592" text-anchor="middle">• • •</text>
+<text class="cap" x="1235" y="1690" text-anchor="middle">(b) Style-based generator</text>
+<rect class="grn" x="1173" y="345" width="77" height="70"/>
+<text class="bl" x="1211.5" y="382.0">A</text>
+<path class="e" d="M1250 380 H1394" marker-end="url(#a)"/>
+<text class="sm" x="1283" y="358" text-anchor="start">style</text>
+<path class="e" d="M998 1330 C1040 1330 1040 380 1171 380" marker-end="url(#a)"/>
+<rect class="grn" x="1173" y="614" width="77" height="70"/>
+<text class="bl" x="1211.5" y="651.0">A</text>
+<path class="e" d="M1250 649 H1394" marker-end="url(#a)"/>
+<text class="sm" x="1283" y="627" text-anchor="start">style</text>
+<path class="e" d="M998 1330 C1080 1330 1040 649 1171 649" marker-end="url(#a)"/>
+<rect class="grn" x="1173" y="1085" width="77" height="70"/>
+<text class="bl" x="1211.5" y="1122.0">A</text>
+<path class="e" d="M1250 1120 H1394" marker-end="url(#a)"/>
+<text class="sm" x="1283" y="1098" text-anchor="start">style</text>
+<path class="e" d="M998 1330 C1110 1330 1040 1120 1171 1120" marker-end="url(#a)"/>
+<rect class="grn" x="1173" y="1355" width="77" height="70"/>
+<text class="bl" x="1211.5" y="1392.0">A</text>
+<path class="e" d="M1250 1390 H1394" marker-end="url(#a)"/>
+<text class="sm" x="1283" y="1368" text-anchor="start">style</text>
+<path class="e" d="M998 1330 C1120 1330 1080 1390 1171 1390" marker-end="url(#a)"/>
+<rect class="grn" x="1742" y="262" width="76" height="70"/>
+<text class="bl" x="1780.0" y="299.0">B</text>
+<path class="e" d="M1742 297 H1525" marker-end="url(#a)"/>
+<path class="e" d="M1866 100 V297 H1820" marker-end="url(#a)"/>
+<rect class="grn" x="1742" y="531" width="76" height="70"/>
+<text class="bl" x="1780.0" y="568.0">B</text>
+<path class="e" d="M1742 566 H1525" marker-end="url(#a)"/>
+<path class="e" d="M1891 100 V566 H1820" marker-end="url(#a)"/>
+<rect class="grn" x="1742" y="1002" width="76" height="70"/>
+<text class="bl" x="1780.0" y="1039.0">B</text>
+<path class="e" d="M1742 1037 H1525" marker-end="url(#a)"/>
+<path class="e" d="M1916 100 V1037 H1820" marker-end="url(#a)"/>
+<rect class="grn" x="1742" y="1271" width="76" height="70"/>
+<text class="bl" x="1780.0" y="1308.0">B</text>
+<path class="e" d="M1742 1306 H1525" marker-end="url(#a)"/>
+<path class="e" d="M1942 100 V1306 H1820" marker-end="url(#a)"/>
+<text class="lab" x="1830" y="75" text-anchor="start">Noise</text>
+</svg>

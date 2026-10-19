@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 8 1984 472" role="img" aria-labelledby="title desc">
+  <title id="title">DiscoveryBench overview</title>
+  <desc id="desc">DiscoveryBench task: a dataset (habitat type with counts of nonnative gardening, unintentional and agriforest plants and elevation, for croplands, wetlands, urban) and a goal: how did urban land use affect the invasion of different types of introduced plants in Catalonia? The discovery agent workflow filters for urban habitat, fits a binomial GLM with logit link, checks spatial autocorrelation with Moran's I in PySAL, and uses statsmodels diagnostics, giving the final answer that urban land use increased invasion by agriforest plants over gardening introduced ones. Evaluation compares gold vs predicted context (urban habitat type, score 1.0), variable (gardening, unintentional vs gardening, agriforst; 0.3) and relationship (reduced vs increased; 0.0), final score 0.21.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+  <rect x="16" y="16" width="636" height="402" fill="#eef3fb" stroke="#1f6fb2" stroke-width="3"/>
+  <text x="20" y="52" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="start">Dataset:</text>
+  <rect x="16" y="66" width="636" height="64" fill="#d6e2f5"/>
+  <text x="73.0" y="94" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">habitat</text>
+  <text x="73.0" y="122" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">type</text>
+  <text x="191.0" y="94" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">nonnative</text>
+  <text x="191.0" y="122" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">gardening</text>
+  <text x="327.0" y="94" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">nonnative</text>
+  <text x="327.0" y="122" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">unintentional</text>
+  <text x="463.0" y="94" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">nonnative</text>
+  <text x="463.0" y="122" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">agriforest</text>
+  <text x="577.0" y="108" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">elevation</text>
+  <text x="641.0" y="108" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">...</text>
+  <text x="73.0" y="158" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">croplands</text>
+  <text x="191.0" y="158" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">5</text>
+  <text x="327.0" y="158" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">0</text>
+  <text x="463.0" y="158" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">2</text>
+  <text x="577.0" y="158" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">675</text>
+  <text x="73.0" y="196" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">wetlands</text>
+  <text x="191.0" y="196" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">0</text>
+  <text x="327.0" y="196" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">4</text>
+  <text x="463.0" y="196" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">1</text>
+  <text x="577.0" y="196" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">88</text>
+  <text x="73.0" y="234" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">urban</text>
+  <text x="191.0" y="234" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">2</text>
+  <text x="327.0" y="234" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">1</text>
+  <text x="463.0" y="234" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">0</text>
+  <text x="577.0" y="234" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">329</text>
+  <text x="73.0" y="272" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">...</text>
+  <text x="191.0" y="272" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">...</text>
+  <text x="327.0" y="272" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">...</text>
+  <text x="463.0" y="272" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">...</text>
+  <text x="577.0" y="272" font-size="24" font-weight="normal" fill="#2b2b2b" text-anchor="middle">...</text>
+  <line x1="16" y1="66" x2="652" y2="66" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="16" y1="130" x2="652" y2="130" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="16" y1="168" x2="652" y2="168" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="16" y1="206" x2="652" y2="206" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="16" y1="244" x2="652" y2="244" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="16" y1="278" x2="652" y2="278" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="130" y1="66" x2="130" y2="278" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="252" y1="66" x2="252" y2="278" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="402" y1="66" x2="402" y2="278" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="524" y1="66" x2="524" y2="278" stroke="#1f6fb2" stroke-width="1.5"/>
+  <line x1="630" y1="66" x2="630" y2="278" stroke="#1f6fb2" stroke-width="1.5"/>
+  <text x="20" y="328" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="start"><tspan font-weight="bold">Goal:</tspan> How did urban land use affect the</text>
+  <text x="20" y="368" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="start">invasion of different types of introduced</text>
+  <text x="20" y="406" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="start">plants in Catalonia?</text>
+  <text x="334" y="464" font-size="40" font-weight="bold" fill="#2b2b2b" text-anchor="middle">DiscoveryBench Task</text>
+  <line x1="654" y1="216" x2="700" y2="216" stroke="#2b2b2b" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="708" y="16" width="626" height="402" fill="#eef7ea" stroke="#1f8a4c" stroke-width="3"/>
+  <text x="716" y="58" font-size="28" font-weight="bold" fill="#2b2b2b" text-anchor="start">Workflow:</text>
+  <text x="716" y="94" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="start">1. Filter for habitat type: urban</text>
+  <text x="716" y="127" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="start">2. GLM with a binomial outcome and a logit function</text>
+  <text x="716" y="160" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="start">to model binary data</text>
+  <text x="716" y="193" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="start">3. Check spatial autocorrelation among data points</text>
+  <text x="716" y="226" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="start">using Moran's I-statistic with PySAL</text>
+  <text x="716" y="259" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="start">4. Use statsmodels.stats.diagnostic to assess model ...</text>
+  <text x="716" y="318" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="start"><tspan font-weight="bold">Final Answer:</tspan> Urban land use increased</text>
+  <text x="716" y="356" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="start">invasion by agriforest plants over gardening</text>
+  <text x="716" y="394" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="start">introduced ones in Catalonia.</text>
+  <text x="1021" y="464" font-size="40" font-weight="bold" fill="#2b2b2b" text-anchor="middle">Discovery Agent Workflow</text>
+  <line x1="1336" y1="216" x2="1380" y2="216" stroke="#2b2b2b" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1388" y="16" width="596" height="402" fill="#fbeeee" stroke="#d1342f" stroke-width="3"/>
+  <rect x="1388" y="66" width="596" height="40" fill="#f6dada"/>
+  <rect x="1388" y="106" width="150" height="226" fill="#f6dada"/>
+  <rect x="1538" y="106" width="446" height="226" fill="#fff"/>
+  <line x1="1388" y1="66" x2="1984" y2="66" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1388" y1="106" x2="1984" y2="106" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1388" y1="180" x2="1984" y2="180" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1388" y1="256" x2="1984" y2="256" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1388" y1="332" x2="1984" y2="332" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1538" y1="66" x2="1538" y2="332" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1700" y1="66" x2="1700" y2="332" stroke="#d1342f" stroke-width="1.5"/>
+  <line x1="1850" y1="66" x2="1850" y2="332" stroke="#d1342f" stroke-width="1.5"/>
+  <text x="1619.0" y="96" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">gold</text>
+  <text x="1775.0" y="96" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">predicted</text>
+  <text x="1917.0" y="96" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">score</text>
+  <text x="1463" y="152.0" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">context</text>
+  <text x="1619.0" y="137.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">urban</text>
+  <text x="1619.0" y="169.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">habitat type</text>
+  <text x="1775.0" y="137.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">urban</text>
+  <text x="1775.0" y="169.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">habitat type</text>
+  <circle cx="1893" cy="143.0" r="14" fill="#1f8a4c"/>
+  <text x="1918" y="152.0" font-size="26" font-weight="normal" fill="#2b2b2b" text-anchor="start">1.0</text>
+  <text x="1463" y="227.0" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">variable</text>
+  <text x="1619.0" y="212.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">gardening,</text>
+  <text x="1619.0" y="244.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">unintentional</text>
+  <text x="1775.0" y="212.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">gardening,</text>
+  <text x="1775.0" y="244.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">agriforst</text>
+  <circle cx="1893" cy="218.0" r="14" fill="#d9822b"/>
+  <text x="1918" y="227.0" font-size="26" font-weight="normal" fill="#2b2b2b" text-anchor="start">0.3</text>
+  <text x="1463" y="303.0" font-size="26" font-weight="bold" fill="#2b2b2b" text-anchor="middle">relationship</text>
+  <text x="1619.0" y="303.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">reduced</text>
+  <text x="1775.0" y="303.0" font-size="25" font-weight="normal" fill="#2b2b2b" text-anchor="middle">increased</text>
+  <circle cx="1893" cy="294.0" r="14" fill="#d1342f"/>
+  <text x="1918" y="303.0" font-size="26" font-weight="normal" fill="#2b2b2b" text-anchor="start">0.0</text>
+  <text x="1686" y="386" font-size="30" font-weight="normal" fill="#2b2b2b" text-anchor="middle"><tspan font-weight="bold">Final Score:</tspan> 0.21</text>
+  <text x="1686" y="464" font-size="40" font-weight="bold" fill="#2b2b2b" text-anchor="middle">Evaluation</text>
+</svg>

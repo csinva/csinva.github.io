@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,7 +58,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_complexity';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -444,11 +430,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-characterizations">1.5.7. entropy characterizations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-complexity">1.5.8. deep learning complexity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-descent">1.5.9. double descent</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-models">1.5.9.1. linear models</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-description-length">1.5.10. minimum description length</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mdl-in-non-linear-models">1.5.10.1. mdl in non-linear models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mdl-in-non-linear-models">1.5.9.1. mdl in non-linear models</a></li>
 </ul>
 </li>
 </ul>
@@ -474,15 +456,15 @@ document.write(`
 </ul>
 <section id="philosophy">
 <h2><span class="section-number">1.5.1. </span>philosophy<a class="headerlink" href="#philosophy" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>the architecture of complexity (<a class="reference external" href="https://www2.econ.iastate.edu/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf">herbert simon, 1962</a>)</p>
 <ul>
+<li><p>the architecture of complexity (<a class="reference external" href="https://www2.econ.iastate.edu/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf">herbert simon, 1962</a>)</p>
+<ul class="simple">
 <li><p>complexity takes the form of hierarchy</p></li>
 <li><p>simon, 1981: complex systems are “made up of a large number of parts that have many interactions.”</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="http://cogprints.org/357/4/evolcomp.pdf">What is complexity?</a> (edmonds 95)</p>
-<ul>
+<li><p>What is complexity? (<a class="reference external" href="http://cogprints.org/357/4/evolcomp.pdf">edmonds 95</a>)</p>
+<ul class="simple">
 <li><p>complexity is only really useful for comparisons</p></li>
 <li><p>properties</p>
 <ul>
@@ -506,8 +488,8 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/nlin/0101006">On Complexity and Emergence</a> (standish 01)</p>
-<ul>
+<li><p>On Complexity and Emergence (<a class="reference external" href="https://arxiv.org/abs/nlin/0101006">standish 01</a>)</p>
+<ul class="simple">
 <li><p>definition close to Kolmogorov / shannon entropy</p></li>
 <li><p>adds context dependence</p></li>
 <li><p>kolmogorov complexity = algorithmic information complexity</p>
@@ -529,8 +511,8 @@ document.write(`
 <li><p>emergence - ex. game of life</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2">What is complexity 2</a> (Gell-Mann 02)</p>
-<ul>
+<li><p>What is complexity 2 (<a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2">gell-mann 02</a>)</p>
+<ul class="simple">
 <li><p>AIC - algorithmic information content - contains 2 terms</p>
 <ul>
 <li><p>effective complexity (EC) = the length of a very concise description of an entity’s regularities</p>
@@ -543,7 +525,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="http://www.scholarpedia.org/article/Complexity">complexity</a> (Sporns 07)</p>
+<li><p>complexity (<a class="reference external" href="http://www.scholarpedia.org/article/Complexity">sporns 07</a>)</p>
 <ul>
 <li><p>complexity = degree to which <strong>components</strong> engage in organized structured <strong>interactions</strong></p></li>
 <li><p>High complexity -&gt; mixture of order and disorder (randomness and regularity) + have a high capacity to generate <strong>emergent</strong> phenomena.</p></li>
@@ -552,7 +534,8 @@ document.write(`
 <li><p>algorithmic / mdl</p></li>
 <li><p>natural complexity (e.g. physical complexity)</p>
 <ul>
-<li><p><img alt="300px-Complexity_figure1" src="../../_images/300px-Complexity_figure1.jpg" /></p></li>
+<li><img style="width: 480px; max-width: 100%;" src="../assets/complexity_figure1.svg" alt="Complexity between order and disorder"/>
+</li>
 </ul>
 </li>
 </ul>
@@ -560,7 +543,7 @@ document.write(`
 </ul>
 </li>
 <li><p><a class="reference external" href="https://www.quantamagazine.org/computer-science-and-biology-explore-algorithmic-evolution-20181129/?fbclid=IwAR0rSImplo7lLM0kEYHrHttx8qUimB-482dI9IFxY6dvx0CFeEIqzGuir_w">quanta article</a></p>
-<ul>
+<ul class="simple">
 <li><p>“the probability of producing some types of outputs is far greater when randomness operates at the level of the program describing it rather than at the level of the output itself”</p></li>
 <li><p>“they <a class="reference external" href="http://rsos.royalsocietypublishing.org/content/5/8/180399">recently reported in <em>Royal Society Open Science</em></a> that, compared to statistically random mutations, this mutational bias caused the networks to evolve toward solutions significantly faster.”</p></li>
 </ul>
@@ -571,12 +554,12 @@ document.write(`
 <h2><span class="section-number">1.5.2. </span>computational complexity<a class="headerlink" href="#computational-complexity" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>amount of computational resource that it takes to solve a class of problem</p></li>
-<li><p><a class="reference external" href="https://dl.acm.org/citation.cfm?id=1074233">Computational complexity</a> (Papadimitriou)</p>
+<li><p>Computational complexity (<a class="reference external" href="https://dl.acm.org/citation.cfm?id=1074233">papadimitriou</a>)</p>
 <ul>
 <li><p>like run times of algorithms etc. <span class="math notranslate nohighlight">\(O(n)\)</span></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.researchgate.net/profile/Michael_Fellows/publication/2376092_Parameterized_Complexity/links/5419e9240cf25ebee98883da/Parameterized-Complexity.pdf">Parameterized complexity</a> (Downey and Fellows)</p>
+<li><p>Parameterized complexity (<a class="reference external" href="https://www.researchgate.net/profile/Michael_Fellows/publication/2376092_Parameterized_Complexity/links/5419e9240cf25ebee98883da/Parameterized-Complexity.pdf">downey and fellows</a>)</p>
 <ul>
 <li><p>want to solve problems that are NP-hard or worse, so we isolate input into a parameter</p></li>
 </ul>
@@ -586,7 +569,7 @@ document.write(`
 <section id="bayesian-model-complexity">
 <h2><span class="section-number">1.5.3. </span>bayesian model complexity<a class="headerlink" href="#bayesian-model-complexity" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353">Bayesian measures of model complexity and fit</a> (spiegelhalter et al.)</p></li>
+<li><p>Bayesian measures of model complexity and fit (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353">spiegelhalter et al.</a>)</p></li>
 <li><p>AIC</p></li>
 <li><p>BIC</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04947.pdf">TIC</a></p></li>
@@ -605,7 +588,7 @@ document.write(`
 <section id="misc">
 <h2><span class="section-number">1.5.5. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1908.01755">rashomon curves</a> (semenova &amp; rudin, 2019)</p>
+<li><p>rashomon curves (<a class="reference external" href="https://arxiv.org/abs/1908.01755">semenova &amp; rudin, 2019</a>)</p>
 <ul>
 <li><p><strong>rashomon effect</strong> - many different explanations exist for same phenomenon</p></li>
 <li><p><strong>rashomon set</strong> - set of almost-equally accurate models for a given problem</p></li>
@@ -653,12 +636,12 @@ document.write(`
 </ul>
 </li>
 <li><p>can do this on an entire function class (e.g. all neural networks) or on a restricted subset (e.g. path during training)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1706.01124.pdf">optimal learning via local entropies and sample compression</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/math/0702683.pdf">risk bounds for statistical learning</a></p></li>
-<li><p><a class="reference external" href="https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf">Chaining Mutual Information and Tightening Generalization Bounds</a> (asadi et al. 2018)</p></li>
+<li><p>optimal learning via local entropies and sample compression (<a class="reference external" href="https://arxiv.org/pdf/1706.01124.pdf">zhivotovskiy 2017</a>)</p></li>
+<li><p>risk bounds for statistical learning (<a class="reference external" href="https://arxiv.org/pdf/math/0702683.pdf">massart &amp; nédélec 2007</a>)</p></li>
+<li><p>Chaining Mutual Information and Tightening Generalization Bounds (<a class="reference external" href="https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf">asadi et al. 2018</a>)</p></li>
 <li><p>describing DNN paths</p>
 <ul>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1805.09639.pdf">Online Regularized Nonlinear Acceleration</a></p></li>
+<li><p>Online Regularized Nonlinear Acceleration (<a class="reference external" href="https://arxiv.org/pdf/1805.09639.pdf">scieur et al. 2018</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -666,111 +649,66 @@ document.write(`
 <section id="deep-learning-complexity">
 <h2><span class="section-number">1.5.8. </span>deep learning complexity<a class="headerlink" href="#deep-learning-complexity" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1905.11639">a hessian-based complexity measure for dnns</a>with generalization and computation to a different form of stability</p>
+<li><p>a hessian-based complexity measure for dnns (<a class="reference external" href="https://arxiv.org/abs/1905.11639">lejeune et al. 2019</a>) with generalization and computation to a different form of stability</p>
 <ul>
 <li><p>thm 3 - want function to be smooth wrt to augmented loss</p></li>
-<li><p><a class="reference external" href="http://proceedings.mlr.press/v89/liang19a/liang19a.pdf">complexity measure</a> (liang et al. 2019)</p></li>
+<li><p>complexity measure (<a class="reference external" href="http://proceedings.mlr.press/v89/liang19a/liang19a.pdf">liang et al. 2019</a>)</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="double-descent">
 <h2><span class="section-number">1.5.9. </span>double descent<a class="headerlink" href="#double-descent" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1812.11118">Reconciling modern machine learning and the bias-variance trade-off</a> (belkin et al. 2018)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1903.08560">Surprises in High-Dimensional Ridgeless Least Squares Interpolation</a></p>
+<ul>
+<li><p>Reconciling modern machine learning and the bias-variance trade-off (<a class="reference external" href="https://arxiv.org/abs/1812.11118">belkin et al. 2018</a>)</p></li>
+<li><p>Surprises in High-Dimensional Ridgeless Least Squares Interpolation (<a class="reference external" href="https://arxiv.org/abs/1903.08560">hastie et al. 2019</a>)</p>
 <ul>
 <li><p>main result of limiting risk, where <span class="math notranslate nohighlight">\(\gamma \in (0, \infty)\)</span>:</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} &amp; \gamma &lt; 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} &amp; \gamma &gt; 1\end{cases}\)</span></p></li>
-</ul>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} &amp; \gamma &lt; 1\\vert \vert \beta\vert \vert _2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} &amp; \gamma &gt; 1\end{cases}$$&lt;!-- --&gt;
+- linear regression depends on data distr. ([kuchibhotla et al. 2018](https://arxiv.org/abs/1802.05801))
+- two models of double descent for weak features ([belkin et al. 2019](https://arxiv.org/abs/1903.07571))
+- [double descent curve](https://openreview.net/forum?id=HkgmzhC5F7)
+- [boosting w/ l2 loss](https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw)
+- [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
+- [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
+- Harmless interpolation of noisy data in regression ([muthukumar et al. 2019](https://arxiv.org/abs/1903.09139)) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
+- Deep Double Descent: Where Bigger Models and More Data Hurt ([nakkiran et al. 2019](https://arxiv.org/abs/1912.02292))\end{split}\\### linear models\\- Degrees of Freedom and Model Search ([tibshirani 2014](https://arxiv.org/abs/1402.1920))
+  - degrees of freedom = quantitative description of the amount of fitting performed by a given procedure
+- linear smoothers and additive models ([buja et al. 1989](https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115)) see page 469 for degrees of freedom in ridge\\## minimum description length\\
+- mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
+  - normalized maximum likelihood (nml): use theta to make codebook, then send code
+- The Minimum Description Length Principle in Coding and Modeling ([barron, rissanen, &amp; yu, 98](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf))
+  - mdl: represent an entire class of prob. distrs. as models by a single &quot;universal&quot; representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of observed data, then, is the one whose representative premits the shortest coding of the data
+  - tradeoff: &quot;good&quot; prob. models for the data permit shorter code lengths
+    - generally agrees w/ low mse
+  - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code
+  - mdl
+    - likelihood = summarize data in accodance / model (e.g. $$P(y\vert x, \theta)$$)
+    - parametric complexity = summarize model params
+- Model Selection and the Principle of Minimum Description Length ([hansen &amp; yu 2001](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398))
+  - mdl: choose the model that gives the shortest description of data
+    - description length = length of binary string used to code the data
+    - using a prob distr. for coding/description purposes doesn't require that it actually generate our data
+  - basic coding
+    - set A, code C (mapping from A to a set of codewords)
+    - Q is a distr. on A
+    - $-\log_2Q$ is the code length for symbols in A
+      - can construct such a code w/ Huffman coding
+    - expected code length is minimized when Q = P, the true distr of our data
+  - different forms
+    - 2-stage
+    - mixture
+    - predictive
+    - normalized maximum likelihood (NML)
+- mdl intro ([rissanen, 2008](http://www.scholarpedia.org/article/Minimum_description_length)) - scholarpedia
+  - coding just the data would be like maximum likelihood
+  - minimize $$\cblue{\underset{\text{log-likelihood}}{-\log P(y^n\vert x^n;\theta)}} + \corange{\underset{\text{description length}}{L(\theta)}}\end{aligned}\end{align} \]</div>
 </li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1802.05801">linear regression depends on data distr.</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1903.07571">two models of double descent for weak features</a></p></li>
-<li><p><a class="reference external" href="https://openreview.net/forum?id=HkgmzhC5F7">double descent curve</a></p></li>
-<li><p><a class="reference external" href="https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw">boosting w/ l2 loss</a></p></li>
-<li><p><a class="reference external" href="https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf">effective degrees of freedom</a></p></li>
-<li><p><a class="reference external" href="https://projecteuclid.org/euclid.aos/1519268430">high-dimensional ridge</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1903.09139">Harmless interpolation of noisy data in regression</a> - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1912.02292">Deep Double Descent: Where Bigger Models and More Data Hurt</a> (nakkiran et al. 2019)</p></li>
-</ul>
-<section id="linear-models">
-<h3><span class="section-number">1.5.9.1. </span>linear models<a class="headerlink" href="#linear-models" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1402.1920">Degrees of Freedom and Model Search</a> (tibshirani 2014)</p>
-<ul>
-<li><p>degrees of freedom = quantitative description of the amount of fitting performed by a given procedure</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115">linear smoothers and additive models</a> (buja et al. 1989) see page 469 for degrees of freedom in ridge</p></li>
-</ul>
-</section>
-</section>
-<section id="minimum-description-length">
-<h2><span class="section-number">1.5.10. </span>minimum description length<a class="headerlink" href="#minimum-description-length" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)</p>
-<ul>
-<li><p>normalized maximum likelihood (nml): use theta to make codebook, then send code</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf">The Minimum Description Length Principle in Coding and Modeling</a> (barron, rissanen, &amp; yu, 98)</p>
-<ul>
-<li><p>mdl: represent an entire class of prob. distrs. as models by a single “universal” representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of observed data, then, is the one whose representative premits the shortest coding of the data</p></li>
-<li><p>tradeoff: “good” prob. models for the data permit shorter code lengths</p>
-<ul>
-<li><p>generally agrees w/ low mse</p></li>
-</ul>
-</li>
-<li><p>ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code</p></li>
-<li><p>mdl</p>
-<ul>
-<li><p>likelihood = summarize data in accodance / model (e.g. <span class="math notranslate nohighlight">\(P(y|x, \theta)\)</span>)</p></li>
-<li><p>parametric complexity = summarize model params</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1198/016214501753168398">Model Selection and the Principle of Minimum Description Length</a> (hansen &amp; yu 2001)</p>
-<ul>
-<li><p>mdl: choose the model that gives the shortest description of data</p>
-<ul>
-<li><p>description length = length of binary string used to code the data</p></li>
-<li><p>using a prob distr. for coding/description purposes doesn’t require that it actually generate our data</p></li>
-</ul>
-</li>
-<li><p>basic coding</p>
-<ul>
-<li><p>set A, code C (mapping from A to a set of codewords)</p></li>
-<li><p>Q is a distr. on A</p></li>
-<li><p><span class="math notranslate nohighlight">\(-\log_2Q\)</span> is the code length for symbols in A</p>
-<ul>
-<li><p>can construct such a code w/ Huffman coding</p></li>
-</ul>
-</li>
-<li><p>expected code length is minimized when Q = P, the true distr of our data</p></li>
-</ul>
-</li>
-<li><p>different forms</p>
-<ul>
-<li><p>2-stage</p></li>
-<li><p>mixture</p></li>
-<li><p>predictive</p></li>
-<li><p>normalized maximum likelihood (NML)</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="http://www.scholarpedia.org/article/Minimum_description_length">mdl intro</a> (Rissanen, 2008) - scholarpedia</p>
-<ul>
-<li><p>coding just the data would be like maximum likelihood</p></li>
-<li><p>minimize <span class="math notranslate nohighlight">\(\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}\)</span></p>
-<ul>
 <li><p>ex. OLS</p></li>
-<li><p>if we want to send all the coefficients, assume an order and <span class="math notranslate nohighlight">\(L(\theta) = L(p) + L(\theta_1, ... \theta_p)\)</span></p>
-<ul>
+<li><p>if we want to send all the coefficients, assume an order and $<span class="math notranslate nohighlight">\(L(\theta) = L(p) + L(\theta_1, ... \theta_p)\)</span>$</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L(\theta) \approx \frac p 2 \log p\)</span></p>
 <ul>
 <li><p>quantization for each parameter (must quantize otherwise need to specify infinite bits of precision)</p></li>
@@ -778,28 +716,28 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p>if we want only a subset of the coefficients, also need to send <span class="math notranslate nohighlight">\(L(i_1, ..., i_k)\)</span> for the indexes of the non-zero coefficients</p></li>
+<li><p>if we want only a subset of the coefficients, also need to send $<span class="math notranslate nohighlight">\(L(i_1, ..., i_k)\)</span>$ for the indexes of the non-zero coefficients</p></li>
 </ul>
 </li>
-<li><p>minimization becomes <span class="math notranslate nohighlight">\(\underset p \min \quad [\underset{\text{noise}}{- \log P(y^n|x^n; \hat{\theta}_{OLS})} + \underset{\text{learnable info}}{(p/2) \log n}]\)</span></p>
-<ul>
-<li><p><em>noise</em> - no more info can be extracted with this class of models</p></li>
-<li><p><em>learnable info</em> in the data = precisely the best model</p></li>
-<li><p><strong>stochastic complexity</strong> = <em>noise</em> + <em>learnable info</em></p></li>
+<li><p>minimization becomes $<span class="math notranslate nohighlight">\(\underset p \min \quad [\cblue{\underset{\text{noise}}{- \log P(y^n\vert x^n; \hat{\theta}_{OLS})}} + \corange{\underset{\text{learnable info}}{(p/2) \log n}}]\)</span>$</p>
+<ul class="simple">
+<li><p><span class="cblue"><em>noise</em></span> - no more info can be extracted with this class of models</p></li>
+<li><p><span class="corange"><em>learnable info</em></span> in the data = precisely the best model</p></li>
+<li><p><strong>stochastic complexity</strong> = <span class="cblue"><em>noise</em></span> + <span class="corange"><em>learnable info</em></span></p></li>
 <li><p>in this case, is same as BIC but often different</p></li>
 </ul>
 </li>
 <li><p>modern mdl - don’t assume a model form, try to code the data as short as possible with a <em>universal</em> model class</p>
-<ul>
+<ul class="simple">
 <li><p>often can actually construct these codes</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>Kolmogorov complexity <span class="math notranslate nohighlight">\(K(x)\)</span> = the shortest computer program (in binary) that generates x (a binary string) = the “amount of info” in x</p>
-<ul>
+<ul class="simple">
 <li><p>complexity of a string x is at most its length</p></li>
-<li><p>algorithmically random - any string whose length is close to <span class="math notranslate nohighlight">\(|x|\)</span></p>
+<li><p>algorithmically random - any string whose length is close to $<span class="math notranslate nohighlight">\(\vert x\vert \)</span>$</p>
 <ul>
 <li><p>more random = higher complexity</p></li>
 </ul>
@@ -807,7 +745,7 @@ document.write(`
 </ul>
 </li>
 <li><p>Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?</p>
-<ul>
+<ul class="simple">
 <li><p>MDL reviews \cite{barron1998minimum, hansen2001model}.</p></li>
 <li><p>Book on stochastic complexity \cite{rissanen1989stochastic}</p></li>
 <li><p><em>Minimum Description Length</em>, <em>MDL</em>, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself</p></li>
@@ -815,13 +753,13 @@ document.write(`
 </li>
 <li><p><em>note: this type of complexity applies to the description, not the system</em></p></li>
 <li><p>Look into the neurips <a class="reference external" href="https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf">paper</a> on using mutual information and entropy and this <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142">paper</a> by barron that related covering balls etc to minimax bounds</p></li>
-<li><p><a class="reference external" href="http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf">Information Theory in Probability Statistics Learning and Neural Nets</a> (barron 97)</p></li>
-<li><p><a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897">Information-Theoretic Asymptotics of Bayes Methods</a> (Clarke &amp; Barron 90)</p></li>
+<li><p>Information Theory in Probability Statistics Learning and Neural Nets (<a class="reference external" href="http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf">barron 97</a>)</p></li>
+<li><p>Information-Theoretic Asymptotics of Bayes Methods (<a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897">clarke &amp; barron 90</a>)</p></li>
 </ul>
 <section id="mdl-in-non-linear-models">
-<h3><span class="section-number">1.5.10.1. </span>mdl in non-linear models<a class="headerlink" href="#mdl-in-non-linear-models" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">1.5.9.1. </span>mdl in non-linear models<a class="headerlink" href="#mdl-in-non-linear-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf">MDL-based Decision Tree Pruning</a> (mehta et al. 95)</p></li>
+<li><p>MDL-based Decision Tree Pruning (<a class="reference external" href="https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf">mehta et al. 95</a>)</p></li>
 <li><p>deep learning</p>
 <ul>
 <li><p>high-level</p>
@@ -830,22 +768,22 @@ document.write(`
 <li><p>to compress the data we must take advantage of mutual info between x and y</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.cs.toronto.edu/~hinton/absps/mdlpop.pdf">Learning Population Codes by Minimizing Description Length</a> (zemel &amp; hinton 1995)</p></li>
-<li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.3435">Keeping Neural Networks Simple by Minimizing the Description Length of the Weights</a> (hinton &amp; van camp 1993)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.07044.pdf">The Description Length of Deep Learning Models</a> (blier &amp; ollivier 2018)</p>
+<li><p>Learning Population Codes by Minimizing Description Length (<a class="reference external" href="https://www.cs.toronto.edu/~hinton/absps/mdlpop.pdf">zemel &amp; hinton 1995</a>)</p></li>
+<li><p>Keeping Neural Networks Simple by Minimizing the Description Length of the Weights (<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.3435">hinton &amp; van camp 1993</a>)</p></li>
+<li><p>The Description Length of Deep Learning Models (<a class="reference external" href="https://arxiv.org/pdf/1802.07044.pdf">blier &amp; ollivier 2018</a>)</p>
 <ul>
 <li><p>compress using prequential mdl</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1902.10658?utm_source=share&amp;amp;utm_medium=ios_app&amp;amp;utm_name=iossmf">mdl for attention</a> (lin 2019)</p></li>
+<li><p>mdl for attention (<a class="reference external" href="https://arxiv.org/abs/1902.10658?utm_source=share&amp;amp;utm_medium=ios_app&amp;amp;utm_name=iossmf">lin 2019</a>)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/9c61/2ea1d8e8c9ce75427f5fd879a367210c2cc7.pdf">Lightlike Neuromanifolds, Occam’s Razor and Deep Learning</a> (sun &amp; nielsen 2019)</p>
+<li><p>Lightlike Neuromanifolds, Occam’s Razor and Deep Learning (<a class="reference external" href="https://pdfs.semanticscholar.org/9c61/2ea1d8e8c9ce75427f5fd879a367210c2cc7.pdf">sun &amp; nielsen 2019</a>)</p>
 <ul>
 <li><p>“A new MDL formulation which can explain the double descent risk curve of deep learning”</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/2007.13657v1.pdf">Towards Learning Convolutions from Scratch</a> (neyshabur 2020)</p>
+<li><p>Towards Learning Convolutions from Scratch (<a class="reference external" href="https://arxiv.org/pdf/2007.13657v1.pdf">neyshabur 2020</a>)</p>
 <ul>
 <li><p>uses some mdl as guiding principles</p></li>
 <li><p>training with <span class="math notranslate nohighlight">\(\beta\)</span>-lasso, fc weights become very local</p></li>
@@ -929,11 +867,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropy-characterizations">1.5.7. entropy characterizations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-complexity">1.5.8. deep learning complexity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#double-descent">1.5.9. double descent</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-models">1.5.9.1. linear models</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-description-length">1.5.10. minimum description length</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mdl-in-non-linear-models">1.5.10.1. mdl in non-linear models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mdl-in-non-linear-models">1.5.9.1. mdl in non-linear models</a></li>
 </ul>
 </li>
 </ul>
@@ -973,11 +907,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

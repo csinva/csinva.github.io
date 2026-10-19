@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 8 400 494" role="img" aria-labelledby="title desc">
+  <title id="title">Place cells and grid cells</title>
+  <desc id="desc">Three stacked planes. Top: a box with a mouse in one corner (position of mouse). Middle: one place cell's firing pattern, a single firing field at the mouse's location. Bottom: one grid cell's firing pattern, firing fields at that location and at other positions around it in a hexagonal array.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .plane { fill: #f0f0f0; stroke: #2b2b2b; stroke-width: 1.8; stroke-linejoin: round; }
+      .side { fill: #dcdcdc; stroke: #2b2b2b; stroke-width: 1.8; stroke-linejoin: round; }
+      .hex line { stroke: #8a8a8a; stroke-width: 2; }
+      .t { font: 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .mouse { fill: #8a8a8a; stroke: #2b2b2b; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <!-- top: box with mouse -->
+  <polygon class="side" points="52,72 178,148 178,166 52,90"/>
+  <polygon class="side" points="178,148 388,92 388,110 178,166"/>
+  <polygon class="plane" points="52,72 262,16 388,92 178,148"/>
+  <g class="mouse">
+    <path d="M168 88 Q182 84 186 94" fill="none" stroke="#2b2b2b" stroke-width="1.6"/>
+    <ellipse cx="160" cy="80" rx="18" ry="11"/>
+    <ellipse cx="141" cy="74" rx="9" ry="7"/>
+    <circle cx="140" cy="66" r="4.5"/>
+    <circle cx="148" cy="67" r="4.5"/>
+  </g>
+  <text class="t" x="10" y="140">Position</text>
+  <text class="t" x="10" y="166">of mouse</text>
+
+  <!-- middle: place cell -->
+  <polygon class="plane" points="52,232 265,182 388,278 178,325"/>
+  <ellipse cx="157" cy="240" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="157" cy="240" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="157" cy="240" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/>
+  <text class="t" x="10" y="258">One</text>
+  <text class="t" x="10" y="284">place</text>
+  <text class="t" x="10" y="310">cell's firing</text>
+  <text class="t" x="10" y="336">pattern</text>
+
+  <!-- bottom: grid cell -->
+  <polygon class="plane" points="52,388 262,338 388,436 176,485"/>
+  <g class="hex"><line x1="156" y1="396" x2="228" y2="396"/><line x1="228" y1="396" x2="268" y2="427"/><line x1="268" y1="427" x2="246" y2="459"/><line x1="246" y1="459" x2="177" y2="459"/><line x1="177" y1="459" x2="127" y2="427"/><line x1="127" y1="427" x2="156" y2="396"/><line x1="196" y1="427" x2="156" y2="396"/><line x1="196" y1="427" x2="228" y2="396"/><line x1="196" y1="427" x2="268" y2="427"/><line x1="196" y1="427" x2="246" y2="459"/><line x1="196" y1="427" x2="177" y2="459"/><line x1="196" y1="427" x2="127" y2="427"/></g>
+  <ellipse cx="156" cy="396" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="156" cy="396" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="156" cy="396" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="228" cy="396" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="228" cy="396" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="228" cy="396" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="268" cy="427" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="268" cy="427" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="268" cy="427" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="246" cy="459" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="246" cy="459" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="246" cy="459" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="177" cy="459" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="177" cy="459" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="177" cy="459" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="127" cy="427" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="127" cy="427" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="127" cy="427" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="87" cy="396" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="87" cy="396" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="87" cy="396" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="185" cy="366" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="185" cy="366" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="185" cy="366" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="250" cy="365" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="250" cy="365" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="250" cy="365" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="297" cy="396" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="297" cy="396" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="297" cy="396" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="334" cy="427" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="334" cy="427" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="334" cy="427" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/><ellipse cx="196" cy="427" rx="21.6" ry="12.8" fill="#d1342f" fill-opacity="0.22"/><ellipse cx="196" cy="427" rx="14.9" ry="8.8" fill="#d1342f" fill-opacity="0.35"/><ellipse cx="196" cy="427" rx="8.1" ry="4.8" fill="#d1342f" fill-opacity="0.75"/>
+  <text class="t" x="10" y="418">One</text>
+  <text class="t" x="10" y="444">grid</text>
+  <text class="t" x="10" y="470">cell's firing</text>
+  <text class="t" x="10" y="496">pattern</text>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 6 668 396" role="img" aria-labelledby="title desc">
+  <title id="title">Connectivity, physiology and representation</title>
+  <desc id="desc">Diagram linking three levels: Connectivity maps to Physiology via biophysics and dynamics, and Physiology feeds back to Connectivity via plasticity. Physiology relates to Representation (x, y, θ, v, gaze angle, face identity) through correlated activity and input/output; how Connectivity relates to Representation is marked with a question mark. Inputs / behavior drive Physiology.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .arr { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: round; }
+      .big { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .it { font: italic 20px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <text class="big" x="316" y="40" text-anchor="middle">Representation</text>
+  <text class="it" x="316" y="70" text-anchor="middle">x, y, θ, <tspan font-weight="bold">v</tspan>,…,</text>
+  <text class="it" x="316" y="94" text-anchor="middle">gaze angle, face identity</text>
+  <path class="arr" d="M90 218 L190 54" marker-end="url(#arrow)"/>
+  <text class="big" x="112" y="138">?</text>
+  <path class="arr" d="M540 218 L442 50" marker-end="url(#arrow)"/>
+  <text class="it" x="682" y="124" text-anchor="end" style="font-size:24px">Correlated activity</text>
+  <text class="it" x="617" y="157" text-anchor="end">Input/output</text>
+  <text class="big" x="30" y="264">Connectivity</text>
+  <text class="big" x="464" y="264">Physiology</text>
+  <path class="arr" d="M220 240 H450" marker-end="url(#arrow)"/>
+  <text class="it" x="335" y="220" text-anchor="middle">Biophysics, dynamics</text>
+  <path class="arr" d="M450 262 H222" marker-end="url(#arrow)"/>
+  <text class="it" x="328" y="292" text-anchor="middle">Plasticity</text>
+  <path class="arr" d="M542 346 V272" marker-end="url(#arrow)"/>
+  <text class="big" x="542" y="392" text-anchor="middle">(Inputs / behavior)</text>
+</svg>

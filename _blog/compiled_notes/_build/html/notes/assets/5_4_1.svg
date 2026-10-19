@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" role="img" aria-labelledby="title desc">
+  <title id="title">The cable equation</title>
+  <desc id="desc">Before we had: i_m = i_C + i_ionic = c_m dV_m/dt + V_m/r_m. A cable diagram shows a cylinder of radius a with repeated membrane units (resistance r_m in parallel with capacitance c_m, membrane current i_m) between an outer resistance r_o and an internal resistance r_i carrying axial current i_i along x. Now we also have to consider that i_i, the current down the cable, is proportional to voltage changes in x; that current works against internal resistance r_i. Cable equation: (1/r_i) d2V_m(x,t)/dx2 = c_m dV/dt + V_m/r_m, or lambda^2 d2V_m/dx2 = tau_m dV_m/dt + V_m, where tau_m = r_m c_m is the time constant and lambda = sqrt(r_m/r_i) is the space constant.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .w path, .w ellipse { fill: none; stroke: #2b2b2b; stroke-width: 1.8; stroke-linejoin: round; }
+      .ar { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .fl { stroke: #2b2b2b; stroke-width: 2; }
+      .d { font: italic 20px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .s2 { font-size: 14px; }
+      .m { font: 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .s { font-size: 20px; }
+      .t { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <g class="w">
+  <path d="M548 100 H968 A22 55 0 0 1 968 210 H548"/>
+  <ellipse cx="548" cy="155" rx="22" ry="55"/>
+  <path d="M560 40 L564.8 35 L574.5 45 L584.1 35 L593.8 45 L603.5 35 L613.1 45 L622.8 35 L632.4 45 L642.1 35 L651.8 45 L661.4 35 L671.1 45 L680.7 35 L690.4 45 L700.1 35 L709.7 45 L719.4 35 L729.0 45 L738.7 35 L748.4 45 L758.0 35 L767.7 45 L777.3 35 L787.0 45 L796.6 35 L806.3 45 L816.0 35 L825.6 45 L835.3 35 L844.9 45 L854.6 35 L864.3 45 L873.9 35 L883.6 45 L893.2 35 L902.9 45 L912.6 35 L922.2 45 L931.9 35 L941.5 45 L951.2 35 L960.9 45 L970.5 35 L980.2 45 L985 40"/>
+  <path d="M560 160 L564.8 155 L574.5 165 L584.1 155 L593.8 165 L603.5 155 L613.1 165 L622.8 155 L632.4 165 L642.1 155 L651.8 165 L661.4 155 L671.1 165 L680.7 155 L690.4 165 L700.1 155 L709.7 165 L719.4 155 L729.0 165 L738.7 155 L748.4 165 L758.0 155 L767.7 165 L777.3 155 L787.0 165 L796.6 155 L806.3 165 L816.0 155 L825.6 165 L835.3 155 L844.9 165 L854.6 155 L864.3 165 L873.9 155 L883.6 165 L893.2 155 L902.9 165 L912.6 155 L922.2 165 L931.9 155 L941.5 165 L951.2 155 L960.9 165 L970.5 155 L980.2 165 L985 160"/>
+  <path d="M600 40 V54  L593 59.8 L607 71.2 L593 82.8 L607 94.2 L593 105.8 L607 117.2 L593 128.8 L607 140.2 L600 146 V160"/>
+  <path d="M600 54 H630 V92 M618 92 H642 M618 102 H642 M630 102 V146 H600 M600 54"/>
+  <path d="M680 40 V54  L673 59.8 L687 71.2 L673 82.8 L687 94.2 L673 105.8 L687 117.2 L673 128.8 L687 140.2 L680 146 V160"/>
+  <path d="M680 54 H710 V92 M698 92 H722 M698 102 H722 M710 102 V146 H680 M680 54"/>
+  <path d="M760 40 V54  L753 59.8 L767 71.2 L753 82.8 L767 94.2 L753 105.8 L767 117.2 L753 128.8 L767 140.2 L760 146 V160"/>
+  <path d="M760 54 H790 V92 M778 92 H802 M778 102 H802 M790 102 V146 H760 M760 54"/>
+  <path d="M840 40 V54  L833 59.8 L847 71.2 L833 82.8 L847 94.2 L833 105.8 L847 117.2 L833 128.8 L847 140.2 L840 146 V160"/>
+  <path d="M840 54 H870 V92 M858 92 H882 M858 102 H882 M870 102 V146 H840 M840 54"/>
+  <path d="M920 40 V54  L913 59.8 L927 71.2 L913 82.8 L927 94.2 L913 105.8 L927 117.2 L913 128.8 L927 140.2 L920 146 V160"/>
+  <path d="M920 54 H950 V92 M938 92 H962 M938 102 H962 M950 102 V146 H920 M920 54"/>
+  </g>
+  <path class="ar" d="M548 155 V104" marker-end="url(#a)"/><text class="d" x="534" y="140">a</text>
+  <text class="d" x="572" y="66">r<tspan class="s2" dy="5">m</tspan></text>
+  <text class="d" x="636" y="70">c<tspan class="s2" dy="5">m</tspan></text>
+  <path class="ar" d="M590 140 V112" marker-end="url(#a)"/><text class="d" x="562" y="130">i<tspan class="s2" dy="5">m</tspan></text>
+  <text class="d" x="770" y="22">r<tspan class="s2" dy="5">o</tspan></text>
+  <text class="d" x="770" y="190">r<tspan class="s2" dy="5">i</tspan></text>
+  <path class="ar" d="M590 182 H650" marker-end="url(#a)"/><text class="d" x="606" y="204">i<tspan class="s2" dy="5">i</tspan></text>
+  <path class="ar" d="M700 236 H830" marker-end="url(#a)"/><text class="d" x="760" y="262">x</text>
+  <text class="t" x="40" y="86">Before we had:</text>
+  <text class="m" x="30" y="190"><tspan font-style="italic">i</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan> = <tspan font-style="italic">i</tspan><tspan class="s" dy="7"><tspan font-style="italic">C</tspan></tspan><tspan dy="-7"></tspan> + <tspan font-style="italic">i</tspan><tspan class="s" dy="7">ionic</tspan><tspan dy="-7"> = </tspan><tspan font-style="italic">c</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="m" x="322" y="168" text-anchor="middle">∂<tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <line x1="287.0" y1="180" x2="357.0" y2="180" class="fl"/>
+  <text class="m" x="322" y="212" text-anchor="middle">∂<tspan font-style="italic">t</tspan></text>
+  <text class="m" x="364" y="190">+</text>
+  <text class="m" x="412" y="168" text-anchor="middle"><tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <line x1="387.0" y1="180" x2="437.0" y2="180" class="fl"/>
+  <text class="m" x="412" y="212" text-anchor="middle"><tspan font-style="italic">r</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="t" x="20" y="320">Now we also have to consider that i<tspan class="s" dy="7">i</tspan><tspan dy="-7">, the current down the cable,</tspan></text>
+  <text class="t" x="20" y="358">is proportional to voltage changes in <tspan font-style="italic">x</tspan>.</text>
+  <text class="t" x="20" y="396">That current works against internal resistance, r<tspan class="s" dy="7">i</tspan></text>
+  <rect x="30" y="430" width="460" height="118" fill="none" stroke="#d1342f" stroke-width="3"/>
+  <text class="m" x="66" y="478" text-anchor="middle">1</text>
+  <line x1="53.0" y1="490" x2="79.0" y2="490" class="fl"/>
+  <text class="m" x="66" y="522" text-anchor="middle"><tspan font-style="italic">r</tspan><tspan class="s" dy="7"><tspan font-style="italic">i</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="m" x="178" y="478" text-anchor="middle">∂<tspan class="s" dy="-13">2</tspan><tspan dy="13"></tspan><tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan>(<tspan font-style="italic">x</tspan>, <tspan font-style="italic">t</tspan>)</text>
+  <line x1="103.0" y1="490" x2="253.0" y2="490" class="fl"/>
+  <text class="m" x="178" y="522" text-anchor="middle">∂<tspan font-style="italic">x</tspan><tspan class="s" dy="-13">2</tspan><tspan dy="13"></tspan></text>
+  <text class="m" x="262" y="500">= <tspan font-style="italic">c</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="m" x="362" y="478" text-anchor="middle">∂<tspan font-style="italic">V</tspan></text>
+  <line x1="337.0" y1="490" x2="387.0" y2="490" class="fl"/>
+  <text class="m" x="362" y="522" text-anchor="middle">∂<tspan font-style="italic">t</tspan></text>
+  <text class="m" x="394" y="500">+</text>
+  <text class="m" x="440" y="478" text-anchor="middle"><tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <line x1="417.0" y1="490" x2="463.0" y2="490" class="fl"/>
+  <text class="m" x="440" y="522" text-anchor="middle"><tspan font-style="italic">r</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="m" x="466" y="500">.</text>
+  <text class="t" x="516" y="500">or</text>
+  <rect x="566" y="430" width="420" height="118" fill="none" stroke="#1f8a4c" stroke-width="3"/>
+  <text class="m" x="582" y="500"><tspan font-style="italic">λ</tspan><tspan class="s" dy="-13">2</tspan><tspan dy="13"></tspan></text>
+  <text class="m" x="668" y="478" text-anchor="middle">∂<tspan class="s" dy="-13">2</tspan><tspan dy="13"></tspan><tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <line x1="630.0" y1="490" x2="706.0" y2="490" class="fl"/>
+  <text class="m" x="668" y="522" text-anchor="middle">∂<tspan font-style="italic">x</tspan><tspan class="s" dy="-13">2</tspan><tspan dy="13"></tspan></text>
+  <text class="m" x="716" y="500">= <tspan font-style="italic">τ</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="m" x="822" y="478" text-anchor="middle">∂<tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <line x1="787.0" y1="490" x2="857.0" y2="490" class="fl"/>
+  <text class="m" x="822" y="522" text-anchor="middle">∂<tspan font-style="italic">t</tspan></text>
+  <text class="m" x="866" y="500">+ <tspan font-style="italic">V</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="t" x="330" y="640">where</text>
+  <text class="m" x="470" y="596"><tspan font-style="italic">τ</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan> = <tspan font-style="italic">r</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan><tspan font-style="italic">c</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="t" x="700" y="596">Time constant</text>
+  <text class="m" x="470" y="678"><tspan font-style="italic">λ</tspan> =</text>
+  <path class="fl" style="fill:none" d="M518 676 L526 672 L536 700 L550 626 H600"/>
+  <text class="m" x="574" y="656" text-anchor="middle"><tspan font-style="italic">r</tspan><tspan class="s" dy="7"><tspan font-style="italic">m</tspan></tspan><tspan dy="-7"></tspan></text>
+  <line x1="552.0" y1="668" x2="596.0" y2="668" class="fl"/>
+  <text class="m" x="574" y="700" text-anchor="middle"><tspan font-style="italic">r</tspan><tspan class="s" dy="7"><tspan font-style="italic">i</tspan></tspan><tspan dy="-7"></tspan></text>
+  <text class="t" x="700" y="678">Space constant</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 20 1880 830" role="img" aria-labelledby="title desc">
+  <title id="title">Epipolar geometry</title>
+  <desc id="desc">A scene point M and two cameras. The hatched epipolar plane through M, C1 and C2 cuts the image plane for camera 1 (left camera) and the image plane for camera 2 (right camera) along the epipolar lines. In the left image, M projects to M1 (green, on the dashed ray from M); c1 and the epipole e1 lie on the left epipolar line. In the right image, c2 and the epipole e2 lie on the right epipolar line. The right camera is related to the left by rotation and translation R, t.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5a5a5a"/>
+    </marker>
+    <marker id="arrow-p" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7b4fb5"/>
+    </marker>
+    <clipPath id="eplane">
+      <path d="M862 157 L540 481 L628 529 L1185 464 L1248 401 Z"/>
+    </clipPath>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+      .hatch { fill: none; stroke: #8a8a8a; stroke-width: 2.5; stroke-dasharray: 12 8; }
+      .lead { fill: none; stroke: #5a5a5a; stroke-width: 2.5; }
+      .eline { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-linecap: round; }
+      .serif { font: 58px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .sans { font: 46px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .small { font: 36px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .epi { font: 46px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .ev { font: italic 54px "Times New Roman", Times, Georgia, serif; fill: #1f6fb2; }
+      .cv { font: italic 50px "Times New Roman", Times, Georgia, serif; fill: #d1342f; }
+      .sub { font-size: 34px; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+    </style>
+  </defs>
+
+  <!-- epipolar plane (hatched triangle M–C1–C2, partly hidden behind the image planes) -->
+  <g clip-path="url(#eplane)">
+    <path class="hatch" d="M830 160 L560 620 M885 160 L615 620 M940 160 L670 620 M995 160 L725 620 M1050 160 L780 620 M1105 160 L835 620 M1160 160 L890 620 M1215 160 L945 620 M1270 160 L1000 620 M1325 160 L1055 620 M1380 160 L1110 620 M1435 160 L1165 620 M1490 160 L1220 620"/>
+  </g>
+  <path class="edge" d="M540 481 L862 157 L1248 401"/>
+  <path class="edge" d="M628 529 L1185 464"/>
+
+  <!-- ray from M to its projection M1 (green, dashed) -->
+  <path d="M700 320 L458 578" fill="none" stroke="#1f8a4c" stroke-width="5" stroke-dasharray="22 12"/>
+  <circle cx="862" cy="157" r="9" fill="#2b2b2b"/>
+  <text class="serif mid" x="855" y="85">M</text>
+
+  <!-- left image plane -->
+  <path class="edge" d="M372 390 L712 575 L678 810 L338 625 Z"/>
+  <path class="eline" d="M400 543 L550 640"/>
+  <circle cx="428" cy="557" r="7" fill="#2b2b2b"/>
+  <circle cx="497" cy="540" r="7" fill="#2b2b2b"/>
+  <circle cx="458" cy="578" r="11" fill="#1f8a4c"/>
+  <text class="ev" x="360" y="600">e<tspan class="sub" dy="10">1</tspan></text>
+  <text class="cv" x="512" y="535">c<tspan class="sub" dy="10">1</tspan></text>
+  <text class="sans" x="440" y="640" fill="#1f8a4c" style="fill:#1f8a4c">M1</text>
+  <text class="sans mid" x="608" y="680">Epipolar</text>
+  <text class="sans mid" x="608" y="728">line</text>
+  <text class="epi end" x="320" y="580">Epipole</text>
+
+  <!-- right image plane -->
+  <path class="edge" d="M1395 255 L1455 480 L1165 768 L1105 543 Z"/>
+  <path class="eline" d="M1407 378 L1315 545"/>
+  <circle cx="1390" cy="408" r="7" fill="#2b2b2b"/>
+  <circle cx="1313" cy="444" r="7" fill="#2b2b2b"/>
+  <path d="M1322 440 L1382 412" fill="none" stroke="#d1342f" stroke-width="2.5" stroke-dasharray="3 7"/>
+  <text class="cv" x="1300" y="400">c<tspan class="sub" dy="10">2</tspan></text>
+  <text class="ev" x="1428" y="410">e<tspan class="sub" dy="10">2</tspan></text>
+  <text class="epi" x="1560" y="398">Epipole</text>
+  <text class="sans mid" x="1228" y="585">Epipolar</text>
+  <text class="sans mid" x="1228" y="633">line</text>
+
+  <!-- labels and leaders -->
+  <text class="serif" x="1132" y="125">EPIPOLAR plane</text>
+  <text class="small" x="1600" y="100">M C1 C2</text>
+  <path class="lead" d="M1118 115 L972 315" marker-end="url(#arrow)"/>
+  <text class="serif" x="35" y="318">image plane</text>
+  <text class="serif" x="48" y="380">for camera 1</text>
+  <path class="lead" d="M285 390 L352 468" marker-end="url(#arrow)"/>
+  <text class="serif" x="1525" y="235">image plane</text>
+  <text class="serif" x="1565" y="297">for camera 2</text>
+  <path class="lead" d="M1505 235 L1422 303" marker-end="url(#arrow)"/>
+  <text class="serif" x="222" y="760">Left camera</text>
+  <text class="serif" x="1345" y="672">Right camera</text>
+
+  <!-- relative pose -->
+  <path d="M752 722 Q905 820 1050 690" fill="none" stroke="#7b4fb5" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-p)"/>
+  <text class="sans mid" x="952" y="828" style="fill:#7b4fb5;font-size:52px">R, <tspan font-style="italic">t</tspan></text>
+</svg>

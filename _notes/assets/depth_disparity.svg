@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 2000 1445" role="img" aria-labelledby="title desc">
+  <title id="title">Relation between disparity and depth</title>
+  <desc id="desc">Left eye LE (O_L) and right eye RE (O_R) are a baseline b apart, with the cyclopean eye CE midway. The eyes fixate P at depth Z, so each line of sight makes angle θ with the midline; a farther point P′ at depth Z + δZ makes angle θ − δθ. Behind each eye the images p_L, p′_L and p_R, p′_R are separated by δθ. tan θ = (b/2)/Z and tan(θ − δθ) = (b/2)/(Z + δZ). For small angles tan θ ≈ θ, so δθ = b/2Z − b/2(Z + δZ) ≈ bδZ/2Z², and disparity = 2δθ = bδZ/Z².</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="arrow-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 3.5; stroke-linecap: round; }
+      .ang { fill: none; stroke: #2b2b2b; stroke-width: 3; }
+      .title { font: 84px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .lbl { font: 52px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sub { font-size: 34px; }
+      .gk { font: 50px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .m { font: italic 60px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .mr { font: 60px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .red { font: italic 64px "Times New Roman", Times, Georgia, serif; fill: #d1342f; }
+      .redr { font: 64px "Times New Roman", Times, Georgia, serif; fill: #d1342f; }
+      .blue { font: italic 60px "Times New Roman", Times, Georgia, serif; fill: #1f6fb2; }
+      .bluet { font: 52px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .green { font: bold 76px Helvetica, Arial, sans-serif; fill: #1f8a4c; }
+      .greenm { font: italic bold 80px "Times New Roman", Times, Georgia, serif; fill: #1f8a4c; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .rbar { stroke: #d1342f; stroke-width: 4; }
+      .kbar { stroke: #2b2b2b; stroke-width: 3; }
+      .gbar { stroke: #1f8a4c; stroke-width: 5; }
+    </style>
+  </defs>
+
+  <!-- title, with handwritten annotations: disparity = 2δθ, depth change = δZ -->
+  <text class="title end" x="905" y="215">Relation between</text>
+  <text class="title mid" x="1090" y="215">disparity</text>
+  <text class="title mid" x="1340" y="215">and</text>
+  <text class="title mid" x="1540" y="215">depth</text>
+  <text class="blue mid" x="1090" y="110">2δθ</text>
+  <text class="blue mid" x="1540" y="110">δZ</text>
+
+  <!-- ===== geometry ===== -->
+  <!-- midline (Z axis) from CE through P and P′ -->
+  <path class="ln" d="M510 1090 V400" marker-end="url(#arrow)"/>
+  <!-- lines of sight: P and P′ through each eye, continuing to the images -->
+  <path class="ln" d="M510 720 L400 1090 L333 1315"/>
+  <path class="ln" d="M510 465 L400 1090 L360 1315"/>
+  <path class="ln" d="M510 720 L620 1090 L687 1315"/>
+  <path class="ln" d="M510 465 L620 1090 L660 1315"/>
+
+  <!-- angles -->
+  <path class="ang" d="M510 860 A140 140 0 0 1 470 854"/>
+  <text class="gk mid" x="478" y="918">θ</text>
+  <path class="ang" d="M510 660 A195 195 0 0 1 476 657"/>
+  <text class="gk end" x="470" y="676">θ−δθ</text>
+  <path class="ang" d="M353 1250 A165 165 0 0 0 371 1253"/>
+  <text class="gk end" x="345" y="1240">δθ</text>
+  <path class="ang" d="M667 1250 A165 165 0 0 1 649 1253"/>
+  <text class="gk" x="680" y="1240">δθ</text>
+
+  <!-- points and lengths -->
+  <text class="lbl" x="530" y="480">P′</text>
+  <text class="lbl" x="528" y="738">P</text>
+  <text class="lbl" x="525" y="610">Z+δZ</text>
+  <text class="lbl" x="472" y="975">Z</text>
+  <text class="lbl end" x="380" y="1100">LE</text>
+  <text class="lbl" x="645" y="1100">RE</text>
+  <text class="lbl" x="400" y="1160">O<tspan class="sub" dy="10">L</tspan></text>
+  <text class="lbl" x="555" y="1160">O<tspan class="sub" dy="10">R</tspan></text>
+  <text class="lbl mid" x="510" y="1240">CE</text>
+  <path class="ln" d="M406 1078 H498" style="stroke-width:3" marker-end="url(#arrow)"/>
+  <text class="lbl mid" x="455" y="1062" style="font-size:40px">b/2</text>
+  <text class="lbl mid" x="320" y="1375">p<tspan class="sub" dy="10">L</tspan></text>
+  <text class="lbl mid" x="385" y="1375">p′<tspan class="sub" dy="10">L</tspan></text>
+  <text class="lbl mid" x="640" y="1375">p′<tspan class="sub" dy="10">R</tspan></text>
+  <text class="lbl mid" x="710" y="1375">p<tspan class="sub" dy="10">R</tspan></text>
+
+  <!-- handwritten annotations (blue) -->
+  <path d="M340 1188 H680" fill="none" stroke="#1f6fb2" stroke-width="4" marker-start="url(#arrow-b)" marker-end="url(#arrow-b)"/>
+  <text class="blue mid" x="510" y="1172">b</text>
+  <text class="bluet" x="30" y="820"><tspan class="blue">b</tspan> = baseline</text>
+  <text class="bluet" x="30" y="900"><tspan class="blue">p′<tspan font-size="38" dy="12">R</tspan><tspan dy="-12"> − </tspan>p′<tspan font-size="38" dy="12">L</tspan></tspan></text>
+  <text class="bluet" x="30" y="975">(disparity)</text>
+
+  <!-- ===== derivation ===== -->
+  <!-- handwritten (red) -->
+  <text class="redr" x="830" y="400">tan <tspan class="red">θ</tspan> =</text>
+  <text class="red mid" x="1180" y="375">b/2</text>
+  <path class="rbar" d="M1110 395 H1250"/>
+  <text class="red mid" x="1180" y="458">Z</text>
+  <text class="redr" x="1360" y="400">tan (<tspan class="red">θ</tspan> − <tspan class="red">δθ</tspan>) =</text>
+  <text class="red mid" x="1885" y="375">b/2</text>
+  <path class="rbar" d="M1790 395 H1985"/>
+  <text class="red mid" x="1885" y="458">Z + δZ</text>
+
+  <!-- printed -->
+  <text class="mr" x="860" y="620">For small angles tan <tspan class="m">θ</tspan> ≈ <tspan class="m">θ</tspan></text>
+
+  <text class="m end" x="1590" y="760">θ <tspan class="mr">=</tspan></text>
+  <text class="m mid" x="1660" y="722">b/2</text>
+  <path class="kbar" d="M1610 740 H1710"/>
+  <text class="m mid" x="1660" y="804">Z</text>
+
+  <text class="m end" x="1590" y="910"><tspan class="mr">(</tspan>θ − δθ<tspan class="mr">) =</tspan></text>
+  <text class="m mid" x="1690" y="872">b/2</text>
+  <path class="kbar" d="M1610 890 H1770"/>
+  <text class="m mid" x="1690" y="954">Z + δZ</text>
+
+  <text class="m end" x="1590" y="1060">δθ <tspan class="mr">=</tspan></text>
+  <text class="m mid" x="1660" y="1022">b/2</text>
+  <path class="kbar" d="M1610 1040 H1710"/>
+  <text class="m mid" x="1660" y="1104">Z</text>
+  <text class="mr mid" x="1740" y="1060">−</text>
+  <text class="m mid" x="1850" y="1022">b/2</text>
+  <path class="kbar" d="M1770 1040 H1930"/>
+  <text class="m mid" x="1850" y="1104">Z + δZ</text>
+
+  <text class="mr end" x="1590" y="1210">≈</text>
+  <text class="m mid" x="1660" y="1172">bδZ</text>
+  <path class="kbar" d="M1610 1190 H1710"/>
+  <text class="m mid" x="1660" y="1254">2Z²</text>
+
+  <!-- result (green, handwritten in the original) -->
+  <text class="green" x="900" y="1390">DISPARITY =</text>
+  <path d="M900 1412 H1385" stroke="#1f6fb2" stroke-width="4"/>
+  <text class="greenm mid" x="1640" y="1350">bδZ</text>
+  <path class="gbar" d="M1540 1372 H1740"/>
+  <text class="greenm mid" x="1640" y="1450">Z²</text>
+</svg>

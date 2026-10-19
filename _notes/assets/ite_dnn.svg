@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" role="img" aria-labelledby="title desc">
+  <title id="title">TARNet / CFR architecture</title>
+  <desc id="desc">Neural network for ITE estimation. Input x passes through layers to a representation Φ. Φ and treatment t meet at a switch: if t = 1 the representation goes through head h1 to loss L(h1(Φ), y = Y1); if t = 0 through head h0 to loss L(h0(Φ), y = Y0). Φ and t also feed IPM_G(p̂Φ^{t=0}, p̂Φ^{t=1}), an integral probability metric between control and treated representations.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .in { fill: #8a8a8a; fill-opacity: 0.15; stroke: #2b2b2b; stroke-width: 2.2; }
+      .rep { fill: #1f8a4c; fill-opacity: 0.22; stroke: #2b2b2b; stroke-width: 2.2; }
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 2.2; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2.2; stroke-linejoin: round; }
+      .m { font: italic 36px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .r { font: 32px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .c { font: italic 22px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .l { font: 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .i { font-style: italic; }
+      .s { font: 19px Helvetica, Arial, sans-serif; }
+      .si { font: italic 19px Georgia, "Times New Roman", serif; }
+      .dots { font: 22px Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <text class="m" x="18" y="130">x</text>
+  <rect class="in" x="40" y="40" width="40" height="180" rx="8"/>
+  <path class="e" d="M80 130 H106" marker-end="url(#arrow)"/>
+  <rect class="rep" x="108" y="40" width="40" height="180"/>
+  <path class="e" d="M148 130 H160"/>
+  <text class="dots" x="173" y="136">…</text>
+  <path class="e" d="M186 130 H200" marker-end="url(#arrow)"/>
+  <rect class="rep" x="202" y="40" width="46" height="180"/>
+  <text class="r" x="225" y="130">Φ</text>
+  <path class="e" d="M248 130 H262" marker-end="url(#arrow)"/>
+  <circle class="box" cx="272" cy="130" r="10"/>
+  <path class="e" d="M279 123 L310 70 H374" marker-end="url(#arrow)"/>
+  <path class="e" d="M279 137 L310 190 H374" marker-end="url(#arrow)"/>
+  <text class="c" x="290" y="58">if <tspan class="i">t</tspan> = <tspan class="s">1</tspan></text>
+  <text class="c" x="290" y="220">if <tspan class="i">t</tspan> = <tspan class="s">0</tspan></text>
+  <rect class="box" x="376" y="38" width="44" height="64"/>
+  <rect class="box" x="376" y="158" width="44" height="64"/>
+  <path class="e" d="M420 70 H432"/><text class="dots" x="444" y="75">…</text><path class="e" d="M456 70 H472" marker-end="url(#arrow)"/>
+  <path class="e" d="M420 190 H432"/><text class="dots" x="444" y="195">…</text><path class="e" d="M456 190 H472" marker-end="url(#arrow)"/>
+  <rect class="box" x="474" y="38" width="44" height="64"/>
+  <rect class="box" x="474" y="158" width="44" height="64"/>
+  <text class="l i" x="434" y="28" style="font-size:26px">h<tspan class="s" dy="6">1</tspan></text>
+  <text class="l i" x="434" y="246" style="font-size:26px">h<tspan class="s" dy="6">0</tspan></text>
+  <path class="e" d="M518 70 H562" marker-end="url(#arrow)"/>
+  <path class="e" d="M518 190 H562" marker-end="url(#arrow)"/>
+  <rect class="in" x="564" y="52" width="36" height="36" rx="7"/>
+  <rect class="in" x="564" y="172" width="36" height="36" rx="7"/>
+  <text class="l" x="610" y="81"><tspan class="i">L</tspan>(<tspan class="i">h</tspan><tspan class="s" dy="6">1</tspan><tspan dy="-6">(Φ), </tspan><tspan class="i">y</tspan> = <tspan class="i">Y</tspan><tspan class="s" dy="6">1</tspan><tspan dy="-6">)</tspan></text>
+  <text class="l" x="610" y="201"><tspan class="i">L</tspan>(<tspan class="i">h</tspan><tspan class="s" dy="6">0</tspan><tspan dy="-6">(Φ), </tspan><tspan class="i">y</tspan> = <tspan class="i">Y</tspan><tspan class="s" dy="6">0</tspan><tspan dy="-6">)</tspan></text>
+  <!-- Φ to IPM, hopping over the t riser -->
+  <path class="e" d="M225 220 V274 H263 A9 9 0 0 1 281 274 H562" marker-end="url(#arrow)"/>
+  <!-- t input -->
+  <text class="m" x="18" y="306">t</text>
+  <rect class="in" x="40" y="288" width="36" height="36" rx="7"/>
+  <path class="e" d="M76 306 H562" marker-end="url(#arrow)"/>
+  <path class="e" d="M272 306 V142" marker-end="url(#arrow)"/>
+  <rect class="in" x="564" y="270" width="36" height="36" rx="7"/>
+  <text class="l" x="610" y="300">IPM<tspan class="s" dy="6">G</tspan><tspan dy="-6">(</tspan><tspan class="i">p̂</tspan><tspan class="s" dy="8">Φ</tspan><tspan class="si" dx="-13" dy="-22">t</tspan><tspan class="s">=0</tspan><tspan dy="14">, </tspan><tspan class="i">p̂</tspan><tspan class="s" dy="8">Φ</tspan><tspan class="si" dx="-13" dy="-22">t</tspan><tspan class="s">=1</tspan><tspan dy="14">)</tspan></text>
+</svg>

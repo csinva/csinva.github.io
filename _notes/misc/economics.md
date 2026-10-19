@@ -1,7 +1,5 @@
 {:toc}
 
-
-
 # misc fun
 
 - [winner's curse](https://en.wikipedia.org/wiki/Winner%27s_curse) - a phenomenon that may occur in [common value auctions](https://en.wikipedia.org/wiki/Common_value_auction), where all bidders have the same (*[ex post](https://en.wikipedia.org/wiki/Ex_post)*) value for an item but receive different private (*[ex ante](https://en.wikipedia.org/wiki/Ex-ante)*) signals about this value and wherein the winner is the bidder with the most optimistic evaluation of the asset and therefore will tend to overestimate and overpay
@@ -30,7 +28,6 @@
 # economic measures
 
 - [The Case For Degrowth - Current Affairs](https://www.currentaffairs.org/2020/08/the-case-for-degrowth)
-
   - GDP Is Not a Measure of Human Well-Being
   - if people are unusually healthy, the market value of medical services will go down
   - even incredibly destructive pollution can improve GDP
@@ -41,7 +38,7 @@
 
 ## progress
 
-- [The World’s Most Annoying Man | Current Affairs](https://www.currentaffairs.org/2019/05/the-worlds-most-annoying-man)
+- [The World’s Most Annoying Man \| Current Affairs](https://www.currentaffairs.org/2019/05/the-worlds-most-annoying-man)
   - Steven pinker's enlightment now argues that much progress has been made technologically to better mankind
 
 # ml in stock market
@@ -70,20 +67,16 @@
 
 ## basic background
 
-* *Wiener*-process = *Brownian* motion: $W_t$
-  * $W_0=0$
-  * $W_t$ has independent increments (i.e. is Markov process)
-  * $W_t - W_s \sim N(0, t-s)$ for $0 \leq s < t$
-  * this implies $f(w)=\frac{1}{\sqrt{2 \pi(t-s)}} e^{-\frac{1}{2} \frac{w^{2}}{t-s}}$
-* can use fourier analysis to easily compute things about sums of random variables
+- *Wiener*-process = *Brownian* motion: $W_t$
+  - $W_0=0$
+  - $W_t$ has independent increments (i.e. is Markov process)
+  - $W_t - W_s \sim N(0, t-s)$ for $0 \leq s < t$
+  - this implies $f(w)=\frac{1}{\sqrt{2 \pi(t-s)}} e^{-\frac{1}{2} \frac{w^{2}}{t-s}}$
+- can use fourier analysis to easily compute things about sums of random variables
 
-
-
-## utility theory: see notes in [decisions](https://csinva.io/notes/ai/decisions.html)
+## utility theory: see notes in [decisions](https://csinva.io/notes/ai/rl_decisions.html)
 
 - economic theory assumes agents maximix their personal utility, aims to provide framework for rational behavior
-
-
 
 ## architecture of financial markets
 
@@ -102,36 +95,31 @@
 ## capital asset pricing model (CAPM) + arbitrage pricing theory (APT)
 
 - CAPM - used to determine theoretical rate of return of an asset
-  - $E\left(R_{i}\right)=R_{f}+\beta_{i}\left(E\left(R_{m}\right)-R_{f}\right)
-    $
+  - $$E\left(R_{i}\right)=\corange{R_{f}}+\cblue{\beta_{i}}\cgreen{\left(E\left(R_{m}\right)-R_{f}\right)}$$<!-- -->
     - $E\left(R_{i}\right)$ is the expected return on the capital asset
-    - $R_{f}$ is the risk-free rate of interest such as interest arising from government bonds
-    - $\beta_{i}$ is the sensitivity of the expected excess asset returns to the expected excess market returns, or also $\beta_{i}=\frac{\operatorname{Cov}\left(R_{i}, R_{m}\right)}{\operatorname{Var}\left(R_{m}\right)}=\rho_{i, m} \frac{\sigma_{i}}{\sigma_{m}}$
+    - $R_{f}$ is the <span class="corange">risk-free rate</span> of interest such as interest arising from government bonds
+    - $\beta_{i}$ is the <span class="cblue">sensitivity</span> of the expected excess asset returns to the <span class="cgreen">expected excess market returns</span>, or also $\beta_{i}=\frac{\operatorname{Cov}\left(R_{i}, R_{m}\right)}{\operatorname{Var}\left(R_{m}\right)}=\rho_{i, m} \frac{\sigma_{i}}{\sigma_{m}}$
       - $\rho_{i, m}$ denotes the correlation coefficient between the investment $i$ and the market $m$
       - $\sigma_{i}$ is the standard deviation for the investment $i$
       - $\sigma_{m}$ is the standard deviation for the market $m$.
     - $E\left(R_{m}\right)$ is the expected return of the market
     - overly simple
-  
-- APT - expected return is a linear function of various factors 
-	- $ \mathbb{E}\left(r_{j}\right)=r_{f}+\lambda_{j 1} R P_{1}+\lambda_{j 2} R P_{2}+\cdots+\lambda_{j n} R P_{n}$
-	  - $R P_{n}$ is the risk premium of the factor,
-    - $r_{f}$ is the risk-free rate,
+- APT - expected return is a linear function of various factors
+  - $$ \mathbb{E}\left(r_{j}\right)=\corange{r_{f}}+\cblue{\lambda_{j 1}} \cpurple{R P_{1}}+\cblue{\lambda_{j 2}} \cpurple{R P_{2}}+\cdots+\cblue{\lambda_{j n}} \cpurple{R P_{n}}$$<!-- -->
+    - $R P_{n}$ is the <span class="cpurple">risk premium</span> of the factor,
+    - $r_{f}$ is the <span class="corange">risk-free rate</span>,
     - $ r_{j}=a_{j}+\lambda_{j 1} f_{1}+\lambda_{j 2} f_{2}+\cdots+\lambda_{j n} f_{n}+\epsilon_{j}$
       where
       $a_{j}$ is a constant for asset $j$
       $ f_{n}$ is a systematic factor
-      $\lambda_{j n}$ is the sensitivity of the $j$ th asset to factor $n,$ also called factor loading,
+      $\lambda_{j n}$ is the sensitivity of the $j$ th asset to factor $n,$ also called <span class="cblue">factor loading</span>,
     - and $\epsilon_{j}$ is the risky asset's idiosyncratic random shock with mean zero.I diosyncratic shocks are assumed to be uncorrelated across assets and uncorrelated with the factors.
-  
   - **Arbitrage** = practice of taking positive expected return from overvalued or undervalued securities in the inefficient market without any incremental risk and zero additional investments.
-
-
 
 ## portfolio performance and management
 
 - measure of portfolio performance
-  - **Sharpe ratio** $S_a = \frac{\mathbb E [R_a - R_b]}{\sigma_a}$: performance compared to a risk-free asset, adjusted for risk
+  - **Sharpe ratio** $$S_a = \frac{\cgreen{\mathbb E [R_a - R_b]}}{\cpink{\sigma_a}}$$: performance <span class="cgreen">compared to a risk-free asset</span>, <span class="cpink">adjusted for risk</span>
     - $R_a$ is asset return
     - $R_b$ is risk-free benchmark return (e.g. U.S. Treasury security)
     - $\sigma_a$ is the stddev of the excess return
@@ -139,19 +127,13 @@
   - what proportion should be invested in risky part of portfolio?
   - Kelly criterion - very good formula for bet sizing in long-term
 
-
-
 ## financial economics
 
 - explains how markets and prices of risky investments evolve
 
-
-
 ## behavioral finance
 
-- deviates from utility theory by factoring in psychological considerations and  deviations from rationality
-
-
+- deviates from utility theory by factoring in psychological considerations and deviations from rationality
 
 ## forwards, futures, and options
 
@@ -163,14 +145,12 @@
   - gives you option to buy a stock, but bounds losses
   - call is analog of long (normal buying)
   - put is analog of short
-  - ![what-are-call-options](../assets/what-are-call-options.gif)
+  - <img style="width: 450px; max-width: 100%;" src="../assets/long_call_payoff.svg" alt="Long call payoff"/>
 - compound positions
-  - ![compound_positions](../assets/compound_positions.png)
-  - ![bull_bear_spread](../assets/bull_bear_spread.png)
+  - payoff function of a long straddle position (left) and a butterfly spread (right) <img style="width: 450px; max-width: 100%;" src="../assets/compound_positions.svg" alt="Straddle and butterfly payoffs"/>
+  - <img style="width: 450px; max-width: 100%;" src="../assets/bull_bear_spread.svg" alt="Bull and bear spread payoffs"/>
   - **protective put buying** - limits dowside risk of a security/portfolio
-  - **covered call writing** - 
-
-
+  - **covered call writing** -
 
 ### binomial (CRR) model
 
@@ -179,8 +159,6 @@
 - numerical method for valuation of options
 - simulates discrete-time model of the varying price over time
 
-
-
 ### black-scholes theory
 
 - PDE for evolution of derivatives
@@ -188,11 +166,7 @@
 
 ### volatility (deterministic / stochastic)
 
-
-
 ## processes with jumps
-
-
 
 ## basic fixed-income instruments
 
@@ -200,15 +174,9 @@
 
 ### plain fixed-income derivatives
 
-
-
 ## term structure models
 
-
-
 ## LIBOR market model
-
-
 
 # private equity
 
@@ -219,7 +187,7 @@
   - differs in that private equity invests directly in companies or buys a controlling interest (usually more long-term, lower risk)
 - types
   - **venture capital** is a type of private equity
-  - leveraged buyouts - most popular  - buy company to improve it then resell it (to individual or in IPO)
+  - leveraged buyouts - most popular - buy company to improve it then resell it (to individual or in IPO)
   - distressed funding - money given to struggling company to turn it around
 
 # misc books
@@ -335,3 +303,29 @@
   - transferral/transaction fees - must make more than this on a trade
 - pricing
   - each crypto exchange sets price based on most recent trade (e.g. buy+sell)
+
+# game theory
+
+- **Backward Induction** – start at the ends and consider the last moves for each player until the beginning is reached
+- **Dominating strategy** – always gives a better payoff regardless of other player
+	- Weakly dominating strategy – always at least as good
+- **Mixed strategy** – active randomization with given probabilities that determines players decision
+- **Nash equilibrium** - no player can unilaterally (without the other player changing) change his strategy and get a better payoff
+- Prisoner’s Dilllema has dominant strategy of both complying
+	- in a repeated game, this inefficiency can be fixed
+- Quality choice game – provider and buyer can each offer high or low bandwidth
+	- Two Nash equilibria
+	- In an evolutionary game, which equilibrium is picked is based on what percentage of each the provider expects
+	- Over time, the buyer will mimic whatever the provider is providing
+- Mixed strategies – compliance inspections
+	- The percentage of the time that the inspector should inspect is based on the incentive / penalty that the buyer will cheat
+	- It has a mixed equilibrium, based on probabilities
+	- Player’s willingness for risk and other factors are considered when determining numbers for utility
+- Many games have first-mover advantage: such as firms determining how much of a product to produce
+- There are games with imperfect information- ex. Deciding whether to announce or cede
+- Bidding in auctions – one of the main uses of game theory
+	- You should bid how much you are willing to pay
+	- Winner’s curse – if you win an auction for something with common value, you probably overvalued it
+
+## interesting studies
+- [Chimpanzee choice rates in competitive games match equilibrium game theory predictions](https://www.nature.com/articles/srep05182)

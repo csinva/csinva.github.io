@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 54 690 516" role="img" aria-labelledby="title desc">
+  <title id="title">Theta neuron</title>
+  <desc id="desc">Circle representing the phase θ of the theta neuron, with three marked points: V_spike on the left, V_rest lower left and V_th lower right. Below: dθ/dt = 1 − cos θ + (1 + cos θ) I(t).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .v { font: 38px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .s { font-size: 26px; }
+      .th { font: 36px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .eq { font: 42px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <circle cx="320" cy="240" r="172" fill="none" stroke="#1f6fb2" stroke-width="5"/>
+  <circle cx="148" cy="240" r="12" fill="#d1342f" stroke="#2b2b2b" stroke-width="1"/>
+  <circle cx="186.3" cy="348.2" r="12" fill="#d1342f" stroke="#2b2b2b" stroke-width="1"/>
+  <circle cx="460.9" cy="338.7" r="12" fill="#d1342f" stroke="#2b2b2b" stroke-width="1"/>
+  <text class="v" x="130" y="222" text-anchor="end">V<tspan class="s" dy="8">spike</tspan></text>
+  <text class="v" x="124.3" y="392.2">V<tspan class="s" dy="8">rest</tspan></text>
+  <text class="v" x="482.9" y="376.7">V<tspan class="s" dy="8">th</tspan></text>
+  <text class="th" x="580" y="252">θ</text>
+  <text class="eq" x="16" y="548">dθ/dt = 1 − cos θ + (1 + cos θ) I(t)</text>
+</svg>

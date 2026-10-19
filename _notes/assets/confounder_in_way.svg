@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="14 10 352 192" role="img" aria-labelledby="title desc">
+  <title id="title">Causal DAG: X → Z → Y and X → Y</title>
+  <desc id="desc">Three-node directed graph. X (left) has arrows to Z (top) and to Y (right); Z has an arrow to Y.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .var { font: italic 34px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+  <circle class="node" cx="190" cy="50" r="36"/>
+  <text class="var" x="190" y="51">Z</text>
+  <circle class="node" cx="54" cy="162" r="36"/>
+  <text class="var" x="54" y="163">X</text>
+  <circle class="node" cx="326" cy="162" r="36"/>
+  <text class="var" x="326" y="163">Y</text>
+  <path class="edge" d="M81.8 139.1 L161.4 73.5" marker-end="url(#arrow)"/>
+  <path class="edge" d="M217.8 72.9 L297.4 138.5" marker-end="url(#arrow)"/>
+  <path class="edge" d="M90.0 162.0 L289.0 162.0" marker-end="url(#arrow)"/>
+</svg>

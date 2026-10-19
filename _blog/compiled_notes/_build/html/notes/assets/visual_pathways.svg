@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 25 960 680" role="img" aria-labelledby="title desc">
+  <title id="title">Visual pathways</title>
+  <desc id="desc">The retina projects to the LGN (thalamus) and to the superior colliculus (midbrain). LGN connects reciprocally with V1. In the occipital lobe V1 connects with V2; V2 with MT and V4; MT with the posterior parietal complex; V4 with the inferotemporal complex. The pulvinar (thalamus) connects reciprocally with V1, V2, V4, the posterior parietal complex and the inferotemporal complex. The superior colliculus projects to the LGN and pulvinar and receives input from visual cortex. Dashed arcs mark the cortex/thalamus and thalamus/midbrain boundaries.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 z" fill="#2b2b2b"/></marker>
+    <style>
+      .n { fill: none; stroke: #2b2b2b; stroke-width: 2.2; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .bd { fill: none; stroke: #8a8a8a; stroke-width: 2; stroke-dasharray: 16 12; }
+      .l { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .r { font: 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <!-- region boundaries -->
+  <path class="bd" d="M272 430 C300 360 700 330 755 425"/>
+  <path class="bd" d="M412 645 C430 585 700 575 730 645"/>
+  <text class="r" x="766" y="398">cortex</text>
+  <text class="r" x="680" y="478">thalamus</text>
+  <text class="r" x="642" y="665">midbrain</text>
+  <text class="r" x="362" y="62">Occipital lobe</text>
+
+  <!-- eye -->
+  <circle class="n" cx="80" cy="470" r="64"/>
+  <path d="M80 406 A64 64 0 0 1 80 534" fill="none" stroke="#2b2b2b" stroke-width="7"/>
+  <path class="n" d="M30 430 Q48 470 30 510"/>
+  <ellipse cx="22" cy="470" rx="8" ry="20" fill="#2b2b2b"/>
+  <text class="l" x="182" y="520">Retina</text>
+
+  <!-- nodes -->
+  <ellipse class="n" cx="318" cy="180" rx="50" ry="87"/><text class="l" x="318" y="182">V1</text>
+  <ellipse class="n" cx="490" cy="180" rx="33" ry="85"/><text class="l" x="490" y="182">V2</text>
+  <ellipse class="n" cx="630" cy="88" rx="15" ry="20"/><text class="l" x="630" y="50">MT</text>
+  <circle class="n" cx="830" cy="98" r="70"/>
+  <text class="l" x="830" y="66">Posterior</text><text class="l" x="830" y="96">Parietal</text><text class="l" x="830" y="126">complex</text>
+  <ellipse class="n" cx="630" cy="257" rx="26" ry="48"/><text class="l" x="630" y="259">V4</text>
+  <ellipse class="n" cx="838" cy="298" rx="96" ry="42"/>
+  <text class="l" x="838" y="283">Inferotemporal</text><text class="l" x="838" y="313">complex</text>
+  <ellipse class="n" cx="380" cy="470" rx="40" ry="22"/><text class="l" x="380" y="471">LGN</text>
+  <ellipse class="n" cx="570" cy="482" rx="74" ry="33"/><text class="l" x="570" y="483">Pulvinar</text>
+  <circle class="n" cx="570" cy="615" r="26"/>
+  <text class="l" x="488" y="656">Superior</text><text class="l" x="488" y="684">Colliculus</text>
+
+  <!-- cortical connections (bidirectional) -->
+  <path class="e" d="M372 180 H453" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M531 152 L612 100" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M650 88 H756" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M527 210 L601 248" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M661 270 L740 292" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- pulvinar connections -->
+  <path class="e" d="M350 262 L543 445" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M496 270 L547 446" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M616 308 L583 446" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M770 135 L622 448" marker-start="url(#a)" marker-end="url(#a)"/>
+  <path class="e" d="M756 345 L640 452" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- LGN <-> V1 -->
+  <path class="e" d="M264 176 C140 186 170 300 270 330 C330 350 355 400 362 444" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- retina outputs -->
+  <path class="e" d="M146 470 H336" marker-end="url(#a)"/>
+  <path class="e" d="M206 470 C260 480 250 590 542 612" marker-end="url(#a)"/>
+  <path class="e" d="M552 596 L412 488" marker-end="url(#a)"/>
+  <path class="e" d="M570 589 V518" marker-end="url(#a)"/>
+  <path class="e" d="M846 575 C780 590 720 610 598 615" marker-end="url(#a)"/>
+  <text class="r" x="742" y="562">(from visual cortex)</text>
+</svg>

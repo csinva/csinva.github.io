@@ -17,12 +17,10 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
 - **ensemble uncertainty** - ensemble predictions yield uncertainty (e.g. variance within ensemble)
 - **quantile regression** - use quantile loss to penalize models differently + get confidence intervals
   - [can easily do this with sklearn](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html)
-  - quantile loss = $\begin{cases} \alpha \cdot \Delta & \text{if} \quad \Delta > 0\\\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$
+  - quantile loss = $$\begin{cases} \alpha \cdot \Delta & \text{if} \quad \Delta > 0\\\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$$
     - $\Delta =$ actual - predicted
-    - ![Screen Shot 2019-06-26 at 10.06.11 AM](../assets/quantile_losses.png)
+    - <img style="width: 550px; max-width: 100%;" src="../assets/quantile_losses.svg" alt="Quantile (pinball) losses"/>
   - Single-Model Uncertainties for Deep Learning ([tagovska & lopez-paz 2019](https://arxiv.org/abs/1811.00908)) - use simultaneous quantile regression
-
-
 
 # outlier-detection
 
@@ -36,10 +34,9 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
   - [one-class svm](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM) - estimates the support of a high-dimensional distribution using a kernel (2 approaches:)
     - separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)
     - find a sphere boundary around a dataset with the volume of the sphere minimized ([tax & duin 2004](https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49))
-
 - detachment index ([kuenzel 2019](https://escholarship.org/uc/item/9d34m0wz)) - based on random forest
   - for covariate $j$, detachment index $d^j(x) = \sum_i^n w (x, X_i) \vert X_i^j - x^j \vert$
-    - $w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{\vert L_t(x) \vert}_{\text{num points in leaf}}}$ is $X_i$ relevant to the point $x$?
+    - $$w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{\vert L_t(x) \vert}_{\text{num points in leaf}}}$$ is $X_i$ relevant to the point $x$?
 
 # uncertainty detection
 
@@ -59,13 +56,11 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
 
 - **epistemic uncertainty** - uncertainty in the DNN model parameters
   - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y\vert x) = \int p(y \vert x, \theta) p(\theta \vert data) d\theta$
-- **aleatoric uncertainty** -  inherent and irreducible data noise (e.g. features contradict each other)
+- **aleatoric uncertainty** - inherent and irreducible data noise (e.g. features contradict each other)
   - this can usually be gotten by predicting a distr. $p(y \vert x)$ instead of a point estimate
   - ex. logistic reg. already does this
   - ex. regression - just predict mean and variance of Gaussian
 - [gaussian processes](https://distill.pub/2019/visual-exploration-gaussian-processes/)
-
-
 
 # neural networks
 
@@ -75,21 +70,21 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
 - Deep Ensembles: A Loss Landscape Perspective ([fort, hu, & lakshminarayanan, 2020](https://arxiv.org/abs/1912.02757v1))
   - different random initializations provide most diversity
   - samples along one path have varying weights but similar predictions
-  - ![deep_ensembles](../assets/deep_ensembles.png)
+  - <img style="width: 600px; max-width: 100%;" src="../assets/deep_ensembles.svg" alt="Ensembles vs. variational methods"/>
 - [Pitfalls of In-Domain Uncertainty Estimation and Ensembling in Deep Learning](https://github.com/bayesgroup/pytorch-ensembles) - many complex ensemble approaches are similar to just an ensemble of a few randomly initialized DNNs
 
 ## directly predict uncertainty
 
 - Inhibited Softmax for Uncertainty Estimation in Neural Networks ([mozejko et al. 2019](https://arxiv.org/abs/1810.01861)) - directly predict uncertainty by adding an extra output during training
 - Learning Confidence for Out-of-Distribution Detection in Neural Networks ([devries et al. 2018](https://arxiv.org/pdf/1802.04865.pdf)) - predict both prediction *p* and confidence *c*
-  - during training, learn using $p' = c \cdot p + (1 - c) \cdot y$
+  - during training, learn using $$p' = c \cdot p + (1 - c) \cdot y$$
 - Bias-Reduced Uncertainty Estimation for Deep Neural Classifiers ([geifmen et al. 2019](https://arxiv.org/abs/1805.08206))
     - just predicting uncertainty is biased
     - estimate uncertainty of highly confident points using earlier snapshots of the trained model
 - Contextual Outlier Interpretation ([liu et al. 2018](https://arxiv.org/abs/1711.10589)) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
     - Energy-based Out-of-distribution Detection ([liu et al. 2021](https://arxiv.org/abs/2010.03759))
-- [Getting a CLUE: A Method for Explaining Uncertainty Estimates](https://arxiv.org/abs/2006.06848) 
-- [The Right Tool for the Job: Matching Model and Instance Complexities - ACL Anthology](https://aclanthology.org/2020.acl-main.593/) - at each layer, model outputs a prediction - if it's confident enough it returns, otherwise it continues on to the next layer
+- Getting a CLUE: A Method for Explaining Uncertainty Estimates ([antorán et al. 2020](https://arxiv.org/abs/2006.06848))
+- [The Right Tool for the Job: Matching Model and Instance Complexities](https://aclanthology.org/2020.acl-main.593/) - at each layer, model outputs a prediction - if it's confident enough it returns, otherwise it continues on to the next layer
 
 ## nearest-neighbor methods
 
@@ -101,12 +96,12 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
 ## bayesian neural networks
 
 - [blog posts on basics](https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743)
-  - want $p(\theta|x) = \frac {p(x|\theta) p(\theta)}{p(x)}$
+  - want $$p(\theta\vert x) = \frac {p(x\vert \theta) p(\theta)}{p(x)}$$
     - $p(x)$ is hard to compute
 - [slides on basics](https://wjmaddox.github.io/assets/BNN_tutorial_CILVR.pdf)
 - [Bayes by backprop (blundell et al. 2015)](https://arxiv.org/abs/1505.05424) - efficient way to train BNNs using backprop
   - Instead of training a single network, trains an ensemble of networks, where each network has its weights drawn from a shared, learned probability distribution. Unlike other ensemble methods, the method typically only doubles the number of parameters yet trains an infinite ensemble using unbiased Monte Carlo estimates of the gradients.
-- [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
+- Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision ([gustafsson et al. 2019](https://arxiv.org/pdf/1906.01620.pdf))
 - [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
   - focuses on epistemic uncertainty
   - could use one model to get uncertainty and other model to predict
@@ -114,8 +109,6 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
   - dropout at test time gives you uncertainty
 - SWAG ([maddox et al. 2019](https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf)) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size
 - Efficient and Scalable Bayesian Neural Nets with Rank-1 Factors ([dusenberry, jerfel et al. 2020](https://arxiv.org/abs/2005.07186)) - BNNs scale to SGD-level with better calibration
-
-
 
 # conformal inference
 

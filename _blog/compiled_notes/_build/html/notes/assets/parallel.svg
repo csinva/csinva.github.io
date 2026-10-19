@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 20 1420 960" role="img" aria-labelledby="title desc">
+  <title id="title">Epipolar constraint for parallel cameras</title>
+  <desc id="desc">Two cameras translated by t along the x axis view the same scene point; x and x′ are its images on two parallel image planes and the epipolar lines are aligned horizontal scan lines. Epipolar constraint: x′ᵀEx = 0 with E = [t×]R. With R = I and t = (T, 0, 0), E = [t×]R = [[0, 0, 0], [0, 0, −T], [0, T, 0]]. Then (u′ v′ 1) E (u v 1)ᵀ = (u′ v′ 1)(0, −T, Tv)ᵀ = 0, so Tv′ = Tv: the y-coordinates of corresponding points are the same.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-dasharray: 12 9; }
+      .plane { fill: #f0b93a; fill-opacity: 0.85; stroke: none; }
+      .br { fill: none; stroke: #2b2b2b; stroke-width: 3.5; stroke-linejoin: miter; }
+      .sans { font: 44px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .bi { font: italic bold 66px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .bis { font: italic bold 50px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .r { font: 60px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .rs { font: 46px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .m { font: italic 60px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .mx { font: 56px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+      .lbl { font: italic 44px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+
+  <!-- ===== scene ===== -->
+  <!-- scene object -->
+  <path d="M405 38 L530 46 L522 70 L533 92 L520 125 L405 112 L398 80 Z" fill="#1f8a4c" stroke="#145c33" stroke-width="3"/>
+  <!-- rays from the scene point (drawn under the image planes) -->
+  <path class="ln" d="M455 65 L168 337"/>
+  <path class="ln" d="M455 65 L465 495"/>
+  <!-- aligned edges / epipolar lines between the planes -->
+  <path class="dash" d="M210 275 L432 397 M210 358 L432 470 M210 425 L432 547"/>
+  <!-- image planes -->
+  <path class="plane" d="M70 205 L210 275 L210 425 L70 355 Z"/>
+  <path class="plane" d="M432 397 L572 467 L572 617 L432 547 Z"/>
+  <!-- epipolar lines (horizontal scan lines) -->
+  <path class="ln" d="M70 287 L210 358"/>
+  <path class="ln" d="M432 470 L572 553"/>
+  <!-- visible part of rays in front of the planes -->
+  <path class="ln" d="M168 337 L88 410"/>
+  <path class="ln" d="M465 495 L463 616"/>
+  <circle cx="168" cy="337" r="5" fill="#1f6fb2"/>
+  <circle cx="465" cy="495" r="5" fill="#1f6fb2"/>
+  <text class="lbl" x="162" y="322">x</text>
+  <text class="lbl" x="476" y="488">x′</text>
+  <!-- baseline between camera centres -->
+  <path class="ln" d="M88 412 L463 620"/>
+  <!-- eyes (camera centres) -->
+  <path class="ln" d="M50 442 L112 425 L80 398 Z" style="stroke-width:4"/>
+  <ellipse cx="86" cy="413" rx="9" ry="14" transform="rotate(-35 86 413)" fill="#2b2b2b"/>
+  <path class="ln" d="M430 648 L492 631 L460 604 Z" style="stroke-width:4"/>
+  <ellipse cx="465" cy="619" rx="9" ry="14" transform="rotate(-35 465 619)" fill="#2b2b2b"/>
+  <!-- translation t -->
+  <path class="ln" d="M190 508 L305 570" marker-end="url(#arrow)"/>
+  <text class="lbl" x="214" y="592">t</text>
+
+  <!-- ===== equations ===== -->
+  <text class="sans" x="745" y="68">Epipolar constraint:</text>
+  <text class="bi" x="712" y="168">x′<tspan class="bis" dy="-28">T</tspan><tspan dy="28"> E x </tspan><tspan class="r" font-weight="normal" font-style="normal">= 0,</tspan></text>
+  <text class="bi" x="1060" y="168">E <tspan class="r" font-weight="normal" font-style="normal">= [</tspan>t<tspan class="rs" font-weight="normal" dy="14">×</tspan><tspan class="r" font-weight="normal" font-style="normal" dy="-14">]</tspan>R</text>
+
+  <text class="bis" x="800" y="290">R <tspan class="rs" font-weight="normal" font-style="normal">=</tspan> I</text>
+  <text class="bis" x="990" y="290">t <tspan class="rs" font-weight="normal" font-style="normal">= (</tspan><tspan font-weight="normal">T</tspan><tspan class="rs" font-weight="normal" font-style="normal">, 0, 0)</tspan></text>
+
+  <text class="bi" x="705" y="540">E <tspan class="r" font-weight="normal" font-style="normal">= [</tspan>t<tspan class="rs" font-weight="normal" dy="14">×</tspan><tspan class="r" font-weight="normal" font-style="normal" dy="-14">]</tspan>R <tspan class="r" font-weight="normal" font-style="normal">=</tspan></text>
+  <!-- 3×3 matrix -->
+  <path class="br" d="M1028 420 H1014 V640 H1028"/>
+  <path class="br" d="M1270 420 H1284 V640 H1270"/>
+  <text class="mx" x="1045" y="458">0</text><text class="mx" x="1125" y="458">0</text><text class="mx" x="1230" y="458">0</text>
+  <text class="mx" x="1045" y="540">0</text><text class="mx" x="1125" y="540">0</text><text class="mx" x="1230" y="540">−<tspan font-style="italic">T</tspan></text>
+  <text class="mx" x="1045" y="622">0</text><text class="mx" x="1125" y="622" style="font-style:italic">T</text><text class="mx" x="1230" y="622">0</text>
+
+  <!-- (u′ v′ 1) E (u v 1)ᵀ = 0 -->
+  <text class="m" x="18" y="820"><tspan class="r">(</tspan>u′</text>
+  <text class="m" x="115" y="820">v′</text>
+  <text class="r" x="190" y="820">1)</text>
+  <path class="br" d="M245 708 H231 V912 H245"/>
+  <path class="br" d="M460 708 H474 V912 H460"/>
+  <text class="mx" x="258" y="740">0</text><text class="mx" x="332" y="740">0</text><text class="mx" x="425" y="740">0</text>
+  <text class="mx" x="258" y="820">0</text><text class="mx" x="332" y="820">0</text><text class="mx" x="420" y="820">−<tspan font-style="italic">T</tspan></text>
+  <text class="mx" x="258" y="898">0</text><text class="mx" x="332" y="898" style="font-style:italic">T</text><text class="mx" x="425" y="898">0</text>
+  <path class="br" d="M500 710 Q478 810 500 910" style="stroke-width:3"/>
+  <path class="br" d="M535 710 Q557 810 535 910" style="stroke-width:3"/>
+  <text class="mx" x="517" y="740" style="font-style:italic">u</text>
+  <text class="mx" x="517" y="820" style="font-style:italic">v</text>
+  <text class="mx" x="517" y="898">1</text>
+  <text class="r" x="565" y="820">= 0</text>
+
+  <!-- (u′ v′ 1)(0, −T, Tv)ᵀ = 0 -->
+  <text class="m" x="718" y="820"><tspan class="r">(</tspan>u′</text>
+  <text class="m" x="815" y="820">v′</text>
+  <text class="r" x="890" y="820">1)</text>
+  <path class="br" d="M945 710 Q923 810 945 910" style="stroke-width:3"/>
+  <path class="br" d="M1022 710 Q1044 810 1022 910" style="stroke-width:3"/>
+  <text class="mx" x="983" y="740">0</text>
+  <text class="mx" x="983" y="820">−<tspan font-style="italic">T</tspan></text>
+  <text class="mx" x="983" y="898" style="font-style:italic">Tv</text>
+  <text class="r" x="1052" y="820">= 0</text>
+
+  <text class="m" x="1195" y="820">Tv′ <tspan class="r">=</tspan> Tv</text>
+
+  <text class="sans" x="92" y="968">The y-coordinates of corresponding points are the same!</text>
+</svg>

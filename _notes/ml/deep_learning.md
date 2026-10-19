@@ -7,44 +7,7 @@ subtitle: This note covers miscellaneous deep learning, with an emphasis on diff
 
 {:toc}
 
-See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html), [📌 transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)
-
-# historical top-performing nets
-
-- LeNet (1998)
-  - first, used on MNIST
-- AlexNet (2012)
-  - landmark (5 conv layers, some pooling/dropout)
-- ZFNet (2013)
-  - fine tuning and deconvnet
-- VGGNet (2014)
-  - 19 layers, all 3x3 conv layers and 2x2 maxpooling
-- GoogLeNet (2015)
-  - lots of parallel elements (called *Inception module*)
-- Msft ResNet (2015)
-  - very deep - 152 layers
-    - connections straight from initial layers to end
-    - only learn "residual" from top to bottom
-  
-- Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
-  - object detection
-- Generating image descriptions (Karpathy , 2014)
-  - RNN+CNN
-- Spatial transformer networks (2015)
-  - transformations within the network
-- Segnet (2015)
-  - encoder-decoder network
-- Unet (Ronneberger, 2015)
-  - applies to biomedical segmentation
-- Pixelnet (2017)
-      - predicts pixel-level for different tasks with the same architecture
-      - convolutional layers then 3 FC layers which use outputs from all convolutional layers together
-- Squeezenet
-- Yolonet
-- Wavenet
-- Densenet
-- NASNET
-- [Efficientnet (2019)](https://arxiv.org/pdf/1905.11946.pdf)
+See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html), [📌 transformers](https://csinva.io/notes/research_ovws/ovw_llms.html)
 
 # basics
 
@@ -77,34 +40,20 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - run network forward to compute outputs at each step
     - compute gradients at each gate with backprop
     - update weights with SGD
-- ![backprop](../assets/backprop.png)
 
-# training
+<img style="width: 400px; max-width: 100%;" src="../assets/backprop.svg" alt="backpropagation on f = (x + y) z: forward values in green, gradients in red"/>
 
-- *vanishing gradients problem* - neurons in earlier layers learn more slowly than in later layers
-  - happens with sigmoids
-  - dead ReLus
-- *exploding gradients problem* - gradients are significantly larger in earlier layers than later layers
-  - RNNs
-- *batch normalization* - whiten inputs to all neurons (zero mean, variance of 1)
-  - do this for each input to the next layer
-- *dropout* - randomly zero outputs of p fraction of the neurons during training
-  - like learning large ensemble of models that share weights
-  - 2 ways to compensate (pick one)
-    1. at test time multiply all neurons' outputs by p
-    2. during training divide all neurons' outputs by p
-- *softmax* - takes vector z and returns vector of the same length
-  - makes it so output sums to 1 (like probabilities of classes)
-- **tricks to squeeze out performance**
-  - ensemble models
-  - (stochastic) weight averaging can help a lot
-  - test-time augmentation
-     - this could just be averaging over dropout resamples as well
-  - gradient checkpointing ([2016 paper](https://arxiv.org/pdf/1604.06174.pdf))
-    - 10x larger DNNs into memory with 20% increase in comp. time
-    - save gradients for a carefully chosen layer to let you easily recompute
+# some historical popular nets
+
+- early CNNs - LeNet ([lecun et al. 1998](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf)): first, used on MNIST; AlexNet ([krizhevsky et al. 2012](https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)): 5 conv layers, some pooling/dropout; ZFNet ([zeiler & fergus 2013](https://arxiv.org/abs/1311.2901)): fine-tuning and deconvnet; VGGNet ([simonyan & zisserman 2014](https://arxiv.org/abs/1409.1556)): 19 layers, all 3x3 conv and 2x2 max pooling
+- deeper nets - GoogLeNet ([szegedy et al. 2015](https://arxiv.org/abs/1409.4842)): lots of parallel elements (Inception module); ResNet ([he et al. 2015](https://arxiv.org/abs/1512.03385)): 152 layers, connections straight from initial layers to the end, only learns the "residual"; DenseNet ([huang et al. 2016](https://arxiv.org/abs/1608.06993))
+- efficient / searched architectures - SqueezeNet ([iandola et al. 2016](https://arxiv.org/abs/1602.07360)), NASNet ([zoph et al. 2017](https://arxiv.org/abs/1707.07012)), EfficientNet ([tan & le 2019](https://arxiv.org/pdf/1905.11946.pdf))
+- object detection - R-CNN ([girshick et al. 2013](https://arxiv.org/abs/1311.2524)), Fast R-CNN ([girshick 2015](https://arxiv.org/abs/1504.08083)), Faster R-CNN ([ren et al. 2015](https://arxiv.org/abs/1506.01497)), YOLO ([redmon et al. 2015](https://arxiv.org/abs/1506.02640))
+- segmentation - SegNet ([badrinarayanan et al. 2015](https://arxiv.org/abs/1511.00561)): encoder-decoder; U-Net ([ronneberger et al. 2015](https://arxiv.org/abs/1505.04597)): biomedical; PixelNet ([bansal et al. 2017](https://arxiv.org/abs/1702.06506)): pixel-level predictions for different tasks with the same architecture (conv layers, then 3 FC layers that use outputs from all conv layers together)
+- other - image descriptions with RNN+CNN ([karpathy & fei-fei 2014](https://arxiv.org/abs/1412.2306)); spatial transformer networks ([jaderberg et al. 2015](https://arxiv.org/abs/1506.02025)): transformations within the network; WaveNet ([van den oord et al. 2016](https://arxiv.org/abs/1609.03499))
 
 # CNNs
+
 - kernel here means filter
 - convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied
 - G = H $\ast$ F
@@ -136,8 +85,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - siamese networks - extract features twice with same net then put layer on top
     - ex. find how similar to representations are
 
-
-
 # RNNs
 
 - feedforward NNs have no memory so we introduce recurrent NNs
@@ -159,8 +106,12 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
   - output gate - conditionally output a relevant part of memory
   - GRUs - similar, merge input / forget units into a single update unit
 
+# misc architectural components
 
-# graph neural networks
+- **coordconv** - break translation equivariance by passing in i, j coords as extra filters
+- **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
+
+## graph neural networks
 
 - [Theoretical Foundations of Graph Neural Networks](https://www.youtube.com/watch?v=uF53xsT7mjc)
   - inputs are graphs
@@ -172,7 +123,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - X is a matrix where each row is a feature vector
     - note that permuting rows of X shouldn't change anything
     - **permutation invariant**: $f(PX) = f(X)$ for all permutation matrices $P$
-      - e.g. $\mathbf{P}_{(2,4,1,3)} \mathbf{X}=\left[\begin{array}{llll}0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{array}\right]\left[\begin{array}{lll}- & \mathbf{x}_{1} & - \\ - & \mathbf{x}_{2} & - \\ - & \mathbf{x}_{3} & - \\ - & \mathbf{x}_{4} & -\end{array}\right]=\left[\begin{array}{lll}- & \mathbf{x}_{2} & - \\ - & \mathbf{x}_{4} & - \\ - & \mathbf{x}_{1} & - \\ - & \mathbf{x}_{3} & -\end{array}\right]$
+      - e.g. $$\mathbf{P}_{(2,4,1,3)} \mathbf{X}=\left[\begin{array}{llll}0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{array}\right]\left[\begin{array}{lll}- & \mathbf{x}_{1} & - \\ - & \mathbf{x}_{2} & - \\ - & \mathbf{x}_{3} & - \\ - & \mathbf{x}_{4} & -\end{array}\right]=\left[\begin{array}{lll}- & \mathbf{x}_{2} & - \\ - & \mathbf{x}_{4} & - \\ - & \mathbf{x}_{1} & - \\ - & \mathbf{x}_{3} & -\end{array}\right]$$
       - ex. *Deep Sets* model (zaheer et al. '17): $f(X) = \phi \left (\sum_k \psi(x_i) \right)$
     - **permutation equivariant**: $f(PX) = P f(X)$ - useful for when we want answers at the node level
   - graph: augment set of nodes with edges between them (store as an adjacency matrix)
@@ -192,7 +143,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
       - we can think of transformers as fully-connect graph networks with attentional form of GNN layers
         - one big difference: positional embeddings often used, making the input not clearly a graph
           - these postitional embeddings often take the form of sin/cos - very similar to DFT eigenvectors of a graph
-    - spectral gnns 
+    - spectral gnns
       - operate on graph laplacian matrix $L = D - A$ where $D$ is degree matrix and $A$ is adjacency matrix - more mathematically convenient
     - probabilistic modeling - e.g. assome markov random field and try to learn parameters
       - this connects well to a message-passing GNN
@@ -203,18 +154,13 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
   - continuous case is more difficult
 - geometric deep learning: invariances and equivariances can be applied generally to get a large calss of architectures between convolutions and graphs
 
-# misc architectural components
-
-- **coordconv** - break translation equivariance by passing in i, j coords as extra filters
-- **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
-
 ## top-down feedback
 
 - Look and Think Twice: Capturing Top-Down Visual Attention With Feedback Convolutional Neural Networks ([2015](https://openaccess.thecvf.com/content_iccv_2015/html/Cao_Look_and_Think_ICCV_2015_paper.html))
     - neurons in the feedback hidden layers update their activation status to maximize the confidence output of the target top neuron
-- Top-Down Neural Attention by Excitation Backprop | SpringerLink ([2017](https://link.springer.com/article/10.1007/s11263-017-1059-x))
+- Top-Down Neural Attention by Excitation Backprop ([2017](https://link.springer.com/article/10.1007/s11263-017-1059-x))
     - top-down attention maps by extending winner-take-all (WTA) to probabilistic maps
-    - Modeling visual attention via selective tuning - ScienceDirect ([1995](https://www.sciencedirect.com/science/article/pii/0004370295000259))
+    - Modeling visual attention via selective tuning ([1995](https://www.sciencedirect.com/science/article/pii/0004370295000259))
         - original WTA paper provides only binary maps
 - Bottom-Up and Top-Down Reasoning with Hierarchical Rectified Gaussians ([2016](https://arxiv.org/abs/1507.05699))
 - Beyond Skip Connections: Top-Down Modulation for Object Detection ([shrivastava…malik, gupta, 2017](https://arxiv.org/abs/1612.06851))
@@ -223,7 +169,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - Fast and Slow Learning of Recurrent Independent Mechanisms ([madan…bengio, 2021](https://arxiv.org/abs/2105.08710))
     - Inductive Biases for Deep Learning of Higher-Level Cognition ([goyal & bengio, 2021](https://arxiv.org/abs/2011.15091))
 - Neural Networks with Recurrent Generative Feedback ([huang…tsao, anandkumar, 2020](https://proceedings.neurips.cc/paper/2020/hash/0660895c22f8a14eb039bfb9beb0778f-Abstract.html))
-    - [Deconvolutional Generative Model](https://arxiv.org/abs/1811.02657) DGM - hierarchical latent variables capture variation in images + generate images from a coarse to fine detail using deconvolution operations
+    - Deconvolutional Generative Model ([nguyen et al. 2018](https://arxiv.org/abs/1811.02657)) DGM - hierarchical latent variables capture variation in images + generate images from a coarse to fine detail using deconvolution operations
 - A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs ([vicarious, 2016](https://www.science.org/doi/full/10.1126/science.aag2612?casa_token=dXK8WGm0t04AAAAA%3ArHcvkJAn4ornLgAxVmjXS_NbVTW7HSvyJVTFuJVgYmq7LYD39noT5W0l-34piGa9R-sFC37wuEF5u1jb))
     - bayesian model + crf on latents breaks captchas
 - Combining Top-Down and Bottom-Up Segmentation ([2008](https://www.msri.org/people/members/eranb/Combining_td_and_bu.pdf)) (pre-DNNs)
@@ -237,17 +183,10 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - Attentional Neural Network: Feature Selection Using Cognitive Feedback ([2014](https://proceedings.neurips.cc/paper/2014/file/1e6e0a04d20f50967c64dac2d639a577-Paper.pdf))
 - Efficient Learning of Deep Boltzmann Machines ([2010](http://proceedings.mlr.press/v9/salakhutdinov10a/salakhutdinov10a.pdf))
 
-# neural architecture search (NAS)
-
-- One Network Doesn't Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning ([girish, dey et al. 2022](https://arxiv.org/abs/2203.08130)) - use NAS for self-supervised setting rather than supervised
-- A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track ([white...bubeck, dey, 2022](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/))
-  - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
-
 # misc
 
-- [Deep Learning Interviews: Hundreds of fully solved job interview questions from a wide range of key topics in AI](https://arxiv.org/abs/2201.00650)
 - adaptive pooling can help deal with different sizes
-- [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934)
+- NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis ([mildenhall et al. 2020](https://arxiv.org/abs/2003.08934))
   - given multiple views, generate depth map + continuous volumetric repr.
   - dnn is overfit to only one scene
   - inputs: a position and viewing direction
@@ -260,37 +199,62 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - Language model compression with weighted low-rank factorization ([hsu et al. 2022](https://arxiv.org/abs/2207.00112)) \- incorporate fisher info of weights when compressing via SVD (this helps preserve the weights which are important for prediction)
   - can represent a full-rank weight matrix as a product of low-rank matrices, e.g. to get rank *r* repr of 10x10 matrix, make it a product of a 10xr and an rx10 matrix
   - people often use SVD to posthoc compress a DNN
+- neural architecture search
+  - One Network Doesn't Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning ([girish, dey et al. 2022](https://arxiv.org/abs/2203.08130)) - use NAS for self-supervised setting rather than supervised
+  - A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track ([white...bubeck, dey, 2022](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/))
+    - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
 
 # empirical notes
 
-### nrom layers
+- *vanishing gradients problem* - neurons in earlier layers learn more slowly than in later layers
+  - happens with sigmoids
+  - dead ReLus
+- *exploding gradients problem* - gradients are significantly larger in earlier layers than later layers
+  - RNNs
+- *dropout* - randomly zero outputs of p fraction of the neurons during training
+  - like learning large ensemble of models that share weights
+  - 2 ways to compensate (pick one)
+    1. at test time multiply all neurons' outputs by p
+    2. during training divide all neurons' outputs by p
+- *softmax* - takes vector z and returns vector of the same length
+  - makes it so output sums to 1 (like probabilities of classes)
+- tricks to squeeze out performance
+  - ensemble models
+  - (stochastic) weight averaging can help a lot
+  - test-time augmentation
+     - this could just be averaging over dropout resamples as well
+  - gradient checkpointing ([2016 paper](https://arxiv.org/pdf/1604.06174.pdf))
+    - 10x larger DNNs into memory with 20% increase in comp. time
+    - save gradients for a carefully chosen layer to let you easily recompute
 
-**Batch Normalization** - for a mini-batch $\mathcal{B} = {x_1, x_2, \ldots, x_m}$, normalize each feature across the batch dimension:
+## norm layers
 
-$$\mu_\mathcal{B} = \frac{1}{m} \sum_{i=1}^{m} x_i$$
+**Batch Normalization** - for a mini-batch $${\color[RGB]{255,169,77}\mathcal{B}} = \{x_1, x_2, \ldots, x_{\color[RGB]{255,169,77}m}\}$$, normalize each feature across the <span style="color:#ffa94d">batch dimension</span>:
 
-$$\sigma_\mathcal{B}^2 = \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_\mathcal{B})^2$$
+$$\mu_{\color[RGB]{255,169,77}\mathcal{B}} = \frac{1}{\color[RGB]{255,169,77}m} \sum_{i=1}^{\color[RGB]{255,169,77}m} x_i$$
 
-$$\hat{x}_i = \frac{x_i - \mu*\mathcal{B}}{\sqrt{\sigma_\mathcal{B}^2 + \epsilon}}, \quad y_i = \gamma \hat{x}_i + \beta$$
+$$\sigma_{\color[RGB]{255,169,77}\mathcal{B}}^2 = \frac{1}{\color[RGB]{255,169,77}m} \sum_{i=1}^{\color[RGB]{255,169,77}m} (x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu_\mathcal{B}})^2$$
 
-where $\gamma$ and $\beta$ are learnable scale and shift parameters, and $\epsilon$ is a small constant for numerical stability.
+$$\hat{x}_i = \frac{x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu_\mathcal{B}}}{\sqrt{\sigma_\mathcal{B}^2 + \epsilon}}, \quad y_i = \gamma \hat{x}_i \mathbin{\color[RGB]{247,131,172}+} {\color[RGB]{247,131,172}\beta}$$
 
-**Layer Normalization** - same thing except normalize across features (don't average over tokens):
+where $\gamma$ and <span style="color:#f783ac">$\beta$</span> are learnable scale and <span style="color:#f783ac">shift</span> parameters, and $\epsilon$ is a small constant for numerical stability.
 
-$$\mu = \frac{1}{d} \sum_{i=1}^{d} x_i$$
+**Layer Normalization** - same thing except normalize across <span style="color:#b197fc">features</span> (don't average over tokens):
 
-$$\sigma^2 = \frac{1}{d} \sum_{i=1}^{d} (x_i - \mu)^2$$
+$$\mu = \frac{1}{\color[RGB]{177,151,252}d} \sum_{i=1}^{\color[RGB]{177,151,252}d} x_i$$
 
-$$\hat{x}_i = \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}}, \quad y_i = \gamma_i \hat{x}_i + \beta_i$$
+$$\sigma^2 = \frac{1}{\color[RGB]{177,151,252}d} \sum_{i=1}^{\color[RGB]{177,151,252}d} (x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu})^2$$
+
+$$\hat{x}_i = \frac{x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu}}{\sqrt{\sigma^2 + \epsilon}}, \quad y_i = \gamma_i \hat{x}_i \mathbin{\color[RGB]{247,131,172}+} {\color[RGB]{247,131,172}\beta_i}$$
 
 where $\gamma, \beta \in \mathbb{R}^d$ are learnable per-feature parameters.
 
 **RMS Normalization**
 
-Root Mean Square normalization drops the mean-centering step:
+Root Mean Square normalization drops the <span style="color:#69db7c">mean-centering</span> step:
 
-$$\text{RMS}(x) = \sqrt{\frac{1}{d} \sum_{i=1}^{d} x_i^2}$$
+$$\text{RMS}(x) = \sqrt{\frac{1}{\color[RGB]{177,151,252}d} \sum_{i=1}^{\color[RGB]{177,151,252}d} x_i^2}$$
 
 $$\hat{x}_i = \frac{x_i}{\sqrt{\text{RMS}(x)^2 + \epsilon}} \quad y_i = \gamma_i \hat{x}_i$$
 
-where $\gamma \in \mathbb{R}^d$ is a learnable scale parameter. Note there is no shift parameter $\beta$, and no mean subtraction — making it cheaper to compute than LayerNorm
+where $\gamma \in \mathbb{R}^d$ is a learnable scale parameter. Note there is no <span style="color:#f783ac">shift parameter $\beta$</span>, and no <span style="color:#69db7c">mean subtraction</span>, making it cheaper to compute than LayerNorm

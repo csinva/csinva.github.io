@@ -1,10 +1,9 @@
 ---
 layout: notes
 title: disease
+subtitle: Some notes on alzheimer's, parkinson's, and cancer.
 category: neuro
 ---
-
-
 
 {:toc}
 
@@ -13,7 +12,7 @@ category: neuro
 
 # alzheimer's
 
-- ![](../assets/26_1.png)
+- <img style="width: 600px; max-width: 100%;" src="../assets/26_1.svg" alt="Amyloid cascade in Alzheimer&#x27;s disease"/>
 - overview
 	- age-associated - tons of people get it
 	- doesn't kill you, secondary complications like pneumonia will kill you
@@ -35,7 +34,7 @@ category: neuro
 	- *amyloid plaques*
 		- maybe *A-beta* causes it
 		- A-beta comes from *APP*
-		- *A-beta42* binds to itself 
+		- *A-beta42* binds to itself
 			- prion (starts making more of itself)
 			- this cycle could be exacerbated by injury
 			- clumps and attracts immune system which kills local important cells
@@ -63,8 +62,6 @@ category: neuro
 - no evidence that toxins can induce parkinsons
 - *PTP/ pesticides* can induce Parkinson's in test animals
 - 1/500 people
-
-
 
 # pathology
 
@@ -137,7 +134,7 @@ category: neuro
       - can also have 2 paths, one making bounding-box proposals and another predicting the probability of a class
       - alternatively, can formulate as a regression task, where pixelwise prediction tells distance to nearest centroid of object
       - could also just directly predict the count
-   - can also predict survival analysis 
+   - can also predict survival analysis
 - Clinical-grade computational pathology using weakly supervised deep learning on whole slide images ([campanella et al. 2019](https://www.nature.com/articles/s41591-019-0508-1))
    - use slide-level diagnosis as "weak supervision" for all contained patches
    - 1st step: train patch-level CNNs using MIL
@@ -153,7 +150,7 @@ category: neuro
       - each tile gets predicted probability for 18 pre-defined classes (e.g. GP 3)
          - ensemble of 3 CNNs that operate at different magnifications
       - aggregation: 18-probability heatmaps are combined to calculate slide-level scores
-         - ex (for predicting cancer): sum the cancer-related channels in the heatmap , apply 2x2 local averaging, then take max
+         - ex (for predicting cancer): sum the cancer-related channels in the heatmap, apply 2x2 local averaging, then take max
 
 ## datasets
 
@@ -218,7 +215,6 @@ category: neuro
    - hormone therapy - block hormone which grows prostate cancer cells
    - chemotherapy
 - human benchmarks
-
    - [Interobserver Variation in Prostate Cancer Gleason Scoring: Are There Implications for the Design of Clinical Trials and Treatment Strategies?](https://www.clinicaloncologyonline.net/article/S0936-6555(97)80005-2/pdf)
       - 71 patients, 213 scored observations, 3 pathologists
       - weighted pairwise kappas: 0.16, 0.29, 0.23
@@ -249,21 +245,18 @@ category: neuro
    - urine tests for specific tumor parkers
    - cystoscopy - invasive lens takes image of bladder
    - tests lead to a biopsy
-   
 - grading
    - invasiveness: can be non-invasive, invasive (grows into deeper layers of bladder)
       - superficial = non-muscle invasive - hasn't grown into main muscle layer of bladder
    - grade: again asigned stages 0 - IV based on TNM
       - low-grade = well-differentiated
       - high-grade (worse) = poorly differentiated, undifferentiated
-   
 - human benchmark
    - The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist's diagnosis ([olsen et al. 1993](https://pubmed.ncbi.nlm.nih.gov/8290915/))
       - 4 consultant pathologists
       - 40 biopsy specimens of bladder tumours staging invasion
          - grading using Bergkvist classification
       - kappa < 0.50
-   
 - ai papers
    - Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management ([2021](https://journals.sagepub.com/doi/abs/10.1177/0391560320987169))
       - bladder cancel ranks tenth in worldwide absolute cancer incidence
@@ -277,18 +270,13 @@ category: neuro
          - 90%, 94.9%, and 97.3%, for Grade I, II, and III respectively
          - builds on Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma ([2002](https://europepmc.org/article/med/12508689))
       - Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides ([woerl et al. 2020](https://pubmed.ncbi.nlm.nih.gov/32354610/)) - predict *molecular subtype* using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset
-   
 - bladder basics
-
    - muscles in bladder contract and force urine out
-
       - *urethelium* - inner layer that is able to stretch (has many layers) - this is where cancer originates
-
          - in situ - cancer only here
          - invasive - goes into the muscle
             - if it goes into the urine, can easily test (also usually triggers blood in the urine)
       - biopsy usually looks mostly at urethelium and vessels right next to it (will not go all the way to the muscle, as this could puncture the bladder)
-      
          - very targeted (unlike prostate biopsy), slide will come with some tag like "in area with redness" from scopy
             - 4 possibilities
                - big mass - should see cancer
@@ -303,7 +291,7 @@ category: neuro
 | ------------------------------------------- | --------------------------------------------- | --------------------- |
 | ![pap_blad](../assets/pap_blad-5625041.png) | ![flat_blad](../assets/flat_blad-5625041.png) |                       |
 
-- grade: 
+- grade:
 
 | low                                                     | high                                                      |
 | ------------------------------------------------------- | --------------------------------------------------------- |

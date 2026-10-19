@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: complexity
+subtitle: Some papers on measuring model complexity, from learning theory to double descent and MDL.
 category: research
 ---
 
@@ -19,7 +20,6 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - the architecture of complexity ([herbert simon, 1962](https://www2.econ.iastate.edu/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf))
   - complexity takes the form of hierarchy
   - simon, 1981: complex systems are “made up of a large number of parts that have many interactions.”
-
 - What is complexity? ([edmonds 95](http://cogprints.org/357/4/evolcomp.pdf))
   - complexity is only really useful for comparisons
   - properties
@@ -55,7 +55,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - 2 categories
     - algorithmic / mdl
     - natural complexity (e.g. physical complexity)
-      - ![300px-Complexity_figure1](../assets/300px-Complexity_figure1.jpg)
+      - <img style="width: 480px; max-width: 100%;" src="../assets/complexity_figure1.svg" alt="Complexity between order and disorder"/>
 - [quanta article](https://www.quantamagazine.org/computer-science-and-biology-explore-algorithmic-evolution-20181129/?fbclid=IwAR0rSImplo7lLM0kEYHrHttx8qUimB-482dI9IFxY6dvx0CFeEIqzGuir_w)
   - "the probability of producing some types of outputs is far greater when randomness operates at the level of the program describing it rather than at the level of the output itself"
   - "they [recently reported in *Royal Society Open Science*](http://rsos.royalsocietypublishing.org/content/5/8/180399) that, compared to statistically random mutations, this mutational bias caused the networks to evolve toward solutions significantly faster."
@@ -101,13 +101,9 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - Neural complexity (Tononi et al., 1994) - multivariate extension of mutual information that estimates the total amount of statistical structure within an arbitrarily large system.= the difference between the sum of the component’s individual entropies and the joint entropy of the system as a whole
 - complexity = variance of the model predictions (given that there is zero bias)
 
-
-
 # estimated
 
 - [optimal m estimation in high dimensions](https://www.pnas.org/content/110/36/14563) optimal loss function (optimize over different loss functions, but evaluate with L2)assumes unbiased (so variance is the mse)
-
-
 
 # entropy characterizations
 
@@ -115,36 +111,32 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - **metric entropy** - want functions to be close (within epsilon)
   - **bracket entropy** - function is both upper and lower bounded by bounding functions, which are within epsilon
 - can do this on an entire function class (e.g. all neural networks) or on a restricted subset (e.g. path during training)
-- [optimal learning via local entropies and sample compression](https://arxiv.org/pdf/1706.01124.pdf)
-- [risk bounds for statistical learning](https://arxiv.org/pdf/math/0702683.pdf)
+- optimal learning via local entropies and sample compression ([zhivotovskiy 2017](https://arxiv.org/pdf/1706.01124.pdf))
+- risk bounds for statistical learning ([massart & nédélec 2007](https://arxiv.org/pdf/math/0702683.pdf))
 - Chaining Mutual Information and Tightening Generalization Bounds ([asadi et al. 2018](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf))
 - describing DNN paths
-  - [Online Regularized Nonlinear Acceleration](https://arxiv.org/pdf/1805.09639.pdf) 
-
-
+  - Online Regularized Nonlinear Acceleration ([scieur et al. 2018](https://arxiv.org/pdf/1805.09639.pdf))
 
 # deep learning complexity
 
-- [a hessian-based complexity measure for dnns](https://arxiv.org/abs/1905.11639)with generalization and computation to a different form of stability
+- a hessian-based complexity measure for dnns ([lejeune et al. 2019](https://arxiv.org/abs/1905.11639)) with generalization and computation to a different form of stability
   - thm 3 - want function to be smooth wrt to augmented loss
   - complexity measure ([liang et al. 2019](http://proceedings.mlr.press/v89/liang19a/liang19a.pdf))
 
 # double descent
 
 - Reconciling modern machine learning and the bias-variance trade-off ([belkin et al. 2018](https://arxiv.org/abs/1812.11118))
-- [Surprises in High-Dimensional Ridgeless Least Squares Interpolation](https://arxiv.org/abs/1903.08560)
+- Surprises in High-Dimensional Ridgeless Least Squares Interpolation ([hastie et al. 2019](https://arxiv.org/abs/1903.08560))
   - main result of limiting risk, where $\gamma \in (0, \infty)$:
-    - $R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$
-- [linear regression depends on data distr.](https://arxiv.org/abs/1802.05801)
-- [two models of double descent for weak features](https://arxiv.org/abs/1903.07571)
+    - $$R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\vert \vert \beta\vert \vert _2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$$<!-- -->
+- linear regression depends on data distr. ([kuchibhotla et al. 2018](https://arxiv.org/abs/1802.05801))
+- two models of double descent for weak features ([belkin et al. 2019](https://arxiv.org/abs/1903.07571))
 - [double descent curve](https://openreview.net/forum?id=HkgmzhC5F7)
 - [boosting w/ l2 loss](https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw)
 - [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
 - [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
-- [Harmless interpolation of noisy data in regression](https://arxiv.org/abs/1903.09139) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
+- Harmless interpolation of noisy data in regression ([muthukumar et al. 2019](https://arxiv.org/abs/1903.09139)) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
 - Deep Double Descent: Where Bigger Models and More Data Hurt ([nakkiran et al. 2019](https://arxiv.org/abs/1912.02292))
-
-
 
 ## linear models
 
@@ -156,15 +148,14 @@ Complexity can be a useful notion for many things in statistical models. It can 
 
 
 - mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
-	
-	- normalized maximum likelihood (nml): use theta to make codebook, then send code
+  - normalized maximum likelihood (nml): use theta to make codebook, then send code
 - The Minimum Description Length Principle in Coding and Modeling ([barron, rissanen, & yu, 98](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf))
   - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of observed data, then, is the one whose representative premits the shortest coding of the data
   - tradeoff: "good" prob. models for the data permit shorter code lengths
     - generally agrees w/ low mse
   - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code
   - mdl
-    - likelihood = summarize data in accodance / model (e.g. $P(y|x, \theta)$)
+    - likelihood = summarize data in accodance / model (e.g. $$P(y\vert x, \theta)$$)
     - parametric complexity = summarize model params
 - Model Selection and the Principle of Minimum Description Length ([hansen & yu 2001](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398))
   - mdl: choose the model that gives the shortest description of data
@@ -183,22 +174,22 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - normalized maximum likelihood (NML)
 - mdl intro ([rissanen, 2008](http://www.scholarpedia.org/article/Minimum_description_length)) - scholarpedia
   - coding just the data would be like maximum likelihood
-  - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
+  - minimize $$\cblue{\underset{\text{log-likelihood}}{-\log P(y^n\vert x^n;\theta)}} + \corange{\underset{\text{description length}}{L(\theta)}}$$
     - ex. OLS
-    - if we want to send all the coefficients, assume an order and $L(\theta) = L(p) + L(\theta_1, ... \theta_p)$
+    - if we want to send all the coefficients, assume an order and $$L(\theta) = L(p) + L(\theta_1, ... \theta_p)$$
       - $L(\theta) \approx \frac p 2 \log p$
         - quantization for each parameter (must quantize otherwise need to specify infinite bits of precision)
-    - if we want only a subset of the coefficients, also need to send $L(i_1, ..., i_k)$ for the indexes of the non-zero coefficients
-  - minimization becomes $\underset p \min \quad [\underset{\text{noise}}{- \log P(y^n|x^n; \hat{\theta}_{OLS})} + \underset{\text{learnable info}}{(p/2) \log n}]$
-    - *noise* - no more info can be extracted with this class of models
-    - *learnable info* in the data = precisely the best model
-    - **stochastic complexity** = *noise* + *learnable info*
+    - if we want only a subset of the coefficients, also need to send $$L(i_1, ..., i_k)$$ for the indexes of the non-zero coefficients
+  - minimization becomes $$\underset p \min \quad [\cblue{\underset{\text{noise}}{- \log P(y^n\vert x^n; \hat{\theta}_{OLS})}} + \corange{\underset{\text{learnable info}}{(p/2) \log n}}]$$
+    - <span class="cblue">*noise*</span> - no more info can be extracted with this class of models
+    - <span class="corange">*learnable info*</span> in the data = precisely the best model
+    - **stochastic complexity** = <span class="cblue">*noise*</span> + <span class="corange">*learnable info*</span>
     - in this case, is same as BIC but often different
   - modern mdl - don't assume a model form, try to code the data as short as possible with a *universal* model class
     - often can actually construct these codes
 - Kolmogorov complexity $K(x)$ = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
   - complexity of a string x is at most its length
-  - algorithmically random - any string whose length is close to $|x|$
+  - algorithmically random - any string whose length is close to $$\vert x\vert $$
     - more random = higher complexity
 - Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?
   - MDL reviews \cite{barron1998minimum, hansen2001model}.

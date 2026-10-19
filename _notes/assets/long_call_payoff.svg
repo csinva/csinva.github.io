@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 0 840 545" role="img" aria-labelledby="title desc">
+  <title id="title">Long call payoff</title>
+  <desc id="desc">Profit and loss of a long call versus underlying price at expiration. Below the strike price the position loses a fixed maximum amount, shown as a flat red line extending left. Above the strike the payoff rises linearly, crossing zero at the break-even point, after which profit (green) is unlimited.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .t { font: 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .tb { font: bold 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .ttl { font: bold 34px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .ax { stroke: #2b2b2b; stroke-width: 3.5; fill: none; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <defs>
+    <marker id="arR" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="arG" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/></marker>
+    <marker id="arK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+  </defs>
+  <text class="ttl" x="512" y="48">Long Call</text>
+  <path class="ax" d="M148 70 V488"/>
+  <line class="ax" x1="148" y1="140" x2="168" y2="140"/>
+  <line class="ax" x1="148" y1="208" x2="168" y2="208"/>
+  <line class="ax" x1="148" y1="347" x2="168" y2="347"/>
+  <line class="ax" x1="148" y1="416" x2="168" y2="416"/>
+  <path class="ax" d="M148 277 H893"/>
+  <line class="ax" x1="259" y1="267" x2="259" y2="287"/>
+  <line class="ax" x1="364" y1="267" x2="364" y2="287"/>
+  <line class="ax" x1="470" y1="267" x2="470" y2="287"/>
+  <line class="ax" x1="577" y1="267" x2="577" y2="287"/>
+  <line class="ax" x1="684" y1="267" x2="684" y2="287"/>
+  <line class="ax" x1="789" y1="267" x2="789" y2="287"/>
+  <line class="ax" x1="893" y1="267" x2="893" y2="287"/>
+  <text class="tb end" x="134" y="80" style="fill:#1f8a4c;font-size:26px">Profit</text>
+  <text class="tb end" x="134" y="287" style="font-size:26px">$0</text>
+  <text class="tb end" x="134" y="490" style="fill:#d1342f;font-size:26px">Loss</text>
+  <path d="M101 122 l11 -18 l11 18 z" fill="#1f8a4c" opacity="1"/>
+  <path d="M101 138 l11 -18 l11 18 z" fill="#1f8a4c" opacity="0.6"/>
+  <path d="M101 154 l11 -18 l11 18 z" fill="#1f8a4c" opacity="0.35"/>
+  <circle cx="112" cy="222" r="14" fill="#1f8a4c"/><path d="M104 222 h16 M112 214 v16" stroke="#fff" stroke-width="3.5"/>
+  <circle cx="112" cy="331" r="14" fill="#d1342f"/><path d="M104 331 h16" stroke="#fff" stroke-width="3.5"/>
+  <path d="M101 385 l11 18 l11 -18 z" fill="#d1342f" opacity="0.35"/>
+  <path d="M101 401 l11 18 l11 -18 z" fill="#d1342f" opacity="0.6"/>
+  <path d="M101 417 l11 18 l11 -18 z" fill="#d1342f" opacity="1"/>
+  <line x1="470" y1="277" x2="470" y2="392" stroke="#2b2b2b" stroke-width="2" stroke-dasharray="5 4"/>
+  <text class="tb end" x="462" y="324" style="font-size:18px">Strike Price</text>
+  <line x1="470" y1="392" x2="890" y2="392" stroke="#d1342f" stroke-width="2" stroke-dasharray="6 5"/>
+  <text class="tb" x="645" y="416" style="fill:#d1342f;font-size:18px">Max Loss</text>
+  <path d="M470 392 H182" fill="none" stroke="#d1342f" stroke-width="12" marker-end="url(#arR)"/>
+  <path d="M470 392 L517 277" fill="none" stroke="#d1342f" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M517 277 L593 135" fill="none" stroke="#1f8a4c" stroke-width="12" marker-end="url(#arG)"/>
+  <line x1="607" y1="110" x2="622" y2="80" stroke="#1f8a4c" stroke-width="2" stroke-dasharray="5 4"/>
+  <text class="tb" x="628" y="94" style="fill:#1f8a4c;font-size:18px">Unlimited</text><text class="tb" x="628" y="115" style="fill:#1f8a4c;font-size:18px">Profit</text>
+  <path d="M590 340 L533 291" fill="none" stroke="#2b2b2b" stroke-width="3" marker-end="url(#arK)"/>
+  <text class="tb" x="596" y="364" style="font-size:18px">Break-Even Point</text>
+  <path d="M175 509 L192 492 H290 V526 H192 z" fill="none" stroke="#2b2b2b" stroke-width="1.6"/><text class="t" x="204" y="517" style="font-size:24px">Lower</text>
+  <text class="tb mid" x="522" y="517" style="font-size:24px">Underlying Price at Expiration</text>
+  <path d="M755 492 H858 L875 509 L858 526 H755 z" fill="none" stroke="#2b2b2b" stroke-width="1.6"/><text class="t" x="762" y="517" style="font-size:24px">Higher</text>
+</svg>

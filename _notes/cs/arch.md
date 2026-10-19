@@ -1,10 +1,10 @@
 ---
 layout: notes
 title: Architecture
+subtitle: Some notes on computer architecture - C, x86/y86 assembly, and how hardware executes instructions.
 category: cs
 ---
-* TOC
-  {:toc}
+{:toc}
 
 # units
 
@@ -28,19 +28,15 @@ category: cs
 - byte - 8 bits - 2 hex digits
 - integer - almost always 32 bits
 - "Big-endian": most significant first (lowest address) - how we thnk
-
   - 1000 0000 0000 0000 = 2^5 = 32768
 - "Little-endian": most significant last (highest address) - this is what computers do
-
   - 1000 0000 0000 0000 = 2^0 = 1
   - Note that although all the bits are reversed, usually it is displayed with just the bytes reversed
 - Consider 0xdeadbeef
-
   - On a big-endian machine, that's 0xdeadbeef
   - On a little-endian machine, that's 0xefbeadde
   - 0xdeadbeef is used as a memory allocation pattern by some OSes
 - Representing integers
-
   - Sign and magnitude - first digit specifies sign
   - One's complement - encode using n-1 bits, flip if negative\
   - Two's complement - encode using n-1 bits, flip if negative, add 1
@@ -49,14 +45,11 @@ category: cs
       - minimum: - 2^(n-1)
         - flip everything to the left of the rightmost 1
 - Floating point - like scientific notation
-
   - 3.24 * 10 ^ -6
   - Mantissa - 3.24 - between 1 and the base (10)
-
     - For binary, the mantissa must be between 1 and 2
     - we assume the base is 2
   - 32 bits are split as follows:
-
     - bit 1: sign bit, 1 means negative (1 bit)
     - bits 2-9: exponent (8 bits)
     - Exponent values:
@@ -195,10 +188,10 @@ cout << average(5, 3.3, 2.2, 1.1, 5.5, 3.3) << endl;
 }
 Caller: the function which calls another function
 Prologue
-Tasks to take care of BEFORE calling a subroutine
+Tasks to take care of before calling a subroutine
 Call the subroutine with the call opcode
 Epilogue
-Tasks to complete AFTER subroutine call returns
+Tasks to complete after subroutine call returns
 (It is not really called this, but I use this to parallel the equivalent components in the callee convention)
 Before calling the function (the prologue)
 Save registers that might be needed after the call (eax, ecx, edx)
@@ -247,7 +240,7 @@ scanf ("%s", buffer); // how C handles input
 }
 The stack looks like (with sizes in parenthesis):
 
- esi (4) 	 edi (4) 	 buffer (12) 	 ebp (4) 	 ret addr (4) 
+ esi (4) 	 edi (4) 	 buffer (12) 	 ebp (4) 	 ret addr (4)
 
 Addresses increase to the right (the stack grows to the left)
 What happens if the value stored into buffer is 13 bytes long?
@@ -299,6 +292,7 @@ add esp, 4  //deallocate local var
 pop ebx
 pop ebp
 ret
+
 # intro to C - we use ANSI standard
 
 ```java
@@ -322,6 +316,7 @@ all variables have to be declared at the top
 printf(const char *format, ...)
 	printf("%d %f %g %s\n",); /* int, double (these must be explicitly doubles), double (as small as possible), string */
 ```
+
 # compile steps
 
 source (text) -> pre-processor -> modified source (text) -> compiler -> assembly (text) -> assembler -> binary program -> linker -> executable
@@ -339,17 +334,16 @@ source (text) -> pre-processor -> modified source (text) -> compiler -> assembly
 - all strings end with null character \0, bad security
 - length of string doesn't include null character
 
-h|e|l|l|o|\0
--|
-10|.|.|.|.|15
+h | e | l | l | o | \0
+--- | --- | --- | --- | --- | ---
+10 | . | . | . | . | 15
 
 # memory in C
 
 - byte is smallest accessible memory unit - 2 hex digits (ex: 0x3a)
 
 Bits | Name | Bits | Name
-
-- |
+--- | --- | --- | ---
   1 | bit | 16 | word
   4 | nyble | 32 | double word, long word
   8 | byte | 64 | quad word
@@ -410,13 +404,13 @@ one frame - between the lines is everything the current method has - largest add
   - math is exactly the same, discard extra bits
 
 type | signed? | bits
-
-- |
+--- | --- | ---
   char | ? | 8
   short | signed | 16 (usually)
   int | . | 16 or 32
   long | . | ≤16 or ≥ int
   long long | signed | 64
+
 - everything can have an unsigned / signed in front of the type
 - C will cast things without throwing error
 
@@ -437,7 +431,7 @@ type | signed? | bits
   >
 - then we can or it in order to change those last 3 bits
 - trinary operator - a≥b:c means if(a) b; else c
-- a&b | ~a&c
+- a&b \| ~a&c
   - only works for 2-bit numbers if a=00 or a=11
     -!x 1 if x=0
     -!!x 1 if x!=0 so we want a=-!!x
@@ -486,7 +480,7 @@ type | signed? | bits
   - jmp $0x56
 - ret
   - addq $8, %rsp
-  - movq (%rsp), (PC)  ==same as== jmp (%rsp)
+  - movq (%rsp), (PC) ==same as== jmp (%rsp)
 - push
   - mov _, (%rsp)
   - sub $8, %rsp
@@ -539,7 +533,7 @@ type | signed? | bits
     - instruction
     - data
 - encoding (assembly -> bytes)
-  - 1st byte -> high-order nybble | low-order nybble
+  - 1st byte -> high-order nybble \| low-order nybble
     - higher order is opcode (add, sub, ...)
     - lower-order is either instruction function or flag(le, g, ...) - usually 0
   - remaining bytes
@@ -616,8 +610,6 @@ type | signed? | bits
   	R[4]	<- valE			// writes to %rsp
   	p_pc	=  P_pc+2		// increment PC	by 2 because popq is 2-byte instruction
   ```
-
-```
 - steps
 ```java
 	1. fetch - what is wanted
@@ -649,6 +641,7 @@ push
 - reads rsp
 - dec rsp by 8
 - writes read value to new rsp address
+
 # hardware wires - opq example
 
 ```java
@@ -732,6 +725,7 @@ wvalE = [
 # PC update
 q_pc = valP; 
 ```
+
 # pipelining
 
 - nonuniform partitioning - stages don't all take same amount of time
@@ -839,7 +833,6 @@ jge bazzle
 
 - we want highest speed at lowest cost (higher speeds correspond to higher costs)
 - fastest to slowest
-
   - register - processor - about 1K
   - SRAM - memory (RAM) - about 1M
   - DRAM - memory (RAM) - 4-16 GB
@@ -849,25 +842,21 @@ jge bazzle
 - the last three are nonvolatile
 - things have gotten a lot faster
 - where we put things affects speed
-
   - registers near ALU
   - SRAM very close to CPU
   - CPU also covered with heat sinks
   - DRAM is large - pretty far away (some other things between them)
 - locality
-
   - temporal - close in time - the characteristic of code that repeatedly uses the same address
   - spatial - close in space - the characteristic of code that uses addresses that are numerically close
 - real-time performance is not big-O - a tree can be faster than hash because of locality
 - caching - to keep a copy for the purpose of speed
-
   - if we need to read a value, we want to read from SRAM (we call SRAM the cache)
   - if we must read from DRAM (we call DRAM the main memory), we usually want to store the value in SRAM
   - cache - what they wanted most recently (good guess because of temporal locality)
   - slower caches are still bigger
     - cache nearby bytes to recent acesses (good guess because of spatial locality)
 - simplified cache
-
   - 4 GB RAM -> 32-bit address
   - 1MB cache
   - 64-bit words
@@ -881,7 +870,6 @@ jge bazzle
     - if the tag of the address is the same as the tag of the cache, then return from cache
       - otherwise redo everything
 - slightly better cache
-
   - beginning of address is tag
   - middle of address might give you index of block in table = log(num_blocks_in_cache)
   - end of address is block offset (offset size=log(block_size))
@@ -1006,13 +994,11 @@ for(i...)
 					swap(a[x][y],a[y][x]); // do stuff
 ```
 - conditions for blocking
-
   1. the whole thing doesn't fit in cache
   2. there is no spatially local loop order
 
   - block size must be able to fit in cach
 - reassociation optimization - compiler will do this for integers, but not floats (because of round-off errors)
-
   - a+b+c+d+e -> this is slower (addition is sequential by default, the sum of the first two is then added to the third number)
   - ((a+b)+(c+d))+e -> this can do things in parallel, we have multiple adders (we can see logarithmic performace if the chip can be fully parallell)
 - using methods can increase your instruction cache hit rate
@@ -1020,7 +1006,6 @@ for(i...)
 # exceptions
 
 - processor is connected to I/O Bridge which is connected to Memory Bus and I/O Bus
-
   - these things are called the mother board
   - we don't want to wait for I/O Bus
     1. Polling - CPU periodically checks if ready
@@ -1028,19 +1013,16 @@ for(i...)
        - this is what is usually done
 - CPU has an interrupt pin (interrupt sent by I/O Bridge)
 - steps for an interrupt
-
   1. pause my work - save where I can get back to it
   2. decide what to do next
   3. do the right thing
   4. resume my suspended work
 - jump table - array of code addresses
-
   - each address points to handler code
   - CPU must pause, get index from bus, jump to exception_table[index]
   - need the exception table, exception code in memory, need register that tells where the exception table is
   - the user's code should not be able to use exception memory
 - memory
-
   - mode register (1-bit): 2 modes
     - kernel mode (operating system) - allows all instructions
     - user mode - most code, blocks some instructions, blocks some memory
@@ -1051,7 +1033,6 @@ for(i...)
   - between is user thhings
   - smallest addresses are unused - they are null (people often try to dereference them - we want this to throw an error)
 - exceptions
-
   1. interrupts, 	index: bus, 			who causes it: I/O Bridge
      - i1,i2,i3,i4 -> interrupt during i3 instruction
      - let i3 finish (maybe)
@@ -1067,10 +1048,8 @@ for(i...)
 
   - abort - reaction to an exception (usually to a fault) - quits instead of resuming
 - suspending
-
   - save PC, program register, condition codes (put them in a struct in kernel memory)
 - on an exception
-
   1. switch to kernel mode
   2. suspend program
   3. jump to exception handler
@@ -1080,17 +1059,14 @@ for(i...)
 # processes
 
 - (user) read file -> (kernel) send request to disk, wait, clean up -> (user) resume
-
   - this has lots of waiting so we run another program while we wait (see pic)
 - process - code with an address space
-
   - CPU has a register that maps user addresses to physical addresses (memory pointers to each process)
   - general we don't call the kernel a process
   - also had pc, prog. registers, cc, etc.
   - each process has a pointer to the kernel memory
   - also has more (will learn in OS)...
 - context switch - changing from one process to another
-
   - generally each core of a computer is running one process
 
   1. freeze one process
@@ -1158,7 +1134,6 @@ for(i...)
 # virtual memory
 
 - 2 address spaces
-
   1. virtual address space (addressable space)
      - used by code
      - fixed by ISA designer
@@ -1170,15 +1145,12 @@ for(i...)
      - used by memory chips
      - constrained by size of RAM
 - assume all virtual addresses have a physical address in RAM (this is not true, will come back to this)
-
   - each process has code, globals, heap, shared functions, stack
   - lots of unused at bottom, top because few programs use 2^64 bytes
   - RAM - we'll say this includes all caches
   - virtual memory is usually mostly empty
-
     - allocated in a few blocks / regions
   - MMU
-
     1. bad idea 1: could be a mapping from every virtual address to every physical address, but this wastes a lot
 
     - instead, we split memory into pages (page is continuous block of addresses ~ usually 4k)
@@ -1187,7 +1159,6 @@ for(i...)
         - page offset takes log_2(page_size)
 
     2. bad idea 2: page table - map from virtual page number -> physical page number
-
        - we put the map in RAM, we have a register (called the PTBR) that tells us where it is
        - we change the PTBR for each process
        - CPU sends MMU a virtual address
@@ -1207,7 +1178,6 @@ for(i...)
        - 64-bit VA, 4k page
          - 2^52 PTE -> the page table is too big to store
     3. good idea: multi-level page table
-
        - virtual address: page offset, multiple virtual page numbers $VPN_0,VPN_1,VPN_2,VPN_3$ (could have different number of	these)
 
        1. start by reading highest VPN: PTBR[VPN_3] -> PTE_3
@@ -1226,10 +1196,8 @@ for(i...)
 - TLB - maps from virtual page numbers to physical page numbers
 - TLB vs L1, L2, etc:
 - Similarities
-
   - They are all caches- i.e., they have an index and a tag and a valid bit (and sets)
 - Differences
-
   - TLB has a 0-bit BO (i.e., 1 entry per block; lg(1) = 0)
   - TLB is not writable (hence not write-back or write-through, no dirty bit)
   - TLB entries are PPN, L* entries are bytes
@@ -1275,7 +1243,6 @@ val at 0xd3 -> 0x0f
 val at 0xfa -> 0x6b
 val at 0xb6
 
-[TOC]
 
 # quiz rvw
 
@@ -1313,6 +1280,7 @@ unsigned int strlen( const char * s ){
 	return i;
 }
 ```
+
 ## strsep
 
 ```java
@@ -1375,7 +1343,10 @@ int satAdd(int x, int y) {
 	return ans;
 }
 ```
+
 # reading
+
+chapters refer to Bryant & O'Hallaron's "Computer Systems - A Programmer's Perspective"
 
 ## ch 1 (1.7, 1.9)
 

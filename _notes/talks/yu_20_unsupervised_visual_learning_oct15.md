@@ -2,8 +2,6 @@
 
 **stella yu, uc berkeley**
 
-
-
 - intuition
   - high-level categories automatically emerge from low-level labels
   - good representations should learn good similarities between images

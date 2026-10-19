@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Math Basics
+subtitle: Assorted math basics - functions, discrete math, proofs, identities, and complex numbers.
 category: math
 ---
 
@@ -27,8 +28,8 @@ category: math
 # stochastic processes
 
 - Stochastic - random process evolving with time
-- Markov: $P(X_t=x\|X_{t-1})=P(X_t=x\|X_{t-1}...X_1)$
-- Martingale: $E[X_t]=X_{t-1}$ 
+- Markov: $$P(X_t=x\vert X_{t-1})=P(X_t=x\vert X_{t-1}...X_1)$$
+- Martingale: $E[X_t]=X_{t-1}$
 
 # abstract algebra
 
@@ -51,12 +52,36 @@ category: math
 - powerset $\mathcal{P}$(A) = set of all subsets
 - Converse: $q\to p$ (same as inverse: $-p \to -q$)
 - $p_1 \to p_2 \iff - p_1 \lor p_2 $
-- The greatest common divisor of two integers a and b is the largest integer d such that d $\|$ a and d $\|$ b
+- The greatest common divisor of two integers a and b is the largest integer d such that d $$\vert $$ a and d $$\vert $$ b
 - Proof Techniques
     - Proof by Induction
     - Direct Proof
     - Proof by Contradiction - assume p $\land$ -q, show contradiction
     - Proof by Contrapositive - show -q $\to$ -p
+
+# proofs
+- induction
+	- must already know formula
+	- doesn't give intuition
+	- there are uncomputable functions e.g. Halting Problem, 3x+1 problem
+- non-existence proofs
+	- must cover all possible scenarios, harder than existence
+
+## interesting
+
+- http://acko.net/blog/how-to-fold-a-julia-fractal/
+- Biggest primes, the twins
+- Infinite twin primes – guy working at subway
+- Different infinites – people driven crazy
+- Four-Color problem – Computer aided proof in 1977, basically checks cases
+- Bruower’s Fixed Point Theorem
+- Fermat’s Last Theorem – Pythagorean thm untrue for anything bigger than squared
+	- Pf in 1995
+- Godel’s Thm: there are unprovable statements
+- Pigeonhole Principle
+	- Claim: Consider a 10 foot by 10 foot square room. Let every point on the floor of the room be colored either red or blue. Then there exists somewhere on the floor two points of the same color that are exactly one foot apart.
+	- Proof: Consider an equilateral triangle on the floor of the room with side lengths equal to one foot. As every point is either red or blue, two vertices of the triangle must have the same color, satisfying the claim.
+	- There must be 2 people in London with the same amount of hairs on their head
 
 # identities
 
@@ -66,22 +91,19 @@ category: math
   - difference between log 10n and log 2n is always a constant (about 3.322)
 - $\log_b (x) = \log_d (x) / \log_d (b)$
 - partial fractions: $\frac{3x+11}{(x-3)(x+2)} = \frac{A}{x-3} + \frac{B}{x+2}$
-- $(ax+b)^k = \frac{A_1}{ax+b}+\frac{A_2}{(ax+b)^2}+...$
-- $(ax^2+bx+c)^k = \frac{A_1x+B_1}{ax^2+bx+c}+...$
+- $$(ax+b)^k = \frac{A_1}{ax+b}+\frac{A_2}{(ax+b)^2}+...$$<!-- -->
+- $$(ax^2+bx+c)^k = \frac{A_1x+B_1}{ax^2+bx+c}+...$$<!-- -->
 - $\cos(a\pm b) = \cos(a)\cos(b)\mp \sin(a)\sin(b)$
 - $\sin(a \pm b) = \sin(a)\cos(b) \pm \sin(b)\cos(a)$
 
-
-
 # imaginary numbers
 
-- complex conjugate of z=x+iy is  $z^*$ = x - iy
+- complex conjugate of z=x+iy is $z^*$ = x - iy
 - Euler's formula $e^{i \theta} = \cos (\theta) + i \sin (\theta)$
-- sometimes we write imaginary numbers in polar form: $z = |z| e^{i \theta}$
+- sometimes we write imaginary numbers in polar form: $$z = \cblue{\vert z\vert}  \corange{e^{i \theta}}$$
+  - <span class="cblue">magnitude</span> times <span class="corange">phase</span>
   - makes multiplication / division simpler
-- absolute value / modules of imaginary numbers: $|a + ib| = \sqrt{a^2 + b^2}$
-
-
+- absolute value / modules of imaginary numbers: $$\vert a + ib\vert  = \sqrt{a^2 + b^2}$$
 
 # spaces
 

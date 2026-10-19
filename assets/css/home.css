@@ -482,60 +482,8 @@ label {
     }
 
 /* ============================================================
-   design system  (home page only; loaded last so it wins)
-   Black stays black: every surface is #000, depth comes from hairlines.
+   design system  (home page only; tokens, type and navbar live in theme.css)
    ============================================================ */
-
-    :root {
-        --bg: #000;
-        --text: #ececec;
-        --text-muted: #8d9199;
-        --hairline: rgba(255, 255, 255, .14);
-        --hairline-strong: rgba(255, 255, 255, .28);
-        --accent: #5bc0de;
-        --accent-hover: #8fd6ec;
-        --accent-glow: rgba(91, 192, 222, .10);
-
-        --font-text: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        --font-display: "Instrument Serif", Georgia, serif;
-
-        /* type scale */
-        --fs-xs: 12px;
-        --fs-sm: 14px;
-        --fs-base: 16px;
-        --fs-md: 18px;
-        --fs-lg: 22px;
-        --fs-xl: 44px;
-        --fs-display: 68px;
-
-        --section-gap: 110px;
-    }
-
-    body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: var(--font-text);
-        font-size: var(--fs-base);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-    }
-
-    h1, h2, h3, h4, h5, h6,
-    .btn,
-    .navbar-custom {
-        font-family: var(--font-text);
-        letter-spacing: -0.01em;
-    }
-
-    a {
-        color: var(--accent);
-    }
-
-    a:hover,
-    a:focus {
-        color: var(--accent-hover);
-    }
 
 /* ---------- section rhythm ---------- */
 
@@ -551,8 +499,8 @@ label {
         font-family: var(--font-display);
         font-size: var(--fs-xl);
         font-weight: 400;
-        letter-spacing: 0;
-        line-height: 1.1;
+        letter-spacing: -0.015em;
+        line-height: 1.15;
     }
 
     /* serif italic for the one-line section intros */
@@ -560,67 +508,16 @@ label {
     .mini-projects > summary > p > i,
     .people > p > i {
         font-family: var(--font-display);
-        font-size: var(--fs-lg);
+        font-size: 19px;
+        font-weight: 300;
         letter-spacing: 0;
     }
 
     @media (max-width: 767px) {
         :root {
-            --fs-xl: 36px;
-            --fs-display: 46px;
+            --fs-xl: 30px;
+            --fs-display: 40px;
             --section-gap: 80px;
-        }
-    }
-
-/* ---------- navbar: translucent black, accent underline for active ---------- */
-
-    .navbar-custom .navbar-brand {
-        font-weight: 600;
-        letter-spacing: -0.01em;
-    }
-
-    .navbar-custom .nav li a {
-        position: relative;
-        font-size: var(--fs-sm);
-        font-weight: 500;
-        letter-spacing: .02em;
-        color: var(--text-muted);
-        transition: color .2s;
-    }
-
-    .navbar-custom .nav li.active,
-    .navbar-custom .nav li a:hover,
-    .navbar-custom .nav li a:focus,
-    .navbar-custom .nav li a.active {
-        background-color: transparent;
-    }
-
-    .navbar-custom .nav li a:hover,
-    .navbar-custom .nav li a:focus,
-    .navbar-custom .nav li.active a {
-        color: #fff;
-    }
-
-    .navbar-custom .nav li.active a::after {
-        content: "";
-        position: absolute;
-        left: 15px;
-        right: 15px;
-        bottom: 8px;
-        height: 2px;
-        border-radius: 2px;
-        background: var(--accent);
-    }
-
-    @media (min-width: 767px) {
-        .top-nav-collapse {
-            background-color: rgba(0, 0, 0, .72);
-            -webkit-backdrop-filter: saturate(140%) blur(14px);
-            backdrop-filter: saturate(140%) blur(14px);
-        }
-
-        .navbar-custom.top-nav-collapse {
-            border-bottom: 1px solid var(--hairline);
         }
     }
 
@@ -630,9 +527,9 @@ label {
         margin: 0 0 8px;
         font-family: var(--font-display);
         font-size: var(--fs-display);
-        font-weight: 400;
-        letter-spacing: -0.01em;
-        line-height: 1;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
     }
 
     .intro .intro-body .intro-tagline {

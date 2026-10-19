@@ -14,8 +14,6 @@
   - things like PCA are not identifiable bc they cannot separate orthogonal rotations
 - self-supervised learning - only given x use supervised learning on someting dervied from x
 
-
-
 ## temporal structure helps in nonlinear ica
 
 - time-contrastive learning (hyvarinen et al. 2016)
@@ -32,15 +30,13 @@
   - combines these 2 methods (nonstationary innovations, morioka & hyvarinene, arxiv)
   - also segmentation can be learned (combine tcl with HMM, halva & hyarinen, 2020)
 
-
-
 ## general framework: deep latent variable models
 
 - VAE kind of looks like nonlinear ICA except for noise term
   - however, by Gaussianity, any orthogonal rotation of the sources is equivalent, so VAE is not identifiable
   - more like PCA rathern than ICA
 - conditionaing dvlm's by another variable (hyvarinen et al. 2019)
-  - observe $u$ which modulates components $p(s_i|u)$ (e.g. $u$ is audio for video)
+  - observe $u$ which modulates components $$p(s_i\vert u)$$ (e.g. $u$ is audio for video)
   - $s_i$ is conditionally independent given $u$
   - now, it is identifiable e.g. iVAE (khemakhem et al. 2020)
 - generalized to dependent components using energy-baesd modeling (khemakhem et al. arxiv)

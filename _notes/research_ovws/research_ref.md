@@ -1,5 +1,3 @@
-[TOC]
-
 # data
 
 - https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_openml.html#sklearn.datasets.fetch_openml
@@ -16,7 +14,7 @@
 - [draw arch](http://alexlenail.me/NN-SVG/index.html)
 - [viz architectures](https://tensorspace.org/index.html)
 - medical ideas: many diseases manifest themselves in the activity of neurons, not in the structure
-- ovw![ai_generations](../assets/ai_generations.png)
+- ovw<img style="width: 600px; max-width: 100%;" src="../assets/ai_generations.svg" alt="Machine learning (aka, AI) successes"/>
 
 # levels
 
@@ -136,8 +134,6 @@
 
 - model-free vs model-based
 
-
-
 ### biomechanics
 
 - brain exists to make suggestions to motor system
@@ -180,7 +176,7 @@
   - *Larry Abbott* - theoretical neuroscience
   - *György Buzsáki* - oscillations
   - Peter Dayan
-  - Haim Sompolinsky 
+  - Haim Sompolinsky
   - Stephen Grossberg
   - Randall C. O'Reilly
   - Nancy Kopell

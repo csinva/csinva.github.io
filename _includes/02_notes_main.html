@@ -25,12 +25,6 @@
             <img src="{{ site.baseurl }}/assets/img/jupyterbook.jpg" style="filter: invert()">
         </a>
     </div>
-    <div class="gallery">
-        <div class="desc">Interpretability cheat sheet</div>
-        <a target="_blank" href="{{ site.baseurl }}/notes/research_ovws/ovw_interp.html">
-            <img src="{{ site.baseurl }}/assets/img/interp_small.jpg" style="filter: invert()">
-        </a>
-    </div>
 </div>
 
 </br>
@@ -46,7 +40,12 @@
 
     <ul class="list-items">
         {% for collection in site.collections %}
-        {% for doc in collection.docs %}
+        {% assign research_docs = collection.docs | where: "category", "research" %}
+        {% assign order = site.data.notes_order["research"] %}
+        {% assign ordered_docs = "" | split: "" %}
+        {% for name in order %}{% assign hit = research_docs | where: "slug", name %}{% assign ordered_docs = ordered_docs | concat: hit %}{% endfor %}
+        {% for d in research_docs %}{% unless order contains d.slug %}{% assign ordered_docs = ordered_docs | push: d %}{% endunless %}{% endfor %}
+        {% for doc in ordered_docs %}
         {% if doc.category == "research" %}
         {% assign doc_disp = doc.title | capitalize | replace: 'Llms','LLMs' | replace: 'Ai ','AI ' | replace: 'Cs ','CS ' | replace: 'Dl ','DL ' | replace: 'Ml ','ML ' | replace: 'Nlp','NLP' | replace: 'Os','OS' | replace: 'sts','STS' | replace: 'Rl,','RL,' %}
         <!-- bold if title is transformers or interpretability-->
@@ -219,7 +218,7 @@
 
 <div class="colfull">
     <p align="text-center">
-        <i align="left">Notes in machine learning / neuroscience.
+        <i align="left">Notes in AI / neuroscience.
             <!--            Here's a <a href="https://csinva.io/blog/compiled_notes/_build/html//intro.html">jupyter-book-->
             <!--                version</a>.-->
         </i>
@@ -238,7 +237,13 @@
     {% endif %}
     {% endfor %}
 
-    {% for category in categories %}
+    {% comment %} column order; categories not listed here are appended {% endcomment %}
+    {% assign preferred = "cs,math,stat,ml,ai,neuro" | split: "," %}
+    {% assign sorted_categories = "" | split: "" %}
+    {% for c in preferred %}{% if categories contains c %}{% assign sorted_categories = sorted_categories | push: c %}{% endif %}{% endfor %}
+    {% for c in categories %}{% unless preferred contains c %}{% assign sorted_categories = sorted_categories | push: c %}{% endunless %}{% endfor %}
+
+    {% for category in sorted_categories %}
 
     {% if category != "blog" and category != "research"%}
     <div class="coll">
@@ -248,6 +253,12 @@
         <h3 align="center">{{ cat_disp }}</h3>
 
         {% assign category_docs = collection.docs | where: "category", category %}
+        {% comment %} simplest -> most complex, from _data/notes_order.yml; unlisted notes appended {% endcomment %}
+        {% assign order = site.data.notes_order[category] %}
+        {% assign ordered_docs = "" | split: "" %}
+        {% for name in order %}{% assign hit = category_docs | where: "slug", name %}{% assign ordered_docs = ordered_docs | concat: hit %}{% endfor %}
+        {% for d in category_docs %}{% unless order contains d.slug %}{% assign ordered_docs = ordered_docs | push: d %}{% endunless %}{% endfor %}
+        {% assign category_docs = ordered_docs %}
         <ul class="list-items">
             {% for item in category_docs %}
             {% if item.title %}
@@ -259,7 +270,7 @@
 
     {% endif %}
 
-    {% if category == "math" %}
+    {% if category == "stat" %}
 </div> <!--end the 1st row-->
 <div class="roww"> <!--begin the 2nd row-->
     {% endif %}
@@ -276,7 +287,7 @@
                 onclick="return confirm('Are you sure you want to see some dumb stuff?')">dumb
                 stuff here.</a>
         </i>
-        <span class="mini-projects-note">(Obsoleted by frontier coding agents)</span>
+        <span class="mini-projects-note">(Largely obsoleted by coding agents)</span>
     </p>
 </summary>
 <div class="coll6">

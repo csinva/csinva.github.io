@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1145 340" role="img" aria-labelledby="title desc">
+  <title id="title">Weak supervision settings</title>
+  <desc id="desc">Four graphical models; shaded nodes are observed. Unsupervised, p(x): s points to observed x. Restricted labeling, p(x, s_I): latent s_\I and observed s_I both point to observed x. Match pairing, p(x, x′): s_\I points to x, shared s_I points to x and x′, s′_\I points to x′. Rank pairing, p(x, x′, y): s_\I points to x, s_I points to x and y, s′_I points to y and x′, s′_\I points to x′; x, y, x′ observed.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 L3 5 z" fill="#2b2b2b"/></marker>
+    <style>
+      .lat { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #8a8a8a; fill-opacity: 0.3; stroke: #2b2b2b; stroke-width: 2; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .v { font: italic 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .sb { font-size: 18px; }
+      .h { font: 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .m { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+<text class="h" x="82" y="34">Unsupervised</text><text class="m" x="82" y="70">p(x)</text><circle class="lat" cx="82" cy="150" r="34"/>
+<text class="v" x="82" y="150">s</text>
+<circle class="obs" cx="82" cy="290" r="34"/>
+<text class="v" x="82" y="290">x</text>
+<path class="e" d="M82.0 184.0 L82.0 254.0" marker-end="url(#arrow)"/>
+<text class="h" x="292" y="34">Restricted Labeling</text><text class="m" x="292" y="70">p(x, s<tspan class="sb" dy="5">I</tspan><tspan dy="-5">)</tspan></text><circle class="lat" cx="230" cy="150" r="34"/>
+<text class="v" x="230" y="150">s<tspan class="sb" dy="7">\I</tspan></text>
+<circle class="obs" cx="354" cy="150" r="34"/>
+<text class="v" x="354" y="150">s<tspan class="sb" dy="7">I</tspan></text>
+<circle class="obs" cx="292" cy="290" r="34"/>
+<text class="v" x="292" y="290">x</text>
+<path class="e" d="M243.8 181.1 L277.4 257.1" marker-end="url(#arrow)"/>
+<path class="e" d="M340.2 181.1 L306.6 257.1" marker-end="url(#arrow)"/>
+<text class="h" x="555" y="34">Match Pairing</text><text class="m" x="555" y="70">p(x, x′)</text><circle class="lat" cx="450" cy="150" r="34"/>
+<text class="v" x="450" y="150">s<tspan class="sb" dy="7">\I</tspan></text>
+<circle class="lat" cx="555" cy="150" r="34"/>
+<text class="v" x="555" y="150">s<tspan class="sb" dy="7">I</tspan></text>
+<circle class="lat" cx="660" cy="150" r="34"/>
+<text class="v" x="660" y="150">s′<tspan class="sb" dy="7">\I</tspan></text>
+<circle class="obs" cx="495" cy="290" r="34"/>
+<text class="v" x="495" y="290">x</text>
+<circle class="obs" cx="615" cy="290" r="34"/>
+<text class="v" x="615" y="290">x′</text>
+<path class="e" d="M460.4 182.4 L484.0 255.7" marker-end="url(#arrow)"/>
+<path class="e" d="M541.6 181.3 L509.2 256.9" marker-end="url(#arrow)"/>
+<path class="e" d="M568.4 181.3 L600.8 256.9" marker-end="url(#arrow)"/>
+<path class="e" d="M649.6 182.4 L626.0 255.7" marker-end="url(#arrow)"/>
+<text class="h" x="950" y="34">Rank Pairing</text><text class="m" x="950" y="70">p(x, x′, y)</text><circle class="lat" cx="793" cy="150" r="34"/>
+<text class="v" x="793" y="150">s<tspan class="sb" dy="7">\I</tspan></text>
+<circle class="lat" cx="898" cy="150" r="34"/>
+<text class="v" x="898" y="150">s<tspan class="sb" dy="7">I</tspan></text>
+<circle class="lat" cx="1002" cy="150" r="34"/>
+<text class="v" x="1002" y="150">s′<tspan class="sb" dy="7">I</tspan></text>
+<circle class="lat" cx="1107" cy="150" r="34"/>
+<text class="v" x="1107" y="150">s′<tspan class="sb" dy="7">\I</tspan></text>
+<circle class="obs" cx="845" cy="290" r="34"/>
+<text class="v" x="845" y="290">x</text>
+<circle class="obs" cx="950" cy="290" r="34"/>
+<text class="v" x="950" y="290">y</text>
+<circle class="obs" cx="1055" cy="290" r="34"/>
+<text class="v" x="1055" y="290">x′</text>
+<path class="e" d="M804.8 181.9 L832.5 256.3" marker-end="url(#arrow)"/>
+<path class="e" d="M886.0 181.8 L857.7 256.3" marker-end="url(#arrow)"/>
+<path class="e" d="M909.8 181.9 L937.5 256.3" marker-end="url(#arrow)"/>
+<path class="e" d="M990.2 181.9 L962.5 256.3" marker-end="url(#arrow)"/>
+<path class="e" d="M1014.0 181.8 L1042.3 256.3" marker-end="url(#arrow)"/>
+<path class="e" d="M1095.2 181.9 L1067.5 256.3" marker-end="url(#arrow)"/>
+</svg>

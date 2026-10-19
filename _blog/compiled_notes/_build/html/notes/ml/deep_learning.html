@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.7. deep learning</title>
+    <title>5.6. deep learning</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ml/deep_learning';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.8. feature selection" href="feature_selection.html" />
-    <link rel="prev" title="5.6. unsupervised" href="unsupervised.html" />
+    <link rel="next" title="5.7. learning theory" href="learning_theory.html" />
+    <link rel="prev" title="5.5. unsupervised" href="unsupervised.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml_section.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,18 +421,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-top-performing-nets">5.7.1. historical top-performing nets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">5.7.2. basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">5.7.3. training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cnns">5.7.4. CNNs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rnns">5.7.5. RNNs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-neural-networks">5.7.6. graph neural networks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-architectural-components">5.7.7. misc architectural components</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-feedback">5.7.7.1. top-down feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">5.6.1. basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-historical-popular-nets">5.6.2. some historical popular nets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cnns">5.6.3. CNNs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rnns">5.6.4. RNNs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-architectural-components">5.6.5. misc architectural components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-neural-networks">5.6.5.1. graph neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-feedback">5.6.5.2. top-down feedback</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-architecture-search-nas">5.7.8. neural architecture search (NAS)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">5.7.9. misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">5.6.6. misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-notes">5.6.7. empirical notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-layers">5.6.7.1. norm layers</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -459,84 +447,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="deep-learning">
-<h1><span class="section-number">5.7. </span>deep learning<a class="headerlink" href="#deep-learning" title="Link to this heading">#</a></h1>
-<p>See also notes in <a class="reference external" href="https://csinva.io/notes/ml/unsupervised.html">📌 unsupervised learning</a>, <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_disentanglement.html">📌 disentanglement</a>, <a class="reference external" href="https://csinva.io/notes/ml/nlp.html">📌 nlp</a>, <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html">📌 transformers</a></p>
-<section id="historical-top-performing-nets">
-<h2><span class="section-number">5.7.1. </span>historical top-performing nets<a class="headerlink" href="#historical-top-performing-nets" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>LeNet (1998)</p>
-<ul>
-<li><p>first, used on MNIST</p></li>
-</ul>
-</li>
-<li><p>AlexNet (2012)</p>
-<ul>
-<li><p>landmark (5 conv layers, some pooling/dropout)</p></li>
-</ul>
-</li>
-<li><p>ZFNet (2013)</p>
-<ul>
-<li><p>fine tuning and deconvnet</p></li>
-</ul>
-</li>
-<li><p>VGGNet (2014)</p>
-<ul>
-<li><p>19 layers, all 3x3 conv layers and 2x2 maxpooling</p></li>
-</ul>
-</li>
-<li><p>GoogLeNet (2015)</p>
-<ul>
-<li><p>lots of parallel elements (called <em>Inception module</em>)</p></li>
-</ul>
-</li>
-<li><p>Msft ResNet (2015)</p>
-<ul>
-<li><p>very deep - 152 layers</p>
-<ul>
-<li><p>connections straight from initial layers to end</p></li>
-<li><p>only learn “residual” from top to bottom</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)</p>
-<ul>
-<li><p>object detection</p></li>
-</ul>
-</li>
-<li><p>Generating image descriptions (Karpathy , 2014)</p>
-<ul>
-<li><p>RNN+CNN</p></li>
-</ul>
-</li>
-<li><p>Spatial transformer networks (2015)</p>
-<ul>
-<li><p>transformations within the network</p></li>
-</ul>
-</li>
-<li><p>Segnet (2015)</p>
-<ul>
-<li><p>encoder-decoder network</p></li>
-</ul>
-</li>
-<li><p>Unet (Ronneberger, 2015)</p>
-<ul>
-<li><p>applies to biomedical segmentation</p></li>
-</ul>
-</li>
-<li><p>Pixelnet (2017)
-- predicts pixel-level for different tasks with the same architecture
-- convolutional layers then 3 FC layers which use outputs from all convolutional layers together</p></li>
-<li><p>Squeezenet</p></li>
-<li><p>Yolonet</p></li>
-<li><p>Wavenet</p></li>
-<li><p>Densenet</p></li>
-<li><p>NASNET</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1905.11946.pdf">Efficientnet (2019)</a></p></li>
-</ul>
-</section>
+<h1><span class="section-number">5.6. </span>deep learning<a class="headerlink" href="#deep-learning" title="Link to this heading">#</a></h1>
+<p>See also notes in <a class="reference external" href="https://csinva.io/notes/ml/unsupervised.html">📌 unsupervised learning</a>, <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_disentanglement.html">📌 disentanglement</a>, <a class="reference external" href="https://csinva.io/notes/ml/nlp.html">📌 nlp</a>, <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_llms.html">📌 transformers</a></p>
 <section id="basics">
-<h2><span class="section-number">5.7.2. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>basic perceptron update rule</p>
 <ul>
@@ -594,65 +508,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><img alt="backprop" src="../../_images/backprop.png" /></p></li>
 </ul>
+<img style="width: 400px; max-width: 100%;" src="../assets/backprop.svg" alt="backpropagation on f = (x + y) z: forward values in green, gradients in red"/>
 </section>
-<section id="training">
-<h2><span class="section-number">5.7.3. </span>training<a class="headerlink" href="#training" title="Link to this heading">#</a></h2>
+<section id="some-historical-popular-nets">
+<h2><span class="section-number">5.6.2. </span>some historical popular nets<a class="headerlink" href="#some-historical-popular-nets" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><em>vanishing gradients problem</em> - neurons in earlier layers learn more slowly than in later layers</p>
-<ul>
-<li><p>happens with sigmoids</p></li>
-<li><p>dead ReLus</p></li>
-</ul>
-</li>
-<li><p><em>exploding gradients problem</em> - gradients are significantly larger in earlier layers than later layers</p>
-<ul>
-<li><p>RNNs</p></li>
-</ul>
-</li>
-<li><p><em>batch normalization</em> - whiten inputs to all neurons (zero mean, variance of 1)</p>
-<ul>
-<li><p>do this for each input to the next layer</p></li>
-</ul>
-</li>
-<li><p><em>dropout</em> - randomly zero outputs of p fraction of the neurons during training</p>
-<ul>
-<li><p>like learning large ensemble of models that share weights</p></li>
-<li><p>2 ways to compensate (pick one)</p>
-<ol class="arabic simple">
-<li><p>at test time multiply all neurons’ outputs by p</p></li>
-<li><p>during training divide all neurons’ outputs by p</p></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p><em>softmax</em> - takes vector z and returns vector of the same length</p>
-<ul>
-<li><p>makes it so output sums to 1 (like probabilities of classes)</p></li>
-</ul>
-</li>
-<li><p><strong>tricks to squeeze out performance</strong></p>
-<ul>
-<li><p>ensemble models</p></li>
-<li><p>(stochastic) weight averaging can help a lot</p></li>
-<li><p>test-time augmentation</p>
-<ul>
-<li><p>this could just be averaging over dropout resamples as well</p></li>
-</ul>
-</li>
-<li><p>gradient checkpointing (<a class="reference external" href="https://arxiv.org/pdf/1604.06174.pdf">2016 paper</a>)</p>
-<ul>
-<li><p>10x larger DNNs into memory with 20% increase in comp. time</p></li>
-<li><p>save gradients for a carefully chosen layer to let you easily recompute</p></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>early CNNs - LeNet (<a class="reference external" href="http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf">lecun et al. 1998</a>): first, used on MNIST; AlexNet (<a class="reference external" href="https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html">krizhevsky et al. 2012</a>): 5 conv layers, some pooling/dropout; ZFNet (<a class="reference external" href="https://arxiv.org/abs/1311.2901">zeiler &amp; fergus 2013</a>): fine-tuning and deconvnet; VGGNet (<a class="reference external" href="https://arxiv.org/abs/1409.1556">simonyan &amp; zisserman 2014</a>): 19 layers, all 3x3 conv and 2x2 max pooling</p></li>
+<li><p>deeper nets - GoogLeNet (<a class="reference external" href="https://arxiv.org/abs/1409.4842">szegedy et al. 2015</a>): lots of parallel elements (Inception module); ResNet (<a class="reference external" href="https://arxiv.org/abs/1512.03385">he et al. 2015</a>): 152 layers, connections straight from initial layers to the end, only learns the “residual”; DenseNet (<a class="reference external" href="https://arxiv.org/abs/1608.06993">huang et al. 2016</a>)</p></li>
+<li><p>efficient / searched architectures - SqueezeNet (<a class="reference external" href="https://arxiv.org/abs/1602.07360">iandola et al. 2016</a>), NASNet (<a class="reference external" href="https://arxiv.org/abs/1707.07012">zoph et al. 2017</a>), EfficientNet (<a class="reference external" href="https://arxiv.org/pdf/1905.11946.pdf">tan &amp; le 2019</a>)</p></li>
+<li><p>object detection - R-CNN (<a class="reference external" href="https://arxiv.org/abs/1311.2524">girshick et al. 2013</a>), Fast R-CNN (<a class="reference external" href="https://arxiv.org/abs/1504.08083">girshick 2015</a>), Faster R-CNN (<a class="reference external" href="https://arxiv.org/abs/1506.01497">ren et al. 2015</a>), YOLO (<a class="reference external" href="https://arxiv.org/abs/1506.02640">redmon et al. 2015</a>)</p></li>
+<li><p>segmentation - SegNet (<a class="reference external" href="https://arxiv.org/abs/1511.00561">badrinarayanan et al. 2015</a>): encoder-decoder; U-Net (<a class="reference external" href="https://arxiv.org/abs/1505.04597">ronneberger et al. 2015</a>): biomedical; PixelNet (<a class="reference external" href="https://arxiv.org/abs/1702.06506">bansal et al. 2017</a>): pixel-level predictions for different tasks with the same architecture (conv layers, then 3 FC layers that use outputs from all conv layers together)</p></li>
+<li><p>other - image descriptions with RNN+CNN (<a class="reference external" href="https://arxiv.org/abs/1412.2306">karpathy &amp; fei-fei 2014</a>); spatial transformer networks (<a class="reference external" href="https://arxiv.org/abs/1506.02025">jaderberg et al. 2015</a>): transformations within the network; WaveNet (<a class="reference external" href="https://arxiv.org/abs/1609.03499">van den oord et al. 2016</a>)</p></li>
 </ul>
 </section>
 <section id="cnns">
-<h2><span class="section-number">5.7.4. </span>CNNs<a class="headerlink" href="#cnns" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6.3. </span>CNNs<a class="headerlink" href="#cnns" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>kernel here means filter</p></li>
 <li><p>convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied</p></li>
@@ -702,7 +573,7 @@ document.write(`
 </ul>
 </section>
 <section id="rnns">
-<h2><span class="section-number">5.7.5. </span>RNNs<a class="headerlink" href="#rnns" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6.4. </span>RNNs<a class="headerlink" href="#rnns" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>feedforward NNs have no memory so we introduce recurrent NNs</p></li>
 <li><p>able to have memory</p></li>
@@ -733,15 +604,21 @@ document.write(`
 </li>
 </ul>
 </section>
+<section id="misc-architectural-components">
+<h2><span class="section-number">5.6.5. </span>misc architectural components<a class="headerlink" href="#misc-architectural-components" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
+<li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
+</ul>
 <section id="graph-neural-networks">
-<h2><span class="section-number">5.7.6. </span>graph neural networks<a class="headerlink" href="#graph-neural-networks" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">5.6.5.1. </span>graph neural networks<a class="headerlink" href="#graph-neural-networks" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=uF53xsT7mjc">Theoretical Foundations of Graph Neural Networks</a></p>
 <ul>
 <li><p>inputs are graphs</p></li>
 <li><p>e.g. molecule input to classification</p>
 <ul>
-<li><p>one big study: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867420301021">a deep learning appraoch to antibiotic discovery</a> (stokes et al. 2020) - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them</p></li>
+<li><p>one big study: a deep learning appraoch to antibiotic discovery (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867420301021">stokes et al. 2020</a>) - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them</p></li>
 </ul>
 </li>
 <li><p>e.g. traffic maps - nodes are intersections</p></li>
@@ -752,7 +629,7 @@ document.write(`
 <li><p>note that permuting rows of X shouldn’t change anything</p></li>
 <li><p><strong>permutation invariant</strong>: <span class="math notranslate nohighlight">\(f(PX) = f(X)\)</span> for all permutation matrices <span class="math notranslate nohighlight">\(P\)</span></p>
 <ul>
-<li><p>e.g. <span class="math notranslate nohighlight">\(\mathbf{P}_{(2,4,1,3)} \mathbf{X}=\left[\begin{array}{llll}0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right]\left[\begin{array}{lll}- &amp; \mathbf{x}_{1} &amp; - \\ - &amp; \mathbf{x}_{2} &amp; - \\ - &amp; \mathbf{x}_{3} &amp; - \\ - &amp; \mathbf{x}_{4} &amp; -\end{array}\right]=\left[\begin{array}{lll}- &amp; \mathbf{x}_{2} &amp; - \\ - &amp; \mathbf{x}_{4} &amp; - \\ - &amp; \mathbf{x}_{1} &amp; - \\ - &amp; \mathbf{x}_{3} &amp; -\end{array}\right]\)</span></p></li>
+<li><p>e.g. $<span class="math notranslate nohighlight">\(\mathbf{P}_{(2,4,1,3)} \mathbf{X}=\left[\begin{array}{llll}0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right]\left[\begin{array}{lll}- &amp; \mathbf{x}_{1} &amp; - \\ - &amp; \mathbf{x}_{2} &amp; - \\ - &amp; \mathbf{x}_{3} &amp; - \\ - &amp; \mathbf{x}_{4} &amp; -\end{array}\right]=\left[\begin{array}{lll}- &amp; \mathbf{x}_{2} &amp; - \\ - &amp; \mathbf{x}_{4} &amp; - \\ - &amp; \mathbf{x}_{1} &amp; - \\ - &amp; \mathbf{x}_{3} &amp; -\end{array}\right]\)</span>$</p></li>
 <li><p>ex. <em>Deep Sets</em> model (zaheer et al. ‘17): <span class="math notranslate nohighlight">\(f(X) = \phi \left (\sum_k \psi(x_i) \right)\)</span></p></li>
 </ul>
 </li>
@@ -823,85 +700,67 @@ document.write(`
 <li><p>geometric deep learning: invariances and equivariances can be applied generally to get a large calss of architectures between convolutions and graphs</p></li>
 </ul>
 </section>
-<section id="misc-architectural-components">
-<h2><span class="section-number">5.7.7. </span>misc architectural components<a class="headerlink" href="#misc-architectural-components" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
-<li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
-</ul>
 <section id="top-down-feedback">
-<h3><span class="section-number">5.7.7.1. </span>top-down feedback<a class="headerlink" href="#top-down-feedback" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.6.5.2. </span>top-down feedback<a class="headerlink" href="#top-down-feedback" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://openaccess.thecvf.com/content_iccv_2015/html/Cao_Look_and_Think_ICCV_2015_paper.html">Look and Think Twice: Capturing Top-Down Visual Attention With Feedback Convolutional Neural Networks</a> (2015)</p>
+<li><p>Look and Think Twice: Capturing Top-Down Visual Attention With Feedback Convolutional Neural Networks (<a class="reference external" href="https://openaccess.thecvf.com/content_iccv_2015/html/Cao_Look_and_Think_ICCV_2015_paper.html">2015</a>)</p>
 <ul>
 <li><p>neurons in the feedback hidden layers update their activation status to maximize the confidence output of the target top neuron</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s11263-017-1059-x">Top-Down Neural Attention by Excitation Backprop | SpringerLink</a> (2017)</p>
+<li><p>Top-Down Neural Attention by Excitation Backprop (<a class="reference external" href="https://link.springer.com/article/10.1007/s11263-017-1059-x">2017</a>)</p>
 <ul>
 <li><p>top-down attention maps by extending winner-take-all (WTA) to probabilistic maps</p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/0004370295000259">Modeling visual attention via selective tuning - ScienceDirect</a> (1995)</p>
+<li><p>Modeling visual attention via selective tuning (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/0004370295000259">1995</a>)</p>
 <ul>
 <li><p>original WTA paper provides only binary maps</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1507.05699">Bottom-Up and Top-Down Reasoning with Hierarchical Rectified Gaussians</a> (2016)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1612.06851">Beyond Skip Connections: Top-Down Modulation for Object Detection</a> (shrivastava…malik, gupta, 2017)</p></li>
-<li><p><a class="reference external" href="http://proceedings.mlr.press/v119/mittal20a.html">Learning to Combine Top-Down and Bottom-Up Signals in Recurrent Neural Networks with Attention over Modules</a> (mittal…bengio, 2020)</p>
+<li><p>Bottom-Up and Top-Down Reasoning with Hierarchical Rectified Gaussians (<a class="reference external" href="https://arxiv.org/abs/1507.05699">2016</a>)</p></li>
+<li><p>Beyond Skip Connections: Top-Down Modulation for Object Detection (<a class="reference external" href="https://arxiv.org/abs/1612.06851">shrivastava…malik, gupta, 2017</a>)</p></li>
+<li><p>Learning to Combine Top-Down and Bottom-Up Signals in Recurrent Neural Networks with Attention over Modules (<a class="reference external" href="http://proceedings.mlr.press/v119/mittal20a.html">mittal…bengio, 2020</a>)</p>
 <ul>
 <li><p>Very similar — each layer passes attention (1) to next layer (2) to itself (3) to previous layer</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2105.08710">Fast and Slow Learning of Recurrent Independent Mechanisms</a> (madan…bengio, 2021)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2011.15091">Inductive Biases for Deep Learning of Higher-Level Cognition</a> (goyal &amp; bengio, 2021)</p></li>
+<li><p>Fast and Slow Learning of Recurrent Independent Mechanisms (<a class="reference external" href="https://arxiv.org/abs/2105.08710">madan…bengio, 2021</a>)</p></li>
+<li><p>Inductive Biases for Deep Learning of Higher-Level Cognition (<a class="reference external" href="https://arxiv.org/abs/2011.15091">goyal &amp; bengio, 2021</a>)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2020/hash/0660895c22f8a14eb039bfb9beb0778f-Abstract.html">Neural Networks with Recurrent Generative Feedback</a> (huang…tsao, anandkumar, 2020)</p>
+<li><p>Neural Networks with Recurrent Generative Feedback (<a class="reference external" href="https://proceedings.neurips.cc/paper/2020/hash/0660895c22f8a14eb039bfb9beb0778f-Abstract.html">huang…tsao, anandkumar, 2020</a>)</p>
 <ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1811.02657">Deconvolutional Generative Model</a> DGM - hierarchical latent variables capture variation in images + generate images from a coarse to fine detail using deconvolution operations</p></li>
+<li><p>Deconvolutional Generative Model (<a class="reference external" href="https://arxiv.org/abs/1811.02657">nguyen et al. 2018</a>) DGM - hierarchical latent variables capture variation in images + generate images from a coarse to fine detail using deconvolution operations</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.science.org/doi/full/10.1126/science.aag2612?casa_token=dXK8WGm0t04AAAAA%3ArHcvkJAn4ornLgAxVmjXS_NbVTW7HSvyJVTFuJVgYmq7LYD39noT5W0l-34piGa9R-sFC37wuEF5u1jb">A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs</a> (vicarious, 2016)</p>
+<li><p>A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs (<a class="reference external" href="https://www.science.org/doi/full/10.1126/science.aag2612?casa_token=dXK8WGm0t04AAAAA%3ArHcvkJAn4ornLgAxVmjXS_NbVTW7HSvyJVTFuJVgYmq7LYD39noT5W0l-34piGa9R-sFC37wuEF5u1jb">vicarious, 2016</a>)</p>
 <ul>
 <li><p>bayesian model + crf on latents breaks captchas</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.msri.org/people/members/eranb/Combining_td_and_bu.pdf">Combining Top-Down and Bottom-Up Segmentation</a> (2008) (pre-DNNs)</p>
+<li><p>Combining Top-Down and Bottom-Up Segmentation (<a class="reference external" href="https://www.msri.org/people/members/eranb/Combining_td_and_bu.pdf">2008</a>) (pre-DNNs)</p>
 <ul>
 <li><p>Bottom-up segmentation: group chunks of image into ever-larger regions based on e.g. texture similarity</p></li>
 <li><p>Top-down segmentation: find object boundaries based on label info</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2103.03206">Perceiver: General Perception with Iterative Attention</a> (2021)</p></li>
-<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s11370-019-00296-5">Integration of top-down and bottom-up visual processing using a recurrent convolutional–deconvolutional neural network for semantic segmentation</a> (2019)</p>
+<li><p>Perceiver: General Perception with Iterative Attention (<a class="reference external" href="https://arxiv.org/abs/2103.03206">2021</a>)</p></li>
+<li><p>Integration of top-down and bottom-up visual processing using a recurrent convolutional–deconvolutional neural network for semantic segmentation (<a class="reference external" href="https://link.springer.com/article/10.1007/s11370-019-00296-5">2019</a>)</p>
 <ul>
 <li><p>Very similar to our idea - they have deconvolved feedback to earlier layers</p></li>
 <li><p>Architecture’s weird, tho - feedback only goes back a few layers</p></li>
 <li><p>Extremely applied - their result is “we beat SOTA by 3%”</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2014/file/1e6e0a04d20f50967c64dac2d639a577-Paper.pdf">Attentional Neural Network: Feature Selection Using Cognitive Feedback</a> (2014)</p></li>
-<li><p><a class="reference external" href="http://proceedings.mlr.press/v9/salakhutdinov10a/salakhutdinov10a.pdf">Efficient Learning of Deep Boltzmann Machines</a> (2010)</p></li>
+<li><p>Attentional Neural Network: Feature Selection Using Cognitive Feedback (<a class="reference external" href="https://proceedings.neurips.cc/paper/2014/file/1e6e0a04d20f50967c64dac2d639a577-Paper.pdf">2014</a>)</p></li>
+<li><p>Efficient Learning of Deep Boltzmann Machines (<a class="reference external" href="http://proceedings.mlr.press/v9/salakhutdinov10a/salakhutdinov10a.pdf">2010</a>)</p></li>
 </ul>
 </section>
-</section>
-<section id="neural-architecture-search-nas">
-<h2><span class="section-number">5.7.8. </span>neural architecture search (NAS)<a class="headerlink" href="#neural-architecture-search-nas" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2203.08130">One Network Doesn’t Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning</a> (girish, dey et al. 2022) - use NAS for self-supervised setting rather than supervised</p></li>
-<li><p><a class="reference external" href="https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/">A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track</a> (white…bubeck, dey, 2022)</p>
-<ul>
-<li><p>tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.</p></li>
-</ul>
-</li>
-</ul>
 </section>
 <section id="misc">
-<h2><span class="section-number">5.7.9. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6.6. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2201.00650">Deep Learning Interviews: Hundreds of fully solved job interview questions from a wide range of key topics in AI</a></p></li>
 <li><p>adaptive pooling can help deal with different sizes</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2003.08934">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a></p>
+<li><p>NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (<a class="reference external" href="https://arxiv.org/abs/2003.08934">mildenhall et al. 2020</a>)</p>
 <ul>
 <li><p>given multiple views, generate depth map + continuous volumetric repr.</p></li>
 <li><p>dnn is overfit to only one scene</p></li>
@@ -923,7 +782,92 @@ document.write(`
 <li><p>people often use SVD to posthoc compress a DNN</p></li>
 </ul>
 </li>
+<li><p>neural architecture search</p>
+<ul>
+<li><p>One Network Doesn’t Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning (<a class="reference external" href="https://arxiv.org/abs/2203.08130">girish, dey et al. 2022</a>) - use NAS for self-supervised setting rather than supervised</p></li>
+<li><p>A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track (<a class="reference external" href="https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/">white…bubeck, dey, 2022</a>)</p>
+<ul>
+<li><p>tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.</p></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="empirical-notes">
+<h2><span class="section-number">5.6.7. </span>empirical notes<a class="headerlink" href="#empirical-notes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>vanishing gradients problem</em> - neurons in earlier layers learn more slowly than in later layers</p>
+<ul>
+<li><p>happens with sigmoids</p></li>
+<li><p>dead ReLus</p></li>
+</ul>
+</li>
+<li><p><em>exploding gradients problem</em> - gradients are significantly larger in earlier layers than later layers</p>
+<ul>
+<li><p>RNNs</p></li>
+</ul>
+</li>
+<li><p><em>dropout</em> - randomly zero outputs of p fraction of the neurons during training</p>
+<ul>
+<li><p>like learning large ensemble of models that share weights</p></li>
+<li><p>2 ways to compensate (pick one)</p>
+<ol class="arabic simple">
+<li><p>at test time multiply all neurons’ outputs by p</p></li>
+<li><p>during training divide all neurons’ outputs by p</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>softmax</em> - takes vector z and returns vector of the same length</p>
+<ul>
+<li><p>makes it so output sums to 1 (like probabilities of classes)</p></li>
+</ul>
+</li>
+<li><p>tricks to squeeze out performance</p>
+<ul>
+<li><p>ensemble models</p></li>
+<li><p>(stochastic) weight averaging can help a lot</p></li>
+<li><p>test-time augmentation</p>
+<ul>
+<li><p>this could just be averaging over dropout resamples as well</p></li>
+</ul>
+</li>
+<li><p>gradient checkpointing (<a class="reference external" href="https://arxiv.org/pdf/1604.06174.pdf">2016 paper</a>)</p>
+<ul>
+<li><p>10x larger DNNs into memory with 20% increase in comp. time</p></li>
+<li><p>save gradients for a carefully chosen layer to let you easily recompute</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="norm-layers">
+<h3><span class="section-number">5.6.7.1. </span>norm layers<a class="headerlink" href="#norm-layers" title="Link to this heading">#</a></h3>
+<p><strong>Batch Normalization</strong> - for a mini-batch $<span class="math notranslate nohighlight">\({\color[RGB]{255,169,77}\mathcal{B}} = \{x_1, x_2, \ldots, x_{\color[RGB]{255,169,77}m}\}\)</span>$, normalize each feature across the <span style="color:#ffa94d">batch dimension</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mu_{\color[RGB]{255,169,77}\mathcal{B}} = \frac{1}{\color[RGB]{255,169,77}m} \sum_{i=1}^{\color[RGB]{255,169,77}m} x_i\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_{\color[RGB]{255,169,77}\mathcal{B}}^2 = \frac{1}{\color[RGB]{255,169,77}m} \sum_{i=1}^{\color[RGB]{255,169,77}m} (x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu_\mathcal{B}})^2\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{x}_i = \frac{x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu_\mathcal{B}}}{\sqrt{\sigma_\mathcal{B}^2 + \epsilon}}, \quad y_i = \gamma \hat{x}_i \mathbin{\color[RGB]{247,131,172}+} {\color[RGB]{247,131,172}\beta}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> and <span style="color:#f783ac"><span class="math notranslate nohighlight">\(\beta\)</span></span> are learnable scale and <span style="color:#f783ac">shift</span> parameters, and <span class="math notranslate nohighlight">\(\epsilon\)</span> is a small constant for numerical stability.</p>
+<p><strong>Layer Normalization</strong> - same thing except normalize across <span style="color:#b197fc">features</span> (don’t average over tokens):</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{1}{\color[RGB]{177,151,252}d} \sum_{i=1}^{\color[RGB]{177,151,252}d} x_i\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma^2 = \frac{1}{\color[RGB]{177,151,252}d} \sum_{i=1}^{\color[RGB]{177,151,252}d} (x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu})^2\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{x}_i = \frac{x_i \mathbin{\color[RGB]{105,219,124}-} {\color[RGB]{105,219,124}\mu}}{\sqrt{\sigma^2 + \epsilon}}, \quad y_i = \gamma_i \hat{x}_i \mathbin{\color[RGB]{247,131,172}+} {\color[RGB]{247,131,172}\beta_i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma, \beta \in \mathbb{R}^d\)</span> are learnable per-feature parameters.</p>
+<p><strong>RMS Normalization</strong></p>
+<p>Root Mean Square normalization drops the <span style="color:#69db7c">mean-centering</span> step:</p>
+<div class="math notranslate nohighlight">
+\[\text{RMS}(x) = \sqrt{\frac{1}{\color[RGB]{177,151,252}d} \sum_{i=1}^{\color[RGB]{177,151,252}d} x_i^2}\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{x}_i = \frac{x_i}{\sqrt{\text{RMS}(x)^2 + \epsilon}} \quad y_i = \gamma_i \hat{x}_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma \in \mathbb{R}^d\)</span> is a learnable scale parameter. Note there is no <span style="color:#f783ac">shift parameter <span class="math notranslate nohighlight">\(\beta\)</span></span>, and no <span style="color:#69db7c">mean subtraction</span>, making it cheaper to compute than LayerNorm</p>
+</section>
 </section>
 </section>
 
@@ -963,15 +907,15 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.6. </span>unsupervised</p>
+        <p class="prev-next-title"><span class="section-number">5.5. </span>unsupervised</p>
       </div>
     </a>
     <a class="right-next"
-       href="feature_selection.html"
+       href="learning_theory.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.8. </span>feature selection</p>
+        <p class="prev-next-title"><span class="section-number">5.7. </span>learning theory</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -991,18 +935,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-top-performing-nets">5.7.1. historical top-performing nets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">5.7.2. basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">5.7.3. training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cnns">5.7.4. CNNs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rnns">5.7.5. RNNs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-neural-networks">5.7.6. graph neural networks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-architectural-components">5.7.7. misc architectural components</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-feedback">5.7.7.1. top-down feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">5.6.1. basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-historical-popular-nets">5.6.2. some historical popular nets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cnns">5.6.3. CNNs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rnns">5.6.4. RNNs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-architectural-components">5.6.5. misc architectural components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-neural-networks">5.6.5.1. graph neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-feedback">5.6.5.2. top-down feedback</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-architecture-search-nas">5.7.8. neural architecture search (NAS)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">5.7.9. misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">5.6.6. misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-notes">5.6.7. empirical notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-layers">5.6.7.1. norm layers</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -1040,11 +986,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 1110 702" role="img" aria-labelledby="title desc">
+  <title id="title">Gs, Gq, Gi signaling pathways</title>
+  <desc id="desc">Three G-protein pathways, by row: neurotransmitter, receptor, G-protein, effector protein, second messengers, later effectors, target action. Norepinephrine binds the beta-adrenergic receptor, activating Gs, which stimulates adenylyl cyclase, raising cAMP, activating protein kinase A, increasing protein phosphorylation. Glutamate binds mGluR, activating Gq, which activates phospholipase C, producing diacylglycerol (activating protein kinase C) and IP3 (causing Ca2+ release), which increase protein phosphorylation and activate calcium-binding proteins. Dopamine binds the dopamine D2 receptor, activating Gi, which inhibits adenylyl cyclase, lowering cAMP and protein kinase A, decreasing protein phosphorylation.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="ahp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .lbl { fill: #cfe3e3; stroke: #2b2b2b; stroke-width: 1.5; }
+      .rl { font: 19px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .tx { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .rc { font: 19px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .ttl { font: 34px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .ar { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .pt { fill: none; stroke: #2b2b2b; stroke-width: 3.5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <text class="ttl" x="62" y="52">Gs, Gq, Gi</text>
+  <path class="lbl" d="M18 88 H128 L150 122.5 L128 157 H18 Z"/>
+  <text class="rl" x="72" y="116">Neuro-</text><text class="rl" x="72" y="142">transmitter</text>
+  <path class="lbl" d="M18 163 H128 L150 202.5 L128 242 H18 Z"/>
+  <text class="rl" x="72" y="209">Receptor</text>
+  <path class="lbl" d="M18 248 H128 L150 290.0 L128 332 H18 Z"/>
+  <text class="rl" x="72" y="299">G-protein</text>
+  <path class="lbl" d="M18 338 H128 L150 375.0 L128 412 H18 Z"/>
+  <text class="rl" x="72" y="366">Effector</text><text class="rl" x="72" y="392">protein</text>
+  <path class="lbl" d="M18 418 H128 L150 457.5 L128 497 H18 Z"/>
+  <text class="rl" x="72" y="452">Second</text><text class="rl" x="72" y="478">messengers</text>
+  <path class="lbl" d="M18 503 H128 L150 546.0 L128 589 H18 Z"/>
+  <text class="rl" x="72" y="540">Later</text><text class="rl" x="72" y="566">effectors</text>
+  <path class="lbl" d="M18 595 H128 L150 652.0 L128 709 H18 Z"/>
+  <text class="rl" x="72" y="646">Target</text><text class="rl" x="72" y="672">action</text>
+  <rect x="160" y="85" width="315" height="507" fill="#f6c3bd"/>
+  <rect x="475" y="85" width="315" height="507" fill="#fbe7a6"/>
+  <rect x="790" y="85" width="315" height="507" fill="#d8c9e6"/>
+  <rect x="160" y="592" width="945" height="112" fill="#fbd7b0"/>
+  <rect x="155" y="182" width="955" height="62" fill="#c3cde6" stroke="#2b2b2b" stroke-width="1.5"/>
+  <line x1="155" y1="213" x2="1110" y2="213" stroke="#2b2b2b" stroke-width="1" stroke-dasharray="4 4"/>
+  <text class="tx" x="305" y="112">Norepinephrine</text>
+  <path d="M243 160 Q241 150 255 150 L287 150 Q305 176 323 150 L355 150 Q369 150 367 160 L361 232 Q359 248 341 248 L269 248 Q251 248 249 232 Z" fill="#e8746b" stroke="#2b2b2b" stroke-width="2"/>
+  <circle cx="305" cy="160" r="10" fill="#d1342f" stroke="#2b2b2b" stroke-width="1.5"/>
+  <path class="ar" d="M305 122 V146" marker-end="url(#ah)"/>
+  <text class="rc" x="305" y="201.0"><tspan font-style="italic">β</tspan>-</text>
+  <text class="rc" x="305" y="225.0">adrenergic</text>
+  <ellipse cx="305" cy="270" rx="44" ry="22" fill="#9cc0e6" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="tx" x="365" y="318">G<tspan font-size="15" dy="5">s</tspan></text>
+  <circle cx="283" cy="322" r="10" fill="#d1342f"/><path d="M278 322 H288 M283 317 V327" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M305 298 L305 342" marker-end="url(#ah)"/>
+  <text class="tx" x="305" y="372">Adenylyl cyclase</text>
+  <circle cx="283" cy="408" r="10" fill="#d1342f"/><path d="M278 408 H288 M283 403 V413" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M305 386 L305 430" marker-end="url(#ah)"/>
+  <text class="tx" x="305" y="464">cAMP</text>
+  <circle cx="283" cy="494" r="10" fill="#d1342f"/><path d="M278 494 H288 M283 489 V499" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M305 476 L305 520" marker-end="url(#ah)"/>
+  <text class="tx" x="305" y="552">Protein kinase A</text>
+  <circle cx="283" cy="612" r="10" fill="#d1342f"/><path d="M278 612 H288 M283 607 V617" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M305 568 L305 620" marker-end="url(#ah)"/>
+  <text class="tx" x="305" y="646">Increase protein</text>
+  <text class="tx" x="305" y="670">phosphorylation</text>
+  <text class="tx" x="625" y="112">Glutamate</text>
+  <path d="M563 160 Q561 150 575 150 L607 150 Q625 176 643 150 L675 150 Q689 150 687 160 L681 232 Q679 248 661 248 L589 248 Q571 248 569 232 Z" fill="#f6c85f" stroke="#2b2b2b" stroke-width="2"/>
+  <circle cx="625" cy="160" r="10" fill="#e8a020" stroke="#2b2b2b" stroke-width="1.5"/>
+  <path class="ar" d="M625 122 V146" marker-end="url(#ah)"/>
+  <text class="rc" x="625" y="213.0">mGluR</text>
+  <ellipse cx="625" cy="270" rx="44" ry="22" fill="#9cc0e6" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="tx" x="685" y="318">G<tspan font-size="15" dy="5">q</tspan></text>
+  <path class="ar" d="M625 298 L625 342" marker-end="url(#ah)"/>
+  <text class="tx" x="625" y="372">Phospholipase C</text>
+  <path class="ar" d="M615 388 L592 430" marker-end="url(#ah)"/>
+  <path class="ar" d="M636 388 L660 430" marker-end="url(#ah)"/>
+  <text class="tx" x="578" y="464">Diacylglycerol</text>
+  <text class="tx" x="684" y="464">IP<tspan font-size="15" dy="5">3</tspan></text>
+  <path class="ar" d="M578 478 L578 522" marker-end="url(#ah)"/>
+  <path class="ar" d="M684 478 L684 522" marker-end="url(#ah)"/>
+  <text class="tx" x="578" y="550">Protein</text>
+  <text class="tx" x="578" y="574">kinase C</text>
+  <text class="tx" x="684" y="550">Ca<tspan font-size="15" dy="-9">2+</tspan></text>
+  <text class="tx" x="684" y="574">release</text>
+  <path class="ar" d="M578 586 L612 622" marker-end="url(#ah)"/>
+  <path class="ar" d="M684 586 L650 622" marker-end="url(#ah)"/>
+  <text class="tx" x="625" y="646">Increase protein phosphorylation</text>
+  <text class="tx" x="625" y="670">and activate calcium-binding proteins</text>
+  <text class="tx" x="950" y="112">Dopamine</text>
+  <path d="M888 160 Q886 150 900 150 L932 150 Q950 176 968 150 L1000 150 Q1014 150 1012 160 L1006 232 Q1004 248 986 248 L914 248 Q896 248 894 232 Z" fill="#a682c4" stroke="#2b2b2b" stroke-width="2"/>
+  <circle cx="950" cy="160" r="10" fill="#5b2d82" stroke="#2b2b2b" stroke-width="1.5"/>
+  <path class="ar" d="M950 122 V146" marker-end="url(#ah)"/>
+  <text class="rc" x="950" y="201.0">Dopamine</text>
+  <text class="rc" x="950" y="225.0">D2</text>
+  <ellipse cx="950" cy="270" rx="44" ry="22" fill="#9cc0e6" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="tx" x="1010" y="314">G<tspan font-size="15" dy="5">i</tspan></text>
+  <circle cx="928" cy="322" r="10" fill="#2b2b2b"/><path d="M923 322 H933" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M950 298 L950 342" marker-end="url(#ah)"/>
+  <text class="tx" x="950" y="372">Adenylyl cyclase</text>
+  <circle cx="928" cy="408" r="10" fill="#2b2b2b"/><path d="M923 408 H933" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M950 386 L950 430" marker-end="url(#ah)"/>
+  <text class="tx" x="950" y="464">cAMP</text>
+  <circle cx="928" cy="494" r="10" fill="#2b2b2b"/><path d="M923 494 H933" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M950 476 L950 520" marker-end="url(#ah)"/>
+  <text class="tx" x="950" y="552">Protein kinase A</text>
+  <circle cx="928" cy="598" r="10" fill="#2b2b2b"/><path d="M923 598 H933" stroke="#fff" stroke-width="2.5"/>
+  <path class="ar" d="M950 568 L950 620" marker-end="url(#ah)"/>
+  <text class="tx" x="950" y="646">Decrease protein</text>
+  <text class="tx" x="950" y="670">phosphorylation</text>
+  <path class="pt" d="M418 312 L384 312" marker-end="url(#ahp)"/>
+  <path class="pt" d="M752 312 L716 312" marker-end="url(#ahp)"/>
+  <path class="pt" d="M1078 300 L1042 300" marker-end="url(#ahp)"/>
+  <path class="pt" d="M398 458 L348 458" marker-end="url(#ahp)"/>
+  <path class="pt" d="M458 458 L508 458" marker-end="url(#ahp)"/>
+  <path class="pt" d="M762 450 L716 450" marker-end="url(#ahp)"/>
+  <path class="pt" d="M1036 458 L986 458" marker-end="url(#ahp)"/>
+  <path class="pt" style="stroke-width:1.6" d="M772 546 L728 546" marker-end="url(#ahp)"/>
+</svg>

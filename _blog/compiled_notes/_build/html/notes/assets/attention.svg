@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 740" role="img" aria-labelledby="title desc">
+  <title id="title">Self-attention worked example</title>
+  <desc id="desc">Self-attention for the two-token input Thinking Machines. Each token has an embedding x1, x2, and query, key and value vectors q, k, v. For the first position: scores q1 dot k1 = 112 and q1 dot k2 = 96; divided by 8 (square root of d_k) gives 14 and 12; softmax gives 0.88 and 0.12; values v1 and v2 are weighted by these (v2 faded), and summed to give z1. z2 is computed the same way for the second position.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .row { font: 21px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .w { font: bold 22px Helvetica, Arial, sans-serif; text-anchor: middle; }
+      .v { font: 22px Helvetica, Arial, sans-serif; }
+      .n { font: bold 21px Helvetica, Arial, sans-serif; text-anchor: middle; }
+      .cell { stroke: #2b2b2b; stroke-width: 1.3; }
+    </style>
+  </defs>
+
+  <path d="M214 22 H432 V338 H688 V642 H432 V728 H214 Z" fill="none" stroke="#2b2b2b" stroke-width="1.8"/>
+  <text class="row" x="12" y="55">Input</text>
+  <text class="row" x="12" y="125">Embedding</text>
+  <text class="row" x="12" y="189">Queries</text>
+  <text class="row" x="12" y="250">Keys</text>
+  <text class="row" x="12" y="310">Values</text>
+  <text class="row" x="12" y="375">Score</text>
+  <text class="row" x="12" y="501">Softmax</text>
+  <text class="row" x="12" y="693">Sum</text>
+  <text class="row" x="12" y="438">Divide by 8 (<tspan font-family="Times New Roman, serif">√</tspan><tspan font-style="italic" font-family="Times New Roman, serif" text-decoration="overline">d<tspan font-size="15" dy="4">k</tspan></tspan><tspan dy="-4"> )</tspan></text>
+  <text class="row" x="12" y="567">Softmax</text><text class="row" x="38" y="596">X</text>
+  <text class="row" x="16" y="624" style="fill:#1f6fb2">Value</text>
+  <text class="w" x="328" y="56" style="fill:#1f8a4c">Thinking</text><text class="w" x="562" y="56" style="fill:#1f8a4c">Machines</text>
+  <text class="v" x="240" y="126" style="fill:#1f8a4c" opacity="1">x<tspan font-size="15" dy="4">1</tspan></text>
+  <rect class="cell" x="268" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <rect class="cell" x="293" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <rect class="cell" x="318" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <rect class="cell" x="343" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <text class="v" x="240" y="190" style="fill:#7b4fb5" opacity="1">q<tspan font-size="15" dy="4">1</tspan></text>
+  <rect class="cell" x="288" y="170" width="25" height="24" fill="#ddd0f0" opacity="1"/>
+  <rect class="cell" x="313" y="170" width="25" height="24" fill="#ddd0f0" opacity="1"/>
+  <rect class="cell" x="338" y="170" width="25" height="24" fill="#ddd0f0" opacity="1"/>
+  <text class="v" x="240" y="251" style="fill:#d9822b" opacity="1">k<tspan font-size="15" dy="4">1</tspan></text>
+  <rect class="cell" x="288" y="231" width="25" height="24" fill="#f6d7b5" opacity="1"/>
+  <rect class="cell" x="313" y="231" width="25" height="24" fill="#f6d7b5" opacity="1"/>
+  <rect class="cell" x="338" y="231" width="25" height="24" fill="#f6d7b5" opacity="1"/>
+  <text class="v" x="240" y="311" style="fill:#1f6fb2" opacity="1">v<tspan font-size="15" dy="4">1</tspan></text>
+  <rect class="cell" x="288" y="291" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <rect class="cell" x="313" y="291" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <rect class="cell" x="338" y="291" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <text class="v" x="243" y="694" style="fill:#c2407a" opacity="1">z<tspan font-size="15" dy="4">1</tspan></text>
+  <rect class="cell" x="292" y="674" width="25" height="24" fill="#f1c9da" opacity="1"/>
+  <rect class="cell" x="317" y="674" width="25" height="24" fill="#f1c9da" opacity="1"/>
+  <rect class="cell" x="342" y="674" width="25" height="24" fill="#f1c9da" opacity="1"/>
+  <text class="v" x="474" y="126" style="fill:#1f8a4c" opacity="1">x<tspan font-size="15" dy="4">2</tspan></text>
+  <rect class="cell" x="502" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <rect class="cell" x="527" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <rect class="cell" x="552" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <rect class="cell" x="577" y="106" width="25" height="24" fill="#bfe3c9" opacity="1"/>
+  <text class="v" x="474" y="190" style="fill:#7b4fb5" opacity="1">q<tspan font-size="15" dy="4">2</tspan></text>
+  <rect class="cell" x="522" y="170" width="25" height="24" fill="#ddd0f0" opacity="1"/>
+  <rect class="cell" x="547" y="170" width="25" height="24" fill="#ddd0f0" opacity="1"/>
+  <rect class="cell" x="572" y="170" width="25" height="24" fill="#ddd0f0" opacity="1"/>
+  <text class="v" x="474" y="251" style="fill:#d9822b" opacity="1">k<tspan font-size="15" dy="4">2</tspan></text>
+  <rect class="cell" x="522" y="231" width="25" height="24" fill="#f6d7b5" opacity="1"/>
+  <rect class="cell" x="547" y="231" width="25" height="24" fill="#f6d7b5" opacity="1"/>
+  <rect class="cell" x="572" y="231" width="25" height="24" fill="#f6d7b5" opacity="1"/>
+  <text class="v" x="474" y="311" style="fill:#1f6fb2" opacity="1">v<tspan font-size="15" dy="4">2</tspan></text>
+  <rect class="cell" x="522" y="291" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <rect class="cell" x="547" y="291" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <rect class="cell" x="572" y="291" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <text class="v" x="477" y="694" style="fill:#c2407a" opacity="1">z<tspan font-size="15" dy="4">2</tspan></text>
+  <rect class="cell" x="526" y="674" width="25" height="24" fill="#f1c9da" opacity="1"/>
+  <rect class="cell" x="551" y="674" width="25" height="24" fill="#f1c9da" opacity="1"/>
+  <rect class="cell" x="576" y="674" width="25" height="24" fill="#f1c9da" opacity="1"/>
+  <text class="v" x="240" y="616" style="fill:#1f6fb2" opacity="1">v<tspan font-size="15" dy="4">1</tspan></text>
+  <rect class="cell" x="288" y="596" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <rect class="cell" x="313" y="596" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <rect class="cell" x="338" y="596" width="25" height="24" fill="#c6dcf1" opacity="1"/>
+  <text class="v" x="474" y="616" style="fill:#1f6fb2" opacity="0.35">v<tspan font-size="15" dy="4">2</tspan></text>
+  <rect class="cell" x="522" y="596" width="25" height="24" fill="#c6dcf1" opacity="0.25"/>
+  <rect class="cell" x="547" y="596" width="25" height="24" fill="#c6dcf1" opacity="0.25"/>
+  <rect class="cell" x="572" y="596" width="25" height="24" fill="#c6dcf1" opacity="0.25"/>
+  <text class="n" x="322" y="376"><tspan style="fill:#7b4fb5">q<tspan font-size="15" dy="4">1</tspan></tspan><tspan dy="-4" style="fill:#2b2b2b"> • </tspan><tspan style="fill:#d9822b">k<tspan font-size="15" dy="4">1</tspan></tspan><tspan dy="-4" style="fill:#8f7208"> = 112</tspan></text>
+  <text class="n" x="558" y="376"><tspan style="fill:#7b4fb5">q<tspan font-size="15" dy="4">1</tspan></tspan><tspan dy="-4" style="fill:#2b2b2b"> • </tspan><tspan style="fill:#d9822b">k<tspan font-size="15" dy="4">2</tspan></tspan><tspan dy="-4" style="fill:#8f7208"> = 96</tspan></text>
+  <text class="n" x="328" y="440" style="fill:#8f7208">14</text><text class="n" x="328" y="500" style="fill:#8f7208">0.88</text>
+  <text class="n" x="562" y="440" style="fill:#8f7208">12</text><text class="n" x="562" y="500" style="fill:#8f7208">0.12</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 6 380 350" role="img" aria-labelledby="title desc">
+  <title id="title">Transcritical bifurcation</title>
+  <desc id="desc">Bifurcation diagram for dx/dt = λx − x²: fixed points x = 0 and x = λ cross at the origin and exchange stability; x = 0 is stable (solid) for λ &lt; 0 and unstable (dashed) for λ &gt; 0, x = λ is unstable for λ &lt; 0 and stable for λ &gt; 0.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #2b2b2b; }
+
+      .axis { fill: none; stroke: #8a8a8a; stroke-width: 2; }
+      .stable { fill: none; stroke: #1f6fb2; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .unstable { fill: none; stroke: #1f6fb2; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 14 12; }
+      .ax { font: italic 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <path class="axis" d="M20 180 H385 M200 12 V348"/>
+  <text class="ax" x="212" y="34">x</text>
+  <text class="ax" x="368" y="214">λ</text>
+  <path class="stable" d="M30 180 H200"/>
+  <path class="unstable" d="M200 180 H372"/>
+  <path class="stable" d="M200 180 L360 52"/>
+  <path class="unstable" d="M200 180 L56 295"/>
+</svg>

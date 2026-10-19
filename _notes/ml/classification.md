@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Classification
+subtitle: Some notes on classification - discriminative and generative models, nearest neighbors, and boosting.
 category: ml
 ---
 
@@ -12,10 +13,10 @@ category: ml
   - e.g. outliers skew fit
 - asymptotic classifier - assumes infinite data
 - linear classifer $\implies$ boundaries are hyperplanes
-- *discriminative* - model $P(Y\vert X)$ directly ![](../assets/j7_10.png)
+- *discriminative* - model $P(Y\vert X)$ directly <img style="width: 360px; max-width: 100%;" src="../assets/j7_10.svg" alt="Discriminative classification model"/>
   - usually lower bias $\implies$smaller asymptotic error
   - slow convergence ~ $O(p)$
-- *generative* - model $P(X, Y) = P(X\vert Y) P(Y)$ ![](../assets/j7_4.png)
+- *generative* - model $P(X, Y) = P(X\vert Y) P(Y)$ <img style="width: 600px; max-width: 100%;" src="../assets/j7_4.svg" alt="Three generative classification models"/>
   - usually higher bias $\implies$ can handle missing data
     - this is because we assume some underlying X
   - fast convergence ~ $O[\log(p)]$
@@ -29,16 +30,16 @@ category: ml
 
 | Model               | $\mathbf{\hat{\theta}}$ objective (minimize)                 |
 | ------------------- | ------------------------------------------------------------ |
-| Perceptron          | $\sum_i \max(0,  -y_i \cdot \theta^T x_i)$                   |
-| Linear SVM          | $\theta^T\theta + C \sum_i \max(0,1-y_i \cdot \theta^T x_i)$ |
-| Logistic regression | $\theta^T\theta + C \sum_i \log[1+\exp(-y_i \cdot \theta^T x_i)]$ |
+| Perceptron          | $\corange{\sum_i \max(0,  -y_i \cdot \theta^T x_i)}$                   |
+| Linear SVM          | $\cblue{\theta^T\theta} + \corange{C \sum_i \max(0,1-y_i \cdot \theta^T x_i)}$ |
+| Logistic regression | $\cblue{\theta^T\theta} + \corange{C \sum_i \log[1+\exp(-y_i \cdot \theta^T x_i)]}$ |
 
-
+- <span class="cblue">regularizer</span> + <span class="corange">loss</span>
 - svm, perceptron use +1/-1, logistic use 1/0
 - *perceptron* - tries to find separating hyperplane
   - whenever misclassified, update w
   - can add in delta term to maximize margin
-- ![](../assets/losses.png)
+- <img style="width: 420px; max-width: 100%;" src="../assets/losses.svg" alt="Classification loss functions"/>
 
 # multiclass classification
 
@@ -57,14 +58,14 @@ category: ml
     - if label=i, want $\theta_i ^Tx > \theta_j^T x \quad \forall j$
     - if not, update $\theta_i$ and $\theta_j$* accordingly
     - *kessler construction*
-      - $\theta =  [\theta_1 ... \theta_k] $
+      - $$\theta =  [\theta_1 ... \theta_k] $$<!-- -->
       - want $\theta_i^T x > \theta_j^T x \quad \forall j$
       - rewrite $\theta^T \phi (x,i) > \theta^T \phi (x,j) \quad \forall j$
         - here $\phi (x, i)$ puts x in the ith spot and zeros elsewhere
         - $\phi$ is often used for feature representation
-      - define margin: 
-        $\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\ 0& if \: y=y'\end{cases}$
-      - check if $y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')$
+      - define margin:
+        $$\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\ 0& if \: y=y'\end{cases}$$<!-- -->
+      - check if $$y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')$$
   - multiclass SVMs (Crammer & Singer)
     - minimize total norm of weights s.t. true label score is at least 1 more than second best label
   - multinomial logistic regression = multi-class *log-linear* model (softmax on outputs)
@@ -74,28 +75,28 @@ category: ml
 
 ## logistic regression
 
-- $p(Y=1|x, \theta) = \text{logistic}(\theta^Tx)$
+- $$p(Y=1\vert x, \theta) = \text{logistic}(\theta^Tx)$$<!-- -->
   1. assume Y ~ $\text{Bernoulli}(p)$ with $p=\text{logistic}(\theta^Tx$)
   2. can solve this online with GD of ***likelihood***
   3. better to solve with iteratively reweighted least squares
 - $Logit(p) = \log[p / (1-p)] = \theta^Tx$
 - multiway logistic classification
-  - assume $P(Y^k=1|x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}$, just as arises from class-conditional exponential family distributions
+  - assume $$P(Y^k=1\vert x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}$$, just as arises from class-conditional exponential family distributions
 - logistic weight change represents change in odds
 - fitting requires penalty on weights, otherwise they might not converge (i.e. go to infinity)
 
 ## binary models
 
 - probit (binary) regression
-  - $p(Y=1|x, \theta) = \phi(\theta^Tx)$ where $\phi$ is the Gaussian CDF
+  - $$p(Y=1\vert x, \theta) = \phi(\theta^Tx)$$ where $\phi$ is the Gaussian CDF
   - pretty similar to logistic
 - noise-OR (binary) model
   - consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
   - define $\theta$ to be the failure probabilities
-  - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$
+  - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$<!-- -->
 - other (binary) exponential models
-  - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
-  - *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]$
+  - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$ but x doesn't have to be binary
+  - *complementary log-log model*: $$p(Y=1\vert x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]$$
 
 ## svms
 
@@ -104,9 +105,9 @@ category: ml
   2. *kernel trick* makes it very nonlinear
   3. nonparametric - retains training examples (although often get rid of many)
      1. at test time, can't just store w - have to store support vectors
-- ![](../assets/svm_margin.png)
-- $\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
-- $\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
+- <img style="width: 320px; max-width: 100%;" src="../assets/svm_margin.svg" alt="SVM geometric margin"/>
+- $$\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$$<!-- -->
+- $$\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$$<!-- -->
   - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
     - limit the size of $(\theta, b)$ so we can't arbitrarily increase functional margin
     - function margin $\hat{\gamma}$ is smallest functional margin in a training set
@@ -118,8 +119,8 @@ category: ml
     - assume $\hat{\gamma}=1$ ~ just a scaling factor
     - now we are maximizing $1/\vert \vert w\vert \vert $
 - *soft margin* classifier - allows misclassifications
-  - assigns them penalty proportional to distance required to move them back to correct side
-  - min $\frac{1}{2}||\theta||^2 \textcolor{blue}{ + C \sum_i^n \epsilon_i} \\s.t. y^{(i)} (\theta^T x^{(i)} + b) \geq 1 \textcolor{blue}{- \epsilon_i}, i=1:m \\ \textcolor{blue}{\epsilon_i \geq0, 1:m}$
+  - assigns them <span class="cblue">penalty</span> proportional to distance required to move them back to correct side
+  - min $$\frac{1}{2}\vert \vert \theta\vert \vert ^2 \cblue{ + C \sum_i^n \epsilon_i} \\s.t. y^{(i)} (\theta^T x^{(i)} + b) \geq 1 \cblue{- \epsilon_i}, i=1:m \\ \cblue{\epsilon_i \geq0, 1:m}$$
   - large C can lead to overfitting
 - benefits
   - number of parameters remains the same (and most are set to 0)
@@ -138,29 +139,23 @@ category: ml
   - start with RBF
   - valid kernel: kernel matrix is Psd
 
-## decision trees / rfs - R&N 18.3; HTF 9.2.1-9.2.3
+## decision trees / rfs - Russell & Norvig 18.3; Hastie, Tibshirani & Friedman 9.2.1-9.2.3
+
+from "Artificial Intelligence - A Modern Approach" and "The Elements of Statistical Learning"
 
 - follow rules: predict based on prob distr. of points in same leaf you end up in
-
 - *inductive bias*
-
   - prefer small trees
   - prefer tres with high IG near root
-
 - good for certain types of problems
-
   - instances are attribute-value pairs
   - target function has discrete output values
   - disjunctive descriptions may be required
   - training data may have errors
   - training data may have missing attributes
-
 - greedy - use statistical test to figure out which attribute is best
-
   - split on this attribute then repeat
-
 - growing algorithm
-
   1. *information gain* - decrease in entropy
      - weight resulting branches by their probs
      - biased towards attributes with many values
@@ -170,14 +165,10 @@ category: ml
          - might want to filter using Gain then use GainRatio
   2. regression tree
      - must decide when to stop splitting and start applying linear regression
-     - must *minimize SSE* 
-
+     - must *minimize SSE*
 - can get stuck in local optima
-
-- avoid overfitting 
-
+- avoid overfitting
   - empirically, early stopping is worse than overfitting then pruning (bc it doesn't see combinations of useful attributes)
-
   - overfit then prune - proven more succesful
     - *reduced-error pruning* - prune only if doesn't decrease error on validation set
     - *$\chi^2$ pruning* - test if each split is statistically significant with $\chi^2$ test
@@ -187,26 +178,17 @@ category: ml
          - these rules are easier to work with, have no structure
       3. prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
       4. sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
-
 - incorporating continuous-valued attributes
-
   - choose candidate thresholds which separate examples that differ in their target classification
   - just evaluate them all
-
 - missing values
-
   - could fill in most common value
   - could assign values probabilistically
-
 - differing costs
-
   - can bias the tree to favor low-cost attributes
     - ex. divide gain by the cost of the attribute
-
 - high variance - instability - small changes in data yield changes to tree
-
 - many trees
-
   - *bagging* = bootstrap aggregation - an ensemble method
     - *bootstrap* - resampling with replacement
     - train multiple models by randomly drawing new training data
@@ -219,11 +201,8 @@ category: ml
     - average: take average of distribution of votes
       - reduces variance, better for improving more variable (unstable) models
     - *adaboost* - weight models based on their performance
-
 - [optimal classification trees](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) - simultaneously optimize all splits, not one at a time
-
 - **importance scores**
-
   - dataset-level
     - for all splits where the feature was used, measure how much variance reduced (either summed or averaged over splits)
     - the sum of importances is scaled to 1
@@ -262,7 +241,7 @@ category: ml
 
 ## gaussian class-conditioned classifiers
 
-- binary case: posterior probability $p(Y=1|x, \theta)$ is a sigmoid $\frac{1}{1+e^{-z}}$ where $z = \beta^Tx+\gamma$
+- binary case: posterior probability $$p(Y=1\vert x, \theta)$$ is a sigmoid $\frac{1}{1+e^{-z}}$ where $z = \beta^Tx+\gamma$
   1. multiclass extends to *softmax function*: $\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$ - $\beta$s can be used for dim reduction
 - probabilistic interpretation
   - assumes classes are distributed as different Gaussians
@@ -281,30 +260,31 @@ category: ml
 ## naive bayes classifier
 
 - assume multinomial $Y$
-- with clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
-- let $y_1,...y_l$ be the classes of Y
-- want Posterior $P(Y\vert X) = \frac{P(X\vert Y)(P(Y)}{P(X)}$ 
+- with clever tricks, can produce $$P(Y^i=1\vert x, \eta)$$ again as a softmax
+- let $$y_1,...y_l$$ be the classes of Y
+- want <span class="cpurple">Posterior</span> $\cpurple{P(Y\vert X)} = \frac{\cblue{P(X\vert Y)}(\corange{P(Y)}}{\cgreen{P(X)}}$
+  - <span class="cblue">likelihood</span>, <span class="corange">prior</span>, <span class="cgreen">evidence</span>
 - MAP rule - maximum a posterior rule
-  - use prior P(Y)
-  - given x, predict $\hat{y}=\text{argmax}_y P(y\vert X_1,...,X_p)=\text{argmax}_y P(X_1,...,X_p\vert y) P(y)$
-    - generally ignore constant denominator
+  - use <span class="corange">prior P(Y)</span>
+  - given x, predict $$\hat{y}=\text{argmax}_y \cpurple{P(y\vert X_1,...,X_p)}=\text{argmax}_y \cblue{P(X_1,...,X_p\vert y)} \corange{P(y)}$$
+    - generally ignore constant <span class="cgreen">denominator</span>
 - naive assumption - assume that all input attributes are conditionally independent given y
-  - $P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$ 
+  - $$P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$$<!-- -->
 - learning
-  - learn $L$ priors $P(y_1),P(y_2),...,P(y_l)$
+  - learn $L$ priors $$P(y_1),P(y_2),...,P(y_l)$$
   - for i in 1:$\vert Y \vert$
-    - learn $P(X \vert y_i)$ 
+    - learn $P(X \vert y_i)$
     - for discrete case we store $P(X_j\vert y_i)$, otherwise we assume a prob. distr. form
-- naive: $\vert Y\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
-- otherwise: $\vert Y\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
+- naive: $$\vert Y\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$$ distributions
+- otherwise: $$\vert Y\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$$
 - smoothing - used to fill in $0$s
-  - $P(x_i\vert y_j) = \frac{N(x_i, y_j) +1}{N(y_j)+\vert X_i\vert }$ 
+  - $P(x_i\vert y_j) = \frac{N(x_i, y_j) +1}{N(y_j)+\vert X_i\vert }$
   - then, $\sum_i P(x_i\vert y_j) = 1$
 
 ## exponential family class-conditioned classifiers
 
 1. includes Gaussian, binomial, Poisson, gamma, Dirichlet
-2. $p(x|\eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$
+2. $$p(x\vert \eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$$<!-- -->
 3. for classification, anything from exponential family will result in posterior probability that is logistic function of a linear function of x
 
 ## text classification
@@ -313,8 +293,8 @@ category: ml
   - remove stopwords, stemming, collapsing multiple - NLTK package in python
   - assumes word order isn't important
   - can store n-grams
-- multivariate Bernoulli: $P(X\vert Y)=P(w_1=true,w_2=false,...\vert Y)$
-- multivariate Binomial: $P(X\vert Y)=P(w_1=n_1,w_2=n_2,...\vert Y)$
+- multivariate Bernoulli: $$P(X\vert Y)=P(w_1=true,w_2=false,...\vert Y)$$
+- multivariate Binomial: $$P(X\vert Y)=P(w_1=n_1,w_2=n_2,...\vert Y)$$
   - this is inherently naive
 - time complexity
   - training O(n*average\_doc\_length\_train+$\vert c\vert \vert dict\vert $)
@@ -322,7 +302,8 @@ category: ml
 - implementation
   - have symbol for unknown words
   - underflow prevention - take logs of all probabilities so we don't get 0
-  - $y = \text{argmax }\log \:P(y) + \sum_i \log \: P(X_i\vert y)$
+  - $$y = \text{argmax }\corange{\log \:P(y)} + \cblue{\sum_i \log \: P(X_i\vert y)}$$<!-- -->
+    - log <span class="corange">prior</span> + log <span class="cblue">likelihood</span>
 
 # instance-based (nearest neighbors)
 
@@ -346,7 +327,7 @@ category: ml
 
 ## single Bernoulli
 
-- $L(p) = P$[Train | Bernoulli(p)]= $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
+- $L(p) = P$[Train \| Bernoulli(p)]= $$P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$$
 - $=p^x (1-p)^{n-x}$ where x = $\sum x_i$
 - $\log[L(p)] = \log[p^x (1-p)^{n-x}]=x \log(p) + (n-x) \log(1-p)$
 - $0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np$
@@ -354,11 +335,9 @@ category: ml
 
 ## multinomial
 
-- $L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
+- $$L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$$- ignore factorials because they are always same
   - require $\sum \theta_i = 1$
 - $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}$ where N is total number of words in all docs
-
-
 
 # boosting
 
@@ -366,11 +345,9 @@ category: ml
    1. freund & schapire
    2. reweight data points based on errs of previous weak learners, then train new classifiers
    3. classify as an ensemble
-   
 2. gradient boosting
    1. leo breiman
    2. actually fits the residual errors made by the previous predictors
-   
 3. newer algorithms for gradient boosting (speed / approximations)
    1. xgboost (2014 - popularized around 2016)
       1. implementation of gradient boosted decision trees designed for speed and performance
@@ -379,11 +356,9 @@ category: ml
       1. can get gradient of each point wrt to loss - this is like importance for point (like weights in adaboost)
          1. when picking split, filter out unimportant points
    3. Catboost (2017)
-   
-4. boosting with different cost function ($y \in \{-1, 1\}$, or for $L_2$Boost, also $y \in \mathbb R$)
+4. boosting with different cost function ($$y \in \{-1, 1\}$$, or for $L_2$Boost, also $y \in \mathbb R$)
 
    | Adaboost         | LogitBoost                       | $L_2$Boost           |
    | ---------------- | -------------------------------- | -------------------- |
    | $\exp(y\hat{y})$ | $\log_2 (1 + \exp(-2y \hat y ))$ | $(y - \hat y)^2 / 2$ |
 
-   

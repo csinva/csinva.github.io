@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 712 300" role="img" aria-labelledby="title desc">
+  <title id="title">Trees and polytrees</title>
+  <desc id="desc">(a) An undirected tree. (b) A directed tree: the same tree with edges pointing away from the root. (c) A polytree: a directed graph whose underlying undirected graph is a tree, here with two nodes pointing into a middle node, which together with another node points into a bottom node.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .panel { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <line class="edge" x1="78.3" y1="48.6" x2="41.7" y2="106.4"/>
+  <line class="edge" x1="101.0" y1="49.0" x2="134.0" y2="106.0"/>
+  <line class="edge" x1="134.8" y1="144.5" x2="105.2" y2="200.5"/>
+  <line class="edge" x1="155.2" y1="144.5" x2="184.8" y2="200.5"/>
+  <circle class="node" cx="90" cy="30" r="22"/>
+  <circle class="node" cx="30" cy="125" r="22"/>
+  <circle class="node" cx="145" cy="125" r="22"/>
+  <circle class="node" cx="95" cy="220" r="22"/>
+  <circle class="node" cx="195" cy="220" r="22"/>
+  <line class="edge" x1="318.3" y1="48.6" x2="281.7" y2="106.4" marker-end="url(#arrow)"/>
+  <line class="edge" x1="341.0" y1="49.0" x2="374.0" y2="106.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="374.8" y1="144.5" x2="345.2" y2="200.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="395.2" y1="144.5" x2="424.8" y2="200.5" marker-end="url(#arrow)"/>
+  <circle class="node" cx="330" cy="30" r="22"/>
+  <circle class="node" cx="270" cy="125" r="22"/>
+  <circle class="node" cx="385" cy="125" r="22"/>
+  <circle class="node" cx="335" cy="220" r="22"/>
+  <circle class="node" cx="435" cy="220" r="22"/>
+  <line class="edge" x1="540.2" y1="49.5" x2="569.8" y2="105.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="619.8" y1="49.5" x2="590.2" y2="105.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="590.2" y1="144.5" x2="619.8" y2="200.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="669.8" y1="144.5" x2="640.2" y2="200.5" marker-end="url(#arrow)"/>
+  <circle class="node" cx="530" cy="30" r="22"/>
+  <circle class="node" cx="630" cy="30" r="22"/>
+  <circle class="node" cx="580" cy="125" r="22"/>
+  <circle class="node" cx="680" cy="125" r="22"/>
+  <circle class="node" cx="630" cy="220" r="22"/>
+
+  <text class="panel" x="120" y="290">(a)</text>
+  <text class="panel" x="360" y="290">(b)</text>
+  <text class="panel" x="610" y="290">(c)</text>
+</svg>

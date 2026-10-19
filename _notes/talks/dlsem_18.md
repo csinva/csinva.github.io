@@ -11,31 +11,31 @@
   - ml function - function of future data constructed from past data that is useful for task regardless of nuisance factors
   - without task, raw data is best representation
 - desiderata for an "optimal" representation
-  - data x, task y, repr. z ~ p(z|x) - this represents a stochastic function
+  - data x, task y, repr. z ~ p(z\|x) - this represents a stochastic function
   - *sufficient* $I(z; y) = I(x; y)$
   - *minimal* $I(x;z)$ is minimal among inefficient z
   - *invariant to nuisances*: if $n \perp y$ then $I(n, z) = 0$
     - *maximally insensitive*: if $n \perp y$ then $I(n, z)$ is minimized
-  - *maximally disentangled*: minimizes total correlation $KL[ p(z) | \prod_i p(z_i)]$
+  - *maximally disentangled*: minimizes total correlation $$KL[ p(z) \vert  \prod_i p(z_i)]$$
 - for only sufficiency and minimality - Information Bottleneck, Tishby et al. 1999
-  - $$\text{minimize}_{p(z|x)} I(x;z) \\ \text{s.t.} H(y|z)=H(y|x)$$
-  - intractable except for exponential family so Tishby solves Lagrangian $\mathcal{L} = \underbrace{H_{p, q}(y|z)}_{cross-entropy} + \beta I(z;x)$
+  - $$\text{minimize}_{p(z\vert x)} I(x;z) \\ \text{s.t.} H(y\vert z)=H(y\vert x)$$
+  - intractable except for exponential family so Tishby solves Lagrangian $$\mathcal{L} = \underbrace{H_{p, q}(y\vert z)}_{cross-entropy} + \beta I(z;x)$$
   - in fact, gives us invariances since *invariant* $\iff$ minimal
 - layers - if last layer is sufficient, it is more minimal (invariant) than previous layers
   - because going through a layer can only lose info
-- deep learning dataset D, 
-  - $\underbrace{H_{p, q}(D|w)}_{cross-entropy} = H(D|\theta) + I(\theta; D|w) + KL(q|p) - \underbrace{I(D; w, \theta)}_{overfitting}$
-    - easy to overfit by storing w completely
-  - minimizing $\underbrace{H_{p, q}(D|w)}_{cross-entropy} + \underbrace{I(D; w, \theta)}_{overfitting}$ would minimize all the terms that we want, but second term is incomputable
-  - instead SGVB (kingman and welling, 2015), minimize $\underset{q(w|D)}{arg min} \: \underbrace{H_{p, q}(D|w)}_{cross-entropy} + \beta \underbrace{I(D; w)}_{overfitting}$ 
+- deep learning dataset D,
+  - $$\cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} = H(D\vert \theta) + I(\theta; D\vert w) + KL(q\vert p) - \corange{\underbrace{I(D; w, \theta)}_{overfitting}}$$<!-- -->
+    - easy to <span class="corange">overfit</span> by storing w completely
+  - minimizing $$\cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} + \corange{\underbrace{I(D; w, \theta)}_{overfitting}}$$ would minimize all the terms that we want, but <span class="corange">second term</span> is incomputable
+  - instead SGVB (kingman and welling, 2015), minimize $$\underset{q(w\vert D)}{arg \min} \: \cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} + \beta \corange{\underbrace{I(D; w)}_{overfitting}}$$
     - looks like informaiton bottleneck, but slightly different
     - describes future data given past data
     - also can do the smae things using PAC_Bayes
-  - SGD approximates this $\underset{q}{argmin} \: H_{p,q} - \beta H(q)$
+  - SGD approximates this $$\underset{q}{\operatorname*{argmin}} \: H_{p,q} - \beta H(q)$$
     - amazing that SGD does this
   - for deep networks this and the normal information bottleneck are duals of each other
 - one layer $z = wx$
-  - $\underbrace{g[I(w; D)]}_{weights} \leq \underbrace{I(z; x) + TC(z)}_{activations} \leq \underbrace{g[I(w; D)] +c}_{weights}$
+  - $$\underbrace{g[I(w; D)]}_{weights} \leq \underbrace{I(z; x) + TC(z)}_{activations} \leq \underbrace{g[I(w; D)] +c}_{weights}$$<!-- -->
   - assume you get sufficiency (so probably need this for more layers)
   - weight minimality on past data bounds representation **minimality** of future data
   - corollary - less info in weights increases invariance and disentaglement of learned representation
@@ -47,10 +47,8 @@
     - travels around on limit cycles
 - summary
   - we want desiderata
-  - practice - sgd / layers yield 
+  - practice - sgd / layers yield
   - duality of representation - train set in weights, test set in activations
-
-
 
 # what 4 year olds can do and AI can’t (yet) - alison gopnik
 
@@ -95,8 +93,8 @@
   - SNAP - projects input into latent vector which feeds into gan
   - allows for interactive editing
 - zeng_17_3dmatch
-	- goal: establish correspondences between partial 3d data
-	- extract local patches and learn correspondences w/ siamese network
+  - goal: establish correspondences between partial 3d data
+  - extract local patches and learn correspondences w/ siamese network
 - questions
   - Is there any way to cluster the kinds of things the GAN makes to make multiple different SNAP suggestions?
   - Are these correspondences precise enough to use for registration of medical images?
@@ -141,9 +139,7 @@
 # abhinav gupta - unsupervised learning + video
 
 - "Unsupervised Learning of Visual Representations using Videos" - unsupervised method: visual tracking provides supervision - 2 patches connected by track should have similar deep visual repr.
-
-
-- learning by asking questions - try to be more sample efficient by asking for new data 
+- learning by asking questions - try to be more sample efficient by asking for new data
 - transitive invariance for selv-supervised visual repr. learning
   - learn graph changing intra-instance, inter-instance, and transitive invariance
 - questions

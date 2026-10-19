@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 296" role="img" aria-labelledby="title desc">
+  <title id="title">Interview breakdown</title>
+  <desc id="desc">A 10 by 10 grid of 100 squares: out of every 100 phone screens (all squares), we bring 25 candidates onsite for interviews (a 5 by 5 block, darker gray), and extend 9 offers (a 3 by 3 block, blue).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .c0 { fill: #cccccc; }
+      .c1 { fill: #9a9a9a; }
+      .c2 { fill: #1f6fb2; }
+      .title { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .t0 { font: 19px Helvetica, Arial, sans-serif; fill: #9a9a9a; }
+      .t1 { font: 19px Helvetica, Arial, sans-serif; fill: #5a5a5a; }
+      .t2 { font: 19px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      b, .b { font-weight: bold; }
+    </style>
+  </defs>
+  <text class="title" x="6" y="30">Interview breakdown</text>
+  <rect class="c0" x="5.00" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="117.50" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="140.00" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="162.50" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="185.00" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="207.50" y="61.00" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="117.50" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="140.00" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="162.50" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="185.00" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="207.50" y="84.15" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="117.50" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="140.00" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="162.50" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="185.00" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="207.50" y="107.30" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="117.50" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="140.00" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="162.50" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="185.00" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="207.50" y="130.45" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="117.50" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="140.00" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="162.50" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="185.00" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="207.50" y="153.60" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c1" x="117.50" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c1" x="140.00" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c1" x="162.50" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c1" x="185.00" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c1" x="207.50" y="176.75" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c1" x="117.50" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c1" x="140.00" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c1" x="162.50" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c1" x="185.00" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c1" x="207.50" y="199.90" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c1" x="117.50" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c1" x="140.00" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c2" x="162.50" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c2" x="185.00" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c2" x="207.50" y="223.05" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c1" x="117.50" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c1" x="140.00" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c2" x="162.50" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c2" x="185.00" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c2" x="207.50" y="246.20" width="20.50" height="21.15"/>
+  <rect class="c0" x="5.00" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c0" x="27.50" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c0" x="50.00" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c0" x="72.50" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c0" x="95.00" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c1" x="117.50" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c1" x="140.00" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c2" x="162.50" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c2" x="185.00" y="269.35" width="20.50" height="21.15"/>
+  <rect class="c2" x="207.50" y="269.35" width="20.50" height="21.15"/>
+  <path d="M116.50 175.75 V291.50 M116.50 175.75 H229.00" stroke="#ffffff" stroke-width="3" fill="none"/>
+  <path d="M161.50 222.05 V291.50 M161.50 222.05 H229.00" stroke="#ffffff" stroke-width="3" fill="none"/>
+  <text class="t0" x="243" y="74">Out of every <tspan class="b">100</tspan></text>
+  <text class="t0" x="243" y="96"><tspan class="b">phone screens</tspan>...</text>
+  <text class="t1" x="243" y="186">we bring <tspan class="b">25</tspan></text>
+  <text class="t1" x="243" y="208"><tspan class="b">candidates onsite</tspan></text>
+  <text class="t1" x="243" y="230">for interviews...</text>
+  <text class="t2" x="243" y="266">and</text>
+  <text class="t2" x="243" y="288"><tspan class="b">extend 9 offers.</tspan></text>
+</svg>

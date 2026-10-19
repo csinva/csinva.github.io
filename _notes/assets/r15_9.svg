@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="190 10 390 262" role="img" aria-labelledby="title desc">
+  <title id="title">Linear dynamical system Bayesian network</title>
+  <desc id="desc">Two time slices. Velocity X-dot_t points to X-dot_t+1 and to position X_t+1; position X_t points to X_t+1 and to measurement Z_t; X_t+1 points to Z_t+1. Arrows enter slice t from the left and leave slice t+1 to the right.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .node { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #a0a0a0; stroke: #2b2b2b; stroke-width: 2; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 18px; font-family: "Times New Roman", Times, serif; }
+      .lab { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .bv { font: bold 23px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+      .bs { font: italic 16px "Times New Roman", Times, serif; font-weight: normal; }
+      .bs2 { font: 16px "Times New Roman", Times, serif; font-weight: normal; }
+    </style>
+  </defs>
+  <line class="edge" x1="198.5" y1="46.0" x2="269.0" y2="47.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="206.0" y1="82.5" x2="271.5" y2="110.4" marker-end="url(#arrow)"/>
+  <line class="edge" x1="206.0" y1="122.5" x2="269.0" y2="122.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="330.0" y1="47.5" x2="455.5" y2="47.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="327.8" y1="58.7" x2="457.7" y2="110.9" marker-end="url(#arrow)"/>
+  <line class="edge" x1="330.0" y1="122.5" x2="455.5" y2="122.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="300.0" y1="152.5" x2="300.0" y2="201.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="486.5" y1="152.5" x2="486.5" y2="201.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="516.5" y1="47.5" x2="569.0" y2="47.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="514.7" y1="57.6" x2="569.1" y2="77.2" marker-end="url(#arrow)"/>
+  <line class="edge" x1="516.5" y1="122.5" x2="569.0" y2="122.5" marker-end="url(#arrow)"/>
+  <circle class="node" cx="300.0" cy="47.5" r="30"/>
+  <circle class="node" cx="486.5" cy="47.5" r="30"/>
+  <circle class="node" cx="300.0" cy="122.5" r="30"/>
+  <circle class="node" cx="486.5" cy="122.5" r="30"/>
+  <circle class="node" cx="300.0" cy="232.5" r="30"/>
+  <circle class="node" cx="486.5" cy="232.5" r="30"/>
+  <text class="bv" x="300.0" y="55.5">X<tspan dy="5"><tspan class="bs">t</tspan></tspan></text>
+  <circle cx="296.0" cy="32.5" r="2.3" fill="#2b2b2b"/>
+  <text class="bv" x="486.5" y="55.5">X<tspan dy="5"><tspan class="bs">t</tspan><tspan class="bs2">+</tspan><tspan class="bs2">1</tspan></tspan></text>
+  <circle cx="477.5" cy="32.5" r="2.3" fill="#2b2b2b"/>
+  <text class="bv" x="300.0" y="130.5">X<tspan dy="5"><tspan class="bs">t</tspan></tspan></text>
+  <text class="bv" x="486.5" y="130.5">X<tspan dy="5"><tspan class="bs">t</tspan><tspan class="bs2">+</tspan><tspan class="bs2">1</tspan></tspan></text>
+  <text class="bv" x="300.0" y="240.5">Z<tspan dy="5"><tspan class="bs">t</tspan></tspan></text>
+  <text class="bv" x="486.5" y="240.5">Z<tspan dy="5"><tspan class="bs">t</tspan><tspan class="bs2">+</tspan><tspan class="bs2">1</tspan></tspan></text>
+</svg>

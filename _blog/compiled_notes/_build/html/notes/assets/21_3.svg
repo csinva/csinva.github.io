@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 712 705" role="img" aria-labelledby="title desc">
+  <title id="title">Central autonomic network</title>
+  <desc id="desc">Figure 21.7, a central autonomic network for the control of visceral motor function. Medial prefrontal cortex and insular cortex are reciprocally connected with each other and with the amygdala; the thalamus projects to insular cortex. The amygdala projects to the hypothalamus and to autonomic centers in the brainstem reticular formation. The parabrachial nucleus projects to the amygdala, hypothalamus and thalamus. The hypothalamus projects to the autonomic centers and to preganglionic neurons in brainstem and spinal cord; the autonomic centers project back to the hypothalamus and to the preganglionic neurons. The nucleus of the solitary tract projects to the hypothalamus, parabrachial nucleus, autonomic centers and preganglionic neurons. Preganglionic neurons drive primary motor neurons in autonomic ganglia, which drive the end organs (smooth muscle, cardiac muscle, and glands). End organs feed spinal visceral sensory neurons and cranial nerves IX and X, which feed the nucleus of the solitary tract.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="a-ctx" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9c5b4a"/></marker>
+    <marker id="a-amy" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7d7d2a"/></marker>
+    <marker id="a-thal" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5e3a6e"/></marker>
+    <marker id="a-hyp" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker>
+    <marker id="a-aut" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a5a8e"/></marker>
+    <marker id="a-pb" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="a-pre" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3f8f3a"/></marker>
+    <marker id="a-nts" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f6b4c"/></marker>
+    <marker id="a-prim" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6a4fb5"/></marker>
+    <marker id="a-sp" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4f73a8"/></marker>
+    <marker id="a-end" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b07a1f"/></marker>
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; font-size: 19px; text-anchor: middle; }
+      .b { font-weight: bold; }
+      .box { stroke-width: 2; }
+      .ar { fill: none; stroke-width: 6; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <path class="ar" stroke="#9c5b4a" marker-end="url(#a-ctx)" d="M330 30 H366"/>
+  <path class="ar" stroke="#9c5b4a" marker-end="url(#a-ctx)" d="M370 54 H334"/>
+  <path class="ar" stroke="#7d7d2a" marker-end="url(#a-amy)" d="M215 110 V76"/>
+  <path class="ar" stroke="#9c5b4a" marker-end="url(#a-ctx)" d="M262 72 V106"/>
+  <path class="ar" stroke="#9c5b4a" marker-end="url(#a-ctx)" d="M440 72 V106"/>
+  <path class="ar" stroke="#7d7d2a" marker-end="url(#a-amy)" d="M485 110 V76"/>
+  <path class="ar" stroke="#5e3a6e" marker-end="url(#a-thal)" d="M650 110 V76"/>
+  <path class="ar" stroke="#7d7d2a" marker-end="url(#a-amy)" d="M262 172 V206"/>
+  <path class="ar" stroke="#7d7d2a" marker-end="url(#a-amy)" d="M440 172 V206"/>
+  <path class="ar" stroke="#7d7d2a" marker-end="url(#a-amy)" d="M200 141 H40 V336 H126"/>
+  <path class="ar" stroke="#d1342f" marker-end="url(#a-pb)" d="M578 300 V141 H504"/>
+  <path class="ar" stroke="#d1342f" marker-end="url(#a-pb)" d="M578 241 H544"/>
+  <path class="ar" stroke="#d1342f" marker-end="url(#a-pb)" d="M668 300 V176"/>
+  <path class="ar" stroke="#1f6fb2" marker-end="url(#a-hyp)" d="M300 272 V296"/>
+  <path class="ar" stroke="#1f6fb2" marker-end="url(#a-hyp)" d="M200 241 H70 V451 H86"/>
+  <path class="ar" stroke="#8a5a8e" marker-end="url(#a-aut)" d="M455 300 V276"/>
+  <path class="ar" stroke="#8a5a8e" marker-end="url(#a-aut)" d="M250 372 V406"/>
+  <path class="ar" stroke="#1f6b4c" marker-end="url(#a-nts)" d="M525 410 V276"/>
+  <path class="ar" stroke="#1f6b4c" marker-end="url(#a-nts)" d="M525 336 H556"/>
+  <path class="ar" stroke="#1f6b4c" marker-end="url(#a-nts)" d="M440 410 V376"/>
+  <path class="ar" stroke="#1f6b4c" marker-end="url(#a-nts)" d="M370 451 H334"/>
+  <path class="ar" stroke="#3f8f3a" marker-end="url(#a-pre)" d="M210 492 V521"/>
+  <path class="ar" stroke="#6a4fb5" marker-end="url(#a-prim)" d="M210 600 V631"/>
+  <path class="ar" stroke="#b07a1f" marker-end="url(#a-end)" d="M530 635 V611"/>
+  <path class="ar" stroke="#4f73a8" marker-end="url(#a-sp)" d="M530 525 V496"/>
+  <rect class="box" x="150" y="10" width="180" height="62" fill="#f3e3df" stroke="#9c5b4a"/>
+  <text x="240.0" y="36.5">Medial prefrontal</text>
+  <text x="240.0" y="58.5">cortex</text>
+  <rect class="box" x="370" y="10" width="320" height="62" fill="#f3e3df" stroke="#9c5b4a"/>
+  <text class="b" x="530.0" y="47.5">Insular cortex</text>
+  <rect class="box" x="200" y="110" width="300" height="62" fill="#f0f0d8" stroke="#7d7d2a"/>
+  <text class="b" x="350.0" y="147.5">Amygdala</text>
+  <rect class="box" x="600" y="110" width="100" height="62" fill="#ebe2ef" stroke="#5e3a6e"/>
+  <text x="650.0" y="147.5">Thalamus</text>
+  <rect class="box" x="200" y="210" width="340" height="62" fill="#e3edf7" stroke="#1f6fb2"/>
+  <text class="b" x="370.0" y="247.5">Hypothalamus</text>
+  <rect class="box" x="130" y="300" width="370" height="72" fill="#f1e6f1" stroke="#8a5a8e"/>
+  <text x="315.0" y="331.5">Autonomic centers in brainstem</text>
+  <text class="b" x="315.0" y="353.5">reticular formation</text>
+  <rect class="box" x="560" y="300" width="140" height="72" fill="#fae1e0" stroke="#d1342f"/>
+  <text x="630.0" y="331.5">Parabrachial</text>
+  <text x="630.0" y="353.5">nucleus</text>
+  <rect class="box" x="90" y="410" width="240" height="82" fill="#e3f1df" stroke="#3f8f3a"/>
+  <text x="210.0" y="435.5">Preganglionic neurons</text>
+  <text x="210.0" y="457.5">in brainstem and</text>
+  <text x="210.0" y="479.5">spinal cord</text>
+  <rect class="box" x="370" y="410" width="330" height="82" fill="#d9e9df" stroke="#1f6b4c"/>
+  <text class="b" x="535.0" y="446.5">Nucleus of the</text>
+  <text class="b" x="535.0" y="468.5">solitary tract</text>
+  <rect class="box" x="90" y="525" width="240" height="75" fill="#e9e3f6" stroke="#6a4fb5"/>
+  <text x="210.0" y="558.0">Primary motor neurons</text>
+  <text x="210.0" y="580.0">in autonomic ganglia</text>
+  <rect class="box" x="370" y="525" width="330" height="82" fill="#e2e9f4" stroke="#4f73a8"/>
+  <text x="535.0" y="550.5">Spinal visceral sensory</text>
+  <text x="535.0" y="572.5">neurons; cranial nerves</text>
+  <text x="535.0" y="594.5">IX and X</text>
+  <rect class="box" x="150" y="635" width="490" height="62" fill="#f8eed6" stroke="#b07a1f"/>
+  <text x="395.0" y="661.5">End organs</text>
+  <text x="395.0" y="683.5">(smooth muscle, cardiac muscle, and glands)</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 240 1520 810" role="img" aria-labelledby="title desc">
+  <title id="title">The pinhole camera</title>
+  <desc id="desc">A box camera of depth f with a pinhole at the centre of its front face. Camera axes X, Y, Z originate at the pinhole, Z pointing out toward a tower P. Dashed rays from the top and bottom of the tower pass through the pinhole and form an inverted image P′ on the image plane at the back of the box, which has its own image axes x, y (red). The projection is x = −fX/Z, y = −fY/Z.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/>
+    </marker>
+    <style>
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
+      .obj { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-linejoin: round; }
+      .ray { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-dasharray: 14 12; }
+      .axis { fill: none; stroke: #2b2b2b; stroke-width: 5; stroke-linecap: round; }
+      .raxis { fill: none; stroke: #d1342f; stroke-width: 5; stroke-linecap: round; }
+      .lbl { font: 50px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .var { font: italic 60px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .rvar { font: italic 54px "Times New Roman", Times, Georgia, serif; fill: #d1342f; }
+      .eq { font: italic 66px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .eqo { font: 66px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- camera box (wireframe) -->
+  <path class="box" d="M297 255 H765 V662 H297 Z"/>
+  <path class="box" d="M42 540 H510 V945 H42 Z"/>
+  <path class="box" d="M42 540 L297 255 M510 540 L765 255 M510 945 L765 662 M42 945 L297 662"/>
+
+  <!-- rays through the pinhole -->
+  <path class="ray" d="M1437 378 L643 570 L190 680"/>
+  <path class="ray" d="M1408 612 L643 570 L200 552"/>
+
+  <!-- inverted image P′ on the image plane -->
+  <path class="obj" d="M178 556 L204 548 L204 640 L178 650 Z M178 650 L190 680 L204 640 M190 680 L178 650"/>
+  <text class="var" x="150" y="740">P′</text>
+
+  <!-- image-plane axes (red) -->
+  <path class="raxis" d="M200 548 L178 420" marker-end="url(#arrow-red)"/>
+  <path class="raxis" d="M200 548 L268 500" marker-end="url(#arrow-red)"/>
+  <text class="rvar" x="138" y="450">y</text>
+  <text class="rvar" x="268" y="478">x</text>
+  <text class="lbl" x="70" y="318">image</text>
+  <text class="lbl" x="70" y="366">plane</text>
+
+  <!-- pinhole and camera axes -->
+  <ellipse class="obj" cx="643" cy="570" rx="11" ry="20"/>
+  <path class="axis" d="M643 570 V318" marker-end="url(#arrow)"/>
+  <path class="axis" d="M643 570 L826 386" marker-end="url(#arrow)"/>
+  <path class="axis" d="M643 570 H928" marker-end="url(#arrow)"/>
+  <text class="var" x="590" y="345">Y</text>
+  <text class="var" x="836" y="436">X</text>
+  <text class="var" x="896" y="548">Z</text>
+  <text class="lbl mid" x="655" y="636">pinhole</text>
+
+  <!-- object P (tower) -->
+  <path class="obj" d="M1408 455 L1450 445 L1468 435 L1468 610 L1450 628 L1408 612 Z M1450 445 V628"/>
+  <path class="obj" d="M1408 455 L1437 378 L1450 445 M1437 378 L1468 435"/>
+  <path class="obj" d="M1416 465 h11 v26 h-11 Z M1432 462 h11 v26 h-11 Z"/>
+  <text class="var" x="1450" y="350">P</text>
+
+  <!-- focal length -->
+  <path class="axis" d="M22 972 H492" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="var mid" x="257" y="1030">f</text>
+
+  <!-- projection equations -->
+  <text class="eq" x="830" y="882">x</text>
+  <text class="eqo" x="878" y="882">= −</text>
+  <text class="eq mid" x="1044" y="842">fX</text>
+  <path class="axis" d="M998 860 H1090" style="stroke-width:4"/>
+  <text class="eq mid" x="1044" y="920">Z</text>
+
+  <text class="eq" x="1180" y="882">y</text>
+  <text class="eqo" x="1226" y="882">= −</text>
+  <text class="eq mid" x="1392" y="842">fY</text>
+  <path class="axis" d="M1346 860 H1438" style="stroke-width:4"/>
+  <text class="eq mid" x="1392" y="920">Z</text>
+</svg>

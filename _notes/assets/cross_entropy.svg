@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" role="img" aria-labelledby="title desc">
+  <title id="title">Cross-entropy decomposition</title>
+  <desc id="desc">Stacked bars: the entropy H(p) bar plus the KL divergence D_q(p) bar together span the same length as the cross-entropy H_q(p) bar, i.e. H_q(p) = H(p) + D_q(p).</desc>
+  <defs>
+    <style>
+      .bar { stroke: #2b2b2b; stroke-width: 3; }
+      .h { fill: #d1342f; fill-opacity: 0.6; }
+      .hq { fill: #d1342f; fill-opacity: 0.28; }
+      .d { fill: #c13b9b; fill-opacity: 0.5; }
+      .m { font: italic 30px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .sub { font-size: 20px; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #d1342f; fill-opacity: 0.75; }
+    </style>
+  </defs>
+  <rect class="bar h" x="2" y="2" width="308" height="58"/>
+  <rect class="bar hq" x="2" y="60" width="448" height="58"/>
+  <rect class="bar d" x="310" y="118" width="140" height="58"/>
+  <text class="m" x="156" y="31">H(p)</text>
+  <text class="m" x="226" y="89">H<tspan class="sub" dy="8">q</tspan><tspan dy="-8">(p)</tspan></text>
+  <text class="m" x="380" y="147">D<tspan class="sub" dy="8">q</tspan><tspan dy="-8">(p)</tspan></text>
+  <text class="lbl" x="318" y="44">Cross-entropy</text>
+</svg>

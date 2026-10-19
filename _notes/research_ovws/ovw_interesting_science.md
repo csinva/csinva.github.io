@@ -11,12 +11,12 @@ typora-copy-images-to: ../assets
 - [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox)
 - [Held & Hein 1963](https://marom.net.technion.ac.il/files/2016/07/Held-1963.pdf) - moving kittens
 - [Human attention vqa dataset (VQA HAT) ~ 60k images](https://computing.ece.vt.edu/~abhshkdz/vqa-hat/)
-- [Understanding deep learning requires rethinking generalization](https://arxiv.org/abs/1611.03530)
+- Understanding deep learning requires rethinking generalization ([zhang et al. 2016](https://arxiv.org/abs/1611.03530))
 - [Mike the headless chicken](https://en.wikipedia.org/wiki/Mike_the_Headless_Chicken)
 - [thompson 96 evolved circuit](https://link.springer.com/chapter/10.1007/3-540-63173-9_61)
 - [The Code for Facial Identity in the Primate Brain](https://www.sciencedirect.com/science/article/pii/S009286741730538X) - can decode 50 face components from 206 neurons
 - [Stimulating memory](https://www.wired.com/story/ml-brain-boost/)
-- [herculano-houzel talk](http://www.suzanaherculanohouzel.com/lab) 
+- [herculano-houzel talk](http://www.suzanaherculanohouzel.com/lab)
 - TMS - changing people’s minds
 - [Different languages, similar encoding efficiency: Comparable information rates across the human communicative niche](https://advances.sciencemag.org/content/5/9/eaaw2594)
   - [“Languages vary a lot in terms of the information that they pack into a syllable and also in the rate that they are spoken at. But the interesting thing is that the two kind of balance each other, so that more information dense languages are spoken slower, and those that are less informationally heavy are spoken faster. This means that there is a steady information rate that is very similar among languages](https://www.technologynetworks.com/neuroscience/news/different-tongue-same-information-17-language-study-reveals-how-we-all-communicate-at-a-similar-323584?fbclid=IwAR2pZfXqaaQbSkOpiXt6x8Uqj_fX2iwxsPp-f7CJaYSZ0Nrm_slez58_Epc)

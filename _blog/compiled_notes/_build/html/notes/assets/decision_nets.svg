@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="76 8 984 444" role="img" aria-labelledby="title desc">
+  <title id="title">Airport-siting decision networks</title>
+  <desc id="desc">Left: a simple decision network for the airport-siting problem. Decision node Airport Site (rectangle) points to chance nodes Deaths, Noise and Cost; Air Traffic points to Deaths and Noise; Litigation and Construction point to Cost; Deaths, Noise and Cost point to the utility node U (diamond). Right: a simplified representation in which the outcome chance nodes are factored out, so Airport Site, Air Traffic, Litigation and Construction point directly to U.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linejoin: round; }
+      .sep { stroke: #8a8a8a; stroke-width: 1.5; }
+      .name { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+
+  <!-- Figure 16.6: decision network -->
+  <line class="edge" x1="303.3" y1="75.0" x2="411.6" y2="156.2" marker-end="url(#arrow)"/>
+  <line class="edge" x1="284.8" y1="75.0" x2="426.7" y2="268.2" marker-end="url(#arrow)"/>
+  <line class="edge" x1="277.7" y1="75.0" x2="433.5" y2="382.4" marker-end="url(#arrow)"/>
+  <line class="edge" x1="272.0" y1="185.0" x2="372.5" y2="185.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="238.2" y1="209.8" x2="395.2" y2="276.7" marker-end="url(#arrow)"/>
+  <line class="edge" x1="238.2" y1="324.8" x2="395.2" y2="391.7" marker-end="url(#arrow)"/>
+  <line class="edge" x1="280.0" y1="415.0" x2="372.5" y2="415.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="485.6" y1="213.3" x2="572.6" y2="282.3" marker-end="url(#arrow)"/>
+  <line class="edge" x1="526.0" y1="300.0" x2="555.5" y2="300.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="485.6" y1="386.7" x2="572.6" y2="317.7" marker-end="url(#arrow)"/>
+  <rect class="node" x="174.0" y="13.0" width="176" height="62"/>
+  <text class="name" x="262" y="44">Airport Site</text>
+  <ellipse class="node" cx="180" cy="185" rx="92" ry="32"/>
+  <text class="name" x="180" y="185">Air Traffic</text>
+  <ellipse class="node" cx="180" cy="300" rx="92" ry="32"/>
+  <text class="name" x="180" y="300">Litigation</text>
+  <ellipse class="node" cx="180" cy="415" rx="100" ry="32"/>
+  <text class="name" x="180" y="415">Construction</text>
+  <ellipse class="node" cx="450" cy="185" rx="76" ry="32"/>
+  <text class="name" x="450" y="185">Deaths</text>
+  <ellipse class="node" cx="450" cy="300" rx="76" ry="32"/>
+  <text class="name" x="450" y="300">Noise</text>
+  <ellipse class="node" cx="450" cy="415" rx="76" ry="32"/>
+  <text class="name" x="450" y="415">Cost</text>
+  <path class="node" d="M595 262 L633 300 L595 338 L557 300 Z"/>
+  <text class="name" x="595" y="300">U</text>
+  <line class="sep" x1="668" y1="10" x2="668" y2="450"/>
+
+  <!-- Figure 16.7: simplified, outcome nodes factored out -->
+  <line class="edge" x1="870.6" y1="75.0" x2="1004.0" y2="275.9" marker-end="url(#arrow)"/>
+  <line class="edge" x1="859.3" y1="212.0" x2="994.1" y2="285.8" marker-end="url(#arrow)"/>
+  <line class="edge" x1="902.0" y1="300.0" x2="980.5" y2="300.0" marker-end="url(#arrow)"/>
+  <line class="edge" x1="860.5" y1="387.4" x2="994.1" y2="314.2" marker-end="url(#arrow)"/>
+  <rect class="node" x="762.0" y="13.0" width="176" height="62"/>
+  <text class="name" x="850" y="44">Airport Site</text>
+  <ellipse class="node" cx="810" cy="185" rx="92" ry="32"/>
+  <text class="name" x="810" y="185">Air Traffic</text>
+  <ellipse class="node" cx="810" cy="300" rx="92" ry="32"/>
+  <text class="name" x="810" y="300">Litigation</text>
+  <ellipse class="node" cx="810" cy="415" rx="100" ry="32"/>
+  <text class="name" x="810" y="415">Construction</text>
+  <path class="node" d="M1020 262 L1058 300 L1020 338 L982 300 Z"/>
+  <text class="name" x="1020" y="300">U</text>
+</svg>

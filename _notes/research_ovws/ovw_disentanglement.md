@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: disentanglement
+subtitle: Some papers on learning disentangled representations with VAEs, GANs, and other methods.
 category: research
 typora-copy-images-to: ../assets
 ---
@@ -21,30 +22,28 @@ The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\
 ## disentangled vae losses
 
 
-| reconstruction loss                             | compactness prior loss                           |         total correlation loss             |
+| <span class="cblue">reconstruction loss</span>                             | <span class="corange">compactness prior loss</span>                           |         <span class="cgreen">total correlation loss</span>             |
 | ----------------------------------------------- | ------------------------------------------------- |:-------------------------------------------: |
 | encourages accurate reconstruction of the input | encourages points to be compactly placed in space | encourages latent variables to be independent |
 
 
 - summarizing the losses
-  - **reconstruction loss** - measures the quality of the reconstruction, the form of the loss changes based on the assumed distribution of the likelihood of each pixel
+  - <span class="cblue">**reconstruction loss**</span> - measures the quality of the reconstruction, the form of the loss changes based on the assumed distribution of the likelihood of each pixel
     - *binary cross entropy loss* - corresopnds to bernoulli distr., most common - doesn't penalize (0.1, 0.2) and (0.4, 0.5) the same way, which might be problematic
     - *mse loss* - gaussian distr. - tends to focus on a fex pixels that are very wrong
     - *l1 loss* - laplace distr.
-  - **compactness prior loss**
+  - <span class="corange">**compactness prior loss**</span>
     - doesn't use the extra injected latent noise
     - tries to push all the points to the same place
     - emphasises smoothness of z, using as few dimensions of z as possible, and the main axes of z to capture most of the data variability
     - usually assume prior is standard normal, resulting in pushing the code means to 0 and code variance to 1
-    - we can again split this term $\sum_i \underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} = \underbrace{\sum_i I(x; z)}_{\text{mutual info}} + \underbrace{\text{KL} \left(p_\phi( \mathbf z_i)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{factorial prior loss}}$
-      - (see [factor-vae paper for proof](https://arxiv.org/pdf/1802.05983.pdf))
-  - **total correlation loss** - encourages factors to be independent
+    - we can again split this term $$\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} = \cpurple{\underbrace{\sum_i I(x; z)}_{\text{mutual info}}} + \cpink{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{factorial prior loss}}}$$
+      - (see factor-vae paper for proof ([kim & mnih 2018](https://arxiv.org/pdf/1802.05983.pdf)))
+  - <span class="cgreen">**total correlation loss**</span> - encourages factors to be independent
     - measures dependence between marginals of the latent vars
     - intractable (requires pass through the whole dset)
     - instead sample $dec_\phi(\mathbf z\vert \mathbf x)$ and create $\prod_j dec_\phi( \mathbf z_i\vert \mathbf x) $ by permuting across the batch dimension
       - now, calculate the kl with the *density-ratio trick* - train a classifier to approximate the ratio from these terms
-
-
 
 ## disentangled vae in code
 
@@ -81,8 +80,6 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 	return rec_loss + beta * KLD
 ```
 
-
-
 ## vaes for interpretation
 
 - icam ([bass et al. 2020](https://proceedings.neurips.cc/paper/2020/file/56f9f88906aebf4ad985aaec7fa01313-Paper.pdf)) - learn disentangled repr using vae with adv loss to make repr class-relevant
@@ -91,25 +88,25 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 ## various vaes
 
 - vae ([kingma & welling, 2013](https://arxiv.org/abs/1312.6114))
-- beta-vae ([higgins et al. 2017](https://openreview.net/references/pdf?id=Sy2fzU9gl)) - add hyperparameter $\beta$ to weight the compactness prior term
-- beta-vae H ([burgess et al. 2018](https://arxiv.org/pdf/1804.03599.pdf)) - add parameter $C$ to control the contribution of the compactness prior term
-  - $\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C\vert$
-  -  C is gradually increased from zero (allowing for a larger compactness prior loss) until good quality reconstruction is achieved
-- factor-vae ([kim & minh 2018](https://arxiv.org/abs/1802.05983)) - adds total correlation loss term
+- beta-vae ([higgins et al. 2017](https://openreview.net/references/pdf?id=Sy2fzU9gl)) - add hyperparameter $\beta$ to weight the <span class="corange">compactness prior term</span>
+- beta-vae H ([burgess et al. 2018](https://arxiv.org/pdf/1804.03599.pdf)) - add parameter $C$ to control the contribution of the <span class="corange">compactness prior term</span>
+  - $$\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \cblue{\underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} -C\vert$$<!-- -->
+  - C is gradually increased from zero (allowing for a larger <span class="corange">compactness prior loss</span>) until good quality <span class="cblue">reconstruction</span> is achieved
+- factor-vae ([kim & minh 2018](https://arxiv.org/abs/1802.05983)) - adds <span class="cgreen">total correlation loss</span> term
   - computes *total correlation loss term* using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
   - beta-TC-VAE = beta-total-correlation VAE ([chen et al. 2018](https://arxiv.org/abs/1802.04942)) - same objective but computed without need for discriminator
     - use minibatch-weighted sampling to compute each of the 3 terms that make up the original VAE *compactness prior loss*
     - main idea is to better approximate $q(z)$ by weighting samples appropriately - biased, but easier to compute
-  - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
+  - Interpretable VAEs for nonlinear group factor analysis ([ainsworth et al. 2018](https://arxiv.org/abs/1802.06765))
 - Wasserstein Auto-Encoders ([tolstikhin et al.](https://arxiv.org/pdf/1711.01558.pdf)) - removes the mutual info part of the loss
   - wasserstein distance = earth-movers distance, how far apart are 2 distrs
-  - minimizes wasserstein distance + penalty which is similar to auto-encoding penalty,  without the mutual info term
+  - minimizes wasserstein distance + penalty which is similar to auto-encoding penalty, without the mutual info term
   - another intuition: rather than map each point to a ball (since VAE adds noise to each latent repr), we only constraint the overall distr of Z, potentially making reconstructions less blurry (but potentially making latent space less smooth)
-  - ![wae](../assets/wae.png)
+  - <img style="width: 750px; max-width: 100%;" src="../assets/wae.svg" alt="VAE vs WAE"/>
 - Adversarial Latent Autoencoder ([pidhorskyi et al. 2020](https://arxiv.org/pdf/2004.04467.pdf))
   - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
-  - ![alae](../assets/alae.png)
-- [Variational Autoencoders Pursue PCA Directions (by Accident)](https://arxiv.org/pdf/1812.06775.pdf)
+  - <img style="width: 700px; max-width: 100%;" src="../assets/alae.svg" alt="ALAE architecture"/>
+- Variational Autoencoders Pursue PCA Directions (by Accident) ([rolinek et al. 2018](https://arxiv.org/pdf/1812.06775.pdf))
   - local orthogonality of the embedding transformation
   - prior $p(z)$ is standard normal, so encoder is assumed to be Gaussian with a certain mean, and **diagonal covariance**
   - disentanglement is sensitive to rotations of the latent embeddings but reconstruction err doesn't care
@@ -121,11 +118,21 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - when encoder is unimodal, $I(x; z)$ gives us a good handle on this
     - prior structure on the latents (e.g. independence, sparsity)
   - to trade these off, can penalize divergence between $q_\phi(z)$ and $p(z)$
-  - nonisotropic priors -  isotropic priors are only good up to rotation in the latent space
+  - nonisotropic priors - isotropic priors are only good up to rotation in the latent space
     - by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily
   - sparse prior - can help do clustering
 - VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering ([graving & couzin 2020](https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf)) - reduce dims + cluster without specifying number of clusters
-  - ![Screen Shot 2020-09-10 at 11.40.10 PM](../assets/sne_eq.png)
+  - objective
+
+    $$
+    \begin{aligned}
+    \underset{\boldsymbol\theta,\boldsymbol\phi}{\arg\min}\; -\text{SNELBO}(\mathbf X,\boldsymbol\theta,\boldsymbol\phi) &= \underset{\boldsymbol\theta,\boldsymbol\phi}{\arg\min}\; -\frac{1}{N}\sum_i \text{ELBO}_i(\mathbf x_i,\boldsymbol\theta,\boldsymbol\phi) - \alpha\, \text{SNE}_i(\mathbf X,\boldsymbol\phi) \\
+    \text{ELBO}_i(\mathbf x_i,\boldsymbol\theta,\boldsymbol\phi) &= \gamma\, \mathbb E_{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i)} \underbrace{\left[\log p_{\boldsymbol\theta}(\mathbf x_i \vert \mathbf z_i)\right]}_{\text{distortion}} - \beta\, \underbrace{\mathbb{KL}\left[q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \,\Vert\, p_{\boldsymbol\theta}(\mathbf z)\right]}_{\text{rate}} \\
+    \text{SNE}_i(\mathbf X,\boldsymbol\phi) &= \mathbb E_{\substack{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \\ \mathbf z_j\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_j)}} \left[\sum_j \text{SNE}_{j \vert i}(\mathbf x_i,\mathbf x_j,\boldsymbol\phi)\right] \\
+    &= \mathbb E_{\substack{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \\ \mathbf z_j\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_j)}} \underbrace{\left[\sum_j \mathbb{KL}\Big[\overbrace{p(\mathbf x_j \vert \mathbf x_i)}^{\text{dist in original space}} \,\Big\Vert\, \underbrace{q_{\boldsymbol\phi}(\mathbf z_j \vert \mathbf z_i)}_{\text{dist in latent space}}\Big]\right]}_{\text{pairwise similarity}}
+    \end{aligned}
+    $$
+
   - **stochastic neighbor regularizer** that optimizes pairwise similarity kernels between original and latent distrs. to strengthen local neighborhood preservation
     - can use different neighbor kernels, e.g. t-SNE similarity (van der Maaten & Hinton, 2008) or Gaussian SNE kernel (Hinton & Roweis, 2003)
     - perplexity annealing technique (Kobak and Berens, 2019) - decay the size of local neighborhoods during training (helps to preserve structure at multiple scales)
@@ -191,13 +198,13 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - mutual info is intractable so optimizes a lower bound
     - Stylegan ([karras et al. 2018](https://arxiv.org/abs/1812.04948))
       - introduced perceptual path length and linear separability to measure the disentanglement property of latent space
-      - ![stylegan](../assets/stylegan.png)
-      - Stylegan2 ([karras et al. 2019](https://arxiv.org/abs/1912.04958)): ![stylegan2](../assets/stylegan2.png)
+      - <img style="width: 650px; max-width: 100%;" src="../assets/stylegan.svg" alt="StyleGAN generator"/>
+      - Stylegan2 ([karras et al. 2019](https://arxiv.org/abs/1912.04958)): <img style="width: 950px; max-width: 100%;" src="../assets/stylegan2.svg" alt="StyleGAN2 generator revisions"/>
         - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
         - also has jacobian penalty on mapping from style space $w$ to output image $y$
-- [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
-- [Clustering by Directly Disentangling Latent Space](https://arxiv.org/abs/1911.05210) - clustering in the latent space of a gan
-- [Semi-Supervised StyleGAN for Disentanglement Learning](https://arxiv.org/abs/2003.03461) - further improvements on StyleGAN using labels in the training data
+- DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images ([xiao et al. 2017](https://arxiv.org/abs/1711.05415))
+- Clustering by Directly Disentangling Latent Space ([ding et al. 2019](https://arxiv.org/abs/1911.05210)) - clustering in the latent space of a gan
+- Semi-Supervised StyleGAN for Disentanglement Learning ([nie et al. 2020](https://arxiv.org/abs/2003.03461)) - further improvements on StyleGAN using labels in the training data
 - The Hessian Penalty: A Weak Prior for Unsupervised Disentanglement ([peebles et al. 2020](https://arxiv.org/abs/2008.10599))
     - if we perturb a single component of a network’s input, then we would like the change in the output to be independent of the other input components
     - minimize off-diagonal entries of Hessian matrix (can be obtained with finite differences)
@@ -248,17 +255,15 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
         - used human experiments
         - limited to binary classification
     - Interpreting Deep Visual Representations via Network Dissection ([zhou et al. 2017](https://arxiv.org/abs/1711.05611))
-    
       - obtain image attributes for each z (using classifier, not human labels)
         - this classifier may put bias back in
-    
       - to find directions representing an attribute, train a linear model to predict it from z
     - GAN Dissection: Visualizing and Understanding Generative Adversarial Networks ([bau et al. 2018](https://arxiv.org/abs/1811.10597)) - identify group of interpretable units based on segmentation of training images
       - find directions which allow for altering the attributes
-    - [GANSpace: Discovering Interpretable GAN Controls](https://arxiv.org/abs/2004.02546) - use PCA in the latent space (w for styleGAN, activation-space at a specific layer for BigGAN) to select directions
+    - GANSpace: Discovering Interpretable GAN Controls ([härkönen et al. 2020](https://arxiv.org/abs/2004.02546)) - use PCA in the latent space (w for styleGAN, activation-space at a specific layer for BigGAN) to select directions
     - Editing in Style: Uncovering the Local Semantics of GANs ([collins et al. 2020](https://arxiv.org/abs/2004.14367)) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
       - add style transfer using target/source image
-    - [Unsupervised Discovery of Interpretable Directions in the GAN Latent Space](https://arxiv.org/abs/2002.03754) - loss function which tries to recover random shifts made to the latent space
+    - Unsupervised Discovery of Interpretable Directions in the GAN Latent Space ([voynov & babenko 2020](https://arxiv.org/abs/2002.03754)) - loss function which tries to recover random shifts made to the latent space
 
 # misc
 - Learning Diverse and Discriminative Representations via the Principle of Maximal Coding Rate Reduction ([yu, ..., & ma, 2020](https://arxiv.org/abs/2006.08558))
@@ -275,22 +280,22 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - like a generalization of information gain
   - evaluation
     - with label corruption performs better
-- [Learned Equivariant Rendering without Transformation Supervision](https://arxiv.org/abs/2011.05787) - separate foreground / background using video
+- Learned Equivariant Rendering without Transformation Supervision ([resnick et al. 2020](https://arxiv.org/abs/2011.05787)) - separate foreground / background using video
 
 # (semi)-supervised disentanglement
 
 **these papers use some form of supervision for the latent space when disentangling**
 
-- [Semi-supervised Disentanglement with Independent Vector Variational Autoencoders](https://arxiv.org/pdf/2003.06581.pdf)
-  - ![Screen Shot 2020-05-21 at 12.47.22 PM](../assets/semi_supervised_vae.png)
-- [Learning Disentangled Representations with Semi-Supervised Deep Generative Models](https://arxiv.org/abs/1706.00400) - put priors on interpretable variables during training and learn the rest
-- [Weakly Supervised Disentanglement with Guarantees](https://arxiv.org/abs/1910.09772)
+- Semi-supervised Disentanglement with Independent Vector Variational Autoencoders ([kim et al. 2020](https://arxiv.org/pdf/2003.06581.pdf))
+  - <img style="width: 650px; max-width: 100%;" src="../assets/semi_supervised_vae.svg" alt="Independent vector VAE"/>
+- Learning Disentangled Representations with Semi-Supervised Deep Generative Models ([siddharth et al. 2017](https://arxiv.org/abs/1706.00400)) - put priors on interpretable variables during training and learn the rest
+- Weakly Supervised Disentanglement with Guarantees ([shu et al. 2019](https://arxiv.org/abs/1910.09772))
   - prove results on disentanglement for rank pairing
-  - different types of available supervision![Screen Shot 2020-05-21 at 1.05.19 PM](../assets/unsupervised_settings.png)
+  - different types of available supervision<img style="width: 750px; max-width: 100%;" src="../assets/unsupervised_settings.svg" alt="Weak supervision settings"/>
     - **restricted labeling** - given labels for some groundtruth factors (e.g. label "glasses", "gender" for all images)
     - match pairing - given pairs or groups (e.g. these images all have glasses)
     - rank pairing - label whether a feature is greater than another (e.g. this image has darker skin tone than this one)
-- [Weakly Supervised Disentanglement by Pairwise Similarities](https://arxiv.org/abs/1906.01044) - use pairwise supervision
+- Weakly Supervised Disentanglement by Pairwise Similarities ([chen & batmanghelich 2019](https://arxiv.org/abs/1906.01044)) - use pairwise supervision
 
 # evaluating disentanglement
 
@@ -302,7 +307,6 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - unsupervised learning of disentangled reprs. is impossible without inductive biases
 - *note* - vae's come with reconstruction loss + compactness prior loss which can be looked at on their own
 - data
-  
   - [dsprites dataset](https://github.com/deepmind/dsprites-dataset/) has known latent factors we try to recover
 - [beta-vae **disentanglement metric score** = higgins metric](https://medium.com/uci-nlp/summary-beta-vae-learning-basic-visual-concepts-with-a-constrained-variational-framework-91ad843b49e8) - see if we can capture known disentangled repr. using pairs of things where only one thing changes
   - start with a known generative model that has an observed set of independent and interpretable factors (e.g. scale, color, etc.) that can be used to simulate data.
@@ -310,7 +314,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - use the inference network to map each pair of images to a pair of latent variables.
   - train a linear classifier to predict which interpretable factor was held constant based on the latent representations. The accuracy of this predictor is the disentanglement metric score.
 - Evaluating Disentangled Representations ([sepliarskaia et al. 2019](https://arxiv.org/abs/1910.05587))
-  - defn 1  (Higgins et al., 2017; Kim and Mnih, 2018; Eastwood and Williams, 2018) = **factorVAE metric**: A disentangled representation is a representation where a change in one latent dimension corresponds to a change in one generative factor while being relatively invariant to changes in other generative factors.
+  - defn 1 (Higgins et al., 2017; Kim and Mnih, 2018; Eastwood and Williams, 2018) = **factorVAE metric**: A disentangled representation is a representation where a change in one latent dimension corresponds to a change in one generative factor while being relatively invariant to changes in other generative factors.
   - defn 2 (Locatello et al., 2018; Kumar et al., 2017): A disentangled representation is a representation where a change in a single generative factor leads to a change in a single factor in the learned representation.
   - metrics
     - **DCI**: Eastwood and Williams (2018) - informativeness based on predicting gt factors using latent factors
@@ -321,6 +325,6 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 # non-deep methods
 
 - unifying vae and nonlinear ica ([khemakhem et al. 2020](https://arxiv.org/pdf/1907.04809.pdf))
-	- ICA
-	  - maximize non-gaussianity of $z$ - use kurtosis, negentropy
-	  - minimize mutual info between components of $z$ - use KL, max entropyd
+  - ICA
+    - maximize non-gaussianity of $z$ - use kurtosis, negentropy
+    - minimize mutual info between components of $z$ - use KL, max entropyd

@@ -1,6 +1,7 @@
 ---
 layout: notes
-title: data analysis
+title: data science
+subtitle: Some notes on doing data science - visualization, messy data, feature selection, and reproducibility.
 category: stat
 ---
 
@@ -17,7 +18,7 @@ category: stat
   - R - representative data colleciton
     - simple random sampling = *SRS*
       - w/ replacement: $var(\bar{X}) = \sigma^2 / n$
-      - w/out replacement: $var(\bar{X}) = (1 - \frac{n}{N}) \sigma^2 / n$ 
+      - w/out replacement: $var(\bar{X}) = (1 - \frac{n}{N}) \sigma^2 / n$
   - S - scrutinizing answers
 
 # visualization
@@ -37,11 +38,11 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 
 ## choose an effective visual (2)
 
-| ![Screen Shot 2020-09-28 at 8.08.38 PM](../assets/good_plots.png) | ![Screen Shot 2020-09-28 at 8.08.30 PM](../assets/good_visualizations.png) |
+| <img style="width: 100%; max-width: 300px;" src="../assets/good_plots.svg" alt="Bar chart types"/> | <img style="width: 100%; max-width: 300px;" src="../assets/good_visualizations.svg" alt="Common visual types"/> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![Screen Shot 2020-09-28 at 8.23.47 PM](../assets/stacked_hbar_chart.png) | ![Screen Shot 2020-09-28 at 8.24.37 PM](../assets/grid_breakdown.png) |
-| ![Screen Shot 2020-09-28 at 8.29.34 PM](../assets/avoiding_secondary_axis.png) | ![Screen Shot 2020-09-29 at 9.50.15 AM](../assets/strategic_contrast.png) |
-| ![Screen Shot 2020-09-29 at 9.56.44 AM](../assets/preattentive_attributes.png) | ![Screen Shot 2020-09-29 at 11.20.07 AM](../assets/line_charts.png) |
+| <img style="width: 100%; max-width: 320px;" src="../assets/stacked_hbar_chart.svg" alt="100% stacked horizontal bar chart"/> | <img style="width: 100%; max-width: 320px;" src="../assets/grid_breakdown.svg" alt="Interview breakdown"/> |
+| <img style="width: 100%; max-width: 320px;" src="../assets/avoiding_secondary_axis.svg" alt="Avoiding a secondary y-axis"/> | <img style="width: 100%; max-width: 320px;" src="../assets/strategic_contrast.svg" alt="Using contrast strategically"/> |
+| <img style="width: 100%; max-width: 420px;" src="../assets/preattentive_attributes.svg" alt="Preattentive attributes"/> | <img style="width: 100%; max-width: 320px;" src="../assets/line_charts.svg" alt="Line charts by category"/> |
 
 - generally avoid pie/donut charts, 3D charts, 2nd y-axes
 - tables
@@ -53,7 +54,7 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 
 ## eliminate clutter (3)
 
-- gestalt principles of  vision
+- gestalt principles of vision
   - proximity - close things are grouped
   - similarity - similar things are grouped
   - connection - connected things are grouped
@@ -96,34 +97,33 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
       - plot percentiles of a data set against percentiles of a theoretical distr.
       - should be straight line if they match
   3. transformations = feature engineering
-    - log/sqrt make long-tail data more centered and more normal
-    - **delta-method** - sets comparable bw (wrt variance) after log or sqrt transform: $Var(g(X)) \approx [g'(\mu_X)]^2 Var(X)$ where $\mu_X = E(X)$
-    - if assumptions don't work, sometimes we can transform data so they work
-    - *transform x* - if residuals generally normal and have constant variance 
-      - *corrects nonlinearity*
-    - *transform y* - if relationship generally linear, but non-constant error variance
-      - *stabilizes variance*
-    - if both problems, try y first
-    - Box-Cox: Y' = $Y^l \: if \: l \neq 0$, else log(Y)
+     - log/sqrt make long-tail data more centered and more normal
+     - **delta-method** - sets comparable bw (wrt variance) after log or sqrt transform: $$Var(g(X)) \approx [g'(\mu_X)]^2 Var(X)$$ where $\mu_X = E(X)$
+     - if assumptions don't work, sometimes we can transform data so they work
+     - *transform x* - if residuals generally normal and have constant variance
+       - *corrects nonlinearity*
+     - *transform y* - if relationship generally linear, but non-constant error variance
+       - *stabilizes variance*
+     - if both problems, try y first
+     - Box-Cox: Y' = $$Y^l \: if \: l \neq 0$$, else log(Y)
   4. *least squares*
     - inversion of pxp matrix ~O(p^3)
     - regression effect - things tend to the mean (ex. bball children are shorter)
     - in high dims, l2 worked best
   5. kernel smoothing + lowess
-    - can find optimal bandwidth
-    - *nadaraya-watson kernel smoother* - locally weighted scatter plot smoothing
-      - $$g_h(x) = \frac{\sum K_h(x_i - x) y_i}{\sum K_h (x_i - x)}$$ where h is bandwidth
-    - *loess* - multiple predictors / *lowess* - only 1 predictor
-      - also called *local polynomial smoother* - locally weighted polynomial
-      - take a window (span) around a point and fit weighted least squares line to that point
-      - replace the point with the prediction of the windowed line
-      - can use local polynomial fits rather than local linear fits
+     - can find optimal bandwidth
+     - *nadaraya-watson kernel smoother* - locally weighted scatter plot smoothing
+       - $$g_h(x) = \frac{\sum K_h(x_i - x) y_i}{\sum K_h (x_i - x)}$$ where h is bandwidth
+     - *loess* - multiple predictors / *lowess* - only 1 predictor
+       - also called *local polynomial smoother* - locally weighted polynomial
+       - take a window (span) around a point and fit weighted least squares line to that point
+       - replace the point with the prediction of the windowed line
+       - can use local polynomial fits rather than local linear fits
   6. *silhouette plots* - good clusters members are close to each other and far from other clustersf
-
      1. popular graphic method for K selection
-     2. measure of separation between clusters $s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))}$
-       1. a(i) - ave dissimilarity of data point i with other points within same cluster
-       2. b(i) - lowest average dissimilarity of point i to any other cluster
+     2. measure of separation between clusters $s(i) = \frac{\corange{b(i)} - \cblue{a(i)}}{\max(\cblue{a(i)}, \corange{b(i)})}$
+       1. <span class="cblue">a(i)</span> - ave dissimilarity of data point i with other points within same cluster
+       2. <span class="corange">b(i)</span> - lowest average dissimilarity of point i to any other cluster
      3. good values of k maximize the average silhouette score
   7. lack-of-fit test - based on repeated Y values at same X values
 
@@ -133,7 +133,7 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 2. randomly undersample majority class
 3. weighting classes in the loss function - more efficient, but requires modifying model code
 4. generate synthetic minority class samples
-   1. smote ([chawla et al. 2002](https://jair.org/index.php/jair/article/view/10302)) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate![smote](../assets/smote.png)
+   1. smote ([chawla et al. 2002](https://jair.org/index.php/jair/article/view/10302)) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate<img style="width: 600px; max-width: 100%;" src="../assets/smote.svg" alt="SMOTE oversampling"/>
       1. adasyn ([he et al. 2008](https://ieeexplore.ieee.org/abstract/document/4633969/)) - smote, generate more synthetic data for minority examples which are harder to learn (number of samples is proportional to number of nearby samples in a different class)
    2. [smrt](https://github.com/tgsmith61591/smrt) - generate with vae
 5. selectively removing majority class samples
@@ -193,17 +193,16 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 ## matrix completion
 
 - A Survey on Matrix Completion: Perspective of Signal Processing ([li...zhao, 2019](https://arxiv.org/pdf/1901.10885.pdf))
-
   - formulations
     - Exact matrix completion via convex optimization ([candes & recht, 2012](https://dl.acm.org/doi/abs/10.1145/2184319.2184343))
-      - $\min _{\boldsymbol{M}} \operatorname{rank}(\boldsymbol{M})$, s.t. $\left\|\boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\right\|_F \leq \delta$: - this is NP-hard
+      - $$\min _{\boldsymbol{M}} \operatorname{rank}(\boldsymbol{M})$$, s.t. $$\left\vert \boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\right\vert _F \leq \delta$$: - this is NP-hard
     - nuclear norm approxmiation
-      - $\min _{\boldsymbol{M}}\|\boldsymbol{M}\|_*$, s.t. $||\boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}||_F \leq \delta$
+      - $$\min _{\boldsymbol{M}}\vert \boldsymbol{M}\vert _*$$, s.t. $$\vert \vert \boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\vert \vert _F \leq \delta$$
       - this has be formulated as semidefinite programming, nuclear norm relaxation, or robust PCA
     - minimum rank approximation helps with the assumption that the data are corrupted by noise (e.g. ADMiRA ([lee & bresler, 2010](https://ieeexplore.ieee.org/abstract/document/5550497/)))
-      - $\min _{\boldsymbol{M}}\left\|(\boldsymbol{M})_{\Omega}-\boldsymbol{X}_{\Omega}\right\|_F^2$, s.t. $\operatorname{rank}(\boldsymbol{M}) \leq r$
+      - $$\min _{\boldsymbol{M}}\left\vert (\boldsymbol{M})_{\Omega}-\boldsymbol{X}_{\Omega}\right\vert _F^2$$, s.t. $\operatorname{rank}(\boldsymbol{M}) \leq r$
     - matrix factorization is a faster but non-convex approximation (e.g. LMaFit ([wen, yin, & zhang, 2012](https://link.springer.com/article/10.1007/s12532-012-0044-1)))
-      - $\min _{\boldsymbol{U}, \boldsymbol{V}, \boldsymbol{Z}}\left\|\boldsymbol{U} \boldsymbol{V}^T-\boldsymbol{Z}\right\|_F^2$, s.t. $\boldsymbol{Z}_{\Omega}=\boldsymbol{X}_{\Omega}$
+      - $$\min _{\boldsymbol{U}, \boldsymbol{V}, \boldsymbol{Z}}\left\vert \boldsymbol{U} \boldsymbol{V}^T-\boldsymbol{Z}\right\vert _F^2$$, s.t. $$\boldsymbol{Z}_{\Omega}=\boldsymbol{X}_{\Omega}$$
     - $\ell_p$-Norm minimization - use a different norm than Frobenius to handle specific types of noise
     - Adaptive outlier pruning ([yan, yang, & osher, 2013](https://link.springer.com/article/10.1007/s10915-013-9682-3)) - better handles outliers
   - algorithms
@@ -214,29 +213,100 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
     - non-gradient
       - block coordinate descent
       - ADMM: alterntating direction method of multipliers
-
 - Newer approaches
-
   - Simple, Fast, and Flexible Framework for Matrix Completion with Infinite Width Neural Networks ([radhakrishnan...belkin, uhler, 2022](https://arxiv.org/abs/2108.00131)) - use NTK for FCN/CNN to do matrix completion
   - Graph Convolutional Matrix Completion ([van den berg, kipf, & welling, 2017](https://arxiv.org/abs/1706.02263))
   - Transformer methods for image inpainting (e.g. mask-aware tranfsormer, [2022]())
-
-  
 
 # preprocessing
 
 - often good to discretize/binarize features
   - e.g. [from genomics](http://cis.jhu.edu/people/faculty/geman/publications/pdf/Digitizing_omics_profiles_by_divergence_from_a_baseline.pdf)
-
 - whitening
-
   - get decorrelated features $Z$ from inputs $X$
-
-  - $W=$ whitening matrix , selected based on problem goals:
+  - $W=$ whitening matrix, selected based on problem goals:
     - PCA: Maximal compression of $\mathbf{X}$ in $\mathbf{Z}$
       - ZCA: Maximal similarity between $\mathbf{X}$ and $\mathbf{Z}$
       - Cholesky: Inducing structure: $\operatorname{Cov}(X, Z)$ is lower-triangular with positive diagonal elements
       - $W$ is constrained as to enforce $\Sigma_{Z}=I$
+
+# feature selection
+
+## filtering - select based on summary statistic
+
+- ranks features or feature subsets independently of the predictor
+- univariate methods (consider one variable at a time)
+  - ex. variance threshold
+  - ex. T-test of y for each variable
+  - ex. correlation screening: pearson correlation coefficient - this can only capture linear dependencies
+  - mutual information - covers all dependencies
+  - ex. chi$^2$, f anova
+- multivariate methods
+  - features subset selection
+  - need a scoring function
+  - need a strategy to search the space
+  - sometimes used as preprocessing for other methods
+
+## wrapper - recursively eliminate features
+
+- uses a predictor to assess features of feature subsets
+- learner is considered a black-box - use train, validate, test set
+- forward selection - start with nothing and keep adding
+- backward elimination - start with all and keep removing
+- others: Beam search - keep k best path at teach step, GSFS, PTA(l,r), floating search - SFS then SBS
+
+## embedding - select from a model
+
+- uses a predictor to build a model with a subset of features that are internally selected
+- ex. lasso, ridge regression, random forest
+
+# reproducibility
+
+## containerization
+
+- e.g. [docker](https://docs.docker.com/get-started/overview/)
+
+## data version control
+
+- [dvc](https://dvc.org/) - data version control
+  - .dvc folder keeps track of some internal stuff (like .git)
+  - metafiles ending with .dvc are stored in git, tracking big things like data and models
+  - also simple support for keeping track of metrics, displaying pipeline, making plots
+  - keep track of old things using git checkout and dvc checkout
+  - [dagshub](https://dagshub.com/docs/experiment-tutorial/overview/) - built on dvc, like github (gives ~10GB free storage per project)
+    - “Our recommendation is to separate distinct experiments (for example, different types of models) into separate branches, while smaller changes between runs (for example, changing model parameters) are consecutive commits on the same branch.”
+     - not open source :frowning_face:
+ - [replicate.ai](https://replicate.ai/) - version control for ml
+   - lightweight, focuses on tracking model weights / sharing + dependencies
+   - less about hyperparams
+ - [mlflow](https://mlflow.org/) (open-source) from databricks
+   - API and UI for logging parameters, code versions, metrics and output files
+ - [clear-ml](https://github.com/allegroai/trains)
+ - [gigantum](https://www.youtube.com/watch?v=He0hBcq49Gw) - like a closed-source dagshub
+ - [codalab](https://codalab-worksheets.readthedocs.io/en/latest/) - good framework for reproducibility
+ - paid / closed-source
+   - [weights and biases](https://www.wandb.com/) (free for academics, paid otherwise)
+   - [neptune.ai](https://neptune.ai/)
+    - [h20 ai](https://www.youtube.com/watch?time_continue=149&v=ZqCoFp3-rGc&feature=emb_logo) (source [here](https://github.com/h2oai/h2o-3))
+
+## hyperparameter tuning
+
+- weaker versions
+   - [tensorboard](https://www.tensorflow.org/tensorboard) (mainly for deep learning)
+- pytorch-lightning + hydra
+- [ray](https://github.com/ray-project/ray)
+
+## weights and biases
+
+- `wandb.login()` - login to W&B at the start of your session
+- `wandb.init()` - initialise a new W&B, returns a "run" object
+- `wandb.log()` - logs whatever you'd like to log
+
+## workflow management
+
+- [prefect](https://www.prefect.io/core)
+   - **tasks** are basically functions
+   - **flows** are used to describe the dependencies between tasks, such as their order or how they pass data around
 
 # principles
 
@@ -258,10 +328,11 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
     - assume nothing about x and y
     - ex. generate P(x, y) with neural net
     - validation: prediction accuracy
+
   - axioms
     1. Occam
     2. *Rashomon* - lots of different good models, which explains best?
-      - ex. rf is not robust at all
+       - ex. rf is not robust at all
     3. *Bellman* - curse of dimensionality
       - might actually want to increase dimensionality (ex. svms embedded in higher dimension)
   - industry was problem-solving, academia had too much culture
@@ -269,21 +340,21 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 ## box + tukey
 
 - questions
-  1. what points are relevant and irrelevant today in both papers? 
-    - relevant
-      - box
-        - thoughts on scientific method
-        - solns should be simple
-        - necessity for developing experimental design
-        - flaws (cookbookery, mathematistry)
-      - tukey
-        - separating data analysis and stats
-        - all models have flaws
-        - no best models
-        - lots of goold old techniques (e.g. LSR)
-    - irrelevant
-      - some of the data techniques (I think)
-      - tukey multiple-response data has been better attacked (graphical models)
+  1. what points are relevant and irrelevant today in both papers?
+     - relevant
+       - box
+         - thoughts on scientific method
+         - solns should be simple
+         - necessity for developing experimental design
+         - flaws (cookbookery, mathematistry)
+       - tukey
+         - separating data analysis and stats
+         - all models have flaws
+         - no best models
+         - lots of goold old techniques (e.g. LSR)
+     - irrelevant
+       - some of the data techniques (I think)
+       - tukey multiple-response data has been better attacked (graphical models)
   2. how do you think the personal traits of Tukey and Box relate to the scientific opinions expressed in their papers?
     - probably both pretty critical of the science at the time
     - box - great respect for Fisher
@@ -320,7 +391,6 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
     - FUNOP - fulll normal plot
       - can be visualized in table
   - spotty data in more complex situations
-    
     - FUNOR-FUNOM
   - multiple-response data
     - understudied except for factor analysis
@@ -328,11 +398,10 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
     - factor analysis
       1. reduce dimensionality with new coordinates
       2. rotate to find meaningful coordinates
-      
+
       - can use multiple regression factors as one factor if they are very correlated
     - regression techniques always offer hopes of learning more from less data than do variance-component techniques
   - flexibility of attack
-    
     - ex. what unit to measure in
 
 ## models

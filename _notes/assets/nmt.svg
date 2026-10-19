@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1446 780" role="img" aria-labelledby="title desc">
+  <title id="title">Seq2seq with attention, decoding</title>
+  <desc id="desc">Neural machine translation, sequence-to-sequence model with attention. Encoding stage produces hidden states h1, h2, h3. In the attention decoding stage, at step 4 the decoder RNN takes h_init and the END token embedding and outputs h4; Attention4 scores the encoder states against h4 to produce context vector C4; C4 and h4 are concatenated and passed through a feed-forward layer to output the word I. Step 5 repeats with the embedding of I as input, giving h5, Attention5, context C5 and output am.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .t1 { font: bold 46px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .t2 { font: bold 30px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .st { font: bold 27px Helvetica, Arial, sans-serif; }
+      .lb { font: 34px Helvetica, Arial, sans-serif; }
+      .sb { font-size: 22px; }
+      .cell { stroke: #2b2b2b; stroke-width: 1.2; }
+      .ga { fill: none; stroke: #8a8a8a; stroke-width: 4; }
+    </style>
+  </defs>
+
+  <defs><marker id="ga" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/></marker></defs>
+  <text class="t1" x="238" y="48">Neural Machine Translation</text>
+  <text class="t2" x="238" y="88">SEQUENCE TO SEQUENCE MODEL WITH ATTENTION</text>
+  <path d="M0 140 Q0 105 35 105 H1446" fill="none" stroke="#1f6fb2" stroke-width="8"/>
+  <text class="st" x="8" y="150" style="fill:#1f8a4c">Encoding Stage</text>
+  <path d="M70 178 H140 Q165 178 165 203 V780" fill="none" stroke="#1f8a4c" stroke-width="8"/>
+  <text class="st" x="378" y="152" style="fill:#7b4fb5">Attention Decoding Stage</text>
+  <path d="M318 780 V215 Q318 180 353 180 H1446" fill="none" stroke="#7b4fb5" stroke-width="8"/>
+  <rect class="cell" x="207" y="320" width="20" height="20" fill="#d9822b"/>
+  <rect class="cell" x="207" y="340" width="20" height="20" fill="#b8661a"/>
+  <rect class="cell" x="207" y="360" width="20" height="20" fill="#f0a860"/>
+  <rect class="cell" x="207" y="380" width="20" height="20" fill="#8f4a10"/>
+  <rect class="cell" x="227" y="320" width="20" height="20" fill="#b8661a"/>
+  <rect class="cell" x="227" y="340" width="20" height="20" fill="#f0a860"/>
+  <rect class="cell" x="227" y="360" width="20" height="20" fill="#8f4a10"/>
+  <rect class="cell" x="227" y="380" width="20" height="20" fill="#d9822b"/>
+  <rect class="cell" x="247" y="320" width="20" height="20" fill="#f0a860"/>
+  <rect class="cell" x="247" y="340" width="20" height="20" fill="#8f4a10"/>
+  <rect class="cell" x="247" y="360" width="20" height="20" fill="#d9822b"/>
+  <rect class="cell" x="247" y="380" width="20" height="20" fill="#b8661a"/>
+  <text class="lb" x="190" y="448" style="fill:#d9822b;font-size:28px">h<tspan class="sb" dy="7">1</tspan><tspan dy="-7"> h</tspan><tspan class="sb" dy="7">2</tspan><tspan dy="-7"> h</tspan><tspan class="sb" dy="7">3</tspan></text>
+  <rect x="340" y="305" width="168" height="160" rx="22" fill="none" stroke="#8a8a8a" stroke-width="4" stroke-dasharray="3 7" stroke-linecap="round"/>
+  <text class="lb" x="348" y="288" style="fill:#8a8a8a">Attention<tspan class="sb" dy="8" style="fill:#d9822b">4</tspan></text>
+  <rect class="cell" x="367" y="320" width="20" height="20" fill="#d9822b" opacity="1"/>
+  <rect class="cell" x="367" y="340" width="20" height="20" fill="#b8661a" opacity="1"/>
+  <rect class="cell" x="367" y="360" width="20" height="20" fill="#f0a860" opacity="1"/>
+  <rect class="cell" x="367" y="380" width="20" height="20" fill="#8f4a10" opacity="1"/>
+  <rect class="cell" x="387" y="320" width="20" height="20" fill="#b8661a" opacity="0.25"/>
+  <rect class="cell" x="387" y="340" width="20" height="20" fill="#f0a860" opacity="0.25"/>
+  <rect class="cell" x="387" y="360" width="20" height="20" fill="#8f4a10" opacity="0.25"/>
+  <rect class="cell" x="387" y="380" width="20" height="20" fill="#d9822b" opacity="0.25"/>
+  <rect class="cell" x="407" y="320" width="20" height="20" fill="#f0a860" opacity="0.25"/>
+  <rect class="cell" x="407" y="340" width="20" height="20" fill="#8f4a10" opacity="0.25"/>
+  <rect class="cell" x="407" y="360" width="20" height="20" fill="#d9822b" opacity="0.25"/>
+  <rect class="cell" x="407" y="380" width="20" height="20" fill="#b8661a" opacity="0.25"/>
+  <rect class="cell" x="463" y="320" width="20" height="20" fill="#5b9be0"/>
+  <rect class="cell" x="463" y="340" width="20" height="20" fill="#1f6fb2"/>
+  <rect class="cell" x="463" y="360" width="20" height="20" fill="#2f5f9a"/>
+  <rect class="cell" x="463" y="380" width="20" height="20" fill="#8cbcef"/>
+  <rect class="cell" x="367" y="427" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="387" y="427" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="407" y="427" width="20" height="20" fill="#c3a5ea"/>
+  <rect class="cell" x="625" y="360" width="20" height="20" fill="#5b9be0"/>
+  <rect class="cell" x="645" y="360" width="20" height="20" fill="#1f6fb2"/>
+  <rect class="cell" x="665" y="360" width="20" height="20" fill="#2f5f9a"/>
+  <rect class="cell" x="685" y="360" width="20" height="20" fill="#8cbcef"/>
+  <rect class="cell" x="705" y="360" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="725" y="360" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="745" y="360" width="20" height="20" fill="#c3a5ea"/>
+  <text class="lb" x="622" y="415" style="fill:#1f6fb2;font-size:34px">C<tspan class="sb" dy="8">4</tspan></text>
+  <text class="lb" x="762" y="415" style="fill:#7b4fb5;font-size:34px">h<tspan class="sb" dy="8">4</tspan></text>
+  <rect x="657" y="292" width="96" height="22" rx="11" fill="#d1342f"/>
+  <path class="ga" d="M706 358 V328" marker-end="url(#ga)"/>
+  <path class="ga" d="M706 290 V270" marker-end="url(#ga)"/>
+  <rect class="cell" x="665" y="216" width="20" height="20" fill="#c2407a"/>
+  <rect class="cell" x="685" y="216" width="20" height="20" fill="#8f2a58"/>
+  <rect class="cell" x="705" y="216" width="20" height="20" fill="#e080a8"/>
+  <rect class="cell" x="725" y="216" width="20" height="20" fill="#a8365f"/>
+  <text class="lb" x="705" y="205" text-anchor="middle" style="fill:#c2407a">I</text>
+  <circle cx="742" cy="490" r="48" fill="#7b4fb5" opacity="0.55"/><circle cx="742" cy="490" r="36" fill="#1f6fb2" opacity="0.8"/>
+  <path class="ga" d="M742 600 V550" marker-end="url(#ga)"/>
+  <rect class="cell" x="703" y="636" width="20" height="20" fill="#3d7a3d"/>
+  <rect class="cell" x="723" y="636" width="20" height="20" fill="#24502a"/>
+  <rect class="cell" x="743" y="636" width="20" height="20" fill="#5a9a50"/>
+  <rect class="cell" x="763" y="636" width="20" height="20" fill="#2f6a2f"/>
+  <text class="lb" x="742" y="694" text-anchor="middle" style="fill:#1f8a4c">&lt;END&gt;</text>
+  <rect class="cell" x="845" y="500" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="845" y="520" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="845" y="540" width="20" height="20" fill="#c3a5ea"/>
+  <rect class="cell" x="845" y="560" width="20" height="20" fill="#7b4fb5"/>
+  <text class="lb" x="840" y="615" style="fill:#7b4fb5;font-size:34px">h<tspan class="sb" dy="8">4</tspan></text>
+  <path class="ga" d="M862 492 V425 Q862 370 815 368" marker-end="url(#ga)"/>
+  <path d="M375 690 V718 H865 V690" fill="none" stroke="#7b4fb5" stroke-width="5"/>
+  <rect x="897" y="305" width="168" height="160" rx="22" fill="none" stroke="#8a8a8a" stroke-width="4" stroke-dasharray="3 7" stroke-linecap="round"/>
+  <text class="lb" x="905" y="288" style="fill:#8a8a8a">Attention<tspan class="sb" dy="8" style="fill:#d9822b">5</tspan></text>
+  <rect class="cell" x="924" y="320" width="20" height="20" fill="#d9822b" opacity="0.25"/>
+  <rect class="cell" x="924" y="340" width="20" height="20" fill="#b8661a" opacity="0.25"/>
+  <rect class="cell" x="924" y="360" width="20" height="20" fill="#f0a860" opacity="0.25"/>
+  <rect class="cell" x="924" y="380" width="20" height="20" fill="#8f4a10" opacity="0.25"/>
+  <rect class="cell" x="944" y="320" width="20" height="20" fill="#b8661a" opacity="1"/>
+  <rect class="cell" x="944" y="340" width="20" height="20" fill="#f0a860" opacity="1"/>
+  <rect class="cell" x="944" y="360" width="20" height="20" fill="#8f4a10" opacity="1"/>
+  <rect class="cell" x="944" y="380" width="20" height="20" fill="#d9822b" opacity="1"/>
+  <rect class="cell" x="964" y="320" width="20" height="20" fill="#f0a860" opacity="0.25"/>
+  <rect class="cell" x="964" y="340" width="20" height="20" fill="#8f4a10" opacity="0.25"/>
+  <rect class="cell" x="964" y="360" width="20" height="20" fill="#d9822b" opacity="0.25"/>
+  <rect class="cell" x="964" y="380" width="20" height="20" fill="#b8661a" opacity="0.25"/>
+  <rect class="cell" x="1020" y="320" width="20" height="20" fill="#5b9be0"/>
+  <rect class="cell" x="1020" y="340" width="20" height="20" fill="#1f6fb2"/>
+  <rect class="cell" x="1020" y="360" width="20" height="20" fill="#2f5f9a"/>
+  <rect class="cell" x="1020" y="380" width="20" height="20" fill="#8cbcef"/>
+  <rect class="cell" x="924" y="427" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="944" y="427" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="964" y="427" width="20" height="20" fill="#c3a5ea"/>
+  <rect class="cell" x="1110" y="360" width="20" height="20" fill="#5b9be0"/>
+  <rect class="cell" x="1130" y="360" width="20" height="20" fill="#1f6fb2"/>
+  <rect class="cell" x="1150" y="360" width="20" height="20" fill="#2f5f9a"/>
+  <rect class="cell" x="1170" y="360" width="20" height="20" fill="#8cbcef"/>
+  <rect class="cell" x="1190" y="360" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="1210" y="360" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="1230" y="360" width="20" height="20" fill="#c3a5ea"/>
+  <text class="lb" x="1107" y="415" style="fill:#1f6fb2;font-size:34px">C<tspan class="sb" dy="8">5</tspan></text>
+  <text class="lb" x="1247" y="415" style="fill:#7b4fb5;font-size:34px">h<tspan class="sb" dy="8">5</tspan></text>
+  <rect x="1142" y="292" width="96" height="22" rx="11" fill="#d1342f"/>
+  <path class="ga" d="M1191 358 V328" marker-end="url(#ga)"/>
+  <path class="ga" d="M1191 290 V270" marker-end="url(#ga)"/>
+  <rect class="cell" x="1150" y="216" width="20" height="20" fill="#c2407a"/>
+  <rect class="cell" x="1170" y="216" width="20" height="20" fill="#8f2a58"/>
+  <rect class="cell" x="1190" y="216" width="20" height="20" fill="#e080a8"/>
+  <rect class="cell" x="1210" y="216" width="20" height="20" fill="#a8365f"/>
+  <text class="lb" x="1190" y="205" text-anchor="middle" style="fill:#c2407a">am</text>
+  <circle cx="1227" cy="490" r="48" fill="#7b4fb5" opacity="0.55"/><circle cx="1227" cy="490" r="36" fill="#1f6fb2" opacity="0.8"/>
+  <path class="ga" d="M1227 600 V550" marker-end="url(#ga)"/>
+  <rect class="cell" x="1188" y="636" width="20" height="20" fill="#c2407a"/>
+  <rect class="cell" x="1208" y="636" width="20" height="20" fill="#8f2a58"/>
+  <rect class="cell" x="1228" y="636" width="20" height="20" fill="#e080a8"/>
+  <rect class="cell" x="1248" y="636" width="20" height="20" fill="#a8365f"/>
+  <rect class="cell" x="1330" y="500" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="1330" y="520" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="1330" y="540" width="20" height="20" fill="#c3a5ea"/>
+  <rect class="cell" x="1330" y="560" width="20" height="20" fill="#7b4fb5"/>
+  <text class="lb" x="1325" y="615" style="fill:#7b4fb5;font-size:34px">h<tspan class="sb" dy="8">5</tspan></text>
+  <path class="ga" d="M1347 492 V425 Q1347 370 1300 368" marker-end="url(#ga)"/>
+  <path d="M888 690 V718 H1370 V690" fill="none" stroke="#7b4fb5" stroke-width="5"/>
+  <rect class="cell" x="594" y="448" width="20" height="20" fill="#9b6fd5"/>
+  <rect class="cell" x="594" y="468" width="20" height="20" fill="#5f3a8f"/>
+  <rect class="cell" x="594" y="488" width="20" height="20" fill="#c3a5ea"/>
+  <rect class="cell" x="594" y="508" width="20" height="20" fill="#7b4fb5"/>
+  <text class="lb" x="575" y="557" style="fill:#7b4fb5">h<tspan class="sb" dy="8" style="fill:#1f6fb2">init</tspan></text>
+  <path class="ga" d="M625 490 H682" marker-end="url(#ga)"/>
+  <path class="ga" d="M790 490 H1162" marker-end="url(#ga)"/>
+  <path class="ga" d="M1275 490 H1425" marker-end="url(#ga)"/>
+</svg>

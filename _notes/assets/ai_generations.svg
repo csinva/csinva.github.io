@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 424" role="img" aria-labelledby="title desc">
+  <title id="title">Machine learning (aka, AI) successes</title>
+  <desc id="desc">Slide listing four generations of ML successes: first generation ('90-'00), the backend, e.g. fraud detection, search, supply-chain management; second generation ('00-'10), the human side, e.g. recommendation systems, commerce, social media; third generation ('10-now), pattern recognition, e.g. speech recognition, computer vision, translation; fourth generation (emerging), decisions and markets: not just one agent making a decision or sequence of decisions, rather a huge interconnected web of data, agents, decisions, with many new challenges.</desc>
+  <defs>
+    <style>
+      text { font: 23px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .h { font-size: 33px; fill: #1f6fb2; }
+      .k { fill: #1f6fb2; }
+      .s { font-size: 20px; }
+    </style>
+  </defs>
+  <text class="h" x="345" y="36" text-anchor="middle">Machine Learning (aka, AI) Successes</text>
+
+  <text x="8" y="100">•</text>
+  <text x="34" y="100">First Generation (‘90-‘00): the <tspan class="k">backend</tspan></text>
+  <text class="s" x="56" y="130">– e.g., fraud detection, search, supply-chain management</text>
+
+  <text x="8" y="174">•</text>
+  <text x="34" y="174">Second Generation (‘00-‘10): the <tspan class="k">human side</tspan></text>
+  <text class="s" x="56" y="204">– e.g., recommendation systems, commerce, social media</text>
+
+  <text x="8" y="248">•</text>
+  <text x="34" y="248">Third Generation (‘10-now): <tspan class="k">pattern recognition</tspan></text>
+  <text class="s" x="56" y="278">– e.g., speech recognition, computer vision, translation</text>
+
+  <text x="8" y="322">•</text>
+  <text x="34" y="322">Fourth Generation (emerging): <tspan class="k">decisions</tspan> and <tspan class="k">markets</tspan></text>
+  <text class="s" x="56" y="352">– not just one agent making a decision or sequence of decisions</text>
+  <text class="s" x="56" y="382">– rather, a huge interconnected web of data, agents, decisions</text>
+  <text class="s" x="56" y="412">– many new challenges!</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 210" role="img" aria-labelledby="title desc">
+  <title id="title">Structural model diagram and its intervention</title>
+  <desc id="desc">(a) Chain Z → X → Y, each node with a dashed arrow from its exogenous noise U_Z, U_X, U_Y. (b) The modified model for do(X = x0): the arrow from Z to X and from U_X to X are removed, and X is set by x0; X → Y remains.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 6 5; }
+      .dot { fill: #2b2b2b; }
+      .var { font: italic 26px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .sub { font-size: 19px; }
+      .bold { font-weight: bold; }
+      .cap { font: 24px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- (a) -->
+  <g>
+    <circle class="dot" cx="40" cy="34" r="4.5"/>
+    <circle class="dot" cx="200" cy="34" r="4.5"/>
+    <circle class="dot" cx="360" cy="34" r="4.5"/>
+    <text class="var" x="2" y="32">U<tspan class="sub" dy="7">Z</tspan></text>
+    <text class="var" x="210" y="32">U<tspan class="sub" dy="7">X</tspan></text>
+    <text class="var" x="370" y="32">U<tspan class="sub" dy="7">Y</tspan></text>
+    <path class="dash" d="M40 40 V112" marker-end="url(#arrow)"/>
+    <path class="dash" d="M200 40 V112" marker-end="url(#arrow)"/>
+    <path class="dash" d="M360 40 V112" marker-end="url(#arrow)"/>
+    <circle class="dot" cx="40" cy="120" r="4.5"/>
+    <circle class="dot" cx="200" cy="120" r="4.5"/>
+    <circle class="dot" cx="360" cy="120" r="4.5"/>
+    <path class="edge" d="M46 120 H192" marker-end="url(#arrow)"/>
+    <path class="edge" d="M206 120 H352" marker-end="url(#arrow)"/>
+    <text class="var" x="30" y="156">Z</text>
+    <text class="var" x="190" y="156">X</text>
+    <text class="var" x="350" y="156">Y</text>
+    <text class="cap" x="200" y="200">(a)</text>
+  </g>
+
+  <!-- (b) -->
+  <g>
+    <circle class="dot" cx="540" cy="34" r="4.5"/>
+    <circle class="dot" cx="680" cy="34" r="4.5"/>
+    <circle class="dot" cx="820" cy="34" r="4.5"/>
+    <text class="var" x="502" y="32">U<tspan class="sub" dy="7">Z</tspan></text>
+    <text class="var" x="690" y="32">U<tspan class="sub" dy="7">X</tspan></text>
+    <text class="var" x="830" y="32">U<tspan class="sub" dy="7">Y</tspan></text>
+    <path class="dash" d="M540 40 V112" marker-end="url(#arrow)"/>
+    <path class="dash" d="M820 40 V112" marker-end="url(#arrow)"/>
+    <circle class="dot" cx="540" cy="120" r="4.5"/>
+    <circle class="dot" cx="680" cy="120" r="4.5"/>
+    <circle class="dot" cx="820" cy="120" r="4.5"/>
+    <text class="var bold" x="608" y="80">x<tspan class="sub" dy="7">0</tspan></text>
+    <path class="edge" d="M642 82 L674 114" marker-end="url(#arrow)"/>
+    <path class="edge" d="M686 120 H812" marker-end="url(#arrow)"/>
+    <text class="var" x="530" y="156">Z</text>
+    <text class="var" x="670" y="156">X</text>
+    <text class="var" x="810" y="156">Y</text>
+    <text class="cap" x="680" y="200">(b)</text>
+  </g>
+</svg>

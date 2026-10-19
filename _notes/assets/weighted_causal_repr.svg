@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 0 860 365" role="img" aria-labelledby="title desc">
+  <title id="title">Weighted representation architecture</title>
+  <desc id="desc">Architecture for predicting outcomes under design shift. Context x passes through a DNN to representation Φ, then through layers to hypothesis h. A weighting branch (dashed, not back-propagated through) takes Φ through layers to a re-weighting function w. h and treatment t feed the weighted risk wℓ; w feeds wℓ by a dashed arrow. w, Φ and t feed the imbalance term IPM(p_{π,Φ}, p^w_{μ,Φ}).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .b { stroke: #2b2b2b; stroke-width: 2.4; }
+      .gray { fill: #8a8a8a; fill-opacity: 0.25; }
+      .white { fill: none; }
+      .phi { fill: #d9822b; fill-opacity: 0.45; }
+      .hyp { fill: #d1342f; fill-opacity: 0.45; }
+      .ipm { fill: #1f8a4c; fill-opacity: 0.35; }
+      .bar { fill: #8a8a8a; fill-opacity: 0.12; stroke: #2b2b2b; stroke-width: 2; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2.2; stroke-linejoin: round; }
+      .dash { stroke-dasharray: 7 6; }
+      .h { font: 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .m { font: italic 46px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .r { font: 46px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .f { font: 27px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .i { font-style: italic; }
+      .s { font-size: 17px; }
+    </style>
+  </defs>
+  <text class="h" x="116" y="34">Context</text>
+  <text class="h" x="302" y="34">Repres.</text>
+  <text class="h" x="474" y="34">Hypothesis</text>
+  <text class="h" x="666" y="34">Weighted risk</text>
+  <text class="h" x="830" y="34">Treatment</text>
+
+  <rect class="b gray" x="70" y="60" width="92" height="100" rx="8"/><text class="m" x="116" y="108">x</text>
+  <rect class="bar" x="184" y="72" width="13" height="76" rx="3"/><rect class="bar" x="211" y="72" width="13" height="76" rx="3"/>
+  <path class="e" d="M162 110 H184 M197 110 H211 M224 110 H254" marker-end="url(#arrow)"/>
+  <text class="h" x="204" y="196">DNN</text>
+  <rect class="b phi" x="256" y="60" width="92" height="100" rx="8"/><text class="r" x="302" y="108">Φ</text>
+
+  <path class="e" d="M348 110 H404 M417 110 H431 M444 110 H476" marker-end="url(#arrow)"/>
+  <circle cx="381" cy="110" r="6.5" fill="#2b2b2b"/>
+  <rect class="bar" x="404" y="72" width="13" height="76" rx="3"/><rect class="bar" x="431" y="72" width="13" height="76" rx="3"/>
+  <rect class="b hyp" x="478" y="60" width="92" height="100" rx="8"/><text class="m" x="524" y="108">h</text>
+
+  <path class="e" d="M570 110 H628" marker-end="url(#arrow)"/>
+  <rect class="b white" x="630" y="60" width="92" height="100" rx="8"/><text class="m" x="676" y="108" style="font-size:40px">wℓ</text>
+  <path class="e" d="M784 110 H724" marker-end="url(#arrow)"/>
+  <rect class="b gray" x="784" y="60" width="92" height="100" rx="8"/><text class="m" x="830" y="108">t</text>
+  <path class="e" d="M830 160 V200" marker-end="url(#arrow)"/>
+
+  <!-- weighting branch (dashed: not back-propagated) -->
+  <path class="e dash" d="M381 116 V253 H404 M417 253 H431 M444 253 H476" marker-end="url(#arrow)"/>
+  <rect class="bar" x="404" y="214" width="13" height="76" rx="3"/><rect class="bar" x="431" y="214" width="13" height="76" rx="3"/>
+  <rect class="b white" x="478" y="203" width="92" height="100" rx="8"/><text class="m" x="524" y="250">w</text>
+  <path class="e" d="M570 236 H690" marker-end="url(#arrow)"/>
+  <circle cx="652" cy="236" r="6.5" fill="#2b2b2b"/>
+  <path class="e dash" d="M652 230 V163" marker-end="url(#arrow)"/>
+  <path class="e" d="M302 160 V315 H652 V272 H690" marker-end="url(#arrow)"/>
+
+  <rect class="b ipm" x="692" y="202" width="184" height="98" rx="8"/>
+  <text class="f" x="700" y="260">IPM(<tspan class="i">p</tspan><tspan class="s i" dy="7">π</tspan><tspan class="s" >,Φ</tspan><tspan dy="-7">, </tspan><tspan class="i">p</tspan><tspan class="s i" dy="7">μ</tspan><tspan class="s">,Φ</tspan><tspan class="s i" dx="-27" dy="-20">w</tspan><tspan dx="10" dy="12">)</tspan></text>
+  <text class="h" x="476" y="350">Weighting</text>
+  <text class="h" x="784" y="350">Imbalance</text>
+</svg>

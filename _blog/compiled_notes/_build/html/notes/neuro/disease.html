@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -61,7 +62,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.2. brain basics" href="brain_basics.html" />
-    <link rel="prev" title="7. neuro" href="neuro.html" />
+    <link rel="prev" title="7. neuro" href="neuro_section.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -100,8 +101,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -154,7 +155,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -171,16 +172,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -189,77 +182,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro_section.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vissci.html">7.3. vision</a></li>
@@ -468,10 +454,11 @@ document.write(`
 </ul>
 <section id="alzheimer-s">
 <h2><span class="section-number">7.1.1. </span>alzheimer’s<a class="headerlink" href="#alzheimer-s" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><img alt="" src="../../_images/26_1.png" /></p></li>
-<li><p>overview</p>
 <ul>
+<li><img style="width: 600px; max-width: 100%;" src="../assets/26_1.svg" alt="Amyloid cascade in Alzheimer&#x27;s disease"/>
+</li>
+<li><p>overview</p>
+<ul class="simple">
 <li><p>age-associated - tons of people get it</p></li>
 <li><p>doesn’t kill you, secondary complications like pneumonia will kill you</p></li>
 <li><p>rate is going up</p></li>
@@ -479,14 +466,14 @@ document.write(`
 </ul>
 </li>
 <li><p><em>declarative</em> memories are affected by Alzheimer’s</p>
-<ul>
+<ul class="simple">
 <li><p>these are memories that you know</p></li>
 </ul>
 </li>
 <li><p>first 2 areas to go in Alzheimer’s</p>
 <ol class="arabic simple">
 <li><p><em>hippocampus</em></p>
-<ul>
+<ul class="simple">
 <li><p>patient HM had no hippocampus</p>
 <ul>
 <li><p>no <em>anterograde</em> memory - learning new things</p></li>
@@ -501,7 +488,7 @@ document.write(`
 </ul>
 </li>
 <li><p><em>basal forebrain</em> - spread synapses all over cortex</p>
-<ul>
+<ul class="simple">
 <li><p>uses <em>Ach</em></p></li>
 <li><p>ignition key for entire cortex</p></li>
 </ul>
@@ -509,7 +496,7 @@ document.write(`
 </ol>
 </li>
 <li><p>alzheimer’s characteristics only found in autopsy</p>
-<ul>
+<ul class="simple">
 <li><p><em>amyloid plaques</em></p>
 <ul>
 <li><p>maybe <em>A-beta</em> causes it</p></li>
@@ -646,7 +633,7 @@ document.write(`
 <section id="papers">
 <h3><span class="section-number">7.1.3.2. </span>papers<a class="headerlink" href="#papers" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1910.12329">Deep Learning Models for Digital Pathology</a> (BenTaieb &amp; Hamarneh, 2019)</p>
+<li><p>Deep Learning Models for Digital Pathology (<a class="reference external" href="https://arxiv.org/abs/1910.12329">bentaieb &amp; hamarneh, 2019</a>)</p>
 <ul>
 <li><p>note: alternative to histopathology are more expensive / slower (e.g. molecular profiling)</p></li>
 <li><p>to promote consistency and objective inter-observer agreement, most pathologists are trained to follow simple algorithmic decision rules that sufficiently stratify patients into reproducible groups based on tumor type and aggressiveness</p></li>
@@ -693,7 +680,7 @@ document.write(`
 <li><p>can also predict survival analysis</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.nature.com/articles/s41591-019-0508-1">Clinical-grade computational pathology using weakly supervised deep learning on whole slide images</a> (campanella et al. 2019)</p>
+<li><p>Clinical-grade computational pathology using weakly supervised deep learning on whole slide images (<a class="reference external" href="https://www.nature.com/articles/s41591-019-0508-1">campanella et al. 2019</a>)</p>
 <ul>
 <li><p>use slide-level diagnosis as “weak supervision” for all contained patches</p></li>
 <li><p>1st step: train patch-level CNNs using MIL</p>
@@ -705,8 +692,8 @@ document.write(`
 <li><p>2nd step: use RNN (or another net) to combine info across <em>S</em> most suspicious tiles</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.nature.com/articles/s41467-021-21896-9">Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes</a> (diao et al. 21)</p></li>
-<li><p><a class="reference external" href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(20)30159-X/fulltext">An artificial intelligence algorithm for prostate cancer diagnosis in whole slide images of core needle biopsies: a blinded clinical validation and deployment study</a> (pantanowitz et al. 2020 - ibex)</p>
+<li><p>Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes (<a class="reference external" href="https://www.nature.com/articles/s41467-021-21896-9">diao et al. 21</a>)</p></li>
+<li><p>An artificial intelligence algorithm for prostate cancer diagnosis in whole slide images of core needle biopsies: a blinded clinical validation and deployment study (<a class="reference external" href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(20)30159-X/fulltext">pantanowitz et al. 2020 - ibex</a>)</p>
 <ul>
 <li><p>549 train, 2501 internal test slides, 1627 external validation</p></li>
 <li><p>predict cancer prob., gleason score 7-10, gleason pattern 5, perneural invasion, cancer percentage</p></li>
@@ -720,7 +707,7 @@ document.write(`
 </li>
 <li><p>aggregation: 18-probability heatmaps are combined to calculate slide-level scores</p>
 <ul>
-<li><p>ex (for predicting cancer): sum the cancer-related channels in the heatmap , apply 2x2 local averaging, then take max</p></li>
+<li><p>ex (for predicting cancer): sum the cancer-related channels in the heatmap, apply 2x2 local averaging, then take max</p></li>
 </ul>
 </li>
 </ul>
@@ -869,7 +856,7 @@ document.write(`
 </li>
 <li><p>ai papers</p>
 <ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2103.03129">Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs</a> (anklin et al. 2021)</p>
+<li><p>Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs (<a class="reference external" href="https://arxiv.org/abs/2103.03129">anklin et al. 2021</a>)</p>
 <ul>
 <li><p>SegGini, a weakly supervised segmentation method using graphs</p>
 <ul>
@@ -918,7 +905,7 @@ document.write(`
 </li>
 <li><p>human benchmark</p>
 <ul>
-<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/8290915/">The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist’s diagnosis</a> (olsen et al. 1993)</p>
+<li><p>The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist’s diagnosis (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/8290915/">olsen et al. 1993</a>)</p>
 <ul>
 <li><p>4 consultant pathologists</p></li>
 <li><p>40 biopsy specimens of bladder tumours staging invasion</p>
@@ -933,7 +920,7 @@ document.write(`
 </li>
 <li><p>ai papers</p>
 <ul>
-<li><p><a class="reference external" href="https://journals.sagepub.com/doi/abs/10.1177/0391560320987169">Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management</a> (2021)</p>
+<li><p>Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management (<a class="reference external" href="https://journals.sagepub.com/doi/abs/10.1177/0391560320987169">2021</a>)</p>
 <ul>
 <li><p>bladder cancel ranks tenth in worldwide absolute cancer incidence</p></li>
 </ul>
@@ -947,14 +934,14 @@ document.write(`
 <li><p>cystoscopy - few DNN papers here</p></li>
 <li><p>pathology</p>
 <ul>
-<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29">Urinary Bladder Tumor Grade Diagnosis Using Online Trained Neural Networks</a> (2003)</p>
+<li><p>Urinary Bladder Tumor Grade Diagnosis Using Online Trained Neural Networks (<a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29">2003</a>)</p>
 <ul>
 <li><p>92 patients with BC</p></li>
 <li><p>90%, 94.9%, and 97.3%, for Grade I, II, and III respectively</p></li>
-<li><p>builds on <a class="reference external" href="https://europepmc.org/article/med/12508689">Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma</a> (2002)</p></li>
+<li><p>builds on Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma (<a class="reference external" href="https://europepmc.org/article/med/12508689">2002</a>)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32354610/">Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides</a> (woerl et al. 2020) - predict <em>molecular subtype</em> using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset</p></li>
+<li><p>Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32354610/">woerl et al. 2020</a>) - predict <em>molecular subtype</em> using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset</p></li>
 </ul>
 </li>
 </ul>
@@ -1072,7 +1059,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="neuro.html"
+       href="neuro_section.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1159,11 +1146,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

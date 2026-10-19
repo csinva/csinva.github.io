@@ -34,25 +34,21 @@ subtitle: Some rough notes on ml in medicine
 - [PMC-Patients](https://arxiv.org/abs/2202.13876) - open-source patient snippets, but no groundtruth labels besides age, gender
 - [EBM-NLP](https://github.com/bepnye/EBM-NLP) - annotates PICO (Participants, Interventions, Comparisons and Outcomes) spans in clinical trial abstracts
   - task - identify the spans that describe the respective PICO elements
-
 - review paper on clinical IE ([wang...liu, 2017](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5771858/))
 - mimic-iv-benchmark ([xie...liu, 2022](https://www.nature.com/articles/s41597-022-01782-9))
   - 3 tabular datasets derived from MIMIC-IV ED EHR
-    - *hospitalization* (versus discharged) -  met with an inpatient care site admission immediately following an ED visit
+    - *hospitalization* (versus discharged) - met with an inpatient care site admission immediately following an ED visit
     - *critical* - inpatient portality / transfer to an ICU within 12 hours
     - *reattendance* - patient's return visit to ED within 72 hours
-
   - preprocessing for outliers / missing values (extended descriptions of variables [here](https://static-content.springer.com/esm/art%3A10.1038%2Fs41597-022-01782-9/MediaObjects/41597_2022_1782_MOESM1_ESM.pdf))
     - patient history
       - past ed visits, hospitalizations, icu admissions, comorbidities
       - ICD codes give patients comorbidities (CCI charlson comorbitidy index, ECI elixhauser comorbidity index)
-
     - info at triage
       - temp., heart rate, pain scale, ESI, ...
       - Emergency severity index (ESI) - 5-level triage system assigned by nurse based on clinical judgments (1 is highest priority)
       - top 10 chief complaints
       - No neurological features (e.g. GCS)
-
     - info before discharge
       - vitalsigns
       - edstays
@@ -78,7 +74,6 @@ subtitle: Some rough notes on ml in medicine
   - Methodological standards for the development and evaluation of clinical prediction rules: a review of the literature ([cowley...kemp, 2019](https://link.springer.com/article/10.1186/s41512-019-0060-y))
   - Predictably unequal: understanding and addressing concerns that algorithmic clinical prediction may increase health disparities ([paulus & kent, 2020](https://www.nature.com/articles/s41746-020-0304-9))
   - Translating Clinical Research into Clinical Practice: Impact of Using Prediction Rules To Make Decisions ([reilly & evans, 2006](https://www.acpjournals.org/doi/10.7326/0003-4819-144-3-200602070-00009))
-
 - Individual CDIs
   - Reconsidering the Consequences of Using Race to Estimate Kidney Function. ([eneanya, yang, & reese, 2019](http://www.nephjc.com/news/raceandegfr))
   - Dissecting racial bias in an algorithm used to manage the health of populations ([obermeyer et al. 2019](https://www.science.org/doi/abs/10.1126/science.aax2342)) - for one algorithm, at a given risk score, Black patients are considerably sicker than White patients, as evidenced by signs of uncontrolled illnesses
@@ -92,9 +87,6 @@ subtitle: Some rough notes on ml in medicine
       - Because of structural biases and differential treatment, Black patients with similar needs to white patients have long been known to have lower costs
     - real goal was to “determine which individuals are in need of specialized intervention programs and which intervention programs are likely to have an impact on the quality of individuals’ health.”
 
-
-
-
 ## ucsf de-id data
 
 - black-box
@@ -102,11 +94,10 @@ subtitle: Some rough notes on ml in medicine
 - intrepretable
   - predict multiple sceloris by incorporating domain knowledge into biomedical knowledge graph ([nelson, ..., baranzini, 2022](https://academic.oup.com/jamia/article/29/3/424/6463510))
   - predict mayo endoscopic subscores from colonoscopy reports ([silverman, ..., 2022](https://www.medrxiv.org/content/10.1101/2022.06.19.22276606.abstract))
-
 - 3 types
-	- disease and patient categorization (e.g. classification)
-	- fundamental biological study
-	- treatment of patients
+  - disease and patient categorization (e.g. classification)
+  - fundamental biological study
+  - treatment of patients
 - philosophy
   - want to focus on problems doctors can't do
   - alternatively, focus on automating problems parents can do to screen people at home in cost-effective way
@@ -244,11 +235,9 @@ subtitle: Some rough notes on ml in medicine
 - pathology: campanella, gabriele, et al.. 2019
 - mammogram: kerlikowske, karla, et al. 2018
 
-
-
 # medical imaging
 
-- [Medical Imaging and Machine Learning](https://arxiv.org/pdf/2103.01938.pdf)
+- Medical Imaging and Machine Learning ([shad et al. 2021](https://arxiv.org/pdf/2103.01938.pdf))
   - medical images often have multiple channels / are 3d - closer to video than images
 
 # improving medical studies

@@ -18,7 +18,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 - Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing ([liu...neubig, 2021](https://arxiv.org/abs/2107.13586.pdf))
   - <details>
     <summary>Overview figure</summary>
-    <p>	<img class="medium_image" src="../assets/prompting_typology.png"/>
+    <p>	<img style="width: 800px; max-width: 100%;" src="../assets/prompting_typology.svg" alt="Typology of prompting methods"/>
     </p>
     </details>
 - early prompting papers
@@ -29,11 +29,11 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
       - mining-based and paraphrasing-based methods to automatically generate high-quality diverse prompts
       - ensemble methods to combine answers from different prompts (e.g. avg logits and more)
     - Noisy Channel LM Prompting for Few-Shot Text Classification ([min et al. 2022](https://arxiv.org/abs/2108.04106.pdf))
-    - Querying $P(question|answer)$ with Bayes rule outperforms standard querying $P(answer|question)$
+    - Querying $$P(question\vert answer)$$ with Bayes rule outperforms standard querying $$P(answer\vert question)$$
 
 ## (auto)prompting
 
-![prompting_hierarchy](../assets/prompting_hierarchy.png)
+<img style="width: 620px; max-width: 100%;" src="../assets/prompting_hierarchy.svg" alt="Prompting hierarchy"/>
 
 - natural-language prompting
   - iPrompt: Explaining Patterns in Data with LMs via Interpretable Autoprompting ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848))
@@ -61,7 +61,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - PADA: Example-based Prompt Learning for on-the-fly Adaptation to Unseen Domains ([ben-david, ..., reichart, 2022](https://arxiv.org/abs/2102.12206))
 - continuous prompt optimization
   - Prefix-Tuning: Optimizing Continuous Prompts for Generation ([li & percy liang, 2021](https://arxiv.org/abs/2101.00190)) -- optimizes in continuous space for language generation tasks
-    - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
+    - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network
   - P-Tuning: GPT Understands, Too ([liu et al. 2021](https://arxiv.org/abs/2103.10385)) -- use LSTM to generate prompt embeddings (don't map to tokens)
   - Control Prefixes for Parameter-Efficient Text Generation ([clive, cao, & rei, 2022](https://arxiv.org/abs/2110.08329)) - allow for adapting the prefix to each input example
     - DART: Differentiable Prompt Makes Pre-trained LMs Better Few-shot Learners ([zhang...chen, 2022](https://arxiv.org/abs/2108.13161))
@@ -229,26 +229,21 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 - getting diverse outputs
   - Echoes in AI: Quantifying lack of plot diversity in LLM outputs ([xu...dolan, 2024](https://arxiv.org/abs/2501.00273)) - LLM-generated stories often contain combinations of idiosyncratic plot elements echoed frequently across generations and across different LLMs
 
-
-
 ## uncertainty
 
 - Semantic Uncertainty ([kuhn, gal, & farquhar, 2023](https://arxiv.org/abs/2302.09664)) - instead of calculating entropy over tokens, first generate set of answers, then cluster them base on semantic equivalence, before computing entropy
   - clustering is done via an LM that tests entailment e.g. E.g., “The capital of France is Paris.” entails “Paris is the capital of France.” because they mean the same thing
-
 - Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs ([xiong...hooi, 2023](https://arxiv.org/abs/2306.13063))
   - verbalized uncertainty - model outputs its own uncertainty
   - consistency-based uncertainty - consistency between output generations
-
 - Quantifying Uncertainty in Natural Language Explanations of LLMs ([tanneru...lakkaraju, 2023](https://arxiv.org/abs/2311.03533))
   - probing uncertainty (like consistency-based uncertainty above) - applies input perturbations (e.g., paraphrasing) and measure the consistency of the resulting explanations
   - verbalized uncertainty of explanations often performs poorly
-
 - Relying on the Unreliable: The Impact of LMs' Reluctance to Express Uncertainty ([zhou...sap, 2024](https://arxiv.org/abs/2401.06730))
   - LMs are often unable to express uncertainties
   - LM confidences tend to be overconfident
   - users rely heavily on LM generations, whether or not they are marked by certainty
-- Teaching Models to Express Their Uncertainty in Words ([lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")
+- Teaching Models to Express Their Uncertainty in Words ([lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can generate both an answer and a level of confidence (e.g. "90% confidence")
 - Decomposing Uncertainty for LLMs through Input Clarification Ensembling ([hou...zhang, 2023](https://arxiv.org/abs/2311.08718.pdf))
 
 ## prompt compression / compiling
@@ -281,9 +276,9 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
       - inputs x, hidden states h, outputs y
       - 3 matrices: $A, B, C$
       - $y_i = C h_i$
-      - $h_i = A h_{i-1} + B x_i$
+      - $$h_i = \cblue{A h_{i-1}} + \corange{B x_i}$$<!-- -->
         - note: there is no nonlinearity between hidden states
-        - note: the transition from one hidden state to the next is the same for all positions (except for the input)
+        - note: the <span class="cblue">transition from one hidden state to the next</span> is the same for all positions (except for the <span class="corange">input</span>)
       - can compute hidden states simultaneously by just pre-multiplying these A and B matrices with x the right number of times ( a convolution operation)
   - mamba: *selective* state space models ([gu & dao, 2023](https://arxiv.org/abs/2312.00752))
     - changes (2) above -- the transition from one hidden state to the next now depends on the input (making it closer to LSTMs)
@@ -298,7 +293,6 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 - HRM: Hierarchical Reasoning Model (Sapient; [wang...yadkori, 2025](https://arxiv.org/abs/2506.21734)) - 4 learnable components: an input network, a low-level recurrent module, a high-level recurrent module, and an output network
   - TRM: Tiny Recursive Model: Recursive Reasoning with Tiny Networks ([jolicoeur-martineau, 2025](https://arxiv.org/abs/2510.04871))
   - Teaching Pretrained LMs to Think Deeper with Retrofitted Recurrence ([mcleish...goldblum, 2025](https://arxiv.org/abs/2511.07384)) - post-train regular LMs into looped models
-
 - The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain (Pathway; [kosowski...bartoszkiewicz, 2025](https://arxiv.org/abs/2509.26507))
 - Misc
   - Tree Transformer: Integrating Tree Structures into Self-Attention ([wang, .., chen, 2019](https://arxiv.org/abs/1909.06639.pdf))
@@ -335,7 +329,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - highly biased
   - gumbel-softmax- allows for better sampling
 - specialized experts as fully independent models (sometimes for multi-task learning)
-  - DEmix Layers ([gururangan...smith, zettlemoyer, 2021](https://arxiv.org/abs/2108.05036)) --  DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
+  - DEmix Layers ([gururangan...smith, zettlemoyer, 2021](https://arxiv.org/abs/2108.05036)) -- DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
   - Sparsely Activated Mixture-of-Experts are Robust Multi-Task Learners ([gupta...awadallah, gao, 2022](https://arxiv.org/abs/2204.07689)) - use task description to improve routing
   - [Pfeiffer et al. (2022)](https://arxiv.org/abs/2205.06266) - multilingual expert model with language-specific routing
   - task-level MoE [Kudugunta et al. (2021](https://arxiv.org/abs/2110.03742)) -- multi-task expert model with task-specific routing
@@ -355,7 +349,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - [KV caching](https://kipp.ly/transformer-inference-arithmetic/) + some other tricks - if repeatedly using the same tokens at the beginning of the context, can cache the KV vectors for those tokens
     - KV caching trades off speed with memory
     - FastGen: Model Tells You What to Discard: Adaptive KV Cache Compression for LLMs ([ge...gao, 2024](https://arxiv.org/abs/2310.01801)) - for each input prompt, run quick profiling to decide whether to evict things from the KV cache (e.g. attention heads that don't care about long context, or heads that attend only to punctuation)
-  - speculative decoding ([leviathan, kalma, & matias, 2022](https://arxiv.org/abs/2211.17192))  - decode multiple tokens in parallel with small model, potentially skipping steps for the large model
+  - speculative decoding ([leviathan, kalma, & matias, 2022](https://arxiv.org/abs/2211.17192)) - decode multiple tokens in parallel with small model, potentially skipping steps for the large model
     - Speculative Speculative Decoding ([kumar, dao & may, 2026](https://arxiv.org/abs/2603.03251)) - while big model is verifying speculation, also generate more speculations with the small model (based on guessing what will be verified)
 - early exit - popular way to speed up inference
   - Multi-exit vision transformer for dynamic inference ([bakhtiarnia, a., zhang, q. and iosifidis, a., 2021](https://arxiv.org/abs/2106.15183))
@@ -381,7 +375,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - side-tuning ([zhang, sax...malik, 2020](https://link.springer.com/chapter/10.1007/978-3-030-58580-8_41)) - train a “side” network that is fused with the pretrained model via summation
   - Combining Modular Skills in Multitask Learning ([ponti, sordoni, bengio, & reddy, 2022](https://arxiv.org/abs/2202.13914.pdf)) - learn adaptor with disentangled inventory of skills
   - [Parameter-Efficient Transfer Learning for NLP](http://proceedings.mlr.press/v97/houlsby19a.html)
-  - [AdapterHub: A Framework for Adapting Transformers](https://arxiv.org/abs/2007.07779)
+  - AdapterHub: A Framework for Adapting Transformers ([pfeiffer et al. 2020](https://arxiv.org/abs/2007.07779))
   - Programs-as-weights https://x.com/yuntiandeng/status/2044086557330579851?s=20 - for tasks that are easy to describe but annoying to implement with rigid rules, e.g. Urgency triage. Broken JSON repair. Log filtering. Tool routing.
     - Text-to-LoRA: Instant Transformer Adaption ([charakorn, cetin, tang & lange, 2025](https://arxiv.org/abs/2506.06105))
     - Learning to Generate Task-Specific Adapters from Task Description ([ye & ren, 2021](https://arxiv.org/abs/2101.00420))
@@ -408,8 +402,8 @@ mixture of experts models have become popular because of the need for (1) fast s
     - **cloze questions** - same as masked LMs: task is to replace some missing words
     - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
 - prompt-tuning (also see next section on autoprompting)
-  - [Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing](https://arxiv.org/abs/2205.11961)
-  - [STT: Soft Template Tuning for Few-Shot Adaptation](https://arxiv.org/abs/2207.08408)
+  - Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing ([asai et al. 2022](https://arxiv.org/abs/2205.11961))
+  - STT: Soft Template Tuning for Few-Shot Adaptation ([yu et al. 2022](https://arxiv.org/abs/2207.08408))
   - Mixture of Soft Prompts for Controllable Data Generation ([chen, ... yu, 203](https://arxiv.org/abs/2303.01580)) - LLMs as Synthetic Data Generators for Training Smaller Models
 - long-context adaptation
   - RoPE: RoFormer: Enhanced Transformer with Rotary Position Embedding ([su...liu, 2021](https://arxiv.org/abs/2104.09864))
@@ -422,31 +416,21 @@ mixture of experts models have become popular because of the need for (1) fast s
     - readjust on short contexts to preserve original perf
 - Self-Adapting LMs ([zweiger...pulkit agrawal, 2025](https://arxiv.org/abs/2506.10943)) - use RL to have LLMs self-adapt by generating their own finetuning data (+maybe some hyperparameters / augmentations / other details) and the LoRA finetuning on that data
 - **mt-dnn line of work**
-
   - Multi-Task Deep Neural Networks for Natural Language Understanding ([xiaodong liu ... gao 2019](https://aclweb.org/anthology/papers/P/P19/P19-1441/)) - multi-task learning on the 9 glue tasks (first layers are shared, then some task-specific layers at top)
-
     - RAdam: On the Variance of the Adaptive Learning Rate and Beyond ([liyuan liu...gao, han, 2020](https://openreview.net/pdf?id=rkgz2aEKDr))
       - usually need to do learning-rate warmup when trainin (e.g. with Adam)
       - RAdam = add a term to rectify the variance of the adaptive learning rate in Adam
     - SMART: Robust and Efficient Fine-Tuning for Pre-trained Natural LMs through Principled Regularized Optimization ([jiang...gao, zhao, 2020](https://aclanthology.org/2020.acl-main.197/))
       1. Smoothness-inducing regularization, which effectively manages the complexity of the model
       2. Bregman proximal point optimization to prevent aggressive updating
-
   - Microsoft Toolkit of Multi-Task Deep Neural Networks for Natural Language Understanding ([xiaodong liu...gao, 2020](https://aclanthology.org/2020.acl-demos.16/))
-
   - Posterior Differential Regularization with f-divergence for Improving Model Robustness ([hao cheng, ..., gao 2021](https://aclanthology.org/2021.naacl-main.85/))
     - regularize model posterior difference between clean + noisy inputs (e.g. adversarially attacked inputs)
-
-
 - **comparing different tasks**
-
   - Task2Vec: Task Embedding for Meta-Learning ([achille, ..., soatto, perona, 2019](https://openaccess.thecvf.com/content_ICCV_2019/html/Achille_Task2Vec_Task_Embedding_for_Meta-Learning_ICCV_2019_paper.html)) - summarize each task as a vector, by taking diagonal of fisher info matrix (derivative of network output wrt to parameters) - clusters similar tasks
-
   - Efficiently Tuned Parameters are Task Embeddings ([zhou...mcauley, 2022](https://arxiv.org/abs/2210.11705))
     - Editing Models with Task Arithmetic ([ilharco, ribeiro, ..., farhadi, 2022](https://arxiv.org/abs/2212.04089)) - task vector is model weights after task finetuning - model weights before finetuning
       - can use this direction to alter model behavior
-
-
   - Overcoming Catastrophic Forgetting in Zero-Shot Cross-Lingual Generation ([vu....constant, 2022](https://arxiv.org/abs/2205.12647)) - train with prompts of some (language translation, task) pairs and show that they can generalize to new (language, task) pairs
 
 ## instruction tuning / rlhf / rl
@@ -500,7 +484,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - LongLLaDA: Unlocking Long Context Capabilities in dLLMs ([liu...qiu, 2025](https://arxiv.org/abs/2506.14429v1)) - adds NTK+RoPE to LLaDA
       - UltraLLaDA: Scaling the Context Length to 128K for dLLMs ([he...yuan, 2025](https://arxiv.org/abs/2510.10481)) - use a simple modification to RoPE
   - Dream 7B ([ye...kong, 2025](https://github.com/HKUNLP/Dream))
-    - DiffuLLaMA ([gong...jiawei han, kong, 2025](https://openreview.net/pdf?id=j1tSLYKwg8)) - adapt LM by annealing the causal mask  causal mask during training then slowly predicting a masked token's label rather than the next token (minor point about shifting: still have each head predict the label of the next token rather than the current token, since its more similar to what the original model was trianed for)
+    - DiffuLLaMA ([gong...jiawei han, kong, 2025](https://openreview.net/pdf?id=j1tSLYKwg8)) - adapt LM by annealing the causal mask causal mask during training then slowly predicting a masked token's label rather than the next token (minor point about shifting: still have each head predict the label of the next token rather than the current token, since its more similar to what the original model was trianed for)
     - Diffusion LMs Can Perform Many Tasks with Scaling and Instruction-Finetuning ([ye...quanquan gu, 2023](https://arxiv.org/abs/2308.12219)) - adapt LLaMA to DLM via masked LMs, but lose skills during adaptation
     - Diffusion text embedding models ([zhang...zhao, 2025](https://arxiv.org/abs/2505.15045)) - finetune DREAM 7B
     - DreamOn ([wu...kong, 2025](https://hkunlp.github.io/blog/2025/dreamon/)) - finetune Dream 7B for variable length generation
@@ -526,7 +510,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Beyond Autoregression: Discrete Diffusion for Complex Reasoning and Planning ([ye...kong, 2024](https://arxiv.org/abs/2410.14157))
   - Diffusion of Thoughts: CoT Reasoning in Diffusion LMs ([ye...kong, 2024](https://arxiv.org/abs/2402.07754)) - diffuse over time steps rather than tokens
   - Implicit Search via Discrete Diffusion: A Study on Chess ([ye...kong, 2025](https://arxiv.org/abs/2502.19805))
-  - Planned Diffusion ([israel...carbin, 2025](https://arxiv.org/abs/2510.18087)) - autoregressive model generates high level plan and then diffusion fills in many parts of the plan simultaneously 
+  - Planned Diffusion ([israel...carbin, 2025](https://arxiv.org/abs/2510.18087)) - autoregressive model generates high level plan and then diffusion fills in many parts of the plan simultaneously
 - Theory
   - Simplified and Generalized Masked Diffusion for Discrete Data ([shi...titsias, 2024](https://arxiv.org/abs/2406.04329))
   - Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow ([liu, gong, & liu, 2022](https://arxiv.org/abs/2209.03003))
@@ -614,7 +598,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - MemEvolve: Meta-Evolution of Agent Memory Systems ([zhang...yan, 2025](https://arxiv.org/abs/2512.18746))
     - Online Experiential Learning for LMs ([ye...wei, 2026](https://arxiv.org/abs/2603.16856))
   - EvoLib: Evolving Library Through Self-Play ([xu et al. 2026, blog post](https://www.notion.so/EvoLib-Evolving-Library-Through-Self-Play-2cccfcea3dd081e7bd2ef1735a29672d)) - these works learned shared strategies using test time examples with no labels
-    - Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory ([wei...cheng, 2025](https://arxiv.org/abs/2511.20857)) - store examples along with attempted  solutions and metadata
+    - Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory ([wei...cheng, 2025](https://arxiv.org/abs/2511.20857)) - store examples along with attempted solutions and metadata
     - Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory ([suzgun...zou, 2025](https://arxiv.org/abs/2504.07952))
     - EvoSkill: Automated Skill Discovery for Multi-Agent Systems ([alzubi...vu, 2026](https://arxiv.org/abs/2603.02766))
     - Memento-Skills: Let Agents Design Agents ([zhou...wang, 2026](https://arxiv.org/abs/2603.18743))
@@ -636,7 +620,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
   - Recursive Agent Optimization ([gandhi...neubig, 2026](https://arxiv.org/abs/2605.06639)) - rl for training agents that spawn and use other agents
 - Learning to (Learn at Test Time): RNNs with Expressive Hidden States ([sun...guestrin, 2024](https://arxiv.org/abs/2407.04620))
-  - ![ttt_lm](../assets/ttt_lm.jpeg)
+  - <img style="width: 800px; max-width: 100%;" src="../assets/ttt_lm.svg" alt="Test-time training (TTT) layer"/>
   - GradMem: Learning to Write Context into Memory with Test-Time Gradient Descent ([kuratov...burtsev, 2026](https://arxiv.org/abs/2603.13875v1))
 - Critique Fine-Tuning: Learning to Critique is More Effective than Learning to Imitate ([wang...chen, 2025](https://arxiv.org/abs/2501.17703))
 - s1: Simple test-time scaling ([muennighof...hashimoto, 2025](https://arxiv.org/abs/2501.19393))
@@ -653,7 +637,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
 - standard methods (see [mergekit package](https://github.com/arcee-ai/mergekit))
   1. linear averaging, e.g. model soups ([wortsman...schmidt, 2021](https://proceedings.mlr.press/v162/wortsman22a.html))
   2. spherical linear interpolation - interpolate angle but keep norm constant
-  3. TIES: Resolving Interference When Merging Models ([yadav...raffel, bansal, 2023](https://arxiv.org/abs/2306.01708)) 
+  3. TIES: Resolving Interference When Merging Models ([yadav...raffel, bansal, 2023](https://arxiv.org/abs/2306.01708))
      1. only keep top-k% most significant changes in weights
      2. vote on signs of parameters
   4. DARE ([yu...li 2023](https://arxiv.org/abs/2311.03099))
@@ -676,7 +660,6 @@ Model merging (some of these are non-transformer papers) = combine different mod
     - Diverse Weight Averaging for Out-of-Distribution Generalization ([rame...cord, 2023](https://arxiv.org/abs/2205.09739))
   - UltraFuser - 2-stage training with token-level routing to 3 models ([ding...sun, 2024](https://arxiv.org/abs/2403.08281.pdf))
   - Orthogonal Model Merging ([yang, shi & liu, 2026](https://arxiv.org/abs/2602.05943))
-  
 - training paradigms
   - Branch-Train-Merge: ELMS (Expert LMs) ([li...smith, zettlemoyer 2022](https://arxiv.org/abs/2208.03306))
     - parallel LM of smaller expert LMs
@@ -695,7 +678,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
   - batch ensemble ([wen et al. 2020](https://arxiv.org/abs/2002.06715.pdf)) - have several rank-1 keys that index different weights hidden within one neural net
   - data-based distillation for model merging ([roth...akata, 2024](https://arxiv.org/abs/2310.17653)) - can combine multiple models that excel at different classes using data-based distillation
   - Model Fusion via Optimal Transport ([singh & jaggi, 2019](https://arxiv.org/abs/1910.05653)) - layer-wise fusion algorithm using optimal transport
-  - Qualitatively characterizing neural network optimization problems ([goodfellow, viynals, & saxe, 2014](https://arxiv.org/abs/1412.6544)) -  linear interpolation experiments on DNNs
+  - Qualitatively characterizing neural network optimization problems ([goodfellow, viynals, & saxe, 2014](https://arxiv.org/abs/1412.6544)) - linear interpolation experiments on DNNs
 
 ## editing
 
@@ -706,7 +689,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - model-editing = data-efficient alterations to a model
 - memory-based
     - SERAC: Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
-      - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model, instead train a smaller simpler model for using the external contexts)    
+      - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model, instead train a smaller simpler model for using the external contexts)
     - LMs with Editable External Knowledge ([li, liu..., neubig, andreas, 2024](https://arxiv.org/abs/2406.11830v1)) - have LLM rewrite and update knowledge base as new docs are added
     - T-Patcher (Huang et al., 2023) and CaliNET (Dong et al., 2022) introduce extra trainable parameters into the feed- forward module of PLMs
 - weight updates
@@ -724,8 +707,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - meta-learning
       - KnowledgeEditor: Editing Factual Knowledge in LMs ([de cao, aziz, & titov, 2021](https://arxiv.org/abs/2104.08164.pdf)) - train a network that takes in input, output, edit and predicts a weight update to the model
       - MEND: Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
-        -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
-        -  MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
+        - a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
+        - MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
 - REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/abs/2304.00740.pdf)) and related activation engineering
     - get "edit vectors" by obtaining embeddings when passing attributes through LLM
     - perform edit by by adding linear transformation of edit vector to prompt embedding
@@ -767,13 +750,13 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - review paper ([rauker...hadfield-menell, 2023](https://arxiv.org/abs/2207.13243))
   - A Primer on the Inner Workings of Transformer-based LMs ([ferrando et al. 2024](https://arxiv.org/abs/2405.00208))
   - Representation engineering: A Top-Down Approach to AI Transparency ([zou...kolter, hendrycks, 2023](https://arxiv.org/abs/2310.01405.pdf))
-    - representation engineering (RepE) -  analyzes representations/representation transformations rather than neurons or circuits
+    - representation engineering (RepE) - analyzes representations/representation transformations rather than neurons or circuits
     - basically extends probing to more general tasks, including model control
 - Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors ([yun, chen, olshausen, lecun, 2021](https://arxiv.org/abs/2103.15949)) - investigate LLM embeddings of different words using dictionary learning
   - LLMs produce interesting contextualized word embeddings
   - dictionary elements (of activations across layers) correspond to meaningful things
   - dictionary element has size $d$, the embedding size
-    - given list of sentences $S$, training matrix has size $\left(\underbrace{\text{num\_layers}}_{\text{12 for BERT}} \cdot \sum_{s \in S} \text{len(s)}\right) \times \underbrace{d}_{\text{768 for BERT}}$
+    - given list of sentences $S$, training matrix has size $$\left(\underbrace{\text{num\_layers}}_{\text{12 for BERT}} \cdot \sum_{s \in S} \text{len(s)}\right) \times \underbrace{d}_{\text{768 for BERT}}$$
   - dictionary coefficient: maps (text, layer, sequence_index) $\to$ coefficient
     - extract $d$-dimensional embedding for text at specified layer & sequence_index
 - Neuron-level Interpretation of Deep NLP Models: A Survey ([sajjad et al. 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00519/113852/Neuron-level-Interpretation-of-Deep-NLP-Models-A))
@@ -805,7 +788,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - circuits thread ([elhage...olah, 2021](https://transformer-circuits.pub/2021/framework/index.html))
   - all layers are same dimension and each attention block **adds** a vector to it
   - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
-    - $x \in \mathbb R^{d_{embed} \times d_{sequence}}$: $d_{embed}$ can be hundreds - tens of thousands 
+    - $x \in \mathbb R^{d_{embed} \times d_{sequence}}$: $d_{embed}$ can be hundreds - tens of thousands
     - $W_Q, W_K, W_V \in \mathbb R^{d_{attn} \times d_{embed}}$
     - $W_Q^TW_k \in \mathbb R ^{d_{embed} \times d_{embed}}$
     - $W_O \in \mathbb R^{d_{embed} \times d_{attn}}$: projects attention values back to embedding dimention
@@ -813,43 +796,35 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - $W_E \in \mathbb R^{d_{embed} \times d_{vocab}}$ embeds initial tokens and $W_U \in \mathbb R^{d_{vocab} \times d_{embed}}$ undoes the embedding
     - $d_{vocab}$ can be very large, e.g. 50k
     - $A = \text{softmax}(x^TW_Q^TW_kx) \in \mathbb R^{d_{sequence} \times d_{sequence}}$
-
   - if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
   - 2 circuits
-    - QK circuit determines which "source" token the present "destination" token attends back to and copies information from
-    - $W_{E}^{T} W_{Q}^{T} W_{K} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$
-    - OV circuit describes what the resulting effect on the "out" predictions for the next token is
-    - $W_{U} W_{O} W_{V} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$
-
+    - <span class="cpurple">QK circuit</span> determines which "source" token the present "destination" token attends back to and copies information from
+    - $$W_{E}^{T} \cpurple{W_{Q}^{T} W_{K}} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$$<!-- -->
+    - <span class="cgreen">OV circuit</span> describes what the resulting effect on the "out" predictions for the next token is
+    - $$W_{U} \cgreen{W_{O} W_{V}} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$$<!-- -->
   - if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
   - **induction heads** search previous examples of present token
     - If they don't find it, they attend to the first token and do nothing
     - if they do find it, they then look at the *next* token and copy it. This allows them to repeat previous sequences of tokens, both exactly and approximately
     - sometimes can do some kind of "fuzzy" matching
-
   - tensor/kronecker product $\bigotimes$:
     - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
-    - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
+    - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$
       **[Softmax Linear Units](https://transformer-circuits.pub/2022/solu/index.html)**
-
   - replacing activation function with softmax linear unit increases fraction of MLP neurons which are "interpretable", i.e. correspond to meaningful features
     - however, may “hide” some non-neuron-aligned features by decreasing their magnitude and then later recovering it with LayerNorm
-
   - the presence of nonlinear activation functions createse an incentive for features to align with this basis and not get superposed
     - if the gains to sparse coding are large enough, this incentive will get overwhelmed
-
   - ways to combat polysemanticity
     - activation sparsity
     - lateral inhibition / co-occurrence sparsity
     - weight sparsity
     - superlinear activation functions
     - increase neurons per param
-
   - $\text{SoLU}(x) = x \cdot \text{softmax}(x)$
     - adds lateral inhibition, superlinearity, approximate sparsity
     - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
     - just changing to SoLU decrease performance, had to add LayerNorm afterwards
-
 - Tracing Attention Computation Through Feature Interactions ([kamath...olah, lindsey, 2025](https://transformer-circuits.pub/2025/attention-qk/index.html)) - use SAE on MLP features, then rewrite QK attention matrix as a sum of interpretable interaction features
 - logit lens ([2020](https://www.alignmentforum.org/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens)) - apply unembedding matrix to outputs of each transformer layer
   - tuned-lens ([belrose...steinhardt, 2023](https://arxiv.org/abs/2303.08112)) - train linear model for each layer to decode vocab
@@ -882,10 +857,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - ICL performance depends primarily on function-vector heads rather than induction heads ([yin & steinhardt, 2025](https://arxiv.org/abs/2502.14010))
   - function-vector headsare a compact representation of a task extracted from specific attention heads, and they can be added to a model’s computation to recover ICL behavior without in-context demonstrations
 - Retrieval Head Mechanistically Explains Long-Context Factuality ([wu...fu, 2024](https://arxiv.org/abs/2404.15574))
-- A Phase Transition between Positional and Semantic Learning in a Solvable Model of Dot-Product Attention ([cui...zdeborova, 2024](https://arxiv.org/abs/2402.03902.pdf)) - solve 1-layer attention model for histogram task and find  phase transition
+- A Phase Transition between Positional and Semantic Learning in a Solvable Model of Dot-Product Attention ([cui...zdeborova, 2024](https://arxiv.org/abs/2402.03902.pdf)) - solve 1-layer attention model for histogram task and find phase transition
 - The Hydra Effect: Emergent Self-repair in LM Computations ([mcgrath...legg, 2023](https://arxiv.org/abs/2307.15771)) - ablations atone attention layer of an LLM cause another layer to compensate
   - LLM Layers Immediately Correct Each Other ([patrawala, feng, jones & steinhardt, 2025](https://openreview.net/forum?id=7DY7kB8wyZ&referrer=%5Bthe%20profile%20of%20Jacob%20Steinhardt%5D(%2Fprofile%3Fid%3D~Jacob_Steinhardt1)))
-
 - Neurons in LLMs: Dead, N-gram, Positional ([voita, ferrando, & nalmpantis, 2023](https://arxiv.org/abs/2309.04827.pdf))
 - Codebook Features: Sparse and Discrete Interpretability for Neural Networks ([tamkin, taufeeque, & goodman, 2023](https://arxiv.org/abs/2310.17230))
 - Program synthesis via mechanistic interpretability ([michaud...tegmark](https://arxiv.org/abs/2402.05110)) - condense RNN on simple algorithmic tasks into code
@@ -929,7 +903,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - use this to build a human-interpretable classifier that generalizes better than previous biomarkers
 - misc papers
   - Structuring Sparsity: Block-Sparse Featurizers Capture Visual Concept Manifolds ([fel...geiger, 2026](https://arxiv.org/abs/2606.25234)) - SAE imposes sparsity on every unit, here they instead impose sparsity of groups (”blocks”) of units - this enables representing structure that isn’t in a linear direction
-
 - sparse autoencoder (sae) critiques
   - AxBench: Steering LLMs? Even Simple Baselines Outperform SAEs ([wu...jurafsky, manning, potts, 2025](https://arxiv.org/abs/2501.17148))
   - SAEs Can Interpret Randomly Initialized Transformers ([heap...aitchison, 2025](https://arxiv.org/abs/2501.17727))
@@ -949,29 +922,19 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Training LLMs on narrow tasks can lead to broad misalignment ([betley...evans, 2026](https://www.nature.com/articles/s41586-025-09937-5))
     - Subliminal Effects in Your Data: A General Mechanism via Log-Linearity ([aden-ali...haghtalab, 2026](https://www.arxiv.org/abs/2602.04863)) - given a dataset and a target system prompt like “reply in Spanish,” select a subset of the data such that fine-tuning an LLM on that subset causes the model to behave *as if* it were given that system prompt
 - interpretability in parameter space
-
   - Both APD and SPD seek a learned decomposition of parameters satisfying the following:
-
     - Faithfulness - components should sum to original params
     - Minimality - forward pass should use few components for a training point
     - Simplicity - minimize number of matrices and ranks used by components
-
   - APD: Minimizing Mechanistic Description Length with Attribution-based Parameter Decomposition ([braun...sharkey, 2025](https://arxiv.org/abs/2501.14926)) uses 3 losses to achieve this:
-
     1. parameter components are trained to sum to the original params
     2. for a point, gradient-based attributions select the top-k most important parameter components, which are summed and trained to reproduce the original output
-
     3. components have their individual spectral p-norms minimized
-
   - SPD: Stochastic Parameter Decomposition ([bushnaq, braun & sharkey, 2025](https://arxiv.org/abs/2506.20790))
-
     1. parameter components are trained to sum to the original params (same as APD)
-
     2. optimizes rank-one subcomponents instead of full-rank parameter
        components
-
     3. optimizes for minimality and simplicity by learning a causal importance function to stochastically sample masks
-  
   - applications
     - Interpreting and Steering State-Space Models via Activation Subspace Bottlenecks ([mohan, gupta, das & singh, 2026](https://arxiv.org/abs/2602.22719))
 
@@ -1004,9 +967,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - goal: easily specify, discover, and fix undesirable behaviors in an NLP model
   - 2-step iterative algorithm
     1. LLM generates many tests targeting the model's failures
-
        - example of a test: `f(“I am a black woman”) ≠ neg`
-
        - user selects and organizes the tests and reprompts the LLM to find more
     2. User fixes the tests (e.g. via finetuning)
   - Checklist --Beyond Accuracy: Behavioral Testing of NLP models with CheckList ([ribeiro...sameer singh, 2020](https://arxiv.org/abs/2005.04118))
@@ -1020,7 +981,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - Backpack LMs ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word
 - (DirtyCat): Encoding High-Cardinality String Categorical Variables ([cerda & varoquax, 2020](https://ieeexplore.ieee.org/abstract/document/9086128)) - use embedding model to improve string categorical variables
 - LLMs can Learn Rules ([zhu...dai, 2024](https://arxiv.org/abs/2310.07064))
-- Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program compiled with [Tracr](https://arxiv.org/abs/2301.05062)
+- Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP](https://arxiv.org/abs/2106.06981) program compiled with [Tracr](https://arxiv.org/abs/2301.05062)
   - 2 constraints
     - disentangled residual stream - attention head inputs K/Q/V are one-hot, ouputs are concatenated at each layer
     - each module implements rule-based mapping: attention is onehot
@@ -1075,7 +1036,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Retrieval-based Full-length Wikipedia Generation for Emergent Events ([zhang...li, 2024](https://arxiv.org/abs/2402.18264))
 - module explanation in natural language
   - GCT: Generative causal testing to bridge data-driven models and scientific theories in language neuroscience ([antonello...huth, 2024](https://arxiv.org/abs/2410.00812))
-	  - Automated Hypothesis Validation with Agentic Sequential Falsifications ([huang...leskovec, 2025](https://openreview.net/forum?id=iTevNo8PzG&noteId=6DFYazHqy1))
+    - Automated Hypothesis Validation with Agentic Sequential Falsifications ([huang...leskovec, 2025](https://openreview.net/forum?id=iTevNo8PzG&noteId=6DFYazHqy1))
     - Letting the neural code speak: Automated characterization of monkey visual neurons through human language ([lad...karantzas, 2026](https://arxiv.org/abs/2605.12485)) - similar to GCT for vision + single-neuron (but without followup experiment)
     - Mechanistically Interpretable Neural Encoding Reveals Fine-Grained Functional Selectivity in Human Visual Cortex ([grosbard, geva & yovel, 2026](https://arxiv.org/abs/2605.16468)) - SASC but for vision
     - NEvo: Neural-Guided Evolutionary Video Synthesis for Dynamic Visual Selectivity ([tang...schrimpf, 2026](https://arxiv.org/abs/2607.02317)) - SASC but with video (no followup)
@@ -1108,7 +1069,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - A Function Interpretation Benchmark for Evaluating Interpretability Methods ([schwettmann, ..., andreas, bau, & torralba, 2023](https://arxiv.org/abs/2309.03886))
     - Rigorously Assessing Natural Language Explanations of Neurons ([huang..potts, 2023](https://arxiv.org/abs/2309.10312))
     - Ravel: Evaluating Interpretability Methods on Disentangling LM Representations ([huang, wu, potts, geva, & geiger, 2024](https://arxiv.org/abs/2402.17700v1.pdf))
-  
+
 
 ## natural-language explanations: CoT faithfulness & reasoning faithfulness
 
@@ -1130,7 +1091,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
       - propose a counterfactual input editor for inserting reasons that lead to counterfactual predictions but are not reflected by the explanation
       - reconstruct inputs from the reasons stated in the generated explanations and check how often they lead to the same prediction
     - Potemkin Understanding in LLMs ([mancoridis...mullainathan, 2025](https://arxiv.org/abs/2506.21521)) - models can often explain rules, even when they can't follow them
-  - How Interpretable are Reasoning Explanations from Prompting LLMs? ([yeo...cambria, 2024](https://arxiv.org/abs/2402.11863)) - evaluate different methods using paraphrases, counterfactuals, adding mistakes, and simulatability 
+  - How Interpretable are Reasoning Explanations from Prompting LLMs? ([yeo...cambria, 2024](https://arxiv.org/abs/2402.11863)) - evaluate different methods using paraphrases, counterfactuals, adding mistakes, and simulatability
   - Humans Perceive Wrong Narratives from AI Reasoning Texts ([levy, elyoseph, & goldberg, 2025](https://do-you-understand-ai.com/paper/paper.pdf))
   - CoT May Be Highly Informative Despite “Unfaithfulness” ([METR blog post, 2025](https://metr.org/blog/2025-08-08-cot-may-be-highly-informative-despite-unfaithfulness/)) - CoT is informative about LLM cognition as long as the cognition is complex enough that it can’t be performed in a single forward pass
   - overview paper: CoT Is Not Explainability ([barez...bengio, 2025](https://www.alphaxiv.org/abs/2025.02))
@@ -1147,7 +1108,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Stop Anthropomorphizing Intermediate Tokens as Reasoning/Thinking Traces! ([kambhampati...biswas, 2025](https://arxiv.org/abs/2504.09762))
     - Beyond Semantics: The Unreasonable Effectiveness of Reasonless Intermediate Tokens ([stechly...kambhampati, 2025](https://arxiv.org/abs/2505.13775)) - given setup with groundtruth reasoning traces, finetuned LMs get correct answer with invalid reasoning traces
     - Interpretable Traces, Unexpected Outcomes: Investigating the Disconnect in Trace-Based Knowledge Distillation ([bhambri...kambhampati, 2025](https://arxiv.org/abs/2505.13792))
-    - Let’s Think Dot by Dot: Hidden computation in transformer LMs ([pfau, merril, bowman, 2024](https://openreview.net/forum?id=NikbrdtYvG#discussion)) -  transformers can use meaningless filler tokens in place of CoT to solve two hard algorithmic tasks (but requires careful training)
+    - Let’s Think Dot by Dot: Hidden computation in transformer LMs ([pfau, merril, bowman, 2024](https://openreview.net/forum?id=NikbrdtYvG#discussion)) - transformers can use meaningless filler tokens in place of CoT to solve two hard algorithmic tasks (but requires careful training)
     - Do Cognitively Interpretable Reasoning Traces Improve LLM Performance? ([bhambri, biswas & kambhampati, 2025](https://arxiv.org/abs/2508.16695)) - more accurate reasoning traces for models are not necessarily ranked higher in human studies
   - The Illusion of Thinking: Understanding the Strengths and Limitations of LRMs via the Lens of Problem Complexity ([shojaee, mirzadeh...samy bengio, farajtabar, 2025](https://ml-site.cdn-apple.com/papers/the-illusion-of-thinking.pdf)) - evaluate LRMs on synthetic tasks (like towers of hanoi) & observe that, depending on task complexity, LRMs can fail to use explicit algorithms and they reason inconsistently across puzzles
     - The Illusion of the Illusion of Thinking ([lawsen, 2025](https://arxiv.org/abs/2506.09250))
@@ -1182,20 +1143,13 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Why CoT Fails in Clinical Text Understanding ([wu...yang, 2025](https://arxiv.org/abs/2509.21933)) - CoT hurts performance for medical tasks
 - pre-llm era
     - WT5?! Training Text-to-Text Models to Explain their Predictions ([narang, raffel, ..., malkan, 2020](https://arxiv.org/abs/2004.14546.pdf))
-
-    - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/abs/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
-
+    - Adversarial Inference for Multi-Sentence Video Description ([park et al. 2018](https://arxiv.org/abs/1812.05634.pdf)) - adversarial techniques during inference for a better multi-sentence video description
     - [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
       - CHAIR metric - what proportion of words generated are actually in the image according to gt sentences and object segmentations
-
-    - [women also snowboard](https://arxiv.org/abs/1803.09797.pdf) - force caption models to look at people when making gender-specific predictions
-
-    - [Fooling Vision and LMs Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
-
-    - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/abs/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
-
+    - women also snowboard ([burns et al. 2018](https://arxiv.org/abs/1803.09797.pdf)) - force caption models to look at people when making gender-specific predictions
+    - [Fooling Vision and LMs Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) - can do adversarial attacks on captioning and VQA
+    - Grounding of Textual Phrases in Images by Reconstruction ([rohrbach et al. 2015](https://arxiv.org/abs/1511.03745.pdf)) - given text and image provide a bounding box (supervised problem w/ attention)
     - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
-
     - [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
 
 ## directly learning algorithms
@@ -1217,7 +1171,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
         - AdaEvolve: Adaptive LLM Driven Zeroth-Order Optimization ([cemri...stoica, 2026](https://arxiv.org/abs/2602.20133))
         - EvoX: Meta-Evolution for Automated Discovery ([liu...stoica, 2026](https://arxiv.org/abs/2602.23413))
         - Inductive Deductive Synthesis: Enabling AI to Generate Formally Verified Systems ([agarwal...stoica, lesani, 2026](https://arxiv.org/abs/2605.23109)) - beyond functions to systems (with tests)
-        - DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck ([agarwal...li, 2026](https://arxiv.org/abs/2610.17184)) - simultanesouly disocver algorithm + efficient way to evaluate it 
+        - DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck ([agarwal...li, 2026](https://arxiv.org/abs/2610.17184)) - simultanesouly disocver algorithm + efficient way to evaluate it
       - DiscoGen: Procedural Generation of Algorithm Discovery Tasks in ML ([goldie...foerster, 2026](https://arxiv.org/abs/2603.17863)) - benchmark
       - auto-psych: Automating the science of mind using agent-driven theory discovery and experimentation ([prystawski...frank, 2026](https://arxiv.org/abs/2606.26460))
     - Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models ([murphy, 2026](https://arxiv.org/abs/2608.09696)) - include bayesian machinery with autoresearch loop to improve data efficiency
@@ -1225,19 +1179,16 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
       - Discovering Symbolic Cognitive Models from Human and Animal Behavior ([castro...stachenfeld, 2025](https://www.biorxiv.org/content/10.1101/2025.02.05.636732v1))
         - AI-Discovered Cognitive Models Reveal Novel Insights into Human and Animal Learning ([kasenberg, castro, ..., stachenfeld, miller, 2026](https://www.biorxiv.org/content/10.64898/2026.05.18.725921v1))
       - An AI system to help scientists write expert-level empirical software ([aygün...brenner, 2025](https://arxiv.org/abs/2509.06503)) - use tree search with LLMs; train on kaggle and evaluate on a few interesting datasets (e.g. predict zebrafish neuron activity, predict covid hospitalization)
-    
   - Faster sorting algorithms discovered using deep reinforcement learning ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06004-9))
   - Discovering faster matrix multiplication algorithms with reinforcement learning ([deepmind, 2022](https://www.nature.com/articles/s41586-022-05172-4))
   - Nuclear fusion control ([deepmind, 2022](https://www.nature.com/articles/s41586-021-04301-9))
   - Quantum Circuit Optimization with AlphaTensor ([deepmind, 2024](https://arxiv.org/abs/2402.14396.pdf))
-  
 - Alphafold
   - Accurate proteome-wide missense variant effect prediction with AlphaMissense ([deepmind, 2023](https://www.science.org/doi/full/10.1126/science.adg7492)) - predict effects of varying single-amino acid changes
   - Bridging the Human-AI Knowledge Gap: Concept Discovery and Transfer in AlphaZero ([schut...hassabis, paquet, & been kim, 2023](https://arxiv.org/abs/2310.16410))
   - Advancing regulatory variant effect prediction with AlphaGenome ([avsec...kohli, 2026](https://www.nature.com/articles/s41586-025-10014-0))
 - Learning a Decision Tree Algorithm with Transformers ([zhuang...gao, 2024](https://arxiv.org/abs/2402.03774))
   - Meta-Learning an In-Context Transformer Model of Human Higher Visual Cortex ([yu...luo, 2025](https://arxiv.org/abs/2505.15813)) - learning a tabular foundation model to predict linear weights for voxelwise models
-
 - Meta-Statistical Learning: Supervised Learning of Statistical Inference ([peyrard & cho, 2025](https://arxiv.org/abs/2502.12088))
 - Targeted Cause Discovery with Data-Driven Learning ([kim...cho, 2024](https://arxiv.org/abs/2408.16218))
   - Sample, estimate, aggregate: A recipe for causal discovery foundation models ([wu, bao, barzilay, & jaakkola, 2024](https://arxiv.org/abs/2402.01929))
@@ -1252,23 +1203,23 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - ScienceAgentBench ([chen...huan sun, 2024](https://arxiv.org/abs/2410.05080)) - 102 scientific coding tasks (from 44 papers in 4 disciplines validated by 9 subject-matter experts)
     - target output for every task is a self-contained Python file
     - each task has (a) task instruction, (b) dataset info, (c) expert-provided info and (d) a groundtruth annotated program
-    - ![Screenshot 2025-06-19 at 2.19.17 PM](../assets/Screenshot%202025-06-19%20at%202.19.17%E2%80%AFPM.png)
+    - <img style="width: 900px; max-width: 100%;" src="../assets/scienceagentbench_task.svg" alt="ScienceAgentBench task example"/>
   - AutoSDT: Scaling Data-Driven Discovery Tasks Toward Open Co-Scientists ([li...huan sun, 2025](https://arxiv.org/abs/2506.08140)) - 5k scientific coding tasks automatically scraped from github repos for papers (as a sanity check, they manually verified that a subset were reasonable)
-    - ![Screenshot 2025-06-19 at 2.22.52 PM](../assets/Screenshot%202025-06-19%20at%202.22.52%E2%80%AFPM.png)
+    - <img style="width: 900px; max-width: 100%;" src="../assets/autosdt_example.svg" alt="AutoSDT example record"/>
   - DiscoveryBench: Towards Data-Driven Discovery with LLMs ([majumder...clark, 2024](https://arxiv.org/abs/2407.01725)) - 264 tasks collected across 6 diverse domains, such as sociology and engineering, by manually deriving discovery workflows from papers
     - each task has datasets, metadata, natural-language discovery goal
-    - ![Screenshot 2025-06-19 at 2.18.31 PM](../assets/Screenshot%202025-06-19%20at%202.18.31%E2%80%AFPM.png)
+    - <img style="width: 900px; max-width: 100%;" src="../assets/discoverybench.svg" alt="DiscoveryBench overview"/>
   - BLADE: Benchmarking LM Agents for Data-Driven Science ([gu...althoff, 2024](https://arxiv.org/abs/2408.09667)) - 12 tasks, each has a (fairly open-ended) research question, dataset, and groundtruth expert-conducted analysis
-    - ![Screenshot 2025-06-19 at 4.22.04 PM](../assets/Screenshot%202025-06-19%20at%204.22.04%E2%80%AFPM.png)
+    - <img style="width: 900px; max-width: 100%;" src="../assets/blade.svg" alt="BLADE benchmark overview"/>
   - Mlagentbench: Benchmarking LLMs As AI Research Agents ([huang, vora, liang, & leskovec, 2023](https://arxiv.org/abs/2310.03302v2)) - 13 prediction tasks, e.g. CIFAR-10, BabyLM, kaggle (evaluate via test prediction perf.)
-    - ![Screenshot 2025-06-19 at 4.02.49 PM](../assets/Screenshot%202025-06-19%20at%204.02.49%E2%80%AFPM.png)
+    - <img style="width: 800px; max-width: 100%;" src="../assets/mlagentbench.svg" alt="MLAgentBench task and agent loop"/>
   - IDA-Bench: Evaluating LLMs on Interactive Guided Data Analysis ([li...jordan, 2025](https://arxiv.org/abs/2505.18223)) - scraped 25 notebooks from recent kaggle competitions, parse into goal + reference insights that incorporate domain knowledge
     - paper emphasizes interactive setting: evaluates by using the instruction materials to build a knowledgeable user simulator and then tests data science agents' ability to help the user simulator improve predictive performance
-    - ![Screenshot 2025-06-19 at 4.39.46 PM](../assets/Screenshot%202025-06-19%20at%204.39.46%E2%80%AFPM.png)
+    - <img style="width: 750px; max-width: 100%;" src="../assets/ida_bench.svg" alt="IDA-Bench setup and trajectory"/>
   - MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering ([openai, 2025](https://arxiv.org/abs/2410.07095)) - 75 ML engineering-related competitions from Kaggle
-    - ![mlebench](../assets/mlebench.png)
+    - <img style="width: 750px; max-width: 100%;" src="../assets/mlebench.svg" alt="MLE-bench overview"/>
   - InfiAgent-DABench: Evaluating Agents on Data Analysis Tasks ([hu...wu, 2024](https://arxiv.org/abs/2401.05507)) - 257 precise (relatively easy) questions that can be answered from 1 of 52 csv datasets
-    - ![Screenshot 2025-06-19 at 3.53.53 PM](../assets/Screenshot%202025-06-19%20at%203.53.53%E2%80%AFPM.png)
+    - <img style="width: 850px; max-width: 100%;" src="../assets/dabench.svg" alt="InfiAgent-DABench example"/>
   - FrontierCS: Evolving Challenges for Evolving Intelligence ([mang...cheung, 2025](https://arxiv.org/abs/2512.15699)) - verifiable but unconstrained CS problems (like circle packing)
 - earlier benchmarks (+their associated models)
   - DataSciBench: An LLM Agent Benchmark for Data Science ([zhang...yue, 2025](https://arxiv.org/abs/2502.13897)) - semi-automated pipeline for generating ground truth (GT) and validating evaluation metrics (using self-consistency)
@@ -1343,9 +1294,9 @@ teaching, HITL, user simulators
     - Bayesian Preference Elicitation with LMs ([handa, gal, pavlick, goodman, tamkin, andreas, & li, 2024](https://arxiv.org/abs/2403.05534v1.pdf))
     - STaR-GATE: Teaching LMs to Ask Clarifying Questions ([andukuri...goodman, 2024](https://arxiv.org/abs/2403.19154))
     - Rephrase and Respond: Let LLMs Ask Better Questions for Themselves ([deng...gu, 2024](https://arxiv.org/abs/2311.04205))
-    - How AI Impacts Skill Formation ([shen & tamkin, 2026](https://arxiv.org/abs/2601.20245)) -  study how developers gained mastery of a new programming library w/ & w/out AI. 
+    - How AI Impacts Skill Formation ([shen & tamkin, 2026](https://arxiv.org/abs/2601.20245)) - study how developers gained mastery of a new programming library w/ & w/out AI.
       - AI hurts understanding, esp. for participants who fully delegated coding tasks
-  - Loose LIPS Sink Ships:  Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/abs/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses LLMs (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
+  - Loose LIPS Sink Ships: Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/abs/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses LLMs (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
     - Shoot First, Ask Questions Later? Building Rational Agents that Explore and Act Like People ([grand, pepe, andreas & tenenbaum, 2025](https://arxiv.org/abs/2510.20886)) - agent tries to ask useful questions to another agent that can see the whole board
     - Completion $\neq$ Collaboration: Scaling Collaborative Effort with Agents ([shen...sontag, 2025](https://arxiv.org/abs/2510.25744))
   - Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty ([hahn...been kim, wang 2024](https://arxiv.org/abs/2412.06771)) - maintain explicit and organized knowledge graph of the user’s stated understanding and confusion
@@ -1381,7 +1332,7 @@ teaching, HITL, user simulators
   - Skill-Targeted Adaptive Training ([he, panigrahi, lin & arora, 2025](https://arxiv.org/abs/2510.10023)) - big models teaching small models by understanding their missing skillls
   - ATLAS: Adaptive Teaching and Learning Alignment System for Reinforcement Learning ([barnes & jaglan, 2025](https://docs.arc.computer/ATLAS-Technical-Report.pdf)) - use RL on teacher that is teaching small model
 - Learning to Make MISTAKEs: Modeling Incorrect Student Thinking And Key Errors ([ross & andreas, 2025](https://arxiv.org/abs/2510.11502)) - unsupervised method for teaching LLMs how to model student reasoning errors without any annotations
-  -  generate synth data that enforces cycle consistency  between: incorrect answers  & inferred misconceptions  (& associated reasoning chains)
+  - generate synth data that enforces cycle consistency between: incorrect answers & inferred misconceptions (& associated reasoning chains)
   - Modeling Student Learning with 3.8 Million Program Traces ([ross, srivastava, blanchard & andreas, 2025](https://arxiv.org/abs/2510.05056)) - train LMs on error traces from Pencil Code (programming education website)
 - LLM-based game agents ([awesome repo](https://github.com/git-disl/awesome-LLM-game-agent-papers))
   - Baba Is AI: Break the Rules to Beat the Benchmark ([cloos...barbu, cueva, 2024](https://arxiv.org/abs/2407.13729))
@@ -1404,26 +1355,18 @@ teaching, HITL, user simulators
 
 - similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
 - visualization
-
   - Data Formulator 2: Iterative Creation of Data Visualizations, with AI Transforming Data Along the Way ([chenglong wang...gao, 2024](https://arxiv.org/abs/2408.16119))
   - LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics using LLMs ([dibia, 2023](https://arxiv.org/abs/2303.02927))
-
   - Execution-based Evaluation for Data Science Code Generation Models ([huang…gao, 2022](https://arxiv.org/abs/2211.09374))
-
   - On the Design of AI-powered Code Assistants for Notebooks ([mcnutt, wang, deline, & drucker, 2023](https://dl.acm.org/doi/abs/10.1145/3544548.3580940))
-
     - Visualization by Example ([chenglong wang...dillig, 2019](https://arxiv.org/abs/1911.09668)) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
       - Falx: Synthesis-Powered Visualization Authoring ([chenglong wang...ko, 2021](https://arxiv.org/abs/2102.01024))
-
     - Lux: Always-on Visualization Recommendations for Exploratory Dataframe Workflows ([lee...hearts, parameswaram, 2021](https://arxiv.org/abs/2105.00121))
       - high-level language for recommendations (e.g. `df.intent = ["AvgLifeexpetancy", "Inequality"]`) -> Lux automatically creates relevant visualizations
-
   - see also things in [imodelsX](https://github.com/csinva/imodelsX)
-
   - Can Foundation Models Wrangle Your Data? ([narayan...re, 2022](https://arxiv.org/abs/2205.09911))
     - Towards Parameter-Efficient Automation of Data Wrangling Tasks with Prefix-Tuning ([vos, dohmen, & schelter, 2024](https://openreview.net/pdf?id=8kyYJs2YkFH))
 - llms for reading charts
-
   - ChartLlama: A Multimodal LLM for Chart Understanding and Generation ([han...zhang, 2023](https://arxiv.org/abs/2311.16483))
   - Plot2Code: A Comprehensive Benchmark for Evaluating Multi-modal LLMs in Code Generation from Scientific Plots ([wu...luo, 2024](https://arxiv.org/abs/2405.07990))
   - MathVista: Evaluating Math Reasoning in Visual Contexts ([lu...galley, gao, 2024](https://mathvista.github.io/))
@@ -1439,14 +1382,12 @@ teaching, HITL, user simulators
 ## forecasting / time-series
 
 - Forecasting Future World Events with Neural Networks ([zou...hendrycks, 2022](https://arxiv.org/abs/2206.15474)) - takes tasks from metaculus
-
 - ForecastBench: A Dynamic Benchmark of AI Forecasting Capabilities ([karger...tetlock, 2024](https://arxiv.org/abs/2409.19839))
 - AIA Forecaster ([alur...sekhon, 2025; bridgewater](https://www.arxiv.org/abs/2511.07678))
   - combines 3 elements
-    - agentic search over high-quality news  sources
+    - agentic search over high-quality news sources
     - supervisor agent that reconciles disparate forecasts for the same event
     - set of statistical calibration techniques to counter behavioral biases in LLMs
-
   - evaluate on real-time, forward-looking forecasts
   - LLMs are too cautious, require calibration
 - TabPFN-TS: TabPFN Outperforms Specialized Time Series Forecasting Models Based on Simple Features ([hoo...salinas, hutter, 2025](https://arxiv.org/abs/2501.02945))
@@ -1457,12 +1398,9 @@ teaching, HITL, user simulators
 ## cool tasks
 
 - Shortcut Learning of LLMs in Natural Language Understanding: A Survey ([du et al. 2022](https://arxiv.org/abs/2208.11857))
-
 - science
-
   - Neurosymbolic Programming for Science ([sun...costilla-reyes, 2022](https://arxiv.org/abs/2210.05050))
   - Discovering New Interpretable Conservation Laws as Sparse Invariants ([liu...tegmark, 2023](https://arxiv.org/abs/2305.19525)) - does not use transformers
-
 - evaluation without groundtruth
   - Evaluating Superhuman Models with Consistency Checks ([fluri, …, tramer, 2023](https://arxiv.org/abs/2306.09983))
   - A Taxonomy of Transcendence ([abreu, zhang, malach & saphra, 2025](https://arxiv.org/abs/2508.17669))
@@ -1472,26 +1410,21 @@ teaching, HITL, user simulators
   - BioTranslator: Multilingual translation for zero-shot biomedical classification ([xu, woicik, poon, altman, & wang, 2023](https://www.nature.com/articles/s41467-023-36476-2)) - takes a user- written textual description of a new concept and then translates this description to a non-text biological data instance
     - results for biological data, e.g. genes, proteins
     - enables the identification of novel cell types using only a textual description
-
 - Communication with animals
   - [Coller-Dolittle Prize](https://coller-dolittle-24.sites.tau.ac.il) for Inter-species Communication
   - Cetacean Translation Initiative: a roadmap to deciphering the communication of sperm whales ([andreas, begus, …, wood, 2021](https://arxiv.org/abs/2104.08614.pdf))
       - sperm whale has largest brain
-      - ML outputs are  primarily a tool to constrain hypothesis space to build formal and interpretable descriptions of the sperm whale communication
+      - ML outputs are primarily a tool to constrain hypothesis space to build formal and interpretable descriptions of the sperm whale communication
   - A Theory of Unsupervised Translation Motivated by Understanding Animal Communication ([goldwasser…paradise, 2023](https://arxiv.org/abs/2211.11081))
   - Approaching an unknown communication system by latent space exploration and causal inference ([begus, leban, & gero, 2023](https://arxiv.org/abs/2303.10931)) - manipulate GAN latent variables in approach called causal disentanglement with extreme values (CDEV)
   - Vowels and Diphthongs in Sperm Whales ([begus, sprous, leban, & gero, 2023](https://osf.io/preprints/osf/285cs)) - use data from the dominica sperm whale project ([gero et al. 2014](https://onlinelibrary.wiley.com/doi/abs/10.1111/mms.12086))
-
 - scientific organization ([galactica](https://galactica.org/static/paper.pdf))
   - related but smaller models
     - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
     - BioLM ([lewis...stoyanov, 2020](https://aclanthology.org/2020.clinicalnlp-1.17/))
     - ScholarBERT ([hong...foster, 2022](https://arxiv.org/abs/2205.11342)) - large dataset, 770M-param model
-  
   - all data is processed in a common markdown format
-  
   - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
-  
   - chemical compounds (train on 2 mil / 110 mil from PubChem Compound, authors still want it to focus on text)
     - predict IUPAC name from SMILES formula e.g. `CC(C)(C)C(=O)N(CC1=NC(=CS1)C(=O)OC)C2CCCCC2` -> `methyl 2-[[cyclohexyl-(2,2-dimethylpropanoyl)]amino] methyl]thiazole-4- `
     - [moleculenet](https://moleculenet.org/datasets-1) ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark (6 tasks)
@@ -1510,7 +1443,6 @@ teaching, HITL, user simulators
         Question: Will the chemical compound penetrate the blood-brain barrier?
         Answer: No
         ```
-  
   - protein sequences
     - from 227 million in UniProt, look at only 0.5 million subset (called Swiss-Prot)
     - evaluate protein sequence perplexity
@@ -1604,27 +1536,18 @@ teaching, HITL, user simulators
 review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-state-of-tabular-foundation-models))
 
 - benchmarks
-
   - TabArena ([erickson...salinas, hutter, 2025](https://arxiv.org/abs/2506.16791))
     - BeyondArena ([github, in tabarena repo](https://github.com/autogluon/tabarena)) - next step including non-iid tasks
-
   - TALENT benchmark ([ye...zhan, 2024](https://arxiv.org/abs/2407.00956))
-
   - meta-test bechmark ([holzmuller, grinsztajn, & steinwart, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/2ee1c87245956e3eaa71aaba5f5753eb-Paper-Conference.pdf))
-
 - non-tabPFN leading models
-
   - TabICL v1 and V2: A Tabular Foundation Model for In-Context Learning on Large Data ([qu...varoquax, le morvan, 2025](https://www.arxiv.org/abs/2502.05564))
   - [Kumo](https://huggingface.co/blog/nvidia/kumo-tabular) (Nvidia)
   - TabFM: A Zero-Shot FM for Tabular Data ([kong...das, 2026](https://arxiv.org/abs/2609.37959)) (Google)
-
 - tabPFN main works
   - JoLT: Joint Probabilistic Predictions on Tabular Data Using LLMs ([shysheya...duvenaud, turner, 2025](https://arxiv.org/abs/2502.11877))
-
   - Towards Pretraining Text Encoders for TabPFN ([tajjar, pfefferle, purucker & hutter, 2026](https://arxiv.org/abs/2606.04876v1)) - train adapter from text embeddings to TabPFN
-
   - TabPFN-3: Technical Report ([grinsztajn...hutter, 2026](https://arxiv.org/abs/2605.13986)) - back to fully synthetic data
-
   - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
     - Real-TabPFN: Improving Tabular FMs via Continued Pre-training With Real-World Data ([garg...hutter, 2025](https://arxiv.org/abs/2507.03971)) - continue improving by using real users' data
     - 
@@ -1632,30 +1555,23 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - Model context length is limited to datasets with 10k samples / 500 features
     - minutia
       - model is not quite invariant to feature order
-
   - TabPFN v1: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
     - transformer takes in train + test dataset then outputs predictions
     - each row (data example) is treated as a token and test points attend only to training
       - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
-
   - PFNs: prior-data fitted networks ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
     - trained on synthetic data
-
 - using retrieval can help put more relevant rows in context
-
   - two papers do this only during inference
     - Retrieval & Fine-Tuning for In-Context Tabular Models ([thomas...caterini, 2024](https://arxiv.org/abs/2406.05207))
     - Mixture of In-Context Prompters for Tabular PFNs ([xu...wang, 2024](https://arxiv.org/abs/2405.16156))
-
   - recent paper does this both during training and inference
     - TabDPT: Scaling Tabular FMs on Real Data ([ma...volkovs, 2025](https://openreview.net/forum?id=pIZxEOZCId))
-
 - tabPFN applications
   - TabDistill: Selecting Feature Interactions for GAMs by Distilling FMs ([jia, singh, caruana & lengerich, 2026](https://arxiv.org/abs/2604.13332))
   - A Closer Look at TabPFN v2: Strength, Limitation, and Extension ([ye, liu, & chao, 2025](https://arxiv.org/abs/2502.17361))
   - Drift-Resilient TabPFN: In-Context Learning Temporal Distribution Shifts on Tabular Data ([helli...hutter, 2024](https://arxiv.org/abs/2411.10634)) - train and test TabPFN on SCM with edges that change over time
     - In-context learning of evolving data streams with tabular foundational models ([lourenco...marreiros, 2025](https://arxiv.org/abs/2502.16840)) - test TabPFN on SCM wieth edges that change over time
-
 - tabPFN-related
   - GAMformer: In-Context Learning for Generalized Additive Models ([mueller...caruana, hutter, 2024](https://arxiv.org/abs/2410.04560))
   - Transformers Boost the Performance of Decision Trees on Tabular Data across Sample Sizes ([jayawardhana...hutter, white, goldstein, goldblum, 2025](https://arxiv.org/abs/2502.02672))
@@ -1663,16 +1579,11 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - learn boosted trees on top of LLM-based model to build in prior knowledge
   - Can Transformers Learn Full Bayesian Inference in Context? ([reuter...rugamer, 2025](https://arxiv.org/abs/2501.16825))
   - MotherNet: A Foundational Hypernetwork for Tabular Classification ([muller, curino, & ramakrishan, 2023](https://arxiv.org/abs/2312.08598)) - generate parameters for a net from a training set and then use that net at test time
-
 - interpretation
-
   - Where Computation Lives Inside TabPFN: Causal Localisation of Attention Head Function ([gupta, kumar, mandal & deshpande, 2026](https://arxiv.org/abs/2606.12917))
   - Selecting Feature Interactions for Generalized Additive Models by Distilling FMs ([jia, singh, caruana & lengerich, 2026](https://arxiv.org/abs/2604.13332))
-
 - unstructured inputs
-
   - QIM: Decoding the quantitative world from any observation ([song, akhaur, et al, deepmind, 2026](https://github.com/google-deepmind/regress-lm)) - quantitative inductive machine (QIM) uses encoder-decoder architecture to predict a number from token sequences
-
     - requires pre-training / finetuning per task
     - output vocab is just sign token, mantissa tokens, exponent tokens, e.g. 42.123 = +10+01 ×4.2123 = <+><+><0><1><4><2><1>
       - to do multi-output regression, decoder just decodes the numbers concatenated
@@ -1681,7 +1592,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
       - could use instructions in this
       - could do in-context learning on this
       - encoder uses bidirectional attention
-
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
   - LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks ([dinh...lee, 2022](https://arxiv.org/abs/2206.06565))
   - GreaT ([borisov et al., 2022](https://openreview.net/forum?id=cEygmQNOeI))
@@ -1692,7 +1602,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - TableLlama: Towards Open Large Generalist Models for Tables ([zhang...sun, 2023](https://arxiv.org/abs/2311.09206.pdf))
   - OmniPred: LMs as Universal Regressors ([song...chen, 2024](https://arxiv.org/abs/2402.14547)) - metalearn on huge number of regression problems from Google Vizier
   - TabSTAR: A Tabular FM for Tabular Data with Text Fields ([arazi, shapira & reichart, 2025](https://arxiv.org/abs/2505.18125)) - allow further training text encoder as part of the tabular model
-
 - do not use text tokens
   - TabDDPM: Modelling Tabular Data with Diffusion Models ([kotelnikov...babenko 2022](https://arxiv.org/abs/2209.15421))
     - main eval: downstream ML model performance
@@ -1705,7 +1614,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - TABBIE ([iida, ..., iyyer, 2021](https://arxiv.org/abs/2105.02584)) - trained to detect corrupted cells (then embeddings used for downstream tasks)
     - average row/column embeddings
   - Enhanced Model-agnostic Training of Deep Tabular Generation Models https://openreview.net/forum?id=gJiOQw1fkF
-
 - jointly encode table with text prompt / text in the table
   - TP-BERTa: Making Pre-trained LMs Great on Tabular Prediction ([2023](https://openreview.net/forum?id=anzIzGZuLi))
     - adds *relative magnitude tokenization* - converts scalar numerical feature values to discrete tokens (discretization requires a label)
@@ -1714,20 +1622,16 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - Trompt: Towards a Better Deep Neural Network for Tabular Data ([chen...chang, 2023](https://openreview.net/forum?id=0yNmeyteuS)) - use a prompting-style approach
   - TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data ([yin, neubig, ..., riedel, 2020](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881))
   - Chain-of-Table: Evolving Tables in the Reasoning Chain for Table Understanding ([wang...pfister, 2024](https://arxiv.org/abs/2401.04398)) - have LLMs perform operations to add cols to a table before answering a query
-
 - classification / predictions
   - TabR: Unlocking the power of retrieval-augmented tabular deep learning ([gorishniy...babenko, 2023](https://arxiv.org/abs/2307.14338))
-  - TabLLM: Few-shot Classification of Tabular Data with LLMs  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
+  - TabLLM: Few-shot Classification of Tabular Data with LLMs ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
   - LMs are weak learners ([manikandan, jian, & kolter, 2023](https://arxiv.org/abs/2306.14101)) - use prompted LLMs as weak learners in boosting algorithm for tabular data
   - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
   - AnyPredict: A Universal Tabular Prediction System Based on LLMs https://openreview.net/forum?id=icuV4s8f2c - converting tabular data into machine-understandable prompts and fine-tuning LLMs to perform accurate predictions
-
 - interpretability
   - TabNet: Attentive Interpretable Tabular Learning ([arik & pfister, 2021](https://ojs.aaai.org/index.php/AAAI/article/view/16826))
   - InterpreTabNet: Enhancing Interpretability of Tabular Data Using Deep Generative Models and LLM ([si...krishnan, 2023](https://openreview.net/pdf?id=kzR5Cj5blw)) - make attention sparse and describe it with GPT4
-
 - older
-
   - ORIGAMI: A generative transformer architecture for predictions from semi-structured data ([rückstieß, huang & vujanic, 2024](https://arxiv.org/abs/2412.17348)) - do some json-specific training for next-token prediction
   - AutoInt ([song...tang, 2019](https://dl.acm.org/doi/abs/10.1145/3357384.3357925))
   - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
@@ -1738,32 +1642,22 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - CTAB-GAN+ ([zhao...chen, 2022](https://arxiv.org/abs/2204.00401))
     - CTAB-GAN ([zhao...chen, 2021](https://proceedings.mlr.press/v157/zhao21a))
     - CTGAN ([xu...veeramachaneni, 2019](https://proceedings.neurips.cc/paper/2019/hash/254ed7d2de3b23ab10936522dd547b78-Abstract.html))
-
 - kernel approaches
-
   - xRFM: Accurate, scalable, and interpretable feature learning models for tabular data ([beaglehole, holzmüller, radhakrishnan & belkin, 2025](https://arxiv.org/abs/2508.10053))
-
     - use more general kernel than RFM with parameters
-
     - recursively learn a decision tree by splitting on the kernel eigenvector direction of 1-step RFM
-
     - Recursive Feature Machine (RFM) ([radhakrishnan…belkin, 2024](https://www.science.org/doi/abs/10.1126/science.adi5639))
-
-      - use the Average Gradient Outer Product (AGOP). Given a predictive model $\widehat{f}: \mathbb{R}^d \rightarrow \mathbb{R}$ and data $S=\left\{x^{(1)}, \ldots, x^{(n)}\right\} \subset \mathbb{R}^d$, the AGOP is defined as
+      - use the Average Gradient Outer Product (AGOP). Given a predictive model $\widehat{f}: \mathbb{R}^d \rightarrow \mathbb{R}$ and data $$S=\left\{x^{(1)}, \ldots, x^{(n)}\right\} \subset \mathbb{R}^d$$, the AGOP is defined as
 
         $$
         \operatorname{AGOP}(\widehat{f}, S)=\frac{1}{n} \sum_{i=1}^n \nabla \widehat{f}\left(x^{(i)}\right) \nabla \widehat{f}\left(x^{(i)}\right)^T \in \mathbb{R}^{d \times d}
         $$
 
         where $\nabla \widehat{f}\left(x^{(i)}\right)$ denotes the gradient of $\widehat{f}$ at the point $x^{(i)}$. The AGOP is an estimate of the (un-centered) covariance of the gradients of $\widehat{f}$ and intuitively captures the subspace along which the predictor highly varies
-
         - diagonal indicates coordinates relevant for prediction (basically the average )
         - top eigenvectors indicate directions in data most relevant for prediction
-
       - RFM iterates between training $\hat f$ and using the AGOP of the trained model to select features and linearly transform input data
-
 - limitations
-
   - Robustness is Important: Limitations of LLMs for Data Fitting ([liu, yang & adomavicius, 2025](https://arxiv.org/abs/2508.19563v2)) - LMs in tabular tasks are sensitive to variables names and presentation order
 
 ## audio / time-series
@@ -1812,7 +1706,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - detection (perplexity based)
     - input preprocessing (paraphrase and retokenization)
     - adversarial training
-
 - Interpretability and Transparency-Driven Detection and Transformation of Textual Adversarial Examples (IT-DT) ([sabir, babar, & abuadbba, 2023](https://arxiv.org/abs/2307.01225.pdf))
     - leverages techniques such as attention maps, integrated gradients, and model feedback to detect and then change adversarial inputs
 - generation-time defenses
@@ -1831,7 +1724,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - Universal and Transferable Adversarial Attacks on Aligned LMs ([zou...fredrikson, 2023](https://arxiv.org/abs/2307.15043))
     - NOTABLE: Transferable Backdoor Attacks Against Prompt-based NLP Models ([mei...ma, 2023](https://aclanthology.org/2023.acl-long.867/))
     - Transferability of Adversarial Images across Prompts on Vision-LMs ([luo...torr, 2024](https://openreview.net/forum?id=nc5GgFAvtk))
-    
 - attacks from [TextAttack](https://github.com/QData/TextAttack) (mostly focused on classification or entailment):
     - hotflip: gradient-based word swap ([Ebrahimi et al., 2017](https://arxiv.org/abs/1712.06751); [Kuleshov et al., 2018](https://openreview.net/pdf?id=r1QZ3zbAZ))
       - word embedding swap with genetic algo ([wang et al., 2019](https://arxiv.org/abs/1909.06723))
@@ -1849,18 +1741,12 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - Cats Confuse Reasoning LLM: Query Agnostic Adversarial Triggers for Reasoning Models ([rajeev...james zou, rajani, 2025](https://arxiv.org/abs/2503.01781))
 
     **Misc**
-
 - Effective Backdoor Mitigation Depends on the Pre-training Objective ([verma...bilmes, 2023](https://arxiv.org/abs/2311.14948))
     - CleanCLIP mitigates backdoors by finetuning models on a clean subset of image-text pairs using a combination of contrastive and self-supervised loss
     - If the original model is changed with a different pre-training objective, CleanCLIP fails to remove backdoors
-    
 - Adversaries Can Misuse Combinations of Safe Models ([jones, dragan, & steinhardt, 2024](https://arxiv.org/abs/2406.14595))
-
 - Stealing Reasoning Traces from Proprietary LLM APIs ([panfilov...andriushchenko, 2026](https://arxiv.org/abs/2608.09867)) - return encrypted CoT so that they don't have to store it, but user can't read it (this also enables continuing a conversation with a different model size, e.g. haiku continuing opus)
-
     - authors find that they can jailbreak haiku to give back the CoT from a bigger model by passing in the encrypted CoT from the bigger model
-
-
 
 ## safety
 
@@ -1870,13 +1756,11 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 
 - Training Data Extraction From Pre-trained LMs: A Survey ([ishihara, 2023](https://arxiv.org/abs/2305.16157))
   - definitions
-    - *eidetic memorization* -  a string s is k-eidetic memorized by LLM $f$ if a prompt p exists such that $f(p) = s$ and s appears at most k times in the training set
+    - *eidetic memorization* - a string s is k-eidetic memorized by LLM $f$ if a prompt p exists such that $f(p) = s$ and s appears at most k times in the training set
       - slightly different definition: a string s is k-memorized with k tokens of context from LLM f if a (length-k) string p exists such that the concatenation p + s is contained in the training set, and f produces s when prompted with p by using greedy decoding
-
     - *differential privacy* = removing any data from the training set should not considerably change trained models
     - *counterfactual memorization* = difference between a training data’s expected loss under a model that has and has not been trained on that data
     - some studies loosen the definition of memorization using a similarity metric for strings rather than exact string matching
-
 - Extracting Training Data from LLMs ([carlini, …, raffel, 2021](https://arxiv.org/abs/2012.07805)) - LLMs are particularly likely to memorize atypical data points
   - Quantifying Memorization Across Neural LMs ([carlini, …, zhang, 2022](https://arxiv.org/abs/2202.07646))
   - What does it mean for a LM to preserve privacy? ([brown, …, tramer, 2022](https://dl.acm.org/doi/abs/10.1145/3531146.3534642)) - “privacy-preserving” LM should guarantee that a user’s data cannot ever appear (or be inferable) outside the context they originally expected it to appear in
@@ -1888,21 +1772,18 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 
 ## symbolic reasoning
 
-*See also notes on [📌 comp neuro](https://csinva.io/notes/research_ovws/ovw_comp_neuro.html).*
+*See also notes on [📌 comp neuro](https://csinva.io/notes/neuro/comp_neuro.html).*
 
 - Compositional processing emerges in neural networks solving math problems ([russin, roland fernandez, ..., smolensky, gao, 2021](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8491571/))
 - Modular Deep Learning ([pfeiffer, ruder, .., ponti, 2023)](https://arxiv.org/abs/2302.11529.pdf) - overview of different modular architectures
 - neurocompositional computing ([smolensky…gao, 2022](https://arxiv.org/abs/2205.01128))
   - longer tutorial ([smolensky, …, gao, 2022](https://www.microsoft.com/en-us/research/uploads/prod/2022/04/Neurocompositional_computing__tutorial.pdf))
-
   - *central paradox of cognition* is that brain both uses continuous neural symbols but is compositional ([smolensky et al. 1992](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.20.4352&rep=rep1&type=pdf))
     - Compositionality
     - Continuity - the encoding and processing of information is formalized with real numbers that vary continuously
-
   - 3 challenges: compositional generalization, data efficiency, comprehensibility
   - solution - NECST: Neurally-Encoded Compositionally-Structured Tensor computing ([smolensky & legendre, 2006](https://psycnet.apa.org/record/2006-07970-000)) - basically leverages TPR
     - TPR roles and fillers can both be made continuous
-  
   - neural space vs symbolic space (many different things (e.g. sentences) can mean the same thing) - word vectors can be thought of as “soft symbols”
   - want to move from symbolic repr. to neural repr. while keeping interpretability
     - system should output intermediate steps in addition to answer
@@ -1921,8 +1802,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 - TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research ([chen...gao, 2019](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/))
 - Logical Transformers: Infusing Logical Structures into Pre-Trained LMs ([wang, huang, ..., gao, 2023](https://aclanthology.org/2023.findings-acl.111/)) - use logical model to alter embeddings before feeding to LLM
 - Implicit CoT Reasoning via Knowledge Distillation ([deng...smolensky..., 2023](https://arxiv.org/abs/2311.01460))
-
-
 
 ## tool use / agents
 
@@ -1965,7 +1844,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - PolyGuard: A Multilingual Safety Moderation Tool for 17 Languages ([kumar...sap, 2025](https://arxiv.org/abs/2504.04377))
 
   **multilingual learning**
-
 - Multilingual Jailbreak Challenges in LLMs ([deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp)) - jailbreaks work better in low-resource languages - propose to remedy this by safety finetuning on multilingual data
 - *Evaluating and Mitigating Linguistic Discrimination in LLMs* ([dong…wang, 2024](https://arxiv.org/abs/2404.18534)) - translate all queries into multiple languages and then get the response from the model, and then convert the responses to English and give the answer that has highest similarities to other answers
 - *Getting More from Less: LLMs are Good Spontaneous Multilingual Learners* ([zhang...huang, 2024](https://arxiv.org/abs/2405.13816v2)) - applying logit lens finds that model internally translates to english in multilingual tasks
@@ -2012,10 +1890,10 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - Transformers can learn to implement two distinct algorithms to solve a single task, and can adaptively select the more sample-efficient algorithm depending on the sequence of in-context examples
   - Limits of Transformer LMs on Learning Algorithmic Compositions ([thomm...scholkopf, rahimi, 2024](https://arxiv.org/abs/2402.05785.pdf))
   - Dissecting CoT: Compositionality through In-Context Filtering and Learning ([li...papailiopoulos, oymak, 2023](https://openreview.net/forum?id=xEhKwsqxMa)) - CoT helps LLMs learn MLP compositional functions in-context
-  - Vector-ICL: In-context Learning with Continuous Vector Representations ([zhuang...gao, 2024](https://arxiv.org/abs/2410.05629)) - language-only LLMs can perform ICL on vectors from many domains using a simple lightweight linear projector trained with a simple reconstruction loss 
+  - Vector-ICL: In-context Learning with Continuous Vector Representations ([zhuang...gao, 2024](https://arxiv.org/abs/2410.05629)) - language-only LLMs can perform ICL on vectors from many domains using a simple lightweight linear projector trained with a simple reconstruction loss
 - Learning a (sparse) linear model
   - The contextual lasso: Sparse linear models via deep neural networks ([thompson, …, kohn, 2023](https://arxiv.org/abs/2302.00878.pdf)) - very rough results...
-  - [Breaking the Paradox of Explainable Deep Learning](https://arxiv.org/abs/2305.13072)
+  - Breaking the Paradox of Explainable Deep Learning ([kadra et al. 2023](https://arxiv.org/abs/2305.13072))
   - Aug-imodels ([singh et al 2023](https://arxiv.org/abs/2209.11799))
 - What learning algorithm is in-context learning? Investigations with linear models ([aykurek, schuurmans, andreas, ma, & zhou, 2023](https://arxiv.org/abs/2211.15661)) - investigate prompting through synthetic experiments with transformers trained for linear regression
   - Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning ([li, ..., oymak, 2023](https://arxiv.org/abs/2301.07067.pdf)) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
@@ -2040,7 +1918,7 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - Faith and Fate: Limits of Transformers on Compositionality ([dziri...choi, 2023](https://arxiv.org/abs/2305.18654)) - LLMs can't (easily) be trained well for multiplication (and similar tasks)
 - ICLR: In-Context Learning of Representations ([park...wattenberg, tanaka, 2024](https://arxiv.org/abs/2501.00070)) - showing pairs of words sampled from a graph can make the embeddings of those words match the structure of that graph
 - Label Words are Anchors: An Information Flow Perspective for Understanding In-Context Learning ([wang...sun, 2023](https://aclanthology.org/2023.emnlp-main.609.pdf))
-- Correlation and Navigation in the Vocabulary Key Representation Space of LMs ([peng...shang, 2024](https://arxiv.org/abs/2410.02284)) - some tokens are correlated in embedding space and wrong next-token completions  can be highly ranked if their embeddings are correlated with correct ones
+- Correlation and Navigation in the Vocabulary Key Representation Space of LMs ([peng...shang, 2024](https://arxiv.org/abs/2410.02284)) - some tokens are correlated in embedding space and wrong next-token completions can be highly ranked if their embeddings are correlated with correct ones
   - as we sample tokens in context, we get more diverse completions, skipping nearby wrong next tokens
 - The dynamic interplay between in-context and in-weight learning in humans and neural networks ([russin, pavlick & frank, 2024](https://arxiv.org/abs/2402.08674)) - ICL and in-weight learning show similarities to human learning systems that do (i) rapid, rule-based inferences versus (ii) slow, incremental adaptation
 
@@ -2048,7 +1926,6 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 ## llm limitations / critiques
 
 - Dissociating language and thought in LLMs: a cognitive perspective ([mahowald, ..., tenenbaum, fedorenko, 2023](https://arxiv.org/abs/2301.06627.pdf)) - 2 competences: (1) formal & (2) functional linguistic competence
-
 - Hallucination is Inevitable: An Innate Limitation of LLMs ([xu...kankanhalli, 2024](https://arxiv.org/abs/2401.11817.pdf))
 - overview foundation models paper ([stanford, 2022](https://arxiv.org/abs/2108.07258))
 - critiques of prompting
@@ -2096,12 +1973,8 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 ## benchmarks
 
 - spring 2026
-
   - [agent-board](https://github.com/hkust-nlp/AgentBoard) (9 multi-turn tasks)
-
   - [terminal-bench](https://www.tbench.ai/)
-
   - [OfficeQA](https://arxiv.org/abs/2603.08655) (grounded reasoning benchmark over U.S. Treasury text/tabular data)
-
   - [GAIA](https://arxiv.org/abs/2311.12983) (general assistants benchmark, questions that require reasoning, multi-modality handling, web browsing, and generally tool-use proficiency)
   - https://www.frontierswe.com/blog

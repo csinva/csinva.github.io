@@ -31,9 +31,8 @@
 - *Jonathan Cohen* - theory
 - *Larry Abbott* - theoretical neuroscience
 - *György Buzsáki* - oscillations
-
 - Peter Dayan
-- Haim Sompolinsky 
+- Haim Sompolinsky
 - Stephen Grossberg
 - Randall C. O'Reilly
 - Nancy Kopell
@@ -59,5 +58,4 @@
 - [Iain Couzin](https://scholar.google.com/citations?user=dbBW62EAAAAJ&hl=en)
 - Haim Sompolinksy
 - charlest gilbert - rockefeller - studies spatial distribution of visual cortex
-
 - *Susumu Tonegawa* - memory

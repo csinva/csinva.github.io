@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 50 1310 750" role="img" aria-labelledby="title desc">
+  <title id="title">Single-cell recording</title>
+  <desc id="desc">A cell sits in the bath or "extracellular" solution. A glass pipette filled with electrode or "intracellular" solution touches the cell. An Ag/AgCl junction in the pipette connects to a voltage follower amplifier whose output is Vout; a second Ag/AgCl junction in the bath connects to ground, the reference for Vout.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="rarrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <style>
+      .ttl { font: bold 44px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .t { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sub { font-size: 20px; }
+      .bath { fill: #1f6fb2; fill-opacity: 0.16; }
+      .sol { fill: #1f8a4c; fill-opacity: 0.1; }
+      .cell { fill: #1f8a4c; fill-opacity: 0.1; stroke: #2b2b2b; stroke-width: 2; }
+      .glass { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linejoin: round; }
+      .junc { fill: #8a8a8a; fill-opacity: 0.35; }
+      .w { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linejoin: round; }
+      .dot { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-dasharray: 3 4; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .rlead { fill: none; stroke: #d1342f; stroke-width: 2.5; }
+    </style>
+  </defs>
+  <text class="ttl" x="68" y="110">Single-cell recording</text>
+  <rect class="bath" x="25" y="165" width="655" height="620"/>
+  <!-- cell -->
+  <circle class="cell" cx="290" cy="430" r="210"/>
+  <circle cx="290" cy="430" r="202" fill="none" stroke="#2b2b2b" stroke-width="1.5"/>
+  <!-- pipette -->
+  <path class="sol" d="M543 412 L915 340 V527 L543 455 Z"/>
+  <path class="glass" d="M915 322 L543 393 V412 L915 340"/>
+  <path class="glass" d="M915 545 L543 473 V455 L915 527"/>
+  <!-- junctions -->
+  <rect class="junc" x="741" y="410" width="139" height="46"/>
+  <rect class="junc" x="527" y="604" width="138" height="46"/>
+  <path class="dot" d="M543 432 H760"/>
+  <path class="dot" d="M545 627 H520 V432 H543"/>
+  <path class="w" d="M760 432 H778 L784 422 L793 442 L802 422 L811 442 L820 422 L829 442 L834 432 H1012"/>
+  <path class="w" d="M545 627 H564 L570 617 L579 637 L588 617 L597 637 L606 617 L615 637 L620 627 H1240"/>
+  <!-- amplifier (voltage follower) -->
+  <path class="w" d="M1012 348 V468 L1117 408 Z"/>
+  <path class="w" d="M1012 378 H980 V315 H1150 V408"/>
+  <path class="w" d="M1117 408 H1231"/>
+  <circle cx="1240" cy="408" r="9" fill="none" stroke="#2b2b2b" stroke-width="2.5"/>
+  <circle cx="1240" cy="470" r="9" fill="none" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="t" x="1222" y="448" style="font-size:26px">V<tspan class="sub" dy="6">out</tspan></text>
+  <path class="w" d="M1240 479 V715"/>
+  <path class="w" d="M1222 715 H1258 M1228 724 H1252 M1234 733 H1246"/>
+  <!-- labels -->
+  <text class="t" x="822" y="156">Electrode or ”Intracellular” solution</text>
+  <path class="lead" d="M1048 172 L885 376" marker-end="url(#arrow)"/>
+  <text class="t" x="120" y="740">Bath or ”Extracellular” solution</text>
+  <text class="t" x="750" y="748">Ag/AgCl junction</text>
+  <path class="rlead" d="M860 712 L816 460" marker-end="url(#rarrow)"/>
+  <path class="rlead" d="M742 720 L598 652" marker-end="url(#rarrow)"/>
+</svg>

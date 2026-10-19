@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 990 845" role="img" aria-labelledby="title desc">
+  <title id="title">Cerebellar output pathways</title>
+  <desc id="desc">Schematic of cerebellar outputs. Cerebrocerebellum projects through VA/VL of the thalamus to cortex (blue). Spinocerebellum projects to the red nucleus, which projects to the inferior olive, which projects back to the cerebrocerebellum (black). Vestibulocerebellum projects to the Clarke/cuneate/vestibular nuclei (blue). Pontine nuclei are also shown.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker>
+    <marker id="ak" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; font-size: 28px; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .t1 { fill: #e2e2e2; }
+      .t2 { fill: #c4c4c4; }
+      .t3 { fill: #a6a6a6; }
+      .p { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  <!-- tissue (simplified shapes) -->
+  <path d="M640 98 C770 55 905 70 925 210 C945 340 930 480 745 525" fill="none" stroke="#e2e2e2" stroke-width="95" stroke-linecap="round"/>
+  <path class="t1" d="M658 350 V265 C658 210 698 190 740 190 C790 190 822 222 822 265 V350 Z"/>
+  <ellipse class="t2" cx="800" cy="283" rx="23" ry="50"/>
+  <text x="790" y="390">VA/VL</text>
+  <rect class="t2" x="252" y="575" width="233" height="85" rx="10"/>
+  <rect class="t3" x="252" y="575" width="100" height="85" rx="10"/>
+  <rect class="t3" x="398" y="660" width="100" height="18" rx="3"/>
+  <text x="318" y="560">spinocerebellum</text>
+  <text class="e" x="238" y="628">cerebrocerebellum</text>
+  <text class="c" x="300" y="745">vestibulocerebellum</text>
+
+  <circle class="t2" cx="596" cy="575" r="20"/><circle class="t2" cx="690" cy="575" r="20"/>
+  <text class="c" x="648" y="618">Red nucleus</text>
+  <circle class="t2" cx="596" cy="655" r="20"/><circle class="t2" cx="690" cy="655" r="20"/>
+  <text class="c" x="652" y="698">Pontine nuclei</text>
+  <circle class="t2" cx="596" cy="735" r="20"/><circle class="t2" cx="690" cy="735" r="20"/>
+  <text class="c" x="657" y="778">Inferior olive</text>
+  <circle class="t2" cx="596" cy="815" r="20"/><circle class="t2" cx="690" cy="815" r="20"/>
+  <text class="c" x="695" y="858">Clark/cuneate/vestibular nuclei</text>
+  <!-- pathways -->
+  <path class="p" stroke="#1f6fb2" marker-end="url(#ab)" d="M295 593 C295 535 325 515 405 495 C505 475 615 460 725 450 C765 445 785 415 785 375 C785 325 795 295 815 250 L872 158"/>
+  <path class="p" stroke="#2b2b2b" marker-end="url(#ak)" d="M460 606 C500 592 540 562 578 575 C545 600 530 640 540 690 C548 725 600 730 578 740 C540 742 470 706 420 696 C370 686 330 670 312 656"/>
+  <path class="p" stroke="#1f6fb2" marker-end="url(#ab)" d="M498 669 C538 672 553 700 557 740 C560 770 566 790 580 803"/>
+</svg>

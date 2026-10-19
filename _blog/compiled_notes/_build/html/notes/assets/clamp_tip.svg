@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 1400 740" role="img" aria-labelledby="title desc">
+  <title id="title">Liquid junction potential</title>
+  <desc id="desc">Liquid junction potential / tip-potential at a pipette tip. Bath at 0 mV; pipette interior about −10 mV. Na+ and Cl− move from the bath toward the pipette; K+ and gluconate− move out of the pipette. Difference in mobility of positive and negative ions diffusing down a concentration results in charge-separation – the induced voltage-gradient equalizes the ionic mobilities.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .ttl { font: 48px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .t { font: 44px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .ion { font: italic bold 46px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .sup { font-size: 28px; }
+      .note { font: 28px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .bath { fill: #1f6fb2; fill-opacity: 0.16; }
+      .sol { fill: #1f8a4c; fill-opacity: 0.1; }
+      .glass { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linejoin: round; }
+      .a { fill: none; stroke: #2b2b2b; stroke-width: 7; }
+    </style>
+  </defs>
+  <text class="ttl" x="55" y="78">Liquid junction potential / tip-potential</text>
+  <rect class="bath" x="10" y="130" width="655" height="620"/>
+  <path class="sol" d="M350 345 L1005 158 V642 L350 455 Z"/>
+  <path class="glass" d="M1005 110 L350 298 V345 L1005 158"/>
+  <path class="glass" d="M1005 688 L350 500 V455 L1005 642"/>
+  <text class="ion" x="78" y="392"><tspan fill="#d1342f">Na<tspan class="sup" dy="-20">+</tspan></tspan></text>
+  <path class="a" d="M184 376 H250" marker-end="url(#arrow)"/>
+  <path class="a" d="M344 376 H278" marker-end="url(#arrow)"/>
+  <text class="ion" x="350" y="392"><tspan fill="#1f6fb2">K<tspan class="sup" dy="-20">+</tspan></tspan></text>
+  <text class="ion" x="86" y="452">Cl<tspan class="sup" dy="-20">-</tspan></text>
+  <path class="a" d="M184 436 H250" marker-end="url(#arrow)"/>
+  <path class="a" d="M416 424 H388" marker-end="url(#arrow)"/>
+  <text class="ion" x="418" y="440">Gluconate<tspan class="sup" dy="-20">-</tspan></text>
+  <text class="t" x="590" y="370">~ -10 mV</text>
+  <text class="t" x="300" y="660">0 mV</text>
+  <text class="note" x="832" y="310">Difference in mobility of positive and</text>
+  <text class="note" x="832" y="346">negative ions diffusing down a</text>
+  <text class="note" x="832" y="382">concentration results in charge-</text>
+  <text class="note" x="832" y="418">separation – the induced voltage-</text>
+  <text class="note" x="832" y="454">gradient equalizes the ionic mobilities.</text>
+</svg>

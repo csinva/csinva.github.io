@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 30 970 700" role="img" aria-labelledby="title desc">
+  <title id="title">Geometry of the LMS algorithm</title>
+  <desc id="desc">The parameter vector θ is projected onto the input vector x_n, giving length μ_n. The output value y_n is marked as a distance along x_n. The dashed line, perpendicular to x_n at distance y_n, is the set of all θ whose projection equals y_n.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: round; }
+      .dim { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-dasharray: 12 9; }
+      .dot { fill: none; stroke: #2b2b2b; stroke-width: 1.8; stroke-dasharray: 5 5; }
+      .m { font: italic 48px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font-size: 32px; font-family: "Times New Roman", Times, serif; }
+    </style>
+  </defs>
+  <path class="ax" d="M215.0 708.0 V115" marker-end="url(#arrow)"/>
+  <path class="ax" d="M215.0 708.0 H985" marker-end="url(#arrow)"/>
+  <path class="ax" d="M215.0 708.0 L597.6 235.5" marker-end="url(#arrow)"/>
+  <path class="ax" d="M215.0 708.0 L668.0 598.0" marker-end="url(#arrow)"/>
+  <path class="dash" d="M168 45 L970 660"/>
+  <path class="dot" d="M668.0 598.0 L448.2 420.0"/>
+  <path class="dim" d="M212.0 428.9 L79.2 592.9" marker-end="url(#arrow)"/>
+  <path class="dim" d="M287.5 335.7 L386.9 212.9" marker-end="url(#arrow)"/>
+  <path class="dim" d="M89.1 606.1 L64.3 586.0"/>
+  <path class="dim" d="M401.9 219.8 L377.0 199.7"/>
+  <path class="dim" d="M251.8 557.7 L166.2 663.4" marker-end="url(#arrow)"/>
+  <path class="dim" d="M321.0 472.2 L394.4 381.6" marker-end="url(#arrow)"/>
+  <path class="dim" d="M176.1 676.5 L151.3 656.4"/>
+  <path class="dim" d="M409.4 388.5 L384.5 368.4"/>
+  <text class="m" x="612" y="212">x<tspan class="sub" dy="10">n</tspan></text>
+  <text class="m" x="222" y="402">y<tspan class="sub" dy="10">n</tspan></text>
+  <text class="m" x="250" y="552">μ<tspan class="sub" dy="10">n</tspan></text>
+  <text class="m" x="694" y="616">θ</text>
+</svg>

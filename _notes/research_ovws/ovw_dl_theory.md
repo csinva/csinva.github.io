@@ -14,10 +14,10 @@ subtitle: Deep learning theory is a complex emerging field - this post contains 
 
 DNNs display many surprising properties
 
-- surprising: [more parameters yields better generalization](https://arxiv.org/abs/1802.08760) 
+- surprising: more parameters yields better generalization ([novak et al. 2018](https://arxiv.org/abs/1802.08760))
 - surprising: lowering training error should be harder
 
-Many things seem to contribute to the inductive bias of DNNs: SGD, dropout, early stopping, resnets, convolution, more layers...all of these are tangled together and many things correlate with generalization error...what are the important things and how do they contribute? 
+Many things seem to contribute to the inductive bias of DNNs: SGD, dropout, early stopping, resnets, convolution, more layers...all of these are tangled together and many things correlate with generalization error...what are the important things and how do they contribute?
 
 some more concrete questions:
 
@@ -27,9 +27,6 @@ some more concrete questions:
 - *verification* - does dnn satisfy a specification (e.g $l_p$ robustness)
   - *convex barrier* - limitation in the tightness of the bounds obtainable by the convex relaxation of the output of a neural network
 
-
-
-
 ## functional approximation
 
 - dnns are very hard to study in the parameter space (e.g. swapping two parameters changes things like the Hessian), easier to to study in the function space (e.g. the input-output relationship)
@@ -37,15 +34,15 @@ some more concrete questions:
 1. construct a dictionary function (T)
   2. learn linear combination of the dictionary elements (g)
 - background
-  - $L^2$ function (or function space) is square integrable: $|f|^2 = \int_X |f|^2 d\mu$, and $|f|$ is its $L_2$-norm
+  - $L^2$ function (or function space) is square integrable: $$\vert f\vert ^2 = \int_X \vert f\vert ^2 d\mu$$, and $$\vert f\vert $$ is its $L_2$-norm
   - **Hilbert space** - vector space w/ additional structure of inner product which allows length + angle to be measured
     - complete - there are enough limits in the space to allow calculus techniques (is a *complete metric space*)
-- composition allows an approximation of a function through level sets (split it up and approximate on these sets) - Zuowei Shen ([talk](http://www.ipam.ucla.edu/programs/workshops/workshop-iii-geometry-of-big-data/?tab=schedule), [slides](../../../drive/papers/dl_theory/shen_19_composition_dl_slides.pdf)) 
+- composition allows an approximation of a function through level sets (split it up and approximate on these sets) - Zuowei Shen ([talk](http://www.ipam.ucla.edu/programs/workshops/workshop-iii-geometry-of-big-data/?tab=schedule), [slides](../../../drive/papers/dl_theory/shen_19_composition_dl_slides.pdf))
   - composition operation allows an approximation of a function f through level sets of f --
-  - one divides up the range of f into equal intervals and approximate the functions on these sets 
+  - one divides up the range of f into equal intervals and approximate the functions on these sets
   - nonlinear approximation via compositions ([shen 2019](https://arxiv.org/pdf/1902.10170.pdf))
 - how do the weights in each layer help this approximation to be more effective?
-  - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs. 
+  - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs.
   - are the outputs from later layers more or less low - rank?
   - I wonder how this "whitening" helps level set estimation...
 - [takagi functions](https://arxiv.org/abs/1112.4205)
@@ -55,7 +52,7 @@ some more concrete questions:
 
 *DL learns solutions that generalize even though it can find many which don't due to its inductive bias.*
 
-- [gd bousquet paper](https://arxiv.org/pdf/1803.08367.pdf) 
+- gd bousquet paper ([maennel et al. 2018](https://arxiv.org/pdf/1803.08367.pdf))
 - [in high dims, local minima are usually saddles (ganguli)](http://papers.nips.cc/paper/5486-identifying-and-attacking-the-saddle-point-problem-in-high-dimensional-non-convex-optimization)
 - early stopping is very similar to ridge regression
 - ridge regression: soln will lie in $p-dim$ row-space of X (span of the rows)
@@ -65,65 +62,58 @@ some more concrete questions:
     - GD will converge to min-norm soln (any soln not in the row-space will necessarily have larger norm)
     - similar to ridge (endpoints are the same) and can related their risks very closely when $\lambda = 1/t$, where $t$ is GD time iterate
       - assume gradient flow: take step-size to 0
-- [srebro understanding over-parameterization	](https://arxiv.org/abs/1805.12076) 
+- srebro understanding over-parameterization ([neyshabur et al. 2018](https://arxiv.org/abs/1805.12076))
   - ex. gunasekar et al 2017: unconstrained matrix completion
     - grad descent on U, V yields min nuclear norm solution
   - ex. [soudry et al 2017](http://www.jmlr.org/papers/volume19/18-188/18-188.pdf)
     - sgd on logistic reg. gives hard margin svm
     - deep linear net gives the same thing - doesn't actually changed anything
   - ex. [gunaskar, 2018](http://papers.nips.cc/paper/8156-implicit-bias-of-gradient-descent-on-linear-convolutional-networks)
-    - linear convnets give smth better - minimum l1 norm in discrete fourier transform 
+    - linear convnets give smth better - minimum l1 norm in discrete fourier transform
   - ex. savarese 2019
     - infinite width relu net 1-d input
     - weight decay minimization minimizes derivative of TV
-- [implicit bias towards simpler models](https://arxiv.org/abs/1805.08522)
+- implicit bias towards simpler models ([valle-pérez et al. 2018](https://arxiv.org/abs/1805.08522))
 - How do infinite width bounded norm networks look in function space? ([savarese...srebro 2019](https://arxiv.org/pdf/1902.05040.pdf))
   - minimal norm fit for a sample is given by a linear spline interpolation (2 layer net)
-- [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
+- analytic theory of generalization + transfer (ganguli 19) ([lampinen & ganguli 2018](https://arxiv.org/abs/1809.10374))
   - deep linear nets learn important structure of the data first (less noisy eigenvectors)
-  - [similar paper for layer nets](https://arxiv.org/pdf/1904.13262.pdf)
+  - similar paper for layer nets ([gidel et al. 2019](https://arxiv.org/pdf/1904.13262.pdf))
 - datasets for measuring causality
   - Inferring Hidden Statuses and Actions in Video by Causal Reasoning - about finding causality in the video, not interpretation
 - **PL condition** = Polyak-Lojawsiewicz condition guarantees global convergence of loca methods
-  - $||\nabla f(x)||^2 \geq \alpha f(x) \geq 0$
-
-
+  - $$\vert \vert \nabla f(x)\vert \vert ^2 \geq \alpha f(x) \geq 0$$<!-- -->
 
 ## semantic biases: what correlations will a net learn?
 
-- [imagenet models are biased towards texture](https://arxiv.org/abs/1811.12231) (and removing texture makes them more robust)
-- [analyzing semantic robustness](https://arxiv.org/pdf/1904.04621.pdf)
-- [eval w/ simulations](https://arxiv.org/abs/1712.06302) (reviewer argued against this)
-- [glcm captures superficial statistics](https://arxiv.org/abs/1903.06256)
-- [deeper, unpruned networks are better against noise](https://arxiv.org/abs/1903.12261)
-- [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
+- imagenet models are biased towards texture ([geirhos et al. 2018](https://arxiv.org/abs/1811.12231)) (and removing texture makes them more robust)
+- analyzing semantic robustness ([hamdi & ghanem 2019](https://arxiv.org/pdf/1904.04621.pdf))
+- eval w/ simulations ([oramas et al. 2017](https://arxiv.org/abs/1712.06302)) (reviewer argued against this)
+- glcm captures superficial statistics ([wang et al. 2019](https://arxiv.org/abs/1903.06256))
+- deeper, unpruned networks are better against noise ([hendrycks & dietterich 2019](https://arxiv.org/abs/1903.12261))
+- analytic theory of generalization + transfer (ganguli 19) ([lampinen & ganguli 2018](https://arxiv.org/abs/1809.10374))
 - [causality in dnns talk by bottou](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/)
-  
   - on mnist, color vs shape will learn color
-- [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)
-- [rl agents learn some crazy things](https://arxiv.org/pdf/1803.03453.pdf)
-  
+- A mathematical theory of semantic development in deep neural networks ([saxe et al. 2018](https://arxiv.org/abs/1810.10531))
+- rl agents learn some crazy things ([lehman et al. 2018](https://arxiv.org/pdf/1803.03453.pdf))
   - [itemized list](https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml)
 - Emergence of Invariance and Disentanglement in Deep Representations ([achille & soatto 2018](https://arxiv.org/abs/1706.01350))
-  -  information in the weights as a measure of complexity of a learned model (information complexity)
+  - information in the weights as a measure of complexity of a learned model (information complexity)
   - IB Lagrangian between the **weights of a network and the training data**, as opposed to the traditional one between the **activations and the test datum**
   - explains tradeoff between over/underfitting
 - On Dropout, Overfitting, and Interaction Effects in Deep Neural Networks ([lengerich..caruana, 2020](https://arxiv.org/abs/2007.00823))
-
   - use ANOVA to meaure 1st/2nd/3rd order effects and such
     - approximate ANOVA decomp. using boosted trees of depth based on a particular order
 - they find that increasing dropout rate forces nets to emphasize lower-order effects
-- [An Investigation of Why Overparameterization Exacerbates Spurious Correlations](https://arxiv.org/abs/2005.04345)
+- An Investigation of Why Overparameterization Exacerbates Spurious Correlations ([sagawa et al. 2020](https://arxiv.org/abs/2005.04345))
   - overparameterization can hurt test error on minority groups despite improving average test error when there are spurious correlations in the data
 
 ## expressiveness: what can a dnn represent?
 
-- [complexity of linear regions in deep networks](https://arxiv.org/pdf/1901.09021.pdf)
-- [Bounding and Counting Linear Regions of Deep Neural Networks](https://arxiv.org/pdf/1711.02114.pdf)
-- [On the Expressive Power of Deep Neural Networks](https://arxiv.org/pdf/1606.05336.pdf)
-- [Deep ReLU Networks Have Surprisingly Few Activation Patterns](https://arxiv.org/pdf/1906.00904.pdf)
-
-
+- complexity of linear regions in deep networks ([hanin & rolnick 2019](https://arxiv.org/pdf/1901.09021.pdf))
+- Bounding and Counting Linear Regions of Deep Neural Networks ([serra et al. 2017](https://arxiv.org/pdf/1711.02114.pdf))
+- On the Expressive Power of Deep Neural Networks ([raghu et al. 2016](https://arxiv.org/pdf/1606.05336.pdf))
+- Deep ReLU Networks Have Surprisingly Few Activation Patterns ([hanin & rolnick 2019](https://arxiv.org/pdf/1906.00904.pdf))
 
 ## complexity + generalization: dnns are low-rank / redundant parameters
 
@@ -135,12 +125,12 @@ some more concrete questions:
   - [predicting params](http://papers.nips.cc/paper/5025-predicting-parameters-in-deep-learning): weight matrices are low-rank, decompose into UV by picking a U
   - [pruning neurons](https://arxiv.org/abs/1507.06149)
   - [circulant projection](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Cheng_An_Exploration_of_ICCV_2015_paper.pdf)
-  - [rethinking the value of pruning](https://arxiv.org/pdf/1810.05270.pdf): pruning and training from scratch, upto 30% size
+  - rethinking the value of pruning ([liu et al. 2018](https://arxiv.org/pdf/1810.05270.pdf)): pruning and training from scratch, upto 30% size
   - [Lottery ticket](https://openreview.net/pdf?id=rJl-b3RcF7): pruning and training from initial random weights, upto 1% size ([followup](https://arxiv.org/abs/1903.01611))
-  - [rank of relu activations](https://arxiv.org/pdf/1810.03372.pdf)
-  - [random weights are good](https://arxiv.org/pdf/1504.08291.pdf)
-  - [singular values of conv layers](https://arxiv.org/pdf/1805.10408.pdf)
-  - [T-Net: Parametrizing Fully Convolutional Nets with a Single High-Order Tensor](https://arxiv.org/abs/1904.02698)
+  - rank of relu activations ([collins et al. 2018](https://arxiv.org/pdf/1810.03372.pdf))
+  - random weights are good ([giryes et al. 2015](https://arxiv.org/pdf/1504.08291.pdf))
+  - singular values of conv layers ([sedghi et al. 2018](https://arxiv.org/pdf/1805.10408.pdf))
+  - T-Net: Parametrizing Fully Convolutional Nets with a Single High-Order Tensor ([kossaifi et al. 2019](https://arxiv.org/abs/1904.02698))
 - generalization
   - [size of the weights is more important](http://eprints.qut.edu.au/43927/)
   - [Quantifying the generalization error in deep learning in terms of data distribution and
@@ -149,18 +139,18 @@ some more concrete questions:
 ## nearest neighbor comparisons
 
 - [weighted interpolating nearest neighbors can generalize well (belkin...mitra 2018)](http://papers.nips.cc/paper/7498-overfitting-or-perfect-fitting-risk-bounds-for-classification-and-regression-rules-that-interpolate)
-- [Statistical Optimality of Interpolated Nearest Neighbor Algorithms](https://arxiv.org/abs/1810.02814)
-- [nearest neighbor comparison](https://arxiv.org/pdf/1805.06822.pdf)
-- [nearest embedding neighbors](https://arxiv.org/pdf/1803.04765.pdf)
+- Statistical Optimality of Interpolated Nearest Neighbor Algorithms ([xing et al. 2018](https://arxiv.org/abs/1810.02814))
+- nearest neighbor comparison ([cohen et al. 2018](https://arxiv.org/pdf/1805.06822.pdf))
+- nearest embedding neighbors ([papernot & mcdaniel 2018](https://arxiv.org/pdf/1803.04765.pdf))
 
 ## kernels
 
-- [To understand deep learning we need to understand kernel learning](https://arxiv.org/abs/1802.01396) - overfitted kernel classifiers can still fit the data well
+- To understand deep learning we need to understand kernel learning ([belkin et al. 2018](https://arxiv.org/abs/1802.01396)) - overfitted kernel classifiers can still fit the data well
 - original kernels (neal 1994) + (lee et al. 2018) + (matthews et al. 2018)
   - infinitely wide nets and only top layer is trained
-  - corresponds to kernel $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]$, where $W$ is an intialization distr. over $\theta$
+  - corresponds to kernel $$\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]$$, where $W$ is an intialization distr. over $\theta$
 - neural tangent kernel ([jacot et al. 2018](https://arxiv.org/abs/1806.07572))
-  - $\text{ker}(x, x') = \mathbb E_{\theta \sim W} \left[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> \right]$ - evolution of weights over time follows this kernel
+  - $$\text{ker}(x, x') = \mathbb E_{\theta \sim W} \left[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> \right]$$ - evolution of weights over time follows this kernel
     - with very large width, this kernel is the NTK at initialization
     - stays stable during training (since weights don't change much)
   - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit
@@ -183,41 +173,54 @@ some more concrete questions:
 ## random projections
 
 - [sgd for polynomials](http://proceedings.mlr.press/v32/andoni14.pdf)
-- [deep linear better than just linear](https://arxiv.org/pdf/1811.10495.pdf)
+- deep linear better than just linear ([guo et al. 2018](https://arxiv.org/pdf/1811.10495.pdf))
 - relation to bousquet - fitting random polynomials
 - [hierarchical sparse coding for images](https://pdfs.semanticscholar.org/9636/d8aedd476ef19c762923119750aec95bf8ca.pdf) (can’t just repeat sparse coding, need to include input again)
 
 ## implicit dl + optimization
 
 - implicit deep learning ([el ghaoui et al. 2019](https://arxiv.org/abs/1908.06315))
-  - $\hat y (u) = Cx + D u $, where $x = \phi(Ax + Bu)$
+  - $\hat y (u) = \corange{Cx + D u} $, where $x = \phi(\cblue{Ax + Bu})$
     - here, $u$ is a new input
     - $x$ is a hidden state which represents some hidden features (which depends on $u$)
       - **well-posedness** - want x to be unique for a given u
-    - $A, B$ are matrices which let us compute $x$ given $u$
-    - $C, D$ help us do the final prediction (like the final linear layer)
+    - $\cblue{A, B}$ are matrices which let us compute <span class="cblue">$x$ given $u$</span>
+    - $\corange{C, D}$ help us do the <span class="corange">final prediction</span> (like the final linear layer)
   - ex. feedforward nets
     - consider net with $L$ layers
       - $x_0 = u$
       - $x_{l + 1} = \phi_l (W_l x_l)$
       - $\hat y (u) = W_L x_L$
     - rewriting in implicit form
-      - $x = (x_L, ..., x_1)$ - concatenate all the activations into one big vector
-      - ![implicit_dl](../assets/implicit_dl.png)
-      - ex. $Ax + Bu= \begin{bmatrix} W_{L-1}x_{L-1} \\ W_{L-2} x_{L-2} \\ \vdots \\ W_1x_1 \\ \mathbf 0\end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ W_0 u \end{bmatrix}$ 
+      - $$x = (x_L, ..., x_1)$$ - concatenate all the activations into one big vector
+      - matrix form
+
+        $$
+        \left(\begin{array}{c|c} \cblue{A} & \cblue{B} \\ \hline \corange{C} & 0 \end{array}\right) =
+        \left(\begin{array}{cccc|c}
+        0 & W_{L-1} & \cdots & 0 & 0 \\
+         & 0 & \ddots & \vdots & \vdots \\
+         & & \ddots & W_1 & 0 \\
+         & & & 0 & W_0 \\ \hline
+        W_L & 0 & \cdots & 0 & 0
+        \end{array}\right)
+        $$
+
+      - ex. $$Ax + Bu= \begin{bmatrix} W_{L-1}x_{L-1} \\ W_{L-2} x_{L-2} \\ \vdots \\ W_1x_1 \\ \mathbf 0\end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ W_0 u \end{bmatrix}$$
 - lifted neural networks ([askari et al. 2018](https://arxiv.org/abs/1805.01532))
-  - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using constraints:
+  - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using <span class="corange">constraints</span>:
     - $X_1 = \phi(W_1 X_0)$
     - $X_2 = \phi(W_2 X_1)$
-  - $\begin{align} &\min (y - \hat y)^2\\s.t. X_1 &= \phi(WX_0)\\X_2 &= \phi(WX_1)\end{align}$
-  - can be written using Lagrangian multipliers: $\min (y - \hat y)^2 + \lambda_1( X_1 - \phi(WX_0)) + \lambda_2(X_2 - \phi(WX_1))$
+  - $$\begin{align} &\min \cblue{(y - \hat y)^2}\\s.t. \corange{X_1} &\corange{ {}= \phi(WX_0)}\\\corange{X_2} &\corange{ {}= \phi(WX_1)}\end{align}$$<!-- -->
+  - can be written using Lagrangian multipliers: $$\min \cblue{(y - \hat y)^2} + \corange{\lambda_1( X_1 - \phi(WX_0)) + \lambda_2(X_2 - \phi(WX_1))}$$
+    - <span class="cblue">loss</span> + <span class="corange">constraint terms</span>
 - Fenchel Lifted Networks: A Lagrange Relaxation of Neural Network Training ([gu et al. 2018](https://arxiv.org/abs/1811.08039))
   - in the lifted setting above, can replace Lagrangian with simpler expression using Fenchel conjugates
 - robust optimization basics
   - immunize optimization problems against uncertainty in the data
   - do so by having worst-case constraints (e.g. $a < 5, \forall a$)
   - *local robustness* - maximize radius surrounding parameter subject to all constraints (no objective to maximize)
-  - *global robustness* - maximize objective subject to robustness constraint  (trades off robustness with objective value)
+  - *global robustness* - maximize objective subject to robustness constraint (trades off robustness with objective value)
   - *non-probabilistic robust optimization models* (e.g. Wald's maximin model: $\underset{x}{\max} \underset{u}{\min} f(x, u)$
   - also are *probabilistically robust optimization*
 - distributional robustness - using moments in the dl work
@@ -237,12 +240,12 @@ some more concrete questions:
 ## statistical physics
 
 - Statistical Mechanics of Deep Learning ([bahri et al. 2019](https://www.annualreviews.org/doi/abs/10.1146/annurev-conmatphys-031119-050745))
-  - what is the advantage of depth  - connect to dynamical phase transitions
+  - what is the advantage of depth - connect to dynamical phase transitions
     - there are several function which require only polynomial nodes in each layer for deep nets, but exponential for shallow nets
   - what is the shape of the loss landscape - connect to random Gaussian processes, sping glasses, and jamming
   - how to pick a good parameter initialization?
   - bounding generalization error
-    - often, generalization bounds take the form $\epsilon_{test} \leq \epsilon_{train} + \frac {\mathcal C (\mathcal F)} p$, where $\mathcal C (\mathcal F)$ is the complexity of a function class and $p$ is the number of examples
+    - often, generalization bounds take the form $$\epsilon_{test} \leq \cblue{\epsilon_{train}} + \corange{\frac {\mathcal C (\mathcal F)} p}$$ (<span class="cblue">train error</span> + <span class="corange">complexity term</span>), where $\mathcal C (\mathcal F)$ is the complexity of a function class and $p$ is the number of examples
       - ex. VC-dimension, Rademacher complexity
     - alternative framework: algorithmic stability - will generalize if map is stable wrt perturbations of the data $\mathcal D$
     - altenative: PAC bounds suggest if distr. of weights doesn't change much during training, generalization will be succesful
@@ -251,7 +254,7 @@ some more concrete questions:
   - infinite-width limit
     - if parameters are random, indcues a prior distribution $P(\mathcal F)$ over the space of functions
     - in th limit of infinite width, this prior is Gaussian, with a specific correlation kernel
-    - learning is similar to learning the Bayesian posterior $P(f|data)$, but connecting this to sgd is still not clear
+    - learning is similar to learning the Bayesian posterior $$P(f\vert data)$$, but connecting this to sgd is still not clear
 - Neural Mechanics: Symmetry and Broken Conservation Laws in Deep Learning Dynamics ([kunin et al. 2020](https://arxiv.org/abs/2012.04728))
   - no assumptions about DNN architecture or gradientflow
   - instead, assumptions on symmetries embedded in a network’s architecture constrain training dynamics
@@ -265,13 +268,13 @@ some more concrete questions:
 
 # empirical studies
 
-##  interesting empirical papers
+## interesting empirical papers
 
-- [modularity (“lottery ticket hypothesis”)](https://arxiv.org/abs/1803.03635) 
+- modularity (“lottery ticket hypothesis”) ([frankle & carbin 2018](https://arxiv.org/abs/1803.03635))
   - contemporary experience is that it is difficult to train small architectures from scratch, which would similarly improve training performance - **lottery ticket hypothesis**: large networks that train successfully contain subnetworks that--when trained in isolation--converge in a comparable number of iterations to comparable accuracy
 - [ablation studies](https://arxiv.org/abs/1812.05687)
-- [deep learning is robust to massive label noise](https://arxiv.org/pdf/1705.10694.pdf)
-- [are all layers created equal?](https://arxiv.org/pdf/1902.01996.pdf)
+- deep learning is robust to massive label noise ([rolnick et al. 2017](https://arxiv.org/pdf/1705.10694.pdf))
+- are all layers created equal? ([zhang et al. 2019](https://arxiv.org/pdf/1902.01996.pdf))
 - [Truth or backpropaganda? An empirical investigation of deep learning theory](https://openreview.net/forum?id=HyxyIgHFvr)
 
 ## adversarial + robustness
@@ -279,8 +282,8 @@ some more concrete questions:
 - robustness may be at odds with accuracy ([madry 2019](https://openreview.net/pdf?id=SyxAb30cY7))
   - adversarial training helps w/ little data but hurts with lots of data
   - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
-- [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
-- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) 
+- Generalizability vs. Robustness: Adversarial Examples for Medical Imaging ([paschali et al. 2018](https://arxiv.org/abs/1804.00504))
+- Towards Robust Interpretability with Self-Explaining Neural Networks ([alvarez-melis & jaakkola 2018](https://arxiv.org/pdf/1806.07538.pdf))
 - Adversarial Attacks and Defenses in Images, Graphs and Text: A Review ([xu et al. 2019](https://arxiv.org/abs/1909.08072))
   - *Adversarial examples are inputs to machine learning models that an attacker intentionally designed to cause the model to make mistakes*
   - threat models
@@ -293,8 +296,48 @@ some more concrete questions:
   - security evaluation
     - robustness - minimum norm perturbation to change class
     - adversarial loss - biggest change in loss within some epsilon ball
-  - ![Screen Shot 2020-02-04 at 1.54.49 PM](../assets/adv_attacks_table.png)
-  - ![Screen Shot 2020-02-04 at 1.54.28 PM](../assets/adv_attack_hierarchy.png)
+  - attacks
+
+    | attack | publication | similarity | attacking capability | algorithm | apply domain |
+    | --- | --- | --- | --- | --- | --- |
+    | L-BFGS | (Szegedy et al., 2013) | $$l_2$$ | White-Box | Iterative | Image Classification |
+    | FGSM | (Goodfellow et al., 2014b) | $$l_\infty, l_2$$ | White-Box | Single-Step | Image Classification |
+    | Deepfool | (Moosavi-Dezfooli et al., 2016) | $$l_2$$ | White-Box | Iterative | Image Classification |
+    | JSMA | (Papernot et al., 2016a) | $$l_2$$ | White-Box | Iterative | Image Classification |
+    | BIM | (Kurakin et al., 2016a) | $$l_\infty$$ | White-Box | Iterative | Image Classification |
+    | C & W | (Carlini & Wagner, 2017b) | $$l_2$$ | White-Box | Iterative | Image Classification |
+    | Ground Truth | (Carlini et al., 2017) | $$l_0$$ | White-Box | SMT solver | Image Classification |
+    | Spatial | (Xiao et al., 2018b) | Total Variation | White-Box | Iterative | Image Classification |
+    | Universal | (Metzen et al., 2017b) | $$l_\infty, l_2$$ | White-Box | Iterative | Image Classification |
+    | One-Pixel | (Su et al., 2019) | $$l_0$$ | White-Box | Iterative | Image Classification |
+    | EAD | (Chen et al., 2018) | $$l_1 + l_2, l_2$$ | White-Box | Iterative | Image Classification |
+    | Substitute | (Papernot et al., 2017) | $$l_p$$ | Black-Box | Iterative | Image Classification |
+    | ZOO | (Chen et al., 2017) | $$l_p$$ | Black-Box | Iterative | Image Classification |
+    | Biggio | (Biggio et al., 2012) | $$l_2$$ | Poisoning | Iterative | Image Classification |
+    | Explanation | (Koh & Liang, 2017) | $$l_p$$ | Poisoning | Iterative | Image Classification |
+    | Zugner's | (Zügner et al., 2018) | Degree Distribution, Coocurrence | Poisoning | Greedy | Node Classification |
+    | Dai's | (Dai et al., 2018) | Edges | Black-Box | RL | Node & Graph Classification |
+    | Meta | (Zügner & Günnemann, 2019) | Edges | Black-Box | RL | Node Classification |
+    | C & W | (Carlini & Wagner, 2018) | max dB | White-Box | Iterative | Speech Recognition |
+    | Word Embedding | (Miyato et al., 2016) | $$l_p$$ | White-Box | One-Step | Text Classification |
+    | HotFlip | (Ebrahimi et al., 2017) | letters | White-Box | Greedy | Text Classification |
+    | Jia & Liang | (Jia & Liang, 2017) | letters | Black-Box | Greedy | Reading Comprehension |
+    | Face Recognition | (Sharif et al., 2016) | physical | White-Box | Iterative | Face Recognition |
+    | RL attack | (Huang et al., 2017) | $$l_p$$ | White-Box | RL | |
+
+  - defenses
+    - gradient masking
+      - shattered gradient: (Buckman et al., 2018), (Guo et al., 2017)
+      - shattered gradient: (Dhillon et al., 2018), (Xie et al., 2017a)
+      - exploding/vanishing gradient: (Song et al., 2017), (Samangouei et al., 2018), (Papernot et al., 2016b)
+    - robust optimization
+      - adversarial training: (Goodfellow et al., 2014b), (Madry et al., 2017), (Tramèr et al., 2017), (Sinha et al., 2017)
+      - certified defense: (Wong & Kolter, 2017), (Hein & Andriushchenko, 2017), (Raghunathan et al., 2018a), (Sinha et al., 2017)
+      - regularization: (Cisse et al., 2017), (Gu & Rigazio, 2014), (Rifai et al., 2011)
+    - detection
+      - auxiliary model: (Grosse et al., 2016), (Gong et al., 2017), (Metzen et al., 2017a)
+      - statistical methods: (Hendrycks & Gimpel, 2016), (Grosse et al., 2017), (Gretton et al., 2012)
+      - check consistency: (Feinman et al., 2017), (Xu et al., 2017)
 - AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty ([hendrycks et al. 2020](https://arxiv.org/abs/1912.02781))
   - do a bunch of transformations and average images to create each training image
 - certifying robustness
@@ -334,10 +377,10 @@ some more concrete questions:
 
 - dim reduction: [svcca](http://papers.nips.cc/paper/7188-svcca-singular-vector-canonical-correlation-analysis-for-deep-understanding-and-improvement), diffusion maps
 - viz tools: [bei wang](http://www.sci.utah.edu/~beiwang/)
-- [visualizing loss landscape](https://arxiv.org/pdf/1712.09913.pdf)
+- visualizing loss landscape ([li et al. 2017](https://arxiv.org/pdf/1712.09913.pdf))
 - 1d: plot loss by extrapolating between 2 points (start/end, 2 ends)
   - goodfellow et al. 2015, im et al. 2016
-  - [exploring landscape with this technique](https://arxiv.org/pdf/1803.00885.pdf)
+  - exploring landscape with this technique ([draxler et al. 2018](https://arxiv.org/pdf/1803.00885.pdf))
   - 2d: plot loss on a grid in 2 directions
   - important to think about scale invariance (dinh et al. 2017)
   - want to scale direction vector to have same norm in each direction as filter
@@ -348,29 +391,25 @@ some more concrete questions:
 - deep vs. shallow [rvw](http://cbmm.mit.edu/sites/default/files/publications/CBMM-Memo-058v5.pdf)
 - [probabilistic framework](https://www.nari.ee.ethz.ch/commth//pubs/files/deep-2016.pdf)
 - information bottleneck: tishby paper + david cox follow-up
-- [Emergence of Invariance and Disentanglement in Deep Representations](https://arxiv.org/abs/1706.01350)
+- Emergence of Invariance and Disentanglement in Deep Representations ([achille & soatto 2017](https://arxiv.org/abs/1706.01350))
 - [manifold learning](https://www.deeplearningbook.org/version-2015-10-03/contents/manifolds.html)
-  - [random manifold learning paper](https://ieeexplore.ieee.org/document/7348689/) 
+  - [random manifold learning paper](https://ieeexplore.ieee.org/document/7348689/)
 
 ## comparing representations
 
-- [shared representations across nets](https://arxiv.org/abs/1811.11684)
-- [comparing across random initializations](https://arxiv.org/abs/1810.11750)
-
-
+- shared representations across nets ([lu et al. 2018](https://arxiv.org/abs/1811.11684))
+- comparing across random initializations ([wang et al. 2018](https://arxiv.org/abs/1810.11750))
 
 ## simple papers
 
-- [rvw of random features approach](https://arxiv.org/pdf/1904.00687.pdf)
+- rvw of random features approach ([yehudai & shamir 2019](https://arxiv.org/pdf/1904.00687.pdf))
 - [similar nets learn different weights](http://proceedings.mlr.press/v44/li15convergent.pdf)
-
-
 
 ## adam vs sgd
 
 - svd parameterization rnn paper: [inderjit paper](https://arxiv.org/pdf/1803.09327.pdf)
     - original adam paper: [kingma 15](https://arxiv.org/abs/1412.6980)
-    - [regularization via SGD](https://arxiv.org/pdf/1806.00900.pdf) (layers are balanced: du 18)
+    - regularization via SGD ([du et al. 2018](https://arxiv.org/pdf/1806.00900.pdf)) (layers are balanced: du 18)
     - marginal value of adaptive methods: [recht 17](http://papers.nips.cc/paper/7003-the-marginal-value-of-adaptive-gradient-methods-in-machine-learning)
     - comparing representations: [svcca](https://arxiv.org/abs/1706.05806)
     - [montanari 18](https://arxiv.org/pdf/1804.06561.pdf) pde mean field view
@@ -378,8 +417,8 @@ some more concrete questions:
 
 ## memorization background
 
-- [memorization on single training example](https://arxiv.org/abs/1902.04698v2)
-- [memorization in dnns](https://arxiv.org/pdf/1706.05394.pdf)
+- memorization on single training example ([zhang et al. 2019](https://arxiv.org/abs/1902.04698v2))
+- memorization in dnns ([arpit et al. 2017](https://arxiv.org/pdf/1706.05394.pdf))
 - “memorization” as the behavior exhibited by DNNs trained on noise, and conduct a series of experiments that contrast the learning dynamics of DNNs on real vs. noise data
   - look at critical samples - adversarial exists nearby
 - networks that generalize well have deep layers that are approximately linear with respect to batches of similar inputs
@@ -387,7 +426,7 @@ some more concrete questions:
   - expect that with respect to a single class, deep layers are approximately linear
 - [example forgetting paper](https://openreview.net/forum?id=BJlxm30cKm)
 - [secret sharing](https://arxiv.org/abs/1802.08232)
-- [memorization in overparameterized autoencoders](https://arxiv.org/abs/1810.10333)
+- memorization in overparameterized autoencoders ([radhakrishnan et al. 2018](https://arxiv.org/abs/1810.10333))
   - autoencoders don't lean identity, but learn projection onto span of training examples = memorization of training examples
   - sometimes output individual training images, not just project onto space of training images
 - https://arxiv.org/pdf/1810.10333.pdf
@@ -403,14 +442,14 @@ some more concrete questions:
 ## architecture search background
 
 - ideas: nested search (retrain each time), joint search (make arch search differentiable), one-shot search (train big net then search for subnet)
-  - [asap: online pruning + training](https://arxiv.org/pdf/1904.04123.pdf)
+  - asap: online pruning + training ([noy et al. 2019](https://arxiv.org/pdf/1904.04123.pdf))
   - [rvw](https://arxiv.org/abs/1904.00438)
   - [original (dumb) strategy](https://arxiv.org/abs/1611.01578)
   - [progressive nas](http://openaccess.thecvf.com/content_ECCV_2018/papers/Chenxi_Liu_Progressive_Neural_Architecture_ECCV_2018_paper.pdf)
-  - [Efficient Neural Architecture Search via Parameter Sharing](https://arxiv.org/abs/1802.03268) - sharing params
+  - Efficient Neural Architecture Search via Parameter Sharing ([pham et al. 2018](https://arxiv.org/abs/1802.03268)) - sharing params
   - [randomly replace layers with the identity when training](https://link.springer.com/chapter/10.1007/978-3-319-46493-0_39)
   - [learning both weights and connections](https://pdfs.semanticscholar.org/1ff9/a37d766e3a4f39757f5e1b235a42dacf18ff.pdf)
-  - [single-path one-shot search](https://arxiv.org/abs/1904.00420)
+  - single-path one-shot search ([guo et al. 2019](https://arxiv.org/abs/1904.00420))
 
 ## bagging and boosting
 
@@ -422,15 +461,13 @@ some more concrete questions:
 
 - [good set of class notes](https://people.csail.mit.edu/madry/6.883/)
 - demos to gain intuition
-  - [colah](http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) 
+  - [colah](http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/)
     - [tf playground](https://playground.tensorflow.org/)
     - [convnetJS](https://cs.stanford.edu/people/karpathy/convnetjs//demo/classify2d.html)
     - [ml playground](http://ml-playground.com/)
-
   - overview / reviews
-
-    - [mathematics of dl](https://arxiv.org/abs/1712.04741)
+    - mathematics of dl ([vidal et al. 2017](https://arxiv.org/abs/1712.04741))
     - [stanford class](https://stats385.github.io/) ([good readings](https://stats385.github.io/readings))
     - [dali 2018 talks](http://dalimeeting.org/dali2018/workshopTheoryDL.html)
-    - [overview (myths)](http://www.mit.edu/~rakhlin/papers/myths.pdf) 
+    - [overview (myths)](http://www.mit.edu/~rakhlin/papers/myths.pdf)
 - There Will Be a Scientific Theory of Deep Learning ([simon...turnbull, 2026](https://arxiv.org/abs/2604.21691))

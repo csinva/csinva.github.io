@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="132 38 466 312" role="img" aria-labelledby="title desc">
+  <title id="title">Graph separation</title>
+  <desc id="desc">An undirected graph: a set of nodes X_A enclosed on the left, a set X_C enclosed on the right, and two shaded nodes X_B between them. Every path from X_A to X_C passes through X_B, so X_B separates X_A from X_C.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .set { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .node { fill: #ffffff; stroke: #2b2b2b; stroke-width: 2; }
+      .obs { fill: #8a8a8a; stroke: #2b2b2b; stroke-width: 2; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 18px; }
+    </style>
+  </defs>
+
+  <!-- set boundaries -->
+  <ellipse class="set" cx="238" cy="168" rx="100" ry="124"/>
+  <ellipse class="set" cx="502" cy="186" rx="82" ry="132"/>
+
+  <!-- edges -->
+  <line class="edge" x1="210" y1="108" x2="292" y2="92"/>
+  <line class="edge" x1="292" y1="92" x2="276" y2="212"/>
+  <line class="edge" x1="175" y1="182" x2="276" y2="212"/>
+  <line class="edge" x1="292" y1="92" x2="382" y2="128"/>
+  <line class="edge" x1="276" y1="212" x2="368" y2="210"/>
+  <line class="edge" x1="382" y1="128" x2="368" y2="210"/>
+  <line class="edge" x1="382" y1="128" x2="466" y2="96"/>
+  <line class="edge" x1="382" y1="128" x2="468" y2="176"/>
+  <line class="edge" x1="466" y1="96" x2="550" y2="144"/>
+  <line class="edge" x1="468" y1="176" x2="550" y2="144"/>
+  <line class="edge" x1="468" y1="176" x2="514" y2="252"/>
+  <line class="edge" x1="368" y1="210" x2="514" y2="252"/>
+
+  <!-- nodes -->
+  <circle class="node" cx="210" cy="108" r="19"/>
+  <circle class="node" cx="292" cy="92" r="19"/>
+  <circle class="node" cx="175" cy="182" r="19"/>
+  <circle class="node" cx="276" cy="212" r="19"/>
+  <circle class="obs" cx="382" cy="128" r="19"/>
+  <circle class="obs" cx="368" cy="210" r="19"/>
+  <circle class="node" cx="466" cy="96" r="19"/>
+  <circle class="node" cx="550" cy="144" r="19"/>
+  <circle class="node" cx="468" cy="176" r="19"/>
+  <circle class="node" cx="514" cy="252" r="19"/>
+
+  <!-- labels -->
+  <text class="var" x="370" y="270">X<tspan class="sub" dy="6">B</tspan></text>
+  <text class="var" x="234" y="318">X<tspan class="sub" dy="6">A</tspan></text>
+  <text class="var" x="506" y="344">X<tspan class="sub" dy="6">C</tspan></text>
+</svg>

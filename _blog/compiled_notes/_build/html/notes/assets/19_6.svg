@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 420" role="img" aria-labelledby="title desc">
+  <title id="title">Cerebellar output to motor cortex</title>
+  <desc id="desc">Cerebellar cortex projects to the deep cerebellar nuclei (dentate/interposed), whose output crosses the midline in the superior cerebellar peduncle to the VL complex of the thalamus, which projects to primary motor and premotor cortex.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <text x="10" y="22.0" font-size="17">(A)</text>
+  <rect x="10" y="45" width="210" height="70" rx="0" fill="#d6e6f5" stroke="#1f6fb2" stroke-width="2"/>
+  <text class="c" x="115" y="75.7" font-size="19">Primary motor and</text>
+  <text class="c" x="115" y="97.6" font-size="19">premotor cortex</text>
+  <rect x="10" y="165" width="210" height="80" rx="0" fill="#dcdcf2" stroke="#4a4fa8" stroke-width="2"/>
+  <text class="c" x="115" y="200.7" font-size="19">VL complex</text>
+  <text class="c" x="115" y="222.6" font-size="19">(thalamus)</text>
+  <path d="M115.0 165.0 L115.0 140.0" fill="none" stroke="#9a9ad6" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="115.0,115.0 144.0,141.0 86.0,141.0" fill="#9a9ad6"/>
+  <rect x="260" y="75" width="220" height="65" rx="0" fill="#d3e9eb" stroke="#1f7f86" stroke-width="2"/>
+  <text class="c" x="370" y="113.7" font-size="19">Cerebellar cortex</text>
+  <path d="M370.0 140.0 L370.0 160.0" fill="none" stroke="#7fbcc1" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="370.0,185.0 341.0,159.0 399.0,159.0" fill="#7fbcc1"/>
+  <rect x="98" y="300" width="300" height="52" rx="0" fill="#f1ebf8" stroke="#7b4fb5" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="260" y="185" width="220" height="70" rx="0" fill="#e6dcf2" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="370" y="216.0" font-size="18">Deep cerebellar nuclei</text>
+  <text class="c" x="370" y="236.7" font-size="18">dentate/interposed</text>
+  <path d="M370.0 255.0 L370.0 326.0 L115.0 326.0 L115.0 270.0" fill="none" stroke="#a98bd0" stroke-width="30" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="115.0,245.0 144.0,271.0 86.0,271.0" fill="#a98bd0"/>
+  <text class="c" x="240" y="30.0" font-size="18">Midline</text>
+  <path class="mid" d="M240 40 V405"/>
+  <path class="lead" d="M392 352 L408 372"/>
+  <text x="412" y="388.0" font-size="18">Superior cerebellar</text>
+  <text x="412" y="409.0" font-size="18">peduncle</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 1990 660" role="img" aria-labelledby="title desc">
+  <title id="title">MLE-bench overview</title>
+  <desc id="desc">MLE-bench: a stack of competitions, each with a description ("Train a model to achieve the highest accuracy...."), a dataset (train.csv, test.csv, sample_submission.csv) and a leaderboard with gold, silver and bronze medals. Step 1: the competition is given to the agent, which thinks (train model, test model, debug, create submission) and produces submission.csv. Step 2: the submission goes to a grader, which outputs a score (63.4%, bronze medal).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .card { fill: #fff; stroke: #8fcfa4; stroke-width: 5; }
+      .gbox { fill: #1f8a4c; }
+      .wt { font-family: Helvetica, Arial, sans-serif; fill: #fff; text-anchor: middle; }
+      .t { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 6; }
+      .num { font: bold 64px Helvetica, Arial, sans-serif; fill: #fff; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+
+  <!-- benchmark panel -->
+  <rect x="4" y="26" width="1170" height="630" rx="28" fill="#e9f6ee"/>
+  <text class="t" font-size="64" transform="translate(100 340) rotate(-90)">MLE-Bench</text>
+  <rect class="card" x="152" y="46" width="952" height="380" rx="28"/>
+  <rect class="card" x="172" y="68" width="952" height="380" rx="28"/>
+  <rect class="card" x="190" y="90" width="952" height="384" rx="28"/>
+  <text class="t" font-size="44" x="366" y="168">Competition</text>
+
+  <rect class="gbox" x="228" y="206" width="336" height="226" rx="28"/>
+  <text class="wt" font-size="52" x="396" y="274">Description</text>
+  <text class="wt" font-size="32" x="406" y="332">Train a model to</text>
+  <text class="wt" font-size="32" x="406" y="368">achieve the highest</text>
+  <text class="wt" font-size="32" x="406" y="404">accuracy....</text>
+
+  <rect class="gbox" x="592" y="136" width="514" height="186" rx="28"/>
+  <text class="wt" font-size="52" x="854" y="200">Dataset</text>
+  <text class="wt" font-size="32" x="778" y="248">train.csv</text>
+  <text class="wt" font-size="32" x="934" y="248">test.csv</text>
+  <text class="wt" font-size="32" x="854" y="292">sample_submission.csv</text>
+
+  <rect class="gbox" x="590" y="338" width="516" height="92" rx="28"/>
+  <text class="wt" font-size="44" x="756" y="400">Leaderboard</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">
+    <circle cx="954" cy="390" r="16" fill="#e8c547" stroke="#fff" stroke-width="2"/><text x="954" y="397" fill="#2b2b2b">1</text>
+    <circle cx="1003" cy="390" r="16" fill="#b8b8b8" stroke="#fff" stroke-width="2"/><text x="1003" y="397" fill="#2b2b2b">2</text>
+    <circle cx="1052" cy="390" r="16" fill="#c27a3e" stroke="#fff" stroke-width="2"/><text x="1052" y="397" fill="#2b2b2b">3</text>
+  </g>
+
+  <rect class="card" x="590" y="520" width="514" height="108" rx="26"/>
+  <text class="t" font-size="48" x="838" y="594">Grader</text>
+  <rect class="card" x="152" y="512" width="304" height="116" rx="26"/>
+  <text class="t" font-size="24" x="206" y="552" style="text-anchor:start">Score</text>
+  <text class="t" font-size="42" x="206" y="600" style="text-anchor:start">63.4%</text>
+  <circle cx="383" cy="580" r="22" fill="#c27a3e"/><text x="383" y="588" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="bold" fill="#2b2b2b" text-anchor="middle">3</text>
+
+  <line class="edge" x1="838" y1="478" x2="838" y2="514" marker-end="url(#arrow)"/>
+  <line class="edge" x1="588" y1="576" x2="468" y2="576" marker-end="url(#arrow)"/>
+
+  <!-- agent panel -->
+  <rect x="1364" y="28" width="610" height="626" rx="20" fill="none" stroke="#8a8a8a" stroke-width="3" stroke-dasharray="22 14"/>
+  <text class="t" font-size="62" x="1665" y="122">Agent</text>
+  <rect x="1392" y="166" width="554" height="262" rx="26" fill="#f1ecfa"/>
+  <text class="t" font-size="38" x="1720" y="236" style="fill:#8a8a8a">Thinking...</text>
+  <text class="t" font-size="30" x="1524" y="316">Train model</text>
+  <text class="t" font-size="30" x="1770" y="318">Test model</text>
+  <text class="t" font-size="30" x="1524" y="368">Debug</text>
+  <text class="t" font-size="30" x="1770" y="370">Create submission</text>
+  <line class="edge" x1="1665" y1="430" x2="1665" y2="490" marker-end="url(#arrow)"/>
+  <rect x="1392" y="498" width="554" height="132" rx="22" fill="#7b4fb5"/>
+  <text class="wt" font-size="48" x="1670" y="580">submission.csv</text>
+
+  <!-- steps -->
+  <line class="edge" x1="1144" y1="292" x2="1352" y2="292" marker-end="url(#arrow)"/>
+  <circle cx="1270" cy="210" r="56" fill="#2b2b2b"/><text class="num" x="1270" y="212">1</text>
+  <line class="edge" x1="1390" y1="576" x2="1114" y2="576" marker-end="url(#arrow)"/>
+  <circle cx="1270" cy="498" r="56" fill="#2b2b2b"/><text class="num" x="1270" y="500">2</text>
+</svg>

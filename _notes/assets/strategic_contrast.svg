@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 14 1450 870" role="img" aria-labelledby="title desc">
+  <title id="title">Using contrast strategically</title>
+  <desc id="desc">Grouped horizontal bars of a weighted performance index for price, convenience, relationship, service and selection. In each group our business is the top bar in blue, labeled with its relative rank (1, 2, 4, 6 and 6 of 6), and competitors A to E are gray bars below it.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .us { fill: #1f6fb2; }
+      .co { fill: #b5b5b5; }
+      .cat { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: end; }
+      .leg { font: 26px Helvetica, Arial, sans-serif; fill: #9a9a9a; }
+      .rank { font: 22px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .hd { font: 26px Helvetica, Arial, sans-serif; fill: #8a8a8a; }
+    </style>
+  </defs>
+  <text class="hd" x="582" y="52">Weighted performance index | <tspan fill="#1f6fb2" style="fill:#1f6fb2">relative rank</tspan></text>
+  <rect x="24" y="31" width="20" height="20" class="us"/>
+  <text class="leg" x="52" y="50" font-weight="bold" style="fill:#1f6fb2">Our business</text>
+  <rect x="24" y="77.0" width="20" height="20" class="co"/>
+  <text class="leg" x="52" y="96.0">Competitor A</text>
+  <rect x="24" y="123.2" width="20" height="20" class="co"/>
+  <text class="leg" x="52" y="142.2">Competitor B</text>
+  <rect x="24" y="169.4" width="20" height="20" class="co"/>
+  <text class="leg" x="52" y="188.4">Competitor C</text>
+  <rect x="24" y="215.6" width="20" height="20" class="co"/>
+  <text class="leg" x="52" y="234.6">Competitor D</text>
+  <rect x="24" y="261.8" width="20" height="20" class="co"/>
+  <text class="leg" x="52" y="280.8">Competitor E</text>
+  <rect class="us" x="581" y="79.0" width="656" height="22.7"/>
+  <rect class="co" x="581" y="101.3" width="576" height="22.7"/>
+  <rect class="co" x="581" y="123.6" width="96" height="22.7"/>
+  <rect class="co" x="581" y="145.9" width="370" height="22.7"/>
+  <rect class="co" x="581" y="168.2" width="580" height="22.7"/>
+  <rect class="co" x="581" y="190.5" width="276" height="22.7"/>
+  <text class="rank" x="1247" y="99">1 of 6</text>
+  <text class="cat" x="549" y="155.9">Price</text>
+  <rect class="us" x="581" y="246.0" width="616" height="22.7"/>
+  <rect class="co" x="581" y="268.3" width="789" height="22.7"/>
+  <rect class="co" x="581" y="290.6" width="262" height="22.7"/>
+  <rect class="co" x="581" y="312.9" width="298" height="22.7"/>
+  <rect class="co" x="581" y="335.2" width="594" height="22.7"/>
+  <rect class="co" x="581" y="357.5" width="20" height="22.7"/>
+  <text class="rank" x="1207" y="266">2 of 6</text>
+  <text class="cat" x="549" y="322.9">Convenience</text>
+  <rect class="us" x="581" y="412.0" width="255" height="22.7"/>
+  <rect class="co" x="581" y="434.3" width="717" height="22.7"/>
+  <rect class="co" x="581" y="456.6" width="226" height="22.7"/>
+  <rect class="co" x="581" y="478.9" width="244" height="22.7"/>
+  <rect class="co" x="581" y="501.2" width="399" height="22.7"/>
+  <rect class="co" x="581" y="523.5" width="435" height="22.7"/>
+  <text class="rank" x="846" y="432">4 of 6</text>
+  <text class="cat" x="549" y="488.9">Relationship</text>
+  <rect class="us" x="581" y="579.0" width="114" height="22.7"/>
+  <rect class="co" x="581" y="601.3" width="182" height="22.7"/>
+  <rect class="co" x="581" y="623.6" width="446" height="22.7"/>
+  <rect class="co" x="581" y="645.9" width="251" height="22.7"/>
+  <rect class="co" x="581" y="668.2" width="403" height="22.7"/>
+  <rect class="co" x="581" y="690.5" width="746" height="22.7"/>
+  <text class="rank" x="705" y="599">6 of 6</text>
+  <text class="cat" x="549" y="655.9">Service</text>
+  <rect class="us" x="581" y="746.0" width="96" height="22.7"/>
+  <rect class="co" x="581" y="768.3" width="99" height="22.7"/>
+  <rect class="co" x="581" y="790.6" width="316" height="22.7"/>
+  <rect class="co" x="581" y="812.9" width="157" height="22.7"/>
+  <rect class="co" x="581" y="835.2" width="580" height="22.7"/>
+  <rect class="co" x="581" y="857.5" width="869" height="22.7"/>
+  <text class="rank" x="687" y="766">6 of 6</text>
+  <text class="cat" x="549" y="822.9">Selection</text>
+</svg>

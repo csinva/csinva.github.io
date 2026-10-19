@@ -31,7 +31,7 @@ Here is a follow-up diagram showing how key-value caching works during inference
 
 - early papers
   - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
-    - encoder-decoder transformer for seq-to-seq (most new models don't have  special encoder-decoder structure for translation)
+    - encoder-decoder transformer for seq-to-seq (most new models don't have special encoder-decoder structure for translation)
     - Semi-supervised Sequence Learning ([dai & quoc le, 2015](https://arxiv.org/abs/1511.01432)) - context vector is weighted sum of context vector at each word
   - ULMFiT ([howard & ruder, 2018](https://arxiv.org/abs/1801.06146))
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
@@ -50,7 +50,6 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - open-source (from meta ai): [LlaMa 2](https://ai.meta.com/research/publications/llama-2-open-foundation-and-fine-tuned-chat-models/), [LLaMa](https://scontent-sea1-1.xx.fbcdn.net/v/t39.8562-6/333078981_693988129081760_4712707815225756708_n.pdf?_nc_cat=108&ccb=1-7&_nc_sid=ad8a9d&_nc_ohc=0JlbsRuMCfYAX89GkW5&_nc_ht=scontent-sea1-1.xx&oh=00_AfAKI4SBnQesKWtXsUVxzF9w_IT_qOgOTTKNpeZRptOBuw&oe=63FDD562), [OPT-IML](https://arxiv.org/abs/2212.12017), [OPT](https://arxiv.org/abs/2205.01068)
     - [GPT4All](https://s3.amazonaws.com/static.nomic.ai/gpt4all/2023_GPT4All_Technical_Report.pdf) (LLaMA 7B finetuned on code/stories/dialogue)
 - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555)) - more efficient: rather than standard masked training, use generator-discriminator setup for "token detection"
-
   - generator replaces many masked tokens with plausible samples - train with MLM
   - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
 - LongNet: Scaling Transformers to 1,000,000,000 Tokens ([ding, ..., wei, 2023](https://arxiv.org/abs/2307.02486)) - multiscale attention similar to wavelets
@@ -64,7 +63,6 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
   - UL2: Unifying Language Learning Paradigms ([tay...metzler, 2022](https://arxiv.org/abs/2205.05131)) - open-source 20B model, beats GPT-3 at zero-shot
 - early instruction following
-
   - FLAN-PaLM: Scaling Instruction-Finetuned Language Models ([chung, ..., quoc le, jason wei, 2022](https://arxiv.org/abs/2210.11416)) - finetune with datasets phrased as instructions
     - FLAN ([wei, ..., le, 2021](https://arxiv.org/abs/2109.01652)) - finetune on instructions to follows instructions
 - subquadratic attention
@@ -106,7 +104,6 @@ Here is a follow-up diagram showing how key-value caching works during inference
     - outperforms Flamingo ([2022](https://arxiv.org/abs/2204.14198)), which uses more domain knowledge to connect vision & language
   - video
     - Text-To-4D Dynamic Scene Generation ([meta, 2023](https://arxiv.org/abs/2301.11280v1))
-
 - vision (rather than words, people generally use image patches as tokens)
   - VIT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale ([dosoviskiy, ..., houlsby, 2020](https://arxiv.org/abs/2010.11929))
     - attention augmentation to resnet for vision ([bello...quoc le, 2020](https://arxiv.org/abs/1904.09925))
@@ -118,7 +115,6 @@ Here is a follow-up diagram showing how key-value caching works during inference
     - speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
     - really good results without much data
   - spatial transformers networks ([deepmind, 2015](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf ))
-  
 - reinforcement learning (RL)
   - AdA: Human-Timescale Adaptation in an Open-Ended Task Space ([deepmind, 2023](https://arxiv.org/abs/2301.07608))
   - GATO: A Generalist Agent ([deepmind, 2022](https://arxiv.org/abs/2205.06175)) - single agent plays many different video games
@@ -126,21 +122,15 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - In-context Reinforcement Learning with Algorithm Distillation ([laskin, wang, ..., sahni, satinder singh, mnih, 2022, deepmind](https://arxiv.org/abs/2210.14215)) - learn to improve an RL algorithm
     - put history of (observation, action, reward) sequences into context and then use them to predict new action given new observation
   - Decision Transformer: Reinforcement Learning via Sequence Modeling ([chen, lu, ...abbeel, srinivas, mordatch, 2021](https://arxiv.org/pdf/2106.01345.pdf)) - transformer that predicts what the next highest reward step is instead of the next word
-
 - agents
-
   - AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation ([wu, bansal, ..., wang, 2024](https://arxiv.org/pdf/2308.08155.pdf))
-
 - dialog
   - ChatGPT
   - GODEL: Large-Scale Pre-Training for Goal-Directed Dialog ([baolin peng, galley, ..., gao , 2022](https://arxiv.org/abs/2206.11309)) - add grounded pre-training
   - Deal or No Deal? End-to-End Learning for Negotiation Dialogues ([lewis...batra, 2017, Meta](https://arxiv.org/abs/1706.05125) ) - controversial paper where agents "make up their own language" (this is pre-transformers)
-  
 - MINERVA: Solving Quantitative Reasoning Problems with Language Models ([google, 2022](https://arxiv.org/abs/2206.14858)) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
-
   - autoformalization ([wu..., szegedy, 2022](https://arxiv.org/abs/2205.12615)) - translating from natural language math to formal language
   - produce sql/python that then finds an answer ([cheng...zettlemoyer, smith, yu, 2022](https://arxiv.org/abs/2210.02875))
-
 - CODEX: Evaluating LLMs Trained on Code ([2021, openai](https://arxiv.org/abs/2107.03374))
   - Repair Is Nearly Generation: Multilingual Program Repair with LLMs ([joshi et al. 2022](https://arxiv.org/abs/2208.11640))
   - Improving automatically generated code from Codex via Automated Program Repair ([fan et al. 2022](https://arxiv.org/abs/2205.10583)) - use automated program repair to tweak codex outputs to make them better
@@ -153,27 +143,20 @@ Here is a follow-up diagram showing how key-value caching works during inference
       <buggy function and/or docstring here>
       ### fixed function
       ```
-
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
-
 - science
-
   - Galactica: A LLM for Science ([taylor..., stojnic, 2022, meta ai](https://galactica.org/static/paper.pdf)) - trained on mostly papers + some knowledge bases (e.g. proteins)
   - Nougat: Neural Optical Understanding for Academic Documents ([blecher…scialom, sojnic, 2023](https://arxiv.org/abs/2308.13418))
-
 - audio
   - MusicLM: Generating Music From Text ([google, 2023](https://arxiv.org/abs/2301.11325))
   - Jukebox: A Generative Model for Music ([openai, 2020](https://arxiv.org/abs/2005.00341))
   - Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale ([meta, 2023](https://research.facebook.com/publications/voicebox-text-guided-multilingual-universal-speech-generation-at-scale/)) - text-to-speech
-  
 - summarization / keywords
-
   - KeyBERT: Minimal keyword extraction with BERT ([grootendorst, 2020]
 
 # ngram-based models
 
 - Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens ([liu, min, zettlemoyer, choic, & hajishirzi, 2024](https://arxiv.org/pdf/2401.17377.pdf))
-
   - motivation: hard to scale ngram models to large datasets and large data lengths
   - soln 1: backoff ([jurafsky & martin, 2000](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uZg9l58AAAAJ&citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC)) - select *n* based on the longest suffix of the prompt that has a non-zero count in the corpus
     - counts of the next token yield the prob. of the next token
@@ -186,16 +169,11 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - Interpretable Language Modeling via Induction-head Ngram Models ([kim, mantena, ..., gao, 2024](https://arxiv.org/abs/2411.00066)) - extend infinigram with fuzzy-matching induction heads to improve adaptation
   - Transformers Can Represent n-gram Language Models ([svete & cotterell, 2024](https://arxiv.org/abs/2404.14994)) - transformers have the computational capacity to represent ngram models
   - Generalization through Memorization: Nearest Neighbor Language Models ([khandelwal, levy, jurafsky, zettlemoyer, & lewis, 2020](https://arxiv.org/abs/1911.00172)) - average over output of neighboring embeddings
-
   - smoothing ngram models ([chen & goodman, 1996](https://arxiv.org/pdf/cmp-lg/9606011))
     - interpolation - e.g. linearly combine pobabilities shorter ngram sequences with larger ngram sequences (places better prior on ngrams that were not seen)
-
   - see also latent LM for smoothing
-
   - Improving N-gram Language Models with Pre-trained Deep Transformer([wang et al. 2019](https://arxiv.org/abs/1911.10235) ) - use transformer to generate synthetic data for new n-gram model (language model, doesn't extend to classification)
-
   - Improvements to N-gram Language Model Using Text Generated from Neural Language Model ([suzuki et al. 2019](https://ieeexplore.ieee.org/abstract/document/8683481?casa_token=7iD-YiGsHTAAAAAA:N3XmuRk27wGttURXYIYDbxdADVdhJMeUeBvVugq0EbyMst-zrm93wPZtc37uUBBtUPXKPrxvGZJC)) - generate synthetic data from RNNs for new n-gram model
-
 - classifierss
   - Aug-imodels: Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana, & gao, 2023](https://arxiv.org/abs/2209.11799)) - build fully transparent n-gram based classifiers (linear or tree) by distilling info from LLMs
   - fasttext ([jin et al. 2016](https://www.ijcai.org/Proceedings/16/Papers/401.pdf))
@@ -203,10 +181,10 @@ Here is a follow-up diagram showing how key-value caching works during inference
 
 # mathematical overview of transformers
 
-- based on [Formal Algorithms for Transformers](https://arxiv.org/abs/2207.09238?utm_source=substack&utm_medium=email)
+- based on Formal Algorithms for Transformers ([phuong & hutter 2022](https://arxiv.org/abs/2207.09238?utm_source=substack&utm_medium=email))
 - tasks
-  - *sequence modeling*: learn $p(x)$, usually factorized as $p(x_i|x_1,...,x_{i-1})$
-  - *sequence-to-sequence*: learn $p(z|x)$, e.g. transalation, speech-to-text, question answering
+  - *sequence modeling*: learn $p(x)$, usually factorized as $$p(x_i\vert x_1,...,x_{i-1})$$
+  - *sequence-to-sequence*: learn $$p(z\vert x)$$, e.g. transalation, speech-to-text, question answering
 - preprocessing
   - embedding matrix takes in one-hot tokens and linearly maps them to a vector
   - positional embedding of a token is usually added to the token embedding to form a token’s initial embedding
@@ -223,19 +201,17 @@ Here is a follow-up diagram showing how key-value caching works during inference
 - predictions
   - predict next word using single linear layer on hidden state from previous word
   - finetune classification head often only using linear layer on first token from sequence
-
 - architectures
   - initially, encoder-decoder was common, but now often no decoder
 
 # visual explanation of self-attention
 
 - based on article by jay allamar
-
 - **self-attention** - layer that lets word learn its relation to other layers
   - for each word, want score telling how much importance to place on each other word (queries $\cdot$ keys)
   - we get an encoding for each word
     - the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)
-    - softmax this and use it to do weighted sum of values![Screen Shot 2019-08-17 at 2.51.53 PM](../assets/attention.png)
+    - softmax this and use it to do weighted sum of values<img style="width: 450px; max-width: 100%;" src="../assets/attention.svg" alt="Self-attention worked example"/>
   - (optional) implementation details
     - **multi-headed attention** - just like having many filters, get many encodings for each word
       - each one can take input as the embedding from the previous attention layer
@@ -253,7 +229,7 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - decoder at each step uses a different weighted combination of these context vectors
     - specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)
     - this is fed to a feedforward net to output a word
-    - ![Screen Shot 2019-04-11 at 7.57.14 PM](../assets/nmt.png)
+    - <img style="width: 640px; max-width: 100%;" src="../assets/nmt.svg" alt="Seq2seq with attention, decoding"/>
   - at a high level we have $Q, K, V$ and compute $\text{softmax}(QK^T)V$
     - instead could simplify it and do $\text{softmax}(XX^T)V$ - this would then be based on kernel
 - **transformer**

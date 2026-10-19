@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 500" role="img" aria-labelledby="title desc">
+  <title id="title">Concept bottleneck model tradeoffs</title>
+  <desc id="desc">Schematic of accuracy (y axis) versus interpretability including faithfulness (x axis). The black-box model is at top left (high accuracy, low interpretability) and the ideal star at top right. A dashed line labeled "increasing ngram size" runs from linear (embeddings) at bottom right up to the black box. Post-hoc CBM sits high and left of center, prompt-based CBM in the middle, supervised CBM lower right.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/>
+    </marker>
+    <style>
+      .axis { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: square; }
+      .ax { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .pt { stroke: #2b2b2b; stroke-width: 2; }
+      .lab { font: bold 24px Helvetica, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <path class="axis" d="M70 60 V440 H560"/>
+  <text class="ax" x="315" y="482">Interpretability (including faithfulness)</text>
+  <text class="ax" transform="translate(40 250) rotate(-90)">Accuracy</text>
+
+  <!-- dashed trend: linear -> black box -->
+  <line x1="530" y1="403" x2="122" y2="82" stroke="#1f6fb2" stroke-width="2.5" stroke-dasharray="10 8" marker-end="url(#arrow)"/>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1f6fb2" text-anchor="middle" transform="translate(270 255) rotate(38.2)">Increasing ngram size</text>
+
+  <circle class="pt" cx="110" cy="72" r="11" fill="#2b2b2b"/>
+  <text class="lab" x="70" y="38" fill="#2b2b2b">Black-box</text>
+
+  <path d="M534 47 L540 64 L558 64 L544 75 L549 92 L534 82 L519 92 L524 75 L510 64 L528 64 Z" fill="#2b2b2b"/>
+  <text x="568" y="78" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#2b2b2b">Ideal</text>
+
+  <circle class="pt" cx="275" cy="104" r="11" fill="#d1342f"/>
+  <text class="lab" x="300" y="104" fill="#d1342f">Post-hoc</text>
+  <text class="lab" x="300" y="132" fill="#d1342f">CBM</text>
+
+  <circle class="pt" cx="380" cy="217" r="11" fill="#8a8a8a"/>
+  <text class="lab" x="405" y="217" fill="#8a8a8a">Prompt-based</text>
+  <text class="lab" x="405" y="245" fill="#8a8a8a">CBM</text>
+
+  <circle class="pt" cx="530" cy="315" r="11" fill="#d1342f"/>
+  <text class="lab" x="555" y="315" fill="#d1342f">Supervised</text>
+  <text class="lab" x="555" y="343" fill="#d1342f">CBM</text>
+
+  <circle class="pt" cx="543" cy="412" r="11" fill="#1f6fb2"/>
+  <text class="lab" x="568" y="406" fill="#1f6fb2">Linear</text>
+  <text class="lab" x="568" y="434" fill="#1f6fb2">(embeddings)</text>
+</svg>

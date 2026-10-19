@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1337 1167" role="img" aria-labelledby="title desc">
+  <title id="title">Taxonomy of variable importance measures (VIMs)</title>
+  <desc id="desc">Tree of VIM families: difference-based VIMs; parametric regression techniques (linear regression, rank regression, polynomial regression); nonparametric regression techniques (LOESS, GAM, projection pursuit, random forest); hypothesis test techniques (grid-based tests and tests without use of grid); variance-based VIMs; moment-independent VIMs; graphic VIMs. Blue notes add short explanations.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      text { font: 18px Helvetica, Arial, sans-serif; fill: #2b2b2b; dominant-baseline: central; }
+      .root { text-anchor: middle; }
+      .note { fill: #1f6fb2; }
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 1.6; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 1.6; }
+    </style>
+  </defs>
+  <path class="line" d="M62 68 V1134"/>
+  <path class="line" d="M62 1134 H98" marker-end="url(#arrow)"/>
+  <path class="line" d="M62 1050 H98" marker-end="url(#arrow)"/>
+  <path class="line" d="M62 954 H98" marker-end="url(#arrow)"/>
+  <path class="line" d="M62 824 H98" marker-end="url(#arrow)"/>
+  <path class="line" d="M62 524 H98" marker-end="url(#arrow)"/>
+  <path class="line" d="M62 321 H98" marker-end="url(#arrow)"/>
+  <path class="line" d="M62 68 H98" marker-end="url(#arrow)"/>
+  <rect class="box" x="100" y="50" width="228" height="36"/>
+  <text x="110" y="68">Difference-based VIMs</text>
+  <path class="line" d="M328 68 H492"/>
+  <path class="line" d="M492 34 V98"/>
+  <path class="line" d="M492 34 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 66 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 98 H520" marker-end="url(#arrow)"/>
+  <rect class="box" x="522" y="20" width="317" height="28"/>
+  <text x="532" y="34">Local importance measure (LIM)</text>
+  <rect class="box" x="522" y="52" width="258" height="28"/>
+  <text x="532" y="66">Morris’ screening method</text>
+  <rect class="box" x="522" y="84" width="258" height="28"/>
+  <text x="532" y="98">Derivative-based methods</text>
+  <rect class="box" x="100" y="303" width="337" height="36"/>
+  <text x="110" y="321">Parametric regression techniques</text>
+  <path class="line" d="M437 321 H492"/>
+  <path class="line" d="M492 208 V402"/>
+  <path class="line" d="M492 208 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 322 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 402 H520" marker-end="url(#arrow)"/>
+  <rect class="box" x="522" y="184" width="188" height="48"/>
+  <text x="532" y="197">Linear regression</text>
+  <text x="532" y="219">and related VIMs</text>
+  <path class="line" d="M711 208 H818"/>
+  <path class="line" d="M818 155 V257"/>
+  <path class="line" d="M818 155 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 190 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 224 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 257 H846" marker-end="url(#arrow)"/>
+  <rect class="box" x="848" y="141" width="297" height="28"/>
+  <text x="858" y="155">Correlation coefficient (CC)</text>
+  <rect class="box" x="848" y="176" width="386" height="28"/>
+  <text x="858" y="190">Standard regression coefficient (SRC)</text>
+  <rect class="box" x="848" y="210" width="386" height="28"/>
+  <text x="858" y="224">Partial correlation coefficient (PCC)</text>
+  <rect class="box" x="848" y="243" width="258" height="28"/>
+  <text x="858" y="257">Decomposition-based VIMs</text>
+  <rect class="box" x="522" y="298" width="178" height="48"/>
+  <text x="532" y="311">Rank regression</text>
+  <text x="532" y="333">and related VIMs</text>
+  <path class="line" d="M701 322 H818"/>
+  <path class="line" d="M818 290 V358"/>
+  <path class="line" d="M818 290 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 324 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 358 H846" marker-end="url(#arrow)"/>
+  <rect class="box" x="848" y="276" width="357" height="28"/>
+  <text x="858" y="290">Rank correlation coefficient (RCC)</text>
+  <rect class="box" x="848" y="310" width="485" height="28"/>
+  <text x="858" y="324">Standardized rank regression coefficient (SRRC)</text>
+  <rect class="box" x="848" y="344" width="446" height="28"/>
+  <text x="858" y="358">Partial rank correlation coefficient (PRCC)</text>
+  <rect class="box" x="522" y="388" width="228" height="28"/>
+  <text x="532" y="402">Polynomial regression</text>
+  <rect class="box" x="100" y="506" width="366" height="36"/>
+  <text x="110" y="524">Nonparametric regression techniques</text>
+  <path class="line" d="M466 524 H492"/>
+  <path class="line" d="M492 465 V593"/>
+  <path class="line" d="M492 465 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 508 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 551 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 593 H520" marker-end="url(#arrow)"/>
+  <rect class="box" x="522" y="451" width="366" height="28"/>
+  <text x="532" y="465">Locally weighted regression (LOESS)</text>
+  <rect class="box" x="522" y="494" width="337" height="28"/>
+  <text x="532" y="508">Generalized additive model (GAM)</text>
+  <rect class="box" x="522" y="537" width="248" height="28"/>
+  <text x="532" y="551">Projection Pursuit (PP)</text>
+  <rect class="box" x="522" y="579" width="149" height="28"/>
+  <text x="532" y="593">Random forest</text>
+  <path class="line" d="M671 593 H818"/>
+  <path class="line" d="M818 559 V627"/>
+  <path class="line" d="M818 559 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 593 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 627 H846" marker-end="url(#arrow)"/>
+  <rect class="box" x="848" y="545" width="99" height="28"/>
+  <text x="858" y="559">Gini VIM</text>
+  <rect class="box" x="848" y="579" width="168" height="28"/>
+  <text x="858" y="593">Permutation VIM</text>
+  <rect class="box" x="848" y="613" width="287" height="28"/>
+  <text x="858" y="627">Conditional permutation VIM</text>
+  <rect class="box" x="100" y="806" width="277" height="36"/>
+  <text x="110" y="824">Hypothesis test techniques</text>
+  <path class="line" d="M377 824 H492"/>
+  <path class="line" d="M492 741 V905"/>
+  <path class="line" d="M492 741 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 905 H520" marker-end="url(#arrow)"/>
+  <rect class="box" x="522" y="727" width="178" height="28"/>
+  <text x="532" y="741">Grid-based tests</text>
+  <path class="line" d="M701 741 H818"/>
+  <path class="line" d="M818 666 V814"/>
+  <path class="line" d="M818 666 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 703 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 740 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 776 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 814 H846" marker-end="url(#arrow)"/>
+  <rect class="box" x="848" y="652" width="258" height="28"/>
+  <text x="858" y="666">Common means (CMNs) test</text>
+  <rect class="box" x="848" y="689" width="456" height="28"/>
+  <text x="858" y="703">Common distributions or locations (CLs) test</text>
+  <rect class="box" x="848" y="726" width="277" height="28"/>
+  <text x="858" y="740">Common medians (CMDs) test</text>
+  <rect class="box" x="848" y="762" width="357" height="28"/>
+  <text x="858" y="776">Statistical independence (SI) test</text>
+  <rect class="box" x="848" y="800" width="238" height="28"/>
+  <text x="858" y="814">Entropy-based measures</text>
+  <rect class="box" x="522" y="891" width="268" height="28"/>
+  <text x="532" y="905">Tests without use of grid</text>
+  <path class="line" d="M790 905 H818"/>
+  <path class="line" d="M818 858 V946"/>
+  <path class="line" d="M818 858 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 905 H846" marker-end="url(#arrow)"/>
+  <path class="line" d="M818 946 H846" marker-end="url(#arrow)"/>
+  <rect class="box" x="848" y="834" width="416" height="48"/>
+  <text x="858" y="847">Squared rank difference/rank correlation</text>
+  <text x="858" y="869">coefficient (SRD/RCC) test</text>
+  <rect class="box" x="848" y="891" width="456" height="28"/>
+  <text x="858" y="905">Two-dimensional Kolmogorov-Smirnov (KS) test</text>
+  <rect class="box" x="848" y="932" width="218" height="28"/>
+  <text x="858" y="946">Distance-based tests</text>
+  <rect class="box" x="100" y="936" width="208" height="36"/>
+  <text x="110" y="954">Variance-based VIMs</text>
+  <rect class="box" x="100" y="1032" width="248" height="36"/>
+  <text x="110" y="1050">Moment-independent VIMs</text>
+  <path class="line" d="M348 1050 H492"/>
+  <path class="line" d="M492 1034 V1066"/>
+  <path class="line" d="M492 1034 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 1066 H520" marker-end="url(#arrow)"/>
+  <rect class="box" x="522" y="1020" width="129" height="28"/>
+  <text x="532" y="1034">Delta index</text>
+  <rect class="box" x="522" y="1052" width="218" height="28"/>
+  <text x="532" y="1066">Extended delta index</text>
+  <rect class="box" x="100" y="1116" width="139" height="36"/>
+  <text x="110" y="1134">Graphic VIMs</text>
+  <path class="line" d="M239 1134 H492"/>
+  <path class="line" d="M492 1115 V1149"/>
+  <path class="line" d="M492 1115 H520" marker-end="url(#arrow)"/>
+  <path class="line" d="M492 1149 H520" marker-end="url(#arrow)"/>
+  <rect class="box" x="522" y="1101" width="149" height="28"/>
+  <text x="532" y="1115">Regional VIMs</text>
+  <rect class="box" x="522" y="1135" width="168" height="28"/>
+  <text x="532" y="1149">Parametric VIMs</text>
+  <rect class="box" x="6" y="422" width="34" height="340"/>
+  <text class="root" transform="translate(29 592) rotate(-90)">Variable importance measures (VIMs)</text>
+  <path class="line" d="M40 592 H62"/>
+  <text class="note" x="863.5" y="43">derivs and sometimes</text>
+  <text class="note" x="863.5" y="67">aggregating them</text>
+  <text class="note" x="320" y="988">Sobol’s indices - how much var of func can you explain?</text>
+  <text class="note" x="770.5" y="1031">These compare conditional distr. on a var</text>
+  <text class="note" x="770.5" y="1055">to the marginal distr.</text>
+  <text class="note" x="770.5" y="1134">These are like importance curves</text>
+</svg>

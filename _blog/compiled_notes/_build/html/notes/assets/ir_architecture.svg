@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 60 1640 900" role="img" aria-labelledby="title desc">
+  <title id="title">IR architecture</title>
+  <desc id="desc">Recap of an information retrieval architecture. A repository of documents exchanges data (two-way arrow) with a parsing and indexing stage containing Doc Rep and Query Rep. The user's query feeds Query Rep. Doc Rep and Query Rep both feed Ranking. Evaluation, which receives the user's judgments as feedback, points up to Ranking and curves back to Doc Rep and Query Rep. Labels mark search applications and feedback.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .ttl { font: 76px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .bk { font: bold 50px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .rd { font: bold 44px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .bx { fill: none; stroke: #2b2b2b; stroke-width: 4; }
+      .tl { fill: none; stroke: #13817f; stroke-width: 12; }
+      .doc { fill: #9cc0e6; stroke: #2b2b2b; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <defs>
+    <marker id="ta" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#13817f"/></marker>
+    <marker id="ka" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2b2b2b" stroke-width="1.6"/></marker>
+  </defs>
+  <text class="ttl" x="820" y="160">Recap: IR architecture</text>
+  <path d="M42 320 V492 A130 30 0 0 0 302 492 V320" fill="none" stroke="#13817f" stroke-width="4"/>
+  <ellipse cx="172" cy="320" rx="130" ry="30" fill="none" stroke="#13817f" stroke-width="4"/>
+  <path class="doc" d="M60 366 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M77 384 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M94 402 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M111 420 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M172 366 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M189 384 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M206 402 h52 v72 l-6 6 h-46 z"/>
+  <path class="doc" d="M223 420 h52 v72 l-6 6 h-46 z"/>
+  <text class="bk" x="168" y="598" text-anchor="middle">Repository</text>
+  <path class="tl" d="M340 430 H410" marker-start="url(#ta)" marker-end="url(#ta)"/>
+  <rect x="402" y="260" width="778" height="273" fill="none" stroke="#13817f" stroke-width="2.5" stroke-dasharray="10 7"/>
+  <text class="rd" x="792" y="326" text-anchor="middle">PARSING &amp; INDEXING</text>
+  <ellipse class="bx" cx="582" cy="428" rx="136" ry="80"/><text class="bk" x="575" y="414" text-anchor="middle">Doc</text><text class="bk" x="575" y="482" text-anchor="middle">Rep</text>
+  <ellipse class="bx" cx="963" cy="421" rx="136" ry="80"/><text class="bk" x="970" y="416" text-anchor="middle">Query</text><text class="bk" x="970" y="482" text-anchor="middle">Rep</text>
+  <path class="tl" d="M1325 408 H1130" marker-end="url(#ta)"/>
+  <text class="bk" x="1355" y="425">query</text>
+  <text class="bk" x="1420" y="557" style="font-size:66px">User</text>
+  <path class="tl" d="M685 482 L720 538" marker-end="url(#ta)"/>
+  <path class="tl" d="M870 482 L835 538" marker-end="url(#ta)"/>
+  <rect class="bx" x="632" y="566" width="288" height="173"/><text class="bk" x="776" y="676" text-anchor="middle">Ranking</text>
+  <rect class="bx" x="632" y="796" width="288" height="115"/><text class="bk" x="776" y="878" text-anchor="middle">Evaluation</text>
+  <path class="bx" d="M776 796 V745" marker-end="url(#ka)"/>
+  <path class="bx" d="M632 852 C 470 790, 480 640, 497 492" marker-end="url(#ka)"/>
+  <path class="bx" d="M920 836 C 1060 780, 1066 640, 1045 485" marker-end="url(#ka)"/>
+  <path class="tl" d="M1236 853 H970" marker-end="url(#ta)"/>
+  <text class="bk" x="1262" y="878">judgments</text>
+  <text class="rd" x="1000" y="632">SEARCH</text><text class="rd" x="940" y="725">APPLICATIONS</text><text class="rd" x="972" y="930">FEEDBACK</text>
+</svg>

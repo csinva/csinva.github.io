@@ -2,12 +2,13 @@
 layout: notes
 title: Sensory Input
 category: neuro
-subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
+subtitle: notes from Purves et al. "Neuroscience", 5th edition (chapter numbers in headers) + Intro to neurobiology course at UVA
 ---
 
 {:toc}
 
 # 9- somatosensory
+
 ## cheat sheet
 - vocab
 	- *nerve* - bundle of axons
@@ -17,8 +18,8 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 		- brain tends to be lateralized - one side is given control
 		- ex. speak almost exclusively from left side of brain
 - information processing
-	1. feedback (gain) 
-		- almost always with glutamatergic  / GABA
+	1. feedback (gain)
+		- almost always with glutamatergic / GABA
 	2. feedforward - anticipation
 		- estimate things before they happen
 		- adjust your behavior in advance of the world (ex. lean before you hit a table)
@@ -72,13 +73,14 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 	4. C fibers - pain, temperature, itch
 		- very slow, stay on
 		- no myelination
-	-  Pruritus - newly discovered set of sensory neurons
+
+	- Pruritus - newly discovered set of sensory neurons
 		- between pain/touch - itch neurons
 		- new in mice: massage neurons
 			- can only fire by stimulating in certain pattern
 			- goes to emotion center not knowledge - pleasure
 - speed proportional to diameter, myelination
-- adaptation 
+- adaptation
 	- some adapt slowly (you keep feeling something)
 	- some adapt quickly (stop feeling)
 		- if you move finger slightly, start firing again when changed
@@ -87,7 +89,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 ## pathways
 - upper-body
 	- *S1 cortex* - primary somatic sensory cortex - this is the knowledge of where was touched
-	- *VPL* - everything accumulates here in the thalamus then goes to 
+	- *VPL* - everything accumulates here in the thalamus then goes to
 	- *Cuneate nucleus* - everything goes into this
 - lower-body (trunk down)
 	- everything in the lower body goes to *Gracile nucleus* - in brain stem
@@ -127,7 +129,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 	3. vpm
 	4. S1
 - proprioception
-	- lower body	
+	- lower body
 		1. muscle spindles split
 		2. half go to motor neurons
 		3. other half go to Clark's nucleus
@@ -135,6 +137,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 	- upper body - straight to the cerebellum
 
 # 10 - nociception
+
 ## review
 - chronic pain is very import clinically
 - cortex - lets you know if you are sensing something
@@ -277,7 +280,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 - central projections
 	- retinal ganglions
 	- all go through optic stuff
-	
+
 # 13 - auditory system
 - ear parts
 	- outer
@@ -337,15 +340,19 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 	- same hair cells
 - differences
     - ![](../assets/14_1.png)
+
 	1. vestibular system doesn't use cortex (you don't think about it)
 		- goes right into spinal chord
 	2. controls eye movements
 		- one of the fastest circuits in the brain
+
 	- clinically important
 		- you have to be able to have your balance
+
 1. each column is computational unit of the cortex
 2. ocular dominance column
 	- one for each eye
+
 - labyrinth and its innervation
 	- semicircular canals
 		- can only measure one axis of rotation
@@ -385,7 +392,7 @@ subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at
 - vestibular ocular reflex VOR - turn your head to the right, eyes move left
 	- doesn't require cortex
 	- only have to learn excitatory
-	
+
 # 15 - chemical senses
 ![](../assets/15_1.png)
 - cAMP is used by GPCR

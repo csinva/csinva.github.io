@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" role="img" aria-labelledby="title desc">
+  <title id="title">Baron-Kenny mediation</title>
+  <desc id="desc">Causal graph: X points to Z, to M (coefficient beta 2) and to Y (coefficient theta 4). Z points to M (beta 1) and directly to Y via a curved edge (theta 1). M points to Y (theta 2). Indirect effect: beta 1 times theta 2. Direct effect: theta 1.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L10 5 L0 9 L3 5 z" fill="#2b2b2b"/></marker>
+    <style>
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .v { font: italic 34px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .c { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-style: normal; font-size: 17px; }
+      .t { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <text class="v" x="190" y="30">X</text>
+  <text class="v" x="22" y="190">Z</text>
+  <text class="v" x="190" y="190">M</text>
+  <text class="v" x="358" y="190">Y</text>
+  <path class="e" d="M174 46 L38 172" marker-end="url(#arrow)"/>
+  <path class="e" d="M190 52 V166" marker-end="url(#arrow)"/>
+  <path class="e" d="M206 46 L342 172" marker-end="url(#arrow)"/>
+  <path class="e" d="M42 190 H164" marker-end="url(#arrow)"/>
+  <path class="e" d="M216 190 H334" marker-end="url(#arrow)"/>
+  <path class="e" d="M38 208 Q190 330 344 206" marker-end="url(#arrow)"/>
+  <text class="c" x="212" y="114">β<tspan class="sub" dy="6">2</tspan></text>
+  <text class="c" x="294" y="92">θ<tspan class="sub" dy="6">4</tspan></text>
+  <text class="c" x="104" y="178">β<tspan class="sub" dy="6">1</tspan></text>
+  <text class="c" x="274" y="178">θ<tspan class="sub" dy="6">2</tspan></text>
+  <text class="c" x="190" y="292">θ<tspan class="sub" dy="6">1</tspan></text>
+  <text class="t" x="420" y="198">indirect effect: <tspan font-family="Georgia, serif" font-style="italic">β</tspan><tspan font-size="17" dy="6">1</tspan><tspan font-family="Georgia, serif" font-style="italic" dy="-6">θ</tspan><tspan font-size="17" dy="6">2</tspan></text>
+  <text class="t" x="420" y="288">direct effect: <tspan font-family="Georgia, serif" font-style="italic">θ</tspan><tspan font-size="17" dy="6">1</tspan></text>
+</svg>

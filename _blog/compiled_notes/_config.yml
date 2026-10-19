@@ -11,3 +11,29 @@ html:
     <p>
     Many of these images are taken from resources on the web.
     </p>
+# same TeX shorthands + color-coding macros as the site's notes (_layouts/notes.html),
+# with darker shades of the colors since the book has a light background
+sphinx:
+  config:
+    html_theme_options:
+      repository_url: https://github.com/csinva/csinva.github.io
+      use_repository_button: true
+      logo:
+        image_light: logo.png
+        image_dark: logo_dark.png
+    mathjax3_config:
+      tex:
+        macros:
+          bold: ["\\mathbf{#1}", 1]
+          underbar: ["\\underline{#1}", 1]
+          ra: "\\rightarrow"
+          empty: "\\emptyset"
+          cblue: ["{\\color[RGB]{31,111,178}{#1}}", 1]
+          corange: ["{\\color[RGB]{217,130,43}{#1}}", 1]
+          cgreen: ["{\\color[RGB]{31,138,76}{#1}}", 1]
+          cpink: ["{\\color[RGB]{199,60,130}{#1}}", 1]
+          cpurple: ["{\\color[RGB]{123,79,181}{#1}}", 1]
+          cyellow: ["{\\color[RGB]{168,132,0}{#1}}", 1]
+# uv creates .venv in this folder; only build the pages listed in _toc.yml
+only_build_toc_files: true
+exclude_patterns: [.venv, _build, "**.ipynb_checkpoints"]

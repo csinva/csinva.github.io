@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Vision
+subtitle: Some notes on vision science, from photoreceptors and retinal circuits to recording and imaging methods.
 category: neuro
 ---
 
@@ -37,10 +38,10 @@ category: neuro
   - patch recording - uses suction to overcome powers
     - Flaw: bad for studying second-messenger systems because inside of electrode / cell fuse
     - different types (whole cell, outside-out, inside-out)
-- clamp 
-  - ![](../assets/clamp_main.png)
-  - ![](../assets/clamp_junction.png)
-  - ![](../assets/clamp_tip.png)
+- clamp
+  - <img style="width: 700px; max-width: 100%;" src="../assets/clamp_main.svg" alt="Single-cell recording"/>
+  - <img style="width: 700px; max-width: 100%;" src="../assets/clamp_junction.svg" alt="Junction potentials"/>
+  - <img style="width: 700px; max-width: 100%;" src="../assets/clamp_tip.svg" alt="Liquid junction potential"/>
 - types
   - whole-cell
   - cell-attached
@@ -54,7 +55,7 @@ category: neuro
 - IV curve - measured with voltage clamp
   - V - voltage clamped at
   - I - maximal current evoked by clamping at this voltage
-- ![](../assets/circuit_model.png)
+- <img style="width: 650px; max-width: 100%;" src="../assets/circuit_model.svg" alt="Circuit model"/>
 
 # recording + imaging
 
@@ -94,7 +95,7 @@ category: neuro
   - photo-induced electron transfer - fast, high sensitivity, low capacitance
     - currently being developed by evan miller at berkeley in chemistry
     - problem - lights up all the cells - trying to target a cell with genetics
-- **calcium imaging** 
+- **calcium imaging**
   - calcium influxes into cell through a variety of mechanisms
   - calcium indicators
     - original: aequorin - bioluminescent protein from jellyfish
@@ -125,7 +126,7 @@ category: neuro
   - don't saturate
   - selective for the direction of light rays
 - rods
-  - ~120 mil 
+  - ~120 mil
   - high sensitivity to light
   - slow responses
   - saturate
@@ -168,7 +169,7 @@ category: neuro
 ## primate retina
 
 - primate retina has 2 major types of ganglion cells
-  1. midget ganglion cells  (~75%) - majority, high spatial acuity
+  1. midget ganglion cells (~75%) - majority, high spatial acuity
      1. parvocellular pathway
   2. parasol ganglion cells (~15%) - high temporal resolution
      1. magnocellular pathway
@@ -231,30 +232,22 @@ category: neuro
 ## retinal blood supply
 
 - retina has highest metabolic demand of any tissue
-
 - vasculature - eye is only place we can noninvasively view vasculature
-
   - often diagnose stuff like hypertension / diabetes fom eye
-
 - 2 major blood supplies (non-overlapping)
-
   1. outer retinal blood supply (past RPE) = posterior ciliary arteries
      1. outer 1/3
      2. bruch's membrane
      3. choroid - helps provide nutrients, cool retina
-  2. inner retinal blood supply  = central retinal artery
+  2. inner retinal blood supply = central retinal artery
      1. inner 2/3
      2. no inner capillaries in *foveal avascular zone* - area near fovea (these would block light)
-
 - *blood-retinal barriers (BRB)*
-
   - outer BRB - tight junctions between RPE cells
     - *fenestrated* - leaky
-  - inner BRB - tight junctions between *capillary endothelial cells* 
+  - inner BRB - tight junctions between *capillary endothelial cells*
     - *non-fenestrated*
-
 - autoregulation of retinal blood supply
-
   - outer - under sympathetic control
   - inner - autoregulated by neuronal demands (neurovascular coupling)
 
@@ -265,7 +258,7 @@ category: neuro
 
 ## age-related macular degeneration
 
-- degenerates outer retina  (photoreceptors/RPE/choroid) in **macula** = central 5-6 mm of retina (contains fovea, which is central 1.5mm)
+- degenerates outer retina (photoreceptors/RPE/choroid) in **macula** = central 5-6 mm of retina (contains fovea, which is central 1.5mm)
 - leading cause of vision loss in >50 yo
 - big spot missing in center of visual field
 - 2 types
@@ -300,7 +293,7 @@ category: neuro
 - leaky blood vessels - often diagnose diabetes through retinopathy
 - diabetes types
   - type 1 - autoimmune reaction destroys pancreating $\beta$ cells that produces **insulin**: hyperglycemia + hypoglycemia
-  - type 2  - reduced insulin sensitivity: mainly hyperglycemia
+  - type 2 - reduced insulin sensitivity: mainly hyperglycemia
     - need insulin injection
 - diabetic retinopathy types
   - proliferative
@@ -324,16 +317,16 @@ category: neuro
 
 # experimental methods
 
-![](../assets/method_coverage.png)
+<img style="width: 620px; max-width: 100%;" src="../assets/method_coverage.svg" alt="Spatiotemporal coverage of neuroscience methods"/>
 
 - 7 dimensions
-	- spatial res.
-	- temporal res.
-	- depth - how deep in can you image
-	- toxicity - does it damage the cells
-	- spatial field - how big a region can you see
-	- temporal duration (how long it can stay in)
-	- invasiveness
+  - spatial res.
+  - temporal res.
+  - depth - how deep in can you image
+  - toxicity - does it damage the cells
+  - spatial field - how big a region can you see
+  - temporal duration (how long it can stay in)
+  - invasiveness
 
 ## single cell
 
@@ -378,21 +371,14 @@ category: neuro
 ## measure electromagnetic signals
 
 - EEG (electroencephalography)
-
   - recorded on scalp (only gets synchronous activity)
-
   - can analyze frequencies (higher frequencies like gamma are attenuated)
-
-    - | delta      | theta | alpha | beta  | gamma |
+    - | delta | theta | alpha | beta | gamma |
       | ---------- | ----- | ----- | ----- | ----- |
       | 0.5-4 (Hz) | 4-8   | 8-13  | 13-30 | 30-50 |
-
   - can analyze event-related potentials (when the signals peak)
-
   - ECOG = electrocorticography - put electrodes on brain (for patients)
-
 - MEG (magenetoencephalography)
-
   - measure magnetic fields generated by active neurons
   - fMRI type setup
   - higher spatial resolution
@@ -422,7 +408,7 @@ category: neuro
     - blood oxygenation has linear relationship with decay
   - pipeline
     - activity -> more oxygen use + cerebral blood flow -> magnetic field distortions -> MRI signal intensity
-      - activity make oxygen go down real quick then blood flow over compensates, then saturates ![](../assets/hrf.png)
+      - activity make oxygen go down real quick then blood flow over compensates, then saturates <img style="width: 520px; max-width: 100%;" src="../assets/hrf.svg" alt="Hemodynamic response function (HRF)"/>
       - can't separate excitatory / inhibitory
     - LFP predicts BOLD well (only slightly better than MUA)
       - all are really pretty well correlated
@@ -468,7 +454,7 @@ category: neuro
   - mapping
     - each visual areas has some retinotopic mapping
     - moving points
-    -  ![](../assets/vmap.png)
+    - ![](../assets/vmap.png)
       - periodic mapping stimuli - rotating wedge / other things (fig left) $\implies$ between visual areas (e.g. v1 + v2) mirror image tiling of locations (borders between regions are like mirrors)
       - eccentricity mapping (fig right) - rings spread out evenly - no mirrors
     - cortical magnification - way more v1 for central locations
@@ -491,17 +477,12 @@ category: neuro
 ### event-related optical signal
 
 - =near-infrared spectroscopy - changes blood-oxygentation
-
 - active neural tissue scatters infrared light
-
   - infrared imaging shows which neurons are active
   - some issues....blond haired people can't do it
   - great temporal res, poor spatial res
-
 - bunch of sources / detectors on a helmet
-
 - suitable for a lot of patients that can't do fMRI (children, patients, ...)
-
   - people can walk around
 
 
@@ -546,7 +527,7 @@ category: neuro
     - connected via gap junctions
   - HII (type A)
     - dendrites contact S, M/L cones
-  - ![](../assets/horizontal.png)
+  - <img style="width: 600px; max-width: 100%;" src="../assets/horizontal.svg" alt="Horizontal cell feedback"/>
 - bipolar cells
   - rod v. cone
   - on v. off
@@ -576,14 +557,14 @@ category: neuro
     - differences need to be able to send positive/negative rates - this requires having 2 cells
     - alternatively could have a baseline and send more or less but baseline signal is wasteful because usually send 0
       - still don't send 0 as 0 firing rate because too slow to send a 0
-  - try to maximize information out of firing rates - penalty on firing rates 
+  - try to maximize information out of firing rates - penalty on firing rates
     - simulation with some neurons on natural images
     - yields on-center / off-center neurons
   - optic nerve has pretty equal firing rates - don't get pca type solns
-- tiling  - ratio varies with eccentricity (higher cone:ganglion ratio in periphery)
+- tiling - ratio varies with eccentricity (higher cone:ganglion ratio in periphery)
   - bipolar:ganglion is 1:1 in fovea
   - dendritic field diameter increases linearly with eccentricity
-  - cones also increase 
+  - cones also increase
   - RGCs limit peripheral vision not cones
   - picture here!!! smoothing and subsampling by RGCs
   - scale-invariant sampling lattice - same amount of RGCs regardless of how far smth is
@@ -594,7 +575,7 @@ category: neuro
 
 ## visual pathways
 
-- ![](../assets/visual_pathways.png)
+- <img style="width: 650px; max-width: 100%;" src="../assets/visual_pathways.svg" alt="Visual pathways"/>
 - organization
   - thalamus + cortex always work together = thalamocortical system
   - midbrain - reptilian, old
@@ -626,7 +607,7 @@ category: neuro
   - inputs from parasol cells
 - losing magno seems to lose spatial frequency, control different temporal frequencies, parvo gives you color
 - **important** - different spatial/temporal frequencies - differentiate from the beginning
-  - ![](../assets/magno_parvo.png)
+  - <img style="width: 550px; max-width: 100%;" src="../assets/magno_parvo.svg" alt="Parvo and magno coverage"/>
 
 ## color
 
@@ -672,7 +653,7 @@ category: neuro
   - could understand perception in terms of action
 - LGN wires don't interact with each other too much
   - some inhibitory interneurons
-- cortex ![column](../assets/column.png)
+- cortex <img style="width: 460px; max-width: 100%;" src="../assets/column.svg" alt="Laminar connections of V1"/>
   - ~2mm thick
   - layer 1 - mostly axons
   - layer 2/3 - association layer
@@ -781,11 +762,11 @@ category: neuro
 
 # sparse coding
 
-- **THIS ISN"T REALLY SPARSE CODING MOVE ELSEWHERE**: power spectrum falls off with frequency as $1/f^2$(amplitude falls as 1/f)
+- **this isn't really sparse coding, move elsewhere**: power spectrum falls off with frequency as $1/f^2$(amplitude falls as 1/f)
   - want to decorrelate - multiply by frequency that's $f^2$
   - you can't do this for very high frequencies otherwise you amplify noise
   - in spatial domain, looks like center surround
-  	 similar to finding edges	
+  	 similar to finding edges
 - v1 has map of space, magnified at fovea
 - want to explain how center-surround ganglion cells -> elongated orientation selective receptive fields
 - representation - complete repr. with minimum number of possible neurons
@@ -823,7 +804,7 @@ category: neuro
   - lots of outputs from intermediate areas
 - perception as inference
   - generative model we're trying to fit data too
-  - bayes rules: $P(E|D) \propto P(D|E) \cdot P(E)$ where E is environment and D is data about environment
+  - bayes rules: $$P(E\vert D) \propto P(D\vert E) \cdot P(E)$$ where E is environment and D is data about environment
   - lee + mumford, 2003 - hierarchical bayesian inference in visual cortex
     - each area makes guesses and higher areas send back corrections
     - mumford - fields medalist
@@ -922,10 +903,10 @@ category: neuro
 
 - manifests in the eye
 - two biomarkers - can find with PET or MRI
-  - amyloid $A\beta$ plaque  proteins
+  - amyloid $A\beta$ plaque proteins
   - pTau proteins
 - bunch of things in retina
-  - ex. RGC loss, NFL atrophy, blood flow rate, inflammation...all exist in other 
+  - ex. RGC loss, NFL atrophy, blood flow rate, inflammation...all exist in other
   - main thing - look for AB plaques with stains - requires someone is dead
 - goal: diagnose alzheimer's via noninvasive retinal imaging + visual function assessment
   - imaging: modified spectralis HRA + OCT should look at biomarkers (+ other things ex. look at retinal structure deficits)

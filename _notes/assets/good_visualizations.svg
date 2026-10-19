@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 482 680" role="img" aria-labelledby="title desc">
+  <title id="title">Common visual types</title>
+  <desc id="desc">Six example visuals with labels: simple text (a large 91%), scatterplot, table of percentages for categories 1-6 by columns A-C, line chart, heatmap (the same table shaded by value), and slopegraph.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .ax { fill: none; stroke: #8a8a8a; stroke-width: 1.5; }
+      .bar { fill: #1f6fb2; }
+      .gb { fill: #bdbdbd; }
+      .cap { font: 20px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .big { font: bold 96px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .ln { fill: none; stroke: #1f6fb2; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+      .grid { stroke: #bdbdbd; stroke-width: 1; }
+      .td { font: 14px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .th { font: 14px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .fig { font: 14px Helvetica, Arial, sans-serif; fill: #8a8a8a; }
+    </style>
+  </defs>
+  <text class="big" x="8" y="122.0">91%</text>
+  <path class="ax" d="M287.0 22.5 V164.0 H474.0"/>
+  <circle cx="318.0" cy="101.5" r="3.6" fill="#1f6fb2"/>
+  <circle cx="349.0" cy="85.5" r="3.6" fill="#1f6fb2"/>
+  <circle cx="380.0" cy="101.5" r="3.6" fill="#1f6fb2"/>
+  <circle cx="411.0" cy="117.0" r="3.6" fill="#1f6fb2"/>
+  <circle cx="442.5" cy="38.5" r="3.6" fill="#1f6fb2"/>
+  <path class="ax" d="M287.0 261.0 V403.5 H474.0"/>
+  <path class="ln" d="M287.0 340.0 L333.5 324.5 L426.5 356.0 L474.0 276.5"/>
+  <!-- table -->
+  <text class="td" x="118.5" y="263.0">A</text>
+  <text class="td" x="162.0" y="263.0">B</text>
+  <text class="td" x="206.0" y="263.0">C</text>
+  <text class="th" x="17.5" y="287.5">Category 1</text>
+  <text class="td" x="118.5" y="287.5">15%</text>
+  <text class="td" x="162.0" y="287.5">22%</text>
+  <text class="td" x="206.0" y="287.5">42%</text>
+  <text class="th" x="17.5" y="309.9">Category 2</text>
+  <text class="td" x="118.5" y="309.9">40%</text>
+  <text class="td" x="162.0" y="309.9">36%</text>
+  <text class="td" x="206.0" y="309.9">20%</text>
+  <text class="th" x="17.5" y="332.3">Category 3</text>
+  <text class="td" x="118.5" y="332.3">35%</text>
+  <text class="td" x="162.0" y="332.3">17%</text>
+  <text class="td" x="206.0" y="332.3">34%</text>
+  <text class="th" x="17.5" y="354.7">Category 4</text>
+  <text class="td" x="118.5" y="354.7">30%</text>
+  <text class="td" x="162.0" y="354.7">29%</text>
+  <text class="td" x="206.0" y="354.7">26%</text>
+  <text class="th" x="17.5" y="377.1">Category 5</text>
+  <text class="td" x="118.5" y="377.1">55%</text>
+  <text class="td" x="162.0" y="377.1">30%</text>
+  <text class="td" x="206.0" y="377.1">58%</text>
+  <text class="th" x="17.5" y="399.5">Category 6</text>
+  <text class="td" x="118.5" y="399.5">11%</text>
+  <text class="td" x="162.0" y="399.5">25%</text>
+  <text class="td" x="206.0" y="399.5">49%</text>
+  <line class="grid" x1="9.0" y1="271.0" x2="228.5" y2="271.0"/>
+  <line class="grid" x1="9.0" y1="293.7" x2="228.5" y2="293.7"/>
+  <line class="grid" x1="9.0" y1="316.1" x2="228.5" y2="316.1"/>
+  <line class="grid" x1="9.0" y1="338.5" x2="228.5" y2="338.5"/>
+  <line class="grid" x1="9.0" y1="360.9" x2="228.5" y2="360.9"/>
+  <line class="grid" x1="9.0" y1="383.3" x2="228.5" y2="383.3"/>
+  <line class="grid" x1="96.5" y1="248.5" x2="96.5" y2="405.0"/>
+  <line class="grid" x1="140.5" y1="248.5" x2="140.5" y2="405.0"/>
+  <line class="grid" x1="184.5" y1="248.5" x2="184.5" y2="405.0"/>
+  <!-- heatmap -->
+  <text class="td" x="118.5" y="505.0">A</text>
+  <text class="td" x="162.0" y="505.0">B</text>
+  <text class="td" x="206.0" y="505.0">C</text>
+  <text class="th" x="17.5" y="529.5">Category 1</text>
+  <rect x="97.0" y="513.5" width="43.5" height="21.5" fill="#e4eaf2"/>
+  <text class="td" x="118.5" y="529.5" fill="#1f6fb2" style="fill:#1f6fb2">15%</text>
+  <rect x="141.0" y="513.5" width="43.5" height="21.5" fill="#cdd7e6"/>
+  <text class="td" x="162.0" y="529.5" fill="#1f6fb2" style="fill:#1f6fb2">22%</text>
+  <rect x="185.0" y="513.5" width="43.5" height="21.5" fill="#8ba1c3"/>
+  <text class="td" x="206.0" y="529.5" fill="#ffffff" style="fill:#ffffff">42%</text>
+  <text class="th" x="17.5" y="551.9">Category 2</text>
+  <rect x="97.0" y="535.9" width="43.5" height="21.5" fill="#91a7c7"/>
+  <text class="td" x="118.5" y="551.9" fill="#ffffff" style="fill:#ffffff">40%</text>
+  <rect x="141.0" y="535.9" width="43.5" height="21.5" fill="#9fb1cd"/>
+  <text class="td" x="162.0" y="551.9" fill="#ffffff" style="fill:#ffffff">36%</text>
+  <rect x="185.0" y="535.9" width="43.5" height="21.5" fill="#d4dce9"/>
+  <text class="td" x="206.0" y="551.9" fill="#1f6fb2" style="fill:#1f6fb2">20%</text>
+  <text class="th" x="17.5" y="574.3">Category 3</text>
+  <rect x="97.0" y="558.3" width="43.5" height="21.5" fill="#a2b4cf"/>
+  <text class="td" x="118.5" y="574.3" fill="#ffffff" style="fill:#ffffff">35%</text>
+  <rect x="141.0" y="558.3" width="43.5" height="21.5" fill="#dee4ee"/>
+  <text class="td" x="162.0" y="574.3" fill="#1f6fb2" style="fill:#1f6fb2">17%</text>
+  <rect x="185.0" y="558.3" width="43.5" height="21.5" fill="#a5b7d1"/>
+  <text class="td" x="206.0" y="574.3" fill="#ffffff" style="fill:#ffffff">34%</text>
+  <text class="th" x="17.5" y="596.7">Category 4</text>
+  <rect x="97.0" y="580.7" width="43.5" height="21.5" fill="#b2c2d8"/>
+  <text class="td" x="118.5" y="596.7" fill="#1f6fb2" style="fill:#1f6fb2">30%</text>
+  <rect x="141.0" y="580.7" width="43.5" height="21.5" fill="#b6c4d9"/>
+  <text class="td" x="162.0" y="596.7" fill="#1f6fb2" style="fill:#1f6fb2">29%</text>
+  <rect x="185.0" y="580.7" width="43.5" height="21.5" fill="#c0ccdf"/>
+  <text class="td" x="206.0" y="596.7" fill="#1f6fb2" style="fill:#1f6fb2">26%</text>
+  <text class="th" x="17.5" y="619.1">Category 5</text>
+  <rect x="97.0" y="603.1" width="43.5" height="21.5" fill="#5f7fad"/>
+  <text class="td" x="118.5" y="619.1" fill="#ffffff" style="fill:#ffffff">55%</text>
+  <rect x="141.0" y="603.1" width="43.5" height="21.5" fill="#b2c2d8"/>
+  <text class="td" x="162.0" y="619.1" fill="#1f6fb2" style="fill:#1f6fb2">30%</text>
+  <rect x="185.0" y="603.1" width="43.5" height="21.5" fill="#5677a8"/>
+  <text class="td" x="206.0" y="619.1" fill="#ffffff" style="fill:#ffffff">58%</text>
+  <text class="th" x="17.5" y="641.5">Category 6</text>
+  <rect x="97.0" y="625.5" width="43.5" height="21.5" fill="#f2f5f9"/>
+  <text class="td" x="118.5" y="641.5" fill="#1f6fb2" style="fill:#1f6fb2">11%</text>
+  <rect x="141.0" y="625.5" width="43.5" height="21.5" fill="#c3cfe0"/>
+  <text class="td" x="162.0" y="641.5" fill="#1f6fb2" style="fill:#1f6fb2">25%</text>
+  <rect x="185.0" y="625.5" width="43.5" height="21.5" fill="#738fb7"/>
+  <text class="td" x="206.0" y="641.5" fill="#ffffff" style="fill:#ffffff">49%</text>
+  <line class="grid" x1="9.0" y1="513.0" x2="228.5" y2="513.0"/>
+  <line class="grid" x1="9.0" y1="535.7" x2="228.5" y2="535.7"/>
+  <line class="grid" x1="9.0" y1="558.1" x2="228.5" y2="558.1"/>
+  <line class="grid" x1="9.0" y1="580.5" x2="228.5" y2="580.5"/>
+  <line class="grid" x1="9.0" y1="602.9" x2="228.5" y2="602.9"/>
+  <line class="grid" x1="9.0" y1="625.3" x2="228.5" y2="625.3"/>
+  <line class="grid" x1="96.5" y1="490.5" x2="96.5" y2="647.0"/>
+  <line class="grid" x1="140.5" y1="490.5" x2="140.5" y2="647.0"/>
+  <line class="grid" x1="184.5" y1="490.5" x2="184.5" y2="647.0"/>
+  <path class="ln" d="M287.5 520.5 L433.0 535.5"/>
+  <circle cx="287.5" cy="520.5" r="3.6" fill="#1f6fb2"/>
+  <circle cx="433.0" cy="535.5" r="3.6" fill="#1f6fb2"/>
+  <path class="ln" d="M287.5 566.5 L433.0 551.0"/>
+  <circle cx="287.5" cy="566.5" r="3.6" fill="#1f6fb2"/>
+  <circle cx="433.0" cy="551.0" r="3.6" fill="#1f6fb2"/>
+  <path class="ln" d="M287.5 582.0 L433.0 597.5"/>
+  <circle cx="287.5" cy="582.0" r="3.6" fill="#1f6fb2"/>
+  <circle cx="433.0" cy="597.5" r="3.6" fill="#1f6fb2"/>
+  <path class="ln" d="M287.5 597.5 L433.0 566.5"/>
+  <circle cx="287.5" cy="597.5" r="3.6" fill="#1f6fb2"/>
+  <circle cx="433.0" cy="566.5" r="3.6" fill="#1f6fb2"/>
+  <path class="ax" d="M288.0 644.0 H433.0"/>
+  <text class="cap" x="13.0" y="196.0">Simple text</text>
+  <text class="cap" x="285.5" y="196.0">Scatterplot</text>
+  <text class="cap" x="13.0" y="436.0">Table</text>
+  <text class="cap" x="285.5" y="436.0">Line</text>
+  <text class="cap" x="13.0" y="677.0">Heatmap</text>
+  <text class="cap" x="285.5" y="677.0">Slopegraph</text>
+</svg>

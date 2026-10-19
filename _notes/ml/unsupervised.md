@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Unsupervised
+subtitle: Some notes on clustering, dimensionality reduction, generative models, and self-supervised learning.
 category: ml
 typora-copy-images-to: ../assets
 ---
@@ -33,7 +34,7 @@ typora-copy-images-to: ../assets
     - repeatedly do this to make a tree (dendrogram)
 - distances between clusters defined by *linkage function*
   - single-link - closest members (long, skinny clusters)
-  - complete-link - furthest members  (tight clusters)
+  - complete-link - furthest members (tight clusters)
   - average - most widely used
 - ex. MST - keep linking shortest link
 - *ultrametric distance* - tighter than triangle inequality
@@ -53,19 +54,17 @@ typora-copy-images-to: ../assets
 
 - *latent vars* - values not specified in the observed data
 - 
-  ![](../assets/j10_1.png)
+A mixture model represented as a graphical model. The latent variable Z is a multinomial node taking on one of K values <img style="width: 110px; max-width: 100%;" src="../assets/j10_1.svg" alt="Mixture model as a graphical model"/>
 
 - *K-Means*
   - start with random centers
-  - E: assign everything to nearest center: $O(\|\text{clusters}\|*np) $
+  - E: assign everything to nearest center: $$O(\vert \text{clusters}\vert *np) $$
   - M: recompute centers $O(np)$ and repeat until nothing changes
   - partition amounts to Voronoi diagram
-  - can be viewed as minimizing *distortion measure* $J=\sum_n \sum_i z_n^i ||x_n - \mu_i||^2$
-- *GMMs*: $p(x|\theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x|\mu_i, \Sigma_i)$
-
-  - $l(\theta|x) = \sum_n \log \: p(x_n|\theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n|\mu_i, \Sigma_i)$
+  - can be viewed as minimizing *distortion measure* $$J=\sum_n \sum_i z_n^i \vert \vert x_n - \mu_i\vert \vert ^2$$
+- *GMMs*: $$p(x\vert \theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x\vert \mu_i, \Sigma_i)$$
+  - $$l(\theta\vert x) = \sum_n \log \: p(x_n\vert \theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n\vert \mu_i, \Sigma_i)$$<!-- -->
   - hard to maximize bcause log acts on a sum
-
   - "soft" version of K-means - update means as weighted sums of data instead of just normal mean
   - sometimes initialize K-means w/ GMMs
 
@@ -80,13 +79,13 @@ graph LR;
 
 - ex. ![](../assets/j5_16.png)
 - latent variable Z has multinomial distr.
-  - *mixing proportions*: $P(Z^i=1|x, \xi)$
+  - <span class="cblue">mixing proportions</span>: $$\cblue{P(Z^i=1\vert x, \xi)}$$
     - ex. $ \frac{e^{\xi_i^Tx}}{\sum_je^{\xi_j^Tx}}$
-  - *mixture components*: $p(y|Z^i=1, x, \theta_i)$ ~ different choices
+  - <span class="corange">mixture components</span>: $$\corange{p(y\vert Z^i=1, x, \theta_i)}$$ ~ different choices
   - ex. mixture of linear regressions
-    - $p(y| x, \theta) = \sum_i \underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}} \cdot \underbrace{\mathcal{N}(y|\beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}$
+    - $$p(y\vert  x, \theta) = \sum_i \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mathcal{N}(y\vert \beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}}$$<!-- -->
   - ex. mixtures of logistic regressions
-    - $p(y|x, \theta_i) = \underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}} \cdot \underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}$ where $\mu$ is the logistic function
+    - $$p(y\vert x, \theta_i) = \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}}$$ where $\mu$ is the logistic function
 - also, nonlinear optimization for this (including EM)
 
 # dim reduction
@@ -105,7 +104,7 @@ In general there is some tension between preserving global properties (e.g. PCA)
 | T-SNE               | ....               | ....               | ...                  |  |
 | UMAP                | ...                | ...                | ...                  |  |
 
-- NMF - $\min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$
+- NMF - $$\min_{D \geq 0, A \geq 0} \vert \vert X-DA\vert \vert _F^2$$
   - SEQNMF
 - LDA/QDA - finds basis that separates classes
   - reduced to axes which separate classes (perpendicular to the boundaries)
@@ -123,30 +122,22 @@ In general there is some tension between preserving global properties (e.g. PCA)
 - want new set of axes (linearly combine original axes) in the direction of greatest variability
     - this is best for visualization, reduction, classification, noise reduction
     - assume $X$ (nxp) has zero mean
-
-- derivation: 
-
+- derivation:
     - minimize variance of X projection onto a unit vector v
       - $\frac{1}{n} \sum (x_i^Tv)^2 = \frac{1}{n}v^TX^TXv$ subject to $v^T v=1$
       - $\implies v^T(X^TXv-\lambda v)=0$: solution is achieved when $v$ is eigenvector corresponding to largest eigenvalue
     - like minimizing perpendicular distance between data points and subspace onto which we project
-
 - SVD: let $U D V^T = SVD(Cov(X))$
-
     - $\text{Cov}(X) = \frac{1}{n}X^TX$, where X has been demeaned
-
 - equivalently, eigenvalue decomposition of covariance matrix $\Sigma = X^TX$
-  - each eigenvalue represents prop. of explained variance: $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$
-
-  - *screeplot*  - eigenvalues in decreasing order, look for num dims with kink
+  - each eigenvalue represents prop. of explained variance: $\sum \lambda_i = \operatorname{tr}(\Sigma) = \sum Var(X_i)$
+  - *screeplot* - eigenvalues in decreasing order, look for num dims with kink
     - don't automatically center/normalize, especially for positive data
-
 - SVD is easier to solve than eigenvalue decomposition, can also solve other ways
   1. multidimensional scaling (MDS)
     - based on eigenvalue decomposition
   2. adaptive PCA
-    - extract components sequentially, starting with highest variance so you don't have to extract them all	
-
+    - extract components sequentially, starting with highest variance so you don't have to extract them all
 - good PCA code: http://cs231n.github.io/neural-networks-2/
 ```python
 X -= np.mean(X, axis = 0) # zero-center data (nxd)
@@ -164,8 +155,9 @@ Xrot_reduced = X @ U[:, :2] # project onto first 2 dimensions (n x 2)
 
 ## sparse coding = sparse dictionary learning
 
-$$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Da^{(t)}}||_2^2 + \lambda ||\mathbf{a^{(t)}}||_1$$
+$$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min \cblue{\vert \vert \mathbf{x^{(t)}} - \mathbf{Da^{(t)}}\vert \vert _2^2} + \corange{\lambda \vert \vert \mathbf{a^{(t)}}\vert \vert _1}$$
 
+- <span class="cblue">reconstruction error</span> + <span class="corange">sparsity penalty</span>
 - D is like autoencoder output weight matrix
 - $a$ is more complicated - requires solving inner minimization problem
 - outer loop is not quite lasso - weights are not what is penalized
@@ -204,13 +196,13 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - bell & sejnowski 1995 original formulation (slightly different)
   - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform
     - then, that function $g(x)$ is the cdf of $f(x)$
-  - in ICA, we do this for higher dims - want to map distr of $x_1, ..., x_p$ to $y_1, ..., y_p$ where distr over $y_i$'s is uniform (implying that they are independent)
+  - in ICA, we do this for higher dims - want to map distr of $$x_1, ..., x_p$$ to $$y_1, ..., y_p$$ where distr over $y_i$'s is uniform (implying that they are independent)
     - additionally we want the map to be information preserving
-  - mathematically: $\underset{W} \max I(x; y) = \underset{W} \max H(y)$ since $H(y|x)$ is zero (there is no randomness)
+  - mathematically: $\underset{W} \max I(x; y) = \underset{W} \max H(y)$ since $$H(y\vert x)$$ is zero (there is no randomness)
     - assume $y = \sigma (W x)$ where $\sigma$ is elementwise
     - (then S = WX, $W=A^{-1}$)
-    - requires certain assumptions so that $p(y)$ is still a distr: $p(y) = p(x) / |J|$ where J is Jacobian
-  - learn W via gradient ascent $\Delta W \propto \partial / \partial W (\log |J|)$
+    - requires certain assumptions so that $p(y)$ is still a distr: $$p(y) = p(x) / \vert J\vert $$ where J is Jacobian
+  - learn W via gradient ascent $$\Delta W \propto \partial / \partial W (\log \vert J\vert )$$
     - there is now something faster called fast ICA
 - topographic ICA (make nearby coefficient like each other)
 - interestingly, some types of self-supervised learning perform ICA assuming certain data structure (e.g. time-contrastive learning (hyvarinen et al. 2016))
@@ -219,7 +211,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 - **multidimensional scaling (MDS)**
   - given a a distance matrix, MDS tries to recover low-dim coordinates s.t. distances are preserved
-  - minimizes goodness-of-fit measure called *stress* = $\sqrt{\sum (d_{ij} - \hat{d}_{ij})^2 / \sum d_{ij}^2}$
+  - minimizes goodness-of-fit measure called *stress* = $$\sqrt{\sum (d_{ij} - \hat{d}_{ij})^2 / \sum d_{ij}^2}$$
   - visualize in low dims the similarity between individial points in high-dim dataset
   - classical MDS assumes Euclidean distances and uses eigenvalues
     - constructing configuration of n points using distances between n objects
@@ -236,48 +228,54 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
         - D Euclidean iff B is psd
 - **t-sne** preserves pairwise neighbors
   - [t-sne tutorial](https://distill.pub/2016/misread-tsne/)
-  - t-sne tries to match pairwise distances between the original data and the latent space data: ![Screen Shot 2020-09-11 at 12.35.35 AM](../assets/tsne.png)
-  - original data
+  - t-sne tries to match pairwise distances between the original data and the latent space data: $$\mathbb{E}_{\substack{\mathbf{z}_i \sim q_{\boldsymbol{\phi}}(\mathbf{z} \vert \mathbf{x}_i) \\ \mathbf{z}_j \sim q_{\boldsymbol{\phi}}(\mathbf{z} \vert \mathbf{x}_j)}} \underbrace{\left[ \sum_j \mathbb{KL}\Big[ \cblue{\overbrace{p(\mathbf{x}_j \vert \mathbf{x}_i)}^{\text{dist in original space}}} \Vert \corange{\underbrace{q_{\boldsymbol{\phi}}(\mathbf{z}_j \vert \mathbf{z}_i)}_{\text{dist in latent space}}} \Big] \right]}_{\text{pairwise similarity}}$$
+  - <span class="cblue">original data</span>
     - distances are converted to probabilities by assuming points are means of Gaussians, then normalizing over all pairs
       - variance of each Gaussian is scaled depending on the desired perplexity
-  - latent data
+  - <span class="corange">latent data</span>
     - distances are calculated using some kernel function
       - t-SNE uses heavy-tailed Student's t-distr kernel (van der Maaten & Hinton, 2008)
       - SNE use Gausian kernel (Hinton & Roweis, 2003)
     - kernels have some parameters that can be picked or learned
     - **perplexity** - how to balance between local/global aspects of data
-  - optimization - for optimization purposes, this can be decomposed into attractive/repulsive forces 
+  - optimization - for optimization purposes, this can be decomposed into attractive/repulsive forces
 - **umap**: Uniform Manifold Approximation and Projection for Dimension Reduction
-	- [umap tutorial](https://umap-learn.readthedocs.io/en/latest/how_umap_works.html) 
+  - [umap tutorial](https://umap-learn.readthedocs.io/en/latest/how_umap_works.html)
 - **pacmap**
-  - ![pacmap](../assets/pacmap.png)
+  - pacmap's loss: $$\text{Loss}^{\text{PaCMAP}} = \cblue{w_{\text{neighbors}} \text{Loss}_{\text{neighbors}}} + \corange{w_{MN} \text{Loss}_{MN}} + \cgreen{w_{FP} \text{Loss}_{FP}}$$
+    - $$\text{distance}(i,j) := \Vert \boldsymbol{y}_i - \boldsymbol{y}_j \Vert^2 + 1$$
+    - <span class="cblue">neighbors (attractive)</span>: $$\cblue{\text{Loss}_{\text{neighbors}}} = \frac{\text{distance}(i,j)}{\text{distance}(i,j) + 10}$$
+    - <span class="corange">mid-near pairs (mild attractive)</span>: $$\corange{\text{Loss}_{\text{MN}}} = \frac{\text{distance}(i,l)}{\text{distance}(i,l) + 10000}$$
+    - <span class="cgreen">further points (repulsive)</span>: $$\cgreen{\text{Loss}_{\text{FP}}} = \frac{1}{\text{distance}(i,l) + 1}$$
+    - weights change on a schedule
+      - stage 1 (1:100): $$w_{\text{neighbors}}$$ is medium (2), $$w_{MN}$$ goes from huge to small (1000 to 3), $$w_{FP}$$ is medium (1)
+      - stage 2 (101-200): $$w_{\text{neighbors}}$$ is large (3), $$w_{MN}$$ is small (3), $$w_{FP}$$ is medium (1)
 
 ## misc
 - Sparse Component Analysis ([zimnik...cunningham, paninski, churchland, & glaser, 2024](https://www.biorxiv.org/content/10.1101/2024.02.05.578988v1.full.pdf))
-  - $\arg \min _{U, V}\left(\|W(X-X U V)\|_F^2+\lambda_{\text {sparse }}\|X U\|_1+\lambda_{\text {orth }}\left\|V V^{\top}-I\right\|_F^2\right)$
-    - where $U$ is encoding matrix and $V$ is decoding, the final loss term is imposing orthogonality of the columns of V
+  - $$\arg \min _{U, V}\left(\cblue{\vert W(X-X U V)\vert _F^2}+\corange{\lambda_{\text {sparse }}\vert X U\vert _1}+\cgreen{\lambda_{\text {orth }}\left\vert V V^{\top}-I\right\vert _F^2}\right)$$<!-- -->
+    - <span class="cblue">reconstruction</span> + <span class="corange">sparsity</span> + <span class="cgreen">orthogonality</span>
+    - where $U$ is encoding matrix and $V$ is decoding, <span class="cgreen">the final loss term is imposing orthogonality of the columns of V</span>
 - NNK-Means: Dictionary Learning using Non-Negative Kernel regression ([shekkizhar & ortega, 2021](https://arxiv.org/abs/2110.08212))
   - data summarization - represent large datasets by a small set of elements (e.g. k-means)
   - here, use dictionary learning instead of k-means to summarize data
     - each dictionary element is a sparse combination of inputs
     - use non-negative kernel regesion (NNK) to measure distances when designing the dictionary ([shekkizar & ortega, 2020](https://ieeexplore.ieee.org/abstract/document/9054425/))
 
-
-
 # generative models
 
 - overview: https://blog.openai.com/generative-models/
 - notes for [deep unsupervised learning](https://sites.google.com/view/berkeley-cs294-158-sp20/home)
 - MLE equivalent to minimizing KL for density estimation:
-  - $\min_\theta KL(p|| p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]$
+  - $$\min_\theta KL(p\vert \vert  p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]$$<!-- -->
 
 ## autoregressive models
 
 - model input based on input
   - $p(x_1)$ is a histogram (learned prior)
-  - $p(x_2|x_1)$ is a distr. ouptut by a neural net (output is logits, followed by softmax)
+  - $$p(x_2\vert x_1)$$ is a distr. ouptut by a neural net (output is logits, followed by softmax)
   - all conditional distrs. can be given by neural net
-- can model using an RNN: e.g. char-rnn (karpathy, 2015): $\log p(x) - \sum_i \log p(x_i | x_{1:i-1})$, where each $x_i$ is a character
+- can model using an RNN: e.g. char-rnn (karpathy, 2015): $$\log p(x) - \sum_i \log p(x_i \vert  x_{1:i-1})$$, where each $x_i$ is a character
 - can also use masks
   - masked autoencoder for distr. estimation - mask some weights so that autoencoder output is a factorized distr.
     - pick an odering for the pixels to be conditioned on
@@ -300,16 +298,17 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 - [intuitively understanding vae](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
 - [VAE tutorial](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/)
-  - minimize $\mathbb E_{q_\phi(z|x)}[\log p_\theta(x|z)- D_{KL}(q_\phi(z|x)\:||\:p(z))]$
-    - want latent $z$ to be standard normal - keeps the space smooth
-  - hard to directly calculate $p(z|x)$, since it includes $p(x)$, so we approximate it with the variational posterior $q_\phi (z|x)$, which we assume to be Gaussian
-  - goal: $\text{argmin}_\phi KL(q_\phi(z|x) \:|| \:p(z|x))$
-    - still don't have acess to $p(x)$, so rewrite $\log p(x) = ELBO(\phi) + KL(q_\phi(z|x) \: || \: p(z|x))$
-    - instead of minimizing $KL$, we can just maximize the $ELBO=\mathbb E_q [\log p(x, z)] - \mathbb E_q[\log q_\phi (z|x)]$
+  - minimize $$\mathbb E_{q_\phi(z\vert x)}[\cblue{\log p_\theta(x\vert z)}- \corange{D_{KL}(q_\phi(z\vert x)\:\vert \vert \:p(z))}]$$
+    - <span class="cblue">reconstruction</span> - <span class="corange">KL to prior</span>
+    - <span class="corange">want latent $z$ to be standard normal</span> - keeps the space smooth
+  - hard to directly calculate $$p(z\vert x)$$, since it includes $p(x)$, so we approximate it with the variational posterior $$q_\phi (z\vert x)$$, which we assume to be Gaussian
+  - goal: $$\text{argmin}_\phi \cpurple{KL(q_\phi(z\vert x) \:\vert \vert  \:p(z\vert x))}$$
+    - still don't have acess to $p(x)$, so rewrite $$\log p(x) = \cgreen{ELBO(\phi)} + \cpurple{KL(q_\phi(z\vert x) \: \vert \vert  \: p(z\vert x))}$$
+    - instead of minimizing <span class="cpurple">$KL$</span>, we can just maximize the $$\cgreen{ELBO}=\mathbb E_q [\log p(x, z)] - \mathbb E_q[\log q_\phi (z\vert x)]$$
   - **mean-field variational inference** - each point has its own params (e.g. different encoder DNN) vs **amortized inference** - same encoder for all points
 - [pyro explanation](https://pyro.ai/examples/vae.html)
   - want large evidence $\log p_\theta (\mathbf x)$ (means model is a good fit to the data)
-  - want good fit to the posterior $q_\phi(z|x)$
+  - want good fit to the posterior $$q_\phi(z\vert x)$$
 - just an autoencoder where the middle hidden layer is supposed to be unit gaussian
   - add a kl loss to measure how well it matches a unit gaussian
     - for calculation purposes, encoder actually produces means / vars of gaussians in hidden layer rather than the continuous values....
@@ -325,12 +324,12 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - evaluating gans
   - don't have explicit objective like likelihood anymore
   - kernel density = parzen-window density based on samples yields likelihood
-  - inception score $IS(\mathbf x) = \exp(\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}} - \underbrace{H(\mathbf y|\mathbf x)}_{\text{each image should be distinctly recognizable}})$
+  - inception score $$IS(\mathbf x) = \exp(\cblue{\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}}} - \corange{\underbrace{H(\mathbf y\vert \mathbf x)}_{\text{each image should be distinctly recognizable}}})$$
   - **FID** - Frechet inception score works directly on embedded features from inception v3 model
     - embed population of images and calculate mean + variance in embedding space
     - measure distance between these means / variances for real/synthetic images using Frechet distance = Wasseterstein-2 distance
 - infogan
-  - ![infogan](../assets/infogan.png)
+  - <img style="width: 650px; max-width: 100%;" src="../assets/infogan.svg" alt="GAN vs InfoGAN"/>
 - problems
   - mode collapse - pick just one mode in the distr.
 - train network to be loss function
@@ -354,11 +353,11 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - G loss function: $G = \text{argmin}_G \log(1-D(G(Z))$
   - overall $\min_g \max_D$ log(1-D(G(Z))
 - training algorithm
-  - in the beginning, since G is bad, only train  my minimizing G loss function
+  - in the beginning, since G is bad, only train my minimizing G loss function
 - **projecting into gan latent space (=gan inversion)**
   - 2 general approaches
     1. learn an encoder to go image -> latent space
-       - In-Domain GAN Inversion for Real Image Editing ([zhu et al. 2020](https://arxiv.org/pdf/2004.00049.pdf)) 
+       - In-Domain GAN Inversion for Real Image Editing ([zhu et al. 2020](https://arxiv.org/pdf/2004.00049.pdf))
        - learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.
 
   2. optimize latent code wrt image directly
@@ -383,29 +382,23 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 - nice [flows/flow-matching video](https://www.youtube.com/watch?v=DDq_pIfHqLs)
 - goal: learn generator function $G$ to map gaussian samples z into real data samples x (like images)
-  - learn density $p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left|\frac{\partial \mathbf{z}}{\partial \mathbf{x}}\right|$ (because multiplying by $\partial x$ gives you the area under the density function)
-    - this generalizes to $p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left|\operatorname{det}\left[\boldsymbol{J}_{\boldsymbol{G}^{-1}}\right]\right|$ for multiple dimensions
-
+  - learn density $$p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left\vert \frac{\partial \mathbf{z}}{\partial \mathbf{x}}\right\vert $$ (because multiplying by $\partial x$ gives you the area under the density function)
+    - this generalizes to $$p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left\vert \operatorname{det}\left[\boldsymbol{J}_{\boldsymbol{G}^{-1}}\right]\right\vert $$ for multiple dimensions
 - computing likelihood of p(x) requires that $G$ is invertible and to compute the above det efficiently
   - Solution in NICE ([dinh, krueger & bengio, 2014](https://arxiv.org/abs/1410.8516)) and Real NVP ([dinh, sohl-dickstein & bengio, 2016](https://arxiv.org/abs/1605.08803)) is to use an Affine coupling layer
     - this layer outputs (1) a copy of half the inputs and (2) uses a neural net to predict a scalar and offset for the other half of the inputs. This allows easy invertibility and det computation
     - Can set up the masks for which half to copy in a structured way. Glow ([kingma & dhariwal, 2018](https://arxiv.org/abs/1807.03039)) uses invertible 1x1 convolutions on top of this to improve performance
-
   - Solution in autoregressive flow ([kingma...welling, 2016](https://arxiv.org/abs/1606.04934); [papamakarios, pavlakou & murray, 2017](https://arxiv.org/abs/1705.07057)) - use preceding inputs to predict parameters for an invertible function to transform an input
   - Residual flows (Invertible Residual Networks ([behrmann...jacobsen, 2018](https://arxiv.org/abs/1811.00995)); Residual Flows ([chen, behrmann, duvenaud & jacobsen, 2019](https://arxiv.org/abs/1906.02735))) - allow Jacobian to be relatively unconstrained but use approximations of neural net to allow invertibility
     - output is input plus a contractive map function of the input
-
     - good intro to implementing invertible neural networks: https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/
       - input / output dimension need to have same dimension
       - we can get around this by padding one of the dimensions with noise variables (and we might want to penalize these slightly during training)
-
   - if we allow for many layers, we can parameterize with time to get continuous normalizing flows (FFJORD ([grathwohl...duvenaud, 2018](https://arxiv.org/abs/1810.01367)))
     - Flow Matching for Generative Modeling ([lipman...le, 2022](https://arxiv.org/abs/2210.02747)) - match the flow that evolves over time rather than using an ODE solver
       - this requires assumptions for computing the conditional distribution and path for getting x at time zero (noise) to final s, e.g. linear interpolation over time
         - varying these assumptions leads to methods like rectified flow ([liu, gong & liu, 2022](https://arxiv.org/abs/2209.03003)) or Stochastic Interpolants ([albergo, boffi & vanden-eijnden, 2023](https://arxiv.org/abs/2303.08797))
-
       - moving beyond mapping simple pairs, we can match over multiple simultaneous pairs using optimal transport, e.g. OT-CFM([tong...bengio, 2023](https://arxiv.org/abs/2302.00482)) or Multisample Flow Matching ([pooladian...chen, 2023](https://arxiv.org/abs/2304.14772))
-
 - ultimate goal: a likelihood-based model with
   - fast sampling
   - fast inference (evaluating the likelihood)
@@ -415,7 +408,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - transform some $p(x)$ to some $p(z)$
   - $x \to z = f_\theta (x)$, where $z \sim p_Z(z)$
   - $p_\theta (x) dx = p(z)dz$
-  - $p_\theta(x) = p(f_\theta(x))|\frac {\partial f_\theta (x)}{\partial x}|$
+  - $$p_\theta(x) = p(f_\theta(x))\vert \frac {\partial f_\theta (x)}{\partial x}\vert $$<!-- -->
 - autoregressive flows
   - map $x\to z$ invertible
     - $x \to z$ is same as log-likelihood computation
@@ -423,9 +416,6 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - end up being as deep as the number of variables
 - discrete data can be harder to model
   - **dequantization** - add noise (uniform) to discrete data
-
-
-
 
 # self/semi-supervised
 
@@ -435,8 +425,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - training data is hard to get
 - related paper: https://www.biorxiv.org/content/early/2018/06/16/339630
 
- ![semi](../assets/semi.png)
-
+ <img style="width: 800px; max-width: 100%;" src="../assets/semi.svg" alt="How to get more labeled training data"/>
 - basics: predict some part of the input (e.g. present from past, bottom from top, etc.)
   - ex. denoising autoencoder
   - ex. in-painting (can use adversarial loss)
@@ -458,8 +447,6 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - SimCLR ([chen et al, 2020](https://arxiv.org/abs/2002.05709))
   - maximize agreement for different points after some augmentation (contrastive loss)
 
-
-
 ## semi-supervised
 
 - make the classifier more confident
@@ -472,7 +459,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - temporal ensembling - ensemble multiple models at different training epochs
   - mean teachers - learn from exponential moving average of students
 - unsupervised data augmentation - augment and ensure prediction is the same
-- distribution alignment - ex. cyclegan - enforce  cycle consistency = dual learning = back translation
+- distribution alignment - ex. cyclegan - enforce cycle consistency = dual learning = back translation
   - simpler is marginal matching
 
 ## compression
@@ -482,7 +469,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - could append stop char to each codeword
   - general prefix-free code = binary tries
     - codeword is path from froot to leaf
-    - ![Screen Shot 2020-04-20 at 8.50.07 PM](../assets/trie.png)
+    - <img style="width: 560px; max-width: 100%;" src="../assets/trie.svg" alt="Huffman codeword trie"/>
   - huffman code - higher prob = shorter
 - **arithmetic coding**
   - motivation: coding one symbol at a time incurs penalty of +1 per symbol - more efficient to encode groups of things
@@ -490,17 +477,18 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## contrastive learning
 
-- $L_{\text {InfoNCE }}=-\log \frac{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)}{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)+\sum_{i=1}^K \exp \left(\operatorname{sim}\left(x, x_i^{-}\right) / \tau\right)}$
+- $L_{\text {InfoNCE }}=-\log \frac{\cblue{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)}}{\cblue{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)}+\corange{\sum_{i=1}^K \exp \left(\operatorname{sim}\left(x, x_i^{-}\right) / \tau\right)}}$
+  - <span class="cblue">positive pair</span> vs. <span class="corange">K negatives</span>
   - *sim(u, v)*: A similarity function
   - $\tau$ (temperature): A hyperparameter that scales the scores to control how "sharp" the probability distribution is
-    - gradient is proportional to $1/ \tau$, so lower (like  $\tau < 1$) makes it more sensitive to small differences in similarity score but also less stable to train
+    - gradient is proportional to $1/ \tau$, so lower (like $\tau < 1$) makes it more sensitive to small differences in similarity score but also less stable to train
   - often times a projection head (small adapter) is added on top of the main representation before computing the loss
 - I-Con: A Unifying Framework for Representation Learning ([alshammari...freeman, hamilton, 2025](https://arxiv.org/abs/2504.16929))
-  - ![Screenshot 2025-05-12 at 1.43.06 PM](../assets/Screenshot%202025-05-12%20at%201.43.06%E2%80%AFPM.png)
+  - <img style="width: 800px; max-width: 100%;" src="../assets/icon_table.svg" alt="I-Con periodic table of representation learning"/>
 - What makes for good views for contrastive learning ([tian et al. 2020](https://arxiv.org/abs/2005.10243))
   - how to select views (e.g. transformations we want to be invariant to)?
   - reduce the mutual information (MI) between views while keeping task-relevant information intact
 - Supervised Contrastive Learning ([khosla et al. 2020](https://arxiv.org/abs/2004.11362))
-- [Data-Efficient Image Recognition with Contrastive Predictive Coding](https://arxiv.org/pdf/1905.09272.pdf)
+- Data-Efficient Image Recognition with Contrastive Predictive Coding ([hénaff et al. 2019](https://arxiv.org/pdf/1905.09272.pdf))
   - pre-training with CPC on ImageNet improves accuracy
-- [Automatically Discovering and Learning New Visual Categories with Ranking Statistics](https://arxiv.org/pdf/2002.05714.pdf)
+- Automatically Discovering and Learning New Visual Categories with Ranking Statistics ([han et al. 2020](https://arxiv.org/pdf/2002.05714.pdf))

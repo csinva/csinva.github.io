@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 954 72" role="img" aria-labelledby="title desc">
+  <title id="title">Identification and estimation</title>
+  <desc id="desc">Flowchart: Causal Estimand, via identification, to Statistical Estimand, via estimation, to Estimate.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .wire { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .lab { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .op { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect class="box" x="4" y="38" width="230" height="50"/>
+  <text class="lab" x="119.0" y="63">Causal Estimand</text>
+  <rect class="box" x="390" y="38" width="250" height="50"/>
+  <text class="lab" x="515.0" y="63">Statistical Estimand</text>
+  <rect class="box" x="800" y="38" width="150" height="50"/>
+  <text class="lab" x="875.0" y="63">Estimate</text>
+  <path class="wire" d="M234 63 H386" marker-end="url(#arrow)"/>
+  <text class="op" x="310" y="50">Identification</text>
+  <path class="wire" d="M640 63 H796" marker-end="url(#arrow)"/>
+  <text class="op" x="718" y="50">Estimation</text>
+</svg>

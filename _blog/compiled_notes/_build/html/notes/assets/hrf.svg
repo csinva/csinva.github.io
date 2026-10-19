@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" role="img" aria-labelledby="title desc">
+  <title id="title">Hemodynamic response function (HRF)</title>
+  <desc id="desc">Schematic fMRI signal evoked by a brief impulse of neural activity at time 0: a small initial dip (a.) around 1 s, a large peak (b.) around 5 s, and a prolonged undershoot (c.) around 13 s that returns to baseline by about 20 s.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 3; stroke-linecap: square; }
+      .thin { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .ptr { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; }
+      .curve { fill: none; stroke: #2b2b2b; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .lab { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .tick { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .pt { font: 22px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .cap { font: 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <text class="lab" x="8" y="26" style="font-size:24px">A.</text>
+  <!-- axes -->
+  <path class="ax" d="M50 30 V360 H666.4"/>
+  <path class="thin" d="M70.0 353 V367 M98.0 353 V367 M126.0 353 V367 M154.0 353 V367 M182.0 353 V367 M210.0 353 V367 M238.0 353 V367 M266.0 353 V367 M294.0 353 V367 M322.0 353 V367 M350.0 353 V367 M378.0 353 V367 M406.0 353 V367 M434.0 353 V367 M462.0 353 V367 M490.0 353 V367 M518.0 353 V367 M546.0 353 V367 M574.0 353 V367 M602.0 353 V367 M630.0 353 V367 M658.0 353 V367 "/>
+  <text class="tick" x="70.0" y="394">0</text>
+  <text class="tick" x="126.0" y="394">2</text>
+  <text class="tick" x="182.0" y="394">4</text>
+  <text class="tick" x="238.0" y="394">6</text>
+  <text class="tick" x="294.0" y="394">8</text>
+  <text class="tick" x="350.0" y="394">10</text>
+  <text class="tick" x="406.0" y="394">12</text>
+  <text class="tick" x="462.0" y="394">14</text>
+  <text class="tick" x="518.0" y="394">16</text>
+  <text class="tick" x="574.0" y="394">18</text>
+  <text class="tick" x="630.0" y="394">20</text>
+  <!-- baseline -->
+  <path class="thin" d="M61.6 300 H666.4"/>
+  <!-- brief impulse of neural activity -->
+  <rect class="thin" x="60.2" y="185.0" width="12" height="115" fill="none"/>
+  <!-- HRF -->
+  <path class="curve" d="M70.0 300.0 C72.8 302.0 81.2 309.2 86.8 312.0 C92.4 314.8 98.0 317.2 103.6 317.0 C109.2 316.8 114.8 313.8 120.4 311.0 C126.0 308.2 131.6 308.5 137.2 300.0 C142.8 291.5 146.5 280.8 154.0 260.0 C161.5 239.2 172.7 198.3 182.0 175.0 C191.3 151.7 200.7 125.0 210.0 120.0 C219.3 115.0 228.7 133.5 238.0 145.0 C247.3 156.5 256.7 173.2 266.0 189.0 C275.3 204.8 284.7 225.2 294.0 240.0 C303.3 254.8 312.7 267.7 322.0 278.0 C331.3 288.3 340.7 295.8 350.0 302.0 C359.3 308.2 364.0 311.3 378.0 315.0 C392.0 318.7 415.3 323.0 434.0 324.0 C452.7 325.0 471.3 322.7 490.0 321.0 C508.7 319.3 527.3 316.7 546.0 314.0 C564.7 311.3 588.0 307.3 602.0 305.0 C616.0 302.7 619.3 301.5 630.0 300.0 C640.7 298.5 660.3 296.7 666.4 296.0"/>
+  <text class="pt" x="109.2" y="348.0">a.</text>
+  <text class="pt" x="210.0" y="95.0">b.</text>
+  <text class="pt" x="434.0" y="350.0">c.</text>
+  <!-- annotations -->
+  <text class="lab" x="76" y="62">NEURAL ACTIVITY</text>
+  <path class="ptr" d="M142.8 74 L100.8 160" marker-end="url(#arrow)"/>
+  <text class="lab" x="676" y="102" text-anchor="end">fMRI SIGNAL EVOKED</text>
+  <text class="lab" x="676" y="130" text-anchor="end">BY A BRIEF IMPULSE</text>
+  <text class="lab" x="676" y="158" text-anchor="end">OF NEURAL ACTIVITY</text>
+  <path class="ptr" d="M442.4 116 L273.0 202.0" marker-end="url(#arrow)"/>
+  <!-- time axis -->
+  <path class="ptr" d="M224.0 410 H476.0" style="stroke-width:6" marker-end="url(#arrow)"/>
+  <text class="lab" x="299.6" y="442" text-anchor="middle">TIME (s)</text>
+  <text class="cap" x="350" y="488">hemodynamic response function (HRF)</text>
+</svg>

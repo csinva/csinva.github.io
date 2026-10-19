@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.8. chaos</title>
+    <title>3.7. chaos</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/math/chaos';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.9. math basics" href="math_basics.html" />
-    <link rel="prev" title="3.7. calculus" href="calculus.html" />
+    <link rel="next" title="3.8. math basics" href="math_basics.html" />
+    <link rel="prev" title="3.6. calculus" href="calculus.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="math.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="math_section.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,18 +421,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-forms-of-hopf-bifurcations">3.8.1. Normal forms of Hopf bifurcations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-figs">3.8.2. important figs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-linear-odes">3.8.3. Systems of Linear ODEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-nonlinear-dynamical-systems">3.8.4. Discrete Nonlinear Dynamical Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-systems">3.8.5. Conservative Systems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-dynamical-system">3.8.5.1. Hamiltonian Dynamical System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-forms-of-hopf-bifurcations">3.7.1. Normal forms of Hopf bifurcations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-figs">3.7.2. important figs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-linear-odes">3.7.3. Systems of Linear ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-nonlinear-dynamical-systems">3.7.4. Discrete Nonlinear Dynamical Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-systems">3.7.5. Conservative Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-dynamical-system">3.7.5.1. Hamiltonian Dynamical System</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ref">3.8.6. Ref</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benard-convection">3.8.7. Benard Convection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-equations">3.8.8. Lorenz equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearization-of-lorenz-equations-about-fps-bar-underline-x">3.8.9. Linearization of Lorenz Equations about FPs <span class="math notranslate nohighlight">\(\bar{\underline{x}}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ref">3.7.6. Ref</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearization-of-lorenz-equations-about-fps-bar-underline-x">3.7.7. Linearization of Lorenz Equations about FPs <span class="math notranslate nohighlight">\(\bar{\underline{x}}\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -459,23 +443,23 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chaos">
-<h1><span class="section-number">3.8. </span>chaos<a class="headerlink" href="#chaos" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3.7. </span>chaos<a class="headerlink" href="#chaos" title="Link to this heading">#</a></h1>
 <section id="normal-forms-of-hopf-bifurcations">
-<h2><span class="section-number">3.8.1. </span>Normal forms of Hopf bifurcations<a class="headerlink" href="#normal-forms-of-hopf-bifurcations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7.1. </span>Normal forms of Hopf bifurcations<a class="headerlink" href="#normal-forms-of-hopf-bifurcations" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>pitchfork: $<span class="math notranslate nohighlight">\(\dot{x} = \lambda x - x^3\)</span>$ <img alt="" src="../../_images/pitch.png" /></p></li>
-<li><p>subcritical pitchfork: <span class="math notranslate nohighlight">\(\dot{x} = \lambda x + x^3\)</span> <img alt="" src="../../_images/subpitch.png" /></p></li>
-<li><p>saddle node (turning point): <span class="math notranslate nohighlight">\(\dot{x} = \lambda - x^2\)</span> <img alt="" src="../../_images/sn.png" /></p></li>
-<li><p>transcritical: <span class="math notranslate nohighlight">\(\dot{x} = \lambda x - x^2\)</span> <img alt="" src="../../_images/trans.png" /></p></li>
+<li><p>pitchfork: $<span class="math notranslate nohighlight">\(\dot{x} = \lambda x - x^3\)</span>$ <img style="width: 380px; max-width: 100%;" src="../assets/pitch.svg" alt="Supercritical pitchfork bifurcation"/></p></li>
+<li><p>subcritical pitchfork: <span class="math notranslate nohighlight">\(\dot{x} = \lambda x + x^3\)</span> <img style="width: 380px; max-width: 100%;" src="../assets/subpitch.svg" alt="Subcritical pitchfork bifurcation"/></p></li>
+<li><p>saddle node (turning point): <span class="math notranslate nohighlight">\(\dot{x} = \lambda - x^2\)</span> <img style="width: 380px; max-width: 100%;" src="../assets/sn.svg" alt="Saddle-node bifurcation"/></p></li>
+<li><p>transcritical: <span class="math notranslate nohighlight">\(\dot{x} = \lambda x - x^2\)</span> <img style="width: 380px; max-width: 100%;" src="../assets/trans.svg" alt="Transcritical bifurcation"/></p></li>
 </ul>
 </section>
 <section id="important-figs">
-<h2><span class="section-number">3.8.2. </span>important figs<a class="headerlink" href="#important-figs" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7.2. </span>important figs<a class="headerlink" href="#important-figs" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>period-doubling (flip bifurcation) <span class="math notranslate nohighlight">\(f = \mu x (1-x) (f = \mu sin (\pi x) \)</span> is similiar) <img alt="" src="../../_images/flip.png" /></p></li>
-<li><p>inverse tangent bifurcation - unstable and stable P-3 orbits coalesce, move slightly off bisector and becomes chaotic <img alt="" src="../../_images/inverse.png" /></p></li>
-<li><p>pendulum <img alt="" src="../../_images/pendulum.png" /></p></li>
-<li><p>energy surface - trajectories run around the surface, not down it <img alt="" src="../../_images/e_surface.png" /></p></li>
+<li><p>period-doubling (flip bifurcation) <span class="math notranslate nohighlight">\(f = \mu x (1-x) (f = \mu \sin (\pi x) \)</span> is similiar) <img style="width: 560px; max-width: 100%;" src="../assets/flip.svg" alt="Bifurcation diagram for the logistic map"/></p></li>
+<li><p>inverse tangent bifurcation - unstable and stable P-3 orbits coalesce, move slightly off bisector and becomes chaotic <img style="width: 640px; max-width: 100%;" src="../assets/inverse.svg" alt="Period-3 tangent bifurcation of the logistic map"/></p></li>
+<li><p>pendulum <img style="width: 520px; max-width: 100%;" src="../assets/pendulum.svg" alt="Pendulum phase portrait"/></p></li>
+<li><p>energy surface - trajectories run around the surface, not down it <img style="width: 420px; max-width: 100%;" src="../assets/e_surface.svg" alt="Double-well energy surface"/></p></li>
 <li><p>Conservative systems: 6.5</p>
 <ul>
 <li><p>study Hamiltonian p. 187-188</p></li>
@@ -486,7 +470,7 @@ document.write(`
 <li><p>chaos - deterministic, aperiodic, sensitive, long-term prediction impossible</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>phase space - has coordinates <span class="math notranslate nohighlight">\(x_1,...,x_n\)</span></p></li>
+<li><p>phase space - has coordinates $<span class="math notranslate nohighlight">\(x_1,...,x_n\)</span>$</p></li>
 <li><p>phase portrait - variable x-axis, derivative y-axis</p></li>
 <li><p>bifurcation diagram - parameter x-axis, steady state y-axis</p>
 <ul class="simple">
@@ -505,16 +489,19 @@ document.write(`
 <li><p>autonomous = f is a function of x, not t</p></li>
 <li><p>we can always make a system autonomous by having <span class="math notranslate nohighlight">\(x_n\)</span> = t, so <span class="math notranslate nohighlight">\(\dot{x_n}\)</span> = 1</p></li>
 <li><p>dimension = number of 1st order ODEs, dimension of phase-space</p></li>
-<li><p>existence and uniqueness thm: if <span class="math notranslate nohighlight">\(\dot{x}\)</span> and <span class="math notranslate nohighlight">\(\dot{x}'\)</span> are continuous, then there is some unique solution</p></li>
+<li><p>existence and uniqueness thm: if <span class="math notranslate nohighlight">\(\dot{x}\)</span> and $<span class="math notranslate nohighlight">\(\dot{x}'\)</span>$ are continuous, then there is some unique solution</p></li>
 <li><p>linearization - used to find stability of f.p.s</p></li>
 <li><div class="math notranslate nohighlight">
 \[\begin{split}
-\dot{x} = f(x) &amp;\\
+\dot{x} = f(x) \\
 \text{define }\delta x = (x-\bar{x}) \\
 \dot{\delta x} = \frac{d}{dt}(x-\bar{x}) = \dot{x} = f(x) = f(\bar{x}+\delta x) \\
-\dot{\delta x} =\cancelto{0}{f(\bar{x})} + \delta x f'(\bar{x}) + \cancelto{\text{0 by HGT iff f'!=0}}{O(x^2)} \\
-\dot{\delta x} = \delta x f'(\bar{x}) \to \text{ now solve FOLDE} \\
+\dot{\delta x} =\cancelto{0}{\cblue{f(\bar{x})}} + \corange{\delta x f'(\bar{x})} + \cancelto{\text{0 by HGT iff f'!=0}}{\cgreen{O(x^2)}} \\
+\dot{\delta x} = \corange{\delta x f'(\bar{x})} \to \text{ now solve FOLDE} \\
 \end{split}\]</div>
+<ul class="simple">
+<li><p><span class="cblue">value at fixed point</span> + <span class="corange">linear term</span> + <span class="cgreen">higher-order terms</span></p></li>
+</ul>
 </li>
 <li><p>solving Hopf: use polar to get <span class="math notranslate nohighlight">\(\dot{\rho}, \dot{\theta}\)</span></p></li>
 <li><p>multiply one thing by cos, one by sin, then add</p></li>
@@ -524,7 +511,7 @@ document.write(`
 </ul>
 </section>
 <section id="systems-of-linear-odes">
-<h2><span class="section-number">3.8.3. </span>Systems of Linear ODEs<a class="headerlink" href="#systems-of-linear-odes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7.3. </span>Systems of Linear ODEs<a class="headerlink" href="#systems-of-linear-odes" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>solutions are of the form <span class="math notranslate nohighlight">\(\underbar{x}(t) = \underbar{C}_1e^{\alpha_1 t} + \underbar{C}_2e^{\alpha_2 t}\)</span></p></li>
 <li><p>Eigenspaces: <span class="math notranslate nohighlight">\(E^S\)</span> (stable), <span class="math notranslate nohighlight">\(E^U\)</span> (unstable), <span class="math notranslate nohighlight">\(E^C\)</span> (center - real part) - plot eigenvectors</p></li>
@@ -548,31 +535,39 @@ document.write(`
 </ul>
 </section>
 <section id="discrete-nonlinear-dynamical-systems">
-<h2><span class="section-number">3.8.4. </span>Discrete Nonlinear Dynamical Systems<a class="headerlink" href="#discrete-nonlinear-dynamical-systems" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7.4. </span>Discrete Nonlinear Dynamical Systems<a class="headerlink" href="#discrete-nonlinear-dynamical-systems" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>functional iteration: <span class="math notranslate nohighlight">\(x_{n+m} = f^m(x_n)\)</span> (apply f m times)</p></li>
-<li><p>fixed point: <span class="math notranslate nohighlight">\(f(x^*)=x^*\)</span></p></li>
-<li><p>f.p. stable if <span class="math notranslate nohighlight">\(\|\frac{df}{dx}(x^*)\|&lt;1\)</span>, unstable if <span class="math notranslate nohighlight">\(&gt;\)</span> 1</p></li>
-<li><p>check n-orbit by checking nth derivative: <span class="math notranslate nohighlight">\(\frac{df^n}{dx}(x_i^*) = \prod_{i=1}^{n-1} \frac{df}{dx}(x_i^*)\)</span></p></li>
+<li><p>fixed point: $<span class="math notranslate nohighlight">\(f(x^*)=x^*\)</span>$</p></li>
+<li><p>f.p. stable if $<span class="math notranslate nohighlight">\(\vert \frac{df}{dx}(x^*)\vert &lt;1\)</span><span class="math notranslate nohighlight">\(, unstable if \)</span>&gt;$ 1</p></li>
+<li><p>check n-orbit by checking nth derivative: $<span class="math notranslate nohighlight">\(\frac{df^n}{dx}(x_i^*) = \prod_{i=1}^{n-1} \frac{df}{dx}(x_i^*)\)</span>$</p></li>
 <li><p>period-doubling bifurcations</p></li>
-<li><p>self-stability - orbit for which the stability-determining derivative is zero.  This means that the max of the map and the point at which the max occurs are in the orbit.</p></li>
+<li><p>self-stability - orbit for which the stability-determining derivative is zero. This means that the max of the map and the point at which the max occurs are in the orbit.</p></li>
 <li><p>type I intermittency - exhibited by inverse tangent bifurcation</p></li>
 <li><p>Feigenbaum sequence - period-doubling path to chaos, keep increasing parameter until period is chaotic</p></li>
 </ul>
-<p>\begin{center}
-\begin{tabular}{ | m{4cm} | m{4cm} | }
-\hline
-\multicolumn{2}{|c|}{3D Attractors} \
-\hline
-Type of Attractor &amp; Sign of Exponents \
-\hline
-Fixed Point &amp; (-, -, -)\
-Limit Cycle &amp; (0, -, -) \
-Torus &amp; (0, 0, -) \
-Strange Attractor &amp; (+, 0, -) \
-\hline
-\end{tabular}
-\end{center}</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>3D attractor type</p></th>
+<th class="head"><p>Sign of exponents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fixed point</p></td>
+<td><p>(-, -, -)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Limit cycle</p></td>
+<td><p>(0, -, -)</p></td>
+</tr>
+<tr class="row-even"><td><p>Torus</p></td>
+<td><p>(0, 0, -)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Strange attractor</p></td>
+<td><p>(+, 0, -)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul class="simple">
 <li><p>homoclinic orbit - connects unstable manifold of saddle point to its own stable manifold</p>
 <ul>
@@ -584,21 +579,25 @@ Strange Attractor &amp; (+, 0, -) \
 </ul>
 </section>
 <section id="conservative-systems">
-<h2><span class="section-number">3.8.5. </span>Conservative Systems<a class="headerlink" href="#conservative-systems" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7.5. </span>Conservative Systems<a class="headerlink" href="#conservative-systems" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(F(x) = -\frac{dV}{dx}\)</span> (by defn.)</p></li>
-<li><p><span class="math notranslate nohighlight">\(m\ddot{x}+\frac{dV}{dx}=0\)</span>, multiply by <span class="math notranslate nohighlight">\(\dot{x} \to \frac{d}{dt}[\frac{1}{2}m\dot{x}^2+V(x)]=0\)</span></p></li>
-<li><p>so total energy <span class="math notranslate nohighlight">\(E=\frac{1}{2}m\dot{x}^2+V(x)\)</span></p></li>
-<li><p>motion of pendulum: <span class="math notranslate nohighlight">\(\frac{d^2\theta}{dt^2}+\frac{g}{L}sin\theta=0\)</span></p></li>
-<li><p>nondimensionalize with <span class="math notranslate nohighlight">\(\omega=\sqrt{g/L}, \tau=\omega t \to \ddot{\theta}+sin\theta =0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(m\ddot{x}+\frac{dV}{dx}=0\)</span>, multiply by <span class="math notranslate nohighlight">\(\dot{x} \to \frac{d}{dt}[\cblue{\frac{1}{2}m\dot{x}^2}+\corange{V(x)}]=0\)</span></p></li>
+<li><p>so total energy <span class="math notranslate nohighlight">\(E=\cblue{\frac{1}{2}m\dot{x}^2}+\corange{V(x)}\)</span></p>
+<ul>
+<li><p><span class="cblue">kinetic</span> + <span class="corange">potential</span></p></li>
+</ul>
+</li>
+<li><p>motion of pendulum: <span class="math notranslate nohighlight">\(\frac{d^2\theta}{dt^2}+\frac{g}{L}\sin\theta=0\)</span></p></li>
+<li><p>nondimensionalize with <span class="math notranslate nohighlight">\(\omega=\sqrt{g/L}, \tau=\omega t \to \ddot{\theta}+\sin\theta =0\)</span></p></li>
 <li><p>can multiply this by <span class="math notranslate nohighlight">\(\dot{\theta}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\omega\)</span>-limit <span class="math notranslate nohighlight">\(t \to \infty\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>-limit  <span class="math notranslate nohighlight">\(t \to -\infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>-limit <span class="math notranslate nohighlight">\(t \to -\infty\)</span></p></li>
 <li><p>libration - small orbit surrounding center</p></li>
-<li><p>system: <span class="math notranslate nohighlight">\(\dot{\theta}=\nu\)</span>, <span class="math notranslate nohighlight">\(\dot{\nu} = -sin\theta\)</span></p></li>
+<li><p>system: <span class="math notranslate nohighlight">\(\dot{\theta}=\nu\)</span>, <span class="math notranslate nohighlight">\(\dot{\nu} = -\sin\theta\)</span></p></li>
 </ul>
 <section id="hamiltonian-dynamical-system">
-<h3><span class="section-number">3.8.5.1. </span>Hamiltonian Dynamical System<a class="headerlink" href="#hamiltonian-dynamical-system" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.5.1. </span>Hamiltonian Dynamical System<a class="headerlink" href="#hamiltonian-dynamical-system" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\dot{\underbar{x}}=\frac{\partial H}{\partial y}(\underbar{x},\underbar{y})\)</span>
 , <span class="math notranslate nohighlight">\(\dot{\underbar{y}}=-\frac{\partial H}{\partial x}(\underbar{x},\underbar{y})\)</span> for some function H called the Hamiltonian</p></li>
@@ -609,44 +608,30 @@ Strange Attractor &amp; (+, 0, -) \
 </section>
 </section>
 <section id="ref">
-<h2><span class="section-number">3.8.6. </span>Ref<a class="headerlink" href="#ref" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<h2><span class="section-number">3.7.6. </span>Ref<a class="headerlink" href="#ref" title="Link to this heading">#</a></h2>
+<ul>
 <li><p><span class="math notranslate nohighlight">\(\frac{\partial}{\partial x}(f_1 * f_2 * f_3) = \frac{\partial f_1}{\partial x} f_2 f_3 + \frac{\partial f_2}{\partial x} f_1 f_3 + \frac{\partial f_3}{\partial x} f_1 f_2\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(e^{\mu it} = cos(\mu t)+ isin(\mu t)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' sin(t) + B' cos(t)) e^{\lambda t} \)</span>
-If we have <span class="math notranslate nohighlight">\(\dot{x_1},\dot{x_2}\)</span> then we can get <span class="math notranslate nohighlight">\(x_2(x_1) with \frac{dx_1}{dx_2} = \frac{\dot{x_1}}{\dot{x_2}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{\mu it} = \cos(\mu t)+ isin(\mu t)\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' \sin(t) + B' \cos(t)) e^{\lambda t} $$&lt;!-- --&gt;
+If we have $\dot{x_1},\dot{x_2}$ then we can get $x_2(x_1) with \frac{dx_1}{dx_2} = \frac{\dot{x_1}}{\dot{x_2}}$\\## Benard Convection\\- The Navier-Stokes Equations
+	1. Position
+	2. Differential element in configuration space
+	3. Time\\## Lorenz equations
+- Lorenz was studying hurricanes
+- ODEs for 3 coefficients in larger system (others are pretty small
+	- use stream functions
+- Navier-Stokes PDEs - conservation of momentum - derive these equations as project?
+	- no-flow steady-state $T(y) = T_B + (T_T-T_B)y$
+- Lorenz (ODE's): x,y,z are coefficients in Fourier expansion, not dimensions
+$$\dot{x}(t) = -\sigma x+ \sigma y\end{aligned}\end{align} \]</div>
+</li>
 </ul>
-</section>
-<section id="benard-convection">
-<h2><span class="section-number">3.8.7. </span>Benard Convection<a class="headerlink" href="#benard-convection" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\dot{y}(t) = (\rho_o)x - y - xz\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{z}(t) = -bz + xy\]</div>
 <ul class="simple">
-<li><p>The Navier-Stokes Equations</p>
-<ol class="arabic simple">
-<li><p>Position</p></li>
-<li><p>Differential element in configuration space</p></li>
-<li><p>Time</p></li>
-</ol>
-</li>
-</ul>
-</section>
-<section id="lorenz-equations">
-<h2><span class="section-number">3.8.8. </span>Lorenz equations<a class="headerlink" href="#lorenz-equations" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Lorenz was studying hurricanes</p></li>
-<li><p>ODEs for 3 coefficients in larger system (others are pretty small</p>
-<ul>
-<li><p>use stream functions</p></li>
-</ul>
-</li>
-<li><p>Navier-Stokes PDEs - conservation of momentum - derive these equations as project?</p>
-<ul>
-<li><p>no-flow steady-state <span class="math notranslate nohighlight">\(T(y) = T_B + (T_T-T_B)y\)</span></p></li>
-</ul>
-</li>
-<li><p>Lorenz (ODE’s): x,y,z are coefficients in Fourier expansion, not dimensions
-$<span class="math notranslate nohighlight">\(\dot{x}(t) = -\sigma x+ \sigma y\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\dot{y}(t) = (\rho_o)x - y - xz\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\dot{z}(t) = -bz + xy\)</span>$</p></li>
 <li><p><span class="math notranslate nohighlight">\(p_o\)</span> - proportional to size of system</p></li>
 <li><p>b - aspect ration - related to height:width</p></li>
 <li><p>Navier-Stokes</p>
@@ -717,12 +702,13 @@ M=
 \)</span></p>
 </section>
 <section id="linearization-of-lorenz-equations-about-fps-bar-underline-x">
-<h2><span class="section-number">3.8.9. </span>Linearization of Lorenz Equations about FPs <span class="math notranslate nohighlight">\(\bar{\underline{x}}\)</span><a class="headerlink" href="#linearization-of-lorenz-equations-about-fps-bar-underline-x" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}|_ \bar{\underline{x}}= -\sigma\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\frac{d}{dt}\delta y(t) = \frac{\partial f_2}{\partial x}|_ \bar{\underline{x}}*\delta x(t) + \frac{\partial f_2}{\partial y}|_ \bar{\underline{x}}*\delta y(t) + \frac{\partial f_2}{\partial z}|_ \bar{\underline{x}}*\delta z(t) +...\)</span> (higher order derivatives)</p>
+<h2><span class="section-number">3.7.7. </span>Linearization of Lorenz Equations about FPs <span class="math notranslate nohighlight">\(\bar{\underline{x}}\)</span><a class="headerlink" href="#linearization-of-lorenz-equations-about-fps-bar-underline-x" title="Link to this heading">#</a></h2>
 <ul>
-<li><p><span class="math notranslate nohighlight">\( = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z\)</span></p></li>
+<li><div class="math notranslate nohighlight" id="equation-higher-order-derivatives">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-higher-order-derivatives" title="Link to this equation">#</a></span>\[\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}\vert _ \bar{\underline{x}}= -\sigma$$&lt;!-- --&gt;
+- $$\frac{d}{dt}\delta y(t) = \frac{\partial f_2}{\partial x}\vert _ \bar{\underline{x}}*\delta x(t) + \frac{\partial f_2}{\partial y}\vert _ \bar{\underline{x}}*\delta y(t) + \frac{\partial f_2}{\partial z}\vert _ \bar{\underline{x}}*\delta z(t) +...\]</div>
+<ul class="simple">
+<li><p>$<span class="math notranslate nohighlight">\( = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z\)</span>$<!-- --></p></li>
 </ul>
 </li>
 <li><p>do the same thing for <span class="math notranslate nohighlight">\(\delta z(t)\)</span></p></li>
@@ -766,7 +752,7 @@ M=
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.7. </span>calculus</p>
+        <p class="prev-next-title"><span class="section-number">3.6. </span>calculus</p>
       </div>
     </a>
     <a class="right-next"
@@ -774,7 +760,7 @@ M=
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.9. </span>math basics</p>
+        <p class="prev-next-title"><span class="section-number">3.8. </span>math basics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -794,18 +780,16 @@ M=
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-forms-of-hopf-bifurcations">3.8.1. Normal forms of Hopf bifurcations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-figs">3.8.2. important figs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-linear-odes">3.8.3. Systems of Linear ODEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-nonlinear-dynamical-systems">3.8.4. Discrete Nonlinear Dynamical Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-systems">3.8.5. Conservative Systems</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-dynamical-system">3.8.5.1. Hamiltonian Dynamical System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-forms-of-hopf-bifurcations">3.7.1. Normal forms of Hopf bifurcations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-figs">3.7.2. important figs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-linear-odes">3.7.3. Systems of Linear ODEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-nonlinear-dynamical-systems">3.7.4. Discrete Nonlinear Dynamical Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservative-systems">3.7.5. Conservative Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hamiltonian-dynamical-system">3.7.5.1. Hamiltonian Dynamical System</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ref">3.8.6. Ref</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benard-convection">3.8.7. Benard Convection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-equations">3.8.8. Lorenz equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearization-of-lorenz-equations-about-fps-bar-underline-x">3.8.9. Linearization of Lorenz Equations about FPs <span class="math notranslate nohighlight">\(\bar{\underline{x}}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ref">3.7.6. Ref</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearization-of-lorenz-equations-about-fps-bar-underline-x">3.7.7. Linearization of Lorenz Equations about FPs <span class="math notranslate nohighlight">\(\bar{\underline{x}}\)</span></a></li>
 </ul>
   </nav></div>
 
@@ -843,11 +827,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1990 885" role="img" aria-labelledby="title desc">
+  <title id="title">I-Con periodic table of representation learning</title>
+  <desc id="desc">Table from the I-Con paper. Columns give the supervisory signal (Gaussian, Student-T, Identity, Graph Kernel Weights, Uniform over K-Neighbors, Uniform over Positive Pairs, Cross-Modal Pairs, Uniform over Classes, Data-Label Pairs); rows give the learned representation (Gaussian, Gaussian sigma to infinity, Gaussian sigma to 0, Student-T, Uniform on Clusters). Cells name the method recovered by each pairing, colored by family: dimensionality reduction, cluster learning, unimodal SSL, multimodal SSL, supervised learning, and gray interpretations of gaps.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .grid rect, .grid line { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .thin line { stroke: #2b2b2b; stroke-width: 1.2; }
+      .name { font: 25px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .cite { font: 20px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .hd { font: 28px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .ttl { font: 34px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .leg { font: 27px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <text class="ttl" x="1097" y="36">Supervisory Signal</text>
+  <text class="ttl" transform="translate(42 482) rotate(-90)">Learned Representation</text>
+  <rect x="225" y="148" width="203" height="141" fill="#b9cff0"/>
+  <text class="name" x="326.5" y="212">SNE</text>
+  <text class="cite" x="326.5" y="242">[Hinton 2002]</text>
+  <rect x="225" y="289" width="203" height="108" fill="#ecb3c5"/>
+  <text class="name" x="326.5" y="336">X-Sample CL</text>
+  <text class="cite" x="326.5" y="366">[Sobal 2025]</text>
+  <rect x="428" y="148" width="172" height="249" fill="#d4d4d4"/>
+  <text class="name" x="514.0" y="266">Dual</text>
+  <text class="name" x="514.0" y="296">t-SNE</text>
+  <rect x="600" y="148" width="142" height="249" fill="#f2f2f2"/>
+  <rect x="742" y="148" width="208" height="249" fill="#d4d4d4"/>
+  <text class="name" x="846.0" y="266">SNE Graph</text>
+  <text class="name" x="846.0" y="296">Embeddings</text>
+  <rect x="950" y="148" width="181" height="141" fill="#b9cff0"/>
+  <text class="name" x="1040.5" y="196">SNE with</text>
+  <text class="name" x="1040.5" y="226">Uniform</text>
+  <text class="name" x="1040.5" y="256">Affinities</text>
+  <rect x="950" y="289" width="181" height="108" fill="#ecb3c5"/>
+  <text class="name" x="1040.5" y="336">LGSimCLR</text>
+  <text class="cite" x="1040.5" y="366">[El Banani 2023]</text>
+  <rect x="1131" y="148" width="219" height="77" fill="#ecb3c5"/>
+  <text class="name" x="1240.5" y="180">InfoNCE</text>
+  <text class="cite" x="1240.5" y="210">[Bachman 2019]</text>
+  <rect x="1131" y="225" width="219" height="93" fill="#ecb3c5"/>
+  <text class="name" x="1240.5" y="264">SimCLR</text>
+  <text class="cite" x="1240.5" y="294">[Chen 2020]</text>
+  <rect x="1131" y="318" width="219" height="79" fill="#ecb3c5"/>
+  <text class="name" x="1240.5" y="350">MoCoV3</text>
+  <text class="cite" x="1240.5" y="380">[Chen 2021]</text>
+  <rect x="1350" y="148" width="203" height="141" fill="#d2bdf0"/>
+  <text class="name" x="1451.5" y="212">CLIP</text>
+  <text class="cite" x="1451.5" y="242">[Radford 2021]</text>
+  <rect x="1350" y="289" width="203" height="108" fill="#d2bdf0"/>
+  <text class="name" x="1451.5" y="336">CMC</text>
+  <text class="cite" x="1451.5" y="366">[Tian 2020]</text>
+  <rect x="1553" y="148" width="212" height="249" fill="#bfe0bf"/>
+  <text class="name" x="1659.0" y="266">SupCon</text>
+  <text class="cite" x="1659.0" y="296">[Khosla 2020]</text>
+  <rect x="1765" y="148" width="205" height="249" fill="#bfe0bf"/>
+  <text class="name" x="1867.5" y="266">Cross Entropy</text>
+  <text class="cite" x="1867.5" y="296">[Good 1963]</text>
+  <rect x="225" y="397" width="203" height="89" fill="#f2f2f2"/>
+  <rect x="428" y="397" width="172" height="89" fill="#f2f2f2"/>
+  <rect x="600" y="397" width="142" height="89" fill="#b9cff0"/>
+  <text class="name" x="671.0" y="434">PCA</text>
+  <text class="cite" x="671.0" y="464">[Pearson 1901]</text>
+  <rect x="742" y="397" width="208" height="89" fill="#f2f2f2"/>
+  <rect x="950" y="397" width="181" height="89" fill="#f2f2f2"/>
+  <rect x="1131" y="397" width="219" height="89" fill="#ecb3c5"/>
+  <text class="name" x="1240.5" y="434">VI-Reg</text>
+  <text class="cite" x="1240.5" y="464">[Bardes 2021]</text>
+  <rect x="1350" y="397" width="203" height="89" fill="#d4d4d4"/>
+  <text class="name" x="1451.5" y="434">Average Margin</text>
+  <text class="name" x="1451.5" y="464">CLIP</text>
+  <rect x="1553" y="397" width="212" height="89" fill="#d4d4d4"/>
+  <text class="name" x="1659.0" y="434">Average Margin</text>
+  <text class="name" x="1659.0" y="464">SupCon</text>
+  <rect x="1765" y="397" width="205" height="89" fill="#f2f2f2"/>
+  <rect x="225" y="486" width="203" height="88" fill="#f2f2f2"/>
+  <rect x="428" y="486" width="172" height="88" fill="#f2f2f2"/>
+  <rect x="600" y="486" width="142" height="88" fill="#f2f2f2"/>
+  <rect x="742" y="486" width="208" height="88" fill="#f2f2f2"/>
+  <rect x="950" y="486" width="181" height="88" fill="#f2f2f2"/>
+  <rect x="1131" y="486" width="219" height="88" fill="#ecb3c5"/>
+  <text class="name" x="1240.5" y="523">Triplet Loss</text>
+  <text class="cite" x="1240.5" y="553">[Schroff 2015]</text>
+  <rect x="1350" y="486" width="203" height="88" fill="#d4d4d4"/>
+  <text class="name" x="1451.5" y="538">Triplet CLIP</text>
+  <rect x="1553" y="486" width="212" height="88" fill="#d4d4d4"/>
+  <text class="name" x="1659.0" y="523">Triplet</text>
+  <text class="name" x="1659.0" y="553">SupCon</text>
+  <rect x="1765" y="486" width="205" height="88" fill="#d4d4d4"/>
+  <text class="name" x="1867.5" y="538">Error rate</text>
+  <rect x="225" y="574" width="203" height="152" fill="#b9cff0"/>
+  <text class="name" x="326.5" y="628">t-SNE</text>
+  <text class="cite" x="326.5" y="658">[Van der Maaten</text>
+  <text class="cite" x="326.5" y="688">2008]</text>
+  <rect x="428" y="574" width="172" height="152" fill="#d4d4d4"/>
+  <text class="name" x="514.0" y="643">Doubly</text>
+  <text class="name" x="514.0" y="673">t-SNE</text>
+  <rect x="600" y="574" width="142" height="152" fill="#f2f2f2"/>
+  <rect x="742" y="574" width="208" height="152" fill="#b9cff0"/>
+  <text class="name" x="846.0" y="643">t-SNE Graph</text>
+  <text class="name" x="846.0" y="673">Embedding</text>
+  <rect x="950" y="574" width="181" height="152" fill="#b9cff0"/>
+  <text class="name" x="1040.5" y="628">t-SNE with</text>
+  <text class="name" x="1040.5" y="658">Uniform</text>
+  <text class="name" x="1040.5" y="688">Affinities</text>
+  <rect x="1131" y="574" width="219" height="76" fill="#b9cff0"/>
+  <text class="name" x="1240.5" y="605">t-SimCNE</text>
+  <text class="cite" x="1240.5" y="635">[Böhm 2023]</text>
+  <rect x="1131" y="650" width="219" height="76" fill="#ecb3c5"/>
+  <text class="name" x="1240.5" y="681">t-SimCLR</text>
+  <text class="cite" x="1240.5" y="711">[Hu 2023]</text>
+  <rect x="1350" y="574" width="203" height="152" fill="#d4d4d4"/>
+  <text class="name" x="1451.5" y="658">t-CLIP</text>
+  <rect x="1553" y="574" width="212" height="152" fill="#d4d4d4"/>
+  <text class="name" x="1659.0" y="658">t-SupCon</text>
+  <rect x="1765" y="574" width="205" height="152" fill="#bfe0bf"/>
+  <text class="name" x="1867.5" y="643">Harmonic Loss</text>
+  <text class="cite" x="1867.5" y="673">[Baek 2025]</text>
+  <rect x="225" y="726" width="203" height="89" fill="#f3c99a"/>
+  <text class="name" x="326.5" y="764">K-Means</text>
+  <text class="cite" x="326.5" y="794">[Macqueen 1967]</text>
+  <rect x="428" y="726" width="172" height="89" fill="#d4d4d4"/>
+  <text class="name" x="514.0" y="778">t K-Means</text>
+  <rect x="600" y="726" width="142" height="89" fill="#f2f2f2"/>
+  <rect x="742" y="726" width="208" height="89" fill="#f3c99a"/>
+  <text class="name" x="846.0" y="764">Normalized Cuts</text>
+  <text class="cite" x="846.0" y="794">[Shi 2000]</text>
+  <rect x="950" y="726" width="181" height="89" fill="#f3c99a"/>
+  <text class="name" x="1040.5" y="764">DCD</text>
+  <text class="cite" x="1040.5" y="794">[Yang 2012]</text>
+  <rect x="1131" y="726" width="219" height="89" fill="#f3c99a"/>
+  <text class="name" x="1240.5" y="764">InfoNCE</text>
+  <text class="name" x="1240.5" y="794">Clustering [Ours]</text>
+  <rect x="1350" y="726" width="203" height="89" fill="#f2f2f2"/>
+  <rect x="1553" y="726" width="212" height="89" fill="#d4d4d4"/>
+  <text class="name" x="1659.0" y="764">Supervised</text>
+  <text class="name" x="1659.0" y="794">Clustering</text>
+  <rect x="1765" y="726" width="205" height="89" fill="#f2f2f2"/>
+  <g class="thin">
+    <line x1="225" y1="289" x2="428" y2="289"/>
+    <line x1="950" y1="289" x2="1131" y2="289"/>
+    <line x1="1131" y1="225" x2="1350" y2="225"/>
+    <line x1="1131" y1="318" x2="1350" y2="318"/>
+    <line x1="1350" y1="289" x2="1553" y2="289"/>
+    <line x1="1131" y1="650" x2="1350" y2="650"/>
+  </g>
+  <g class="grid">
+    <rect x="225" y="60" width="1745" height="755"/>
+    <rect x="52" y="148" width="1918" height="667"/>
+    <line x1="428" y1="60" x2="428" y2="815"/>
+    <line x1="600" y1="60" x2="600" y2="815"/>
+    <line x1="742" y1="60" x2="742" y2="815"/>
+    <line x1="950" y1="60" x2="950" y2="815"/>
+    <line x1="1131" y1="60" x2="1131" y2="815"/>
+    <line x1="1350" y1="60" x2="1350" y2="815"/>
+    <line x1="1553" y1="60" x2="1553" y2="815"/>
+    <line x1="1765" y1="60" x2="1765" y2="815"/>
+    <line x1="225" y1="148" x2="225" y2="815"/>
+    <line x1="52" y1="397" x2="1970" y2="397"/>
+    <line x1="52" y1="486" x2="1970" y2="486"/>
+    <line x1="52" y1="574" x2="1970" y2="574"/>
+    <line x1="52" y1="726" x2="1970" y2="726"/>
+  </g>
+  <text class="hd" x="326.5" y="113">Gaussian</text>
+  <text class="hd" x="514.0" y="113">Student-T</text>
+  <text class="hd" x="671.0" y="113">Identity</text>
+  <text class="hd" x="846.0" y="96">Graph Kernel</text>
+  <text class="hd" x="846.0" y="130">Weights</text>
+  <text class="hd" x="1040.5" y="96">Uniform over</text>
+  <text class="hd" x="1040.5" y="130">K-Neighbors</text>
+  <text class="hd" x="1240.5" y="96">Uniform over</text>
+  <text class="hd" x="1240.5" y="130">Positive Pairs</text>
+  <text class="hd" x="1451.5" y="96">Cross-Modal</text>
+  <text class="hd" x="1451.5" y="130">Pairs</text>
+  <text class="hd" x="1659.0" y="96">Uniform over</text>
+  <text class="hd" x="1659.0" y="130">Classes</text>
+  <text class="hd" x="1867.5" y="96">Data-Label</text>
+  <text class="hd" x="1867.5" y="130">Pairs</text>
+  <text class="hd" x="138.5" y="282">Gaussian</text>
+  <text class="hd" x="138.5" y="434">Gaussian</text>
+  <text class="hd" x="138.5" y="468">σ→∞</text>
+  <text class="hd" x="138.5" y="522">Gaussian</text>
+  <text class="hd" x="138.5" y="556">σ→0</text>
+  <text class="hd" x="138.5" y="659">Student-T</text>
+  <text class="hd" x="138.5" y="762">Uniform on</text>
+  <text class="hd" x="138.5" y="796">Clusters</text>
+  <rect x="122" y="843" width="24" height="24" fill="#b9cff0" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="leg" x="158" y="864">Dimensionality Reduction</text>
+  <rect x="515" y="843" width="24" height="24" fill="#f3c99a" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="leg" x="551" y="864">Cluster Learning</text>
+  <rect x="802" y="843" width="24" height="24" fill="#ecb3c5" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="leg" x="838" y="864">Unimodal SSL</text>
+  <rect x="1050" y="843" width="24" height="24" fill="#d2bdf0" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="leg" x="1086" y="864">Multimodal SSL</text>
+  <rect x="1314" y="843" width="24" height="24" fill="#bfe0bf" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="leg" x="1350" y="864">Supervised Learning</text>
+  <rect x="1643" y="843" width="24" height="24" fill="#d4d4d4" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="leg" x="1679" y="864">Interpretation of Gaps</text>
+</svg>

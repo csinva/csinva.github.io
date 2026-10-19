@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 844 412" role="img" aria-labelledby="title desc">
+  <title id="title">2HELPS2B seizure risk score</title>
+  <desc id="desc">Point-based scoring system. 1. Any cEEG pattern with frequency greater than 2 Hz: 1 point. 2. Epileptiform discharges: 1 point. 3. Patterns include LPD, LRDA, BIPD: 1 point. 4. Patterns superimposed with fast or sharp activity: 1 point. 5. Prior seizure: 1 point. 6. Brief rhythmic discharges: 2 points. The points are summed into a SCORE. Risk by score: 0, under 5%; 1, 11.9%; 2, 26.9%; 3, 50.0%; 4, 73.1%; 5, 88.1%; 6 or more, 95.3%.</desc>
+  <defs>
+    <style>
+      text { font: 23px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .b { font-weight: bold; }
+      .r { text-anchor: end; }
+      .c { text-anchor: middle; }
+      .rule { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .thick { fill: none; stroke: #2b2b2b; stroke-width: 3; }
+      .shade { fill: #1f6fb2; fill-opacity: 0.2; }
+    </style>
+  </defs>
+
+  <!-- points table -->
+  <rect class="rule" x="2" y="2" width="840" height="266"/>
+  <line class="rule" x1="2" y1="226" x2="842" y2="226"/>
+  <line class="rule" x1="694" y1="2" x2="694" y2="268"/>
+
+  <g>
+    <text x="16" y="36">1.</text>
+    <text x="60" y="36">Any cEEG Pattern with Frequency <tspan class="b">&gt;2 Hz</tspan></text>
+    <text class="r" x="680" y="36">1 point</text>
+
+    <text x="16" y="72">2.</text>
+    <text x="60" y="72"><tspan class="b">E</tspan>pileptiform Discharges</text>
+    <text class="r" x="680" y="72">1 point</text>
+
+    <text x="16" y="108">3.</text>
+    <text x="60" y="108">Patterns include [<tspan class="b">L</tspan>PD, LRDA, BIPD]</text>
+    <text class="r" x="680" y="108">1 point</text>
+
+    <text x="16" y="144">4.</text>
+    <text x="60" y="144"><tspan class="b">P</tspan>atterns Superimposed with Fast or Sharp Activity</text>
+    <text class="r" x="680" y="144">1 point</text>
+
+    <text x="16" y="180">5.</text>
+    <text x="60" y="180">Prior <tspan class="b">S</tspan>eizure</text>
+    <text class="r" x="680" y="180">1 point</text>
+
+    <text x="16" y="216">6.</text>
+    <text x="60" y="216"><tspan class="b">B</tspan>rief Rhythmic Discharges</text>
+    <text class="r b" x="680" y="216"><tspan class="b">2</tspan> points</text>
+
+    <text class="r b" x="680" y="256">SCORE</text>
+  </g>
+
+  <!-- running-sum column -->
+  <g>
+    <text x="768" y="36">· · ·</text>
+    <text class="c" x="718" y="72">+</text><text x="768" y="72">· · ·</text>
+    <text class="c" x="718" y="108">+</text><text x="768" y="108">· · ·</text>
+    <text class="c" x="718" y="144">+</text><text x="768" y="144">· · ·</text>
+    <text class="c" x="718" y="180">+</text><text x="768" y="180">· · ·</text>
+    <text class="c" x="718" y="216">+</text><text x="768" y="216">· · ·</text>
+    <text class="c" x="718" y="256">=</text><text x="768" y="256">· · ·</text>
+  </g>
+
+  <!-- risk table -->
+  <g transform="translate(10 292)">
+    <rect class="shade" x="0" y="0" width="820" height="108"/>
+    <rect class="thick" x="0" y="0" width="820" height="108"/>
+    <line class="rule" x1="0" y1="54" x2="820" y2="54"/>
+    <line class="rule" x1="120" y1="0" x2="120" y2="108"/>
+    <line class="rule" x1="220" y1="0" x2="220" y2="108"/>
+    <line class="rule" x1="320" y1="0" x2="320" y2="108"/>
+    <line class="rule" x1="420" y1="0" x2="420" y2="108"/>
+    <line class="rule" x1="520" y1="0" x2="520" y2="108"/>
+    <line class="rule" x1="620" y1="0" x2="620" y2="108"/>
+    <line class="rule" x1="720" y1="0" x2="720" y2="108"/>
+
+    <text class="b" x="14" y="36">SCORE</text>
+    <text class="b" x="14" y="90">RISK</text>
+    <text class="c" x="170" y="36">0</text>
+    <text class="c" x="270" y="36">1</text>
+    <text class="c" x="370" y="36">2</text>
+    <text class="c" x="470" y="36">3</text>
+    <text class="c" x="570" y="36">4</text>
+    <text class="c" x="670" y="36">5</text>
+    <text class="c" x="770" y="36">6+</text>
+    <text class="c" x="170" y="90">&lt;5%</text>
+    <text class="c" x="270" y="90">11.9%</text>
+    <text class="c" x="370" y="90">26.9%</text>
+    <text class="c" x="470" y="90">50.0%</text>
+    <text class="c" x="570" y="90">73.1%</text>
+    <text class="c" x="670" y="90">88.1%</text>
+    <text class="c" x="770" y="90">95.3%</text>
+  </g>
+</svg>

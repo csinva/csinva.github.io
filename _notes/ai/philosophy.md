@@ -11,7 +11,6 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
 # basics
 
 - try to understand what principles underly all phenomena
-
 - Machine Learning and the Future of Realism ([hooker & hooker, 2017](https://arxiv.org/pdf/1704.04688.pdf))
   - lack of interpretability in DNNs is part of what makes them powerful
   - *naked predictions* - numbers with no real interpretation
@@ -26,7 +25,6 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
     - *realism* in a partially accessible world
   - overall, they believe there is inherent value of ontological description
 - Explainable Artificial Intelligence and Machine Learning: A reality rooted perspective ([emmert-streib et al. 2020](https://arxiv.org/pdf/2001.09464v1.pdf))
-  
   - explainable AI is not a new field but has been already recognized and discussed for expert systems in the 1980s
   1. in some cases, such as simple physics, we can hope to get a **theory** - however, when the underlying process is complicated, interpretation can't hope to simplify it
   2. in other cases, we might hope just for a **description**
@@ -93,8 +91,6 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
 - issues: hard to distinguish between explanatory causes (e.g. for a pool ball collision, mass + velocity) vs other so-called causal processes (e.g. chalk mark on ball)
   - tends towards overly complex physical descriptions - e.g. for gas law track all particles rather than something global like pressure
 
-
-
 ## unificationist models
 
 - important attempts include friedman (1974) and kitcher (1989)
@@ -122,17 +118,13 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
   - want context to come in for as few steps as possible during an explanation - maybe we don't need to analyze human psych
   - somewhat circular - if this is true, then how can we resolve ambiguities?
 
-
-
 ## open areas
 
 - understand casuality
 - more focus on whethery expalanations capture our intuitive judgements and more on the issue of why the info they convey is valuable + relates to our goals
 - to what extent does a single model work across sciences (e.g. biologists claim to be interested in mechanisms whereas physicists in laws)
 
-
-
-# the beggining of infinity (david deutsch, 2011)
+# the beginning of infinity (david deutsch, 2011)
 
 - all progress has resulted from the quest for good explanations
   - *good explanation* - hard to vary while still accounting for what it purports to account for
@@ -186,7 +178,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
     - The functions of a paradigm are to supply puzzles for scientists to solve and to provide the tools for their solution
   - A crisis in science arises when confidence is lost in the ability of the paradigm to solve particularly worrying puzzles called ‘anomalies’
     - scientific revolutions involve a revision to existing scientific belief or practice
-- ‘incommensurability thesis’ -  theories from differing periods suffer from certain deep kinds of failure of comparability
+- ‘incommensurability thesis’ - theories from differing periods suffer from certain deep kinds of failure of comparability
   - controversial - goes against the idea that science constantly builds
 
 # the story of philosophy
@@ -242,7 +234,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
   - jew who was excommunicated for anti-religious writing
   - no distinction between body and mind
   - no free will - only desires that guide everything
-	  - beginnings of doubting rationalism
+    - beginnings of doubting rationalism
 - voltaire
   - frenchman who was exiled
   - seeks history of ideas, beginning with *The Essay on Morals*
@@ -290,5 +282,5 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
   - explanatory modeling as the use of statistical models for testing causal explanations
   - many philosophies view explanation and prediction as distinct (but not incompatible)
   - 4 major aspects: causation-association, theory-data, retrospective-prospective, bias-variance
-  - (causal) explanation is often more about picking the right class of models (which minimizes bias) rather than fitting  their parameters
+  - (causal) explanation is often more about picking the right class of models (which minimizes bias) rather than fitting their parameters
 

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 860" role="img" aria-labelledby="title desc">
+  <title id="title">How to get more labeled training data</title>
+  <desc id="desc">Tree of approaches. Traditional supervision: have subject matter experts (SMEs) hand-label more training data; too expensive, leads to active learning: estimate which points are most valuable to solicit labels for, which also points to weak supervision. Semi-supervised learning: use structural assumptions to automatically leverage unlabeled data. Weak supervision: get lower-quality labels more efficiently and/or at a higher abstraction level; branches into getting cheaper, lower-quality labels from non-experts; getting higher-level supervision over unlabeled data from SMEs (heuristics, distant supervision, constraints, expected distributions, invariances); and using one or more (noisy / biased) pre-trained models to provide supervision. Transfer learning: use models already trained on a different task, which points to the pre-trained models branch.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="aGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/></marker>
+    <marker id="aGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/></marker>
+    <marker id="aBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker>
+    <marker id="aRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="aOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d9822b"/></marker>
+    <style>
+      .e { fill: none; stroke-width: 2; stroke-linecap: round; }
+      .t { font: 32px Helvetica, Arial, sans-serif; text-anchor: middle; }
+      .i { font: italic 28px Helvetica, Arial, sans-serif; text-anchor: middle; }
+      .ttl { font: 40px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .gray { fill: #8a8a8a; } .green { fill: #1f8a4c; } .blue { fill: #1f6fb2; } .red { fill: #d1342f; } .orange { fill: #d9822b; }
+      .b { font-weight: bold; }
+    </style>
+  </defs>
+
+  <text class="ttl" x="900" y="56">How to get more labeled training data?</text>
+
+  <!-- root edges -->
+  <path class="e" stroke="#8a8a8a" d="M900 78 L242 186" marker-end="url(#aGray)"/>
+  <path class="e" stroke="#1f8a4c" d="M900 78 L700 186" marker-end="url(#aGreen)"/>
+  <path class="e" stroke="#1f6fb2" d="M900 78 L1146 186" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#d1342f" d="M900 78 L1608 186" marker-end="url(#aRed)"/>
+
+  <!-- level 1 -->
+  <text class="t gray" x="240" y="226"><tspan class="b">Traditional Supervision:</tspan></text>
+  <text class="t gray" x="240" y="270">Have subject matter</text>
+  <text class="t gray" x="240" y="313">experts (SMEs) hand-label</text>
+  <text class="t gray" x="240" y="356">more training data</text>
+
+  <text class="t green" x="696" y="226"><tspan class="b">Semi-supervised Learning:</tspan></text>
+  <text class="t green" x="696" y="270">Use structural assumptions</text>
+  <text class="t green" x="696" y="313">to automatically leverage</text>
+  <text class="t green" x="696" y="356">unlabeled data</text>
+
+  <text class="t blue" x="1148" y="226"><tspan class="b" font-style="italic">Weak</tspan><tspan class="b"> Supervision:</tspan> Get</text>
+  <text class="t blue" x="1148" y="270">lower-quality labels more</text>
+  <text class="t blue" x="1148" y="313">efficiently and/or at a</text>
+  <text class="t blue" x="1148" y="356">higher abstraction level</text>
+
+  <text class="t red" x="1608" y="226"><tspan class="b">Transfer Learning:</tspan> Use</text>
+  <text class="t red" x="1608" y="270">models already trained</text>
+  <text class="t red" x="1608" y="313">on a different task</text>
+
+  <!-- traditional -> too expensive / active learning -->
+  <path class="e" stroke="#8a8a8a" d="M240 378 L120 424" marker-end="url(#aGray)"/>
+  <text class="i gray" x="114" y="466">Too expensive!</text>
+  <path class="e" stroke="#d9822b" d="M240 378 L284 506" marker-end="url(#aOrange)"/>
+
+  <text class="t orange" x="284" y="548"><tspan class="b">Active Learning:</tspan></text>
+  <text class="t orange" x="284" y="592">Estimate which points</text>
+  <text class="t orange" x="284" y="635">are most valuable to</text>
+  <text class="t orange" x="284" y="678">solicit labels for</text>
+  <path class="e" stroke="#d9822b" stroke-dasharray="3 5" d="M436 544 L932 380" marker-end="url(#aOrange)"/>
+
+  <!-- transfer -> pretrained models -->
+  <path class="e" stroke="#d1342f" stroke-dasharray="3 5" d="M1610 334 L1596 544" marker-end="url(#aRed)"/>
+
+  <!-- weak supervision children -->
+  <path class="e" stroke="#1f6fb2" d="M1150 376 L724 570" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#1f6fb2" d="M1150 376 L1154 570" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#1f6fb2" d="M1150 376 L1596 570" marker-end="url(#aBlue)"/>
+
+  <text class="i blue" x="720" y="610">Get cheaper, lower-quality</text>
+  <text class="i blue" x="720" y="648">labels from non-experts</text>
+
+  <text class="i blue b" x="1154" y="610">Get higher-level supervision</text>
+  <text class="i blue b" x="1154" y="648">over unlabeled data from SMEs</text>
+
+  <text class="i blue" x="1600" y="610">Use one or more (noisy /</text>
+  <text class="i blue" x="1600" y="648">biased) pre-trained models</text>
+  <text class="i blue" x="1600" y="686">to provide supervision</text>
+
+  <!-- leaves -->
+  <path class="e" stroke="#1f6fb2" d="M1156 666 L832 786" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#1f6fb2" d="M1156 666 L998 768" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#1f6fb2" d="M1156 666 L1162 786" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#1f6fb2" d="M1156 666 L1330 768" marker-end="url(#aBlue)"/>
+  <path class="e" stroke="#1f6fb2" d="M1156 666 L1502 786" marker-end="url(#aBlue)"/>
+
+  <text class="i blue" x="830" y="822" font-size="25">Heuristics</text>
+  <text class="i blue" x="996" y="804" font-size="25">Distant</text>
+  <text class="i blue" x="996" y="840" font-size="25">Supervision</text>
+  <text class="i blue" x="1162" y="822" font-size="25">Constraints</text>
+  <text class="i blue" x="1332" y="804" font-size="25">Expected</text>
+  <text class="i blue" x="1332" y="840" font-size="25">distributions</text>
+  <text class="i blue" x="1506" y="822" font-size="25">Invariances</text>
+</svg>

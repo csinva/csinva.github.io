@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: Dumb Stuff
+subtitle: Exactly what it sounds like.
 ---
 
 {:toc}

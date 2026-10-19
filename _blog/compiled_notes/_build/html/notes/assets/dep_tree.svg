@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 8 1000 365" role="img" aria-labelledby="title desc">
+  <title id="title">Two dependency trees</title>
+  <desc id="desc">Two dependency trees for 'I shot an elephant in my pajamas' (determiner 'an' omitted). Left: shot has dependents I and elephant; elephant has dependent in; in has dependents pajamas and my. Right: shot has dependents I, elephant and in; in has dependents pajamas and my. Head words in blue, leaf words in green.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+      .line { stroke-width: 3; }
+    </style>
+  </defs>
+  <path class="line" d="M128 66 L15 113"/>
+  <path class="line" d="M128 66 L245 115"/>
+  <path class="line" d="M245 170 L247 218"/>
+  <path class="line" d="M245 272 L160 322"/>
+  <path class="line" d="M245 272 L333 322"/>
+  <path class="line" d="M600 170 L393 218"/>
+  <path class="line" d="M600 170 L540 218"/>
+  <path class="line" d="M600 170 L868 218"/>
+  <path class="line" d="M868 272 L783 322"/>
+  <path class="line" d="M868 272 L957 322"/>
+  <text class="c" x="130" y="50.0" font-size="34" style="fill:#1f6fb2">shot</text>
+  <text class="c" x="15" y="150.0" font-size="34" style="fill:#1f8a4c">I</text>
+  <text class="c" x="245" y="150.0" font-size="34" style="fill:#1f6fb2">elephant</text>
+  <text class="c" x="247" y="255.0" font-size="34" style="fill:#1f6fb2">in</text>
+  <text class="c" x="160" y="360.0" font-size="34" style="fill:#1f8a4c">pajamas</text>
+  <text class="c" x="333" y="360.0" font-size="34" style="fill:#1f8a4c">my</text>
+  <text class="c" x="600" y="150.0" font-size="34" style="fill:#1f6fb2">shot</text>
+  <text class="c" x="393" y="255.0" font-size="34" style="fill:#1f8a4c">I</text>
+  <text class="c" x="540" y="255.0" font-size="34" style="fill:#1f8a4c">elephant</text>
+  <text class="c" x="868" y="255.0" font-size="34" style="fill:#1f6fb2">in</text>
+  <text class="c" x="783" y="360.0" font-size="34" style="fill:#1f8a4c">pajamas</text>
+  <text class="c" x="957" y="360.0" font-size="34" style="fill:#1f8a4c">my</text>
+</svg>

@@ -26,7 +26,7 @@ typora-copy-images-to: ../assets
     - **demographic parity** - mean predictions for each group should be approximately equal
       - flaw: means might not be equal
     - **equalized odds** - predictions are independent of group given label
-      - equality of opportunity: $p(\hat y=1|y=1)$ is same for both groups
+      - equality of opportunity: $$p(\hat y=1\vert y=1)$$ is same for both groups
     - **predictive rate parity** - Y is independent of group given prediction
   - **individual fairness** - similar individuals should be treated similarly
   - **counterfactual fairness** - replace attributes w/ flipped values
@@ -34,8 +34,6 @@ typora-copy-images-to: ../assets
   - preprocessing - remove sensitive information
   - optimization at training time - add regularization
   - postprocessing - change thresholds to impose fairness
-
-
 
 ## [fairness in computer vision (tutorial)](https://sites.google.com/view/fatecv-tutorial/schedule)
 
@@ -95,15 +93,15 @@ typora-copy-images-to: ../assets
     - 1: 1 == **verification**
     - 1: N == **identification**
   - data
-  	- **domestic mugshots** collected in the United States
-  	- **application photographs** from a global population of applicants for immigration benefits
-  	- **visa photographs** submitted in support of visa applicants
-  	- **border crossing photographs** of travelers entering the United States
+    - **domestic mugshots** collected in the United States
+    - **application photographs** from a global population of applicants for immigration benefits
+    - **visa photographs** submitted in support of visa applicants
+    - **border crossing photographs** of travelers entering the United States
   - a common practice is to use random pairs, but as the pairs are stratified to become more similar, the false match rate increases (Fig 3)
   - results
     - biggest errors seem to be in African Americans + East Asians
       - impact of errors - in verification, false positives can be security threat (while false negative is mostly just a nuisance)
-    -  In domestic mugshots, false negatives are higher in Asian and American Indian individuals, with error rates above those in white and black face
+    - In domestic mugshots, false negatives are higher in Asian and American Indian individuals, with error rates above those in white and black face
       - possible confounder - aging between subsequent photos
     - better image quality reduces false negative rates and differentials
     - false positives to be between 2 and 5 times higher in women than men
@@ -117,9 +115,7 @@ typora-copy-images-to: ../assets
 
 *“the master’s tools will never dismantle the master’s house.”*
 
-
-
-**ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK ([2020](http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf))**
+**Algorithmic Accountability: A Legal and Economic Framework ([2020](http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf))**
 
 - Title VII defines accountability under under U.S. antidiscrimination law
   - protected attributes: sex, religion, national origin, color
@@ -181,7 +177,7 @@ typora-copy-images-to: ../assets
   - utilitarian approach: which option produces the most good and does the least harm?
   - common good approach: which option best serves the community as a whole?
 - deontological - adhering to "the right"
-  - ex. principles like privacy, autonomy, conflicting 
+  - ex. principles like privacy, autonomy, conflicting
   - rights approach: which option bbest respects the rights of all who have a stake?
   - justice approach: which option treats people equally or proportionately?
 - consequentalist questions
@@ -218,7 +214,7 @@ typora-copy-images-to: ../assets
 - **technological determinism** - theory that assumes that a society's technology determines the development of its social structure and cultural values
 - do artifacts have politics? ([winner 2009](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf))
     - **politics** - arrangements of power and authority in human associations as well as the activitites that take place within those arrangements
-    - **technology** -  smaller or larger pieces or systems of hardware of a specific kind. 
+    - **technology** - smaller or larger pieces or systems of hardware of a specific kind.
     - examples
       - pushes back against social determinism - technologies have the ability to shift power
       - ex: nuclear power (consolidates power) vs solar power (democratizes power)
@@ -231,12 +227,10 @@ typora-copy-images-to: ../assets
       - pushback on use of things like pesticides, highways, nuclear reactors
     - technologies which are inherently political, regardless of use
       - ex. "If man, by dint of his knowledge and inventive genius has subdued the forces of nature, the latter avenge themselves upon him by subjecting him, insofar as he employs them, to a veritable despotism independent of all social organization."
-      - attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history. 
+      - attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history.
 - [Disembodied Machine Learning: On the Illusion of Objectivity in NLP](https://openreview.net/pdf?id=fkAxTMzy3fs)
 - less work for mother ([cowan 1987](https://www.americanheritage.com/less-work-mother)) - technologies that seem like they save time rarely do (although they increase "productivity")
 - [The Concept of Function Creep](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547903) - “Function creep denotes an imperceptibly transformative and therewith contestable change in a data-processing system’s proper activity.”
-
-
 
 # effective altruism
 
@@ -259,7 +253,6 @@ typora-copy-images-to: ../assets
 - [The case for reducing existential risks - 80,000 Hours](https://80000hours.org/articles/existential-risks/)
     - life-ending asteroid: 1 in 5000 per century
         - supervolcanoes
-
     - nuclear weapons
     - biochemical weapons
     - runaway climate change
@@ -269,7 +262,6 @@ typora-copy-images-to: ../assets
 # tech for "good"
 
 - [Essays: Cybersecurity for the Public Interest - Schneier on Security](https://www.schneier.com/essays/archives/2019/02/public-interest_tech.html)
-
 - Machine Learning that Matters ([wagstaff, 2021](https://arxiv.org/abs/1206.4656))
   - doesn't make sense to compare the same metrics across different dsets (e.g. AUC over entire domain doesn't matter)
   - classification / regr. are overemphasized ([langley, 2011](https://link.springer.com/content/pdf/10.1007/s10994-011-5242-y.pdf))
@@ -277,7 +269,7 @@ typora-copy-images-to: ../assets
 # concrete ai harms
 
 - [awful-ai](https://github.com/daviddao/awful-ai) - list of scary usages of ai
-	- Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of 
+  - Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of
 - consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)
 - a shift toward the quantitative (which can lead to the the type of click-bait extremization we see online)
 - automation (low-level layoffs, which also help consolidate power to tech giants)
@@ -289,4 +281,3 @@ typora-copy-images-to: ../assets
   - from [here](https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/): City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.
   - "The pandemic may even make people value privacy less, as one early poll in the U.S. suggests"
 
-  

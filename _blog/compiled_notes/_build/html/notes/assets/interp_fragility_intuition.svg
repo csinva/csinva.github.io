@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 535" role="img" aria-labelledby="title desc">
+  <title id="title">Influence of training points near a decision boundary</title>
+  <desc id="desc">A test point x_t lies just inside a bend of the decision boundary, between two loss contours. The loss gradient at x_t points downward, toward a training point that has a large influence on the loss at x_t. After a small perturbation +delta, the gradient at x_t + delta points left, toward a different training point that has a large influence on the loss at x_t + delta.</desc>
+  <defs>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/>
+    </marker>
+    <marker id="arrowK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .bound { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linejoin: miter; }
+      .contour { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 2 4; }
+      .grad { fill: none; stroke: #d1342f; stroke-width: 2.5; }
+      .pt { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .train { fill: none; stroke: #1f6fb2; stroke-width: 3.5; }
+      .dash { stroke-dasharray: 7 6; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .along { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .m { font: italic bold 22px Georgia, "Times New Roman", serif; }
+      .mr { font: italic 24px Georgia, "Times New Roman", serif; fill: #d1342f; }
+      .sub { font-size: 15px; }
+    </style>
+  </defs>
+
+  <!-- upper loss contour -->
+  <path class="contour" d="M15 195 L185 22 L415 250 V345 H578 L620 305"/>
+  <path class="contour" d="M728 192 L768 152 H952"/>
+  <!-- decision boundary -->
+  <path class="bound" d="M15 252 L188 80 L375 268 V386 H592 L615 364"/>
+  <path class="bound" d="M765 214 L788 192 H960"/>
+  <!-- lower loss contour -->
+  <path class="contour" d="M15 310 L188 135 L336 282 V425 H608 L670 365"/>
+  <path class="contour" d="M775 258 L800 231 H960"/>
+
+  <text class="along" transform="translate(673 249) rotate(-45)">Loss contour</text>
+  <text class="along" transform="translate(690 289) rotate(-45)">Decision boundary</text>
+  <text class="along" transform="translate(722 311) rotate(-45)">Loss contour</text>
+
+  <!-- test point and perturbation -->
+  <circle class="pt" cx="470" cy="355" r="16"/>
+  <text class="m" x="461" y="362" style="font-size:20px">x<tspan class="sub" dy="5">t</tspan></text>
+  <circle class="pt dash" cx="404" cy="308" r="16" style="stroke-dasharray: 9 6"/>
+  <path class="bound" style="stroke-width:1.6" d="M452 340 L428 323" marker-end="url(#arrowK)"/>
+  <text class="lbl" x="440" y="315">+<tspan class="m">δ</tspan></text>
+
+  <!-- gradients -->
+  <path class="grad" d="M380 308 H282" marker-end="url(#arrowR)"/>
+  <text class="mr" x="190" y="292">∇<tspan class="sub" dy="6">x</tspan><tspan dy="-6">L(</tspan><tspan font-weight="bold">x</tspan><tspan class="sub" dy="6" font-weight="bold">t</tspan><tspan dy="-6"> + </tspan><tspan font-weight="bold">δ</tspan>)</text>
+  <path class="grad" d="M469 373 V470" marker-end="url(#arrowR)"/>
+  <text class="mr" x="488" y="472">∇<tspan class="sub" dy="6">x</tspan><tspan dy="-6">L(</tspan><tspan font-weight="bold">x</tspan><tspan class="sub" dy="6" font-weight="bold">t</tspan><tspan dy="-6">)</tspan></text>
+
+  <!-- influential training points -->
+  <circle class="train dash" cx="171" cy="350" r="16"/>
+  <text class="lbl" x="38" y="398">This training point has</text>
+  <text class="lbl" x="38" y="425">a large influence on the</text>
+  <text class="lbl" x="38" y="452">loss at <tspan class="m">x</tspan><tspan class="m sub" dy="5">t</tspan><tspan dy="-5"> + </tspan><tspan class="m">δ</tspan></text>
+
+  <circle class="train" cx="429" cy="481" r="16"/>
+  <text class="lbl" x="304" y="527">This training point has a large influence on the loss at <tspan class="m">x</tspan><tspan class="m sub" dy="5">t</tspan></text>
+</svg>

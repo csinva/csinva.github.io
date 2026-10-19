@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.10. evaluation</title>
+    <title>5.8. evaluation</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ml/evaluation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. ai" href="../ai/ai.html" />
-    <link rel="prev" title="5.9. learning theory" href="learning_theory.html" />
+    <link rel="next" title="6. ai" href="../ai/ai_section.html" />
+    <link rel="prev" title="5.7. learning theory" href="learning_theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml_section.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -435,13 +421,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">5.10.1. losses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures">5.10.2. measures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-two-things">5.10.3. comparing two things</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv">5.10.4. cv</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">5.10.5. stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-considerations">5.10.6. other considerations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp">5.10.7. nlp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">5.8.1. losses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures">5.8.2. measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-two-things">5.8.3. comparing two things</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv">5.8.4. cv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">5.8.5. stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-considerations">5.8.6. other considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp">5.8.7. nlp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ranking">5.8.8. ranking</a></li>
 </ul>
             </nav>
         </div>
@@ -454,13 +441,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
-<h1><span class="section-number">5.10. </span>evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5.8. </span>evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h1>
 <section id="losses">
-<h2><span class="section-number">5.10.1. </span>losses<a class="headerlink" href="#losses" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.1. </span>losses<a class="headerlink" href="#losses" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>define a loss function <span class="math notranslate nohighlight">\(\mathcal{L}\)</span></p>
 <ul>
-<li><p>0-1 loss: <span class="math notranslate nohighlight">\(\vert C-f(X)\vert\)</span>  - hard to minimize (combinatorial)</p></li>
+<li><p>0-1 loss: <span class="math notranslate nohighlight">\(\vert C-f(X)\vert\)</span> - hard to minimize (combinatorial)</p></li>
 <li><p><span class="math notranslate nohighlight">\(L_2\)</span> loss: <span class="math notranslate nohighlight">\([C-f(X)]^2\)</span></p></li>
 </ul>
 </li>
@@ -474,8 +461,8 @@ document.write(`
 <li><p>classification cost functions</p>
 <ol class="arabic simple">
 <li><p>misclassification error - not differentiable</p></li>
-<li><p>Gini index: <span class="math notranslate nohighlight">\(\sum_{i != j} p_i q_j\)</span></p></li>
-<li><p>cross-entropy: <span class="math notranslate nohighlight">\(-\sum_x p(x)\: \log \: \hat p(x) \)</span>, where <span class="math notranslate nohighlight">\(p(x)\)</span> are usually labels and <span class="math notranslate nohighlight">\(\hat p(x)\)</span> are softmax outputs</p>
+<li><p>Gini index: <span class="math notranslate nohighlight">\(\sum_{i \neq j} p_i q_j\)</span></p></li>
+<li><p>cross-entropy: $<span class="math notranslate nohighlight">\(-\sum_x p(x)\: \log \: \hat p(x) \)</span><span class="math notranslate nohighlight">\(, where \)</span>p(x)<span class="math notranslate nohighlight">\( are usually labels and \)</span>\hat p(x)$ are softmax outputs</p>
 <ol class="arabic simple">
 <li><p>only penalizes target class (others penalized implicitly because of softmax)</p></li>
 <li><p>for binary, <span class="math notranslate nohighlight">\(- p \log \hat p - (1-p) \log (1-\hat p)\)</span></p></li>
@@ -486,9 +473,9 @@ document.write(`
 </ul>
 </section>
 <section id="measures">
-<h2><span class="section-number">5.10.2. </span>measures<a class="headerlink" href="#measures" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.2. </span>measures<a class="headerlink" href="#measures" title="Link to this heading">#</a></h2>
 <p><em>goodness of fit</em> - how well does the learned distribution represent the real distribution?</p>
-<p><img alt="Screen Shot 2019-06-30 at 8.27.56 PM" src="../../_images/eval_metrics.png" /></p>
+<p>classification of a test dataset produces four outcomes – true positive, false positive, true negative, and false negative <img style="width: 560px; max-width: 100%;" src="../assets/eval_metrics.svg" alt="Four outcomes of a classifier"/></p>
 <ul class="simple">
 <li><p>accuracy-based</p>
 <ul>
@@ -502,7 +489,7 @@ document.write(`
 </li>
 <li><p>denominator is total pos/neg</p>
 <ul>
-<li><p><strong>recall</strong> = <strong>sensitivity</strong> =  <strong>true-positive rate</strong> = TP / P = TP / (TP + FN)</p>
+<li><p><strong>recall</strong> = <strong>sensitivity</strong> = <strong>true-positive rate</strong> = TP / P = TP / (TP + FN)</p>
 <ul>
 <li><p>what fraction of the real positives do we return?</p></li>
 </ul>
@@ -555,8 +542,8 @@ document.write(`
 <li><p>exact concordance - percentage where cohort is in total agreement (i.e. accuracy)</p></li>
 <li><p>Cohen’s kappa coefficient - 0 is uncorrelated, 1 is perfect, negative is inverse correlation</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\kappa \equiv \frac{p_{o}-p_{e}}{1-p_{e}}=1-\frac{1-p_{o}}{1-p_{e}}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(p_o\)</span> is relative observed agreement and <span class="math notranslate nohighlight">\(p_e\)</span> is chance expected agreement</p></li>
+<li><p><span class="math notranslate nohighlight">\(\kappa \equiv \frac{\cblue{p_{o}}-\corange{p_{e}}}{1-\corange{p_{e}}}=1-\frac{1-\cblue{p_{o}}}{1-\corange{p_{e}}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\cblue{p_o}\)</span> is <span class="cblue">relative observed agreement</span> and <span class="math notranslate nohighlight">\(\corange{p_e}\)</span> is <span class="corange">chance expected agreement</span></p></li>
 </ul>
 </li>
 <li><p>weighted kappa coefficient - used when ordering for predicted labels (being off by more is given bigger weight)</p></li>
@@ -565,14 +552,14 @@ document.write(`
 </ul>
 </section>
 <section id="comparing-two-things">
-<h2><span class="section-number">5.10.3. </span>comparing two things<a class="headerlink" href="#comparing-two-things" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.3. </span>comparing two things<a class="headerlink" href="#comparing-two-things" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>odds: <span class="math notranslate nohighlight">\(p : \text{not }p\)</span></p></li>
 <li><p>odds ratio is a ratio of odds</p></li>
 </ul>
 </section>
 <section id="cv">
-<h2><span class="section-number">5.10.4. </span>cv<a class="headerlink" href="#cv" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.4. </span>cv<a class="headerlink" href="#cv" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><em>cross validation</em> - don’t have enough data for a test set</p>
 <ul>
@@ -621,7 +608,7 @@ document.write(`
 </ul>
 </section>
 <section id="stability">
-<h2><span class="section-number">5.10.5. </span>stability<a class="headerlink" href="#stability" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.5. </span>stability<a class="headerlink" href="#stability" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>computational stability</p></li>
 </ol>
@@ -658,7 +645,7 @@ document.write(`
 </ul>
 </section>
 <section id="other-considerations">
-<h2><span class="section-number">5.10.6. </span>other considerations<a class="headerlink" href="#other-considerations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.6. </span>other considerations<a class="headerlink" href="#other-considerations" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>computational cost</p></li>
 <li><p>interpretability</p></li>
@@ -674,9 +661,24 @@ document.write(`
 </ul>
 </section>
 <section id="nlp">
-<h2><span class="section-number">5.10.7. </span>nlp<a class="headerlink" href="#nlp" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8.7. </span>nlp<a class="headerlink" href="#nlp" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/BLEU">BLEU (<strong>B</strong>i<strong>L</strong>ingual <strong>E</strong>valuation <strong>U</strong>nderstudy)</a> is a metric for automatically evaluating machine-translated text. The BLEU score is a number between zero and one that measures the similarity of the machine-translated text to a set of high quality reference translations</p></li>
+<li><p>ROUGE, BLEU</p></li>
+<li><p>BERTScore, BLEURTScore</p></li>
+</ul>
+</section>
+<section id="ranking">
+<h2><span class="section-number">5.8.8. </span>ranking<a class="headerlink" href="#ranking" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>mean reciprocal rank</p></li>
+<li><p>normalized discounted cumulative gain (NCDG)</p>
+<ul>
+<li><p>discounted cumulative gain: <span class="math notranslate nohighlight">\(\sum_{i=1}^p \frac{\cblue{r e l_i}}{\corange{\log _2(i+1)}}\)</span>, where <span class="math notranslate nohighlight">\(\cblue{rel_i}\)</span> is usually binary and <span class="corange">denominator</span> emphasizes putting higher relevance results first</p></li>
+<li><p>normalized CDG normalizes this by the ideal (so just putting all ones in the numerator)</p></li>
+<li><p>sometimes, when <span class="math notranslate nohighlight">\(rel_i \in (0, 1)\)</span> rather than binary, people use <span class="math notranslate nohighlight">\(2^{rel_i} - 1\)</span> to further incentivize relevances closer to 1</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>
@@ -717,11 +719,11 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.9. </span>learning theory</p>
+        <p class="prev-next-title"><span class="section-number">5.7. </span>learning theory</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ai/ai.html"
+       href="../ai/ai_section.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -745,13 +747,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">5.10.1. losses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures">5.10.2. measures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-two-things">5.10.3. comparing two things</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv">5.10.4. cv</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">5.10.5. stability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-considerations">5.10.6. other considerations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp">5.10.7. nlp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">5.8.1. losses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures">5.8.2. measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-two-things">5.8.3. comparing two things</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv">5.8.4. cv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">5.8.5. stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-considerations">5.8.6. other considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nlp">5.8.7. nlp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ranking">5.8.8. ranking</a></li>
 </ul>
   </nav></div>
 
@@ -789,11 +792,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

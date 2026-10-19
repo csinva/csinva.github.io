@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 380" role="img" aria-labelledby="title desc">
+  <title id="title">Bull and bear spread payoffs</title>
+  <desc id="desc">Payoff versus new price. Left, bull spread: payoff 0 up to K1, rises linearly to K2, then flat. Right, bear spread: payoff flat and high up to K1, falls linearly to 0 at K2, then 0.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .ax { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .pay { fill: none; stroke: #1f6fb2; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+      .bold { font: bold 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .serif { font: 26px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .k { font: italic 26px "Times New Roman", Times, serif; fill: #2b2b2b; }
+      .sub { font-style: normal; font-size: 18px; }
+    </style>
+  </defs>
+
+  <path class="ax" d="M50 370 V40" marker-end="url(#arrow)"/>
+  <path class="ax" d="M50 290 H370" marker-end="url(#arrow)"/>
+  <text class="bold" x="20" y="26">Payoff</text>
+  <text class="serif end" x="42" y="298">0</text>
+  <text class="bold" x="385" y="284">New</text><text class="bold" x="385" y="310">price</text>
+  <line class="ax" x1="140" y1="290" x2="140" y2="296"/>
+  <text class="k mid" x="140" y="322">K<tspan class='sub' dy='5'>1</tspan></text>
+  <line class="ax" x1="290" y1="290" x2="290" y2="296"/>
+  <text class="k mid" x="290" y="322">K<tspan class='sub' dy='5'>2</tspan></text>
+  <path class="pay"  d="M52.0 290.0 L140.0 290.0 L290.0 95.0 L365.0 95.0"/>
+  <text class="serif mid" x="215" y="362">Bull Spread</text>
+  <path class="ax" d="M520 370 V40" marker-end="url(#arrow)"/>
+  <path class="ax" d="M520 290 H840" marker-end="url(#arrow)"/>
+  <text class="bold" x="490" y="26">Payoff</text>
+  <text class="serif end" x="512" y="298">0</text>
+  <text class="bold" x="855" y="284">New</text><text class="bold" x="855" y="310">price</text>
+  <line class="ax" x1="610" y1="290" x2="610" y2="296"/>
+  <text class="k mid" x="610" y="322">K<tspan class='sub' dy='5'>1</tspan></text>
+  <line class="ax" x1="760" y1="290" x2="760" y2="296"/>
+  <text class="k mid" x="760" y="322">K<tspan class='sub' dy='5'>2</tspan></text>
+  <path class="pay"  d="M522.0 95.0 L610.0 95.0 L760.0 290.0 L835.0 290.0"/>
+  <text class="serif mid" x="685" y="362">Bear Spread</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 310" role="img" aria-labelledby="title desc">
+  <title id="title">RL sample efficiency spectrum</title>
+  <desc id="desc">Horizontal double-headed axis from more efficient (fewer samples) on the left to less efficient (more samples) on the right. Methods in order: model-based shallow RL, model-based deep RL, off-policy Q-function learning, actor-critic style methods, on-policy policy gradient algorithms, evolutionary or gradient-free algorithms. A vertical line above actor-critic marks the split between off-policy (left) and on-policy (right).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .t { font: 25px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .thick { fill: none; stroke: #2b2b2b; stroke-width: 5; }
+    </style>
+  </defs>
+
+  <defs><marker id="big" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+  <marker id="sm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker></defs>
+  <path class="thick" d="M28 180 H1190" marker-start="url(#big)" marker-end="url(#big)"/>
+  <line x1="780" y1="180" x2="780" y2="36" stroke="#2b2b2b" stroke-width="2"/>
+  <path d="M670 36 H890" fill="none" stroke="#2b2b2b" stroke-width="2.5" marker-start="url(#sm)" marker-end="url(#sm)"/>
+  <text class="t end" x="656" y="44">off-policy</text><text class="t" x="904" y="44">on-policy</text>
+  <text class="t" x="12" y="110">More efficient</text><text class="t" x="12" y="138">(fewer samples)</text>
+  <text class="t end" x="1208" y="110">Less efficient</text><text class="t end" x="1208" y="138">(more samples)</text>
+  <text class="t" x="180" y="222">model-based</text>
+  <text class="t" x="180" y="254">shallow RL</text>
+  <text class="t" x="350" y="222">model-based</text>
+  <text class="t" x="350" y="254">deep RL</text>
+  <text class="t" x="520" y="222">off-policy</text>
+  <text class="t" x="520" y="254">Q-function</text>
+  <text class="t" x="520" y="286">learning</text>
+  <text class="t" x="690" y="222">actor-critic</text>
+  <text class="t" x="690" y="254">style</text>
+  <text class="t" x="690" y="286">methods</text>
+  <text class="t" x="852" y="222">on-policy policy</text>
+  <text class="t" x="852" y="254">gradient</text>
+  <text class="t" x="852" y="286">algorithms</text>
+  <text class="t" x="1040" y="222">evolutionary or</text>
+  <text class="t" x="1040" y="254">gradient-free</text>
+  <text class="t" x="1040" y="286">algorithms</text>
+</svg>

@@ -22,7 +22,7 @@
 	- has more port access than anywhere else
 - has no serious threats to military
 	- insulated
-	
+
 # 5. buying off geopolitics
 - after WWII everyone was destroyed except US
 - many were expecting a Pax Americana at *Bretton Woods* conference
@@ -41,7 +41,7 @@
 		- follows into real politics
 - this system made sense for US during cold war, but no longer makes sense
 	- America will likely soon stop paying for this
-	
+
 # 6 - demographic roller coaster (unclear)
 - population pyramids should be wider at bottom
 	- after baby boomers too many at top
@@ -71,12 +71,10 @@
 
 # 8- coming international disorder
 - US remains relatively unaffected when Bretton woods goes out
-
 - major problems facing the US
 	1. cartels from Mexico becoming established in the US
 	2. climate change
 	3. nuclear prliferation
-
 - Germany must remain aggressive
 - Russia state failure is imminent
 - China cannot survive in the long-term

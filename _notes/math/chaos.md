@@ -1,28 +1,29 @@
 ---
 layout: notes
 title: chaos
+subtitle: Some notes on nonlinear dynamics and chaos - bifurcations, linearization, and the Lorenz equations.
 category: math
 ---
 
 {:toc}
 
 # Normal forms of Hopf bifurcations
-- pitchfork: $$\dot{x} = \lambda x - x^3$$ ![](../assets/pitch.png)
-- subcritical pitchfork: $\dot{x} = \lambda x + x^3$ ![](../assets/subpitch.png)
-- saddle node (turning point): $\dot{x} = \lambda - x^2$ ![](../assets/sn.png)
-- transcritical: $\dot{x} = \lambda x - x^2$ ![](../assets/trans.png)
+- pitchfork: $$\dot{x} = \lambda x - x^3$$ <img style="width: 380px; max-width: 100%;" src="../assets/pitch.svg" alt="Supercritical pitchfork bifurcation"/>
+- subcritical pitchfork: $\dot{x} = \lambda x + x^3$ <img style="width: 380px; max-width: 100%;" src="../assets/subpitch.svg" alt="Subcritical pitchfork bifurcation"/>
+- saddle node (turning point): $\dot{x} = \lambda - x^2$ <img style="width: 380px; max-width: 100%;" src="../assets/sn.svg" alt="Saddle-node bifurcation"/>
+- transcritical: $\dot{x} = \lambda x - x^2$ <img style="width: 380px; max-width: 100%;" src="../assets/trans.svg" alt="Transcritical bifurcation"/>
 
 # important figs
-- period-doubling (flip bifurcation) $f = \mu x (1-x) (f = \mu sin (\pi x) $ is similiar) ![](../assets/flip.png)
-- inverse tangent bifurcation - unstable and stable P-3 orbits coalesce, move slightly off bisector and becomes chaotic ![](../assets/inverse.png)
-- pendulum ![](../assets/pendulum.png)
-- energy surface - trajectories run around the surface, not down it ![](../assets/e_surface.png)
+- period-doubling (flip bifurcation) $f = \mu x (1-x) (f = \mu \sin (\pi x) $ is similiar) <img style="width: 560px; max-width: 100%;" src="../assets/flip.svg" alt="Bifurcation diagram for the logistic map"/>
+- inverse tangent bifurcation - unstable and stable P-3 orbits coalesce, move slightly off bisector and becomes chaotic <img style="width: 640px; max-width: 100%;" src="../assets/inverse.svg" alt="Period-3 tangent bifurcation of the logistic map"/>
+- pendulum <img style="width: 520px; max-width: 100%;" src="../assets/pendulum.svg" alt="Pendulum phase portrait"/>
+- energy surface - trajectories run around the surface, not down it <img style="width: 420px; max-width: 100%;" src="../assets/e_surface.svg" alt="Double-well energy surface"/>
 - Conservative systems: 6.5
 	- study Hamiltonian p. 187-188
 - Pendulum: 6.7
 - dynamics - study of things that evolve with time
 - chaos - deterministic, aperiodic, sensitive, long-term prediction impossible
-1. phase space - has coordinates $x_1,...,x_n$
+1. phase space - has coordinates $$x_1,...,x_n$$
 2. phase portrait - variable x-axis, derivative y-axis
 3. bifurcation diagram - parameter x-axis, steady state y-axis
 	- draw separate graphs for these
@@ -36,19 +37,19 @@ category: math
 - autonomous = f is a function of x, not t
 - we can always make a system autonomous by having $x_n$ = t, so $\dot{x_n}$ = 1
 - dimension = number of 1st order ODEs, dimension of phase-space
-- existence and uniqueness thm: if $\dot{x}$ and $\dot{x}'$ are continuous, then there is some unique solution
+- existence and uniqueness thm: if $\dot{x}$ and $$\dot{x}'$$ are continuous, then there is some unique solution
 - linearization - used to find stability of f.p.s
 - $$
-\dot{x} = f(x) &\\
+\dot{x} = f(x) \\
 \text{define }\delta x = (x-\bar{x}) \\
 \dot{\delta x} = \frac{d}{dt}(x-\bar{x}) = \dot{x} = f(x) = f(\bar{x}+\delta x) \\
-\dot{\delta x} =\cancelto{0}{f(\bar{x})} + \delta x f'(\bar{x}) + \cancelto{\text{0 by HGT iff f'!=0}}{O(x^2)} \\
-\dot{\delta x} = \delta x f'(\bar{x}) \to \text{ now solve FOLDE} \\
+\dot{\delta x} =\cancelto{0}{\cblue{f(\bar{x})}} + \corange{\delta x f'(\bar{x})} + \cancelto{\text{0 by HGT iff f'!=0}}{\cgreen{O(x^2)}} \\
+\dot{\delta x} = \corange{\delta x f'(\bar{x})} \to \text{ now solve FOLDE} \\
 $$
+  - <span class="cblue">value at fixed point</span> + <span class="corange">linear term</span> + <span class="cgreen">higher-order terms</span>
 
 - solving Hopf: use polar to get $\dot{\rho}, \dot{\theta}$
 - multiply one thing by cos, one by sin, then add
-
 - $ \rho = \sqrt{x_1^2 + x_2^2} \\
 \theta = tan^{-1}(\frac{x_2}{x_1})$
 - Hysterisis curve - S-shaped curve of fixed branches - ruler getting larger - snap bifurcation - both axes are parameters
@@ -73,28 +74,20 @@ $$
 
 # Discrete Nonlinear Dynamical Systems
 - functional iteration: $x_{n+m} = f^m(x_n)$ (apply f m times)
-- fixed point: $f(x^*)=x^*$
-- f.p. stable if $\|\frac{df}{dx}(x^*)\|<1$, unstable if $>$ 1
-- check n-orbit by checking nth derivative: $\frac{df^n}{dx}(x_i^*) = \prod_{i=1}^{n-1} \frac{df}{dx}(x_i^*)$
+- fixed point: $$f(x^*)=x^*$$
+- f.p. stable if $$\vert \frac{df}{dx}(x^*)\vert <1$$, unstable if $>$ 1
+- check n-orbit by checking nth derivative: $$\frac{df^n}{dx}(x_i^*) = \prod_{i=1}^{n-1} \frac{df}{dx}(x_i^*)$$
 - period-doubling bifurcations
-- self-stability - orbit for which the stability-determining derivative is zero.  This means that the max of the map and the point at which the max occurs are in the orbit.
+- self-stability - orbit for which the stability-determining derivative is zero. This means that the max of the map and the point at which the max occurs are in the orbit.
 - type I intermittency - exhibited by inverse tangent bifurcation
 - Feigenbaum sequence - period-doubling path to chaos, keep increasing parameter until period is chaotic
 
-\begin{center}
-\begin{tabular}{ \| m{4cm} \| m{4cm} \| } 
-\hline
-\multicolumn{2}{\|c\|}{3D Attractors} \\
- \hline
-Type of Attractor & Sign of Exponents \\ 
-\hline
-Fixed Point & (-, -, -)\\ 
-Limit Cycle & (0, -, -) \\ 
-Torus & (0, 0, -) \\
-Strange Attractor & (+, 0, -) \\
-\hline
-\end{tabular}
-\end{center}
+| 3D attractor type | Sign of exponents |
+| ----------------- | ----------------- |
+| Fixed point       | (-, -, -)         |
+| Limit cycle       | (0, -, -)         |
+| Torus             | (0, 0, -)         |
+| Strange attractor | (+, 0, -)         |
 
 - homoclinic orbit - connects unstable manifold of saddle point to its own stable manifold
 	- e.g. trajectory that starts and ends at the same fixed point
@@ -103,15 +96,16 @@ Strange Attractor & (+, 0, -) \\
 
 # Conservative Systems
 - $F(x) = -\frac{dV}{dx}$ (by defn.)
-- $m\ddot{x}+\frac{dV}{dx}=0$, multiply by $\dot{x} \to \frac{d}{dt}[\frac{1}{2}m\dot{x}^2+V(x)]=0$
-- so total energy $E=\frac{1}{2}m\dot{x}^2+V(x)$
-- motion of pendulum: $\frac{d^2\theta}{dt^2}+\frac{g}{L}sin\theta=0$
-- nondimensionalize with $\omega=\sqrt{g/L}, \tau=\omega t \to \ddot{\theta}+sin\theta =0$
+- $m\ddot{x}+\frac{dV}{dx}=0$, multiply by $\dot{x} \to \frac{d}{dt}[\cblue{\frac{1}{2}m\dot{x}^2}+\corange{V(x)}]=0$
+- so total energy $E=\cblue{\frac{1}{2}m\dot{x}^2}+\corange{V(x)}$
+  - <span class="cblue">kinetic</span> + <span class="corange">potential</span>
+- motion of pendulum: $\frac{d^2\theta}{dt^2}+\frac{g}{L}\sin\theta=0$
+- nondimensionalize with $\omega=\sqrt{g/L}, \tau=\omega t \to \ddot{\theta}+\sin\theta =0$
 - can multiply this by $\dot{\theta}$
 - $\omega$-limit $t \to \infty$
-- $\alpha$-limit  $t \to -\infty$
+- $\alpha$-limit $t \to -\infty$
 - libration - small orbit surrounding center
-- system: $\dot{\theta}=\nu$, $\dot{\nu} = -sin\theta$
+- system: $\dot{\theta}=\nu$, $\dot{\nu} = -\sin\theta$
 
 ## Hamiltonian Dynamical System
 - $\dot{\underbar{x}}=\frac{\partial H}{\partial y}(\underbar{x},\underbar{y})$
@@ -122,11 +116,9 @@ Strange Attractor & (+, 0, -) \\
 
 # Ref
 - $\frac{\partial}{\partial x}(f_1 * f_2 * f_3) = \frac{\partial f_1}{\partial x} f_2 f_3 + \frac{\partial f_2}{\partial x} f_1 f_3 + \frac{\partial f_3}{\partial x} f_1 f_2$
-- $e^{\mu it} = cos(\mu t)+ isin(\mu t)$
-- $x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' sin(t) + B' cos(t)) e^{\lambda t} $
+- $e^{\mu it} = \cos(\mu t)+ isin(\mu t)$
+- $$x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' \sin(t) + B' \cos(t)) e^{\lambda t} $$<!-- -->
 If we have $\dot{x_1},\dot{x_2}$ then we can get $x_2(x_1) with \frac{dx_1}{dx_2} = \frac{\dot{x_1}}{\dot{x_2}}$
-
-
 
 # Benard Convection
 
@@ -136,7 +128,7 @@ If we have $\dot{x_1},\dot{x_2}$ then we can get $x_2(x_1) with \frac{dx_1}{dx_2
 	3. Time
 
 # Lorenz equations
-- Lorenz was studying hurricanes 
+- Lorenz was studying hurricanes
 - ODEs for 3 coefficients in larger system (others are pretty small
 	- use stream functions
 - Navier-Stokes PDEs - conservation of momentum - derive these equations as project?
@@ -175,7 +167,7 @@ $$\dot{z}(t) = -bz + xy$$
 			- $\bar{z} = \rho_o-1$
 - these equations have symmetry
 	- replace $(x(t),y(t),z(t))$ by $(-x(t),-y(t)),z(t)) \to$ we get back the original equations
-	
+
 
 $
 M=
@@ -186,7 +178,7 @@ M=
 $
 
 # Linearization of Lorenz Equations about FPs $\bar{\underline{x}}$
-- $\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}|_ \bar{\underline{x}}= -\sigma$ 
-- $\frac{d}{dt}\delta y(t) = \frac{\partial f_2}{\partial x}|_ \bar{\underline{x}}*\delta x(t) + \frac{\partial f_2}{\partial y}|_ \bar{\underline{x}}*\delta y(t) + \frac{\partial f_2}{\partial z}|_ \bar{\underline{x}}*\delta z(t) +...$ (higher order derivatives)
-	- $ = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z$
+- $$\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}\vert _ \bar{\underline{x}}= -\sigma$$<!-- -->
+- $$\frac{d}{dt}\delta y(t) = \frac{\partial f_2}{\partial x}\vert _ \bar{\underline{x}}*\delta x(t) + \frac{\partial f_2}{\partial y}\vert _ \bar{\underline{x}}*\delta y(t) + \frac{\partial f_2}{\partial z}\vert _ \bar{\underline{x}}*\delta z(t) +...$$ (higher order derivatives)
+	- $$ = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z$$<!-- -->
 - do the same thing for $\delta z(t)$

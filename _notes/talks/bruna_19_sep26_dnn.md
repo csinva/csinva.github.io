@@ -2,10 +2,8 @@
 
 **joan bruna, nyu**
 
-
-
 - assume noise-free setting, mse loss
-- limit "complexity": ||f|| < $\delta$
+- limit "complexity": \|\|f\|\| < $\delta$
 - ben recht's "fundamental thm of ml"
   - three terms: approximation error, generalization error, optimization error
 - classic functional spaces don't work in high dims

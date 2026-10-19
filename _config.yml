@@ -16,4 +16,4 @@ collections:
 markdown: kramdown
 
 highlighter: rouge
-exclude: ["Rakefile", "LICENSE", "readme.md"]
+exclude: ["Rakefile", "LICENSE", "readme.md", "_blog/compiled_notes/.venv"]

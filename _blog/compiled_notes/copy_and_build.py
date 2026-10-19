@@ -1,6 +1,7 @@
 '''Copies files from notes directory, does some preprocessing, then builds them into a web page using jupyter-book
 '''
 
+import glob
 import os
 import shutil
 import subprocess
@@ -14,8 +15,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from tqdm import tqdm
 
 # source / dest
-# repo_dir = '/home/chansingh/csinva.github.io/'
-repo_dir = '/Users/chandan/website/'
+# repo root, two levels up from this script (_blog/compiled_notes/)
+repo_dir = os.path.abspath(join(os.path.dirname(os.path.abspath(__file__)), '..', '..')) + '/'
 src = join(repo_dir, '_notes/')
 
 dest = 'notes'
@@ -39,7 +40,8 @@ contents = []
 fnames = []
 for folder in os.listdir(dest):
     if '.' not in folder and 'cheat' not in folder and 'assets' not in folder and 'misc' not in folder:
-        header_file = folder.lower() + '.md'
+        # suffix so the section page can't overwrite a note named like its folder (e.g. stat/stat.md)
+        header_file = folder.lower() + '_section.md'
         header_fname = oj(dest, folder, header_file)
         open(header_fname, "w").write('# ' + folder)
         toc += f'- file: {header_fname}\n  sections:\n'
@@ -108,6 +110,17 @@ plt.savefig('similarities_graph.svg')
 # jb build .
 # subprocess.run(['uv run jupyter-book', 'build', '.'])
 os.system('uv run jupyter-book build .')
+
+# sphinx only copies markdown images (![]()); raw-html <img src="../assets/x"> tags need their files copied in
+import re
+import urllib.parse
+for page in glob.glob('_build/html/notes/**/*.html', recursive=True):
+    for img in re.findall(r'<img[^>]*src="\.\./assets/([^"]+)"', open(page).read()):
+        img = urllib.parse.unquote(img)
+        out = join('_build/html/notes/assets', img)
+        if not os.path.exists(out) and os.path.exists(join(src, 'assets', img)):
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            shutil.copyfile(join(src, 'assets', img), out)
 # jb build . --builder pdfhtml # make pdf
 
 # rm notes

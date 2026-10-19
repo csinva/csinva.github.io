@@ -1,6 +1,7 @@
 ---
 layout: notes
 title: signals
+subtitle: Some notes on signal processing, mostly fourier and wavelet analysis.
 category: math
 typora-copy-images-to: ../assets
 ---
@@ -33,7 +34,7 @@ typora-copy-images-to: ../assets
   - band-stop filter - pass only frequences outside a specified range
 - **power spectrum** - how much of the signal is at a frequency $\omega$? - square of the magnitude of the coefficients of the Fourier coefficients for $\omega$
 
-![Screen Shot 2019-12-11 at 1.37.55 PM](../assets/transforms.png)
+<img style="width: 560px; max-width: 100%;" src="../assets/transforms.svg" alt="Time-frequency tilings of signal transforms"/>
 
 # fourier analysis
 
@@ -52,24 +53,24 @@ typora-copy-images-to: ../assets
 - discrete-time Fourier transform - values are still continuous
   - $X_{2\pi}(\omega) = \sum_{n=-\infty}^{\infty} x_n \,e^{-i \omega n}$
     - $\omega$ is frequency
-- **discrete Fourier transform**  (DFT or the analysis equation) - this is by far the most common
-    - $\begin{align}X_k &= \sum_{n=0}^{N-1} x_n e^{-2\pi i k n / N}\\&=\sum_{n=0}^{N-1} x_n \left[ \cos(2\pi k \frac n N ) - i \sin(2 \pi k \frac n N )\right]\end{align}$
+- **discrete Fourier transform** (DFT or the analysis equation) - this is by far the most common
+    - $$\begin{align}X_k &= \sum_{n=0}^{N-1} \cblue{x_n} \corange{e^{-2\pi i k n / N}}\\&=\sum_{n=0}^{N-1} \cblue{x_n} \left[ \cgreen{\cos(2\pi k \frac n N )} - i \cpink{\sin(2 \pi k \frac n N )}\right]\end{align}$$<!-- -->
     - larger k is higher freq.
     - **inverse transform**: $x_n = \frac{1}{N} \sum_{k=0}^{N-1} X_k\cdot e^{i 2 \pi k n / N}$
-    - $x_0, x_1, ... x_{N-1}$ is a sequence of N complex numbers (i.e. time domain) and we transform to another sequence of complex numbers $X_0, X_1, ..., X_{N-1}$
-        - we write $\mathbf X = \mathcal F (\mathbf x)$ 
-        - vectors $u_k = \left[\left. e^{ \frac{i 2\pi}{N} kn} \;\right|\; n=0,1,\ldots,N-1 \right]^\mathsf{T}$
+    - $$x_0, x_1, ... x_{N-1}$$ is a sequence of N complex numbers (i.e. time domain) and we transform to another sequence of complex numbers $$X_0, X_1, ..., X_{N-1}$$
+        - we write $\mathbf X = \mathcal F (\mathbf x)$
+        - vectors $$u_k = \left[\left. e^{ \frac{i 2\pi}{N} kn} \;\right\vert \; n=0,1,\ldots,N-1 \right]^\mathsf{T}$$
           form an *orthogonal basis* over the set of *N*-dimensional complex vectors
     - interpreting units
       - a frequency of 1/N would correspond to a period of N
         - use $2\pi/N$ so that it goes through one cycle with period of N
       - the n=0 parts correspond to a constant
       - all other frequencies are integer multiples of the first fundamental frequency
-      - finding coefs: basically want to use the correlation between the signal and the basis element (this is what the summation and muliptlying does)
-      - real part - corresponds to even part of the signal (the cosines)
-      - imaginary part - corresponds to odd parts of the signal
+      - finding coefs: basically want to use the correlation between the <span class="cblue">signal</span> and the <span class="corange">basis element</span> (this is what the summation and muliptlying does)
+      - <span class="cgreen">real part</span> - corresponds to even part of the signal (the cosines)
+      - <span class="cpink">imaginary part</span> - corresponds to odd parts of the signal
 - can be quickly computed using the **Fast Fourier Transform** in $O(n \log n)$ instead of $O(n^2)$
-- **inverse discrete Fourier Transform** (IDFT) 
+- **inverse discrete Fourier Transform** (IDFT)
 - *windowed fourier transform* - chop signal into sections and analyze each section separately
 
 # wavelet analysis
@@ -81,7 +82,7 @@ typora-copy-images-to: ../assets
 ## wavelet basics
 
 - **$\phi(x)$ = mother wavelet** (or analyzing wavelet)
-  - basis consists of translations and dilations of the mother wavelet $\phi(\frac{x-b}{a})$
+  - basis consists of <span class="cblue">translations</span> and <span class="corange">dilations</span> of the mother wavelet $\phi(\frac{x-\cblue{b}}{\corange{a}})$
 - wavelet vocab
   - discrete wavelet transform: set $a=2^{-j}, b = k \cdot 2^{-j}$, where $k$ and $j$ are integers
     - starts from multiresolution analysis (mallat, 1989)
@@ -91,11 +92,11 @@ typora-copy-images-to: ../assets
   - undecimated - highly overparameterized, exists at every location
 - website to [explore different wavelets](http://wavelets.pybytes.com/)
   - ex. **Haar wavelet** (step function on [0, 1]
-    - ![haar](../assets/haar.png)
-    - define translations and dilations $\phi_{jk}(x) = \text{const} \cdot \phi(2^j x - k)$
+    - <img style="width: 600px; max-width: 100%;" src="../assets/haar.svg" alt="Haar wavelet: scale and shift"/>
+    - define <span class="cblue">translations</span> and <span class="corange">dilations</span> $$\phi_{jk}(x) = \text{const} \cdot \phi(\corange{2^j} x - \cblue{k})$$
       - j, k are still integers
       - this is still orthogonal
-  - ex. **Gabor==Morlet wavelet**: $\phi_\sigma(x) = c \cdot \underbrace{e^{-\frac 1 2 x^2}}_{\text{gaussian window}} \underbrace{(e^{i\sigma x} - \kappa_\sigma)}_{\text{frequency}}$
+  - ex. **Gabor==Morlet wavelet**: $$\phi_\sigma(x) = c \cdot \cblue{\underbrace{e^{-\frac 1 2 x^2}}_{\text{gaussian window}}} \corange{\underbrace{(e^{i\sigma x} - \kappa_\sigma)}_{\text{frequency}}}$$
   - ex. **Mexican hat wavelet** - 2nd deriv of Gaussian pdf (in 2d, called Laplacian of Gaussian)
   - ex. **Daubechies wavelet**
   - ex. **coiflet**
@@ -108,7 +109,7 @@ typora-copy-images-to: ../assets
   - The **approximation coefficients** represent the output of the low pass filter (averaging filter) of the DWT.
   - The **detail coefficients** represent the output of the high pass filter (difference filter) of the DWT
   - [pywt 2d](https://pywavelets.readthedocs.io/en/latest/ref/2d-decompositions-overview.html) can decompose in different ways
-    - ![Screen Shot 2019-12-11 at 2.47.53 PM](../assets/wavelet_coefs.png)
+    - <img style="width: 450px; max-width: 100%;" src="../assets/wavelet_coefs.svg" alt="2-D wavelet decomposition layouts"/>
     - wavelet packet uses linear combinations of wavelets
 
 ## properties of different wavelet bases
@@ -122,18 +123,16 @@ typora-copy-images-to: ../assets
   - more vanishing moments = higher regularity
   - low regularity - more jagged wavelets, less smooth reconstructions
 - invertibility
-  - requires *admissibility condition*, which at least requires wavelets have vanishing mean $\int \psi(x) \mathrm{d} x=0$ 
+  - requires *admissibility condition*, which at least requires wavelets have vanishing mean $\int \psi(x) \mathrm{d} x=0$
 
 ## wavelet analysis
 
 - orthogonal wavelet basis: $\phi_{(s,l)} (x) = 2^{-s/2} \phi (2^{-s} x-l)$
-  - *scaling function* $W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)$ where $\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}$
+  - *scaling function* $W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)$ where $$\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}$$
 - one pattern of coefficients is smoothing and another brings out detail = called *quadrature mirror filter pair*
 - there is also a fast discrete wavelet transform (Mallat)
 - *basis of adapted waveform* - best basis function for a given signal representation
 - differential operator and capable of being tuned to act at any desired scale
-
-
 
 ## more general wavelets
 
@@ -146,3 +145,4 @@ typora-copy-images-to: ../assets
   - constructed by parabolic [scaling](https://en.wikipedia.org/wiki/Scaling_(geometry)), shearing, and [translation](https://en.wikipedia.org/wiki/Translation_(geometry)) applied to a few [generating functions](https://en.wikipedia.org/wiki/Generating_function)
   - allows for things like stretching an ellipsoid in one direction rather than always having the same size
 - [curvelets](https://en.wikipedia.org/wiki/Curvelet) - degree of localisation in orientation varies with scale. In particular, fine-scale basis functions are long ridges
+- modern works even learn wavelets, e.g. [AWD](https://arxiv.org/abs/2107.09145)

@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,7 +58,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_omics';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -102,8 +103,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -156,7 +157,7 @@
     
     
     <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
   
   
 </a></div>
@@ -173,16 +174,8 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    overview 👋
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ovw_transfer_learning.html">1.1. transfer learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">1.2. disentanglement</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. omics</a></li>
@@ -191,77 +184,70 @@
 <li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.9. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.10. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.11. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.12. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.13. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_embeddings.html">1.9. embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">6.7. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.8. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.9. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">6.10. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
@@ -485,7 +471,7 @@ document.write(`
 <li><p>rna</p>
 <ul>
 <li><p>~~<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC165459/">RNABase: an annotated database of RNA structures</a>~~ (2003) - no longer maintained</p></li>
-<li><p><a class="reference external" href="https://www.pnas.org/content/106/1/97">Accurate SHAPE-directed RNA structure determination | PNAS</a> (deigan et al. 2009) - chemical probing</p></li>
+<li><p>Accurate SHAPE-directed RNA structure determination | PNAS (<a class="reference external" href="https://www.pnas.org/content/106/1/97">deigan et al. 2009</a>) - chemical probing</p></li>
 </ul>
 </li>
 </ul>
@@ -504,7 +490,7 @@ document.write(`
 <li><p>uses an Ensemble of Two-dimensional Deep Neural Networks and Transfer Learning</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://github.com/keio-bioinformatics/mxfold2/">mxfold2</a> (sato et al. 2021)</p></li>
+<li><p>mxfold2 (<a class="reference external" href="https://github.com/keio-bioinformatics/mxfold2/">sato et al. 2021</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -553,16 +539,16 @@ document.write(`
 <li><p>tertiary - complete 3d structure (e.g. bends, twists)</p></li>
 </ul>
 </li>
-<li><p><img alt="" src="../../_images/rna_secondary.png" /></p></li>
+<li><p>decomposition of an RNA secondary structure into structural elements. Energy contributions are assigned to the plane faces depending on their type and the nucleotides delimiting them. “Stem loops”, i.e., stacked pairs of base pairs, from the unit of helices <img style="width: 450px; max-width: 100%;" src="../assets/rna_secondary.svg" alt="RNA secondary structure elements"/></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/RNA-Seq">RNA-Seq - Wikipedia</a> - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/RNA-Seq">RNA-Seq</a> - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome</p></li>
 </ul>
 </section>
 <section id="algorithms">
 <h3><span class="section-number">1.3.2.2. </span>algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf">computational bio book ch 10</a> (kellis, 2016)</p>
+<li><p>computational bio book ch 10 (<a class="reference external" href="https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf">kellis, 2016</a>)</p>
 <ul>
 <li><p>2 main approaches to rna folding (i.e. predicting rna structure):</p>
 <ul>
@@ -587,12 +573,12 @@ document.write(`
 <li><p>this induces a tree-structure to theh problem</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.pnas.org/content/77/11/6309.short">nussinov algorithm</a> (1978)</p>
+<li><p>nussinov algorithm (<a class="reference external" href="https://www.pnas.org/content/77/11/6309.short">1978</a>)</p>
 <ul>
 <li><p>ignores stacking interactions between neighboring pairs (i.e. assumes there are no pseudo-knots)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://academic.oup.com/nar/article-abstract/9/1/133/1043226">zuker algorithm</a> (1981) - includes stacking energies</p></li>
+<li><p>zuker algorithm (<a class="reference external" href="https://academic.oup.com/nar/article-abstract/9/1/133/1043226">1981</a>) - includes stacking energies</p></li>
 </ul>
 </li>
 </ul>
@@ -604,7 +590,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0168165617315195">Recent advances in RNA folding - ScienceDirect</a> (fallmann et al. 2017)</p>
+<li><p>Recent advances in RNA folding (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0168165617315195">fallmann et al. 2017</a>)</p>
 <ul>
 <li><p>algorithmic advances</p>
 <ul>
@@ -632,13 +618,13 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/">Folding and Finding RNA Secondary Structure</a> (matthews et al. 2010)</p></li>
+<li><p>Folding and Finding RNA Secondary Structure (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/">matthews et al. 2010</a>)</p></li>
 <li><p>new work drops the assumption of no knots (e.g. crossings)</p>
 <ul>
 <li><p>project to topology (e.g. low/high genus) - e.g. projecting to a torus can remove crossings but still allow us to use dynamic programming</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.nature.com/articles/s41467-021-21194-4">RNA secondary structure prediction using deep learning with thermodynamic integration</a> (sato et al. 2021)</p>
+<li><p>RNA secondary structure prediction using deep learning with thermodynamic integration (<a class="reference external" href="https://www.nature.com/articles/s41467-021-21194-4">sato et al. 2021</a>)</p>
 <ul>
 <li><p>RNA-folding scores learnt using a DNN are integrated together with Turner’s nearest-neighbor free energy parameters</p>
 <ul>
@@ -652,7 +638,7 @@ document.write(`
 <section id="d-rna-structure-prediction">
 <h3><span class="section-number">1.3.2.3. </span>3d rna structure prediction<a class="headerlink" href="#d-rna-structure-prediction" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>Geometric deep learning of RNA structure  (<a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">townshend, …, dror 2021</a> - atomic ai + stanford, <em>science</em>)</p>
+<li><p>Geometric deep learning of RNA structure (<a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">townshend, …, dror 2021</a> - atomic ai + stanford, <em>science</em>)</p>
 <ul class="simple">
 <li><p>uses neural network as scoring mode (called ARES = Atomic Rotationally Equivariant Scorer)</p>
 <ul>
@@ -684,7 +670,7 @@ document.write(`
 </ul>
 <ol class="arabic simple" start="3">
 <li><p>output - sometimes pick lowest energy structure, somestimes cluster low-energy clusters and pick centroid</p></li>
-<li><p>all-atom structure reconstruction - the fragment matching algorithm (<a class="reference external" href="https://academic.oup.com/bioinformatics/article-abstract/25/24/3259/235032">Jonikas et al., 2009a</a>) is often used, followed by structure refinement to remove steric clashes and chain breaks</p></li>
+<li><p>all-atom structure reconstruction - the fragment matching algorithm (<a class="reference external" href="https://academic.oup.com/bioinformatics/article-abstract/25/24/3259/235032">jonikas et al., 2009a</a>) is often used, followed by structure refinement to remove steric clashes and chain breaks</p></li>
 </ol>
 </li>
 <li><p>12 papers that differ slightly in these steps</p>
@@ -715,7 +701,7 @@ document.write(`
 <ul class="simple">
 <li><p>the standard way to obtain the 3D structure of a protein is X-ray crystallography</p>
 <ul>
-<li><p>takes ~1 year &amp;  $120k to obtain the structure of a single protein through X-ray crystallography (<a class="reference external" href="https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/">source</a>)</p></li>
+<li><p>takes ~1 year &amp; $120k to obtain the structure of a single protein through X-ray crystallography (<a class="reference external" href="https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/">source</a>)</p></li>
 <li><p>alternative: nuclear magnetic resonance (NMR) spectroscopy</p></li>
 </ul>
 </li>
@@ -750,7 +736,7 @@ document.write(`
 </ul>
 </li>
 <li><p>protein folding - predict 3d positions of all amino acids in the output structure</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1906.08230">Evaluating Protein Transfer Learning with TAPE</a> - given embeddings, 5 tasks to measure downstream performance (rao et al. 2019)</p>
+<li><p>Evaluating Protein Transfer Learning with TAPE (<a class="reference external" href="https://arxiv.org/abs/1906.08230">rao et al. 2019</a>) - given embeddings, 5 tasks to measure downstream performance (rao et al. 2019)</p>
 <ul>
 <li><p>tasks: structure (SS + contact), evolutionary (homology), engineering (fluorescence + stability)</p></li>
 </ul>
@@ -763,12 +749,12 @@ document.write(`
 <section id="deep-learning-papers">
 <h3><span class="section-number">1.3.3.3. </span>deep-learning papers<a class="headerlink" href="#deep-learning-papers" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.nature.com/articles/s41586-021-04184-w">De novo protein design by deep network hallucination | Nature</a> (anishchenko…baker, 2021)</p>
+<li><p>De novo protein design by deep network hallucination | Nature (<a class="reference external" href="https://www.nature.com/articles/s41586-021-04184-w">anishchenko…baker, 2021</a>)</p>
 <ul>
 <li><p>deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.nature.com/articles/s41586-021-03819-2">Highly accurate protein structure prediction with AlphaFold | Nature</a> (jumper, …, hassabis, 2021)</p>
+<li><p>Highly accurate protein structure prediction with AlphaFold | Nature (<a class="reference external" href="https://www.nature.com/articles/s41586-021-03819-2">jumper, …, hassabis, 2021</a>)</p>
 <ul>
 <li><p><a class="reference external" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">supp</a></p></li>
 <li><p><a class="reference external" href="https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/">best blog post</a> (<a class="reference external" href="https://towardsdatascience.com/unfolding-alphafold-683d576a54a3">other blog post</a>)</p></li>
@@ -806,7 +792,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://proceedings.mlr.press/v139/rao21a.html">MSA Transformer</a> (rao et al. 2021) - predicts contact prediction</p>
+<li><p>MSA Transformer (<a class="reference external" href="https://proceedings.mlr.press/v139/rao21a.html">rao et al. 2021</a>) - predicts contact prediction</p>
 <ul>
 <li><p>train via masking</p></li>
 <li><p>output (contact prediction) is just linear combination of attention heads finetuned on relatively little data</p></li>
@@ -817,13 +803,13 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2202.05146">EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction</a></p></li>
+<li><p>EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction (<a class="reference external" href="https://arxiv.org/abs/2202.05146">stärk et al. 2022</a>)</p></li>
 </ul>
 </section>
 <section id="covid">
 <h3><span class="section-number">1.3.3.4. </span>covid<a class="headerlink" href="#covid" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/">The Coronavirus Nucleocapsid Is a Multifunctional Protein</a> (mcbride et al. 2014)</p>
+<li><p>The Coronavirus Nucleocapsid Is a Multifunctional Protein (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/">mcbride et al. 2014</a>)</p>
 <ul>
 <li><p>coronavirus nucleocapsid = N protein</p></li>
 </ul>
@@ -836,8 +822,8 @@ document.write(`
 <ul class="simple">
 <li><p>videos</p>
 <ul>
-<li><p><a class="reference external" href="https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841">Leor Weinberger: Can we create vaccines that mutate and spread? | TED Talk</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Dh0RbiAf2jY">Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium - YouTube</a></p></li>
+<li><p><a class="reference external" href="https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841">Leor Weinberger: Can we create vaccines that mutate and spread?</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Dh0RbiAf2jY">Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium</a></p></li>
 </ul>
 </li>
 <li><p>2 issues</p>
@@ -883,7 +869,7 @@ document.write(`
 <li><p>HIP also enters the genome (so corresponding TIP does this as well)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor">Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance</a> (chaturvedi…weinberger, 2021)</p>
+<li><p>Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor">chaturvedi…weinberger, 2021</a>)</p>
 <ul>
 <li><p>DIP = defective interfering particle = wild-type virus</p></li>
 <li><p>single administration of TIP RNA inhibits SARS-CoV-2 sustainably in continuous cultures</p></li>
@@ -1025,11 +1011,6 @@ By Chandan Singh
   
   <div class="footer-item">
     
-<div class="extra_footer">
-  <p>
-Many of these images are taken from resources on the web.
-</p>
-</div>
   </div>
   
 </div>

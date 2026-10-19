@@ -22,19 +22,14 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ## history
 
 - ai
-
   - people: turing, von neumman, marvin minsky, mccarthy...
   - ai: birth at 1956 conference
     - vision: marvin minsky thought it would be a summer project
-
   - lighthill debate 1973 - was ai worth funding?
   - intelligence tends to be developed by young children
   - cortex grew very rapidly
-
 - cybernetics / artficial neuro nets
-
   - people: norbert weiner, mcculloch & pitts, rosenblatt
-
   - neuro
     - hubel & weisel (1962, 1965) simple, complex, hypercomplex cells
     - neocognitron fukushima (1980)
@@ -51,14 +46,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   1. *descriptive* brain model - encode / decode external stimuli
   2. *mechanistic* brian cell / network model - simulate the behavior of a single neuron / network
   3. *interpretive* (or normative) brain model - why do brain circuits operate how they do
-
 - *receptive field* - the things that make a neuron fire
-
   - retina has on-center / off-surround cells - stimulated by points
   - then, V1 has differently shaped receptive fields
-
 - *efficient coding hypothesis* - brain learns different combinations (e.g. lines) that can efficiently represent images
-
   1. sparse coding (Olshausen and Field, 1996)
   2. ICA (Bell and Sejnowski, 1997)
   3. predictive coding (Rao and Ballard, 1999)
@@ -69,19 +60,23 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ## modeling neurons
 
 - membrane can be treated as a simple circuit, with a capacitor and resistor
-
 - nernst battery
   1. osmosis (for each ion)
   2. electrostatic forces (for each ion)
-  - together these yield Nernst potential $E = \frac{k_B T}{zq} ln \frac{[in]}{[out]}$
+  - together these yield Nernst potential $E = \frac{k_B T}{zq} \ln \frac{[in]}{[out]}$
     - T is temp
     - q is ionic charge
     - z is num charges
   - part of voltage is accounted for by nernst battery $V_{rest}$
   - yields $\tau \frac{dV}{dt} = -V + V_\infty$ where $\tau=R_mC_m=r_mc_m$
   - equivalently, $\tau_m \frac{dV}{dt} = -((V-E_L) - g_s(t)(V-E_s) r_m) + I_e R_m $
-  
-- ![](../assets/5_1_2.png)
+- hodgkin and huxley's nobel equation
+  - $$C_m \frac{dV}{dt} = -\sum_i g_i (V - E_i) + I_e$$
+  - $$-C_m \frac{dV}{dt} = \cblue{g_L(V - E_L)} + \corange{\bar{g}_{\text{K}} n^4 (V - E_{\text{K}})} + \cgreen{\bar{g}_{\text{Na}} m^3 h (V - E_{\text{Na}})} - \cpink{I_e}$$
+    - <span class="cblue">leak current</span>, <span class="corange">potassium current</span>, <span class="cgreen">sodium current</span>, <span class="cpink">injected current</span>
+    - $$\frac{dn}{dt} = \alpha_n(V)(1-n) - \beta_n(V) n$$
+    - $$\frac{dm}{dt} = \alpha_m(V)(1-m) - \beta_m(V) m$$
+    - $$\frac{dh}{dt} = \alpha_h(V)(1-h) - \beta_h(V) h$$
 
 ## simplified model neurons
 
@@ -91,20 +86,20 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - then $V = V_{reset}$
   - approximation is poor near threshold
   - can include threshold by saying
-    - when $V = V_{max}$, a spike is fired
+    - when $V = V_{\max}$, a spike is fired
     - then $V = V_{reset}$
 - modeling multiple variables
   - also model a K current
   - can capture things like resonance
 - *theta neuron* (Ermentrout and Kopell)
-  - ![](../assets/5_3_1.png)
+  - <img style="width: 560px; max-width: 100%;" src="../assets/5_3_1.svg" alt="Theta neuron"/>
   - often used for periodically firing neurons (it fires spontaneously)
 
 ## modeling dendrites / axons
 
 - cable theory - Kelvin
 - voltage V is a function of both x and t
-- ![](../assets/5_4_1.png)
+- <img style="width: 720px; max-width: 100%;" src="../assets/5_4_1.svg" alt="The cable equation"/>
 - separate into sections that don't depend on x
   - coupling conductances link the sections (based on area of compartments / branching)
 - Rall model for dendrites
@@ -114,7 +109,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - hippocampus - when inputs arrive at soma, similiar shape no matter where they come in = *synaptic scaling*
   - where inputs enter influences how they sum
   - dendrites can generate spikes (usually calcium) / backpropagating spikes
-- ex. *Jeffress model*  - sound localized based on timing difference between ears
+- ex. *Jeffress model* - sound localized based on timing difference between ears
 - ex. direction selectivity in retinal ganglion cells - if events arive at dendrite far -> close, all get to soma at same time and add
 
 ## circuit-modeling basics
@@ -198,26 +193,24 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - response := firing rate r(t)
   - stimulus := s
 - simple linear model
-
   - r(t) = c * s(t)
 - *weighted linear model* - takes into account previous states weighted by f
-  
   1. *temporal filtering*
-    - r(t) = $f_0 \cdot s_0 + ... + f_t \cdot s_t =  \sum s_{t-k} f_k$ where f weights stimulus over time
+    - r(t) = $$f_0 \cdot s_0 + ... + f_t \cdot s_t =  \sum s_{t-k} f_k$$ where f weights stimulus over time
     - could also make this an integral, yielding a convolution:
-    - r(t) = $\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau)$
+    - r(t) = $$\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau)$$
     - a linear system can be thought of as a system that searches for portions of the signal that resemble its filter f
     - leaky integrator - sums its inputs with f decaying exponentially into the past
     - flaws
       - no negative firing rates
       - no extremely high firing rates
       - can add a nonlinear function g of the linear sum can fix this
-        - r(t) = $g(\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau))$
+        - r(t) = $$g(\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau))$$
   2. *spatial filtering*
-    - r(x,y) = $\sum_{x',y'} s_{x-x',y-y'} f_{x',y'}$ where f again is spatial weights that represent the spatial field
-    - could also write this as a convolution
-    - for a retinal center surround cell, f is positive for small $\Delta x$ and then negative for large $\Delta x$
-      - can be calculated as a narrow, large positive Gaussian + spread out negative Gaussian
+     - r(x,y) = $$\sum_{x',y'} s_{x-x',y-y'} f_{x',y'}$$ where f again is spatial weights that represent the spatial field
+     - could also write this as a convolution
+     - for a retinal center surround cell, f is positive for small $\Delta x$ and then negative for large $\Delta x$
+       - can be calculated as a narrow, large positive Gaussian + spread out negative Gaussian
   - can combine above to make *spatiotemporal filtering*
     - filtering = convolution = projection
 
@@ -229,7 +222,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - need to keep track of stimulus over time
   - solution: sample P(response\|s) to many stimuli to characterize what in input triggers responses
 - find vector *f* that captures features that lead to spike
-  - dimensionality reduction - ex. discretize 
+  - dimensionality reduction - ex. discretize
   - value at each time $t_i$ is new dimension
   - commonly use Gaussian white noise
   - time step sets cutoff of highest frequency present
@@ -239,55 +232,45 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - use this f as filter
 - determining the nonlinear input/output function *g*
   - replace stimulus in P(spike\|stimulus) with P(spike\|$s_1$), where s1 is our filtered stimulus
-    - use bayes rule $g=P(spike\|s_1)=\frac{P(s_1\|spike)P(spike)}{P(s_1)}$
-    - if $P(s_1\|spike) \approx P(s_1)$ then response doesn't seem to have to do with stimulus
-- incorporating many features *$f_1,...,f_n$*
+    - use bayes rule $$g=P(spike\vert s_1)=\frac{P(s_1\vert spike)P(spike)}{P(s_1)}$$
+    - if $$P(s_1\vert spike) \approx P(s_1)$$ then response doesn't seem to have to do with stimulus
+- incorporating many features *$$f_1,...,f_n$$*
   - here, each $f_i$ is a vector of weights
-  - $r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)$
+  - $$r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)$$<!-- -->
   - could use *PCA* - discovers low-dimensional structure in high-dimensional data
   - each f represents a feature (maybe a curve over time) that fires the neuron
 
 **variability**
 
 - hidden assumptions about time-varying firing rate and single spikes
-
   - smooth function RFT can miss some stimuli
-  
 - statistics of stimulus can effect P(spike\|stimulus)
-
   - Gaussian white noise is nice because no way to filter it to get structure
-  
 - identifying good filter
-  - want $P(s_f\|spike)$ to differ from $P(s_f)$ where $s_f$ is calculated via the filter
+  - want $$P(s_f\vert spike)$$ to differ from $P(s_f)$ where $s_f$ is calculated via the filter
   - instead of PCA, could look for f that directly maximizes this difference (Sharpee & Bialek, 2004)
   - *Kullback-Leibler divergence* - calculates difference between 2 distributions
-    - $D_{KL}(P(s),Q(s)) = \int ds P(s) log_2 P(s) / Q(s)$
+    - $D_{KL}(P(s),Q(s)) = \int ds P(s) \log_2 P(s) / Q(s)$
   - maximizing KL divergence is equivalent to maximizing mutual info between spike and stimulus
     - this is because we are looking for most informative feature
     - this technique doesn't require that our stimulus is white noise, so can use natural stimuli
     - maximization isn't guaranteed to uniquely converge
-  
 - modeling the noise
   - need to go from r(t) -> spike times
-  
   - divide time T into n bins with p = probability of firing per bin
-  
   - over some chunk T, number of spikes follows binomial distribution (n, p)
-    
   - if n gets very large, binomial approximates Poisson
     - $\lambda$ = spikes in some set time (mean = $\lambda$, var = $\lambda$)
     1. can test if distr is Poisson with *Fano factor*=mean/var=1
       2. interspike intervals have exponential distribution	- if fires a lot, this can be bad assumption (due to refractory period)
-  
 - generalized linear model adds explicit spike-generation / post-spike filter (Pillow et al. 2008)
-  
-  - $P(\text{spike at }t)\sim\exp((f_1*s + h_1*r)) $
+  - $$P(\text{spike at }t)\sim\exp((f_1*s + h_1*r)) $$<!-- -->
   - post-spike filter models refractory period
   - *Paninski* showed that using exponential nonlinearity allows this to be optimized
   - could add in firing of other neurons
   - *time-rescaling theorem* - tests how well we have captured influences on spiking (Brown et al 2001)
     - scaled ISIs ($t_{i-1}-t_i$) r(t) should be exponential
-  
+
 
 ## neural decoding
 
@@ -299,16 +282,16 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - when dots all move in same direction (100% coherence), easy
     - neuron recorded in MT - tracks dots
     - count firing rate when monkey tracks in right direction
-    - count firing rate when  monkey tracks in wrong direction
+    - count firing rate when monkey tracks in wrong direction
     - as coherence decreases, these firing rates blur
   - need to get P(+ or - \| r)
     - can set a threshold on r by maximizing likelihood
       - P(r\|+) and P(r\|-) are likelihoods
     - *Neyman-Pearson lemma* - likelihood ratio test is the most efficient statistic, in that is has the most power for a given size
-      - $\frac{p(r\|+)}{p(r\|-)} > 1?$
+      - $$\frac{p(r\vert +)}{p(r\vert -)} > 1?$$<!-- -->
 - accumulated evidence - we can accumulate evidence over time by multiplying these probabilities
   - instead we take sum the logs, and compare to 0
-  - $\sum_i ln \frac{p(r_i\|+)}{p(r_i\|-)} > 0?$
+  - $$\sum_i \ln \frac{p(r_i\vert +)}{p(r_i\vert -)} > 0?$$<!-- -->
   - once we hit some threshold for this sum, we can make a decision + or -
 - experimental evidence (Kiani, Hanks, & Shadlen, Nat. Neurosci 2006)
   - monkey is making decision about whether dots are moving left/right
@@ -319,12 +302,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - neuroscience ex. photoreceptor cells P(noise\|r) is much larger than P(signal\|r)
     - therefore threshold on r is high to minimize total mistakes
 - cost of acting/not acting
-  - loss for predicting + when it is -: $L_- \cdot P[+\|r]$
-  - loss for predicting - when it is +: $L_+ \cdot P[-\|r]$
-  - cut your losses: answer + when average Loss$_+$ < Loss$_-$
-    - i.e. $L_+ \cdot P[-\|r]$ < $L_- \cdot P[+\|r]$
+  - loss for predicting + when it is -: $$L_- \cdot P[+\vert r]$$
+  - loss for predicting - when it is +: $$L_+ \cdot P[-\vert r]$$
+  - cut your losses: answer + when average Loss$$_+$$ < Loss$$_-$$
+    - i.e. $$L_+ \cdot P[-\vert r]$$ < $$L_- \cdot P[+\vert r]$$
   - rewriting with Baye's rule yields new test:
-    - $\frac{p(r\|+)}{p(r\|-)}> L_+ \cdot P[-] / L_- \cdot P[+]$
+    - $$\frac{p(r\vert +)}{p(r\vert -)}> L_+ \cdot P[-] / L_- \cdot P[+]$$<!-- -->
     - here the loss term replaces the 1 in the Neyman-Pearson lemma
 
 **population coding and bayesian estimation**
@@ -336,16 +319,19 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - not general - some neurons aren't tuned, are noisier
   - not *optimal* - making use of all information in the stimulus/response distributions
 - *bayesian inference*
-  - $p(s\|r) = \frac{p(r\|s)p(s)}{p( r)}$
-  - maximum likelihood: s* which maximizes p(r\|s)
-  - MAP = maximum a posteriori: s* which mazimizes p(s\|r)
+  - $$\cgreen{p(s\vert r)} = \frac{\cblue{p(r\vert s)}\corange{p(s)}}{p( r)}$$<!-- -->
+  - maximum <span class="cblue">likelihood</span>: s* which maximizes p(r\|s)
+  - MAP = maximum <span class="cgreen">a posteriori</span>: s* which mazimizes p(s\|r)
 - simple continuous stimulus example
   - setup
     - s - orientation of an edge
     - each neuron's average firing rate=tuning curve $f_a(s)$ is Gaussian (in s)
     - let $r_a$ be number of spikes for neuron a
     - assume receptive fields of neurons span s: $\sum r_a (s)$ is const
-    - ![](../assets/3_2_2.png)
+    - response $$r_a$$ to stimulus $$s$$, tuning curve $$f_a(s)$$ (sketch: single bump over $$s$$); $$\vec{r} = \{r_1, r_2, \dots, r_N\}$$
+      1. assume poisson: $$P_T[k] = (rT)^k \exp(-rT)/k!$$
+        - $$P[r_a \vert s] = \frac{(f_a(s)T)^{r_a T}}{(r_a T)!} \exp(-f_a(s)T)$$
+      2. assume independent: $$P[\mathbf{r} \vert s] = \prod_{a=1}^N \frac{(f_a(s)T)^{r_a T}}{(r_a T)!} \exp(-f_a(s)T)$$
   - solving
     - maximizing log-likelihood with respect to s			-
     - take derivative and set to 0
@@ -353,9 +339,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - if all the $\sigma$ are same, $s^* = \frac{\sum r_a s_a}{\sum r_a}$
         - this is the population vector
     - maximum *a posteriori*
-      - $ln \: p(s\|r) = ln \: P(r\|s) + ln \: p(s) = ln \: P(r )$
-      - $s^* = \frac{T \sum r_a s_a / \sigma^2_a + s_{prior} / \sigma^2_{prior}}{T \sum r_a / \sigma^2_a + 1/\sigma^2_{prior}}$
-      - this takes into account the prior
+      - $$\ln \: \cgreen{p(s\vert r)} = \ln \: \cblue{P(r\vert s)} + \ln \: \corange{p(s)} = \ln \: P(r )$$<!-- -->
+      - $$s^* = \frac{\cblue{T \sum r_a s_a / \sigma^2_a} + \corange{s_{prior} / \sigma^2_{prior}}}{\cblue{T \sum r_a / \sigma^2_a} + \corange{1/\sigma^2_{prior}}}$$<!-- -->
+      - this takes into account the <span class="corange">prior</span>
         - narrow prior makes it matter more
     - doesn't incorporate correlations in the population
 
@@ -364,8 +350,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - decoding s -> $s^*$
 - want an estimator $s_{Bayes}=s_B$ given some response r
   - error function $L(s,s_{B})=(s-s_{B})^2$
-  - minimize $\int ds \: L(s,s_{B}) \: p(s\|r)$ by taking derivative with respect to $s_B$
-  - $s_B = \int ds \: p(s\|r) \: s$ - the conditional mean (spike-triggered average)
+  - minimize $$\int ds \: L(s,s_{B}) \: p(s\vert r)$$ by taking derivative with respect to $s_B$
+  - $$s_B = \int ds \: p(s\vert r) \: s$$ - the conditional mean (spike-triggered average)
 - add in spike-triggered average at each spike
   - if spike-triggered average looks exponential, can never have smooth downwards stimulus
   - could use 2 neurons (like in H1) and replay the second with negative sign
@@ -378,62 +364,60 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - filtered again to account for slow timescale of BOLD signal
   2. decoding
     - maximize p(s\|r) by maximizing p(r\|s) p(s), and assume p(s) uniform
-    - 30 signals that have highest match to predicted signal are averaged 
+    - 30 signals that have highest match to predicted signal are averaged
     - yields pretty good pictures
 
 ## information theory
 
 **information and entropy**
 
-- surprise for seeing a spike h(p) = $-log_2 (p)$
+- surprise for seeing a spike h(p) = $-\log_2 (p)$
 - entropy = average information
 - code might not align spikes with what we are encoding
 - how much of the variability in r is encoding s
   - define q as en error
-    - $P(r_+\|s=+)=1-q$
-    - $P(r_-\|s=+)=q$
+    - $$P(r_+\vert s=+)=1-q$$<!-- -->
+    - $$P(r_-\vert s=+)=q$$<!-- -->
     - similar for when s=-
-  - total entropy: $H(R ) = - P(r_+) log P(r_+) - P(r_-)log P(r_-)$
-  - noise entropy: $H(R\|S=+) = -q log q - (1-q) log (1-q)$
-  - mutual info I(S;R) = $H(R ) - H(R\|S) $ = total entropy - average noise entropy
+  - <span class="cblue">total entropy</span>: $$\cblue{H(R )} = - P(r_+) \log P(r_+) - P(r_-)\log P(r_-)$$
+  - <span class="corange">noise entropy</span>: $$\corange{H(R\vert S=+)} = -q \log q - (1-q) \log (1-q)$$
+  - mutual info I(S;R) = $$\cblue{H(R )} - \corange{H(R\vert S)} $$ = <span class="cblue">total entropy</span> - average <span class="corange">noise entropy</span>
     - = $D_{KL} (P(R,S), P(R )P(S))$
 - *grandma's famous mutual info recipe*
   - for each s
     - P(R\|s) - take one stimulus and repeat many times (or run for a long time)
     - H(R\|s) - noise entropy
-  - $H(R\|S)=\sum_s P(s) H(R\|s)$
-  - $H(R ) $ calculated using $P(R ) = \sum_s P(s) P(R\|s)$
+  - $$H(R\vert S)=\sum_s P(s) H(R\vert s)$$<!-- -->
+  - $H(R ) $ calculated using $$P(R ) = \sum_s P(s) P(R\vert s)$$
 
 **info in spike trains**
 
 1. information in spike patterns
-  - divide pattern into time bins of 0 (no spike) and 1 (spike)
-  - binary words w with letter size $\Delta t$, length T (Reinagel & Reid 2000)
-    - can create histogram of each word
-    - can calculate entropy of word 
-  - look at distribution of words for just one stimulus
-    - distribution should be narrower
-  - calculate $H_{noise}$ - average over time with random stimuli and calculate entropy
-    - varied parameters of word: length of bin (dt) and length of word (T)
-    - there's some limit to dt at which information stops increasing
-      - this represents temporal resolution at which jitter doesn't stop response from identifying info about the stimulus
-    - corrections for finite sample size (Panzeri, Nemenman,...)
-
+   - divide pattern into time bins of 0 (no spike) and 1 (spike)
+   - binary words w with letter size $\Delta t$, length T (Reinagel & Reid 2000)
+     - can create histogram of each word
+     - can calculate entropy of word
+   - look at distribution of words for just one stimulus
+     - distribution should be narrower
+   - calculate $H_{noise}$ - average over time with random stimuli and calculate entropy
+     - varied parameters of word: length of bin (dt) and length of word (T)
+     - there's some limit to dt at which information stops increasing
+       - this represents temporal resolution at which jitter doesn't stop response from identifying info about the stimulus
+     - corrections for finite sample size (Panzeri, Nemenman,...)
 2. information in single spikes - how much info does single spike tell us about stimulus
-  - don't have to know encoding, mutual info doesn't care
-  1. calculate entropy for random stimulus
-
-    - $p=\bar{r} \Delta t$ where $\bar{r}$ is the mean firing rate
-  2. calculate entropy for specific stimulus
-  - let $P(r=1\|s) = r(t) \Delta t$
-  - let $P(r=0\|s) = 1 - r(t) \Delta t$
-  - get r(t) by having simulus on for long time
-  - *ergodicity* - a time average is equivalent to averging over the s ensemble
-  - info per spike $I(r,s) = \frac{1}{T} \int_0^T dt \frac{r(t)}{\bar{r}} log \frac{r(t)}{\bar{r}}$
-    - timing precision reduces r(t)
-    - low mean spike rate -> high info per spike
-  - ex. rat runs through place field and only fires when it's in place field
-    - spikes can be sharper, more / less frequent
+   - don't have to know encoding, mutual info doesn't care
+   1. calculate entropy for random stimulus
+      - $p=\bar{r} \Delta t$ where $\bar{r}$ is the mean firing rate
+   2. calculate entropy for specific stimulus
+      - let $$P(r=1\vert s) = r(t) \Delta t$$
+      - let $$P(r=0\vert s) = 1 - r(t) \Delta t$$
+      - get r(t) by having simulus on for long time
+      - *ergodicity* - a time average is equivalent to averging over the s ensemble
+      - info per spike $I(r,s) = \frac{1}{T} \int_0^T dt \frac{r(t)}{\bar{r}} \log \frac{r(t)}{\bar{r}}$
+        - timing precision reduces r(t)
+        - low mean spike rate -> high info per spike
+   - ex. rat runs through place field and only fires when it's in place field
+     - spikes can be sharper, more / less frequent
 
 **coding principles**
 
@@ -444,7 +428,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - want to use each of our "symbols" (ex. different firing rates) equally often
   - should assign equal areas of input stimulus PDF to each symbol
 - adaptation to stimulus statistics
-  - ![](../assets/4_3_1.png)
+  - adaptive representation of information. As one changes the characteristics of s(t), changes can occur in the input/output function and in the encoded feature <img style="width: 640px; max-width: 100%;" src="../assets/4_3_1.svg" alt="Adaptive representation of information"/>
   - feature adaptation (Atick and Redlich)
     - spatial filtering properties in retina / LGN change with varying light levels
     - at low light levels surround becomes weaker
@@ -467,22 +451,22 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ## modeling connections between neurons
 
 - model effects of synapse by using synaptic conductance $g_s$ with reversal potential $E_s$
-  - $g_s = g_{s,max} \cdot P_{rel} \cdot P_s$
+  - $g_s = g_{s,\max} \cdot P_{rel} \cdot P_s$
     - $P_{rel}$ - probability of release given an input spike
     - $P_s$ - probability of postsynaptic channel opening = fraction of channels opened
 - basic synapse model
   - assume $P_{rel}=1$
   - model $P_s$ with kinetic model
-    - open based on $\alpha_s$
-    - close based on $\beta_s$
-    - yields $\frac{dP_s}{dt} = \alpha_s (1-P_s) - \beta_s P_s$
+    - <span class="cblue">open</span> based on $\alpha_s$
+    - <span class="corange">close</span> based on $\beta_s$
+    - yields $$\frac{dP_s}{dt} = \cblue{\alpha_s (1-P_s)} - \corange{\beta_s P_s}$$
   - 3 synapse types
     1. AMPA - well-fit by exponential
     2. GAMA - fit by "alpha" function - has some delay
     3. NMDA - fit by "alpha" function - has some delay
 - linear filter model of a synapse
   - pick filter (ex. K(t) ~ exponential)
-  - $g_s = g_{s,max} \sum K(t-t_i)$
+  - $g_s = g_{s,\max} \sum K(t-t_i)$
 - network of integrate-and-fire neurons
   - if 2 neurons inhibit each other, get *synchrony* (fire at the same time
 
@@ -501,18 +485,18 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - input current $I_s$: $\tau_s \frac{dI_s}{dt}=-I_s + \mathbf{w} \cdot \mathbf{u}$
     - works only if we let K be exponential
   - output firing rate: $\tau_r \frac{d\nu}{dt} = -\nu + F(I_s(t))$
-  - if synapses are fast ($\tau_s << \tau_r$)
+  - if synapses are fast ($$\tau_s << \tau_r$$)
     - $\tau_r \frac{d\nu}{dt} = -\nu + F(\mathbf{w} \cdot \mathbf{u}))$
-  - if synapses are slow ($\tau_r << \tau_s$)
+  - if synapses are slow ($$\tau_r << \tau_s$$)
     - $\nu = F(I_s(t))$
   - if static inputs (input doesn't change) - this is like artificial neural network, where F is sigmoid
     - $\nu_{\infty} = F(\mathbf{w} \cdot \mathbf{u})$
     - could make these all vectors to extend to multiple output neurons
-- recurrent networks 
-  - $\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + F(W\mathbf{u} + M \mathbf{v})$
-    - $-\mathbf{v}$ is decay
-    - $W\mathbf{u}$ is input
-    - $M \mathbf{v}$ is feedback
+- recurrent networks
+  - $\tau \frac{d\mathbf{v}}{dt} = \cblue{-\mathbf{v}} + F(\corange{W\mathbf{u}} + \cgreen{M \mathbf{v}})$
+    - $\cblue{-\mathbf{v}}$ is <span class="cblue">decay</span>
+    - $\corange{W\mathbf{u}}$ is <span class="corange">input</span>
+    - $\cgreen{M \mathbf{v}}$ is <span class="cgreen">feedback</span>
   - with constant input, $v_{\infty} = W \mathbf{u}$
   - ex. edge detectors
   - V1 neurons are basically computing derivatives
@@ -604,7 +588,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - pca can also be thought of as a tool for decorrelation (pc coefs tend to be less correlated)
 - hebbian learning = fire together, wire together: $\Delta w_{ab} \propto <a, b>$ note: $<a, b>$ is correlation of a and b (average over time)
 - linear hebbian learning (perceptron with linear output)
-- $\dot{w}_i \propto <y, x_i> \propto \sum_j w_j <x_j, x_i>$ since weights change relatively slowly
+- $$\dot{w}_i \propto <y, x_i> \propto \sum_j w_j <x_j, x_i>$$ since weights change relatively slowly
   - synapse couldn't do this, would grow too large
 - oja's rule (hebbian learning w/ weight decay so ws don't get too big)
   - points to correct direction
@@ -622,7 +606,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - easier to build
   - gets more even outputs
   - only has ~1.5 million fibers
-- ![](../assets/7_2_1.png)
+- <img style="width: 640px; max-width: 100%;" src="../assets/7_2_1.svg" alt="Competitive learning with two output neurons"/>
   - most active neuron is the one whose w is closest to x
 - *competitive learning*
   - updating weights given a new input
@@ -642,12 +626,13 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - average effect of the rule is to change based on correlation matrix $\mathbf{x}^T\mathbf{x}$
 - *covariance rule*: $\tau_w \frac{d\mathbf{w}}{dt} = \mathbf{x}(v-E[v])$
   - includes LTD as well as LTP
-- *Oja's rule*: $\tau_w \frac{d\mathbf{w}}{dt} = \mathbf{x}v- \alpha v^2 \mathbf{w}$ where $\alpha>0$
+- *Oja's rule*: $$\tau_w \frac{d\mathbf{w}}{dt} = \cblue{\mathbf{x}v}- \corange{\alpha v^2 \mathbf{w}}$$ where $\alpha>0$
+  - <span class="cblue">hebb term</span> - <span class="corange">decay term</span>
 - stability
   - Hebb rule - derivative of w is always positive $\implies$ w grows without bound
   - covariance rule - derivative of w is still always positive $\implies$ w grows without bound
-    - could add constraint that $\|\|w\|\|=1$ and normalize w after every step
-  - Oja's rule - $\|\|w\|\| = 1/\sqrt{\alpha}$, so stable
+    - could add constraint that $$\vert \vert w\vert \vert =1$$ and normalize w after every step
+  - Oja's rule - $$\vert \vert w\vert \vert  = 1/\sqrt{\alpha}$$, so stable
 - solving *Hebb rule* $\tau_w \frac{d\mathbf{w}}{dt} = Q w$ where Q represents correlation matrix
   - write w(t) in terms of eigenvectors of Q
   - lets us solve for $\mathbf{w}(t)=\sum_i c_i(0)\exp(\lambda_i t / \tau_w) \mathbf{e}_i$
@@ -663,7 +648,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - **filler** - one vector that embeds the content of the constituent
   - **role** - second vector that embeds the structural role it fills
   - TPR is built by summing the outer product between roles and fillers:
-  - ![tpr](../assets/tpr.png)
+  - <img style="width: 450px; max-width: 100%;" src="../assets/tpr.svg" alt="Tensor product representation"/>
     - can optionally flatten the final TPR as is done in [mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf) if we want to compare it to a vector or an embedding
   - TPR of a structure is the sum of the TPR of its constituents
     - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
@@ -692,11 +677,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - if you assume Gausian noise, maximizing likelihood = minimizing squared error
 - generative model
   - images X
-  - causes 
-  - likelihood $P(X=x\|C=c)$
+  - causes
+  - likelihood $$P(X=x\vert C=c)$$
     - Gaussian
     - proportional to $\exp(x-Gc)$
-  - want posterior $P(C\|X)$
+  - want posterior $$P(C\vert X)$$
   - prior $p(C)$
     - assume priors causes are independent
     - want sparse distribution
@@ -705,13 +690,14 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - can implement sparse coding in a recurrent neural network
   - Olshausen & Field, 1996 - learns receptive fields in V1
 - sparse coding is a special case of *predictive coding*
-  - ![](../assets/7_3_1.png)
+  - <img style="width: 650px; max-width: 100%;" src="../assets/7_3_1.svg" alt="Predictive coding"/>
   - there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
 - recurrent sparse reconstruction ([shi...joshi, darrell, wang, 2022](https://arxiv.org/pdf/2204.10962.pdf)) - sparse reconstruction (of a single image) learns a layer that does better than self-attention
 
 ## sparse, distributed coding
 
-- $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{h^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Dh^{(t)}}||_2^2 + \lambda ||\mathbf{h^{(t)}}||_1$$
+- $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{h^{(t)}}} \min \cblue{\vert \vert \mathbf{x^{(t)}} - \mathbf{Dh^{(t)}}\vert \vert _2^2} + \corange{\lambda \vert \vert \mathbf{h^{(t)}}\vert \vert _1}$$
+  - <span class="cblue">reconstruction error</span> + <span class="corange">sparsity penalty</span>
   - $D$ is like autoencoder output weight matrix
   - h is more complicated - requires solving inner minimization problem
   - outer loop is not quite lasso - weights are not what is penalized
@@ -741,12 +727,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - doesn't work for graded signals
 - sparse coding for graded signals: olshausen & field, 1996
   - $\underset{Image}{I(x, y)} = \sum_i a_i \phi_i (x, y) + \epsilon (x,y)$
-  - loss function $\frac{1}{2} |I - \phi a|^2 + \lambda \sum_i C(a_i)$
+  - loss function $$\cblue{\frac{1}{2} \vert I - \phi a\vert ^2} + \corange{\lambda \sum_i C(a_i)}$$: <span class="cblue">reconstruction error</span> + <span class="corange">sparsity cost</span>
   - can think about difference between $L_1$ and $L_2$ as having preferred directions (for the same length of vector) - prefer directions which some zeros
   - in terms of optimization, smooth near zero
   - there is a network implementation
   - $a_i$are calculated by solving optimization for each image, $\phi$ is learned more slowly
-  - **can you get $a_i$ closed form soln?** 
+  - **can you get $a_i$ closed form soln?**
 - wavelets invented in 1980s/1990s for sparsity + compression
 - these tuning curves match those of real v1 neurons
 - applications
@@ -757,12 +743,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - sparse coding to neural recordings - finds spikes in neurons
     - learns that different layers activate together, different frequencies come out
     - found place cell bases for LFP in hippocampus
-  - nonnegative matrix factorization - like sparse coding but enforces nonnegative 
+  - nonnegative matrix factorization - like sparse coding but enforces nonnegative
   - can explicitly enforce nonnegativity
 - LCA algorithm lets us implement sparse coding in biologically plausible local manner
 - explaining away - neural responses at the population should be decodable (shouldn't be ambiguous)
 - good project: understanding properties of sparse coding bases
-- SNR = $VAR(I) / VAR(|I- \phi A|)$
+- SNR = $$VAR(I) / VAR(\vert I- \phi A\vert )$$
 - can run on data after whitening
   - graph is of power vs frequency (images go down as $1/f$), need to weighten with f
   - don't whiten highest frequencies (because really just noise)
@@ -799,7 +785,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 - Wiener filter: has Gaussian prior + likelihood
 - gaussians are everywhere because of CLT, max entropy (subject to power constraint)
-
   - for gaussian function, $d/dx f(x) = -x f(x)$
 
 ## boltzmann machines
@@ -826,8 +811,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - in rbm
   - when measuring true distr, don't see hidden vals
     - instead observe visible units and conditionally sample over hidden units
-    - $P(h|v) = \prod_i P(h_i | v)$ ~ easy to sample from
-  - when measuring sampled distr., just sample $P(h|v)$ then sample $P(v|h)$
+    - $$P(h\vert v) = \prod_i P(h_i \vert  v)$$ ~ easy to sample from
+  - when measuring sampled distr., just sample $$P(h\vert v)$$ then sample $$P(v\vert h)$$
 - ising model - only visible units
   - basically just replicates pairwise statistics (kind of like pca)
     - pairwise statistics basically say "when I'm on, are my neighbors on?"
@@ -840,7 +825,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 # data-driven neuroscience
 
 - [list of comparisons](https://docs.google.com/document/d/1qil2ylAnw6XrHPymYjKKYNDJn2qZQYA_Qg2_ijl-MaQ/edit)
-
 - https://medium.com/the-spike/a-neural-data-science-how-and-why-d7e3969086f2
 
 ## data types
@@ -853,29 +837,22 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 | invasiveness | non      | yes (under skull) | very                                                | very        | non             | non      |
 
 - static data gold standard is electron microscopy
-
   - alternatively, can do connectomics from light microscopy + adaptive optics ([takavoli...jain, danzil, 2025](https://www.nature.com/articles/s41586-025-08985-1))
-
 - [ovw of advancements in neuroengineering](https://medium.com/neurotechx/timeline-of-global-highlights-in-neuroengineering-2005-2018-75e4637b9e38)
-
 - **pro big-data**
 
   Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks (yamins2014performance)
-
   - when comparing energy-efficiency, must normalize network performance by energy / number of computations / parameters
 
   **anti big-data**
-
-  - could neuroscientist  understand microprocessor ([jonas & kording, 2017](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005268))
+  - could neuroscientist understand microprocessor ([jonas & kording, 2017](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005268))
   - System Identification of Neural Systems: If We Got It Right, Would We Know? ([han, poggio, & cheung, 2023](https://proceedings.mlr.press/v202/han23d)) - could functional similarity be a reliable predictor of architectural similarity?
   - Can a biologist fix a radio?—Or, what I learned while studying apoptosis ([lazebnik, 2002](https://www.cell.com/fulltext/S1535-6108(02)00133-2))
   - no canonical microcircuit
-
 - cellular
   - extracellular microeelectrodes
   - intracellular microelectrode
   - **neuropixels**
-
 - optical
   - calcium imaging / fluorescence imaging
   - whole-brain light sheet imaging
@@ -883,7 +860,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - **adaptive optics**
   - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
   - fiber photometry - optical fiber implanted delivers excitation light
-
 - high-level
   - EEG/ECoG
   - MEG
@@ -894,12 +870,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - there are some issues with the relationship between BOLD and underlying neuronal activity (e.g. see [epp et al. 2025](https://www.nature.com/articles/s41593-025-02132-9))
   - MRS
   - event-related optical signal = near-infrared spectroscopy
-
 - implantable
   - neural dust
-
 - modern criqitues of fMRI / blood oxygenation
-
   - BOLD signal changes can oppose oxygen metabolism across the human cortex ([epp...riedl, 2025](https://www.nature.com/articles/s41593-025-02132-9))
   - Brainwide blood volume reflects opposing neural populations ([landemard...carandini, 2026](https://www.nature.com/articles/s41586-026-10350-9.epdf?sharing_token=dUnZ0V-MqB2AouW05ozejNRgN0jAjWel9jnR3ZoTv0PiLLAOX6tx6omPIRJNbIlNMUlC3SqEubdLDpML1Dr8wIGS32d1HGSF8hXB50mBnJtjj36Hsk96S47P5ejT9R1d-7tXnNoVUuV3JW8oIVPAOv9rpdhKV-z7oLk6FJJKbIQ%3D))
 
@@ -909,7 +882,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - optogenetic stimulation
 - tms
   - genetically-targeted tms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
-- [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.)  (sometimes also called electroshock therapy)
+- [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.) (sometimes also called electroshock therapy)
   - Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans ([wilkinon...roenheck, 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/)) - 100k ppl per year
   - can differ in its application in three ways
     - electrode placement
@@ -951,7 +924,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
   - WU-Minn human connectome project ([van essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
   - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 hours of Sherlock Holmes, no repeated session
-  - [LibriBrain 2025](https://neural-processing-lab.github.io/2025-libribrain-competition/participate/)  - bunch of listening data (50+ hours) for single subject
+  - [LibriBrain 2025](https://neural-processing-lab.github.io/2025-libribrain-competition/participate/) - bunch of listening data (50+ hours) for single subject
 - EEG
   - [Brennan & Hale, 2019](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207741): 33 subjects recorded with EEG, listening to 12 min of a book chapter, no repeated session
   - [Broderick et al. 2018](https://www.cell.com/current-biology/pdf/S0960-9822(18)30146-5.pdf): 9–33 subjects recorded with EEG, conducting different speech tasks, no repeated sessions
@@ -970,12 +943,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - Population Transformer: Learning Population-Level Representations of Neural Activity ([chau…barbu, 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11177958/))
   - single-subject intracortical words: https://www.kaggle.com/competitions/brain-to-text-25 (from [card et al. 2024](https://www.nejm.org/doi/full/10.1056/NEJMoa2314132))
 - single-cell
-
   - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2)) - extremely small dataset released: mostly sentences
 - cross-modality (language-adjacent)
   - language
     - A synchronized multimodal neuroimaging dataset to study brain language processing ([wang...zong, 2023](https://openneuro.org/datasets/ds004078/versions/1.2.1))
-    - CineBrain: A Large-Scale Multi-Modal Brain Dataset During Naturalistic Audiovisual Narrative Processing ([gao…fu, 2025](https://arxiv.org/abs/2503.06940)) -  6 hours of simultaneous EEG and fMRI while watching big bang theory
+    - CineBrain: A Large-Scale Multi-Modal Brain Dataset During Naturalistic Audiovisual Narrative Processing ([gao…fu, 2025](https://arxiv.org/abs/2503.06940)) - 6 hours of simultaneous EEG and fMRI while watching big bang theory
   - language-adjacent
     - NeuroBOLT data ([li...chang, 2024](https://arxiv.org/abs/2410.05341); code [link](https://drive.google.com/file/d/1s9LzdBx1afGYiGbpi3p-oFh-CnYLyYqM/view?usp=sharing))
     - An open-access dataset of naturalistic viewing using simultaneous EEG-fMRI ([telesford...franco, 2023](https://www.nature.com/articles/s41597-023-02458-8))
@@ -990,7 +962,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - NSD-Imagery: A benchmark dataset for extending fMRI vision decoding methods to mental imagery ([kneeland...kay, naselaris, 2025](https://arxiv.org/abs/2506.06898)) - participants memorized a handful of image stimuli and were asked to imagine a particular one
 - [datalad lots of stuff](http://datalad.org/datasets.html)
 - calcium imaging records in mice
-
   - Recordings of ten thousand neurons in visual cortex during spontaneous behaviors ([stringer et al. 2018](https://figshare.com/articles/dataset/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622)) - 10k neuron responses to 2800 images
 - neuropixels probes
   - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
@@ -1005,12 +976,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
 - *lots of good data*: http://home.earthlink.net/~perlewitz/index.html
 - connectome
-
   - fly brain: http://temca2data.org/
 - *models*
   - senseLab: https://senselab.med.yale.edu/
     - modelDB - has NEURON code
-  - model databases: http://www.cnsorg.org/model-database 
+  - model databases: http://www.cnsorg.org/model-database
   - comp neuro databases: http://home.earthlink.net/~perlewitz/database.html
 - *raw misc data*
   - crcns data: http://crcns.org/
@@ -1022,7 +992,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - *human fMRI datasets*: https://docs.google.com/document/d/1bRqfcJOV7U4f-aa3h8yPBjYQoLXYLLgeY6_af_N2CTM/edit
 - Kay et al 2008 has data on responses to images
 - *calcium imaging* for spike sorting: http://spikefinder.codeneuro.org/
-
   - spikes: http://www2.le.ac.uk/departments/engineering/research/bioengineering/neuroengineering-lab/software
 - More datasets available at [openneuro](https://openneuro.org/search/modality/mri) and visual cortex data on [crcns](https://crcns.org/data-sets/vc)
 
@@ -1039,7 +1008,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Aligning Brains into a Shared Space Improves their Alignment to Large Language Models ([bhattacharjee, zaida..., hasson, goldstein, nastase, 2024](https://www.biorxiv.org/content/10.1101/2024.06.04.597448v1))
 - while a coarse alignment exists across individual brains ([Nastase et al., 2019](https://academic.oup.com/scan/article/14/6/667/5489905); [2021](https://www.nature.com/articles/s41597-021-01033-3)), the finer cortical topographies for language representation exhibit significant idiosyncrasies among individuals ([Fedorenko et al., 2010](https://journals.physiology.org/doi/full/10.1152/jn.00032.2010); [Nieto-Castañón & Fedorenko, 2012](https://www.sciencedirect.com/science/article/abs/pii/S1053811912006817); [Braga et al., 2020](https://journals.physiology.org/doi/full/10.1152/jn.00753.2019); [Lipkin et al., 2022](https://www.nature.com/articles/s41597-022-01645-3))
 - hyperalignment techniques have been developed in fMRI research to aggregate information across subjects into a unified information space while overcoming the misalignment of functional topographies across subjects ([Haxby et al., 2011](https://www.cell.com/neuron/fulltext/S0896-6273(15)00933-2); shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html); [Guntupalli...Haxby, 2016](https://academic.oup.com/cercor/article/26/6/2919/1754308); [Haxby et al., 2020](https://elifesciences.org/articles/56601); [Feilong et al., 2023](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00032/117980))
-- shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html) - learns orthonormal, linear subject-specific transformations that map from each subject’s response  space to a shared space based on a subset of training data, then uses these learned transformations to map a subset of test data into the shared space
+- shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html) - learns orthonormal, linear subject-specific transformations that map from each subject’s response space to a shared space based on a subset of training data, then uses these learned transformations to map a subset of test data into the shared space
 - Model-brain comparison using inter-animal transforms ([thobani...yamins, 2025](https://arxiv.org/abs/2510.02523))
   - IATC is the set of mappings needed to align brains to another within a population (e.g. a population of typical mice) - identify it then try aligning models to brains using the empirically identified IATC
 
@@ -1082,7 +1051,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains ([abnar, … zuidema, emnlp workshop, 2019](https://arxiv.org/abs/1906.01539)) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
   - Evidence of a predictive coding hierarchy in the human brain listening to speech ([caucheteux, gramfot, & king, 2023](https://www.nature.com/articles/s41562-022-01516-2))
 - encoding models
-
   - Seminal language-semantics fMRI study ([huth…gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
     - Evaluating scientific theories as predictive models in language neuroscience ([singh...huth, 2025](https://www.biorxiv.org/content/10.1101/2025.08.12.669958v1))
       - Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions ([benara et al. 2024](https://openreview.net/pdf?id=mxMvWwyBWe))
@@ -1102,21 +1070,17 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
     - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
     - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
-    - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network  ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
-    - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
+    - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
+    - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
     - Improving semantic understanding in speech language models via brain-tuning ([moussa...toneva, 2024](https://arxiv.org/abs/2410.09230))
     - Individual differences shape conceptual representation in the brain ([visconti di oleggio castello, la tour, & gallant, 2025](https://www.biorxiv.org/content/10.1101/2025.08.22.671848v1))
   - eeg models
-  
     - directly model time series
-  
       - BENDR: using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data ([kostas...rudzicz, 2021](https://arxiv.org/abs/2101.12037))
       - Neuro-GPT: Developing A Foundation Model for EEG ([cui...leahy, 2023](https://arxiv.org/abs/2311.03764))
-  
       - model frequency bands
         - EEG foundation model: Learning Topology-Agnostic EEG Representations with Geometry-Aware Modeling ([yi...dongsheng li, 2023](https://openreview.net/pdf?id=hiOUySN0ub))
-  
-    - Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects  ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
+    - Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
 - changing experimental design
   - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
   - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
@@ -1146,8 +1110,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - language
   - Semantic reconstruction of continuous language from non-invasive brain recordings ([tang, lebel, jain, & huth, 2023](https://www.nature.com/articles/s41593-023-01304-9)) - reconstruct continuous natural language from fMRI, including to imagined speech
     - Generative language reconstruction from brain recordings ([ye...ruotsalo, 2025](https://www.nature.com/articles/s42003-025-07731-7)) - map embedding into token space and finetune LM to decode text conditioned on the tokens (solves the token timing issue)
-      - baselines: standard LLM (StdLLM) that doesn't use brain recordings or  PerBrainLLM that uses permuted brain recordings
-      - eval metrics: 
+      - baselines: standard LLM (StdLLM) that doesn't use brain recordings or PerBrainLLM that uses permuted brain recordings
+      - eval metrics:
   - Brain-to-Text Decoding: A Non-invasive Approach via Typing ([levy...king, 2025](https://scontent.fphl1-1.fna.fbcdn.net/v/t39.2365-6/475464888_600710912891423_9108680259802499048_n.pdf?_nc_cat=102&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=EryvneL7DMcQ7kNvgFI6M7D&_nc_oc=Adi15_Ln_aPZ_nUY7RyiXzmEzdKu0opFDIwv3J7P55siQ-yn-FUdKQ6_H6PZBKiwBiY&_nc_zt=14&_nc_ht=scontent.fphl1-1.fna&_nc_gid=A441zcs56M0HTpo4ZEEWBSk&oh=00_AYAZ7fX4RhYWqMu2aMria3GoOB6uMNIiIciUQzU0vXy3Tw&oe=67AC0C96)) - decode characters typed from MEG/EEG
   - From Thought to Action: How a Hierarchy of Neural Dynamics Supports Language Production ([zhang, levy, ...king, 2025](https://ai.meta.com/research/publications/from-thought-to-action-how-a-hierarchy-of-neural-dynamics-supports-language-production/)) - when decoding during typing, first decode phrase, then word, then syllable, then letter
   - Decoding speech from non-invasive brain recordings ([defossez, caucheteux, ..., remi-king, 2022](https://arxiv.org/abs/2208.12266))
@@ -1156,11 +1120,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - prompts participants to imagine sentences of different topics by providing topic words & keywords - afterwards, participants type out the sentence
       - MindGPT: Advancing Human-AI Interaction with Non-Invasive fNIRS-Based Imagined Speech Decoding (MindPortal; [zhang…dehghani, 2024](https://arxiv.org/abs/2408.05361)) - classify semantically different sentences from fNIRS during imagined speech
   - Brain–computer interface control with artificial intelligence copilots ([lee...kao, 2025](https://www.nature.com/articles/s42256-025-01090-y)) - non-invasive EEG for cursor control / robotic arm task
-  
 - vision
   - Decoding the Semantic Content of Natural Movies from Human Brain Activity ([huth...gallant, 2016](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2016.00081/full)) - direct decoding of concepts from movies using hierarchical logistic regression
     - interpreting weights from a decoding model can be tricky, even if if a concept is reflected in the voxel, it may not be uniquely reflected in the voxel and therefore assigned low weight
-
   - Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies ([nishimoto, …, gallant, 2011](https://www.sciencedirect.com/science/article/pii/S0960982211009377))
   - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
   - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
@@ -1174,8 +1136,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - bmi
   - Accelerated learning of a noninvasive human brain-computer interface via manifold geometry ([busch...turk-brown, 2025](https://www.biorxiv.org/content/10.1101/2025.03.29.646109v1)) - train subjects to control avatar navigation through fMRI, then perturb environment and evaluate decoder
   - Neural-Driven Image Editing ([zhou...you, 2025](https://arxiv.org/abs/2507.05397)) - use EEG/fNIRS and image pairs to train a model for image editing
-
-
 
 ## theories of explanation
 
@@ -1195,20 +1155,16 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ## speech / ECoG
 
 - A streaming brain-to-voice neuroprosthesis to restore naturalistic communication ([littlejohn...chang, anumanchipalli, 2025](https://www.nature.com/articles/s41593-025-01905-6)) - nearly realtime ECoG decoding of text production
-  
 - Improving semantic understanding in speech language models via brain-tuning ([moussa, klakow, & toneva, 2024](https://arxiv.org/abs/2410.09230))
   - BrainWavLM: Fine-tuning Speech Representations with Brain Responses to Language ([vattikonda, vaidya, antonello, & huth, 2025](https://arxiv.org/abs/2502.08866))
-
 - see hasson lab + google overview blog post [here](https://research.google/blog/deciphering-language-processing-in-the-human-brain-through-llm-representations/)
   - A unified acoustic-to-speech-to-language embedding space captures the neural basis of natural language processing in everyday conversations ([goldstein...hasson, 2025](https://www.nature.com/articles/s41562-025-02105-9))
     - predict ECoG during both comprehension & production using speech embeddings & text embeddings - shows which areas are involved when between language and motor stuff
-  
   - A shared model-based linguistic space for transmitting our thoughts from brain to brain in natural conversations ([zada…hasson, 2024](https://www.cell.com/neuron/fulltext/S0896-6273(24)00460-4))
     - previous inter-subject correlation analyses directly map between speaker’s brain activity & listener’s brain activity during communication
     - this work adds a semantic feature space to predict speaker/listener activity & partitions predicting the other person’s brain activity from these
-  
   - Shared computational principles for language processing in humans and deep language models ([goldstein...hasson, 2022](https://www.nature.com/articles/s41593-022-01026-4)) - predict ECoG responses to podcasts from DL embeddings
-  
+
 
 # brain foundation models
 
@@ -1224,8 +1180,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - imposing cost to route to experts enables more difficult experts to be used for more difficult tasks
 - Fine-tuning language encoding models on slow fMRI improves prediction for fast ECoG ([vaidya, antonello & huth, 2026](https://arxiv.org/abs/2605.19224))
 - Scaling Vision Transformers for Functional MRI with Flat Maps ([lane...scotti, 2025](https://arxiv.org/abs/2510.13768))
-
-
 
 # advanced topics
 
@@ -1254,11 +1208,11 @@ Good overview website: https://www.hd-computing.com
 
 **operations**
 
-- ex. vectors $A$, $B$ both $\in \{ +1, -1\}^{10,000}$ (also extends to real / complex vectors)
+- ex. vectors $A$, $B$ both $$\in \{ +1, -1\}^{10,000}$$ (also extends to real / complex vectors)
 - 3 operations
-  1. **addition**: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
+  1. **addition**: A + B = (0, 0, 2, 0, 2,-2, 0, ....)
     - alternatively, could take mean
-  1. **multiplication**: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...) - this is **XOR**
+  1. **multiplication**: A * B = (-1, -1, -1, 1, 1, -1, 1, ...) - this is **XOR**
     - want this to be invertible, distribute over addition, preserve distance, and be dissimilar to the vectors being multiplied
     - number of ones after multiplication is the distance between the two original vectors
     - can represent a dissimilar set vector by using multiplication
@@ -1289,14 +1243,14 @@ the operations above allow for encoding many normal data structures into a singl
   - if we don't store the sum, can probe with the sum and keep subtracting the vectors we find
 1. **multiset** = bag (stores set with frequency counts) - can store things with order by adding them multiple times, but hard to actually retrieve frequencies
 1. **sequence** - could have each element be an address pointing to the next element
-  - problem - hard to represent sequences that share a subsequence (could have pointers which skip over the subsquence)
-  - soln: index elements based on permuted sums
-    - can look up an element based on previous element or previous string of elements
-  - could do some kind of weighting also
+   - problem - hard to represent sequences that share a subsequence (could have pointers which skip over the subsquence)
+   - soln: index elements based on permuted sums
+     - can look up an element based on previous element or previous string of elements
+   - could do some kind of weighting also
 1. **pairs** - could just multiply (XOR), but then get some weird things, e.g. A * A = **0**
   - instead, permute then multiply
   - can use these to index (address, value) pairs and make more complex data structures
-1. **named tuples** - have smth like (name: x, date: m, age: y)  and store as holistic vector $H = N*X + D *  M + A * Y$
+1. **named tuples** - have smth like (name: x, date: m, age: y) and store as holistic vector $H = N*X + D *  M + A * Y$
   - individual attribute value can be retrieved using vector for individual key
   - representation substituting is a little trickier....
     - we blur what is a value and what is a variable
@@ -1334,18 +1288,15 @@ the operations above allow for encoding many normal data structures into a singl
   - data
     - train: given million bytes of text per language (in the same alphabet)
     - test: new sentences for each language
-
   - training: compute a 10k profile vector for each language and for each test sentence
     - could encode each letter with a seed vector which is 10k
     - instead encode trigrams with **rotate and multiply**
       - 1st letter vec rotated by 2 * 2nd letter vec rotated by 1 * 3rd letter vec
       - ex. THE = r(r(T)) * r(H) * r(E)
       - approximately orthogonal to all the letter vectors and all the other possible trigram vectors...
-
     - profile = sum of all trigram vectors (taken sliding)
       - ex. banana = ban + ana + nan + ana
       - profile is like a histogram of trigrams
-
   - testing
     - compare each test sentence to profiles via dot product
     - clusters similar languages
@@ -1375,8 +1326,6 @@ the operations above allow for encoding many normal data structures into a singl
     - somewhat closer to the brain...cerebellum anatomy seems to better match HD
   - HD: holistic (distributed repr.) is robust
 
-
-
 **HD papers**
 
 [HDComputing Github Repos](https://github.com/HyperdimensionalComputing/collection) (see [torchhd](https://github.com/hyperdimensional-computing/torchhd))
@@ -1390,7 +1339,6 @@ the operations above allow for encoding many normal data structures into a singl
       - this also removes the need for addresses altogether
 - Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics ([kleyko et al. 2018](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg))
   - note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)
-
 - Neural Statistician ([edwards & storkey, 2016](https://arxiv.org/abs/1606.02185)) summarises a dataset by averaging over their embeddings
 - kanerva machine ([yu...lillicrap, 2018](https://arxiv.org/pdf/1804.01756.pdf))
   - like a VAE where the prior is derived from an adaptive memory store
@@ -1409,8 +1357,6 @@ the operations above allow for encoding many normal data structures into a singl
 - connecting to DNNs
   - Attention Approximates Sparse Distributed Memory https://arxiv.org/pdf/2111.05498.pdf
   - The Kanerva Machine: A Generative Distributed Memory ([wu...lillicrap, 2018](https://arxiv.org/abs/1804.01756))
-
-
 
 ## dynamic routing between capsules
 
@@ -1471,7 +1417,7 @@ the operations above allow for encoding many normal data structures into a singl
   - Mountcastle 1978: vision regions are vision becase they receive visual input
   - number of regions / connectivity seems to be genetic
 - before necortex, brain regions were homogenous: spinal cord, brain stem, basal ganglia, ...
-- ![cortical_columns](../assets/cortical_columns.png)
+- <img style="width: 800px; max-width: 100%;" src="../assets/cortical_columns.svg" alt="The cortical column"/>
 
 ### principles
 
@@ -1527,7 +1473,7 @@ the operations above allow for encoding many normal data structures into a singl
 ## forgetting
 - Continual Lifelong Learning with Neural Networks: A Review ([parisi...kanan, wermter, 2019](https://arxiv.org/pdf/1802.07569.pdf))
   - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
-  - ![Screen Shot 2020-01-01 at 11.49.32 AM](../assets/forgetting.png)
+  - <img style="width: 720px; max-width: 100%;" src="../assets/forgetting.svg" alt="Plasticity and complementary learning systems"/>
   - 2 types of plasticity
     - Hebbian plasticity (Hebb 1949) for positive feedback instability
     - compensatory homeostatic plasticity which stabilizes neural activity
@@ -1537,21 +1483,14 @@ the operations above allow for encoding many normal data structures into a singl
 
 - single-neuron (macaque)
   - Neural population control via deep image synthesis ([bashivan, kar, & dicarlo, 2019](https://www.science.org/doi/abs/10.1126/science.aav9436))
-
   - A biologically-inspired hierarchical convolutional energy model predicts V4 responses to natural videos ([oliver, winter, dupre la tour, eickenberg, & gallant, 2024](https://www.biorxiv.org/content/10.1101/2024.12.16.628781v1))
-
   - Energy Guided Diffusion for Generating Neurally Exciting Images ([pierzchlewicz, ..., tolias, sinz, 2023](https://www.biorxiv.org/content/10.1101/2023.05.18.541176v1))
-
   - Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences ([ponce...livingstone, 2019](https://www.sciencedirect.com/science/article/pii/S0092867419303915))
-
   - The DeepTune framework for modeling and characterizing neurons in visual cortex area V4 ([abbasi-asl, ..., yu, 2018](https://www.biorxiv.org/content/10.1101/465534v1.abstract))
-
   - Compact deep neural network models of visual cortex ([cowley, stan, pillow, & smith, 2023](https://www.biorxiv.org/content/10.1101/2023.11.22.568315v1.abstract))
-
 - differentiating stimuli
     - Model metamers reveal divergent invariances between biological and artificial neural networks ([feather...madry, mcdermott, 2024](https://www.nature.com/articles/s41593-023-01442-0)) - studies that have used carefully designed stimuli have revealed that ANNs do not always align with humans
     - Universality of representation in biological and artificial neural networks ([hosseini...fedorenko, 2024](https://www.biorxiv.org/content/10.1101/2024.12.26.629294v1.full.pdf)) - developed a method to identify stimuli that systematically vary the degree of inter-model representation agreement between ANNs and brains
-
 - XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization ([2020](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973))
 - CORNN: Convex optimization of recurrent neural networks for rapid inference of neural dynamics ([dinc...tanaka, 2023](https://arxiv.org/abs/2311.10200)) - mouse population control
 - real-time mouse v1
@@ -1571,7 +1510,7 @@ the operations above allow for encoding many normal data structures into a singl
   - might want iso-response surfaces
   - maximally informative stimulus ensembles (Machens, 2002)
   - model-fitting: pick to maximize info-gain w/ model params
-  - using fixed stimulus sets like white noise may be deeply problematic for efforts to identify non-linear hierarchical network models due to continuous parameter confounding (DiMattina and Zhang, 2010) 
+  - using fixed stimulus sets like white noise may be deeply problematic for efforts to identify non-linear hierarchical network models due to continuous parameter confounding (DiMattina and Zhang, 2010)
   - use for model selection
 - Brain Diffusion for Visual Exploration: Cortical Discovery using Large Scale Generative Models ([luo...wehbe, tarr, 2023](https://arxiv.org/abs/2306.03089))
 
@@ -1619,9 +1558,18 @@ the operations above allow for encoding many normal data structures into a singl
     - predict next image given current image + displacement field
     - predict next image vector given current frame vectors + displacement
 - friston_10_free_energy
-  - ![friston_free_energy](../assets/friston_free_energy.png)
-
-
+  - the free-energy principle and other theories (fig 4)
+    - **free-energy principle** (centre): $$a, \mu, m = \arg\min F(\tilde{s}, \mu \vert m)$$ - minimization of the free energy of sensations and the representation of their causes
+    - attention and biased competition: $$\mu_\gamma = \arg\min \int dt F$$ - optimization of synaptic gain representing the precision (salience) of predictions
+    - associative plasticity: $$\ddot{\mu}_{\theta_{ij}} = -\partial_{\theta_{ij}} \varepsilon^T \xi$$ - optimization of synaptic efficacy
+    - perceptual learning and memory: $$\mu_\theta = \arg\min \int dt F$$ - optimization of synaptic efficacy to represent causal structure in the sensorium
+    - probabilistic neuronal coding: $$q(\vartheta) = N(\mu, \Sigma)$$ - encoding a recognition density in terms of conditional expectations and uncertainty
+    - predictive coding and hierarchical inference: $$\dot{\mu}_v^{(i)} = D\mu_v^{(i)} - \partial_v \varepsilon^{(i)T} \xi^{(i)} - \xi_v^{(i+1)}$$ - minimization of prediction error with recurrent message passing
+    - bayesian brain hypothesis: $$\mu = \arg\min D_{KL}(q(\vartheta) \Vert p(\vartheta \vert \tilde{s}))$$ - minimizing the difference between a recognition density and the conditional density on sensory causes
+    - model selection and evolution: $$m = \arg\min \int dt F$$ - optimizing the agent's model and priors through neurodevelopment and natural selection
+    - computational motor control: $$\dot{a} = -\partial_a \varepsilon^T \xi$$ - minimization of sensory prediction errors
+    - optimal control and value learning: $$a, \mu = \arg\max V(\tilde{s} \vert m)$$ - optimization of a free-energy bound on surprise or value
+    - infomax and the redundancy minimization principle: $$\mu = \arg\max \{I(\tilde{s}, \mu) - H(\mu)\}$$ - maximization of the mutual information between sensations and representations
 
 ## navigation
 
@@ -1630,7 +1578,7 @@ the operations above allow for encoding many normal data structures into a singl
   - remap to new locations
 - **grid cells** (moser & moser 2005) - in the entorhinal cotex (provides inputs to the hippocampus) - not particular locations but rather hexagonal coordinate system
   - grid cells fire if the mouse is in any location at the vertex (or center) of one of the hexagons
-- ![Screen Shot 2019-05-10 at 1.25.02 PM](../assets/mouse.png)
+- mapping One Location: If a mouse is in one corner of a room, then there is one place cell that fires uniquely at that location. A grid cell that fires at that location also fires at other positions around it in a hexagonal array <img style="width: 300px; max-width: 100%;" src="../assets/mouse.svg" alt="Place cells and grid cells"/>
 - there are grid cells with larger/smaller hexagons, different orientations, different offsets
 - can look for grid cells signature in fmri: https://www.nature.com/articles/nature08704
 - other places with grid cell-like behavior
@@ -1638,7 +1586,6 @@ the operations above allow for encoding many normal data structures into a singl
 - some evidence for grid cells in cortex
   - Constantinescu, A., O'Reilly, J., Behrens, T. (2016) Organizing Conceptual Knowledge in Humans with a Gridlike Code. Science
   - Doeller, C. F., Barry, C., \& Burgess, N. (2010). Evidence for grid cells in a human memory network. Nature
-
 - some evidence for "time cells" like place cells for time
 - sound frequency task https://www.nature.com/articles/nature21692
 - 2d "bird space" [task](https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&keytype=ref&siteid=sci)
@@ -1662,7 +1609,6 @@ the operations above allow for encoding many normal data structures into a singl
     - exploit electronics laws kirchoff's law, ohm's law
     - new materials (ex. memristor - 3d crossbar array)
     - can't just do biological mimicry - need to understand the principles
-
 - [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….might be doing locality sensitive hashing (basically nearest neighbors)
 
 # neuro-inspired ai (niAI)
@@ -1670,55 +1616,35 @@ the operations above allow for encoding many normal data structures into a singl
 ## neuro-dl reviews
 
 - Blog post ([xcorr, 2023](https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/))
-
 - Neuroscience-Inspired Artificial Intelligence ([hassabis et al. 2017](https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf))
-
 - Catalyzing next-generation Artificial Intelligence through NeuroAI ([zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022](https://arxiv.org/abs/2210.08340))
-
 - Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design examples
-
   - compare concrete & abstract words ([binder et al. 2005](https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and))
   - contrast-based study of composition in 2-word phrase ([bemis & pylkkanen, 2011](https://www.jneurosci.org/content/31/8/2801.short))
   - checks for effects between group and individual ([lerner et al. 2011](https://www.jneurosci.org/content/31/8/2906))
   - forgetting behavior using controlled manipulations ([chien & honey, 2020](https://www.sciencedirect.com/science/article/pii/S0896627320301367))
-
 - Dissociating language and thought in large language models ([mahowald, ..., tenebaum, fedorenko, 2023](https://arxiv.org/abs/2301.06627))
-
   - 2 competences
-
     1. formal linguistic competence - knowledge of rules and patterns of a given language
-
     2. functional linguistic competence - cognitive abilities required for language understanding and use in the real world, e.g. formal reasoning, world knowledge, situation modeling, communicative intent
        - much of world knowledge is implied: people are much more likely to communicate new or unusual information rather than commonly known facts
 
     - language and thought are robustly dissociable in the brain
       - aphasia studies: despite the nearly complete loss of linguistic abilities, some individuals with severe aphasia have intact non-linguistic cognitive abilities: they can play chess, compose music, solve arithmetic problems and logic puzzles, ...
-      - fMRI studies: the language network is extremely selective for language processing: it responds robustly and reliably when people listen to, read, or generate sentences , but not when they perform arithmetic tasks, engage in logical reasoning, understand computer programs, listen to music, ...
+      - fMRI studies: the language network is extremely selective for language processing: it responds robustly and reliably when people listen to, read, or generate sentences, but not when they perform arithmetic tasks, engage in logical reasoning, understand computer programs, listen to music, ...
   - [Merrill et al. [2022]](https://arxiv.org/abs/2209.12407) - semantic information is in-principle learnable from language data
   - [Piantadosi and Hill [2022]](https://arxiv.org/abs/2208.02957) - an argument that models can genuinely learn meaning
-
   - Structured, flexible, and robust: benchmarking and improving large language models towards more human-like behavior in out-of-distribution reasoning tasks ([collins...tenebaum, 2022](http://arxiv.org/abs/2205.05718))
-
     - as situation gets more OOD, LLM gets worse compared to human, e.g. `Get your sofa onto the roof of your house, without using a pulley, a ladder, a crane...`
-
   - recommendations
-
     - modularity, curated data / diverse objectives, new benchmarks
-
 - Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems ([smolensky, ..., gao, 2022](https://ojs.aaai.org/index.php/aimagazine/article/view/18599))
-
 - A Path Towards Autonomous Machine Intelligence ([lecun 2022](https://openreview.net/pdf?id=BZ5a1r-kVsf))
-
 - Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks ([2023](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d))
-
 - A rubric for human-like agents andNeuroAI ([momennejad, 2022](https://royalsocietypublishing.org/doi/epdf/10.1098/rstb.2021.0446)): 3 axes - human-like behavior, neural plausibility, & engineering
-
 - Designing Ecosystems of Intelligence from First Principles ([friston et al. 2022](https://www.semanticscholar.org/paper/Designing-Ecosystems-of-Intelligence-from-First-Friston-Ramstead/98fcb39694d628788b555932f96134280f6a008e))
-
 - NeuroAI - A strategic opportunity for Norway and Europe ([2022](https://www.semanticscholar.org/paper/NeuroAI-A-strategic-opportunity-for-Norway-and-Nichele-Sæbø/b5e7bacfdd6d080fce402a27b36757f6246eef4d))
-
 - Perceptual Inference, Learning, and Attention in a Multisensory World ([nopponey, 2021](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-100120-085519))
-
 - Engineering a Less Artificial Intelligence ([sinz…tolias, 2019](https://www.sciencedirect.com/science/article/pii/S0896627319307408)) - overview of ideas to make DNNs more brain-like
 
 ## credit assignment
@@ -1729,15 +1655,14 @@ the operations above allow for encoding many normal data structures into a singl
 ## biological constraints for DNNs
 
 - Aligning DNN with brain responses
-
   - haven’t found anything like this for NLP
   - Aligning Model and Macaque Inferior Temporal Cortex Representations Improves Model-to-Human Behavioral Alignment and Adversarial Robustness ([dapello, kar, shrimpf…cox, dicarlo, 2022](https://www.biorxiv.org/content/10.1101/2022.07.01.498495v1.abstract)) - finetune CNN embedding to match monkey brain (IT electrode recordings) before making classifications
   - Towards robust vision by multi-task learning on monkey visual cortex ([safarani…sinz, 2021](https://proceedings.neurips.cc/paper/2021/hash/06a9d51e04213572ef0720dd27a84792-Abstract.html)) - simultaneously predict monkey v1 (electrode data) and imagenet
-  - Improved object recognition using neural networks trained to mimic the brain’s statistical properties - ScienceDirect ([federer et al. 2020](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6)) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
+  - Improved object recognition using neural networks trained to mimic the brain’s statistical properties ([federer et al. 2020](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6)) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
   - Learning from brains how to regularize machines ([li …, tolias 2019](https://proceedings.neurips.cc/paper/2019/hash/70117ee3c0b15a2950f1e82a215e812b-Abstract.html)) - regularize intermediate representations using mouse v1 data (optical imaging) for image classification
   - A Neurobiological Evaluation Metric for Neural Network Model Search ([blanchard, …, bashivan, scheirer, 2019](https://openaccess.thecvf.com/content_CVPR_2019/html/Blanchard_A_Neurobiological_Evaluation_Metric_for_Neural_Network_Model_Search_CVPR_2019_paper.html)) - compare fMRI kernel matrix to DNN kernel matrix - find that the closer it is, the better a network is (and use this metric to perform early stopping)
   - aligning with experimental/psychological data
-    - How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview ([zhuang...dicarlo, yamins, 2022](https://openreview.net/forum?id=c0l2YolqD2T))
+    - How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? ([zhuang...dicarlo, yamins, 2022](https://openreview.net/forum?id=c0l2YolqD2T))
 - Biologically-inspired DNNs (not data-driven)
   - Relating transformers to models and neural representations of the hippocampal formation ([whittington, warren, & behrens, 2022](https://arxiv.org/abs/2112.04035))
     - transformers, when equipped with recurrent position encodings, replicate the pre- cisely tuned spatial representations of the hippocampal formation; most notably place and grid cells
@@ -1749,8 +1674,8 @@ the operations above allow for encoding many normal data structures into a singl
   - Surround Modulation: A Bio-inspired Connectivity Structure for Convolutional Neural Networks ([hasani, …, aghajan, 2019](https://proceedings.neurips.cc/paper/2019/hash/c535e3a7f97daf1c4b1eb03cc8e31623-Abstract.html)) - add inhibitory lateral connections in CNNs
   - Biologically inspired protection of deep networks from adversarial attacks ([nayebi & ganguli, 2017](https://arxiv.org/abs/1703.09202)) - change training to get highly nonlinear, saturated neural nets
   - Biological constraints on neural network models of cognitive function ([pulvermuller, …, wennekers, 2021](https://www.nature.com/articles/s41583-021-00473-5)) - review on biological constraints
-  - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
-  
+  - Disentangling with Biological Constraints: A Theory of Functional Cell Types ([whittington et al. 2022](https://arxiv.org/abs/2210.01768))
+
 
 ## overview
 
@@ -1775,7 +1700,7 @@ There are dangers in deep learning researchers constraining themselves to biolog
 Second, the brain does not solve probleDangers for going too far.... One wouldn't want to draw inspiration from the retina to put a hole in the camera.
 
 
-<img width="50%" src="figs/retina.png"></img>
+<img width="50%" src="../assets/retina.png"></img>
 Gallery of brain failures. Example, inside-out retina, V1 at back...
 
 **neuron-level**
@@ -1820,7 +1745,6 @@ For more information, see a very good review on modeling individual neurons<dt-c
   - avoiding catostrophic forgetting through synaptic complexity
   - learning asymmetric recurrent generative models
 - spiking networks ([bindsnet](https://github.com/Hananel-Hazan/bindsnet))
-
 - Computational Theory of Mind
   - Classical associationism
   - Connectionism

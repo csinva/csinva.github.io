@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 815 330" role="img" aria-labelledby="title desc">
+  <title id="title">Feedforward and feedback postural control</title>
+  <desc id="desc">Block diagram. Central command drives limb movement, which causes postural instability. Feedforward for anticipated postural instability: central command also drives postural adjustment directly (annotated reticular). Feedback for unanticipated postural instability: postural instability drives postural adjustment (annotated vestibular).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .c { text-anchor: middle; }
+      .e { text-anchor: end; }
+      .b { font-weight: bold; }
+      .note { font-family: Georgia, "Times New Roman", serif; }
+      .line { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lead { fill: none; stroke: #2b2b2b; stroke-width: 1.5; stroke-linecap: round; }
+      .mid { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-dasharray: 3 5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <rect x="10" y="20" width="180" height="100" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="100" y="64.6" font-size="24">Central</text>
+  <text class="c" x="100" y="92.2" font-size="24">command</text>
+  <rect x="340" y="20" width="160" height="100" rx="0" fill="#d5ecdd" stroke="#1f8a4c" stroke-width="2"/>
+  <text class="c" x="420" y="64.6" font-size="24">Limb</text>
+  <text class="c" x="420" y="92.2" font-size="24">movement</text>
+  <rect x="560" y="20" width="170" height="100" rx="0" fill="#f6d6d5" stroke="#d1342f" stroke-width="2"/>
+  <text class="c" x="645" y="64.6" font-size="24">Postural</text>
+  <text class="c" x="645" y="92.2" font-size="24">instability</text>
+  <rect x="340" y="175" width="160" height="100" rx="0" fill="#e6dcf2" stroke="#7b4fb5" stroke-width="2"/>
+  <text class="c" x="420" y="219.6" font-size="24">Postural</text>
+  <text class="c" x="420" y="247.2" font-size="24">adjustment</text>
+  <path d="M190.0 70.0 L311.0 70.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="340.0,70.0 310.0,97.0 310.0,43.0" fill="#7cc39a"/>
+  <path d="M240.0 70.0 L240.0 225.0 L311.0 225.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="340.0,225.0 310.0,252.0 310.0,198.0" fill="#7cc39a"/>
+  <path d="M500.0 70.0 L531.0 70.0" fill="none" stroke="#7cc39a" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="560.0,70.0 530.0,97.0 530.0,43.0" fill="#7cc39a"/>
+  <path d="M645.0 120.0 L645.0 225.0 L529.0 225.0" fill="none" stroke="#e88a87" stroke-width="26" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <polygon points="500.0,225.0 530.0,198.0 530.0,252.0" fill="#e88a87"/>
+  <text x="12" y="158.0" font-size="20">Feedforward</text>
+  <text x="12" y="182.0" font-size="20">for anticipated</text>
+  <text x="12" y="206.0" font-size="20">postural instability</text>
+  <text x="545" y="272.0" font-size="20">Feedback for unanticipated</text>
+  <text x="545" y="296.0" font-size="20">postural instability</text>
+  <text class="e note" x="330" y="282.0" font-size="26">reticular</text>
+  <text class="e note" x="625" y="196.0" font-size="26">vestibular</text>
+</svg>

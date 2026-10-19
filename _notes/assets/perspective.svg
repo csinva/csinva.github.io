@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 0 1290 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Perspective projection without inversion</title>
+  <desc id="desc">A stick figure's eye is the centre of projection. An image plane is placed a distance f in front of the eye. Red rays from the eye to the top and bottom of a large green arrow (the object) pass through the image plane, where they meet a smaller upright green arrow (the image). x = fX/Z, y = fY/Z. Perspective projection is a mapping from points in 3D space to rays through the Center of Projection.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <style>
+      .title { font: 56px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .fig { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .plane { fill: none; stroke: #1f6fb2; stroke-width: 4; stroke-linejoin: round; }
+      .ray { fill: none; stroke: #d1342f; stroke-width: 4; stroke-linecap: round; }
+      .obj { fill: none; stroke: #1f8a4c; stroke-linecap: round; }
+      .dim { fill: none; stroke: #1f6fb2; stroke-width: 5; }
+      .fvar { font: italic 64px "Times New Roman", Times, Georgia, serif; fill: #1f6fb2; text-anchor: middle; }
+      .eq { font: italic 54px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .eqo { font: 54px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .note { font: 46px Helvetica, Arial, sans-serif; fill: #d1342f; }
+    </style>
+  </defs>
+
+  <text class="title" x="665" y="62">A projection model that avoids inversion</text>
+
+  <!-- focal distance f -->
+  <path class="dim" d="M346 200 H206" marker-end="url(#arrow-blue)"/>
+  <path class="dim" d="M400 200 H556" marker-end="url(#arrow-blue)"/>
+  <text class="fvar" x="372" y="218">f</text>
+
+  <!-- stick figure; the eye is the centre of projection -->
+  <circle cx="168" cy="363" r="77" fill="#1f6fb2" fill-opacity="0.75" stroke="#2b2b2b" stroke-width="4"/>
+  <path class="fig" d="M170 440 V745 L48 1010 M170 745 L330 1010"/>
+  <circle cx="212" cy="345" r="8" fill="#d1342f"/>
+
+  <!-- rays to the image plane (the segment behind the plane is hidden) -->
+  <path class="ray" d="M212 345 L582 412 M752 442 L1128 510"/>
+  <path class="ray" d="M212 345 L582 485 M752 549 L1128 690"/>
+
+  <!-- image plane -->
+  <path class="plane" d="M457 263 L742 365 V655 L457 530 Z"/>
+
+  <!-- image (small) and object (large) -->
+  <path class="obj" d="M582 485 V420" stroke-width="8" marker-end="url(#arrow-green)"/>
+  <path class="obj" d="M1128 690 V524" stroke-width="16" marker-end="url(#arrow-green)"/>
+
+  <!-- projection equations -->
+  <text class="eq" x="640" y="815">x</text>
+  <text class="eqo" x="676" y="815">=</text>
+  <text class="eq mid" x="760" y="782">fX</text>
+  <path d="M726 798 H794" stroke="#2b2b2b" stroke-width="3"/>
+  <text class="eq mid" x="760" y="846">Z</text>
+  <text class="eqo" x="802" y="815">,</text>
+  <text class="eq" x="834" y="815">y</text>
+  <text class="eqo" x="872" y="815">=</text>
+  <text class="eq mid" x="956" y="782">fY</text>
+  <path d="M922 798 H990" stroke="#2b2b2b" stroke-width="3"/>
+  <text class="eq mid" x="956" y="846">Z</text>
+
+  <text class="note" x="352" y="920">Perspective projection is a mapping from</text>
+  <text class="note" x="352" y="976">points in 3D space to rays through the Center</text>
+  <text class="note" x="352" y="1032">of Projection</text>
+</svg>
