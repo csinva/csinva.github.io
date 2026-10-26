@@ -1,0 +1,87 @@
+# Overlay for _notes/research_ovws/ovw_uncertainty.md
+hook: Calibration, outlier detection, ensembles, Bayesian neural nets and conformal prediction.
+intro: |
+  Two questions run through this chapter: is a test point unlike the training data, and how much should a
+  given prediction be trusted. The basics come first (calibration, quantile regression, ensembles). Outlier
+  detection answers the first question using only the inputs $X$. Uncertainty detection answers the second
+  and also uses the labels $Y$; it includes letting a model reject inputs and the split between epistemic
+  uncertainty (in the parameters) and aleatoric uncertainty (noise in the data).
+
+  The neural network section groups the deep learning methods: ensembles of randomly initialized nets,
+  networks trained to output their own confidence, nearest-neighbor scores in embedding space, and Bayesian
+  neural nets, including dropout at test time. Conformal inference closes the chapter: prediction sets with
+  guaranteed coverage in finite samples, for any model and any data distribution.
+sections:
+  basics:
+    lead: |
+      Calibration means predicted probabilities match observed frequencies; Platt scaling and isotonic
+      regression fix it after training. Quantile regression gets intervals directly by training with an
+      asymmetric loss.
+    viz:
+      - name: platt-calibration
+        params:
+          n: 1500
+        caption: 'An overconfident classifier on simulated data: its raw probabilities are too extreme, so in the reliability
+          diagram the observed frequencies (blue) sit closer to 0.5 than the predictions, and the pink gaps are large.
+          Press "fit Platt scaling" to fit the logistic regression $\sigma(A s + B)$ from scores to labels on a separate
+          calibration set: the bars move to the diagonal and the calibration error and log loss drop. Since $A > 0$, the
+          ordering of the predictions does not change.'
+  outlier-detection:
+    lead: |
+      Each method scores how far a point is from the bulk of the training inputs: a fitted Gaussian envelope,
+      nearest-neighbor density, how quickly random splits isolate it, or the support estimated by a one-class SVM.
+  uncertainty detection:
+    lead: |
+      Unlike outlier detection, these methods also use the labels $Y$ and ask whether a particular prediction
+      is likely wrong. Options include letting the model reject an input and trust scores from nearest-neighbor
+      density in an embedding space. The last paper shows that deep generative models can give unrelated
+      inputs higher likelihood than training data, and that OOD detection is impossible without assumptions on
+      the out-distribution.
+  bayesian approaches:
+    lead: |
+      Aleatoric uncertainty is noise in the data that no model can remove, and predicting a distribution for
+      $y$ captures it. Epistemic uncertainty is about the parameters $\theta$ and needs a posterior over them;
+      getting it wrong also distorts the aleatoric estimate.
+  ensembles:
+    lead: |
+      The simplest strong baseline: train several networks from different random initializations and use
+      their disagreement. The last paper finds that many more elaborate ensembling methods do about as well as a few randomly
+      initialized networks.
+  directly predict uncertainty:
+    lead: |
+      Instead of deriving uncertainty from an ensemble or a posterior, the network gets an extra output for its
+      own confidence, trained alongside the prediction. Related entries explain outliers or uncertainty
+      estimates, and let a model stop at an early layer once it is confident.
+  nearest-neighbor methods:
+    lead: |
+      Confidence from distances in a network's embedding space: a test point far from training points of its
+      predicted class gets a low score.
+  bayesian neural networks:
+    lead: |
+      Put a distribution over the weights and average predictions over it. The exact posterior
+      $p(\theta \vert x)$ is intractable because of $p(x)$, so the entries approximate it: Bayes by backprop
+      learns a weight distribution, dropout at test time is read as an approximate Bayesian model, and SWAG fits a Gaussian
+      over weights visited with a large constant step size.
+  conformal inference:
+    lead: |
+      Conformal methods turn any model's errors on held-out data into prediction intervals or sets whose
+      coverage holds in finite samples, without assuming a parametric form for the data.
+    viz:
+      - name: conformal-intervals
+        params:
+          alpha: 0.1
+          n: 100
+        caption: 'Split conformal on illustrative data whose noise grows with $x$: fit $\hat f$ on a training split, take
+          the $\lceil (n+1)(1-\alpha) \rceil$-th smallest calibration residual as $\hat q$, and predict $\hat f(x) \pm
+          \hat q$. Move $\alpha$ and $n$: the test coverage averaged over many draws stays at or just above $1-\alpha$,
+          while the band built from training residuals undercovers, as the note says.'
+takeaways:
+  - Calibration asks that predicted probabilities match observed frequencies, and Platt scaling or isotonic regression fix it after training.
+  - Outlier detection uses only the inputs $X$; uncertainty detection also uses the labels and asks whether a given prediction can be trusted.
+  - Epistemic uncertainty lives in the parameters and aleatoric uncertainty in the data, and getting the first wrong also distorts the second.
+  - For deep nets, an ensemble of a few randomly initialized networks is a strong baseline that many more elaborate methods only match.
+  - Conformal inference gives prediction sets with coverage guaranteed in finite samples for any model and any distribution.
+figures:
+  quantile_losses.svg: Quantile (pinball) losses for $\alpha$ = 0.1, 0.5 and 0.9. Each is a V with slopes $\alpha$ and $1-\alpha$, so a high quantile penalizes under-prediction more than over-prediction, and minimizing it pushes the prediction up to that quantile.
+  deep_ensembles.svg: Ensembles versus variational methods over the space of solutions. Ensemble members (blue arrows) land in different modes of the loss; a variational method (red band) captures the uncertainty around a single mode.
+  ood_distr.png: "Why OOD detection is impossible without assumptions on the out-distribution: for in-distribution $P$ and the test statistic $\\log p(x)$, out-distributions $Q$ and $R$ (left) can be built so that the statistic has the same distribution under all three (right)."

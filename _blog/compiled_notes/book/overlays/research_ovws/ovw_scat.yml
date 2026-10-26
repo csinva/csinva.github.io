@@ -1,0 +1,54 @@
+# Overlay for _notes/research_ovws/ovw_scat.md
+map_label: Scattering           # short name on the start-page topic map
+hook: Fixed wavelet filters in place of learned ones, from Mallat's scattering transform to hybrid networks and adaptive wavelets.
+intro: |
+  The scattering transform builds a convolutional network whose filters are all fixed wavelets: it cascades
+  wavelet transforms with a modulus and averaging, which gives a representation that is invariant to
+  translation. The appeal is that every filter is defined, so the network is easier to interpret and
+  analyze.
+
+  The page goes roughly in order: reviews, the papers that introduce the transform, hybrid networks that put
+  learned layers (often 1x1 convolutions) on top of scattering coefficients, related work on group
+  equivariance, wavelets with learned parameters, and the Bölcskei lab's theory for general frames. The last
+  section holds unrelated nanoscience notes, background on $L^2$ functions, and invertible models.
+sections:
+  goals:
+    lead: |
+      Why fix the filters at all: every filter is a known wavelet, so the network is easier to interpret and
+      closer to biology. The transform cascades wavelet transforms with a modulus and averages the result,
+      which makes the output invariant to translation.
+  initial papers:
+    lead: |
+      Mallat's group invariant scattering paper introduces the transform; Bruna and Mallat then implement it
+      as a CNN with fixed filters.
+  scat_conv:
+    lead: |
+      Hybrid networks: scattering coefficients at the bottom, learned layers on top. A recurring finding is
+      that fixed scattering is good enough for the early layers.
+  papers by other groups:
+    lead: |
+      Related ideas from outside Mallat's group: group equivariant convolutions that share more weights than
+      ordinary ones, encoder-decoder networks with interpretable transformations, and a theory paper on the
+      invariance and stability of convolutional representations.
+  adaptive wavelet papers:
+    lead: |
+      A middle ground between fixed and learned filters: wavelets whose parameters are trained with the rest of
+      the network.
+  helmut lab papers:
+    lead: |
+      Theory that generalizes the scattering network: any semi-discrete frame as filters, any
+      Lipschitz-continuous nonlinearity and pooling, possibly different in each layer. Features become more
+      translation-invariant with depth.
+  nano papers:
+    lead: |
+      Notes on nanoengineering and microscopy papers, separate from the rest of the page. The subsections below
+      are math background ($L^2$ functions, Hilbert spaces) and invertible models.
+  l2 functions:
+    lead: |
+      Definitions the theory papers assume: square-integrable functions, measures, Hilbert spaces and
+      diffeomorphisms.
+takeaways:
+  - The scattering transform is a CNN whose filters are all fixed wavelets, combined with a modulus and averaging, and its output is invariant to translation.
+  - Hybrid networks put learned layers, often 1x1 convolutions, on top of scattering coefficients; fixed scattering is good enough for the early layers.
+  - Adaptive wavelets sit between fixed and learned filters by training the wavelet parameters with the rest of the network.
+  - The Bölcskei lab's theory extends the guarantees to general frames, Lipschitz nonlinearities and pooling, with features that become more translation-invariant with depth.

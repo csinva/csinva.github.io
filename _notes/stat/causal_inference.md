@@ -154,7 +154,7 @@ category: stat
      - equivalently, $Y_i = T_i Y_i^{T=1} + (1-T_i) Y_i^{T=0}$
      - $\widehat{ATE} = \mathbb E [\hat{Y}^{T=1} - \hat{Y}^{T=0}]$
      - $\widehat{ATE}_{adj} = [\bar{a}_A - (\bar{x}_A - \bar{x})^T \hat{\theta}_A] - [\bar{b}_B - (\bar{x}_B - \bar{x})^T \hat{\theta}_B]$
-       - $$\hat{\theta}_A = \mathrm{argmin} \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2$$<!-- -->
+       - $$\hat{\theta}_A = \mathrm{argmin} \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2$$
   2. neyman-pearson
     - null + alternative hypothesis
   3. can also take a bayesian perspective on the missing data
@@ -190,7 +190,7 @@ category: stat
         - *direct causes* = parent nodes
     - the $:=$ notation signifies a direction
     - **controlling** for a variable (when we have a causal graph):
-    - $$P(Y=y\vert do(T:=t)) = \sum_z \cblue{\underbrace{P(Y=y\vert T=t, T_{parents}=z)}_{\text{effect for slice}}} \corange{\underbrace{P(T_{parents}=z)}_{\text{weight for slice}}}$$<!-- -->
+    - $$P(Y=y\vert do(T:=t)) = \sum_z \cblue{\underbrace{P(Y=y\vert T=t, T_{parents}=z)}_{\text{effect for slice}}} \corange{\underbrace{P(T_{parents}=z)}_{\text{weight for slice}}}$$
     - **post-intervention distribution** $$P(z, y\vert do(t_0))$$ - result of setting $T = t_0$
         - also called "controlled" or "experimental" distr.
     - **counterfactual** $Y^{T=t}(x)$ under SCM can be explicitly computed
@@ -247,7 +247,7 @@ category: stat
 
 - in each pair, one unit is given treatment and the other is not
 - Fisherian inference
-  - $$H_{0F}: Y_{i, j}^{T=1}=Y_{i, j}^{T=0} \; \underbrace{\forall i}_{\text{all pairs}} \underbrace{\forall j}_{\text{both units in pair}}$$<!-- -->
+  - $$H_{0F}: Y_{i, j}^{T=1}=Y_{i, j}^{T=0} \; \underbrace{\forall i}_{\text{all pairs}} \underbrace{\forall j}_{\text{both units in pair}}$$
     - $$\hat \tau_i = \underbrace{(2T_i - 1)}_{-1\text{ or } 1}(Y_{i1} - Y_{i2})$$, where $T_i$ determines which of the two units in the pair was given treatment
     - many other statistics...e.g. wilcoxon sign-rank statistic, sign statistic, mcnemar's statistic
 - Neymanian inference
@@ -368,7 +368,7 @@ M --> Y
   - assumes treatment at time only effects outcomes at time t - this can be weird
 - one approach for estimation: assume **two-way model**: $Y_{i t}=\alpha_{i}+\beta_{t}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid \alpha, \beta, T]=0$
   - estimator for difference-in-difference with two timepoints
-    - $$\hat{\tau}=\cblue{\frac{1}{\left\vert \left\{i: T_{i 2}=1\right\}\right\vert } \underbrace{\sum_{\left\{i: T_{i 2}=1\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for treated group}}}-\corange{\frac{1}{\left\vert \left\{i: T_{i 2}=0\right\}\right\vert } \underbrace{\sum_{\left\{i: T_{i 2}=0\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for untreated group}}}$$<!-- -->
+    - $$\hat{\tau}=\cblue{\frac{1}{\left\vert \left\{i: T_{i 2}=1\right\}\right\vert } \underbrace{\sum_{\left\{i: T_{i 2}=1\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for treated group}}}-\corange{\frac{1}{\left\vert \left\{i: T_{i 2}=0\right\}\right\vert } \underbrace{\sum_{\left\{i: T_{i 2}=0\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for untreated group}}}$$
 - second approach for estimation of constant-treatment: interactive panel models $Y_{i t}=A_{i .} B_{t .}^{\prime}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid A, B, T]=0, \quad A \in \mathbb{R}^{n \times k}, B \in \mathbb{R}^{T \times k}$
   - allows for rank $k$ matrix, less restrictive (no longer forces parallel trends for all units)
   - can estimate with synthetic controls ([abadie, diamon, & hainmueller, 2010](https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2009.ap08746))
@@ -419,8 +419,8 @@ M --> Y
 - assumptions
     - *randomization = instrumental unconfoundedness*: $$I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$$
       - randomization lets us identify ATE of <span class="corange">$I$ on $T$</span> and <span class="cblue">$I$ on $Y$</span>
-        - $$\corange{\tau_{T}}=E\{T^{I=1}-T^{I=0}\}=E(T \mid I=1)-E(T \mid I=0)$$<!-- -->
-        - $$\cblue{\tau_{Y}}=E\{Y^{I=1}-Y^{I=0}\}=E(Y \mid I=1)-E(Y \mid I=0)$$<!-- -->
+        - $$\corange{\tau_{T}}=E\{T^{I=1}-T^{I=0}\}=E(T \mid I=1)-E(T \mid I=0)$$
+        - $$\cblue{\tau_{Y}}=E\{Y^{I=1}-Y^{I=0}\}=E(Y \mid I=1)-E(Y \mid I=0)$$
       - **<span class="cblue">intention-to-treat</span>** $$\cblue{\tau_Y}$$
       - four possible outcomes:
         - $$C_{i}=\left\{\begin{array}{ll}
@@ -477,17 +477,17 @@ M --> Y
   - $$\tau_T =E\{Y^{T=1}−Y^{T=0}\vert T =1\}$$: *ATE on the treated units*
   - $$\tau_C =E\{Y^{T=1}−Y^{T=0}\vert T =0\}$$: *ATE on the control units*
 - $$\tau_{PF} = E[Y\vert T=1] - E[Y\vert T=0]$$: *prima facie causal effect*
-  - $$= E[Y^{T=1}\vert T=1] - E[Y^{T=0}\vert T=0]$$<!-- -->
+  - $$= E[Y^{T=1}\vert T=1] - E[Y^{T=0}\vert T=0]$$
   - naive, but computable!
   - generally biased, with **selection biases**:
-    - $$E[Y^{T=0}\vert T=\cblue{1}] - E[Y^{T=0}\vert T=\cblue{0}]$$<!-- -->
-    - $$E[Y^{T=1}\vert T=\cblue{1}] - E[Y^{T=1}\vert T=\cblue{0}]$$<!-- -->
+    - $$E[Y^{T=0}\vert T=\cblue{1}] - E[Y^{T=0}\vert T=\cblue{0}]$$
+    - $$E[Y^{T=1}\vert T=\cblue{1}] - E[Y^{T=1}\vert T=\cblue{0}]$$
 - **randomization** tells us the treatment is independent of the outcome with/without treatment $$T \perp \{Y^{T=1}, Y^{T=0}\}$$, so the selection biases are zero (rubin, 1978)
   - $\implies \tau = \tau_T = \tau_C$
   - this is more important than balancing the distr. of covariates
 - conditioning on observed X, selection bias terms are zero:
-  - $$E\{Y^{T=0}\vert T=1, X\} = E\{Y^{T=0}\vert T=0, X\}$$<!-- -->
-  - $$E\{Y^{T=1}\vert T=1, X\} = E\{Y^{T=1}\vert T=0, X\}$$<!-- -->
+  - $$E\{Y^{T=0}\vert T=1, X\} = E\{Y^{T=0}\vert T=0, X\}$$
+  - $$E\{Y^{T=1}\vert T=1, X\} = E\{Y^{T=1}\vert T=0, X\}$$
   - $\implies \tau(X) = \tau_T(X) = \tau_C(X) = \tau_{PF}(X)$
 - ex. stratified ATE estimator (given discrete covariate)
 
@@ -495,10 +495,10 @@ M --> Y
 
 - ATE **conditional outcome modeling** (all assume ignorability)
   - ex. $\tau = \beta_t$ in OLS
-    - $$E(Y\vert T, X) = \beta_0 + \beta_t T + \beta_x^TX$$<!-- -->
+    - $$E(Y\vert T, X) = \beta_0 + \beta_t T + \beta_x^TX$$
     - assumes treatment effect is same for all individuals
   - ex. $$\tau = \beta_t + \corange{\beta_{tx}^TE(X)}$$
-    - $$E(Y\vert T, X) = \beta_0 + \beta_tT + \beta_x^TX + \corange{\beta^T_{tx} X T}$$<!-- -->
+    - $$E(Y\vert T, X) = \beta_0 + \beta_tT + \beta_x^TX + \corange{\beta^T_{tx} X T}$$
     - incorporates <span class="corange">heterogeneity</span>
 - intuition
     - much like imputing missing potential outcomes using a linear model
@@ -550,9 +550,9 @@ M --> Y
 - $$\hat \tau_{ht} = \cblue{\frac 1 n \sum_i \frac{T_iY_i}{\hat e(X_i)}} - \corange{\frac 1 n \sum_i \frac{(1-T_i)Y_i}{1-\hat e(X_i)}}$$ = **inverse propensity score weighting estimator = horvitz-thompson estimator** (horvitz & thompson, 1952)
   - weight outcomes by $$\cblue{1/e(X)}$$ for <span class="cblue">treated</span> individuals and $$\corange{1/(1-e(X))}$$ for <span class="corange">untreated</span>
   - *Based on Thm.* if $$\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} \vert  X}_{\text{strong ignorability on X}}$$, then:
-    - $$\cblue{E\{Y^{T=1}\}} = E \left \{ \cblue{\frac{TY}{e(X)}} \right \}$$<!-- -->
-    - $$\corange{E\{Y^{T=0}\}} = E\left \{ \corange{\frac{(1-T)Y}{1-e(X)}} \right \}$$<!-- -->
-    - $$\implies \tau = E \left \{ \cblue{\frac{TY}{e(X)}} - \corange{\frac{(1-T)Y}{1-e(X)}} \right \}$$<!-- -->
+    - $$\cblue{E\{Y^{T=1}\}} = E \left \{ \cblue{\frac{TY}{e(X)}} \right \}$$
+    - $$\corange{E\{Y^{T=0}\}} = E\left \{ \corange{\frac{(1-T)Y}{1-e(X)}} \right \}$$
+    - $$\implies \tau = E \left \{ \cblue{\frac{TY}{e(X)}} - \corange{\frac{(1-T)Y}{1-e(X)}} \right \}$$
   - consistent when propensity scores are correctly specified
   - intuition: assume we have 2 subgroups in our data
     - if prob. of a sample being assigned treatment in one subgroup is low, should upweight it because this sample is rare + likely gives us more information
@@ -569,8 +569,8 @@ M --> Y
 - $\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}$ = **doubly robust estimator** = augmented inverse propensity score weighting estimator ([robins, rotnizky, & zhao 1994](https://www.tandfonline.com/doi/abs/10.1080/01621459.1994.10476818?casa_token=XYTwc8KlTqIAAAAA:zfCvbnWKpatYa1KbWIj9GUrCXpze65EEtzAuhuWD-Oztr7UBle1pivvp2481l-y_t08nScDMrql9), scharfstein et al. 1999, [bang & robins 2005](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn))
   - given $\mu_1(X, \beta_1)$, $\mu_0(X, \beta_0)$, e.g. linear
   - given $e(X, \alpha)$, e.g. logistic
-  - $$\tilde{\mu}_{1}^{\mathrm{dr}} =E\left[ \cblue{\overbrace{\mu_{1}\left(X, \beta_{1}\right)}^{\text{outcome mean}}} + \corange{\overbrace{\frac{T\left\{Y-\mu_{1}\left(X, \beta_{1}\right)\right\}}{e(X, \alpha)}}^{\text{inv-prop residuals}}}\right]$$<!-- -->
-  - $$\tilde{\mu}_{0}^{\mathrm{dr}} =E\left[\cblue{\mu_{0}\left(X, \beta_{0}\right)} + \corange{\frac{(1-T)\left\{Y-\mu_{0}\left(X, \beta_{0}\right)\right\}}{1-e(X, \alpha)}}\right]$$<!-- -->
+  - $$\tilde{\mu}_{1}^{\mathrm{dr}} =E\left[ \cblue{\overbrace{\mu_{1}\left(X, \beta_{1}\right)}^{\text{outcome mean}}} + \corange{\overbrace{\frac{T\left\{Y-\mu_{1}\left(X, \beta_{1}\right)\right\}}{e(X, \alpha)}}^{\text{inv-prop residuals}}}\right]$$
+  - $$\tilde{\mu}_{0}^{\mathrm{dr}} =E\left[\cblue{\mu_{0}\left(X, \beta_{0}\right)} + \corange{\frac{(1-T)\left\{Y-\mu_{0}\left(X, \beta_{0}\right)\right\}}{1-e(X, \alpha)}}\right]$$
   - augments the <span class="cblue">oucome regression mean</span> with <span class="corange">inverse-propensity of residuals</span>
   - can alternatively augment inv propensity score weighting estimator by the outcome models:
     - $$\begin{aligned}
@@ -581,8 +581,8 @@ M --> Y
     - propensities well-specified: $e(X, \alpha) = e(X)$
     - mean functions well-specified: $$\left\{\mu_{1}\left(X, \beta_{1}\right)=\mu_{1}(X), \mu_{0}\left(X, \beta_{0}\right)=\mu_{0}(X)\right\}$$
 - in practice, often use cross-fitting (split the data randomly into two halves $\mathcal I_1$ and $\mathcal I _2$)
-  - $$\hat{\tau}_{A I P W}=\frac{\left\vert \mathcal{I}_{1}\right\vert }{n} \hat{\tau}^{\mathcal{I}_{1}}+\frac{\left\vert \mathcal{I}_{2}\right\vert }{n} \hat{\tau}^{\mathcal{I}_{2}}$$<!-- -->
-  - $$\hat{\tau}^{\mathcal{I}_{1}}=\frac{1}{\left\vert \mathcal{I}_{1}\right\vert } \sum_{i \in \mathcal{I}_{1}}\left(\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)\right. \left.+W_{i} \frac{Y_{i}-\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}-\left(1-W_{i}\right) \frac{Y_{i}-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{1-\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}\right)$$<!-- -->
+  - $$\hat{\tau}_{A I P W}=\frac{\left\vert \mathcal{I}_{1}\right\vert }{n} \hat{\tau}^{\mathcal{I}_{1}}+\frac{\left\vert \mathcal{I}_{2}\right\vert }{n} \hat{\tau}^{\mathcal{I}_{2}}$$
+  - $$\hat{\tau}^{\mathcal{I}_{1}}=\frac{1}{\left\vert \mathcal{I}_{1}\right\vert } \sum_{i \in \mathcal{I}_{1}}\left(\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)\right. \left.+W_{i} \frac{Y_{i}-\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}-\left(1-W_{i}\right) \frac{Y_{i}-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{1-\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}\right)$$
   - avoids bias due to overfitting
   - allows us to ignore form of estimators $\hat \mu$ and $\hat e$ and depend only on overlap, consistency, and risk decay (so CV risk of estimators should be small)
 - targeted maximum likelihood ([van der laan & rubin, 2006](https://www.degruyter.com/view/journals/ijb/2/1/article-ijb.2006.2.1.1043.xml.xml)) - more general than DRE
@@ -676,8 +676,8 @@ M --> Y
       - rubin 1978; rosenbaum & rubin 1983
       - this is strong ignorability, weak ignorability is a little weaker
     - this will make **selection biases** zero
-      - $$E[Y^{T=0}\vert T=\cblue{1}] - E[Y^{T=0}\vert T=\cblue{0}]$$<!-- -->
-      - $$E[Y^{T=1}\vert T=\cblue{1}] - E[Y^{T=1}\vert T=\cblue{0}]$$<!-- -->
+      - $$E[Y^{T=0}\vert T=\cblue{1}] - E[Y^{T=0}\vert T=\cblue{0}]$$
+      - $$E[Y^{T=1}\vert T=\cblue{1}] - E[Y^{T=1}\vert T=\cblue{0}]$$
   - graph assumptions
     - **back-door criterion**, **front-door criterion**, unconfounded children criterion
     - basics in a graph
@@ -698,7 +698,7 @@ M --> Y
 - treatment assumptions
   - treatment is not ambiguous
   - **no interference**: my outcome is unaffected by anyone else's treatment
-    - $$Y_i(t_1, ...,t_n) = Y_i(t_i)$$<!-- -->
+    - $$Y_i(t_1, ...,t_n) = Y_i(t_i)$$
   - **consistency**: $Y=Y^{t=0}(1-T) + Y^{t=1}T$ - outcome agrees with the potential outcome corresponding to the treatment indicator
     - this grounds the definition of the counterfactuals $Y^{t=0}, Y^{t=1}$
     - alternatively, $T=t \implies Y=Y(t)$
@@ -727,7 +727,7 @@ M --> Y
 - **negative outcome** - assume we have a secondary informative outcome $$Y'$$
   - $$Y'$$ is similar to $Y$ in terms of confounding: if we believe $T \perp Y(t) \mid X$ we also think $$T \perp Y'(t) \mid X$$
   - we know the expected effect of $T$ on $$Y'$$ (ex. it should be 0)
-  - $$\tau(T \to Y') = E\{Y'^{T=1} - Y'^{T=0})\}$$<!-- -->
+  - $$\tau(T \to Y') = E\{Y'^{T=1} - Y'^{T=0})\}$$
 - ex. [cornfield et al. 1959](https://academic.oup.com/ije/article/38/5/1175/666926) - effect of smoking on car accident
 - ```mermaid
   graph LR
@@ -739,7 +739,7 @@ M --> Y
 - **negative exposure** - assume we have a secondary informative treatment $$T'$$
   - $$T'$$ is similar to $T$ in terms of confounding: if we believe $T \perp Y(t) \mid X$ we also think $$T' \perp Y(t) \mid X$$
   - we know the expected effect of $$T'$$ on $Y$ (ex. it should be 0)
-    - $$\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0}\}$$<!-- -->
+    - $$\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0}\}$$
   - ex. maternal exposure $T$ and parental exposure $$T'$$
 - ```mermaid
   graph LR

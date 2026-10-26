@@ -1,0 +1,186 @@
+# Overlay for _notes/stat/causal_inference.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Causal inference           # short name on the start-page topic map
+hook: Potential outcomes and causal graphs, randomized experiments, quasi-experiments like instruments and regression discontinuity, and effect estimation from observational data.
+intro: |
+  The core problem is confounding. We never see both potential outcomes $Y^{T=1}$ and $Y^{T=0}$ for one unit,
+  and in observational data the treated and untreated groups differ in more than the treatment. The basics and
+  frameworks sections set up the language: Pearl's ladder (association, intervention, counterfactuals), the
+  Fisher randomization test, Neyman-Rubin potential outcomes, and DAGs with structural causal models.
+
+  The rest goes from designs that remove confounding to analyses that adjust for it. Randomized experiments
+  remove it by construction, and stratification, rerandomization and regression adjustment make them more
+  precise. Quasi-experiments find something that acts like randomization: back-door and front-door adjustment,
+  regression discontinuity, difference-in-differences and instrumental variables. Observational analysis adjusts
+  for measured confounders with regression, propensity-score weighting, doubly robust estimators and matching.
+  The last section lists the assumptions all of this needs and ways to probe them.
+sections:
+  causal ladder (different levels of inference):
+    lead: |
+      Each rung needs more than the one below. Association needs only the joint distribution, intervention needs
+      the causal structure, and counterfactuals need the full structural model, since they condition on what
+      actually happened to one unit.
+  fisher randomization test:
+    lead: |
+      Under Fisher's sharp null every unit's two potential outcomes are equal, so all outcomes are known and the
+      only randomness is which units got treated. Re-drawing the assignment gives the null distribution of any
+      test statistic.
+  potential outcome framework (neyman-rubin):
+    lead: |
+      Here the target is the average treatment effect $\tau$. In a randomized experiment the difference in means
+      is unbiased for it, and its variance can be estimated conservatively.
+  DAGs / structural causal models (pearl et al.):
+    lead: |
+      Assumptions go into a graph or a structural causal model, and the graph says when a causal quantity can be
+      computed from the observed distribution. The three-node table shows the cases that matter for adjustment:
+      forks, mediators and colliders.
+  "back-door criterion: capture parents of T":
+    lead: |
+      If a set $S$ blocks every back-door path into $T$ and contains no descendant of $T$, the effect is the
+      average of the within-stratum differences, weighted by $P(S = s)$.
+    viz:
+      - name: backdoor-paths
+        params:
+          S: []
+        caption: 'Click a node to add it to the adjustment set $S$ (shaded); $U_1$ and $U_2$ are unmeasured. Each path
+          between $T$ and $Y$ is listed as blocked or open by the d-separation rule from the DAG section, and open back-door
+          paths are drawn in pink. With $S$ empty the path through $Z$ is open. Add $Z$ and the criterion holds. Then
+          add $X$: it is a collider on $T \leftarrow U_1 \to X \leftarrow U_2 \to Y$, so conditioning on it opens that
+          path, the M-bias from the regression adjustments section. Adding $M$ fails for a different reason, since $M$
+          is a descendant of $T$.'
+  instrumental variable:
+    lead: |
+      An instrument moves the treatment but affects the outcome only through it. The effect is then the
+      instrument's effect on $Y$ divided by its effect on $T$ (the Wald estimator), and it holds for the units
+      whose treatment the instrument changes.
+  inverse propensity weighting:
+    lead: |
+      Weight each treated unit by $1/e(X)$ and each control by $1/(1-e(X))$. Units that got an unlikely treatment
+      count for more, which rebalances the covariates between the groups.
+    viz:
+      - name: ipw-confounding
+        params: {gamma: 1.5}
+        caption: |
+          A confounder $X$ raises both the chance of treatment and the outcome, and the true effect is $\tau = 1$.
+          Each purple dot is the estimate from a new dataset of 200 units, using the true propensity score. At
+          $\gamma = 0$ treatment is randomized and all three estimators agree. As $\gamma$ grows the naive
+          difference in means moves far above 1, while the weighted estimators stay centered near 1. Push
+          $\gamma$ past 3 and many units have $e(X)$ near 0 or 1: their weights explode, the Horvitz-Thompson
+          estimates scatter widely, and even the Hajek estimates drift. This is the overlap problem.
+  doubly robust estimator:
+    lead: |
+      Combines an outcome model with propensity weights: the outcome model's prediction plus an
+      inverse-propensity-weighted average of its residuals. It is consistent if either of the two models is right.
+  common assumptions:
+    lead: |
+      Identifying the ATE takes three kinds of assumptions: no unmeasured confounding (exchangeability, or
+      ignorability given $X$), overlap (every unit could get either treatment), and a well-defined treatment
+      (consistency, no interference).
+  "check ignorability impact: sensitivity analysis wrt unmeasured confounding":
+    lead: |
+      Ignorability can't be tested, so these methods ask how strong an unmeasured confounder $U$ would have to
+      be, in its links to $T$ and to $Y$, to change the conclusion.
+  basics:
+    lead: |
+      Confounding is the central problem: treated and untreated groups can differ in more than the treatment,
+      and each unit shows only one of its potential outcomes. The section sets up potential outcomes, the three
+      approaches (experiments, quasi-experiments, post-hoc analysis), and the split between identification and
+      estimation.
+    viz:
+      - name: simpson-paradox
+        params:
+          imbalance: 0.6
+          view: aggregated
+        caption: 'The note''s example as a binary treatment, with illustrative numbers: within each age group exercise
+          lowers
+      
+          cholesterol by 10, and old people have higher cholesterol. Switch to the stratified view to see the two
+      
+          age groups. Then move the slider left: once old people make up the same share of both groups, the aggregated
+      
+          difference goes back to −10, because age no longer differs between the groups.
+      
+          '
+  intuition:
+    lead: |
+      Informal criteria for causation, such as Bradford Hill's, and the position that there is no causation
+      without manipulation: a cause has to be something that could be changed. Evidence and inference both come
+      in levels, from correlation up to counterfactuals.
+  measures of association:
+    lead: |
+      Ways to summarize how a binary outcome differs between the treated and untreated groups. On their own they
+      describe association, not effect.
+  stratification / matched-pairs design:
+    lead: |
+      If a covariate predicts the outcome, randomizing separately within its strata removes chance imbalance in
+      it. Matched pairs is the extreme case, one treated and one control unit per stratum. Fisher and Neyman
+      analyses carry over by working within strata or pairs.
+  rerandomization balances covariates:
+    lead: |
+      Instead of stratifying, measure the covariate imbalance of a random assignment with the Mahalanobis
+      distance $M$ and keep only assignments with $M$ below a threshold. The threshold trades balance against
+      how much randomness is left.
+  statification / matching:
+    lead: |
+      Stratifying after the experiment, on a covariate or the propensity score, and comparing within strata. It
+      often improves efficiency but runs out of data when some strata are empty.
+  regression adjustment balances covariates:
+    lead: |
+      Adjusting for covariates at analysis time. One strategy builds the test statistic from residuals of $Y$ on
+      $\mathbf x$; the other uses the coefficient of $T$ in a regression on $(T, \mathbf x)$, which improves
+      when the interactions $T \times \mathbf x$ are added.
+  "front-door criterion: good mediator variable":
+    lead: |
+      When the confounder $U$ is unmeasured, a mediator $M$ that carries all of the effect and is shielded from
+      $U$ still identifies it. The formula chains the effect of <span class="cblue">$T$ on $M$</span> with the
+      effect of <span class="corange">$M$ on $Y$</span>.
+  "regression discontinuity: running variable":
+    lead: |
+      When treatment is set by a threshold on a running variable, units just above and just below the cutoff are
+      comparable. The effect at the cutoff is the jump in $E[Y\vert Z = z]$ there, estimated with local
+      regressions on each side.
+  difference-in-difference:
+    lead: |
+      With panel data, compare the change over time in the treated group with the change in the untreated group.
+      This removes fixed differences between the groups but relies on parallel trends; synthetic controls
+      reweight the untreated units so their trend matches before treatment.
+  effect under non-compliance:
+    lead: |
+      When the assigned treatment $I$ and the received treatment $T$ differ, the random assignment acts as an
+      instrument. With exclusion and no defiers, dividing the <span class="cblue">intention-to-treat
+      effect</span> by the <span class="corange">effect of $I$ on $T$</span> gives the effect for compliers.
+  ATE estimation basics:
+    lead: |
+      The naive difference between treated and untreated means equals the ATE plus selection-bias terms.
+      Randomization makes those terms zero; in observational data, ignorability makes them zero within each
+      level of $X$.
+  regression adjustments:
+    lead: |
+      Model the outcome given treatment and covariates, then average the predicted difference
+      $\hat\mu_1(X) - \hat\mu_0(X)$. This imputes the missing potential outcomes and is consistent when the
+      outcome models are right. Adjusting for the wrong variables can add bias (M-bias, Z-bias).
+  alternative weighting:
+    lead: |
+      Fixes for the extreme weights of IPW: truncate them, use weights that stay bounded such as matching or
+      overlap weights, or choose weights that balance the covariates directly.
+  "check ignorability: use auxilary outcome":
+    lead: |
+      Ignorability can't be tested directly, but it can be checked where the answer is known. A negative outcome
+      or negative exposure shares the confounding of the real one but should show no effect, so a nonzero
+      estimate points to confounding.
+takeaways:
+  - Each unit shows only one potential outcome, so a causal effect needs assumptions that link what is observed to what is not.
+  - Randomization makes treatment independent of the potential outcomes, so the difference in means is unbiased for the ATE.
+  - From observational data the ATE needs ignorability given $X$, overlap and consistency. Ignorability can't be tested, only probed with negative controls and sensitivity analysis.
+  - A causal graph says what to adjust for. A set that meets the back-door criterion identifies $P(Y\vert do(T))$, and adjusting for the wrong variables can add bias.
+  - Regression adjustment models the outcome, IPW models the treatment, and a doubly robust estimator combines them and is consistent if either model is right.
+  - Quasi-experiments use something that acts like randomization. Instruments identify the effect for compliers, and regression discontinuity the effect at the cutoff.
+figures:
+  confounding_ex.svg: Simpson's paradox. Pooled, more exercise goes with higher cholesterol. Within each age group the trend reverses, because older people both exercise more and have higher cholesterol.
+  counterfactuals.svg: Causation compares the whole population treated with the whole population untreated. Association compares the treated subset with the untreated subset, which can differ in other ways.
+  identification_estimation_flowchart.svg: Identification turns a causal estimand into a statistical one, and estimation turns that into a number from data.
+  sem2_graph.svg: (a) The chain $Z \to X \to Y$ with exogenous noise on each node. (b) The intervention $do(X = x_0)$ deletes the arrows into $X$ and sets it to $x_0$.
+  synth_control_did.png: California against the control units (from Wager's lecture notes). Left, difference-in-differences against the average control, whose trend before treatment is not parallel to California's. Right, synthetic difference-in-differences reweights the controls so the trends run parallel before treatment, and $\tau$ is the gap after it.
+  matching_regression_adjustment.svg: Two ways to impute the missing potential outcome. Regression adjustment reads it off a line fit to the other group; nearest-neighbor matching copies the outcome of the closest unit in the other group, which gives step functions.
+  weighting_vs_matching.svg: Two ways to make the treated and control propensity-score distributions match. Weighting reweights every unit (left); matching keeps only matched pairs (right).
+  tilting_functions.png: Weights that avoid extreme values (from Assaad et al. 2020). Left, the tilting functions of truncated IPW, matching weights and overlap weights against the propensity score. Right, each one reweights the treated and control densities toward the region where they overlap.
+  propensity_matching.svg: Matching on the propensity score. Pairs are picked from the region where the treated and control score distributions overlap.

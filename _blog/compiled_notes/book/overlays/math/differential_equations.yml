@@ -1,0 +1,39 @@
+# Overlay for _notes/math/differential_equations.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Diff. equations           # short name on the start-page topic map
+title: Differential equations
+hook: Recipes for ordinary differential equations, from separable and first-order linear equations to constant coefficients, variation of parameters and Laplace transforms.
+intro: |
+  A cheat sheet of solution methods, one or two lines each. First-order equations come first: separable
+  ones, first-order linear ones (FOLDE, solved with the integrating factor $e^{\int p(x)dx}$) and exact ones.
+
+  The rest is about second-order linear equations. With constant coefficients you plug in $e^{rt}$ and
+  solve a polynomial for $r$. Undetermined coefficients and variation of parameters handle a forcing
+  term $g$, the Wronskian tests whether two solutions are independent, and Laplace transforms are the
+  tool of choice when $g$ is discontinuous.
+sections:
+  Differential Equations:
+    lead: |
+      Each line is a method. First-order equations are separable, linear (solved
+      with an integrating factor) or exact. Second-order linear equations with constant coefficients reduce to
+      the roots of a polynomial; a forcing term $g$ is handled by undetermined coefficients, variation of
+      parameters or Laplace transforms.
+    viz:
+      - name: char-roots
+        params: {p: 0.5, q: 4}
+        caption: |
+          The constant-coefficient case $y'' + py' + qy = 0$, starting from $y(0) = 1$, $y'(0) = 0$.
+          Plugging in $e^{rt}$ gives $r^2 + pr + q = 0$. Raise $p$ and the complex pair $r = a \pm bi$
+          slides left and the oscillation $e^{at}\cos(bt)$ dies faster; at $p^2 = 4q$ the roots meet, and past
+          that they are real and the solution stops oscillating. Make $p$ negative to move the roots into the
+          right half-plane and the solution grows.
+takeaways:
+  - A separable equation is solved by moving each variable to its own side and integrating.
+  - A first-order linear equation $y' + p(x)y = g(x)$ is solved by multiplying through by the integrating factor
+    $e^{\int p(x)dx}$.
+  - With constant coefficients, plugging in $e^{rt}$ turns the equation into a polynomial, and complex roots $a
+    \pm bi$ give oscillations $e^{at}\cos(bt)$ and $e^{at}\sin(bt)$.
+  - With a forcing term, solve the homogeneous equation first, then find a particular solution by undetermined
+    coefficients or variation of parameters.
+  - Two solutions are independent when their Wronskian $W = y_1 y_2' - y_2 y_1'$ is nonzero.
+  - Laplace transforms work for any forcing term and are the best choice when $g$ is discontinuous.
+figures: {}

@@ -1,0 +1,168 @@
+# Overlay for _notes/math/optimization.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Convex sets and functions, duality and the KKT conditions, descent methods, the optimizers used for neural nets, EM and branch-and-bound.
+intro: |
+  Most of this chapter follows Boyd and Vandenberghe. Convex sets and convex
+  functions come first, then the standard problem classes (linear, quadratic, geometric and semidefinite
+  programs). Duality follows: the Lagrangian gives a lower bound on the optimal value, and when strong
+  duality holds the KKT conditions characterize the solution. Then come approximation and fitting
+  problems such as regularized least squares, and unconstrained minimization by gradient descent and
+  Newton's method.
+
+  The second half is more practical: gradient descent, SGD and Newton's method as used on data, the
+  expectation maximization algorithm (EM) for models with hidden variables, why neural network losses
+  are hard to optimize and how Adam adapts its step size, and branch-and-bound for mixed integer programs.
+sections:
+  convex optimization:
+    lead: |
+      A convex set contains the segment between any two of its points, and a convex function lies below
+      its chords. The lists of operations that preserve convexity are the practical part: they let you check
+      convexity without going back to the definition.
+  convex sets (boyd 2):
+    lead: |
+      Affine, convex and conical sets differ only in which combinations $\theta x_1 + (1-\theta) x_2$ they
+      must contain. The separating and supporting hyperplane theorems are the geometric facts that duality
+      rests on later.
+  geometry:
+    lead: |
+      The standard convex sets that problems are built from: ellipsoids, hyperplanes and halfspaces, norm
+      cones, polyhedra and simplices.
+  convex funcs (boyd 3):
+    lead: |
+      Four equivalent ways to check convexity: Jensen's inequality, a PSD Hessian, the function lying above
+      its tangent planes, or a convex epigraph. The conjugate $f^*$ reappears in duality, where the dual
+      function of a simple problem is $-f^*$.
+  optimization problems (boyd 4):
+    lead: |
+      Standard form writes every problem as minimizing $f_0$ subject to inequalities $f_i(x) \leq 0$ and
+      equalities $h_i(x) = 0$. Many transformations (slack variables, epigraph form, eliminating equalities)
+      give equivalent problems. The subsections then list the main convex problem classes, from linear
+      programs up to semidefinite programs.
+  optimization:
+    lead: |
+      Two problems are equivalent when a solution of one gives a solution of the other. The epigraph form,
+      for example, moves the objective into a constraint $f_0 \leq t$ and minimizes $t$.
+  geometric program:
+    lead: |
+      Not convex as written, but the change of variables $y_i = \log x_i$ turns posynomials into convex
+      functions.
+  generalized inequality:
+    lead: |
+      Inequalities with respect to a proper cone $K$ instead of componentwise. Taking $K$ to be the cone of PSD
+      matrices gives semidefinite programs.
+  duality (boyd 5):
+    lead: |
+      Add the constraints to the objective with weights $\lambda$ and $\nu$. Minimizing over $x$ gives the
+      dual function $g$, which is a lower bound on $p^*$ for every $\lambda \succeq 0$. The dual problem
+      looks for the best such bound.
+  thms of alternatives:
+    lead: |
+      Pairs of systems where at most one (weak) or exactly one (strong) is solvable. Farkas's lemma is the
+      standard example, and a solution of one system certifies that the other is infeasible.
+  approx + fitting (boyd 6):
+    lead: |
+      Fitting problems built on $\vert\vert Ax - b \vert\vert$. The choice of norm or penalty decides which
+      residuals matter, a regularizer trades fit for small $x$, and robust versions account for uncertainty in $A$.
+  norm approx problem:
+    lead: |
+      Least squares, weighted least squares, Chebyshev (minimize the largest residual) and penalty function
+      approximation are the same problem with different norms or penalties on $r = Ax - b$.
+  regularized approximation:
+    lead: |
+      Two goals at once: a small <span class="cblue">residual</span> and a small <span class="corange">regularizer</span>,
+      traded off by $\gamma$. Tikhonov uses squared $\ell_2$ norms for both; lasso and total variation use other penalties.
+  robust approximation:
+    lead: |
+      When $A$ is uncertain, either minimize the expected error over a random $A$ or the worst-case error over
+      a set $\mathcal A$.
+  unconstrained minimization (boyd 9):
+    lead: |
+      The bounds $mI \preceq \nabla^2 f \preceq MI$ come up again and again below: their ratio
+      $\kappa = M/m$ bounds the condition number, and it controls how fast gradient descent converges.
+  unconstrained problems:
+    lead: |
+      Without constraints, the optimum of a differentiable convex $f$ is where $\nabla f = 0$. Strong
+      convexity ($mI$) and smoothness ($MI$) bound $f$ between two quadratics, which gives a stopping rule:
+      a small gradient means $f(x)$ is close to $p^*$.
+  descent methods:
+    lead: |
+      Every method below picks a descent direction $\Delta x$ and a step size $t$. Backtracking line search
+      starts at $t = 1$ and shrinks it by $\beta$ until the step decreases $f$ by enough.
+  gd method:
+    lead: |
+      Gradient descent is the descent method with $\Delta x = -\nabla f(x)$. Its speed depends on the
+      condition number of the Hessian.
+    viz:
+      - name: gradient-descent
+        params: {surface: bowl, lr: 0.09, momentum: 0, cond: 20}
+        caption: |
+          Gradient descent on $f = (\theta_1^2 + \kappa\,\theta_2^2)/2$, whose Hessian has condition number
+          $\kappa$. Set $\kappa = 1$: the contours are circles and the path heads straight in. Raise it: the
+          step size must stay small enough not to diverge along the steep direction $\theta_2$, so progress
+          along the flat direction $\theta_1$ is slow and the path zig-zags. Click the plot to start somewhere else.
+  steepest descent method:
+    lead: |
+      Steepest descent depends on the norm used to measure the step. The Euclidean norm gives gradient
+      descent, a quadratic norm $\vert\vert \cdot \vert\vert_P$ gives $-P^{-1}\nabla f$, and $\ell_1$ moves one
+      coordinate at a time.
+  newton's method:
+    lead: |
+      The Newton step rescales the gradient by the inverse Hessian. The Newton decrement $\lambda^2$ gives the
+      stopping criterion $\lambda^2 / 2 \leq \epsilon$, and backtracking line search picks the step size.
+  basic algorithms:
+    lead: |
+      The same methods from the data side. For least squares, the gradient is a sum over examples of the
+      <span class="cblue">example</span> times its <span class="corange">residual</span>, and SGD estimates that
+      sum from one example or a mini-batch.
+  expectation maximization - Jordan ch 11:
+    lead: |
+      Maximizing $\log p(x|\theta)$ directly is hard because it sums over the hidden $z$. Jensen's
+      inequality gives a lower bound $\mathcal L$ that EM raises in turns: the E step fits the distribution
+      over $z$, the M step fits $\theta$.
+  why is it hard?:
+    lead: |
+      The shapes listed below are what make neural network losses hard to minimize. The widget shows one of
+      them, a winding canyon, and what momentum does about it.
+    viz:
+      - name: gradient-descent
+        params: {surface: rosenbrock, lr: 0.01, momentum: 0}
+        caption: |
+          A winding canyon: the Rosenbrock function has its minimum at $(1, 1)$ at the end of a curved,
+          flat-bottomed valley. Plain gradient descent bounces between the steep walls and barely moves along
+          the valley in 40 steps. Raise the momentum to 0.9: the bounces cancel out, the steps along the valley
+          add up, and the path gets close to $(1, 1)$. Push the step size too far and it diverges instead.
+  optimality conditions:
+    lead: |
+      The duality gap $f_0(x) - g(\lambda, \nu)$ certifies how far a feasible $x$ is from optimal, so it
+      works as a stopping rule. Under strong duality the optimum satisfies the KKT conditions, including
+      complementary slackness: a constraint that is not tight gets $\lambda_i = 0$.
+    viz:
+      - name: lagrange-geometry
+        params:
+          a: 1.5
+          b: 1.2
+          c: 2.5
+          theta: 150
+        caption: 'Minimize <span class="cblue">$f_0$</span> on the circle <span class="cgreen">$h(x) = 0$</span> (illustrative
+      
+          $f_0$). Drag the point along the circle. Wherever the arrows point in different directions, part of
+      
+          $\nabla f_0$ runs along the circle and moving that way changes $f_0$. At the minimum the contour of $f_0$
+      
+          touches the circle and the two gradients are parallel, which is KKT condition 5: $\nabla f_0 + \nu \nabla h
+          = 0$.
+      
+          The maximum satisfies it too.
+      
+          '
+  mixed integer programming (mip):
+    lead: |
+      A linear program where some variables must be integers. Branch-and-bound solves the relaxation without
+      integer constraints, then splits on a variable with a fractional value into two subproblems and repeats.
+takeaways:
+  - Convexity can be checked from the definition, the Hessian, tangent planes or the epigraph, but usually it is easier to build a function from operations that preserve convexity.
+  - The Lagrange dual function is a lower bound on $p^*$ for every $\lambda \succeq 0$; under strong duality (for example Slater's condition) the bound is tight and the KKT conditions characterize the optimum.
+  - The duality gap $f_0(x) - g(\lambda, \nu)$ bounds how suboptimal a feasible point is.
+  - Gradient descent converges roughly linearly at a rate set by the condition number of the Hessian; Newton's method rescales by the inverse Hessian at a higher cost per step.
+  - EM maximizes a lower bound on the log-likelihood from Jensen's inequality, alternating between the hidden variables and the parameters.
+  - Neural network losses are hard because of plateaus, canyons, cliffs and saddle points; momentum and per-parameter step sizes as in Adam help.
+figures: {}

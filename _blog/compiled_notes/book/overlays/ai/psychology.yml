@@ -1,0 +1,121 @@
+# Overlay for _notes/ai/psychology.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: How people explain things (Miller, Lombrozo), plus book notes on evolutionary and moral psychology, the evolution of intelligence, and therapy.
+intro: |
+  The first part is the one closest to AI: research on how people generate and judge explanations. Miller's
+  paper on the psychology of explainable AI argues that explanations are contrastive, selected, about causes
+  rather than probabilities, and social. Lombrozo's papers show how explaining changes causal inference,
+  generalization and learning.
+
+  The rest are notes on books, recording the authors' claims rather than endorsing them: The Moral Animal on
+  evolutionary psychology (kin selection, reciprocal altruism, status), The Righteous Mind on moral
+  intuitions, A Brief History of Intelligence on five breakthroughs from steering to language, Homo Deus, and
+  shorter notes on irrationality, therapy, attachment and polarization.
+sections:
+  psychology of xai (miller, 2006):
+    lead: |
+      Miller's four properties are the core of this section. The rest sketches the three processes behind an
+      explanation: finding causes, selecting a few of them, and the explainee judging the result.
+  The structure and function of explanations (lombrozo 2006):
+    lead: |
+      Lombrozo's review asks what explanations are for. They fit new information into prior beliefs in a way
+      that supports generalization, and the notes follow three effects: on causal inference, on how properties
+      are generalized, and on learning.
+  Causal Explanation (lombrozo & vasilyeva 2017):
+    lead: |
+      Inference to the best explanation means believing the hypothesis that best explains the data. The point
+      here is that "best" includes simplicity, scope and explanatory power, not only posterior probability.
+  explanation taxonomy:
+    lead: |
+      Aristotle's four causes are the classic way to sort explanations. The notes add which kinds people accept
+      (final causes only when there is some causal link) and the two kinds of causal relationship, dependence
+      and transference.
+  causal mechanisms:
+    lead: |
+      A mechanism spells out the steps between a cause and its effect, or the arrangement of parts in a system
+      such as a watch or a cell. Relations between levels of such a system are constitutive, not causal.
+  the moral animal:
+    lead: |
+      Wright applies evolutionary psychology to sex, family, friendship, status and morality. The main tools
+      are kin selection, altruism toward relatives in proportion to the relatedness $r$, and reciprocal
+      altruism (tit for tat).
+  sex, romance, and love:
+    lead: |
+      Wright explains the difference in mating behavior between the sexes by the amount of male parental
+      investment, and gives two reasons monogamy might arise: it can be imposed by ecology or by society.
+  social cement:
+    lead: |
+      How evolution produces altruism. Kin selection explains altruism toward relatives, and reciprocal
+      altruism (tit for tat, which won Axelrod's prisoner's dilemma tournament) explains it toward friends.
+  social strife:
+    lead: |
+      Hierarchy shows up almost everywhere. The notes give two accounts of it: a pecking order that everyone
+      respects, and Maynard Smith's hawk-dove analysis, where aggressive and peaceful strategies coexist in
+      stable proportions (simulated below).
+    viz:
+      - name: hawk-dove
+        params: {V: 2, C: 5, p0: 0.05}
+        caption: |
+          Maynard Smith's hawk-dove game. Hawks always fight and doves never do; the contested resource is worth
+          $V$ and losing a fight costs $C$. When $C > V$, hawks do well while rare (they mostly meet doves) and
+          badly when common (they mostly meet hawks), so from any start the population moves to the mix where
+          both strategies pay the same: a fraction $V/C$ of hawks. Make $V \ge C$ and hawks take over.
+  morals of the story:
+    lead: |
+      Wright's conclusions: what evolutionary psychology implies for ethics, blame and religion, and rules for
+      applying it, chiefly that natural selection designed the mental organ, not the behavior.
+  "The Righteous Mind: Why Good People Are Divided by Politics and Religion":
+    lead: |
+      Haidt's two main claims: moral intuitions come first and reasoning mostly justifies them afterward (the
+      elephant and its rider), and morality rests on more foundations than harm and fairness.
+  intuitions come first, strategic reasoning second:
+    lead: |
+      Haidt sides with Hume: reason is the servant of the passions. Fast intuitions (the elephant) make the
+      judgment, and conscious reasoning (the rider) builds a justification afterward.
+  there's more to morality than harm and fairness:
+    lead: |
+      Moralities built only on harm and fairness are typical of WEIRD (western, educated, industrialized, rich,
+      democratic) people. Moral Foundations Theory lists six foundations, and in Haidt's account liberals rely
+      mostly on the first three.
+  morality binds and blinds:
+    lead: |
+      Why people are groupish. Haidt defends a form of group selection, proposes a hive switch that makes people
+      lose themselves in a group, and treats religion as a team sport that suppresses free riders.
+  a brief history of intelligence (max bennett):
+    lead: |
+      Bennett organizes the evolution of the brain into five breakthroughs: steering, reinforcement learning,
+      simulating, mentalizing and language. Several connect directly to AI, for example dopamine acting as a
+      temporal-difference learning signal.
+  homo deus:
+    lead: |
+      Harari argues that famine, plague and war have become manageable, so humanity's new goals will be
+      immortality, happiness and divinity. The three parts cover how humans came to dominate, how humanism gives
+      the world meaning, and how humans could lose control to algorithms.
+  PART III *Homo Sapiens* Loses Control:
+    lead: |
+      If algorithms know our preferences better than we do, choices such as elections lose their authority.
+      Dataism values every phenomenon by its contribution to data processing.
+  Predictably Irrational:
+    lead: |
+      Ariely's examples of systematic irrationality: prices anchor what people will pay, options are judged
+      relative to nearby options, social norms clash with market norms, and owners overvalue what they own.
+  attached (amir levine & rachel heller):
+    lead: |
+      Attachment theory sorts people into three styles: secure, anxious and avoidant. The notes give an
+      evolutionary story for each and studies on how closeness to a partner affects fear and stress.
+  polarization (ezra klein):
+    lead: |
+      Klein's thesis is that American politics is identity politics. Parties and the public polarize each other
+      in a feedback loop, partisanship becomes a mega-identity, and the media rewards it. The notes end with his
+      three proposed fixes.
+takeaways:
+  - In Miller's account, explanations are contrastive, selected, about causes rather than probabilities, and social.
+  - Explaining constrains causal inference with prior beliefs, which helps when the beliefs are true and perpetuates errors when they are false.
+  - People judge the best explanation by simplicity, scope and explanatory power, not only by posterior probability.
+  - Evolutionary psychology explains altruism with kin selection (in proportion to relatedness $r$) and reciprocal altruism (tit for tat), and stable mixes of behavior with games such as hawk-dove.
+  - For Haidt, moral intuitions come first and reasoning justifies them afterward, and morality rests on more foundations than harm and fairness.
+  - Bennett traces intelligence through five breakthroughs, and in the second (reinforcement learning) dopamine acts as a temporal-difference learning signal.
+figures:
+  behaviour_explanation.svg: |
+    What shapes an explanation of behaviour. The explanatory tool sets information requirements and
+    functional capacities; the explainer brings information access and pragmatic goals. Information
+    processes (left) and impression management processes (right) both feed the explanation.

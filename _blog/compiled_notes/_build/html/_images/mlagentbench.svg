@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 0 1710 768" role="img" aria-labelledby="title desc">
+  <title id="title">MLAgentBench task and agent loop</title>
+  <desc id="desc">Top: an MLAgentBench task consists of a task description ("Improve the performance of the current model in train.py ..."), starter files (workspace/ with images/, data_description.txt, evaluation_details.txt, ..., train.py) and an evaluator (test accuracy). Bottom: the agent loop. At step t the agent reasons r_t ("Increase the learning rate!"), takes action a_t ("Edit train.py ..."), which changes the workspace state s_t (train.py edited) and returns observation o_t ("Edited! Here is the diff ...."). At step t+1 it reasons "Let's see how it does!", acts "python train.py", producing state s_t+1 with a new submission file and observation o_t+1 (training log).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      text { fill: #2b2b2b; }
+      .task { font: 40px "Times New Roman", Times, serif; fill: #8a8a8a; }
+      .hd { font: bold 30px "Times New Roman", Times, serif; }
+      .s { font: 30px "Times New Roman", Times, serif; }
+      .m { font: 23px "Times New Roman", Times, serif; }
+      .cl { font: 21px Helvetica, Arial, sans-serif; }
+      .small { font: 16px Helvetica, Arial, sans-serif; }
+      .ar { font: 24px "Times New Roman", Times, serif; }
+    </style>
+  </defs>
+  <rect x="18" y="8" width="1690" height="296" rx="50" fill="#f2f2f2" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="task" x="168" y="170" text-anchor="middle" >Task:</text>
+  <text class="hd" x="410" y="96" text-anchor="middle" >Task Description</text>
+  <rect x="302" y="120" width="424" height="150" rx="22" fill="#fbe5cd" stroke="#d9a65a" stroke-width="2"/>
+  <text class="s" x="514" y="186" text-anchor="middle" >Improve the performance of the</text>
+  <text class="s" x="514" y="224" text-anchor="middle" >current model in train.py ...</text>
+  <text class="hd" x="894" y="48" text-anchor="middle" >Starter Files</text>
+  <rect x="818" y="62" width="414" height="228" rx="40" fill="#fdf2cc" stroke="#d9b85a" stroke-width="2"/>
+  <text class="s" x="846" y="93" text-anchor="start" >workspace/</text>
+  <line x1="872" y1="106" x2="872" y2="275" stroke="#2b2b2b" stroke-width="2.5"/>
+  <line x1="872" y1="123" x2="922" y2="123" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="s" x="932" y="132">images/</text>
+  <line x1="872" y1="161" x2="922" y2="161" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="s" x="932" y="170">data_description.txt</text>
+  <line x1="872" y1="199" x2="922" y2="199" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="s" x="932" y="208">evaluation_details.txt</text>
+  <line x1="872" y1="237" x2="922" y2="237" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="s" x="932" y="246">...</text>
+  <line x1="872" y1="275" x2="922" y2="275" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="s" x="932" y="284">train.py</text>
+  <text class="hd" x="1400" y="70" text-anchor="middle" >Evaluator</text>
+  <rect x="1330" y="100" width="350" height="150" rx="22" fill="#f4d0d0" stroke="#c0504d" stroke-width="2"/>
+  <text class="s" x="1505" y="186" text-anchor="middle" >Test Accuracy</text>
+  <circle cx="108" cy="468" r="7" fill="#2b2b2b"/>
+  <circle cx="140" cy="468" r="7" fill="#2b2b2b"/>
+  <circle cx="172" cy="468" r="7" fill="#2b2b2b"/>
+  <circle cx="1526" cy="458" r="7" fill="#2b2b2b"/>
+  <circle cx="1558" cy="458" r="7" fill="#2b2b2b"/>
+  <circle cx="1590" cy="458" r="7" fill="#2b2b2b"/>
+  <g transform="translate(298 460)">
+    <rect x="-28" y="-80" width="56" height="10" rx="4" fill="#8a8a8a"/>
+    <ellipse cx="0" cy="-40" rx="56" ry="40" fill="#d9d9d9"/>
+    <rect x="-44" y="-62" width="88" height="40" rx="18" fill="#7fa8e0"/>
+    <circle cx="-24" cy="-44" r="9" fill="#fff" stroke="#2b2b2b" stroke-width="3"/><circle cx="24" cy="-44" r="9" fill="#fff" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M-18 -28 Q0 -16 18 -28" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-48 8 L48 8 L44 70 L-44 70 Z" fill="#555a6e"/>
+    <circle cx="0" cy="40" r="4" fill="#d9d9d9"/>
+  </g>
+  <g transform="translate(852 456)">
+    <rect x="-28" y="-80" width="56" height="10" rx="4" fill="#8a8a8a"/>
+    <ellipse cx="0" cy="-40" rx="56" ry="40" fill="#d9d9d9"/>
+    <rect x="-44" y="-62" width="88" height="40" rx="18" fill="#7fa8e0"/>
+    <circle cx="-24" cy="-44" r="9" fill="#fff" stroke="#2b2b2b" stroke-width="3"/><circle cx="24" cy="-44" r="9" fill="#fff" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M-18 -28 Q0 -16 18 -28" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-48 8 L48 8 L44 70 L-44 70 Z" fill="#555a6e"/>
+    <circle cx="0" cy="40" r="4" fill="#d9d9d9"/>
+  </g>
+  <g transform="translate(1400 456)">
+    <rect x="-28" y="-80" width="56" height="10" rx="4" fill="#8a8a8a"/>
+    <ellipse cx="0" cy="-40" rx="56" ry="40" fill="#d9d9d9"/>
+    <rect x="-44" y="-62" width="88" height="40" rx="18" fill="#7fa8e0"/>
+    <circle cx="-24" cy="-44" r="9" fill="#fff" stroke="#2b2b2b" stroke-width="3"/><circle cx="24" cy="-44" r="9" fill="#fff" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M-18 -28 Q0 -16 18 -28" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-48 8 L48 8 L44 70 L-44 70 Z" fill="#555a6e"/>
+    <circle cx="0" cy="40" r="4" fill="#d9d9d9"/>
+  </g>
+  <rect x="430" y="516" width="314" height="226" rx="30" fill="#dde8f8" stroke="#6f8fc7" stroke-width="2"/>
+  <text class="m" x="450" y="560" text-anchor="start" >workspace/</text>
+  <line x1="472" y1="564" x2="472" y2="693" stroke="#2b2b2b" stroke-width="2.5"/>
+  <line x1="472" y1="575" x2="522" y2="575" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="532" y="584">images/</text>
+  <line x1="472" y1="605" x2="522" y2="605" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="532" y="614">data_description.txt</text>
+  <line x1="472" y1="634" x2="522" y2="634" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="532" y="643">evaluation_details.txt</text>
+  <line x1="472" y1="664" x2="522" y2="664" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="532" y="673">...</text>
+  <line x1="472" y1="693" x2="522" y2="693" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="532" y="702" style="fill:#d9822b">train.py</text>
+  <text class="small" x="446" y="724" text-anchor="start" style="fill:#1f6fb2;font-size:20px">s<tspan dy="6" font-size="15">t</tspan></text>
+  <rect x="980" y="508" width="314" height="252" rx="30" fill="#dde8f8" stroke="#6f8fc7" stroke-width="2"/>
+  <text class="m" x="1000" y="552" text-anchor="start" >workspace/</text>
+  <line x1="1022" y1="556" x2="1022" y2="715" stroke="#2b2b2b" stroke-width="2.5"/>
+  <line x1="1022" y1="567" x2="1072" y2="567" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="1082" y="576">images/</text>
+  <line x1="1022" y1="597" x2="1072" y2="597" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="1082" y="606">data_description.txt</text>
+  <line x1="1022" y1="626" x2="1072" y2="626" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="1082" y="635">evaluation_details.txt</text>
+  <line x1="1022" y1="656" x2="1072" y2="656" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="1082" y="665">...</text>
+  <line x1="1022" y1="685" x2="1072" y2="685" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="1082" y="694" style="fill:#1f8a4c">submission.cav</text>
+  <line x1="1022" y1="715" x2="1072" y2="715" stroke="#2b2b2b" stroke-width="2.5"/>
+  <text class="m" x="1082" y="724" style="fill:#d9822b">train.py</text>
+  <text class="small" x="998" y="742" text-anchor="start" style="fill:#1f6fb2;font-size:20px">s<tspan dy="6" font-size="15">t+1</tspan></text>
+  <rect x="636" y="434" width="156" height="104" rx="14" fill="#e3eedb" stroke="#82b366" stroke-width="2"/>
+  <text class="small" x="646" y="454" text-anchor="start" style="fill:#1f8a4c;font-size:20px">o<tspan dy="6" font-size="14">t</tspan></text>
+  <text class="cl" x="714" y="488" text-anchor="middle" >Edited! Here is</text>
+  <text class="cl" x="714" y="518" text-anchor="middle" >the diff ....</text>
+  <rect x="1190" y="434" width="156" height="104" rx="14" fill="#e3eedb" stroke="#82b366" stroke-width="2"/>
+  <text class="small" x="1198" y="454" text-anchor="start" style="fill:#1f8a4c;font-size:20px">o<tspan dy="6" font-size="14">t+1</tspan></text>
+  <text class="cl" x="1268" y="488" text-anchor="middle" >Training Log</text>
+  <text class="cl" x="1268" y="518" text-anchor="middle" >....</text>
+  <ellipse cx="436" cy="404" rx="88" ry="56" fill="#fff" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="small" x="388" y="374" text-anchor="start" >r<tspan dy="5" font-size="13">t</tspan></text>
+  <text class="cl" x="436" y="400" text-anchor="middle" >Increase the</text>
+  <text class="cl" x="436" y="426" text-anchor="middle" >learning rate!</text>
+  <ellipse cx="982" cy="404" rx="90" ry="56" fill="#fff" stroke="#2b2b2b" stroke-width="2"/>
+  <text class="small" x="932" y="374" text-anchor="start" >r<tspan dy="5" font-size="13">t+1</tspan></text>
+  <text class="cl" x="982" y="400" text-anchor="middle" >Let's see how</text>
+  <text class="cl" x="982" y="426" text-anchor="middle" >it does!</text>
+  <g transform="translate(364 462) rotate(16.2)">
+    <polygon points="0,-24 119.12007146045917,-24 119.12007146045917,-46 179.12007146045917,0 119.12007146045917,46 119.12007146045917,24 0,24" fill="#e2d7ee" stroke="#7b4fb5" stroke-width="2.5" stroke-linejoin="round"/>
+    <text class="ar" x="14" y="10">Edit train.py ...</text>
+    <text class="small" x="89.12007146045917" y="-28" style="fill:#7b4fb5">a<tspan dy="5" font-size="13">t</tspan></text>
+  </g>
+  <g transform="translate(902 454) rotate(16.3)">
+    <polygon points="0,-24 110.88007490635061,-24 110.88007490635061,-46 170.88007490635061,0 110.88007490635061,46 110.88007490635061,24 0,24" fill="#e2d7ee" stroke="#7b4fb5" stroke-width="2.5" stroke-linejoin="round"/>
+    <text class="ar" x="14" y="10">python train.py</text>
+    <text class="small" x="80.88007490635061" y="-28" style="fill:#7b4fb5">a<tspan dy="5" font-size="13">t+1</tspan></text>
+  </g>
+</svg>

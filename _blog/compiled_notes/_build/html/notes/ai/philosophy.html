@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.7. philosophy</title>
+    <title>Philosophy &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ai/philosophy';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.8. psychology" href="psychology.html" />
-    <link rel="prev" title="6.6. ai futures" href="ai_futures.html" />
+    <link rel="next" title="Fairness and STS" href="fairness_sts.html" />
+    <link rel="prev" title="Cognitive science" href="cogsci.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai_section.html">6. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/ai/philosophy.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>philosophy</h1>
+    <h1>Philosophy</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,24 +471,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">6.7.1. basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-explanation-sep">6.7.2. scientific explanation (SEP)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-overarching-examples-what-causes-what">6.7.2.1. some overarching examples - what causes what?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dn-model-deductive-nomological-model">6.7.2.2. DN model = Deductive-Nomological Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-relevance-wesley-salmon">6.7.2.3. statistical relevance - wesley salmon</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanical-models">6.7.2.4. causal mechanical models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unificationist-models">6.7.2.5. unificationist models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pragmatic-contextual-explanation-models">6.7.2.6. pragmatic = contextual explanation models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-areas">6.7.2.7. open areas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-explanation-sep">Scientific explanation (SEP)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-overarching-examples-what-causes-what">Some overarching examples - what causes what?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dn-model-deductive-nomological-model">DN model = Deductive-Nomological Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-relevance-wesley-salmon">Statistical relevance - wesley salmon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanical-models">Causal mechanical models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unificationist-models">Unificationist models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pragmatic-contextual-explanation-models">Pragmatic = contextual explanation models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-areas">Open areas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-beginning-of-infinity-david-deutsch-2011">6.7.3. the beginning of infinity (david deutsch, 2011)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#philosophy-of-science">6.7.4. philosophy of science</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thomas-kuhn">6.7.4.1. thomas kuhn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-beginning-of-infinity-david-deutsch-2011">The beginning of infinity (david deutsch, 2011)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#philosophy-of-science">Philosophy of science</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thomas-kuhn">Thomas kuhn</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-story-of-philosophy">6.7.5. the story of philosophy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">6.7.6. stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-story-of-philosophy">The story of philosophy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a></li>
 </ul>
             </nav>
         </div>
@@ -450,16 +500,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="philosophy">
-<h1><span class="section-number">6.7. </span>philosophy<a class="headerlink" href="#philosophy" title="Link to this heading">#</a></h1>
-<section id="basics">
-<h2><span class="section-number">6.7.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/ai.html">Artificial intelligence</a> &nbsp;·&nbsp; chapter 6 of 8 &nbsp;·&nbsp; 10 min read</p><section class="tex2jax_ignore mathjax_ignore" id="philosophy">
+<h1>Philosophy<a class="headerlink" href="#philosophy" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Notes on philosophy relevant to explanation (particularly in science)</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>Most of the chapter asks what makes something an explanation rather than a description, following the Stanford Encyclopedia’s entry on scientific explanation. The deductive-nomological model explains an event by deriving it from a law, but fails on asymmetries (the flagpole’s height explains its shadow, not the reverse) and on irrelevant details. The statistical relevance, causal-mechanical, unificationist and pragmatic models each try to fix part of this.</p>
+<p>The opening section ties this to machine learning: whether uninterpretable “naked predictions” are enough for science. The rest are notes on Deutsch’s The Beginning of Infinity (good explanations are hard to vary), Kuhn’s paradigms and revolutions, Will Durant’s The Story of Philosophy, and a few papers on explaining versus predicting.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 6 sections</summary><ol><li><a href="#sec-philosophy-basics">Basics</a><span class="ol-lead">Two papers on interpretability and science.</span></li><li><a href="#sec-philosophy-scientific-explanation-sep">Scientific explanation (SEP)</a><span class="ol-lead">These theories cover only explanations of why something happens, and try to separate explaining from merely describing.</span></li><li><a href="#sec-philosophy-the-beginning-of-infinity-david-deutsch-2011">The beginning of infinity (david deutsch, 2011)</a><span class="ol-lead">Deutsch&#x27;s central claim is that progress comes from good explanations: ones that are hard to vary while still accounting for what they explain.</span></li><li><a href="#sec-philosophy-philosophy-of-science">Philosophy of science</a></li><li><a href="#sec-philosophy-the-story-of-philosophy">The story of philosophy</a><span class="ol-lead">Notes on Will Durant&#x27;s tour from Plato to Bertrand Russell, one list per philosopher.</span></li><li><a href="#sec-philosophy-stability">Stability</a><span class="ol-lead">Loose ends on justification and modeling.</span></li></ol></details><section id="basics">
+<span id="sec-philosophy-basics"></span><h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<p class="section-lead">Two papers on interpretability and science. Hooker &amp; Hooker ask whether naked predictions, numbers with no interpretation, can be enough for science. Emmert-Streib et al. argue that a simple process may allow a theory, while a complicated one allows only a description.</p>
 <ul>
 <li><p>try to understand what principles underly all phenomena</p></li>
 <li><p>Machine Learning and the Future of Realism (<a class="reference external" href="https://arxiv.org/pdf/1704.04688.pdf">hooker &amp; hooker, 2017</a>)</p>
 <ul class="simple">
 <li><p>lack of interpretability in DNNs is part of what makes them powerful</p></li>
-<li><p><em>naked predictions</em> - numbers with no real interpretation</p>
+<li><p><span id="def-naked-predictions" class="def-anchor"></span><em>naked predictions</em> - numbers with no real interpretation</p>
 <ul>
 <li><p>more central to science than modelling?</p></li>
 <li><p>no theory needed? (Breiman 2001)</p></li>
@@ -468,10 +524,10 @@ document.write(`
 <li><p>old school: realist studied neuroscience (Wundt), anti-realist just stimuli/response patterns (Skinner), now neither</p></li>
 <li><p>interpretability properties</p>
 <ul>
-<li><p><em>simplicity</em> - too complex</p></li>
-<li><p><em>risk</em> - too complex</p></li>
-<li><p><em>efficiency</em> - basically generalizability</p></li>
-<li><p><em>unification</em> - answers <em>ontology</em> - the nature of being</p></li>
+<li><p><span id="def-simplicity" class="def-anchor"></span><em>simplicity</em> - too complex</p></li>
+<li><p><span id="def-risk" class="def-anchor"></span><em>risk</em> - too complex</p></li>
+<li><p><span id="def-efficiency" class="def-anchor"></span><em>efficiency</em> - basically generalizability</p></li>
+<li><p><span id="def-unification" class="def-anchor"></span><em>unification</em> - answers <em>ontology</em> - the nature of being</p></li>
 <li><p><em>realism</em> in a partially accessible world</p></li>
 </ul>
 </li>
@@ -490,7 +546,8 @@ document.write(`
 </ul>
 </section>
 <section id="scientific-explanation-sep">
-<h2><span class="section-number">6.7.2. </span><a class="reference external" href="https://plato.stanford.edu/entries/scientific-explanation/">scientific explanation</a> (SEP)<a class="headerlink" href="#scientific-explanation-sep" title="Link to this heading">#</a></h2>
+<span id="sec-philosophy-scientific-explanation-sep"></span><h2><a class="reference external" href="https://plato.stanford.edu/entries/scientific-explanation/">Scientific explanation</a> (SEP)<a class="headerlink" href="#scientific-explanation-sep" title="Link to this heading">#</a></h2>
+<p class="section-lead">These theories cover only explanations of why something happens, and try to separate explaining from merely describing. The examples that follow (flagpole and shadow, barometer and storm, the gas law) are the test cases each model is checked against.</p>
 <ul class="simple">
 <li><p>distinction between scientific explanation and non-scientific explanation (although can put things on a spectrum)</p></li>
 <li><p>distinction between explanations and accounts which are “merely descriptive”</p></li>
@@ -498,7 +555,7 @@ document.write(`
 <li><p>concepts: explanation, description, causation</p></li>
 </ul>
 <section id="some-overarching-examples-what-causes-what">
-<h3><span class="section-number">6.7.2.1. </span>some overarching examples - what causes what?<a class="headerlink" href="#some-overarching-examples-what-causes-what" title="Link to this heading">#</a></h3>
+<h3>Some overarching examples - what causes what?<a class="headerlink" href="#some-overarching-examples-what-causes-what" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>do birth pills stop pregnancy (both for men/women)?</p></li>
 <li><p>sun, flagpole, shadow</p></li>
@@ -509,13 +566,14 @@ document.write(`
 </ul>
 </section>
 <section id="dn-model-deductive-nomological-model">
-<h3><span class="section-number">6.7.2.2. </span>DN model = Deductive-Nomological Model<a class="headerlink" href="#dn-model-deductive-nomological-model" title="Link to this heading">#</a></h3>
+<h3>DN model = Deductive-Nomological Model<a class="headerlink" href="#dn-model-deductive-nomological-model" title="Link to this heading">#</a></h3>
+<p class="section-lead">An explanation has two parts: the explanandum, what is explained, and the explanans, what does the explaining. In the DN model the explanans contains a law of nature and the explanandum follows from it deductively.</p>
 <ul class="simple">
 <li><p>by Popper, Hempel, Oppenheim (popper 1935, hempel 1942)</p></li>
 <li><p>explanation has 2 constituents</p>
 <ul>
-<li><p><strong>explanandum</strong> - sentence describing phemonenon to be explained</p></li>
-<li><p><strong>explanans</strong> - class of sentences used to account for the phenomenon</p></li>
+<li><p><span id="def-explanandum" class="def-anchor"></span><strong>explanandum</strong> - sentence describing phemonenon to be explained</p></li>
+<li><p><span id="def-explanans" class="def-anchor"></span><strong>explanans</strong> - class of sentences used to account for the phenomenon</p></li>
 </ul>
 </li>
 <li><p>deductive</p>
@@ -552,7 +610,8 @@ document.write(`
 </ul>
 </section>
 <section id="statistical-relevance-wesley-salmon">
-<h3><span class="section-number">6.7.2.3. </span>statistical relevance - wesley salmon<a class="headerlink" href="#statistical-relevance-wesley-salmon" title="Link to this heading">#</a></h3>
+<h3>Statistical relevance - wesley salmon<a class="headerlink" href="#statistical-relevance-wesley-salmon" title="Link to this heading">#</a></h3>
+<p class="section-lead">Salmon replaces derivation with probability: an attribute <span class="math notranslate nohighlight">\(C\)</span> is relevant if it changes the probability of the outcome <span class="math notranslate nohighlight">\(B\)</span>. The barometer example shows the catch: a variable can be statistically relevant without being a cause.</p>
 <ul class="simple">
 <li><p>starts with (salmon, 1971)</p></li>
 <li><p>given some class or population <em>A</em>, an attribute <em>C</em> will be <strong>statistically relevant</strong> to another attribute <em>B</em> iff <span class="math notranslate nohighlight">\(P(B∣A,C) \neq P(B∣A)\)</span></p>
@@ -570,23 +629,24 @@ document.write(`
 </ul>
 </section>
 <section id="causal-mechanical-models">
-<h3><span class="section-number">6.7.2.4. </span>causal mechanical models<a class="headerlink" href="#causal-mechanical-models" title="Link to this heading">#</a></h3>
+<h3>Causal mechanical models<a class="headerlink" href="#causal-mechanical-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">Salmon’s second answer: explain by tracing causal processes, which carry marks through space and time, and their interactions. A shadow is only a pseudoprocess. The difficulty is telling which causal details matter: mass and velocity in a pool-ball collision, not a chalk mark on the ball.</p>
 <ul class="simple">
 <li><p>starts with (salmon, 1984)</p></li>
 <li><p>elements</p>
 <ul>
-<li><p><strong>causal process</strong> - leaves marks on the world which persist spatiotemporally (these marks hint at counterfactuals)</p>
+<li><p><span id="def-causal-process" class="def-anchor"></span><strong>causal process</strong> - leaves marks on the world which persist spatiotemporally (these marks hint at counterfactuals)</p>
 <ul>
 <li><p>contrasts with a pseudoprocess, like a shadow</p></li>
 </ul>
 </li>
-<li><p><strong>causal interaction</strong> - interaction of such processes, e.g. a car crash</p></li>
+<li><p><span id="def-causal-interaction" class="def-anchor"></span><strong>causal interaction</strong> - interaction of such processes, e.g. a car crash</p></li>
 </ul>
 </li>
 <li><p>explanation consists of 2 parts which both track causal process + interactions</p>
 <ul>
-<li><p><strong>etiological</strong> - leading up to event</p></li>
-<li><p><strong>constitutive parts</strong> - during event</p></li>
+<li><p><span id="def-etiological" class="def-anchor"></span><strong>etiological</strong> - leading up to event</p></li>
+<li><p><span id="def-constitutive-parts" class="def-anchor"></span><strong>constitutive parts</strong> - during event</p></li>
 </ul>
 </li>
 <li><p>issues: hard to distinguish between explanatory causes (e.g. for a pool ball collision, mass + velocity) vs other so-called causal processes (e.g. chalk mark on ball)</p>
@@ -597,7 +657,8 @@ document.write(`
 </ul>
 </section>
 <section id="unificationist-models">
-<h3><span class="section-number">6.7.2.5. </span>unificationist models<a class="headerlink" href="#unificationist-models" title="Link to this heading">#</a></h3>
+<h3>Unificationist models<a class="headerlink" href="#unificationist-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">An explanation is better the more phenomena it accounts for with fewer and more stringent arguments, as in Friedman and Kitcher.</p>
 <ul class="simple">
 <li><p>important attempts include friedman (1974) and kitcher (1989)</p></li>
 <li><p>seeks a unified account of a range of different phenomena</p></li>
@@ -611,7 +672,8 @@ document.write(`
 </ul>
 </section>
 <section id="pragmatic-contextual-explanation-models">
-<h3><span class="section-number">6.7.2.6. </span>pragmatic = contextual explanation models<a class="headerlink" href="#pragmatic-contextual-explanation-models" title="Link to this heading">#</a></h3>
+<h3>Pragmatic = contextual explanation models<a class="headerlink" href="#pragmatic-contextual-explanation-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">These models bring in the audience. For van Fraassen an explanation answers a why-question relative to a set of alternatives fixed by context, and that is where the asymmetries come from.</p>
 <ul class="simple">
 <li><p>scriven (1962), bromberger (1966), van Fraassen (1980), achinstein (1983)</p></li>
 <li><p>takes audience into account</p></li>
@@ -640,7 +702,7 @@ document.write(`
 </ul>
 </section>
 <section id="open-areas">
-<h3><span class="section-number">6.7.2.7. </span>open areas<a class="headerlink" href="#open-areas" title="Link to this heading">#</a></h3>
+<h3>Open areas<a class="headerlink" href="#open-areas" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>understand casuality</p></li>
 <li><p>more focus on whethery expalanations capture our intuitive judgements and more on the issue of why the info they convey is valuable + relates to our goals</p></li>
@@ -649,11 +711,12 @@ document.write(`
 </section>
 </section>
 <section id="the-beginning-of-infinity-david-deutsch-2011">
-<h2><span class="section-number">6.7.3. </span>the beginning of infinity (david deutsch, 2011)<a class="headerlink" href="#the-beginning-of-infinity-david-deutsch-2011" title="Link to this heading">#</a></h2>
+<span id="sec-philosophy-the-beginning-of-infinity-david-deutsch-2011"></span><h2>The beginning of infinity (david deutsch, 2011)<a class="headerlink" href="#the-beginning-of-infinity-david-deutsch-2011" title="Link to this heading">#</a></h2>
+<p class="section-lead">Deutsch’s central claim is that progress comes from good explanations: ones that are hard to vary while still accounting for what they explain.</p>
 <ul class="simple">
 <li><p>all progress has resulted from the quest for good explanations</p>
 <ul>
-<li><p><em>good explanation</em> - hard to vary while still accounting for what it purports to account for</p></li>
+<li><p><span id="def-good-explanation" class="def-anchor"></span><em>good explanation</em> - hard to vary while still accounting for what it purports to account for</p></li>
 <li><p>the <em>reach</em> of an explanation is something we find out only after the fact (though we strive for explanations with good reach)</p></li>
 <li><p>seek “an idea so simple…that…we sill all say to each other, how could it have been otherwise”?</p></li>
 </ul>
@@ -729,9 +792,10 @@ document.write(`
 </ul>
 </section>
 <section id="philosophy-of-science">
-<h2><span class="section-number">6.7.4. </span>philosophy of science<a class="headerlink" href="#philosophy-of-science" title="Link to this heading">#</a></h2>
+<span id="sec-philosophy-philosophy-of-science"></span><h2>Philosophy of science<a class="headerlink" href="#philosophy-of-science" title="Link to this heading">#</a></h2>
 <section id="thomas-kuhn">
-<h3><span class="section-number">6.7.4.1. </span><a class="reference external" href="https://plato.stanford.edu/entries/thomas-kuhn/">thomas kuhn</a><a class="headerlink" href="#thomas-kuhn" title="Link to this heading">#</a></h3>
+<h3><a class="reference external" href="https://plato.stanford.edu/entries/thomas-kuhn/">Thomas kuhn</a><a class="headerlink" href="#thomas-kuhn" title="Link to this heading">#</a></h3>
+<p class="section-lead">Kuhn’s picture: normal science solves puzzles within a paradigm, anomalies lead to a crisis, and a revolution revises the paradigm. The incommensurability thesis says theories from different periods cannot be fully compared.</p>
 <ul class="simple">
 <li><p>science enjoys periods of stable growth punctuated by revisionary revolutions</p>
 <ul>
@@ -756,7 +820,8 @@ document.write(`
 </section>
 </section>
 <section id="the-story-of-philosophy">
-<h2><span class="section-number">6.7.5. </span>the story of philosophy<a class="headerlink" href="#the-story-of-philosophy" title="Link to this heading">#</a></h2>
+<span id="sec-philosophy-the-story-of-philosophy"></span><h2>The story of philosophy<a class="headerlink" href="#the-story-of-philosophy" title="Link to this heading">#</a></h2>
+<p class="section-lead">Notes on Will Durant’s tour from Plato to Bertrand Russell, one list per philosopher. Durant thinks philosophy should focus on ethics rather than epistemology.</p>
 <p><strong>book by will durant</strong></p>
 <ul class="simple">
 <li><p>states his own view that philosophy should focus on ethics rather the epistemiology (i.e. how we know what we know)</p>
@@ -840,8 +905,8 @@ document.write(`
 </li>
 <li><p>bacon embraces <strong>epicureanism</strong> - don’t want anything</p></li>
 <li><p>scors knowledge that doesn’t lead to action</p></li>
-<li><p><strong>science</strong> = organization of knowledge</p></li>
-<li><p><strong>philosophy</strong> = organization of science</p></li>
+<li><p><span id="def-science" class="def-anchor"></span><strong>science</strong> = organization of knowledge</p></li>
+<li><p><span id="def-philosophy" class="def-anchor"></span><strong>philosophy</strong> = organization of science</p></li>
 <li><p>doubt all assumptions</p></li>
 </ul>
 </li>
@@ -861,7 +926,7 @@ document.write(`
 <ul>
 <li><p>frenchman who was exiled</p></li>
 <li><p>seeks history of ideas, beginning with <em>The Essay on Morals</em></p></li>
-<li><p><em>Candide</em> - short story, denouncing optimism for pragmatism</p></li>
+<li><p><span id="def-candide" class="def-anchor"></span><em>Candide</em> - short story, denouncing optimism for pragmatism</p></li>
 <li><p>real philosophy begins with <em>Philosophic dictionary</em></p></li>
 <li><p>strongly against superstition</p></li>
 <li><p>wrote simple, accessible pamphlets</p></li>
@@ -921,7 +986,8 @@ document.write(`
 </ul>
 </section>
 <section id="stability">
-<h2><span class="section-number">6.7.6. </span>stability<a class="headerlink" href="#stability" title="Link to this heading">#</a></h2>
+<span id="sec-philosophy-stability"></span><h2>Stability<a class="headerlink" href="#stability" title="Link to this heading">#</a></h2>
+<p class="section-lead">Loose ends on justification and modeling. Foundationalism rests every chain of justification on unproven basic beliefs, and Shmueli separates explanatory modeling, which tests causal explanations, from prediction.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Foundationalism">Foundationalism</a> - where the chain of justifications eventually relies on <a class="reference external" href="http://en.wikipedia.org/wiki/Basic_beliefs">basic beliefs</a> or <a class="reference external" href="http://en.wikipedia.org/wiki/Axiom">axioms</a> that are left unproven</p>
 <ul>
@@ -938,7 +1004,18 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>The DN model explains an event by deriving it from a law of nature, but it fails on asymmetries (the flagpole and its shadow) and on irrelevant details (a man taking birth control pills).</p></li>
+<li><p>Statistical relevance replaces derivation with probability, but a variable such as the barometer reading can be relevant without being a cause.</p></li>
+<li><p>The causal-mechanical, unificationist and pragmatic models each repair part of the DN model, by tracing causal processes, by covering more phenomena with fewer arguments, or by letting context fix the contrast.</p></li>
+<li><p>For Deutsch a good explanation is hard to vary while still accounting for what it explains, and progress comes from seeking such explanations.</p></li>
+<li><p>Kuhn describes science as puzzle-solving within a paradigm, interrupted by revolutions when anomalies cause a crisis.</p></li>
+<li><p>For machine learning the open question is whether uninterpretable predictions are enough for science, or whether it needs a theory or at least a description.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../ai/psychology.html"><span class="related-part">Artificial intelligence</span><span class="related-title">Psychology</span><span class="related-hook">How people explain things (Miller, Lombrozo), plus book notes on evolutionary and moral psychology, the evolution of intelligence, and therapy.</span></a><a class="related-card" href="../ai/ai_futures.html"><span class="related-part">Artificial intelligence</span><span class="related-title">AI futures</span><span class="related-hook">Short thoughts on AGI, then notes on Stuart Russell&#x27;s Human Compatible and the essays in Possible Minds.</span></a><a class="related-card" href="../ai/cogsci.html"><span class="related-part">Artificial intelligence</span><span class="related-title">Cognitive science</span><span class="related-hook">How minds might form representations (nativism, empiricism, Bayesian models, deep learning), language, theory of mind, symbolic AI, and cognitive biases.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -972,20 +1049,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ai_futures.html"
+       href="cogsci.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.6. </span>ai futures</p>
+        <p class="prev-next-title">Cognitive science</p>
       </div>
     </a>
     <a class="right-next"
-       href="psychology.html"
+       href="fairness_sts.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.8. </span>psychology</p>
+        <p class="prev-next-title">Fairness and STS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1005,24 +1082,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">6.7.1. basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-explanation-sep">6.7.2. scientific explanation (SEP)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-overarching-examples-what-causes-what">6.7.2.1. some overarching examples - what causes what?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dn-model-deductive-nomological-model">6.7.2.2. DN model = Deductive-Nomological Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-relevance-wesley-salmon">6.7.2.3. statistical relevance - wesley salmon</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanical-models">6.7.2.4. causal mechanical models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unificationist-models">6.7.2.5. unificationist models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pragmatic-contextual-explanation-models">6.7.2.6. pragmatic = contextual explanation models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-areas">6.7.2.7. open areas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-explanation-sep">Scientific explanation (SEP)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-overarching-examples-what-causes-what">Some overarching examples - what causes what?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dn-model-deductive-nomological-model">DN model = Deductive-Nomological Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-relevance-wesley-salmon">Statistical relevance - wesley salmon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-mechanical-models">Causal mechanical models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unificationist-models">Unificationist models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pragmatic-contextual-explanation-models">Pragmatic = contextual explanation models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-areas">Open areas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-beginning-of-infinity-david-deutsch-2011">6.7.3. the beginning of infinity (david deutsch, 2011)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#philosophy-of-science">6.7.4. philosophy of science</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thomas-kuhn">6.7.4.1. thomas kuhn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-beginning-of-infinity-david-deutsch-2011">The beginning of infinity (david deutsch, 2011)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#philosophy-of-science">Philosophy of science</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thomas-kuhn">Thomas kuhn</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-story-of-philosophy">6.7.5. the story of philosophy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">6.7.6. stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-story-of-philosophy">The story of philosophy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">Stability</a></li>
 </ul>
   </nav></div>
 
@@ -1047,7 +1124,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

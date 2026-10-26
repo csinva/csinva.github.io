@@ -14,7 +14,7 @@ typora-copy-images-to: ../assets
 
 - $x \preceq y$ - these are vectors and x is less than y elementwise
 - $X \preceq Y$ - matrices, $Y-X$ is PSD
-  - $$v^TXv \leq v^TYv \:\: \forall v$$<!-- -->
+  - $$v^TXv \leq v^TYv \:\: \forall v$$
 
 ## linearity
 
@@ -83,12 +83,12 @@ typora-copy-images-to: ../assets
   - **Jacobian matrix**: $$\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\   \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$$ - this is dim(f) x dim(x)
 - function f: $\mathbb{R}^n \to \mathbb{R}$
   - 2nd derivative is **Hessian matrix**
-    - $$\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots & \vdots & \ddots & \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$$<!-- -->
+    - $$\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots & \vdots & \ddots & \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$$
 - examples
   - $\nabla_x a^T x = a$
   - $\nabla_x x^TAx = 2Ax$ (if A symmetric, else $(A+A^T)x)$)
   - $\nabla_x^2 x^TAx = 2A$ (if A symmetric, else $A+A^T$)
-  - $$\nabla_x \log \: \det X = X^{-1}$$<!-- -->
+  - $$\nabla_x \log \: \det X = X^{-1}$$
 - we can calculate derivs of quadratic forms by calculating derivs of traces
   - $x^TAx = \operatorname{tr}[x^TAx] = \operatorname{tr}[xx^TA]$
   - $\implies \frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} \operatorname{tr}[xx^TA] = [xx^T]^T = xx^T$
@@ -108,7 +108,7 @@ typora-copy-images-to: ../assets
 
 - **$L_p-$norms**: $$\vert \vert x\vert \vert _p = (\sum_{i=1}^n \vert x_i\vert ^p)^{1/p}$$
   - $L_0$ norm - number of nonzero elements (this is not actually a norm!)
-  - $$\vert \vert x\vert \vert _1 = \sum \vert x_i\vert $$<!-- -->
+  - $$\vert \vert x\vert \vert _1 = \sum \vert x_i\vert $$
   - $$\vert \vert x\vert \vert _2$$ - Euclidean norm
   - $$\vert \vert x\vert \vert _\infty = \max_i \vert x_i\vert $$ - also called *Cheybyshev norm*
 - *quadratic norms*
@@ -152,8 +152,8 @@ typora-copy-images-to: ../assets
 - expressions when $A \in \mathbb{S}$
   - $\det(A) = \prod_i \lambda_i$
   - $\operatorname{tr}(A) = \sum_i \lambda_i$
-  - $$\vert \vert A\vert \vert _2 = \max \vert  \lambda_i \vert $$<!-- -->
-  - $$\vert \vert A\vert \vert _F = \sqrt{\sum \lambda_i^2}$$<!-- -->
+  - $$\vert \vert A\vert \vert _2 = \max \vert  \lambda_i \vert $$
+  - $$\vert \vert A\vert \vert _F = \sqrt{\sum \lambda_i^2}$$
   - $\lambda_{\max} (A) = \sup_{x \neq 0} \frac{x^T A x}{x^T x}$
   - $\lambda_{\min} (A) = \inf_{x \neq 0} \frac{x^T A x}{x^T x}$
 - *defective matrices* - lack a full set of eigenvalues
@@ -211,7 +211,7 @@ typora-copy-images-to: ../assets
 - applications
   - very numerically stable because U and V are orthogonal matrices
   - *condition number* of invertible nxn matrix = $\sigma_{\max} / \sigma_{\min}$
-  - $$A=\cblue{U}\corange{\Sigma} \cgreen{V^T} = \cblue{u_1} \corange{\sigma_1} \cgreen{v_1^T} + ... + \cblue{u_r} \corange{\sigma_r} \cgreen{v_r^T}$$<!-- -->
+  - $$A=\cblue{U}\corange{\Sigma} \cgreen{V^T} = \cblue{u_1} \corange{\sigma_1} \cgreen{v_1^T} + ... + \cblue{u_r} \corange{\sigma_r} \cgreen{v_r^T}$$
     - we can throw away columns corresponding to small $\corange{\sigma_i}$
   - pseudoinverse $A^+ = V \Sigma^+ U^T$
 

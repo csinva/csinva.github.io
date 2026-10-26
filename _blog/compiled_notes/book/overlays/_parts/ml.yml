@@ -1,0 +1,13 @@
+# Part page for the machine learning notes (cat: ml).
+intro: |
+  These chapters cover the standard methods of machine learning. Classification and evaluation come first:
+  the models that predict labels, then the losses, metrics and cross-validation used to judge them.
+  Unsupervised learning covers clustering, dimensionality reduction and deep generative models; the short
+  kernels chapter connects SVMs to spectral clustering.
+
+  Deep learning gives the shared machinery of neural networks, and the computer vision and NLP chapters
+  apply it to images and text, alongside the classical methods that came before. Learning theory closes the
+  part with the question behind all of it: how many examples a learner needs to generalize.
+blurb: |
+  Classifiers and how to evaluate them, unsupervised and generative models, kernels, deep learning, computer
+  vision, NLP, and learning theory.

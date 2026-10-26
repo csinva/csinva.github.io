@@ -1,0 +1,117 @@
+# Overlay for _notes/stat/graphical_models.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Bayesian networks and undirected models, exact inference by elimination and message passing, sampling and variational inference, and HMMs and Kalman filters.
+intro: |
+  A graphical model writes a joint distribution as a product of small pieces: one per node given its parents
+  (directed), or one potential per clique (undirected). Missing edges are conditional independence statements,
+  and they are what keeps inference tractable. The chapter starts with Bayesian networks from Russell and
+  Norvig: exact and approximate inference, and how to read independence off the graph (d-separation, Bayes ball).
+
+  The middle sections follow Jordan: the elimination algorithm and why its cost depends on the treewidth, message
+  passing (sum-product) on trees and factor graphs, and MAP inference. The last part is about models over time:
+  filtering, prediction, smoothing and the Viterbi algorithm in a dynamic Bayes net, then HMMs (discrete state),
+  Kalman filters (continuous, linear-Gaussian state) and particle filters.
+sections:
+  exact inference:
+    lead: |
+      Inference means computing $P(X\vert e)$ for query variables $X$ given evidence $e$, summing out the hidden
+      variables. Enumeration does the sum directly, variable elimination reuses partial sums, and clustering
+      turns the network into a polytree first.
+    viz:
+      - name: burglary-net
+        params: {evidence: {J: 1, M: 1}}
+        caption: |
+          Enumeration on the network in the figure below: each number is a sum of the joint over all 32 assignments
+          that agree with the evidence. Click a node to observe it as true, then false, then unobserved. With John
+          and Mary both calling, $P(B\vert j, m) \approx 0.28$. Click "alarm rings", then add the earthquake: the
+          earthquake explains the alarm away and the probability of a burglary drops from 0.37 to 0.003.
+  approximate inferences in BNs:
+    lead: |
+      When exact inference is too expensive: sample from the network directly (rejection sampling, likelihood
+      weighting), run a Markov chain whose stationary distribution is the posterior (MCMC), or turn inference
+      into optimization (variational inference).
+  conditional independence properties:
+    lead: |
+      The graph says which variables are independent given others. The odd case is the v-structure: its two
+      parents are independent until the child, or any descendant of it, is observed, and then they become
+      dependent (explaining away).
+  elimination - Jordan ch 3:
+    lead: |
+      Elimination sums out variables one at a time in a chosen order. Each step multiplies the potentials that
+      mention the variable and sums it out, and the cost is exponential in the size of the largest clique this
+      creates, so the ordering matters.
+  propagation factor graphs - Jordan ch 4:
+    lead: |
+      On a tree, elimination can be organized as messages along the edges. Reusing the messages gives every
+      single-node marginal in two passes: collect toward a root, then distribute back out.
+  dynamic bayesian nets:
+    lead: |
+      A dynamic Bayes net repeats the same slice over time, with a transition model $P(X_t\vert X_{t-1})$ and a
+      sensor model $P(E_t\vert X_t)$. The four inference problems below all reuse these two pieces, and the
+      colors match across the equations.
+  kalman filtering:
+    lead: |
+      The Kalman filter is filtering for a continuous, linear-Gaussian state, so every belief is Gaussian and
+      the recursion only updates a mean and a variance. The new mean is a weighted average of the prediction and
+      the new observation.
+    viz:
+      - name: kalman-1d
+        params: {sx: 0.5, sz: 1.5}
+        caption: |
+          A 1d random walk tracked by a Kalman filter. Each new mean is a weighted average of the predicted mean and
+          the new observation, with weight $K_t$ on the observation. Raise the sensor noise $\sigma_z$ and the gain
+          drops, so the filter trusts its prediction and smooths more; raise the state noise $\sigma_x$ and it
+          follows the observations. The gain and the variance never look at the observations, and they settle to
+          fixed values within a few steps.
+  bayesian networks - Russell & Norvig 14.1-14.5 + Jordan ch 2:
+    lead: |
+      A Bayesian network is a DAG with a conditional probability table at each node. The joint distribution is
+      the product of each node's probability given its parents, and the graph says that a node is independent of
+      its non-descendants given its parents.
+  undirected:
+    lead: |
+      Undirected models drop the arrows. Independence is plain graph separation, and the joint is a product of
+      <span class="corange">potentials</span> over the maximal cliques divided by a
+      <span class="cblue">normalizer</span> $Z$. Neither kind of graph can express every independence structure of the other.
+  factor graphs:
+    lead: |
+      A factor graph adds a node for each factor and links it to the variables the factor uses, so it shows how
+      the distribution factorizes in more detail than the cliques do. When the result is a tree, sum-product
+      runs on it with two kinds of messages.
+  maximum a posteriori (MAP):
+    lead: |
+      Replacing the sums in elimination with maxes finds the most probable assignment instead of a marginal.
+      Working with log probabilities avoids underflow, and on trees the same idea gives the max-product
+      algorithm.
+  state space model:
+    lead: |
+      Filtering, prediction, smoothing and the most likely sequence all combine the same two pieces, the
+      <span class="cblue">transition model</span> and the <span class="corange">sensor model</span>. Filtering
+      is a recursion: push the old state through the transition, weight by the sensor, and normalize.
+  general dbns:
+    lead: |
+      Splitting a large state into several variables keeps the transition model small. Exact inference is still
+      hard, and particle filtering approximates the belief state with weighted samples that are resampled at
+      each step.
+takeaways:
+  - A graphical model factors the joint distribution into local pieces, and missing edges are conditional independence statements.
+  - In a Bayesian network independence is read off with d-separation. A v-structure blocks a path unless its child or a descendant of it is observed.
+  - Exact inference sums out variables. Its cost is exponential in the largest clique the elimination order creates, and on a tree message passing gives every marginal in two passes.
+  - When exact inference is too expensive, sampling (likelihood weighting, MCMC) or variational inference approximates it.
+  - A dynamic Bayes net reuses one transition model and one sensor model over time. HMMs and Kalman filters do exact inference for discrete and linear-Gaussian states, and particle filters approximate it otherwise.
+figures:
+  models.svg: Generative models (top) and their conditional counterparts (bottom). Moving right goes from single outputs to sequences to general graphs; moving down conditions on the inputs, e.g. naive Bayes becomes logistic regression and HMMs become linear-chain CRFs.
+  bayesian_net_example.svg: The burglary network with its conditional probability tables. Burglary and Earthquake both cause the Alarm, which causes John and Mary to call.
+  triples.svg: Active triples pass dependence along (left) and inactive triples block it (right); shaded nodes are observed. The v-structure is the reverse of the others, active only when its child or a descendant of it is observed.
+  graph_separation.svg: Every path from $X_A$ to $X_C$ goes through $X_B$, so $X_A \perp X_C \vert X_B$.
+  full_graph_vs_missing.svg: Neither kind of graph covers the other. No directed graph has the independences of the undirected four-cycle (left), and no undirected graph has those of the v-structure (right).
+  polytree.svg: (a) An undirected tree, (b) a directed tree, (c) a polytree, which is a tree once the arrows are dropped, so a node can have several parents.
+  undirected_message_passing.svg: (a) Node $j$ and the subtrees below it, with $i$ on the way to the root. (b) Eliminating the subtrees sends messages $m_{kj}$ and $m_{lj}$ into $j$, and $j$ then sends $m_{ji}(x_i)$ to $i$.
+  message_passing_misc.svg: The messages needed for the marginals of $X_1$ (a), $X_2$ (b) and $X_4$ (c). Many are shared, and the full set in (d), one in each direction on every edge, gives every marginal at once.
+  message_passing_parallel.svg: The parallel schedule on a six-node tree. Leaves send first, internal nodes then exchange messages, and messages go back down to the leaves. Dashed arrows were sent at earlier steps.
+  message_passing_individual.svg: Collect phase. Messages flow up from the leaves toward the root.
+  message_passing_distribute.svg: Distribute phase. Messages flow from the root back down to the leaves.
+  factor_graph.svg: A directed model (a) and its factor graph (b), where each factor node connects to the variables it depends on.
+  j4_2.svg: The two kinds of messages on a factor graph, factor to variable ($\mu$, left) and variable to factor ($\nu$, right).
+  j15_1.svg: The state space model. Hidden states $x_t$ form a chain linked by $A$, and each emits an observed output $y_t$ (shaded) through $C$.
+  j2_1.svg: (a) The v-structure $X \to Y \leftarrow Z$. (b) Its subgraph on $X$ and $Z$ has no edge, so $X \perp Z$ marginally, but observing $Y$ makes them dependent.
+  r15_9.svg: A linear dynamical system as a Bayes net. Position $X_t$ and velocity $\dot X_t$ determine the next state, and only the position is measured, as $Z_t$.

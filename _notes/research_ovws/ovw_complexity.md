@@ -128,7 +128,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - Reconciling modern machine learning and the bias-variance trade-off ([belkin et al. 2018](https://arxiv.org/abs/1812.11118))
 - Surprises in High-Dimensional Ridgeless Least Squares Interpolation ([hastie et al. 2019](https://arxiv.org/abs/1903.08560))
   - main result of limiting risk, where $\gamma \in (0, \infty)$:
-    - $$R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\vert \vert \beta\vert \vert _2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$$<!-- -->
+    - $$R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\ \vert \vert \beta\vert \vert _2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$$
 - linear regression depends on data distr. ([kuchibhotla et al. 2018](https://arxiv.org/abs/1802.05801))
 - two models of double descent for weak features ([belkin et al. 2019](https://arxiv.org/abs/1903.07571))
 - [double descent curve](https://openreview.net/forum?id=HkgmzhC5F7)

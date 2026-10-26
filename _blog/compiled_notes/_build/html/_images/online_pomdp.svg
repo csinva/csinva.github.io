@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 30 1350 400" role="img" aria-labelledby="title desc">
+  <title id="title">Dynamic decision network</title>
+  <desc id="desc">Dynamic decision network unrolled over time. Action nodes A t-2 through A t+2 (rectangles) each point to the next state X. States X t-1 through X t+3 (ellipses) form a chain; each state points to its evidence E (ellipse below) and reward R (diamond). X t+3 points to utility U t+3 (diamond). Known variables A t-2, A t-1, R t-1, R t, E t-1 and E t are shaded.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .ln { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .lbl { font: 22px Helvetica, Arial, sans-serif; fill: #2b2b2b; }
+      .var { font: italic 24px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .mid { text-anchor: middle; }
+      .end { text-anchor: end; }
+      .nd { stroke: #2b2b2b; stroke-width: 2.2; }
+      .nm { font: italic 30px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+      .b { font-weight: bold; font-style: normal; }
+      .sb { font-size: 21px; }
+    </style>
+  </defs>
+
+  <line class="ln" x1="120" y1="112" x2="199" y2="172" marker-end="url(#arrow)"/>
+  <line class="ln" x1="295" y1="193" x2="415" y2="193" marker-end="url(#arrow)"/>
+  <line class="ln" x1="237" y1="218" x2="237" y2="352" marker-end="url(#arrow)"/>
+  <line class="ln" x1="267" y1="216" x2="295" y2="262" marker-end="url(#arrow)"/>
+  <line class="ln" x1="360" y1="112" x2="437" y2="172" marker-end="url(#arrow)"/>
+  <line class="ln" x1="533" y1="193" x2="652" y2="193" marker-end="url(#arrow)"/>
+  <line class="ln" x1="475" y1="218" x2="475" y2="352" marker-end="url(#arrow)"/>
+  <line class="ln" x1="505" y1="216" x2="533" y2="262" marker-end="url(#arrow)"/>
+  <line class="ln" x1="595" y1="112" x2="674" y2="172" marker-end="url(#arrow)"/>
+  <line class="ln" x1="770" y1="193" x2="888" y2="193" marker-end="url(#arrow)"/>
+  <line class="ln" x1="712" y1="218" x2="712" y2="352" marker-end="url(#arrow)"/>
+  <line class="ln" x1="742" y1="216" x2="770" y2="262" marker-end="url(#arrow)"/>
+  <line class="ln" x1="830" y1="112" x2="910" y2="172" marker-end="url(#arrow)"/>
+  <line class="ln" x1="1006" y1="193" x2="1127" y2="193" marker-end="url(#arrow)"/>
+  <line class="ln" x1="948" y1="218" x2="948" y2="352" marker-end="url(#arrow)"/>
+  <line class="ln" x1="978" y1="216" x2="1006" y2="262" marker-end="url(#arrow)"/>
+  <line class="ln" x1="1070" y1="112" x2="1149" y2="172" marker-end="url(#arrow)"/>
+  <line class="ln" x1="1187" y1="218" x2="1187" y2="352" marker-end="url(#arrow)"/>
+  <line class="ln" x1="50" y1="193" x2="177" y2="193" marker-end="url(#arrow)"/>
+  <line class="ln" x1="1245" y1="193" x2="1290" y2="193" marker-end="url(#arrow)"/>
+  <rect class="nd" x="81" y="45" width="68" height="66" fill="#cfcfcf"/><text class="nm" x="115" y="88">A<tspan class="sb" dy="7">t−2</tspan></text>
+  <ellipse class="nd" cx="237" cy="193" rx="56" ry="26" fill="#fff"/><text class="nm" x="233" y="203"><tspan class="b">X</tspan><tspan class="sb" dy="7">t−1</tspan></text>
+  <ellipse class="nd" cx="237" cy="382" rx="54" ry="28" fill="#cfcfcf"/><text class="nm" x="233" y="392"><tspan class="b">E</tspan><tspan class="sb" dy="7">t−1</tspan></text>
+  <rect class="nd" x="321" y="45" width="68" height="66" fill="#cfcfcf"/><text class="nm" x="355" y="88">A<tspan class="sb" dy="7">t−1</tspan></text>
+  <ellipse class="nd" cx="475" cy="193" rx="56" ry="26" fill="#fff"/><text class="nm" x="471" y="203"><tspan class="b">X</tspan><tspan class="sb" dy="7">t</tspan></text>
+  <ellipse class="nd" cx="475" cy="382" rx="54" ry="28" fill="#cfcfcf"/><text class="nm" x="471" y="392"><tspan class="b">E</tspan><tspan class="sb" dy="7">t</tspan></text>
+  <rect class="nd" x="556" y="45" width="68" height="66" fill="#fff"/><text class="nm" x="590" y="88">A<tspan class="sb" dy="7">t</tspan></text>
+  <ellipse class="nd" cx="712" cy="193" rx="56" ry="26" fill="#fff"/><text class="nm" x="708" y="203"><tspan class="b">X</tspan><tspan class="sb" dy="7">t+1</tspan></text>
+  <ellipse class="nd" cx="712" cy="382" rx="54" ry="28" fill="#fff"/><text class="nm" x="708" y="392"><tspan class="b">E</tspan><tspan class="sb" dy="7">t+1</tspan></text>
+  <rect class="nd" x="791" y="45" width="68" height="66" fill="#fff"/><text class="nm" x="825" y="88">A<tspan class="sb" dy="7">t+1</tspan></text>
+  <ellipse class="nd" cx="948" cy="193" rx="56" ry="26" fill="#fff"/><text class="nm" x="944" y="203"><tspan class="b">X</tspan><tspan class="sb" dy="7">t+2</tspan></text>
+  <ellipse class="nd" cx="948" cy="382" rx="54" ry="28" fill="#fff"/><text class="nm" x="944" y="392"><tspan class="b">E</tspan><tspan class="sb" dy="7">t+2</tspan></text>
+  <rect class="nd" x="1031" y="45" width="68" height="66" fill="#fff"/><text class="nm" x="1065" y="88">A<tspan class="sb" dy="7">t+2</tspan></text>
+  <ellipse class="nd" cx="1187" cy="193" rx="56" ry="26" fill="#fff"/><text class="nm" x="1183" y="203"><tspan class="b">X</tspan><tspan class="sb" dy="7">t+3</tspan></text>
+  <ellipse class="nd" cx="1187" cy="382" rx="54" ry="28" fill="#fff"/><text class="nm" x="1183" y="392"><tspan class="b">E</tspan><tspan class="sb" dy="7">t+3</tspan></text>
+  <path class="nd" d="M310 258 L352 300 L310 342 L268 300 Z" fill="#cfcfcf"/><text class="nm" x="308" y="309" style="font-size:28px">R<tspan class="sb" dy="7">t−1</tspan></text>
+  <path class="nd" d="M548 258 L590 300 L548 342 L506 300 Z" fill="#cfcfcf"/><text class="nm" x="546" y="309" style="font-size:28px">R<tspan class="sb" dy="7">t</tspan></text>
+  <path class="nd" d="M785 258 L827 300 L785 342 L743 300 Z" fill="#fff"/><text class="nm" x="783" y="309" style="font-size:28px">R<tspan class="sb" dy="7">t+1</tspan></text>
+  <path class="nd" d="M1021 258 L1063 300 L1021 342 L979 300 Z" fill="#fff"/><text class="nm" x="1019" y="309" style="font-size:28px">R<tspan class="sb" dy="7">t+2</tspan></text>
+  <path class="nd" d="M1335 149 L1379 193 L1335 237 L1291 193 Z" fill="#fff"/><text class="nm" x="1333" y="202" style="font-size:28px">U<tspan class="sb" dy="7">t+3</tspan></text>
+</svg>

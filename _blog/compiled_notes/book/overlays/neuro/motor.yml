@@ -1,0 +1,135 @@
+# Overlay for _notes/neuro/motor.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: From spinal reflexes up through motor cortex, basal ganglia and cerebellum, plus eye movements and the autonomic system.
+intro: |
+  The motor system is built in layers, and the chapter follows Purves chapters 16 to 21 from the bottom up.
+  Lower motor neurons in the spinal cord drive muscles and run reflexes on their own. Upper motor neurons in
+  cortex and brain stem send commands down to them, and the upper vs. lower lesion table tells the two
+  apart.
+
+  Two loops then shape those commands without sending anything to the spinal cord directly: the basal
+  ganglia pick which action to release, and the cerebellum compares copies of the command with what
+  happened and fine-tunes it. The last two sections apply the same parts to the eyes (five kinds of eye
+  movement and their gaze centers) and to the organs (sympathetic vs. parasympathetic control).
+sections:
+  16 lower:
+    lead: |
+      Alpha motor neurons in the ventral horn contract muscle; gamma motor neurons keep the muscle spindle
+      taut so it can keep measuring stretch. Spindles excite the stretched muscle and Golgi tendon organs
+      inhibit it before it tears.
+  17 upper:
+    lead: |
+      Two descending systems. Brain stem tracts handle posture, by feedback (vestibulospinal) and by
+      feedforward anticipation (reticulospinal). Motor cortex sends goals through Betz cells, most of whose
+      axons cross the midline to control the limbs.
+  18 basal ganglia (choose what you want to do):
+    lead: |
+      The key fact is a double negative. The globus pallidus fires all the time and inhibits the VA/VL
+      thalamus, so no action goes through. Cortex excites the striatum, the striatum inhibits the pallidus,
+      and that releases VA/VL. Dopamine from the substantia nigra turns up the gain of the cortex-to-striatum
+      step.
+    viz:
+      - name: basal-ganglia-gate
+        params: {cortex: 0.8, dopamine: 1}
+        caption: |
+          A toy rate model of the body movement loop. With normal dopamine, a strong cortical command shuts the
+          pallidus off and VA/VL crosses threshold. Lower dopamine toward 20%, the level the note gives for
+          Parkinson's: the same command no longer gets through, which matches "know what they need to do,
+          don't have enough dopamine to act."
+  19 cerebellum (fine tuning all your motion):
+    lead: |
+      The cerebellum gets a copy of every motor command (from cortex via the pontine nuclei) and of the
+      body's state (from the spinal cord and vestibular nuclei). Purkinje cells are its only output and are
+      inhibitory; climbing fibers from the inferior olive act as the training signal.
+  20 eye movements/integration:
+    lead: |
+      Five eye movement systems, from fast reflexes that need no cortex (VOR) to voluntary ones (smooth
+      pursuit, vergence). The superior colliculus and frontal eye field both drive saccades, and losing
+      only one of them can be compensated.
+  21 visceral (how you control organs, stress levels, etc.):
+    lead: |
+      The autonomic system has two opposing divisions: sympathetic (fight or flight, adrenergic) from the
+      lateral horn of the spinal cord, and parasympathetic (rest, ACh) from the brain stem and sacral cord. The
+      nucleus of the solitary tract is the hub where visceral input comes in.
+takeaways:
+  - 'Spinal circuits run reflexes on their own: muscle spindles excite a stretched muscle and Golgi tendon organs
+    inhibit it before it tears.'
+  - Upper motor neuron lesions give spasticity and hyperactive reflexes; lower motor neuron lesions give weak
+    reflexes, low tone and atrophy.
+  - 'The basal ganglia work by disinhibition: the striatum inhibits the pallidus, which releases the VA/VL thalamus,
+    and dopamine turns up the gain.'
+  - The cerebellum compares copies of motor commands with what happened, with climbing fibers from the
+    inferior olive as the training signal.
+  - Eye movements range from reflexes that need no cortex (VOR) to voluntary ones (smooth pursuit, vergence),
+    and the superior colliculus and frontal eye field back each other up for saccades.
+  - Sympathetic and parasympathetic divisions oppose each other, and the nucleus of the solitary tract is
+    where visceral input comes in.
+figures:
+  17_2.png: |
+    The three brain stem tracts to the spinal cord: vestibulospinal (posture, by feedback), reticulospinal
+    (posture, by feedforward), and colliculospinal from the superior colliculus (turning the head to look).
+  17_3.svg: |
+    Two ways of keeping posture. Feedforward: the central command adjusts posture through the reticular
+    formation at the same time as it moves the limb. Feedback: the vestibular system corrects instability
+    that wasn't anticipated.
+  17_4.png: |
+    The corticospinal and corticobulbar tracts from cortex down through midbrain, pons and medulla. At the
+    pyramidal decussation about 90% of the axons cross to form the lateral tract (limbs); the 10% that
+    stay ventral control posture.
+  18_1.png: |
+    Where the motor parts of the basal ganglia sit (caudate, putamen, globus pallidus, subthalamic nucleus,
+    substantia nigra) and the circuit as signs: cortex and dopamine excite the striatum, the striatum
+    inhibits the pallidus, the pallidus inhibits VA/VL, and VA/VL excites the premotor commands.
+  18_2.svg: |
+    The two outputs of the striatum. Both pass through two inhibitory steps: via the globus pallidus to
+    VA/VL and frontal cortex, and via substantia nigra pars reticulata to the superior colliculus (eye
+    movements).
+  18_3.svg: |
+    The body movement loop drawn on the brain: cortex to putamen and caudate, putamen to globus pallidus,
+    pallidus to VA/VL and back to cortex, with dopamine from the substantia nigra feeding the striatum.
+  19_1_important.svg: |
+    Inputs to the cerebellum: cortex reaches the cerebrocerebellum through the pontine nuclei; Clarke's,
+    cuneate and vestibular nuclei feed the spino- and vestibulocerebellum.
+  19_2_important.svg: |
+    Outputs of the cerebellum: the cerebrocerebellum projects to VA/VL and back to cortex; the other
+    divisions project to the red nucleus, inferior olive and the vestibular nuclei.
+  19_3.png: |
+    The cerebellar circuit. Mossy fibers excite granule cells, whose parallel fibers excite Purkinje cells;
+    climbing fibers from the inferior olive contact single Purkinje cells. Purkinje cells inhibit the deep
+    nuclei, which also get direct excitation, so there is a deep excitatory loop and a cortical inhibitory
+    loop.
+  19_4.svg: |
+    Each cerebellar division has its own deep nucleus and target: cerebrocerebellum to dentate to premotor
+    cortex (planning), spinocerebellum to interposed and fastigial nuclei to motor cortex and brain stem
+    (execution), vestibulocerebellum to vestibular nuclei (balance and eye reflexes).
+  19_5.svg: |
+    Inputs again as a block diagram: frontal and parietal cortex reach the cerebellum through the pontine
+    nuclei, crossing the midline; the inferior olive, spinal cord and vestibular nucleus enter on the same
+    side.
+  19_6.svg: |
+    The path back to cortex: deep nuclei cross the midline to the VL thalamus, which projects to primary
+    motor and premotor cortex.
+  19_7.svg: |
+    The path to the brain stem: the fastigial nucleus projects to the superior colliculus and reticular
+    formation, and cerebellar cortex projects straight to the vestibular nuclei, all ending on lower motor
+    neurons in the medial ventral horn.
+  20_1.png: |
+    The six muscles of each eye and the direction each one pulls: four recti (up, down, in, out) and two
+    obliques that rotate the eye.
+  20_2.png: |
+    Areas that control saccades and pursuit in the monkey brain: frontal eye field, lateral intraparietal
+    area and MT in cortex; caudate and substantia nigra pars reticulata (the oculomotor loop); superior
+    colliculus, pontine and reticular nuclei, and the cerebellum and vestibular nuclei.
+  21_1.png: |
+    Sympathetic (left) and parasympathetic (right) divisions and the organs each one reaches, with the
+    effect on each: e.g. sympathetic dilates the pupil and speeds the heart, parasympathetic constricts the
+    pupil and slows the heart.
+  21_2.svg: |
+    The nucleus of the solitary tract takes visceral sensory input and drives both local reflexes (through
+    preganglionic neurons) and, through the forebrain, hormonal and behavioral responses.
+  21_3.svg: |
+    The central autonomic network: insula, medial prefrontal cortex, amygdala and hypothalamus sit above
+    the brain stem reticular formation and the nucleus of the solitary tract, which connect to the
+    preganglionic neurons and end organs.
+  21_4.svg: |
+    Where autonomic output leaves the CNS: parasympathetic from the brain stem (dorsal nucleus of the vagus)
+    to ganglia near the organs, sympathetic from each spinal level to the chain of ganglia beside the cord.

@@ -1,0 +1,30 @@
+# Overlay for _notes/research_ovws/ovw_generalization.md
+hook: Generalization error as risk minus empirical risk, bounds from uniform stability, and a lower bound for trees on additive data.
+intro: |
+  A short page on bounding the gap between how well a learned model $A_S$ does on new data and how well it
+  does on its training set $S$. The first section defines the three quantities everything else uses: the
+  risk $R(A_S)$, the empirical risk $R_{\mathrm{emp}}(A_S)$, and the generalization error, their difference.
+
+  The second section bounds that gap through uniform stability: if swapping one training point never changes
+  the loss by more than $\gamma$, the gap can be bounded in terms of $\gamma$ and $n$. The last section goes the other way, with a lower
+  bound on how well any axis-aligned tree can fit data from an additive model.
+sections:
+  basics:
+    lead: |
+      The three quantities the rest of the page uses. $A_S$ is the model an algorithm $A$ fits on the training
+      set $S$ of $n$ points.
+  uniform stability:
+    lead: |
+      Stability bounds look at the algorithm, not the size of the model class. $A_{S^i}$ is the model trained
+      on $S$ with the $i$-th point replaced, and $\gamma$ caps how much that one change can move the loss
+      anywhere. This is why the approach still gives bounds for 1-nearest-neighbor, whose training error is 0.
+  trees:
+    lead: |
+      A lower bound rather than an upper bound. When $y$ is a sum of functions of single features, trees that
+      split on one feature at a time and predict leaf averages can't beat the rate $\Omega(n^{-\frac{2}{s+2}})$
+      in $\ell_2$ risk, however the splits are chosen.
+takeaways:
+  - The generalization error is the gap between the risk $R(A_S)$ on new data and the empirical risk $R_{\mathrm{emp}}(A_S)$ on the training set.
+  - Uniform stability bounds this gap through the algorithm, by how much replacing one training point can change the loss, rather than through the size of the model class.
+  - Stability still gives bounds when the training error is 0, as for 1-nearest-neighbor.
+  - For data from an additive model, axis-aligned trees with leaf averages have a lower bound on their $\ell_2$ risk of $\Omega(n^{-\frac{2}{s+2}})$.

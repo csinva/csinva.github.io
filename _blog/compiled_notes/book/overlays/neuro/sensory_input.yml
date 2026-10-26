@@ -1,0 +1,119 @@
+# Overlay for _notes/neuro/sensory_input.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Senses           # short name on the start-page topic map
+title: Sensory input
+hook: How touch, pain, sight, hearing, balance and taste get from receptors through the thalamus to cortex.
+intro: |
+  One section per sense, following Purves chapters 9 to 15. Each follows the same plan: the receptor cells
+  and what they are tuned to, the relay stations on the way up (dorsal root or cranial ganglia, brain stem
+  nuclei, a thalamic nucleus), and the cortical map at the end.
+
+  Start with the somatosensory section. Its cheat sheet sets up the vocabulary and the three processing
+  motifs (feedback gain, feedforward anticipation, center-surround inhibition) that come back in every
+  other sense, and its pathways are the template the others are compared with: pain crosses the midline
+  early, vision splits off to the colliculus, and the vestibular system skips the cortex entirely.
+sections:
+  9- somatosensory:
+    lead: |
+      Touch and body position. Dorsal root ganglion neurons carry signals from skin and muscle into the
+      spinal cord with almost no processing; the brain stem, thalamus (VPL/VPM) and S1 do the rest.
+  sensory system overview:
+    lead: |
+      Dorsal root ganglion cells are pseudounipolar: one process runs from the skin straight into the spinal
+      cord, with the cell body off to the side, and they do very little processing. Each ganglion serves one
+      stripe of skin (a dermatome), and how finely you can tell two points apart depends on how densely the
+      skin is innervated.
+  4 neuron classes:
+    lead: |
+      Sensory neurons differ in what their endings are tuned to and how fast they conduct. Bigger, myelinated
+      fibers (proprioceptors, touch) are fast; thin unmyelinated C fibers (slow pain, temperature, itch) are
+      slow.
+  pathways:
+    lead: |
+      Touch from the upper body goes through the cuneate nucleus, from the lower body through the gracile
+      nucleus, and from the face through the trigeminal ganglion. All of it passes the thalamus (VPL, or VPM
+      for the face) on the way to S1, while proprioception goes to the cerebellum.
+  representation:
+    lead: |
+      Cortex gives each body part area in proportion to how much input comes from it, so the lips and hands
+      get the most. The map changes with use: after an amputation, neighboring areas grow into the lost space.
+  pathway:
+    lead: |
+      The same routes again, as numbered relay stations.
+  10 - nociception:
+    lead: |
+      Pain uses its own fibers (Aδ for fast pain, C for slow) and its own route: nociceptors synapse in the
+      dorsal horn and cross the midline right away, while touch stays on the same side until the brain stem.
+      Cortex then splits knowing where it hurts (somatosensory cortex) from caring that it hurts (insula).
+  review:
+    lead: |
+      Pain has its own receptors (Trp channels opened by heat, cold, or chemicals such as capsaicin and
+      menthol) and two fiber types. The later bullets cover how pain gets turned up (hyperalgesia, allodynia)
+      and turned down (serotonin, mechanoreceptors inhibiting nociceptors).
+  11 - vision (eye):
+    lead: |
+      In photoreceptors light reduces activity: cGMP-gated channels close when light hits. Bipolar cells
+      split the signal into on and off pathways, and horizontal cells subtract the surround to build
+      contrast.
+  circuits:
+    lead: |
+      In the dark, cGMP holds the photoreceptor's channels open. Light activates rhodopsin, which turns on a
+      phosphodiesterase that breaks down cGMP, and the channels close.
+  12 - central visual system:
+    lead: |
+      Most retinal ganglion cell axons go through the LGN of the thalamus to V1, a six-layer sheet organized
+      into orientation and ocular dominance columns. A smaller share goes to the brain stem.
+  13 - auditory system:
+    lead: |
+      The middle ear boosts sound onto the oval window, the cochlea sorts it by frequency along its length,
+      and inner hair cells turn the motion into transmitter release. The MSO compares arrival times at the
+      two ears to locate a sound.
+  14 - vestibular system:
+    lead: |
+      The same hair cells as the cochlea, used to sense head rotation (semicircular canals) and tilt (utricle
+      and saccule). These circuits bypass cortex and drive fast reflexes such as the vestibulo-ocular reflex.
+    viz:
+      - name: canal-adaptation
+        params: {spin: 20, tau: 6}
+        caption: |
+          The horizontal canal as the note describes it: when the head starts turning, the fluid lags and bends
+          the cupula, so the canal fires. If the spin goes on, the fluid catches up and the signal fades even
+          though the head is still turning. When the head stops, the moving fluid bends the cupula the other
+          way and the canal reports a turn in the opposite direction. Lengthen the spin to see the signal fade
+          to zero; shorten τ to make the canal adapt faster. (A toy high-pass model; τ is not a measured value.)
+  15 - chemical senses:
+    lead: |
+      Only the taste pathway is shown: taste buds, cranial nerves, the nucleus of the solitary tract, the
+      thalamus and gustatory cortex. The one bullet notes that the receptors here are GPCRs that use cAMP.
+takeaways:
+  - 'Each sense follows the same plan: receptor cells, relay stations in the spinal cord or brain stem, a thalamic
+    nucleus, then a map in cortex.'
+  - 'Sensory fibers are tuned by their endings and sorted by speed: large myelinated fibers for proprioception
+    and touch, thin unmyelinated C fibers for slow pain, temperature and itch.'
+  - Touch stays on the same side until the brain stem, while pain crosses the midline at its first synapse, so
+    one spinal lesion removes touch on one side and pain on the other.
+  - Cortical maps give area by the amount of input, and they reshape with use.
+  - In the retina, light closes cGMP-gated channels, and horizontal cells subtract the surround to build
+    contrast.
+  - The cochlea sorts sound by frequency along its length; the semicircular canals adapt during a steady spin
+    because the fluid catches up.
+figures:
+  10_1.png: |
+    A lesion on the left side of the lower thoracic cord. Mechanosensory axons (red) go up on the same side,
+    so the left leg loses touch, vibration and proprioception. Nociceptive axons (blue) cross the midline
+    as they enter, so the right leg loses pain and temperature.
+  11_1.png: |
+    The cone to bipolar to ganglion cell circuit. Light hyperpolarizes the center cone; through mGluR6 this
+    depolarizes the on-center bipolar cell and through AMPA/kainate receptors it hyperpolarizes the
+    off-center one. On-center ganglion cells fire to a light spot in the center (B), off-center ones to a dark
+    spot (C).
+  12_1.png: |
+    Central projections of retinal ganglion cells. About 90% go through the optic nerve, chiasm and tract to
+    the LGN and on to striate cortex; the rest go to the hypothalamus (circadian rhythm), pretectum (pupil
+    reflex) and superior colliculus (orienting the head and eyes).
+  14_1.png: |
+    The labyrinth: three semicircular canals with an ampulla at the base of each, the utricle and saccule,
+    and Scarpa's ganglion sending axons into the vestibular part of cranial nerve VIII, next to the cochlea.
+  15_1.png: |
+    The taste pathway. Taste buds send signals through cranial nerves VII, IX and X to the nucleus of the
+    solitary tract, then through the VPM of the thalamus to gustatory cortex in the insula and frontal
+    operculum.

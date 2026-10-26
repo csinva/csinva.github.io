@@ -1,0 +1,96 @@
+# Overlay for _notes/research_ovws/ovw_ml_medicine.md
+map_label: ML in medicine           # short name on the start-page topic map
+title: ML in medicine
+subtitle: Clinical datasets, bias in clinical decision instruments, how doctors think, and what it takes to deploy a model.
+hook: Clinical datasets, bias in clinical decision instruments, and how doctors reason about and use models.
+intro: |
+  Rough notes from working on ML for medicine. The first half is practical: where to get clinical data
+  (MIMIC, PECARN, clinical trial text and the clinical NLP benchmarks), papers on race, sex and biased outcomes
+  in clinical decision instruments (CDIs), and the guidelines for building and reporting them. A list of short
+  lessons follows: focus on something you want to deploy, check that it beats the current baseline, and plan
+  for regulation from the start.
+
+  The second half is about the people a model has to work with. Doctors are evaluated rarely, adapt to their
+  local patients, and make predictable errors (representativeness, availability, affective). They read
+  features and rules differently from ML researchers, which shapes how findings should be communicated. The
+  chapter ends with examples of models that worked and a note on finding treatment rules from observational
+  data.
+sections:
+  datasets:
+    lead: |
+      Public and paid sources of clinical data. The NLP subsection lists annotated clinical text tasks, and the
+      MIMIC-IV benchmark entry spells out three emergency department outcomes and the features available at
+      each stage of a visit.
+  nlp:
+    lead: |
+      Clinical text tasks with expert annotations: inference over patient histories (MedNLI), named entities
+      (i2b2), abbreviation senses (CASI) and PICO spans in trial abstracts. The MIMIC-IV benchmark entry is
+      tabular rather than text, but is derived from the same kind of EHR records.
+  CDI bias:
+    lead: |
+      A clinical decision instrument (CDI) is a simple rule or score that guides a clinical decision. These
+      papers ask when race and sex belong in such rules, how coarse group labels hide disparities, and what
+      happens when a model predicts one thing (cost) while the goal is another (health need).
+  ucsf de-id data:
+    lead: |
+      Example projects on de-identified records, split into black-box and interpretable models, followed by
+      loose notes: the three kinds of problems ML can target, which problems are worth picking, and the
+      common objections to AI in healthcare.
+  high-level:
+    lead: |
+      The short version of the lessons above: build something meant for deployment, check it beats the
+      current baseline, define the intended use narrowly, and plan for regulation (FDA, CE) from the start.
+  medical system:
+    lead: |
+      Context on how medicine runs: how doctors are evaluated and trained, the cognitive errors they make, and
+      the day-to-day pressures (paperwork, burnout, reimbursement) that decide where AI could help or hurt.
+  evaluation:
+    lead: |
+      Doctors are evaluated rarely, and the labels used to evaluate models are often inconsistent between
+      annotators, so neither side has a clean ground truth to be compared against.
+  medical education:
+    lead: |
+      How doctors are trained: years of memorized facts, then practical skills, with little explicit
+      teaching on reasoning through a diagnosis. The named cognitive errors (representativeness,
+      availability, affective) come from this part.
+  political elements:
+    lead: |
+      The pressures around the work: burnout, most of the day spent on records rather than patients, and
+      reimbursement that favors procedures. These decide whether AI ends up reducing paperwork or adding to it.
+  medical communication:
+    lead: |
+      What changes when a model's output has to be read by a clinician: how doctors interpret features and
+      rules, and how findings should be reported to them.
+  "\"how do doctors think?\"":
+    lead: |
+      Observations on how clinicians read models and rules. The point about one-way and two-way rules matters
+      most: a rule meant only to flag danger should not be used to rule danger out.
+  communicating findings:
+    lead: |
+      Translations between ML and clinical vocabulary (internal and external validity, sensitivity and
+      specificity) and two reporting habits: show deciles rather than ROC curves, and evaluate how the model
+      is used, not only its metric.
+  examples:
+    lead: |
+      Earlier successes such as ECG interpretation, lessons from explaining an ICU model to doctors, and a list
+      of high-performing imaging studies.
+  icu interpretability example:
+    lead: |
+      Lessons from explaining an ICU model to doctors: the explanation is of the model, not the patient, and
+      features have to be ones a doctor can read (trends over time, not opaque window maxima).
+  improving medical studies:
+    lead: |
+      One paper on finding precision treatment rules. RCTs are too small, so it screens predictors in large
+      observational records, corrects for biased treatment assignment by matching or weighting, and models
+      with ensembles.
+takeaways:
+  - Clinical data is plentiful (MIMIC, PECARN, trial registries, annotated clinical text) but often messy, paid or
+    weakly labeled.
+  - Clinical decision instruments can encode bias through group attributes like race and sex, coarse group
+    labels, or a target (cost) that differs from the real goal (health need).
+  - A useful model is one built for deployment, with a narrow intended use, a clear gain over the current
+    baseline, and a plan for regulation.
+  - Doctors are themselves rarely validated, adapt to local patients and make predictable cognitive errors,
+    so they are an imperfect baseline.
+  - How a model is communicated matters as much as its metric; a one-way rule used as a two-way rule can be
+    dangerous.

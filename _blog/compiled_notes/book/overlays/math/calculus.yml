@@ -1,0 +1,42 @@
+# Overlay for _notes/math/calculus.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Taylor expansions, tables of derivatives, integrals and series, and Lagrange multipliers for constrained minimization.
+intro: |
+  A quick reference. The Taylor expansion comes first because so much else rests on it: the series for
+  $e^x$, $\sin x$ and $\cos x$ further down are Taylor series around 0, and Newton's method in the
+  optimization chapter comes from the 2nd-order term.
+
+  The single-variable section lists derivatives, integrals and rules (L'Hospital, integration by parts).
+  The multivariable section ends with Lagrange multipliers, which turn "minimize $f$ subject to $g = c$"
+  into solving $\nabla L = 0$.
+sections:
+  taylor expansion:
+    lead: |
+      Near $x_0$ a smooth function looks like a polynomial in $(x - x_0)$, with coefficients set by its
+      derivatives at $x_0$. Each extra term matches one more derivative, so the fit improves near $x_0$ first.
+    viz:
+      - name: taylor-approx
+        params: {fn: sin, x0: 1, order: 3}
+        caption: |
+          The dashed curves are the 0th- (blue), 1st- (orange) and 2nd-order (green) approximations, colored
+          like the terms in the expansion below; purple is order $N$. Raise $N$ and watch
+          the region where the polynomial follows $f$ (purple bar) widen. For $\ln(1+x)$ it stops widening:
+          around $x_0$ the series only converges within distance $1 + x_0$, the gap to the singularity at $x = -1$.
+  Multivariable calculus:
+    lead: |
+      To minimize <span class="cblue">$f$</span> on the curve <span class="corange">$g = c$</span>, look for
+      points where the two gradients are parallel. The Lagrangian packs that condition and the constraint
+      into one equation, $\nabla L = 0$.
+  Single-variable calculus:
+    lead: |
+      Reference tables: derivatives and integrals of the trig, exponential and log functions, L'Hospital's rule
+      for indeterminate forms, integration by parts, and the series for $e^x$, $\sin x$ and $\cos x$ that come
+      from Taylor expansions around 0.
+takeaways:
+  - A Taylor expansion approximates $f$ near $x_0$ by a polynomial whose coefficients are the derivatives at
+    $x_0$ divided by factorials.
+  - The series for $e^x$, $\sin x$ and $\cos x$ are Taylor expansions around 0.
+  - L'Hospital's rule handles an indeterminate ratio by comparing derivatives, $f'(x)/g'(x)$.
+  - Integration by parts, $\int u\,dv = uv - \int v\,du$, trades one integral for an easier one.
+  - At a minimum of $f$ subject to $g = c$ the gradients are parallel, $\nabla f = \lambda \nabla g$, and the
+    Lagrangian $L = f - \lambda g$ packs this and the constraint into $\nabla L = 0$.
+figures: {}

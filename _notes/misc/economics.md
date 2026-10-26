@@ -95,7 +95,7 @@
 ## capital asset pricing model (CAPM) + arbitrage pricing theory (APT)
 
 - CAPM - used to determine theoretical rate of return of an asset
-  - $$E\left(R_{i}\right)=\corange{R_{f}}+\cblue{\beta_{i}}\cgreen{\left(E\left(R_{m}\right)-R_{f}\right)}$$<!-- -->
+  - $$E\left(R_{i}\right)=\corange{R_{f}}+\cblue{\beta_{i}}\cgreen{\left(E\left(R_{m}\right)-R_{f}\right)}$$
     - $E\left(R_{i}\right)$ is the expected return on the capital asset
     - $R_{f}$ is the <span class="corange">risk-free rate</span> of interest such as interest arising from government bonds
     - $\beta_{i}$ is the <span class="cblue">sensitivity</span> of the expected excess asset returns to the <span class="cgreen">expected excess market returns</span>, or also $\beta_{i}=\frac{\operatorname{Cov}\left(R_{i}, R_{m}\right)}{\operatorname{Var}\left(R_{m}\right)}=\rho_{i, m} \frac{\sigma_{i}}{\sigma_{m}}$
@@ -105,7 +105,7 @@
     - $E\left(R_{m}\right)$ is the expected return of the market
     - overly simple
 - APT - expected return is a linear function of various factors
-  - $$ \mathbb{E}\left(r_{j}\right)=\corange{r_{f}}+\cblue{\lambda_{j 1}} \cpurple{R P_{1}}+\cblue{\lambda_{j 2}} \cpurple{R P_{2}}+\cdots+\cblue{\lambda_{j n}} \cpurple{R P_{n}}$$<!-- -->
+  - $$ \mathbb{E}\left(r_{j}\right)=\corange{r_{f}}+\cblue{\lambda_{j 1}} \cpurple{R P_{1}}+\cblue{\lambda_{j 2}} \cpurple{R P_{2}}+\cdots+\cblue{\lambda_{j n}} \cpurple{R P_{n}}$$
     - $R P_{n}$ is the <span class="cpurple">risk premium</span> of the factor,
     - $r_{f}$ is the <span class="corange">risk-free rate</span>,
     - $ r_{j}=a_{j}+\lambda_{j 1} f_{1}+\lambda_{j 2} f_{2}+\cdots+\lambda_{j n} f_{n}+\epsilon_{j}$

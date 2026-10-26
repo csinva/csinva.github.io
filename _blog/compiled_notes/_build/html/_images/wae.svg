@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 0 1950 800" role="img" aria-labelledby="title desc">
+  <title id="title">VAE vs WAE</title>
+  <desc id="desc">Two panels, each with latent space 𝒵 (top) and data space 𝒳 (bottom). Circles are data points, triangles latent codes, squares reconstructions. Blue arrows: encoder Q(Z|X); black arrows: decoder P_G(X|Z); red arrows: reconstruction. (a) VAE: each encoded point has its own distribution (red discs) inside the prior P_Z; VAE reconstruction. (b) WAE: the aggregate encoded distribution Q_Z (green) is matched to the prior P_Z; WAE reconstruction.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background; gradient-shaded discs simplified to flat translucent discs -->
+  <defs>
+    <marker id="mk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker><marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker><marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <style>
+      .zr { fill: #1f6fb2; fill-opacity: 0.16; }
+      .xr { fill: #1f6fb2; fill-opacity: 0.06; }
+      .sep { stroke: #2b2b2b; stroke-width: 2; }
+      .tri { fill: #1f8a4c; fill-opacity: 0.15; stroke: #2b2b2b; stroke-width: 3; stroke-linejoin: round; }
+      .sq { fill: #d1342f; fill-opacity: 0.2; stroke: #2b2b2b; stroke-width: 3; }
+      .dt { fill: #d9822b; fill-opacity: 0.2; stroke: #2b2b2b; stroke-width: 3; }
+      .k { fill: none; stroke: #2b2b2b; stroke-width: 3.5; }
+      .b { fill: none; stroke: #1f6fb2; stroke-width: 3.5; }
+      .r { fill: none; stroke: #d1342f; stroke-width: 3.5; }
+      .h { font: 48px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .t { font: 50px Georgia, "Times New Roman", serif; }
+      .m { font: italic 54px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .s { font-size: 36px; }
+      .blue { fill: #1f6fb2; }
+      .red { fill: #d1342f; }
+      .green { fill: #1f8a4c; }
+    </style>
+  </defs>
+<text class="h" x="478" y="56">(a) VAE</text><text class="h" x="1538" y="56">(b) WAE</text>
+<rect class="zr" x="42" y="112" width="871" height="362"/>
+<rect class="xr" x="42" y="474" width="871" height="313"/>
+<circle cx="420" cy="290" r="180" fill="#1f6fb2" fill-opacity="0.12"/>
+<circle cx="340" cy="268" r="100" fill="#d1342f" fill-opacity="0.18"/>
+<circle cx="412" cy="232" r="95" fill="#d1342f" fill-opacity="0.18"/>
+<circle cx="515" cy="318" r="92" fill="#d1342f" fill-opacity="0.18"/>
+<circle cx="432" cy="300" r="68" fill="#d1342f" fill-opacity="0.18"/>
+<path class="sep" d="M42 474 H913"/>
+<rect x="42" y="112" width="871" height="675" fill="none" stroke="#2b2b2b" stroke-width="2"/>
+<rect class="zr" x="1104" y="112" width="871" height="362"/>
+<rect class="xr" x="1104" y="474" width="871" height="313"/>
+<circle cx="1482" cy="290" r="180" fill="#1f6fb2" fill-opacity="0.12"/>
+<circle cx="1490" cy="300" r="135" fill="#1f8a4c" fill-opacity="0.15"/>
+<circle cx="1490" cy="300" r="110" fill="#1f8a4c" fill-opacity="0.15"/>
+<circle cx="1490" cy="300" r="80" fill="#1f8a4c" fill-opacity="0.2"/>
+<circle cx="1490" cy="300" r="50" fill="#1f8a4c" fill-opacity="0.2"/>
+<path class="sep" d="M1104 474 H1975"/>
+<rect x="1104" y="112" width="871" height="675" fill="none" stroke="#2b2b2b" stroke-width="2"/>
+<path class="k" d="M340 318 C260 400 140 520 88 693" marker-end="url(#mk)"/>
+<path class="k" d="M414 266 C300 360 200 500 205 628" marker-end="url(#mk)"/>
+<path class="k" d="M425 316 C390 420 355 520 357 621" marker-end="url(#mk)"/>
+<path class="k" d="M503 336 C450 400 430 450 432 518" marker-end="url(#mk)"/>
+<path class="b" d="M724 612 C700 520 640 450 520 336" marker-end="url(#mb)"/>
+<path class="b" d="M612 694 C620 560 560 460 364 320" marker-end="url(#mb)"/>
+<path class="b" d="M828 688 C760 500 680 330 436 252" marker-end="url(#mb)"/>
+<path class="r" d="M704 627 C640 600 520 560 379 630" marker-end="url(#mr)"/>
+<path class="r" d="M593 702 C540 680 480 650 379 640" marker-end="url(#mr)"/>
+<path class="r" d="M810 692 C700 640 560 620 379 635" marker-end="url(#mr)"/>
+<path class="tri" d="M414 223.0 L436.0 263.0 L392.0 263.0 Z"/>
+<path class="tri" d="M340 273.0 L362.0 313.0 L318.0 313.0 Z"/>
+<path class="tri" d="M425 271.0 L447.0 311.0 L403.0 311.0 Z"/>
+<path class="tri" d="M503 291.0 L525.0 331.0 L481.0 331.0 Z"/>
+<rect class="sq" x="65" y="695" width="40" height="40"/>
+<rect class="sq" x="185" y="630" width="40" height="40"/>
+<rect class="sq" x="335" y="623" width="40" height="40"/>
+<rect class="sq" x="412" y="520" width="40" height="40"/>
+<circle class="dt" cx="722" cy="632" r="19"/>
+<circle class="dt" cx="611" cy="714" r="19"/>
+<circle class="dt" cx="828" cy="708" r="19"/>
+<text class="m" x="330" y="270">P<tspan class="s" dy="10">Z</tspan></text>
+<text class="m" x="696" y="300">𝒵</text><text class="m" x="700" y="575">𝒳</text>
+<text class="m" x="48" y="410">P<tspan class="s" dy="10">G</tspan><tspan dy="-10">(X|Z)</tspan></text>
+<text class="m blue" x="530" y="398">Q<tspan class="s" dy="10" font-style="normal">VAE</tspan><tspan dy="-10">(Z|X)</tspan></text>
+<text class="t red" x="112" y="768">VAE reconstruction</text>
+<path class="k" d="M1400 318 C1322 400 1202 520 1150 693" marker-end="url(#mk)"/>
+<path class="k" d="M1473 262 C1362 360 1252 500 1257 628" marker-end="url(#mk)"/>
+<path class="k" d="M1563 334 C1502 420 1417 520 1419 621" marker-end="url(#mk)"/>
+<path class="b" d="M1783 612 C1762 520 1702 450 1580 334" marker-end="url(#mb)"/>
+<path class="b" d="M1672 694 C1682 560 1622 460 1424 318" marker-end="url(#mb)"/>
+<path class="b" d="M1889 688 C1822 500 1742 300 1502 243" marker-end="url(#mb)"/>
+<path class="r" d="M1765 627 C1662 600 1522 600 1289 628" marker-end="url(#mr)"/>
+<path class="r" d="M1654 714 C1562 716 1362 716 1171 718" marker-end="url(#mr)"/>
+<path class="r" d="M1871 693 C1762 650 1622 630 1441 640" marker-end="url(#mr)"/>
+<path class="tri" d="M1473 221.0 L1495.0 261.0 L1451.0 261.0 Z"/>
+<path class="tri" d="M1400 273.0 L1422.0 313.0 L1378.0 313.0 Z"/>
+<path class="tri" d="M1563 290.0 L1585.0 330.0 L1541.0 330.0 Z"/>
+<rect class="sq" x="1127" y="695" width="40" height="40"/>
+<rect class="sq" x="1245" y="630" width="40" height="40"/>
+<rect class="sq" x="1397" y="623" width="40" height="40"/>
+<circle class="dt" cx="1783" cy="632" r="19"/>
+<circle class="dt" cx="1672" cy="714" r="19"/>
+<circle class="dt" cx="1889" cy="708" r="19"/>
+<text class="m" x="1324" y="270">P<tspan class="s" dy="10">Z</tspan></text>
+<text class="m green" x="1482" y="290">Q<tspan class="s" dy="10">Z</tspan></text>
+<text class="m" x="1758" y="300">𝒵</text><text class="m" x="1762" y="575">𝒳</text>
+<text class="m" x="1110" y="410">P<tspan class="s" dy="10">G</tspan><tspan dy="-10">(X|Z)</tspan></text>
+<text class="m blue" x="1602" y="398">Q<tspan class="s" dy="10" font-style="normal">WAE</tspan><tspan dy="-10">(Z|X)</tspan></text>
+<text class="t red" x="1174" y="768">WAE reconstruction</text>
+</svg>

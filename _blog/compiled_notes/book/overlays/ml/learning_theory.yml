@@ -1,0 +1,74 @@
+# Overlay for _notes/ml/learning_theory.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Learning theory
+subtitle: PAC learning, sample complexity, VC dimension, and concept learning with version spaces.
+hook: How many examples a learner needs, from PAC bounds and VC dimension to version spaces.
+intro: |
+  The central question is sample complexity: how many training examples a learner needs before it is
+  probably ($1-\delta$) approximately ($\epsilon$) correct. The PAC section defines this. The finite hypothesis
+  space section and Kearns' rectangle game answer it in two simple cases. VC dimension then measures the
+  capacity of an infinite hypothesis space and plugs it into the general bound.
+
+  The last section, from Mitchell, is older and more concrete: concept learning as search through hypotheses
+  ordered from general to specific. Find-S and candidate elimination keep track of the version space, the set of
+  hypotheses consistent with the data so far. The two short sections at the top are worked probability
+  problems.
+sections:
+  sample problems:
+    lead: |
+      Two warm-up problems about how many random draws it takes to see every kind of marble. The time to see one
+      new marble is geometric, so the expected total is a sum of geometric means.
+  computational learning theory:
+    lead: |
+      Three questions about a learner: how many examples it needs (sample complexity), how much computation, and
+      how many mistakes it makes on the way. Each needs a definition of convergence that holds with some
+      probability.
+  PAC - probably learning an approximately correct hypothesis - Mitchell:
+    lead: |
+      Two tolerances: the hypothesis may be wrong on up to an $\epsilon$ fraction of inputs
+      (<span class="corange">approximately correct</span>), and the learner may fail to find such a hypothesis
+      with probability up to $\delta$ (<span class="cblue">probably</span>). Both must hold for every target
+      concept and every input distribution.
+  sample complexity for finite hypothesis space - Mitchell:
+    lead: |
+      A consistent learner outputs some hypothesis in the version space, the hypotheses that fit the training
+      data. If every hypothesis left in the version space has error below $\epsilon$, the version space is
+      $\epsilon$-exhausted, and any consistent learner is then approximately correct.
+  rectangle learning game - Kearns:
+    lead: |
+      The target is an axis-aligned rectangle and the learner outputs the tightest rectangle around the positive
+      examples. That rectangle sits inside the target, so it errs only on the strip it misses. Splitting that
+      strip into four sides gives the bound below.
+    viz:
+      - name: rectangle-game
+        params: {m: 30, eps: 0.1}
+        caption: |
+          Left: one game with $m$ uniform examples. Positives are green, the dashed box is the target and the
+          orange box is the learned one; its error is the target area it misses. Right: over 400 games per $m$,
+          how often that error exceeds $\epsilon$ (blue), and the bound $4(1-\epsilon/4)^m$ (pink). The bound
+          always sits above the simulation, and both fall exponentially in $m$. Shrink $\epsilon$ and both
+          curves move right, since more examples are needed.
+  VC dimension:
+    lead: |
+      A hypothesis class shatters a set if it can label the set's points in every possible way. The VC dimension
+      is the size of the largest set it can shatter. It is the $d$ in the bound on $m$ from the fundamental
+      theorem at the end of the section.
+    viz:
+      - name: vc-shatter
+        params: {cls: halfplane, preset: tri}
+        caption: |
+          Every labeling of the points on the left, positives green and negatives pink, with a hypothesis that
+          produces it in blue or a × if none does. Half-planes shatter three points in general position, but not
+          three on a line (a positive between two negatives fails). No four points work: try the square and
+          the diamond, or click to place your own, and some labeling always fails. So the VC dimension of half-planes in
+          the plane is 3. Switch to axis-aligned rectangles: the square fails but the diamond is shattered, which is
+          enough for a VC dimension of at least 4, since the definition only needs one set of that size.
+  concept learning and the general-to-specific ordering:
+    lead: |
+      Hypotheses are ordered from specific to general, and with this ordering a learner can store the whole version
+      space through its two boundaries: the most specific members $S$ and the most general members $G$.
+takeaways:
+  - PAC learning asks for a hypothesis with error at most $\epsilon$, found with probability at least $1-\delta$, for every target concept and every input distribution.
+  - Sample complexity is how many examples are needed for that guarantee; for the rectangle game, choosing $m$ so that $4(1-\epsilon/4)^m \leq \delta$ is enough.
+  - A set is shattered by $H$ if $H$ can produce every labeling of it, and the VC dimension is the size of the largest shattered set.
+  - The fundamental theorem bounds the number of examples needed by the VC dimension $d$, $\epsilon$ and $\delta$ alone, so a hypothesis space with infinitely many members but a finite VC dimension can still be learned.
+  - Candidate elimination stores the whole version space through its most specific and most general members, $S$ and $G$.

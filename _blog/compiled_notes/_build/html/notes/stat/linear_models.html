@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.7. linear models</title>
+    <title>Linear models &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/stat/linear_models';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.8. time series" href="time_series.html" />
-    <link rel="prev" title="4.6. info theory" href="info_theory.html" />
+    <link rel="next" title="Time series" href="time_series.html" />
+    <link rel="prev" title="Testing" href="testing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat_section.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/stat/linear_models.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>linear models</h1>
+    <h1>Linear models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,27 +471,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.7.1. introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freedman-notes">4.7.2. freedman notes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">4.7.2.1. regularization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-regression-line-freedman-ch-2">4.7.2.2. the regression line (freedman ch 2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression-freedman-ch-4">4.7.2.3. multiple regression (freedman ch 4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freedman-notes">Freedman notes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-regression-line-freedman-ch-2">The regression line (freedman ch 2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression-freedman-ch-4">Multiple regression (freedman ch 4)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-topics">4.7.3. advanced topics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blue">4.7.3.1. BLUE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gls-glm">4.7.3.2. GLS = GLM</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path-models">4.7.3.3. path models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simultaneous-equations">4.7.3.4. simultaneous equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-variables">4.7.3.5. binary variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lr-with-non-linear-basis-functions">4.7.3.6. LR with non-linear basis functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-weighted-lr-lowess">4.7.3.7. locally weighted LR (lowess)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">4.7.3.8. kernel regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-topics">Advanced topics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blue">BLUE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gls-glm">GLS = GLM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path-models">Path models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simultaneous-equations">Simultaneous equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-variables">Binary variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lr-with-non-linear-basis-functions">LR with non-linear basis functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-weighted-lr-lowess">Locally weighted LR (lowess)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">Kernel regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gam-generalized-additive-model">GAM = generalized additive model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multicollinearity">Multicollinearity</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-calcs">4.7.4. likelihood calcs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-equation">4.7.4.1. normal equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">4.7.4.2. ridge regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sums-interpretation">Sums interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-jordan-ch-6">Geometry - Jordan ch 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-calcs">Likelihood calcs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-equation">Normal equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge regression</a></li>
 </ul>
 </li>
 </ul>
@@ -455,11 +509,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-models">
-<h1><span class="section-number">4.7. </span>linear models<a class="headerlink" href="#linear-models" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2><span class="section-number">4.7.1. </span>introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<ul>
+  <p class="breadcrumb"><a href="../../parts/stat.html">Statistics</a> &nbsp;·&nbsp; chapter 4 of 8 &nbsp;·&nbsp; 6 min read</p><section class="tex2jax_ignore mathjax_ignore" id="linear-models">
+<h1>Linear models<a class="headerlink" href="#linear-models" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Material from "Statistical Models Theory and Practice" - David Freedman</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The chapter starts from <span class="math notranslate nohighlight">\(Y = X\beta + \epsilon\)</span> and the least-squares solution <span class="math notranslate nohighlight">\(\hat\theta = (X^TX)^{-1}X^TY\)</span>, shown two ways: by setting the derivative to zero, and by seeing <span class="math notranslate nohighlight">\(HY\)</span> as the projection of <span class="math notranslate nohighlight">\(Y\)</span> onto the column space of <span class="math notranslate nohighlight">\(X\)</span>. The Freedman sections are about when this works: the assumptions behind unbiasedness and the covariance <span class="math notranslate nohighlight">\(\sigma^2(X^TX)^{-1}\)</span>, what breaks when <span class="math notranslate nohighlight">\(X^TX\)</span> isn’t invertible, and the penalties that fix it.</p>
+<p>The advanced topics loosen the model in different directions: correlated errors (GLS), non-Gaussian outcomes (GLMs), nonlinear basis functions, lowess and kernel regression, additive models, and correlated features. The chapter ends with the geometry of least squares and the LMS algorithm from Jordan’s book, and line-by-line derivations of the normal equations and the ridge solution.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 6 sections</summary><ol><li><a href="#sec-linear-models-introduction">Introduction</a><span class="ol-badge">1 interactive</span><span class="ol-lead">Least squares picks \beta to minimize \|Y - X\beta\|_2^2, with solution (X^TX)^{-1}X^TY.</span></li><li><a href="#sec-linear-models-freedman-notes">Freedman notes</a><span class="ol-badge">1 interactive</span></li><li><a href="#sec-linear-models-advanced-topics">Advanced topics</a></li><li><a href="#sec-linear-models-sums-interpretation">Sums interpretation</a><span class="ol-lead">Three sums of squares and how they relate.</span></li><li><a href="#sec-linear-models-geometry-jordan-ch-6">Geometry - Jordan ch 6</a><span class="ol-badge">4 figures</span><span class="ol-lead">Two pictures of least squares.</span></li><li><a href="#sec-linear-models-likelihood-calcs">Likelihood calcs</a></li></ol></details><section id="introduction">
+<span id="sec-linear-models-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p class="section-lead">Least squares picks <span class="math notranslate nohighlight">\(\beta\)</span> to minimize <span class="math notranslate nohighlight">\(\|Y - X\beta\|_2^2\)</span>, with solution <span class="math notranslate nohighlight">\((X^TX)^{-1}X^TY\)</span>. The hat matrix <span class="math notranslate nohighlight">\(H\)</span> maps the responses to the predictions, <span class="math notranslate nohighlight">\(\hat y = Hy\)</span>, and its diagonal entry <span class="math notranslate nohighlight">\(H_{ii}\)</span> measures how much point <span class="math notranslate nohighlight">\(i\)</span> influences the fit. The section then lists the assumptions and some variants (weighted LS, LAD).</p>
+<figure class="nb-viz-figure" id="viz-hat-influence"><div class="nb-viz" data-viz="hat-influence" data-params="{&quot;x&quot;: 4, &quot;y&quot;: 5}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Least squares on twelve fixed points (gray) and one point you move (pink). Each point's area is proportional to its diagonal entry \(H_{ii}\) of the hat matrix. Because \(\hat y = Hy\), raising \(y_i\) by 1 raises the point's own fitted value by \(H_{ii}\). Near the middle of the gray points \(H_{ii}\) is under 0.1, and moving the pink point up or down barely changes the line (dashed is the fit without it). Slide it to \(x = 13\) and \(H_{ii}\) reaches about 0.7: the line now swings to follow the point.</figcaption></figure><ul>
 <li><p><span class="math notranslate nohighlight">\(Y = X \beta + \epsilon\)</span></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -489,7 +550,7 @@ document.write(`
 </table>
 </div>
 </li>
-<li><p>minimize: $<span class="math notranslate nohighlight">\(L(\theta) = \vert \vert Y-X\beta\vert \vert _2^2 \implies \hat{\theta} = (X^TX)^{-1} X^TY\)</span>$</p></li>
+<li><p>minimize: <span class="math notranslate nohighlight">\(L(\theta) = \vert \vert Y-X\beta\vert \vert _2^2 \implies \hat{\theta} = (X^TX)^{-1} X^TY\)</span></p></li>
 <li><p>2 proofs</p>
 <ol class="arabic simple">
 <li><p>set deriv and solve</p></li>
@@ -502,7 +563,7 @@ document.write(`
 <ul class="simple">
 <li><p>define projection (hat) matrix <span class="math notranslate nohighlight">\(H = X(X^TX)^{-1} X^T\)</span></p>
 <ul>
-<li><p>show $<span class="math notranslate nohighlight">\(\vert \vert Y-X \theta\vert \vert ^2 \geq \vert \vert Y - HY\vert \vert ^2\)</span>$</p></li>
+<li><p>show <span class="math notranslate nohighlight">\(\vert \vert Y-X \theta\vert \vert ^2 \geq \vert \vert Y - HY\vert \vert ^2\)</span></p></li>
 <li><p>key idea: subtract and add <span class="math notranslate nohighlight">\(HY\)</span></p></li>
 </ul>
 </li>
@@ -519,7 +580,7 @@ document.write(`
 <li><p>assumptions</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\epsilon \sim N(X\beta,\sigma^2)\)</span></p></li>
-<li><p><em>homoscedasticity</em>: $<span class="math notranslate nohighlight">\(\text{var}(Y_i\vert X)\)</span>$ is the same for all i</p>
+<li><p><span id="def-homoscedasticity" class="def-anchor"></span><em>homoscedasticity</em>: <span class="math notranslate nohighlight">\(\text{var}(Y_i\vert X)\)</span> is the same for all i</p>
 <ul>
 <li><p>opposite is <em>heteroscedasticity</em></p></li>
 </ul>
@@ -541,13 +602,13 @@ document.write(`
 <li><p>when n is large, LS estimator ahs approx normal distr provided that X^TX /n is approx. PSD</p></li>
 </ul>
 </li>
-<li><p><em>weighted LS</em>: minimize <span class="math notranslate nohighlight">\(\sum [w_i (y_i - x_i^T \theta)]^2\)</span></p>
+<li><p><span id="def-weighted-ls" class="def-anchor"></span><em>weighted LS</em>: minimize <span class="math notranslate nohighlight">\(\sum [w_i (y_i - x_i^T \theta)]^2\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\hat{\theta} = (X^TWX)^{-1} X^T W Y\)</span></p></li>
 <li><p>heteroscedastic normal lin reg model: erorrs ~ N(0, 1/w_i)</p></li>
 </ul>
 </li>
-<li><p><em>leverage scores</em> - measure how much each <span class="math notranslate nohighlight">\(x_i\)</span> influences the LS fit</p>
+<li><p><span id="def-leverage-scores" class="def-anchor"></span><em>leverage scores</em> - measure how much each <span class="math notranslate nohighlight">\(x_i\)</span> influences the LS fit</p>
 <ul class="simple">
 <li><p>for data point i, <span class="math notranslate nohighlight">\(H_{ii}\)</span> is the leverage score</p></li>
 </ul>
@@ -560,10 +621,12 @@ document.write(`
 </ul>
 </section>
 <section id="freedman-notes">
-<h2><span class="section-number">4.7.2. </span>freedman notes<a class="headerlink" href="#freedman-notes" title="Link to this heading">#</a></h2>
+<span id="sec-linear-models-freedman-notes"></span><h2>Freedman notes<a class="headerlink" href="#freedman-notes" title="Link to this heading">#</a></h2>
 <section id="regularization">
-<h3><span class="section-number">4.7.2.1. </span>regularization<a class="headerlink" href="#regularization" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>Regularization<a class="headerlink" href="#regularization" title="Link to this heading">#</a></h3>
+<p class="section-lead">Both penalties keep the squared-error fit and add a cost on the size of <span class="math notranslate nohighlight">\(\beta\)</span>. Ridge uses <span class="math notranslate nohighlight">\(\|\beta\|_2^2\)</span> and has a closed form; lasso uses <span class="math notranslate nohighlight">\(\|\beta\|_1\)</span>, needs an iterative solver, and sets coefficients exactly to 0.</p>
+<figure class="nb-viz-figure" id="viz-reg-path"><div class="nb-viz" data-viz="reg-path" data-params="{&quot;lam&quot;: 30}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> Coefficient paths on one dataset with six standardized features, where \(x_1\) and \(x_2\) have correlation about 0.9 and \(\beta_4 = \beta_6 = 0\). As \(\lambda\) grows, ridge shrinks every coefficient toward 0 but none reaches it, and it splits the weight between the correlated pair almost evenly. Lasso drops features one at a time. By \(\lambda \approx 65\) it has dropped \(\beta_2\) and kept \(\beta_1\), the stronger of the pair.</figcaption></figure><ul class="simple">
 <li><p>when <span class="math notranslate nohighlight">\((X^T X)\)</span> isn’t invertible can’t use normal equations and gradient descent is likely unstable</p>
 <ul>
 <li><p>X is nxp, usually n &gt;&gt; p and X almost always has rank p</p></li>
@@ -589,7 +652,7 @@ document.write(`
 <li><p>equivalent to minimizing <span class="math notranslate nohighlight">\(\sum_i (y_i - \hat{y_i})^2\)</span> s.t. <span class="math notranslate nohighlight">\(\sum_j \beta_j^2 \leq t\)</span></p></li>
 <li><p>solution is <span class="math notranslate nohighlight">\(\hat{\beta_\lambda} = (X^TX+\corange{\lambda I})^{-1} X^T y\)</span></p></li>
 <li><p>for small <span class="math notranslate nohighlight">\(\lambda\)</span> numerical solution is unstable</p></li>
-<li><p>When <span class="math notranslate nohighlight">\(X^TX=I\)</span>, $<span class="math notranslate nohighlight">\(\beta _{Ridge} = \frac{1}{1+\lambda} \beta_{Least Squares}\)</span>$</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(X^TX=I\)</span>, <span class="math notranslate nohighlight">\(\beta _{Ridge} = \frac{1}{1+\lambda} \beta_{Least Squares}\)</span></p></li>
 </ul>
 <ol class="arabic simple" start="2">
 <li><p><em>lasso</em> regression (L1)</p>
@@ -616,7 +679,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>elastic net</em> - hybrid of the other two</p>
+<li><p><span id="def-elastic-net" class="def-anchor"></span><em>elastic net</em> - hybrid of the other two</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\beta_{Naive ENet} = \cblue{\sum_i (y_i - \hat{y_i})^2}+\corange{\lambda_1 \vert \vert \beta\vert \vert _1} + \cgreen{\lambda_2  \vert \vert \beta\vert \vert _2^2}\)</span></p></li>
 <li><p><span class="corange">l1 part</span> generates sparse model</p></li>
@@ -632,7 +695,8 @@ document.write(`
 </ol>
 </section>
 <section id="the-regression-line-freedman-ch-2">
-<h3><span class="section-number">4.7.2.2. </span>the regression line (freedman ch 2)<a class="headerlink" href="#the-regression-line-freedman-ch-2" title="Link to this heading">#</a></h3>
+<h3>The regression line (freedman ch 2)<a class="headerlink" href="#the-regression-line-freedman-ch-2" title="Link to this heading">#</a></h3>
+<p class="section-lead">With one predictor the regression line goes through <span class="math notranslate nohighlight">\((\bar x, \bar y)\)</span> with slope <span class="math notranslate nohighlight">\(r s_y/s_x\)</span>. The SD line has slope <span class="math notranslate nohighlight">\(\pm s_y/s_x\)</span>, so the regression line is flatter whenever <span class="math notranslate nohighlight">\(|r| &lt; 1\)</span>, and its MSE is <span class="math notranslate nohighlight">\((1-r^2)Var(Y)\)</span>.</p>
 <ul class="simple">
 <li><p>regression line</p>
 <ul>
@@ -652,7 +716,8 @@ document.write(`
 </ul>
 </section>
 <section id="multiple-regression-freedman-ch-4">
-<h3><span class="section-number">4.7.2.3. </span>multiple regression (freedman ch 4)<a class="headerlink" href="#multiple-regression-freedman-ch-4" title="Link to this heading">#</a></h3>
+<h3>Multiple regression (freedman ch 4)<a class="headerlink" href="#multiple-regression-freedman-ch-4" title="Link to this heading">#</a></h3>
+<p class="section-lead">Freedman’s assumptions for OLS and what they buy: conditional unbiasedness, the covariance formula, and an unbiased estimate of <span class="math notranslate nohighlight">\(\sigma^2\)</span> that divides by <span class="math notranslate nohighlight">\(n-p\)</span>. The hat matrix <span class="math notranslate nohighlight">\(H\)</span> projects <span class="math notranslate nohighlight">\(Y\)</span> onto the column space of <span class="math notranslate nohighlight">\(X\)</span>, so the residuals are orthogonal to <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <ul>
 <li><p>assumptions</p>
 <ol class="arabic simple">
@@ -665,47 +730,61 @@ document.write(`
 </ul>
 </li>
 <li><p>OLS is conditionally unbiased</p>
-<ul>
-<li><div class="math notranslate nohighlight">
-\[E[\hat{\theta} \vert  X] = \theta$$&lt;!-- --&gt;
-- $$Cov(\hat{\theta}\vert X) = \sigma^2 (X^TX)^{-1}$$&lt;!-- --&gt;
-  - $\hat{\sigma^2} = \frac{1}{n-p} \sum_i e_i^2$
-    - this is unbiased - just dividing by n is too small since we have minimized $e_i$ so their variance is lower than var of $\epsilon_i$
-- *random errors* $\epsilon$
-- *residuals* $e$
-- $H = X(X^TX)^{-1} X^T$
-  1. e = (I-H)Y = $(I-H) \epsilon$
-  2. H is symmetric
-  3. $H^2 = H, (I-H)^2 = I-H$
-  4. HX = X
-  5. $e \perp X$
-- basically H projects Y int R(X)
-- $$E[\hat{\sigma^2}\vert X] = \sigma^2$$&lt;!-- --&gt;
-- random errs don't need to be normal
-- variance
-  - $\cpurple{var(Y)} = \cblue{var(X \hat{\theta})} + \corange{var(e)}$
-    - $\cblue{var(X \hat{\theta})}$ is the &lt;span class=&quot;cblue&quot;&gt;explained variance&lt;/span&gt;, $\corange{var(e)}$ is the &lt;span class=&quot;corange&quot;&gt;residual variance&lt;/span&gt;
-    - *fraction of variance explained*: $R^2 = \cblue{var(X \hat{\theta})} / \cpurple{var(Y)}$
-    - like summing squares by projecting
-  - if there is no intercept in a regression eq, $$R^2 = \vert \vert \hat{Y}\vert \vert ^2 / \vert \vert Y\vert \vert ^2\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E[\hat{\theta} \vert  X] = \theta\)</span></p></li>
+</ul>
 </li>
+<li><p><span class="math notranslate nohighlight">\(Cov(\hat{\theta}\vert X) = \sigma^2 (X^TX)^{-1}\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{\sigma^2} = \frac{1}{n-p} \sum_i e_i^2\)</span></p>
+<ul>
+<li><p>this is unbiased - just dividing by n is too small since we have minimized <span class="math notranslate nohighlight">\(e_i\)</span> so their variance is lower than var of <span class="math notranslate nohighlight">\(\epsilon_i\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>random errors</em> <span class="math notranslate nohighlight">\(\epsilon\)</span></p></li>
+<li><p><em>residuals</em> <span class="math notranslate nohighlight">\(e\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H = X(X^TX)^{-1} X^T\)</span></p>
+<ol class="arabic simple">
+<li><p>e = (I-H)Y = <span class="math notranslate nohighlight">\((I-H) \epsilon\)</span></p></li>
+<li><p>H is symmetric</p></li>
+<li><p><span class="math notranslate nohighlight">\(H^2 = H, (I-H)^2 = I-H\)</span></p></li>
+<li><p>HX = X</p></li>
+<li><p><span class="math notranslate nohighlight">\(e \perp X\)</span></p></li>
+</ol>
+</li>
+<li><p>basically H projects Y int R(X)</p></li>
+<li><p><span class="math notranslate nohighlight">\(E[\hat{\sigma^2}\vert X] = \sigma^2\)</span></p></li>
+<li><p>random errs don’t need to be normal</p></li>
+<li><p>variance</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\cpurple{var(Y)} = \cblue{var(X \hat{\theta})} + \corange{var(e)}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\cblue{var(X \hat{\theta})}\)</span> is the <span class="cblue">explained variance</span>, <span class="math notranslate nohighlight">\(\corange{var(e)}\)</span> is the <span class="corange">residual variance</span></p></li>
+<li><p><span id="def-fraction-of-variance-explained" class="def-anchor"></span><em>fraction of variance explained</em>: <span class="math notranslate nohighlight">\(R^2 = \cblue{var(X \hat{\theta})} / \cpurple{var(Y)}\)</span></p></li>
+<li><p>like summing squares by projecting</p></li>
+</ul>
+</li>
+<li><p>if there is no intercept in a regression eq, <span class="math notranslate nohighlight">\(R^2 = \vert \vert \hat{Y}\vert \vert ^2 / \vert \vert Y\vert \vert ^2\)</span></p></li>
 </ul>
 </li>
 </ul>
 </section>
 </section>
 <section id="advanced-topics">
-<h2><span class="section-number">4.7.3. </span>advanced topics<a class="headerlink" href="#advanced-topics" title="Link to this heading">#</a></h2>
+<span id="sec-linear-models-advanced-topics"></span><h2>Advanced topics<a class="headerlink" href="#advanced-topics" title="Link to this heading">#</a></h2>
 <section id="blue">
-<h3><span class="section-number">4.7.3.1. </span>BLUE<a class="headerlink" href="#blue" title="Link to this heading">#</a></h3>
+<h3>BLUE<a class="headerlink" href="#blue" title="Link to this heading">#</a></h3>
+<p class="section-lead">The Gauss-Markov theorem needs less than independent normal errors: mean 0 and covariance <span class="math notranslate nohighlight">\(\sigma^2 I\)</span> given <span class="math notranslate nohighlight">\(X\)</span>. Under these, OLS has the smallest variance among linear unbiased estimators.</p>
 <ul class="simple">
 <li><p>drop assumption: <span class="math notranslate nohighlight">\(\epsilon\)</span> independent of <span class="math notranslate nohighlight">\(X\)</span></p>
 <ul>
-<li><p>instead: $<span class="math notranslate nohighlight">\(E[\epsilon\vert X]=0, cov[\epsilon\vert X] = \sigma^2 I\)</span>$</p></li>
+<li><p>instead: <span class="math notranslate nohighlight">\(E[\epsilon\vert X]=0, cov[\epsilon\vert X] = \sigma^2 I\)</span></p></li>
 <li><p>can rewrite: <span class="math notranslate nohighlight">\(E[\epsilon]=0, cov[\epsilon] = \sigma^2 I\)</span> fixing X</p></li>
 </ul>
 </li>
-<li><p><em>Gauss-markov thm</em> - assume linear model and assumption above: when X is fixed, OLS estimator is <em>BLUE</em> = best linear unbiased estimator</p>
+<li><p><span id="def-gauss-markov-thm" class="def-anchor"></span><em>Gauss-markov thm</em> - assume linear model and assumption above: when X is fixed, OLS estimator is <em>BLUE</em> = best linear unbiased estimator</p>
 <ul>
 <li><p>has smallest variance.</p></li>
 <li><p><em><strong>prove this</strong></em></p></li>
@@ -714,7 +793,8 @@ document.write(`
 </ul>
 </section>
 <section id="gls-glm">
-<h3><span class="section-number">4.7.3.2. </span>GLS = GLM<a class="headerlink" href="#gls-glm" title="Link to this heading">#</a></h3>
+<h3>GLS = GLM<a class="headerlink" href="#gls-glm" title="Link to this heading">#</a></h3>
+<p class="section-lead">Two separate relaxations share this section. GLMs change the distribution of <span class="math notranslate nohighlight">\(Y\)</span> and tie its mean to <span class="math notranslate nohighlight">\(w^Tx\)</span> through a link function. GLS keeps the linear model but allows the errors a general covariance <span class="math notranslate nohighlight">\(G\)</span>; rescaling by <span class="math notranslate nohighlight">\(G^{-1/2}\)</span> makes OLS BLUE again.</p>
 <ul class="simple">
 <li><p>GLMs roughly solve the problem where outcomes are non-Gaussian</p>
 <ul>
@@ -722,14 +802,14 @@ document.write(`
 <li><p>also assume different prob distr on Y (ex. logistic reg assumes Bernoulli)</p></li>
 </ul>
 </li>
-<li><p><em>generalized least squares regression model</em>: instead of above assumption, use $<span class="math notranslate nohighlight">\(E[\epsilon\vert X]=0, cov[\epsilon\vert X] = G, \: G \in S^K_{++}\)</span>$</p>
+<li><p><em>generalized least squares regression model</em>: instead of above assumption, use <span class="math notranslate nohighlight">\(E[\epsilon\vert X]=0, cov[\epsilon\vert X] = G, \: G \in S^K_{++}\)</span></p>
 <ul>
-<li><p>covariance formula changes: $<span class="math notranslate nohighlight">\(cov(\hat{\theta}_{OLS}\vert X) = (X^TX)^{-1} X^TGX(X^TX)^{-1}\)</span>$</p></li>
+<li><p>covariance formula changes: <span class="math notranslate nohighlight">\(cov(\hat{\theta}_{OLS}\vert X) = (X^TX)^{-1} X^TGX(X^TX)^{-1}\)</span></p></li>
 <li><p>estimator is the same, but is no longer BLUE - can correct for this:
 <span class="math notranslate nohighlight">\((G^{-1/2}Y) = (G^{-1/2}X)\theta + (G^{-1/2}\epsilon)\)</span></p></li>
 </ul>
 </li>
-<li><p><em>feasible GLS</em>=<em>Aitken estimator</em> - use <span class="math notranslate nohighlight">\(\hat{G}\)</span></p></li>
+<li><p><span id="def-feasible-gls" class="def-anchor"></span><em>feasible GLS</em>=<em>Aitken estimator</em> - use <span class="math notranslate nohighlight">\(\hat{G}\)</span></p></li>
 <li><p>examples</p>
 <ul>
 <li><p>simple</p></li>
@@ -738,22 +818,22 @@ document.write(`
 </li>
 <li><p>3 assumptions can break down:</p>
 <ol class="arabic simple">
-<li><p>if $<span class="math notranslate nohighlight">\(E[\epsilon\vert X] \neq 0\)</span>$ - GLS estimator is biased</p></li>
-<li><p>else if $<span class="math notranslate nohighlight">\(cov(\epsilon\vert X) \neq G\)</span>$ - GLS unbiased, but covariance formula breaks down</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(E[\epsilon\vert X] \neq 0\)</span> - GLS estimator is biased</p></li>
+<li><p>else if <span class="math notranslate nohighlight">\(cov(\epsilon\vert X) \neq G\)</span> - GLS unbiased, but covariance formula breaks down</p></li>
 <li><p>if G from data, but violates estimation procedure, estimator will be misealding estimate of cov</p></li>
 </ol>
 </li>
 </ul>
 </section>
 <section id="path-models">
-<h3><span class="section-number">4.7.3.3. </span>path models<a class="headerlink" href="#path-models" title="Link to this heading">#</a></h3>
+<h3>Path models<a class="headerlink" href="#path-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><em>path model</em> - graphical way to represent a regression equation</p></li>
+<li><p><span id="def-path-model" class="def-anchor"></span><em>path model</em> - graphical way to represent a regression equation</p></li>
 <li><p>making causal inferences by regression requires a <em>response schedule</em></p></li>
 </ul>
 </section>
 <section id="simultaneous-equations">
-<h3><span class="section-number">4.7.3.4. </span>simultaneous equations<a class="headerlink" href="#simultaneous-equations" title="Link to this heading">#</a></h3>
+<h3>Simultaneous equations<a class="headerlink" href="#simultaneous-equations" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>simultaneous-equation</em> models - use <em>instrumental variables / two-stage least squares</em></p>
 <ul>
@@ -763,11 +843,12 @@ document.write(`
 </ul>
 </section>
 <section id="binary-variables">
-<h3><span class="section-number">4.7.3.5. </span>binary variables<a class="headerlink" href="#binary-variables" title="Link to this heading">#</a></h3>
+<h3>Binary variables<a class="headerlink" href="#binary-variables" title="Link to this heading">#</a></h3>
+<p class="section-lead">Categorical predictors enter as 0/1 indicator columns. One level is dropped as the baseline, since otherwise the matrix is singular. An interaction term <span class="math notranslate nohighlight">\(x_{i1}x_{i2}\)</span> allows one predictor’s effect to depend on the other.</p>
 <ul class="simple">
 <li><p>indicator variables take on the value 0 or 1</p>
 <ul>
-<li><p><em>dummy coding</em> - matrix is singular so we drop the last indicator variable - called <em>reference</em> class / <em>baseline</em> class</p></li>
+<li><p><span id="def-dummy-coding" class="def-anchor"></span><em>dummy coding</em> - matrix is singular so we drop the last indicator variable - called <em>reference</em> class / <em>baseline</em> class</p></li>
 <li><p>effect coding</p>
 <ul>
 <li><p>one vector is all -1s</p></li>
@@ -790,7 +871,8 @@ document.write(`
 </ul>
 </section>
 <section id="lr-with-non-linear-basis-functions">
-<h3><span class="section-number">4.7.3.6. </span>LR with non-linear basis functions<a class="headerlink" href="#lr-with-non-linear-basis-functions" title="Link to this heading">#</a></h3>
+<h3>LR with non-linear basis functions<a class="headerlink" href="#lr-with-non-linear-basis-functions" title="Link to this heading">#</a></h3>
+<p class="section-lead">The model stays linear in the parameters while the features become nonlinear functions of <span class="math notranslate nohighlight">\(x\)</span>, such as polynomials or Gaussian radial basis functions.</p>
 <ul class="simple">
 <li><p>can have nonlinear basis functions (ex. polynomial regression)</p></li>
 <li><p>radial basis function - ex. kernel function (Gaussian RBF)</p>
@@ -802,69 +884,182 @@ document.write(`
 </ul>
 </section>
 <section id="locally-weighted-lr-lowess">
-<h3><span class="section-number">4.7.3.7. </span>locally weighted LR (lowess)<a class="headerlink" href="#locally-weighted-lr-lowess" title="Link to this heading">#</a></h3>
+<h3>Locally weighted LR (lowess)<a class="headerlink" href="#locally-weighted-lr-lowess" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>recompute model for each target point</p></li>
 <li><p>instead of minimizing SSE, we minimize SSE weighted by each observation’s closeness to the sample we want to query</p></li>
 </ul>
 </section>
 <section id="kernel-regression">
-<h3><span class="section-number">4.7.3.8. </span>kernel regression<a class="headerlink" href="#kernel-regression" title="Link to this heading">#</a></h3>
+<h3>Kernel regression<a class="headerlink" href="#kernel-regression" title="Link to this heading">#</a></h3>
+<p class="section-lead">Plug kernel density estimates of <span class="math notranslate nohighlight">\(f(x,y)\)</span> and <span class="math notranslate nohighlight">\(f(x)\)</span> into <span class="math notranslate nohighlight">\(E(Y\vert X=x) = \int y f(x,y)/f(x)\,dy\)</span>. The integral collapses to a weighted average of the <span class="math notranslate nohighlight">\(y_i\)</span> with weights <span class="math notranslate nohighlight">\(K_h(x - x_i)\)</span>.</p>
 <ul>
 <li><p>nonparametric method</p></li>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\operatorname{E}(Y \vert  X=x) = \int y f(y\vert x) dy = \int y \frac{f(x,y)}{f(x)} dy$$&lt;!-- --&gt;\\  Using the kernel density estimation for the joint distribution ''f(x,y)'' and ''f(x)'' with a kernel '''''K''''',\\  $\hat{f}(x,y) = \frac{1}{n}\sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)$
-  $\hat{f}(x) = \frac{1}{n} \sum_{i=1}^{n} K_h\left(x-x_i\right)$\\
-  we get\\\begin{split}  $$\begin{align} \operatorname{\hat E}(Y \vert  X=x) &amp;= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &amp;= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &amp;= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}$$&lt;!-- --&gt;\end{split}\\### GAM = generalized additive model\\- generalized additive models: assume mean output is sum of functions of individual variables (no interactions)
-  - learn individual functions using splines
-- $$g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$$&lt;!-- --&gt;
-- can also add some interaction terms (e.g. $f(x_0, x_1)$)\\### multicollinearity\\- *multicollinearity* - predictors highly correlated
-  - this affects fitted coefficients, potentially changing their values and even flipping their sign
-- *variance inflation factor (VIF)* for a feature $X_j$ is $\frac{1}{1-R_j^2}$, where $R_j^2$ is obtained by predicting $X_j$ from all features excluding $X_j$
-  - this measures the impact of multicollinearity on a feature coefficient
-- Studying
-  - Variable Selection via Nonconcave Penalized Likelihood and Its Oracle Properties ([fan &amp; li, 2001](https://www.jstor.org/stable/3085904)) - frame an estimator as &quot;oracle&quot; if:
-    - it can correctly select the nonzero coefficients in a model with prob converging to one
-    - and if the nonzero coefficients are asymptotically normal
-  - AdaLasso: The Adaptive Lasso and Its Oracle Properties ([zou, 2006](http://users.stat.umn.edu/~zouxx019/Papers/adalasso.pdf))
-    - can make lasso &quot;&quot;oracle&quot; in the sense above by weighting each coef in the optimization
-      - appropriate weight for each feature $X_j$ is simply $1/ \hat{\beta_j}$, where we attain $\beta_j$ from fitting OLS with no weights
-- using marginal regression
-  - A Comparison of the Lasso and Marginal Regression ([genovese...yao, 2011](https://www.stat.cmu.edu/~jiashun/Research/Area/Marginal.pdf))
-  - Revisiting Marginal Regression ([genovese, jin, &amp; wasserman, 2009](https://arxiv.org/abs/0911.4080))
-  - Exact Post Model Selection Inference for Marginal Screening ([jason lee &amp; taylor, 2014](https://proceedings.neurips.cc/paper/2014/hash/a0a080f42e6f13b3a2df133f073095dd-Abstract.html))
-- SIS: Sure independence screening for ultrahigh dimensional feature space ([fan &amp; lv, 2008](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2008.00674.x), 2k+ citations)
-  - 2 steps (sometimes iterate these)
-    1. Feature selection - select marginal features with largest absolute coefs (pick some threshold)
-    2. Fit Lasso on selected features
-  - Followups
-    - Sure independence screening in generalized linear models with NP-dimensionality ([fan &amp; song, 2010](https://projecteuclid.org/journals/annals-of-statistics/volume-38/issue-6/Sure-independence-screening-in-generalized-linear-models-with-NP-dimensionality/10.1214/10-AOS798.full))
-    - Nonparametric independence screening in sparse ultra-high-dimensional additive models ([fan, feng, &amp; song, 2011](https://www.tandfonline.com/doi/abs/10.1198/jasa.2011.tm09779))
-  - RAR: Regularization after retention in ultrahigh dimensional linear regression models ([weng, feng, &amp; qiao, 2017](https://arxiv.org/abs/1311.5625)) - only apply regularization on features not identified to be marginally important
-    - Regularization After Marginal Learning for Ultra-High Dimensional Regression Models ([feng &amp; yu, 2017](https://yangfeng.hosting.nyu.edu/publication/feng-2017-regularization/feng-2017-regularization.pdf)) - introduces 3-step procedure using a retention set, noise set, and undetermined set\\## sums interpretation\\- &lt;span class=&quot;cpurple&quot;&gt;SST&lt;/span&gt; - total sum of squares - measure of total variation in response variable
-  - $\sum(y_i-\bar{y})^2$
-- &lt;span class=&quot;cblue&quot;&gt;SSR&lt;/span&gt; - regression sum of squares - measure of variation explained by predictors
-  - $\sum(\hat{y_i}-\bar{y})^2$
-- &lt;span class=&quot;corange&quot;&gt;SSE&lt;/span&gt; - measure of variation not explained by predictors
-  - $\sum(y_i-\hat{y_i})^2$
-- &lt;span class=&quot;cpurple&quot;&gt;SST&lt;/span&gt; = &lt;span class=&quot;cblue&quot;&gt;SSR&lt;/span&gt; + &lt;span class=&quot;corange&quot;&gt;SSE&lt;/span&gt;
-- $R^2 = \frac{\cblue{SSR}}{\cpurple{SST}}$ - coefficient of determination
-  - measures the proportion of variation in Y that is explained by the predictor\\## geometry - Jordan ch 6\\from Michael Jordan's &quot;An Introduction to Probabilistic Graphical Models&quot;\\- *LMS* = *least mean squares* (p-dimensional geometries)
-  - &lt;img style=&quot;width: 460px; max-width: 100%;&quot; src=&quot;../assets/j6_1.svg&quot; alt=&quot;Geometry of the LMS algorithm&quot;/&gt;
-  - $y_n = \theta^T x_n + \epsilon_n$
-  - $\theta^{(t+1)}=\cblue{\theta^{(t)}} + \corange{\alpha} \cgreen{(y_n - \theta^{(t)T} x_n)} x_n$
-    - &lt;span class=&quot;cblue&quot;&gt;old weights&lt;/span&gt; + &lt;span class=&quot;corange&quot;&gt;step size&lt;/span&gt; * &lt;span class=&quot;cgreen&quot;&gt;prediction error&lt;/span&gt; * input
-    - converges if $$0 &lt; \corange{\alpha} &lt; 2/\vert \vert x_n\vert \vert ^2\end{aligned}\end{align} \]</div>
+<li><p><span class="math notranslate nohighlight">\(\operatorname{E}(Y \vert  X=x) = \int y f(y\vert x) dy = \int y \frac{f(x,y)}{f(x)} dy\)</span></p>
+<p>Using the kernel <a class="term-link" href="stat.html#def-density-estimation" data-def="given samples of X, estimate P(X) · Stat basics">density estimation</a> for the joint distribution ‘’f(x,y)’’ and ‘’f(x)’’ with a kernel ‘’’’’K’’’’’,</p>
+<p><span class="math notranslate nohighlight">\(\hat{f}(x,y) = \frac{1}{n}\sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)\)</span>
+<span class="math notranslate nohighlight">\(\hat{f}(x) = \frac{1}{n} \sum_{i=1}^{n} K_h\left(x-x_i\right)\)</span></p>
+<p>we get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} \operatorname{\hat E}(Y \vert  X=x) &amp;= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &amp;= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &amp;= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}\end{split}\]</div>
+</li>
+</ul>
+</section>
+<section id="gam-generalized-additive-model">
+<h3>GAM = generalized additive model<a class="headerlink" href="#gam-generalized-additive-model" title="Link to this heading">#</a></h3>
+<p class="section-lead">A GAM keeps additivity but drops linearity: the mean, through a link <span class="math notranslate nohighlight">\(g\)</span>, is a sum of one function per variable, each learned with splines. Interaction terms can be added back one at a time.</p>
+<ul class="simple">
+<li><p>generalized additive models: assume mean output is sum of functions of individual variables (no interactions)</p>
 <ul>
-<li><p>geometry of LMS with two input vectors $<span class="math notranslate nohighlight">\(x_1\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(x_2\)</span><span class="math notranslate nohighlight">\(, each with a line of solutions; the lines intersect at \)</span><span class="math notranslate nohighlight">\(\theta^*\)</span><span class="math notranslate nohighlight">\(, which solves the problem for both, and the path shows LMS on repeated presentations of \)</span><span class="math notranslate nohighlight">\(x_1\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(x_2\)</span>$ <img style="width: 460px; max-width: 100%;" src="../assets/j6_2.svg" alt="LMS with two input vectors"/></p></li>
-<li><img style="width: 420px; max-width: 100%;" src="../assets/j6_3.svg" alt="LMS with three input vectors"/>
+<li><p>learn individual functions using splines</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...\)</span></p></li>
+<li><p>can also add some interaction terms (e.g. <span class="math notranslate nohighlight">\(f(x_0, x_1)\)</span>)</p></li>
+</ul>
+</section>
+<section id="multicollinearity">
+<h3>Multicollinearity<a class="headerlink" href="#multicollinearity" title="Link to this heading">#</a></h3>
+<p class="section-lead">With highly correlated predictors, fitted coefficients can change size or even flip sign. VIF measures this for each feature. The papers below select variables in this setting, by screening on marginal regressions or by reweighting the lasso.</p>
+<ul class="simple">
+<li><p><span id="def-multicollinearity" class="def-anchor"></span><em>multicollinearity</em> - predictors highly correlated</p>
+<ul>
+<li><p>this affects fitted coefficients, potentially changing their values and even flipping their sign</p></li>
+</ul>
+</li>
+<li><p><em>variance inflation factor (VIF)</em> for a feature <span class="math notranslate nohighlight">\(X_j\)</span> is <span class="math notranslate nohighlight">\(\frac{1}{1-R_j^2}\)</span>, where <span class="math notranslate nohighlight">\(R_j^2\)</span> is obtained by predicting <span class="math notranslate nohighlight">\(X_j\)</span> from all features excluding <span class="math notranslate nohighlight">\(X_j\)</span></p>
+<ul>
+<li><p>this measures the impact of multicollinearity on a feature coefficient</p></li>
+</ul>
+</li>
+<li><p>Studying</p>
+<ul>
+<li><p>Variable Selection via Nonconcave Penalized Likelihood and Its Oracle Properties (<a class="reference external" href="https://www.jstor.org/stable/3085904">fan &amp; li, 2001</a>) - frame an estimator as “oracle” if:</p>
+<ul>
+<li><p>it can correctly select the nonzero coefficients in a model with prob converging to one</p></li>
+<li><p>and if the nonzero coefficients are asymptotically normal</p></li>
+</ul>
+</li>
+<li><p>AdaLasso: The Adaptive Lasso and Its Oracle Properties (<a class="reference external" href="http://users.stat.umn.edu/~zouxx019/Papers/adalasso.pdf">zou, 2006</a>)</p>
+<ul>
+<li><p>can make lasso “”oracle” in the sense above by weighting each coef in the optimization</p>
+<ul>
+<li><p>appropriate weight for each feature <span class="math notranslate nohighlight">\(X_j\)</span> is simply <span class="math notranslate nohighlight">\(1/ \hat{\beta_j}\)</span>, where we attain <span class="math notranslate nohighlight">\(\beta_j\)</span> from fitting OLS with no weights</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>using marginal regression</p>
+<ul>
+<li><p>A Comparison of the Lasso and Marginal Regression (<a class="reference external" href="https://www.stat.cmu.edu/~jiashun/Research/Area/Marginal.pdf">genovese…yao, 2011</a>)</p></li>
+<li><p>Revisiting Marginal Regression (<a class="reference external" href="https://arxiv.org/abs/0911.4080">genovese, jin, &amp; wasserman, 2009</a>)</p></li>
+<li><p>Exact Post Model Selection Inference for Marginal Screening (<a class="reference external" href="https://proceedings.neurips.cc/paper/2014/hash/a0a080f42e6f13b3a2df133f073095dd-Abstract.html">jason lee &amp; taylor, 2014</a>)</p></li>
+</ul>
+</li>
+<li><p>SIS: Sure independence screening for ultrahigh dimensional feature space (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2008.00674.x">fan &amp; lv, 2008</a>, 2k+ citations)</p>
+<ul>
+<li><p>2 steps (sometimes iterate these)</p>
+<ol class="arabic simple">
+<li><p>Feature selection - select marginal features with largest absolute coefs (pick some threshold)</p></li>
+<li><p>Fit Lasso on selected features</p></li>
+</ol>
+</li>
+<li><p>Followups</p>
+<ul>
+<li><p>Sure independence screening in generalized linear models with NP-dimensionality (<a class="reference external" href="https://projecteuclid.org/journals/annals-of-statistics/volume-38/issue-6/Sure-independence-screening-in-generalized-linear-models-with-NP-dimensionality/10.1214/10-AOS798.full">fan &amp; song, 2010</a>)</p></li>
+<li><p>Nonparametric independence screening in sparse ultra-high-dimensional additive models (<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1198/jasa.2011.tm09779">fan, feng, &amp; song, 2011</a>)</p></li>
+</ul>
+</li>
+<li><p>RAR: Regularization after retention in ultrahigh dimensional linear regression models (<a class="reference external" href="https://arxiv.org/abs/1311.5625">weng, feng, &amp; qiao, 2017</a>) - only apply regularization on features not identified to be marginally important</p>
+<ul>
+<li><p>Regularization After Marginal Learning for Ultra-High Dimensional Regression Models (<a class="reference external" href="https://yangfeng.hosting.nyu.edu/publication/feng-2017-regularization/feng-2017-regularization.pdf">feng &amp; yu, 2017</a>) - introduces 3-step procedure using a retention set, noise set, and undetermined set</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="sums-interpretation">
+<span id="sec-linear-models-sums-interpretation"></span><h2>Sums interpretation<a class="headerlink" href="#sums-interpretation" title="Link to this heading">#</a></h2>
+<p class="section-lead">Three sums of squares and how they relate. The <span class="cpurple">total variation</span> in <span class="math notranslate nohighlight">\(y\)</span> splits into the part <span class="cblue">explained by the predictors</span> and the <span class="corange">residual</span> part, and <span class="math notranslate nohighlight">\(R^2\)</span> is the explained share.</p>
+<ul class="simple">
+<li><p><span class="cpurple">SST</span> - total sum of squares - measure of total variation in response variable</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\sum(y_i-\bar{y})^2\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="cblue">SSR</span> - regression sum of squares - measure of variation explained by predictors</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\sum(\hat{y_i}-\bar{y})^2\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="corange">SSE</span> - measure of variation not explained by predictors</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\sum(y_i-\hat{y_i})^2\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="cpurple">SST</span> = <span class="cblue">SSR</span> + <span class="corange">SSE</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2 = \frac{\cblue{SSR}}{\cpurple{SST}}\)</span> - coefficient of determination</p>
+<ul>
+<li><p>measures the proportion of variation in Y that is explained by the predictor</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="geometry-jordan-ch-6">
+<span id="sec-linear-models-geometry-jordan-ch-6"></span><h2>Geometry - Jordan ch 6<a class="headerlink" href="#geometry-jordan-ch-6" title="Link to this heading">#</a></h2>
+<p class="section-lead">Two pictures of least squares. In parameter space, each data point defines a line of exact solutions and LMS steps toward it. In data space, the fit <span class="math notranslate nohighlight">\(\hat y\)</span> is the orthogonal projection of <span class="math notranslate nohighlight">\(y\)</span> onto the column space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>from Michael Jordan’s “An Introduction to Probabilistic Graphical Models”</p>
+<ul>
+<li><p><span id="def-lms" class="def-anchor"></span><em>LMS</em> = <em>least mean squares</em> (p-dimensional geometries)</p>
+<ul>
+<li><figure class="align-default" id="id1">
+<a class="note-figure reference internal image-reference" href="../../_images/j6_1.svg"><img alt="LMS for one data point. The dashed line is every $\theta$ whose projection onto $x_n$ equals $y_n$, the exact solutions for that point." class="note-figure" src="../../_images/j6_1.svg" style="width: 460px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> LMS for one data point. The dashed line is every <span class="math notranslate nohighlight">\(\theta\)</span> whose projection onto <span class="math notranslate nohighlight">\(x_n\)</span> equals <span class="math notranslate nohighlight">\(y_n\)</span>, the exact solutions for that point.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><span class="math notranslate nohighlight">\(y_n = \theta^T x_n + \epsilon_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta^{(t+1)}=\cblue{\theta^{(t)}} + \corange{\alpha} \cgreen{(y_n - \theta^{(t)T} x_n)} x_n\)</span></p>
+<ul>
+<li><p><span class="cblue">old weights</span> + <span class="corange">step size</span> * <span class="cgreen">prediction error</span> * input</p></li>
+<li><p>converges if <span class="math notranslate nohighlight">\(0 &lt; \corange{\alpha} &lt; 2/\vert \vert x_n\vert \vert ^2\)</span></p></li>
+<li><p>geometry of LMS with two input vectors <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, each with a line of solutions; the lines intersect at <span class="math notranslate nohighlight">\(\theta^*\)</span>, which solves the problem for both, and the path shows LMS on repeated presentations of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span></p>
+<figure class="align-default" id="id2">
+<a class="note-figure reference internal image-reference" href="../../_images/j6_2.svg"><img alt="With two inputs the solution lines meet at $\theta^*$. LMS alternates between them and zig-zags toward it." class="note-figure" src="../../_images/j6_2.svg" style="width: 460px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> With two inputs the solution lines meet at <span class="math notranslate nohighlight">\(\theta^*\)</span>. LMS alternates between them and zig-zags toward it.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><figure class="align-default" id="id3">
+<a class="note-figure reference internal image-reference" href="../../_images/j6_3.svg"><img alt="With three inputs in two dimensions the lines meet pairwise but share no point, so no $\theta$ fits all three exactly." class="note-figure" src="../../_images/j6_3.svg" style="width: 420px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> With three inputs in two dimensions the lines meet pairwise but share no point, so no <span class="math notranslate nohighlight">\(\theta\)</span> fits all three exactly.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
 </li>
 <li><p>if N=p and all <span class="math notranslate nohighlight">\(x^{(i)}\)</span> are lin. indepedent, then there exists exact solution <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
 </ul>
 </li>
 <li><p>solving requires finding <em>orthogonal projection of y on column space of X</em> (n-dimensional geometries)</p>
 <ul>
-<li><img style="width: 480px; max-width: 100%;" src="../assets/j6_4.svg" alt="Geometry of linear regression"/>
+<li><figure class="align-default" id="id4">
+<a class="note-figure reference internal image-reference" href="../../_images/j6_4.svg"><img alt="Least squares as projection. $\hat y$ is the point of col(X) closest to $y$, and the residual $y - \hat y$ is orthogonal to the plane." class="note-figure" src="../../_images/j6_4.svg" style="width: 480px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> Least squares as projection. <span class="math notranslate nohighlight">\(\hat y\)</span> is the point of col(X) closest to <span class="math notranslate nohighlight">\(y\)</span>, and the residual <span class="math notranslate nohighlight">\(y - \hat y\)</span> is orthogonal to the plane.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 <ol class="arabic simple">
@@ -898,7 +1093,7 @@ document.write(`
 </li>
 <li><p>probabilistic interpretation</p>
 <ul class="simple">
-<li><p>$<span class="math notranslate nohighlight">\(p(y\vert x, \theta) = \frac{1}{(2\pi\sigma^2)^{N/2}} \exp \left( \frac{-1}{2\sigma^2} \cblue{\sum_{n=1}^N (y_n - \theta^T x_n)^2} \right)\)</span>$<!-- --></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(y\vert x, \theta) = \frac{1}{(2\pi\sigma^2)^{N/2}} \exp \left( \frac{-1}{2\sigma^2} \cblue{\sum_{n=1}^N (y_n - \theta^T x_n)^2} \right)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(l(\theta; x,y) = - \frac{1}{2\sigma^2} \cblue{\sum_{n=1}^N (y_n - \theta^T x_n)^2}\)</span></p>
 <ul>
 <li><p>log-likelihood is equivalent to <span class="cblue">least-squares cost function</span></p></li>
@@ -908,11 +1103,11 @@ document.write(`
 </li>
 </ul>
 </section>
-</section>
 <section id="likelihood-calcs">
-<h2><span class="section-number">4.7.4. </span>likelihood calcs<a class="headerlink" href="#likelihood-calcs" title="Link to this heading">#</a></h2>
+<span id="sec-linear-models-likelihood-calcs"></span><h2>Likelihood calcs<a class="headerlink" href="#likelihood-calcs" title="Link to this heading">#</a></h2>
 <section id="normal-equation">
-<h3><span class="section-number">4.7.4.1. </span>normal equation<a class="headerlink" href="#normal-equation" title="Link to this heading">#</a></h3>
+<h3>Normal equation<a class="headerlink" href="#normal-equation" title="Link to this heading">#</a></h3>
+<p class="section-lead">Expand the squared loss, differentiate and set the gradient to zero. The result is the normal equations <span class="math notranslate nohighlight">\(X^TX\theta = X^Ty\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L(\theta) = \frac{1}{2} \sum_{i=1}^n (\hat{y}_i-y_i)^2\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(L(\theta) = 1/2 (X \theta - y)^T (X \theta -y)\)</span></p></li>
@@ -924,7 +1119,8 @@ document.write(`
 </ul>
 </section>
 <section id="ridge-regression">
-<h3><span class="section-number">4.7.4.2. </span>ridge regression<a class="headerlink" href="#ridge-regression" title="Link to this heading">#</a></h3>
+<h3>Ridge regression<a class="headerlink" href="#ridge-regression" title="Link to this heading">#</a></h3>
+<p class="section-lead">The same steps with the <span class="corange">penalty</span> added. It contributes <span class="math notranslate nohighlight">\(2\lambda\theta\)</span> to the gradient, which puts <span class="math notranslate nohighlight">\(\lambda I\)</span> on the diagonal of <span class="math notranslate nohighlight">\(X^TX\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L(\theta) = \cblue{\sum_{i=1}^n (\hat{y}_i-y_i)^2}+ \corange{\lambda \vert \vert \theta\vert \vert _2^2}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(L(\theta) = \cblue{(X \theta - y)^T (X \theta -y)}+ \corange{\lambda \theta^T \theta}\)</span></p></li>
@@ -933,7 +1129,18 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(\theta = (X^TX+\corange{\lambda I})^{-1} X^T y\)</span></p></li>
 <li><p><span class="cblue">data fit</span> + <span class="corange">penalty</span></p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>The least-squares fit <span class="math notranslate nohighlight">\(\hat y = Hy\)</span> is the orthogonal projection of <span class="math notranslate nohighlight">\(y\)</span> onto the column space of <span class="math notranslate nohighlight">\(X\)</span>, so the residuals are orthogonal to every column of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Under Freedman’s assumptions OLS is unbiased with covariance <span class="math notranslate nohighlight">\(\sigma^2(X^TX)^{-1}\)</span>, and by the Gauss-Markov theorem it is the best linear unbiased estimator.</p></li>
+<li><p>Ridge adds <span class="math notranslate nohighlight">\(\lambda I\)</span> to <span class="math notranslate nohighlight">\(X^TX\)</span>, which makes it invertible and shrinks every coefficient; the lasso’s <span class="math notranslate nohighlight">\(\ell_1\)</span> penalty sets some coefficients exactly to 0.</p></li>
+<li><p>Correlated features make coefficients unstable, and the VIF <span class="math notranslate nohighlight">\(1/(1-R_j^2)\)</span> measures how much for each feature.</p></li>
+<li><p>Lowess, kernel regression and GAMs drop the global linear form, fitting local weighted averages or sums of one-variable functions.</p></li>
+<li><p>With Gaussian errors, maximizing the log-likelihood is the same as minimizing the squared error.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../stat/stat.html"><span class="related-part">Statistics</span><span class="related-title">Stat basics</span><span class="related-hook">Expectations and variances, the usual distributions, the law of large numbers and CLT, and the bias-variance trade-off.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../ml/classification.html"><span class="related-part">Machine learning</span><span class="related-title">Classification</span><span class="related-hook">Linear classifiers as regularizer plus loss, SVMs, trees and forests, naive Bayes and Gaussian classifiers, nearest neighbors, and boosting.</span></a></div></nav></section>
 </section>
 </section>
 
@@ -968,12 +1175,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="info_theory.html"
+       href="testing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.6. </span>info theory</p>
+        <p class="prev-next-title">Testing</p>
       </div>
     </a>
     <a class="right-next"
@@ -981,7 +1188,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.8. </span>time series</p>
+        <p class="prev-next-title">Time series</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1001,27 +1208,31 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.7.1. introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freedman-notes">4.7.2. freedman notes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">4.7.2.1. regularization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-regression-line-freedman-ch-2">4.7.2.2. the regression line (freedman ch 2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression-freedman-ch-4">4.7.2.3. multiple regression (freedman ch 4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#freedman-notes">Freedman notes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-regression-line-freedman-ch-2">The regression line (freedman ch 2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression-freedman-ch-4">Multiple regression (freedman ch 4)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-topics">4.7.3. advanced topics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blue">4.7.3.1. BLUE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gls-glm">4.7.3.2. GLS = GLM</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path-models">4.7.3.3. path models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simultaneous-equations">4.7.3.4. simultaneous equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-variables">4.7.3.5. binary variables</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lr-with-non-linear-basis-functions">4.7.3.6. LR with non-linear basis functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-weighted-lr-lowess">4.7.3.7. locally weighted LR (lowess)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">4.7.3.8. kernel regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-topics">Advanced topics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blue">BLUE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gls-glm">GLS = GLM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path-models">Path models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simultaneous-equations">Simultaneous equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-variables">Binary variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lr-with-non-linear-basis-functions">LR with non-linear basis functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-weighted-lr-lowess">Locally weighted LR (lowess)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-regression">Kernel regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gam-generalized-additive-model">GAM = generalized additive model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multicollinearity">Multicollinearity</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-calcs">4.7.4. likelihood calcs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-equation">4.7.4.1. normal equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">4.7.4.2. ridge regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sums-interpretation">Sums interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-jordan-ch-6">Geometry - Jordan ch 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-calcs">Likelihood calcs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-equation">Normal equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge regression</a></li>
 </ul>
 </li>
 </ul>
@@ -1048,7 +1259,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

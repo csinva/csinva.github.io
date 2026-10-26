@@ -65,7 +65,7 @@ category: ml
 ## VC dimension
 - *VC dimension* measures *capacity* of a space of functions that can be learend by a statistical classification algorithm
   - let H be set of sets and C be a set
-  - $$H \cap C := \{ h \cap C \: \vert  h \in H \}$$<!-- -->
+  - $$H \cap C := \{ h \cap C \: \vert  h \in H \}$$
   - a set C is *shattered* by H if $H \cap C$ contains all subsets of C
   - The VC dimension of $H$ is the largest integer $D$ such that there exists a set $C$ with cardinality $D$ that is shattered by $H$
 - VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)

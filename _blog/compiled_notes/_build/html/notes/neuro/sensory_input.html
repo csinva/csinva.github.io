@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.5. sensory input</title>
+    <title>Sensory input &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -59,10 +60,105 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/neuro/sensory_input';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.6. memory" href="memory.html" />
-    <link rel="prev" title="7.4. comp neuro" href="comp_neuro.html" />
+    <link rel="next" title="Vision" href="vissci.html" />
+    <link rel="prev" title="Brain basics" href="brain_basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,8 +250,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -172,90 +268,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro_section.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -314,70 +428,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/neuro/sensory_input.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -409,7 +459,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>sensory input</h1>
+    <h1>Sensory input</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,35 +469,35 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#somatosensory">7.5.1. 9- somatosensory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheat-sheet">7.5.1.1. cheat sheet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensory-system-overview">7.5.1.2. sensory system overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuron-classes">7.5.1.3. 4 neuron classes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathways">7.5.1.4. pathways</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">7.5.1.5. representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathway">7.5.1.6. pathway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#somatosensory">9- somatosensory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheat-sheet">Cheat sheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensory-system-overview">Sensory system overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuron-classes">4 neuron classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathways">Pathways</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathway">Pathway</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nociception">7.5.2. 10 - nociception</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review">7.5.2.1. review</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.5.2.2. pathway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nociception">10 - nociception</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review">Review</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pathway</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vision-eye">7.5.3. 11 - vision (eye)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuits">7.5.3.1. circuits</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.5.3.2. pathway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vision-eye">11 - vision (eye)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuits">Circuits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Pathway</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-visual-system">7.5.4. 12 - central visual system</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.5.4.1. pathways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-visual-system">12 - central visual system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Pathways</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auditory-system">7.5.5. 13 - auditory system</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5.5.1. circuits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auditory-system">13 - auditory system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Circuits</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vestibular-system">7.5.6. 14 - vestibular system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-senses">7.5.7. 15 - chemical senses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vestibular-system">14 - vestibular system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-senses">15 - chemical senses</a></li>
 </ul>
             </nav>
         </div>
@@ -459,19 +509,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="sensory-input">
-<h1><span class="section-number">7.5. </span>sensory input<a class="headerlink" href="#sensory-input" title="Link to this heading">#</a></h1>
-<section id="somatosensory">
-<h2><span class="section-number">7.5.1. </span>9- somatosensory<a class="headerlink" href="#somatosensory" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/neuro.html">Neuroscience</a> &nbsp;·&nbsp; chapter 2 of 8 &nbsp;·&nbsp; 9 min read</p><section class="tex2jax_ignore mathjax_ignore" id="sensory-input">
+<h1>Sensory input<a class="headerlink" href="#sensory-input" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">notes from Purves et al. "Neuroscience", 5th edition (chapter numbers in headers) + Intro to neurobiology course at UVA</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>One section per sense, following Purves chapters 9 to 15. Each follows the same plan: the receptor cells and what they are tuned to, the relay stations on the way up (dorsal root or cranial ganglia, brain stem nuclei, a thalamic nucleus), and the cortical map at the end.</p>
+<p>Start with the somatosensory section. Its cheat sheet sets up the vocabulary and the three processing motifs (feedback gain, feedforward anticipation, center-surround inhibition) that come back in every other sense, and its pathways are the template the others are compared with: pain crosses the midline early, vision splits off to the colliculus, and the vestibular system skips the cortex entirely.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 7 sections</summary><ol><li><a href="#sec-sensory-input-9-somatosensory">9- somatosensory</a><span class="ol-lead">Touch and body position.</span></li><li><a href="#sec-sensory-input-10-nociception">10 - nociception</a><span class="ol-badge">1 figure</span><span class="ol-lead">Pain uses its own fibers (Aδ for fast pain, C for slow) and its own route: nociceptors synapse in the dorsal horn and cross the midline right away, while touch stays on the same side until the brain stem.</span></li><li><a href="#sec-sensory-input-11-vision-eye">11 - vision (eye)</a><span class="ol-badge">1 figure</span><span class="ol-lead">In photoreceptors light reduces activity: cGMP-gated channels close when light hits.</span></li><li><a href="#sec-sensory-input-12-central-visual-system">12 - central visual system</a><span class="ol-badge">1 figure</span><span class="ol-lead">Most retinal ganglion cell axons go through the LGN of the thalamus to V1, a six-layer sheet organized into orientation and ocular dominance columns.</span></li><li><a href="#sec-sensory-input-13-auditory-system">13 - auditory system</a><span class="ol-lead">The middle ear boosts sound onto the oval window, the cochlea sorts it by frequency along its length, and inner hair cells turn the motion into transmitter release.</span></li><li><a href="#sec-sensory-input-14-vestibular-system">14 - vestibular system</a><span class="ol-badge">1 interactive</span><span class="ol-badge">1 figure</span><span class="ol-lead">The same hair cells as the cochlea, used to sense head rotation (semicircular canals) and tilt (utricle and saccule).</span></li><li><a href="#sec-sensory-input-15-chemical-senses">15 - chemical senses</a><span class="ol-badge">1 figure</span><span class="ol-lead">Only the taste pathway is shown: taste buds, cranial nerves, the nucleus of the solitary tract, the thalamus and gustatory cortex.</span></li></ol></details><section id="somatosensory">
+<span id="sec-sensory-input-9-somatosensory"></span><h2>9- somatosensory<a class="headerlink" href="#somatosensory" title="Link to this heading">#</a></h2>
+<p class="section-lead">Touch and body position. Dorsal root ganglion neurons carry signals from skin and muscle into the spinal cord with almost no processing; the brain stem, thalamus (VPL/VPM) and S1 do the rest.</p>
 <section id="cheat-sheet">
-<h3><span class="section-number">7.5.1.1. </span>cheat sheet<a class="headerlink" href="#cheat-sheet" title="Link to this heading">#</a></h3>
+<h3>Cheat sheet<a class="headerlink" href="#cheat-sheet" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>vocab</p>
 <ul>
-<li><p><em>nerve</em> - bundle of axons</p></li>
-<li><p><em>tract</em> - bundle of axons in CNS</p></li>
-<li><p><em>nucleus</em> - bundle of neurons related to some function</p></li>
-<li><p><em>midline</em> - center of nervous system</p>
+<li><p><span id="def-nerve" class="def-anchor"></span><em>nerve</em> - bundle of axons</p></li>
+<li><p><span id="def-tract" class="def-anchor"></span><em>tract</em> - bundle of axons in CNS</p></li>
+<li><p><span id="def-nucleus" class="def-anchor"></span><em>nucleus</em> - bundle of neurons related to some function</p></li>
+<li><p><span id="def-midline" class="def-anchor"></span><em>midline</em> - center of nervous system</p>
 <ul>
 <li><p>brain tends to be lateralized - one side is given control</p></li>
 <li><p>ex. speak almost exclusively from left side of brain</p></li>
@@ -502,13 +558,14 @@ document.write(`
 </ul>
 </section>
 <section id="sensory-system-overview">
-<h3><span class="section-number">7.5.1.2. </span>sensory system overview<a class="headerlink" href="#sensory-system-overview" title="Link to this heading">#</a></h3>
+<h3>Sensory system overview<a class="headerlink" href="#sensory-system-overview" title="Link to this heading">#</a></h3>
+<p class="section-lead">Dorsal root ganglion cells are pseudounipolar: one process runs from the skin straight into the spinal cord, with the cell body off to the side, and they do very little processing. Each ganglion serves one stripe of skin (a dermatome), and how finely you can tell two points apart depends on how densely the skin is innervated.</p>
 <ul class="simple">
 <li><p>we have dorsal root ganglia (DRG) on spinal cord</p>
 <ul>
 <li><p>axon goes to CNS</p></li>
 <li><p>dendrites go everywhere</p></li>
-<li><p><em>pseudounipolar</em> - born polar but become uni-polar</p>
+<li><p><span id="def-pseudounipolar" class="def-anchor"></span><em>pseudounipolar</em> - born polar but become uni-polar</p>
 <ul>
 <li><p>dendrite goes straight into axon with cell body off to the side</p></li>
 </ul>
@@ -516,7 +573,7 @@ document.write(`
 <li><p>do very little processing</p></li>
 </ul>
 </li>
-<li><p><em>dorsal horn</em> - top layer that controls sensory information</p></li>
+<li><p><span id="def-dorsal-horn" class="def-anchor"></span><em>dorsal horn</em> - top layer that controls sensory information</p></li>
 <li><p>in the brain stem, these are called cranial ganglia</p>
 <ul>
 <li><p>special one is trigeminal ganglia (sensory receptors for face)</p></li>
@@ -531,7 +588,7 @@ document.write(`
 <li><p>brain to feet: cervical, thoracic, lumbar, sacral</p></li>
 </ul>
 </li>
-<li><p><em>shingles</em> - virus where you get stripes of sores - single DRG</p>
+<li><p><span id="def-shingles" class="def-anchor"></span><em>shingles</em> - virus where you get stripes of sores - single DRG</p>
 <ul>
 <li><p>pops out the skin on the dendrite of one DRG</p></li>
 </ul>
@@ -548,7 +605,8 @@ document.write(`
 </ul>
 </section>
 <section id="neuron-classes">
-<h3><span class="section-number">7.5.1.3. </span>4 neuron classes<a class="headerlink" href="#neuron-classes" title="Link to this heading">#</a></h3>
+<h3>4 neuron classes<a class="headerlink" href="#neuron-classes" title="Link to this heading">#</a></h3>
+<p class="section-lead">Sensory neurons differ in what their endings are tuned to and how fast they conduct. Bigger, myelinated fibers (proprioceptors, touch) are fast; thin unmyelinated C fibers (slow pain, temperature, itch) are slow.</p>
 <ul>
 <li><p>they have certain structures that tune them into certain kinds of vibrations</p>
 <ol class="arabic simple">
@@ -620,13 +678,14 @@ document.write(`
 </ul>
 </section>
 <section id="pathways">
-<h3><span class="section-number">7.5.1.4. </span>pathways<a class="headerlink" href="#pathways" title="Link to this heading">#</a></h3>
+<h3>Pathways<a class="headerlink" href="#pathways" title="Link to this heading">#</a></h3>
+<p class="section-lead">Touch from the upper body goes through the cuneate nucleus, from the lower body through the gracile nucleus, and from the face through the trigeminal ganglion. All of it passes the thalamus (VPL, or VPM for the face) on the way to S1, while proprioception goes to the cerebellum.</p>
 <ul class="simple">
 <li><p>upper-body</p>
 <ul>
-<li><p><em>S1 cortex</em> - primary somatic sensory cortex - this is the knowledge of where was touched</p></li>
-<li><p><em>VPL</em> - everything accumulates here in the thalamus then goes to</p></li>
-<li><p><em>Cuneate nucleus</em> - everything goes into this</p></li>
+<li><p><span id="def-s1-cortex" class="def-anchor"></span><em>S1 cortex</em> - primary somatic sensory cortex - this is the knowledge of where was touched</p></li>
+<li><p><span id="def-vpl" class="def-anchor"></span><em>VPL</em> - everything accumulates here in the thalamus then goes to</p></li>
+<li><p><span id="def-cuneate-nucleus" class="def-anchor"></span><em>Cuneate nucleus</em> - everything goes into this</p></li>
 </ul>
 </li>
 <li><p>lower-body (trunk down)</p>
@@ -658,7 +717,8 @@ document.write(`
 </ul>
 </section>
 <section id="representation">
-<h3><span class="section-number">7.5.1.5. </span>representation<a class="headerlink" href="#representation" title="Link to this heading">#</a></h3>
+<h3>Representation<a class="headerlink" href="#representation" title="Link to this heading">#</a></h3>
+<p class="section-lead">Cortex gives each body part area in proportion to how much input comes from it, so the lips and hands get the most. The map changes with use: after an amputation, neighboring areas grow into the lost space.</p>
 <ul class="simple">
 <li><p>cortex - this is where understanding is</p>
 <ul>
@@ -690,7 +750,8 @@ document.write(`
 </ul>
 </section>
 <section id="pathway">
-<h3><span class="section-number">7.5.1.6. </span>pathway<a class="headerlink" href="#pathway" title="Link to this heading">#</a></h3>
+<h3>Pathway<a class="headerlink" href="#pathway" title="Link to this heading">#</a></h3>
+<p class="section-lead">The same routes again, as numbered relay stations.</p>
 <ul class="simple">
 <li><p>mechanosensory</p>
 <ol class="arabic simple">
@@ -725,19 +786,21 @@ document.write(`
 </section>
 </section>
 <section id="nociception">
-<h2><span class="section-number">7.5.2. </span>10 - nociception<a class="headerlink" href="#nociception" title="Link to this heading">#</a></h2>
+<span id="sec-sensory-input-10-nociception"></span><h2>10 - nociception<a class="headerlink" href="#nociception" title="Link to this heading">#</a></h2>
+<p class="section-lead">Pain uses its own fibers (Aδ for fast pain, C for slow) and its own route: nociceptors synapse in the dorsal horn and cross the midline right away, while touch stays on the same side until the brain stem. Cortex then splits knowing where it hurts (somatosensory cortex) from caring that it hurts (insula).</p>
 <section id="review">
-<h3><span class="section-number">7.5.2.1. </span>review<a class="headerlink" href="#review" title="Link to this heading">#</a></h3>
+<h3>Review<a class="headerlink" href="#review" title="Link to this heading">#</a></h3>
+<p class="section-lead">Pain has its own receptors (Trp channels opened by heat, cold, or chemicals such as capsaicin and menthol) and two fiber types. The later bullets cover how pain gets turned up (hyperalgesia, allodynia) and turned down (serotonin, mechanoreceptors inhibiting nociceptors).</p>
 <ul class="simple">
 <li><p>chronic pain is very import clinically</p></li>
 <li><p>cortex - lets you know if you are sensing something</p>
 <ol class="arabic simple">
-<li><p><em>loss-of-function lesion</em> - piece of cortex is lost - lose awareness</p>
+<li><p><span id="def-loss-of-function-lesion" class="def-anchor"></span><em>loss-of-function lesion</em> - piece of cortex is lost - lose awareness</p>
 <ul>
 <li><p>can come from stroke, migraine-aura</p></li>
 </ul>
 </li>
-<li><p><em>gain-of-function lesion</em> = excitatory lesion - like epilepsy</p>
+<li><p><span id="def-gain-of-function-lesion" class="def-anchor"></span><em>gain-of-function lesion</em> = excitatory lesion - like epilepsy</p>
 <ul>
 <li><p>cortex comes on when it shouldn’t</p></li>
 <li><p>increased awareness</p></li>
@@ -750,7 +813,7 @@ document.write(`
 <li><p><em>nociception</em> = pain</p>
 <ul>
 <li><p>has <em>nociceptors</em> - neurons that do nociception</p></li>
-<li><p><em>thermoceptors</em> - neurons that sense temperature</p></li>
+<li><p><span id="def-thermoceptors" class="def-anchor"></span><em>thermoceptors</em> - neurons that sense temperature</p></li>
 </ul>
 </li>
 <li><p>two classes of linking receptors</p>
@@ -791,7 +854,7 @@ document.write(`
 </li>
 <li><p>care about pain</p>
 <ul class="simple">
-<li><p><em>insular cortex</em> - emotional part of brain</p>
+<li><p><span id="def-insular-cortex" class="def-anchor"></span><em>insular cortex</em> - emotional part of brain</p>
 <ul>
 <li><p>whether or not you care about pain</p></li>
 <li><p>pairs up with other senses</p></li>
@@ -803,15 +866,15 @@ document.write(`
 <ul>
 <li><p>can have both loss-of-function and gain-of-function lesions in both places</p></li>
 <li><p>referred pain map - map that refers to a specific problem (ex. esophagus)</p></li>
-<li><p><em>visceral pain</em> - don’t know where the pain is</p></li>
-<li><p><em>hyperalgesia</em> - increased pain sensitivity</p>
+<li><p><span id="def-visceral-pain" class="def-anchor"></span><em>visceral pain</em> - don’t know where the pain is</p></li>
+<li><p><span id="def-hyperalgesia" class="def-anchor"></span><em>hyperalgesia</em> - increased pain sensitivity</p>
 <ul class="simple">
 <li><p>pain sensing neurons are hyperactive because of inflammation</p></li>
 <li><p>pain sensing neuron releases substance P into Mast cell or neutrophil which releases histamine which strengthens receptor</p></li>
 <li><p>prostaglandins activate nococeptors</p></li>
 </ul>
 </li>
-<li><p><em>allodynia</em> - when mechanosensation hurts - not understood</p></li>
+<li><p><span id="def-allodynia" class="def-anchor"></span><em>allodynia</em> - when mechanosensation hurts - not understood</p></li>
 <li><p>turning off pain - add serotonin</p>
 <ol class="arabic simple">
 <li><p>exercise</p></li>
@@ -831,13 +894,19 @@ document.write(`
 </ul>
 </section>
 <section id="id1">
-<h3><span class="section-number">7.5.2.2. </span>pathway<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>Pathway<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul>
 <li><p>nociception</p>
 <ul>
-<li><p><img alt="" src="../../_images/10_1.png" /></p></li>
+<li><figure class="align-default" id="id5">
+<img alt="A lesion on the left side of the lower thoracic cord. Mechanosensory axons (red) go up on the same side, so the left leg loses touch, vibration and proprioception. Nociceptive axons (blue) cross the m" class="note-figure" src="../../_images/10_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> A lesion on the left side of the lower thoracic cord. Mechanosensory axons (red) go up on the same side, so the left leg loses touch, vibration and proprioception. Nociceptive axons (blue) cross the midline as they enter, so the right leg loses pain and temperature.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p>same as mechanosensory except goes all the way to thalamus</p>
-<ul>
+<ul class="simple">
 <li><p>doesn’t stop in brainstem</p></li>
 </ul>
 </li>
@@ -845,7 +914,7 @@ document.write(`
 </ul>
 </li>
 <li><p>visceral pain</p>
-<ul>
+<ul class="simple">
 <li><p>axons mainline straight up, go through vpl, go straight to insular cortex</p></li>
 </ul>
 </li>
@@ -853,7 +922,8 @@ document.write(`
 </section>
 </section>
 <section id="vision-eye">
-<h2><span class="section-number">7.5.3. </span>11 - vision (eye)<a class="headerlink" href="#vision-eye" title="Link to this heading">#</a></h2>
+<span id="sec-sensory-input-11-vision-eye"></span><h2>11 - vision (eye)<a class="headerlink" href="#vision-eye" title="Link to this heading">#</a></h2>
+<p class="section-lead">In photoreceptors light reduces activity: cGMP-gated channels close when light hits. Bipolar cells split the signal into on and off pathways, and horizontal cells subtract the surround to build contrast.</p>
 <ul class="simple">
 <li><p>most of visual system is to read faces</p></li>
 <li><p>eye</p>
@@ -885,7 +955,8 @@ document.write(`
 <li><p>melanopsin - receptor for blue light</p></li>
 </ul>
 <section id="circuits">
-<h3><span class="section-number">7.5.3.1. </span>circuits<a class="headerlink" href="#circuits" title="Link to this heading">#</a></h3>
+<h3>Circuits<a class="headerlink" href="#circuits" title="Link to this heading">#</a></h3>
+<p class="section-lead">In the dark, cGMP holds the photoreceptor’s channels open. Light activates rhodopsin, which turns on a phosphodiesterase that breaks down cGMP, and the channels close.</p>
 <ul class="simple">
 <li><p>accomodation - stretching lens uncrosses lines</p></li>
 <li><p>function photoreceptor</p>
@@ -915,9 +986,15 @@ document.write(`
 </ul>
 </section>
 <section id="id2">
-<h3><span class="section-number">7.5.3.2. </span>pathway<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><img alt="" src="../../_images/11_1.png" /></p></li>
+<h3>Pathway<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul>
+<li><figure class="align-default" id="id6">
+<img alt="The cone to bipolar to ganglion cell circuit. Light hyperpolarizes the center cone; through mGluR6 this depolarizes the on-center bipolar cell and through AMPA/kainate receptors it hyperpolarizes the" class="note-figure" src="../../_images/11_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> The cone to bipolar to ganglion cell circuit. Light hyperpolarizes the center cone; through mGluR6 this depolarizes the on-center bipolar cell and through AMPA/kainate receptors it hyperpolarizes the off-center one. On-center ganglion cells fire to a light spot in the center (B), off-center ones to a dark spot (C).</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 <ol class="arabic simple">
 <li><p>rods / cones
@@ -931,7 +1008,8 @@ document.write(`
 </section>
 </section>
 <section id="central-visual-system">
-<h2><span class="section-number">7.5.4. </span>12 - central visual system<a class="headerlink" href="#central-visual-system" title="Link to this heading">#</a></h2>
+<span id="sec-sensory-input-12-central-visual-system"></span><h2>12 - central visual system<a class="headerlink" href="#central-visual-system" title="Link to this heading">#</a></h2>
+<p class="section-lead">Most retinal ganglion cell axons go through the LGN of the thalamus to V1, a six-layer sheet organized into orientation and ocular dominance columns. A smaller share goes to the brain stem.</p>
 <ul class="simple">
 <li><p>cortex is a pizza box</p></li>
 <li><p>has columns</p></li>
@@ -977,12 +1055,18 @@ document.write(`
 <li><p>near cells</p></li>
 </ul>
 </li>
-<li><p><em>V4</em> in temporal lobe - object recognition</p></li>
+<li><p><em>V4</em> in temporal lobe - <a class="term-link" href="../ml/comp_vision.html#def-object-recognition" data-def="visual similarity via labels · Computer vision">object recognition</a></p></li>
 </ul>
 <section id="id3">
-<h3><span class="section-number">7.5.4.1. </span>pathways<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><img alt="" src="../../_images/12_1.png" /></p></li>
+<h3>Pathways<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul>
+<li><figure class="align-default" id="id7">
+<img alt="Central projections of retinal ganglion cells. About 90% go through the optic nerve, chiasm and tract to the LGN and on to striate cortex; the rest go to the hypothalamus (circadian rhythm), pretectum" class="note-figure" src="../../_images/12_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> Central projections of retinal ganglion cells. About 90% go through the optic nerve, chiasm and tract to the LGN and on to striate cortex; the rest go to the hypothalamus (circadian rhythm), pretectum (pupil reflex) and superior colliculus (orienting the head and eyes).</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p>overall</p>
 <ol class="arabic simple">
 <li><p>V1</p></li>
@@ -991,7 +1075,7 @@ document.write(`
 </ol>
 </li>
 <li><p>central projections</p>
-<ul>
+<ul class="simple">
 <li><p>retinal ganglions</p></li>
 <li><p>all go through optic stuff</p></li>
 </ul>
@@ -1000,7 +1084,8 @@ document.write(`
 </section>
 </section>
 <section id="auditory-system">
-<h2><span class="section-number">7.5.5. </span>13 - auditory system<a class="headerlink" href="#auditory-system" title="Link to this heading">#</a></h2>
+<span id="sec-sensory-input-13-auditory-system"></span><h2>13 - auditory system<a class="headerlink" href="#auditory-system" title="Link to this heading">#</a></h2>
+<p class="section-lead">The middle ear boosts sound onto the oval window, the cochlea sorts it by frequency along its length, and inner hair cells turn the motion into transmitter release. The MSO compares arrival times at the two ears to locate a sound.</p>
 <ul class="simple">
 <li><p>ear parts</p>
 <ul>
@@ -1074,7 +1159,7 @@ document.write(`
 </li>
 <li><p>auditory pathwayz</p>
 <ul>
-<li><p><em>MSO - medial superior olive</em> - decides where the sounds is coming from</p>
+<li><p><span id="def-mso-medial-superior-olive" class="def-anchor"></span><em>MSO - medial superior olive</em> - decides where the sounds is coming from</p>
 <ul>
 <li><p>takes input from right / left ear, decides which came in first</p></li>
 </ul>
@@ -1101,23 +1186,31 @@ document.write(`
 <li><p>any sounds is made up of a bunch of frequencies</p></li>
 </ul>
 <section id="id4">
-<h3><span class="section-number">7.5.5.1. </span>circuits<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>Circuits<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>K depolarizes hair cells, lets in Ca, releases vesicles</p></li>
 </ul>
 </section>
 </section>
 <section id="vestibular-system">
-<h2><span class="section-number">7.5.6. </span>14 - vestibular system<a class="headerlink" href="#vestibular-system" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-sensory-input-14-vestibular-system"></span><h2>14 - vestibular system<a class="headerlink" href="#vestibular-system" title="Link to this heading">#</a></h2>
+<p class="section-lead">The same hair cells as the cochlea, used to sense head rotation (semicircular canals) and tilt (utricle and saccule). These circuits bypass cortex and drive fast reflexes such as the vestibulo-ocular reflex.</p>
+<figure class="nb-viz-figure" id="viz-canal-adaptation"><div class="nb-viz" data-viz="canal-adaptation" data-params="{&quot;spin&quot;: 20, &quot;tau&quot;: 6}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> The horizontal canal as the note describes it: when the head starts turning, the fluid lags and bends the cupula, so the canal fires. If the spin goes on, the fluid catches up and the signal fades even though the head is still turning. When the head stops, the moving fluid bends the cupula the other way and the canal reports a turn in the opposite direction. Lengthen the spin to see the signal fade to zero; shorten τ to make the canal adapt faster. (A toy high-pass model; τ is not a measured value.)</figcaption></figure><ul>
 <li><p>very related to cochlea</p>
 <ul class="simple">
 <li><p>same hair cells</p></li>
 </ul>
 </li>
 <li><p>differences</p>
-<ul class="simple">
-<li><p><img alt="" src="../../_images/14_1.png" /></p></li>
+<ul>
+<li><figure class="align-default" id="id8">
+<img alt="The labyrinth: three semicircular canals with an ampulla at the base of each, the utricle and saccule, and Scarpa's ganglion sending axons into the vestibular part of cranial nerve VIII, next to the c" class="note-figure" src="../../_images/14_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> The labyrinth: three semicircular canals with an ampulla at the base of each, the utricle and saccule, and Scarpa’s ganglion sending axons into the vestibular part of cranial nerve VIII, next to the cochlea.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 <ol class="arabic simple">
 <li><p>vestibular system doesn’t use cortex (you don’t think about it)</p>
@@ -1211,7 +1304,7 @@ document.write(`
 </li>
 <li><p>tiplink - connect cilia together for hair cells</p>
 <ul>
-<li><p>when they move, tiplink move, pull on ion channels</p></li>
+<li><p>when they move, tiplink move, pull on <a class="term-link" href="brain_basics.html#def-ion-channels" data-def="make membranes selectively permeable - wires · Brain basics">ion channels</a></p></li>
 <li><p>motor on connected hair cell moves up and down to generate correct amount of tension</p>
 <ul>
 <li><p>motor uses myosin and actin</p></li>
@@ -1225,7 +1318,7 @@ document.write(`
 <li><p>also must be sitting over image for a while</p></li>
 </ul>
 </li>
-<li><p><em>ipsilateral</em> - same side</p></li>
+<li><p><span id="def-ipsilateral" class="def-anchor"></span><em>ipsilateral</em> - same side</p></li>
 <li><p>contralateral - different side</p></li>
 <li><p>vestibular ocular reflex VOR - turn your head to the right, eyes move left</p>
 <ul>
@@ -1236,12 +1329,29 @@ document.write(`
 </ul>
 </section>
 <section id="chemical-senses">
-<h2><span class="section-number">7.5.7. </span>15 - chemical senses<a class="headerlink" href="#chemical-senses" title="Link to this heading">#</a></h2>
-<p><img alt="" src="../../_images/15_1.png" /></p>
+<span id="sec-sensory-input-15-chemical-senses"></span><h2>15 - chemical senses<a class="headerlink" href="#chemical-senses" title="Link to this heading">#</a></h2>
+<p class="section-lead">Only the taste pathway is shown: taste buds, cranial nerves, the nucleus of the solitary tract, the thalamus and gustatory cortex. The one bullet notes that the receptors here are GPCRs that use cAMP.</p>
+<figure class="align-default" id="id9">
+<img alt="The taste pathway. Taste buds send signals through cranial nerves VII, IX and X to the nucleus of the solitary tract, then through the VPM of the thalamus to gustatory cortex in the insula and frontal" class="note-figure" src="../../_images/15_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text"><span class="fig-num">Figure 5.</span> The taste pathway. Taste buds send signals through cranial nerves VII, IX and X to the nucleus of the solitary tract, then through the VPM of the thalamus to gustatory cortex in the insula and frontal operculum.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>cAMP is used by GPCR</p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Each sense follows the same plan: receptor cells, relay stations in the spinal cord or brain stem, a thalamic nucleus, then a map in cortex.</p></li>
+<li><p>Sensory fibers are tuned by their endings and sorted by speed: large myelinated fibers for proprioception and touch, thin unmyelinated C fibers for slow pain, temperature and itch.</p></li>
+<li><p>Touch stays on the same side until the brain stem, while pain crosses the midline at its first synapse, so one spinal lesion removes touch on one side and pain on the other.</p></li>
+<li><p>Cortical maps give area by the amount of input, and they reshape with use.</p></li>
+<li><p>In the retina, light closes cGMP-gated channels, and horizontal cells subtract the surround to build contrast.</p></li>
+<li><p>The cochlea sorts sound by frequency along its length; the semicircular canals adapt during a steady spin because the fluid catches up.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../neuro/vissci.html"><span class="related-part">Neuroscience</span><span class="related-title">Vision</span><span class="related-hook">The visual system from photoreceptors and retinal circuits to V1 and beyond, with the methods used to record it and the diseases that damage it.</span></a><a class="related-card" href="../neuro/motor.html"><span class="related-part">Neuroscience</span><span class="related-title">Motor system</span><span class="related-hook">From spinal reflexes up through motor cortex, basal ganglia and cerebellum, plus eye movements and the autonomic system.</span></a><a class="related-card" href="../neuro/brain_basics.html"><span class="related-part">Neuroscience</span><span class="related-title">Brain basics</span><span class="related-hook">The parts of the brain, then how a neuron makes a voltage, fires, and talks to the next neuron through synapses and transmitters.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1275,20 +1385,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="comp_neuro.html"
+       href="brain_basics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>comp neuro</p>
+        <p class="prev-next-title">Brain basics</p>
       </div>
     </a>
     <a class="right-next"
-       href="memory.html"
+       href="vissci.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.6. </span>memory</p>
+        <p class="prev-next-title">Vision</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1308,35 +1418,35 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#somatosensory">7.5.1. 9- somatosensory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheat-sheet">7.5.1.1. cheat sheet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensory-system-overview">7.5.1.2. sensory system overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuron-classes">7.5.1.3. 4 neuron classes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathways">7.5.1.4. pathways</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">7.5.1.5. representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathway">7.5.1.6. pathway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#somatosensory">9- somatosensory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheat-sheet">Cheat sheet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensory-system-overview">Sensory system overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuron-classes">4 neuron classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathways">Pathways</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathway">Pathway</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nociception">7.5.2. 10 - nociception</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review">7.5.2.1. review</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.5.2.2. pathway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nociception">10 - nociception</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review">Review</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pathway</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vision-eye">7.5.3. 11 - vision (eye)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuits">7.5.3.1. circuits</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.5.3.2. pathway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vision-eye">11 - vision (eye)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuits">Circuits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Pathway</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-visual-system">7.5.4. 12 - central visual system</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.5.4.1. pathways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-visual-system">12 - central visual system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Pathways</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auditory-system">7.5.5. 13 - auditory system</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5.5.1. circuits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auditory-system">13 - auditory system</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Circuits</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vestibular-system">7.5.6. 14 - vestibular system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-senses">7.5.7. 15 - chemical senses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vestibular-system">14 - vestibular system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-senses">15 - chemical senses</a></li>
 </ul>
   </nav></div>
 
@@ -1361,7 +1471,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

@@ -1,0 +1,37 @@
+title: Notes on ML, AI, and neuroscience
+html_title: ML-AI Guide
+lead: |
+  Working notes on machine learning, statistics, AI, and neuroscience, kept since 2015 and organized
+  into a book.
+intro: |
+  Each chapter is one of the notes from csinva.io: mostly compact bullet points, equations and figures,
+  with a short overview at the top and interactive figures where moving a slider says more than a
+  paragraph would. The foundations come first (computer science, math, statistics), then machine learning,
+  AI and neuroscience, and finally research overviews that collect papers on open problems.
+
+map_intro: |
+  Each chapter is linked to the chapters that share the most vocabulary with it, which is a quick way to see
+  how the topics connect. Hover over a chapter to see its neighbors, or click it to open it.
+map_caption: Each dot is a chapter, colored by part and linked to its three most similar chapters (tf-idf over the note text). Click a part to highlight it.
+paths_intro: |
+  A few routes through the book, each ordered so that earlier chapters set up later ones. The parts further
+  down list every chapter.
+paths:
+  - title: Machine learning from the ground up
+    description: The linear algebra, probability and optimization that ML uses, then the standard methods, then why they generalize.
+    chapters: [math/linear_algebra, stat/stat, math/optimization, ml/classification, ml/evaluation, ml/unsupervised, ml/deep_learning, ml/learning_theory]
+  - title: Statistics and causal inference
+    description: From estimators and tests to regression and graphical models, then reading causal effects from data.
+    chapters: [stat/stat, stat/testing, stat/linear_models, stat/graphical_models, stat/causal_inference, research_ovws/ovw_causal_inference]
+  - title: Deep learning, LLMs and interpretability
+    description: Neural networks and language models, then the research on how they work and what they learn.
+    chapters: [ml/deep_learning, ml/nlp, ai/llms, research_ovws/ovw_embeddings, research_ovws/ovw_llms, research_ovws/ovw_interp]
+  - title: Brains and minds
+    description: How neurons signal, how the senses and movement work, and the models and cognitive science built on them.
+    chapters: [neuro/brain_basics, neuro/sensory_input, neuro/vissci, neuro/motor, neuro/comp_neuro, ai/cogsci, ai/psychology]
+  - title: Classic AI
+    description: Search and logic, decisions under uncertainty and reinforcement learning, then the questions AI raises for society.
+    chapters: [ai/search, ai/rl_decisions, stat/graphical_models, ai/fairness_sts, ai/ai_futures]
+  - title: Computer systems
+    description: The data structures and algorithms everything else assumes, then how the machine and the operating system run programs.
+    chapters: [cs/data_structures, cs/algo, cs/arch, cs/os, cs/languages_parallel, cs/comp_theory]

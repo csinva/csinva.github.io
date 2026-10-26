@@ -29,13 +29,13 @@ $\frac{d}{dx}sec(x)= sec(x)\tan(x)$
 
 $\frac{d}{dx}csc(x)= -csc(x)cot(x)$
 
-$$\int \tan = \ln\vert sec\vert $$<!-- -->
+$\int \tan = \ln\vert sec\vert$
 
-$$\int cot = \ln\vert \sin\vert $$<!-- -->
+$\int cot = \ln\vert \sin\vert$
 
-$$\int sec = \ln\vert sec+\tan\vert $$<!-- -->
+$\int sec = \ln\vert sec+\tan\vert$
 
-$$\int csc = \ln\vert csc-cot\vert $$<!-- -->
+$\int csc = \ln\vert csc-cot\vert$
 
 $\int \frac{du}{\sqrt{a^2-u^2}} = \sin^{-1}(\frac{u}{a})$
 

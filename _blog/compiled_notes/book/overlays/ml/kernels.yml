@@ -1,0 +1,66 @@
+# Overlay for _notes/ml/kernels.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Kernels
+subtitle: What makes a valid kernel, reproducing kernel Hilbert spaces, and spectral clustering with kernel matrices.
+hook: Valid kernels and their RKHS, and how the eigenvectors of a kernel matrix reveal clusters.
+intro: |
+  A kernel $K(x, z)$ acts as a dot product in some feature space without computing the features. The basics
+  section says when a function qualifies: it must be symmetric and give a positive semi-definite Gram
+  matrix. It also says why each kernel has one canonical feature space, its reproducing kernel Hilbert space.
+
+  The rest uses the kernel matrix $K_n$ on a dataset directly. If the data form clusters, $K_n$ is close to
+  block diagonal, and its eigenvectors (or those of the Laplacian $L_n = D_n - K_n$) show the blocks. That is
+  the idea behind the data spectroscopy paper and the spectral clustering methods at the end.
+sections:
+  kernel basics:
+    lead: |
+      A kernel must be continuous and symmetric, and its Gram matrix on any set of points must be positive
+      semi-definite. The links after the definition point to lists of kernels and to work on learning kernels from
+      data.
+    viz:
+      - name: gram-psd
+        params: {kernel: rbf, r: 1, n: 8, seed: 3}
+        caption: |
+          The Gram matrix $K_n$ of a function $K(x, z)$ on $n$ points of a line (left, points sorted so neighbors sit
+          next to each other) and its eigenvalues (right). The RBF, linear and polynomial kernels, their sum and their
+          product never give a negative eigenvalue, whatever the points, $n$ or $r$. The symmetric function
+          $-r(x-z)^2$ always gives one: its diagonal is 0, so its eigenvalues sum to 0. The box function is subtler:
+          press "new points" and it is PSD on some sets and not on others. One set with a negative eigenvalue is
+          enough to rule it out. The $r$ slider only affects the functions that contain $r$.
+  ch 4 from support vector machines book:
+    lead: |
+      A kernel fixes the inner products but not the feature space: different feature maps can give the same
+      kernel. The RKHS picks a canonical one, a space of functions on $X$ that is the smallest feature space of the
+      kernel. Kernels and RKHSs correspond one to one.
+  kernel papers:
+    lead: |
+      Clusters show up as blocks in the kernel matrix, and permuting the points doesn't change its eigenvalues.
+      The open questions are which kernel to use and how many eigenvectors to look at.
+  spectral clustering:
+    lead: |
+      Embed the points using a few eigenvectors of $K_n$ or $L_n$, then split them in that space. The methods
+      listed differ in which eigenvectors they use and how they threshold them.
+    viz:
+      - name: spectral-rings
+        params:
+          r: 3
+        caption: 'Two noisy rings, an RBF kernel $K(x, z) = \exp(-r\vert\vert x-z\vert\vert^2)$, and Shi and Malik''s
+          normalized
+      
+          cut: points are split by the sign of the second smallest generalized eigenvector of $L_n$. At $r = 3$ the kernel
+      
+          matrix on the right is block diagonal (pink lines separate the rings), the second eigenvalue is near 0, and
+          the
+      
+          cut follows the rings. Lower $r$ below about 1 and the kernel is so wide that the blocks blur and the cut slices
+      
+          across both rings; raise it above about 15 and the kernel is so narrow that the outer ring breaks into pieces,
+      
+          several eigenvalues reach 0, and the split becomes arbitrary.
+      
+          '
+takeaways:
+  - A function is a valid kernel if and only if it is symmetric and every Gram matrix it produces is positive semi-definite.
+  - Sums and products of kernels are kernels.
+  - Many feature spaces give the same kernel; the RKHS is the smallest one, and each kernel has exactly one.
+  - When the data form clusters, the kernel matrix is close to block diagonal, and the top eigenvectors of $K_n$ (or the bottom ones of $L_n = D_n - K_n$) reveal the blocks.
+  - Spectral clustering methods embed the points with a few eigenvectors and split them there; which kernel to use and how many eigenvectors to keep are the open choices.

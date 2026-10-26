@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1960 830" role="img" aria-labelledby="title desc">
+  <title id="title">Domain-adversarial training</title>
+  <desc id="desc">Domain-adversarial neural network. An input x passes through a feature extractor G_f(.; theta_f) (green layers) to features f. The features feed a label predictor G_y(.; theta_y) (blue) producing class label y with loss L_y, and, through a gradient reversal layer, a domain classifier G_d(.; theta_d) (pink) producing domain label d with loss L_d. Backprop sends dL_y/dtheta_y to the label predictor and dL_y/dtheta_f to the feature extractor; the domain classifier receives lambda dL_d/dtheta_d, and the gradient reversal layer flips the sign so the feature extractor receives -lambda dL_d/dtheta_f. Legend: block arrows are forwardprop; thin arrows with boxed fractions are backprop and the produced derivatives.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="aG" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/></marker>
+    <marker id="aBl" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/></marker>
+    <marker id="aP" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c2186b"/></marker>
+    <marker id="aK" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/></marker>
+    <style>
+      .sf { font-family: "Times New Roman", Times, Georgia, serif; }
+      .mf { font-family: "Times New Roman", Times, Georgia, serif; }
+    </style>
+  </defs>
+  <path d="M980 88 C800 120 700 130 560 110 C420 90 300 70 150 132" fill="none" stroke="#1f8a4c" stroke-width="7" marker-end="url(#aG)"/>
+  <path d="M1590 80 C1450 40 1300 40 1000 84" fill="none" stroke="#1f6fb2" stroke-width="7" marker-end="url(#aBl)"/>
+  <path d="M975 462 C900 420 800 430 640 440 C480 470 330 460 178 425" fill="none" stroke="#1f8a4c" stroke-width="7" marker-end="url(#aG)"/>
+  <path d="M1600 712 C1450 720 1300 740 1222 740 C1150 730 1110 690 1085 645" fill="none" stroke="#c2186b" stroke-width="7" marker-end="url(#aP)"/>
+  <polygon points="35,148 49,148 131,230 117,230" fill="#8a8a8a" stroke="#2b2b2b" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="35,148 117,230 117,468 35,386" fill="#5a5a5a" stroke="#2b2b2b" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="117" y="230" width="14" height="238" fill="#8a8a8a" stroke="#2b2b2b" stroke-width="2.5"/>
+  <polygon points="148,226.8 184.0,226.8 184.0,207.0 220,252 184.0,297.0 184.0,277.2 148,277.2" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="378,226.8 414.0,226.8 414.0,207.0 450,252 414.0,297.0 414.0,277.2 378,277.2" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="627,226.8 663.0,226.8 663.0,207.0 699,252 663.0,297.0 663.0,277.2 627,277.2" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="870,226.8 906.0,226.8 906.0,207.0 942,252 906.0,297.0 906.0,277.2 870,277.2" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="235,135 272,135 357,220 320,220" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="235,135 320,220 320,405 235,320" fill="#a6d48d" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="320" y="220" width="37" height="185" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5"/>
+  <polygon points="482,135 519,135 604,220 567,220" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="482,135 567,220 567,405 482,320" fill="#a6d48d" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="567" y="220" width="37" height="185" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5"/>
+  <polygon points="720,170 798,170 843,218 765,218" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="720,170 765,218 765,318 720,270" fill="#a6d48d" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="765" y="218" width="78" height="100" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5"/>
+  <polygon points="970,122 995,122 1007,134 982,134" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="970,122 982,134 982,389 970,377" fill="#a6d48d" stroke="#1f8a4c" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="982" y="134" width="25" height="255" fill="#cfe9bf" stroke="#1f8a4c" stroke-width="2.5"/>
+  <polygon points="1078,181.8 1114.0,181.8 1114.0,162.0 1150,207 1114.0,252.0 1114.0,232.2 1078,232.2" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1290,181.8 1326.0,181.8 1326.0,162.0 1362,207 1326.0,252.0 1326.0,232.2 1290,232.2" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1488,181.8 1524.0,181.8 1524.0,162.0 1560,207 1524.0,252.0 1524.0,232.2 1488,232.2" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1200,93 1230,93 1242,105 1212,105" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1200,93 1212,105 1212,300 1200,288" fill="#a9bfe6" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="1212" y="105" width="30" height="195" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <polygon points="1405,90 1435,90 1447,102 1417,102" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1405,90 1417,102 1417,300 1405,288" fill="#a9bfe6" stroke="#1f6fb2" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="1417" y="102" width="30" height="198" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <rect x="1600" y="140" width="30" height="23" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <rect x="1600" y="163" width="30" height="23" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <rect x="1600" y="186" width="30" height="23" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <rect x="1600" y="209" width="30" height="23" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <rect x="1600" y="232" width="30" height="23" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <rect x="1600" y="255" width="30" height="23" fill="#cfdcf2" stroke="#1f6fb2" stroke-width="2.5"/>
+  <polygon points="1594,134 1624,134 1630,140 1600,140" fill="#a9bfe6" stroke="#1f6fb2" stroke-width="2"/>
+  <polygon points="1280,584.8 1316.0,584.8 1316.0,565.0 1352,610 1316.0,655.0 1316.0,635.2 1280,635.2" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1482,584.8 1518.0,584.8 1518.0,565.0 1554,610 1518.0,655.0 1518.0,635.2 1482,635.2" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1173,445 1201,445 1213,457 1185,457" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1173,445 1185,457 1185,712 1173,700" fill="#ee9cc3" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="1185" y="457" width="28" height="255" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5"/>
+  <polygon points="1410,505 1438,505 1450,517 1422,517" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1410,505 1422,517 1422,717 1410,705" fill="#ee9cc3" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="1422" y="517" width="28" height="200" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5"/>
+  <polygon points="1590,598 1616,598 1624,606 1598,606" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="1590,598 1598,606 1598,630 1590,622" fill="#ee9cc3" stroke="#c2186b" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="1598" y="606" width="26" height="24" fill="#f6c6dc" stroke="#c2186b" stroke-width="2.5"/>
+  <polygon points="1050,428 1078,428 1078,405 1122,450 1078,495 1078,472 1050,472" fill="none" stroke="#2b2b2b" stroke-width="4" transform="rotate(40 1086 450)"/>
+  <rect x="322" y="22" width="128" height="134" rx="16" fill="#fff" stroke="#1f8a4c" stroke-width="3.5"/>
+  <text x="386" y="74" text-anchor="middle" class="mf" font-size="40" fill="#1f8a4c">∂<tspan font-style="italic">L</tspan><tspan font-size="28" dy="8" font-style="italic">y</tspan></text>
+  <line x1="334" y1="88" x2="438" y2="88" stroke="#1f8a4c" stroke-width="3"/>
+  <text x="386" y="124" text-anchor="middle" class="mf" font-size="40" fill="#1f8a4c">∂<tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">f</tspan></text>
+  <rect x="1260" y="3" width="128" height="132" rx="16" fill="#fff" stroke="#1f6fb2" stroke-width="3.5"/>
+  <text x="1324" y="54" text-anchor="middle" class="mf" font-size="40" fill="#1f6fb2">∂<tspan font-style="italic">L</tspan><tspan font-size="28" dy="8" font-style="italic">y</tspan></text>
+  <line x1="1272" y1="68" x2="1376" y2="68" stroke="#1f6fb2" stroke-width="3"/>
+  <text x="1324" y="104" text-anchor="middle" class="mf" font-size="40" fill="#1f6fb2">∂<tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">y</tspan></text>
+  <rect x="630" y="360" width="228" height="128" rx="16" fill="#fff" stroke="#1f8a4c" stroke-width="3.5"/>
+  <text x="744" y="438" text-anchor="end" font-family="'Times New Roman', Times, serif" font-style="italic" font-size="46" fill="#1f8a4c">−λ</text>
+  <text x="800" y="410" text-anchor="middle" class="mf" font-size="40" fill="#1f8a4c">∂<tspan font-style="italic">L</tspan><tspan font-size="28" dy="8" font-style="italic">d</tspan></text>
+  <line x1="748" y1="424" x2="852" y2="424" stroke="#1f8a4c" stroke-width="3"/>
+  <text x="800" y="460" text-anchor="middle" class="mf" font-size="40" fill="#1f8a4c">∂<tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">f</tspan></text>
+  <rect x="1224" y="682" width="178" height="134" rx="16" fill="#fff" stroke="#c2186b" stroke-width="3.5"/>
+  <text x="1286" y="760" text-anchor="end" font-family="'Times New Roman', Times, serif" font-style="italic" font-size="46" fill="#c2186b">λ</text>
+  <text x="1342" y="732" text-anchor="middle" class="mf" font-size="40" fill="#c2186b">∂<tspan font-style="italic">L</tspan><tspan font-size="28" dy="8" font-style="italic">d</tspan></text>
+  <line x1="1290" y1="746" x2="1394" y2="746" stroke="#c2186b" stroke-width="3"/>
+  <text x="1342" y="782" text-anchor="middle" class="mf" font-size="40" fill="#c2186b">∂<tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">d</tspan></text>
+  <ellipse cx="1698" cy="80" rx="116" ry="40" fill="none" stroke="#1f6fb2" stroke-width="3.5"/>
+  <text x="1698" y="94" text-anchor="middle" class="sf" font-size="42" fill="#1f6fb2">loss <tspan font-style="italic">L</tspan><tspan font-size="28" dy="8" font-style="italic">y</tspan></text>
+  <ellipse cx="1712" cy="714" rx="116" ry="42" fill="none" stroke="#c2186b" stroke-width="3.5"/>
+  <text x="1712" y="728" text-anchor="middle" class="sf" font-size="42" fill="#c2186b">loss <tspan font-style="italic">L</tspan><tspan font-size="28" dy="8" font-style="italic">d</tspan></text>
+  <path d="M162 480 Q162 502 184 502 H535.0 Q557.0 502 557.0 524 Q557.0 502 579.0 502 H930 Q952 502 952 480" fill="none" stroke="#1f8a4c" stroke-width="3.5"/>
+  <path d="M1076 298 Q1076 320 1098 320 H1315.0 Q1337.0 320 1337.0 342 Q1337.0 320 1359.0 320 H1576 Q1598 320 1598 298" fill="none" stroke="#1f6fb2" stroke-width="3.5"/>
+  <path d="M1238 510 Q1238 488 1260 488 H1386.0 Q1408.0 488 1408.0 466 Q1408.0 488 1430.0 488 H1556 Q1578 488 1578 510" fill="none" stroke="#c2186b" stroke-width="3.5"/>
+  <text x="562" y="580" text-anchor="middle" class="sf" font-size="42" fill="#1f8a4c">feature extractor <tspan font-style="italic">G</tspan><tspan font-size="28" dy="8" font-style="italic">f</tspan><tspan dy="-8">(·; </tspan><tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">f</tspan><tspan dy="-8">)</tspan></text>
+  <text x="1342" y="382" text-anchor="middle" class="sf" font-size="42" fill="#1f6fb2">label predictor <tspan font-style="italic">G</tspan><tspan font-size="28" dy="8" font-style="italic">y</tspan><tspan dy="-8">(·; </tspan><tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">y</tspan><tspan dy="-8">)</tspan></text>
+  <text x="1490" y="452" text-anchor="middle" class="sf" font-size="42" fill="#c2186b">domain classifier <tspan font-style="italic">G</tspan><tspan font-size="28" dy="8" font-style="italic">d</tspan><tspan dy="-8">(·; </tspan><tspan font-style="italic">θ</tspan><tspan font-size="28" dy="8" font-style="italic">d</tspan><tspan dy="-8">)</tspan></text>
+  <text x="1650" y="218" class="sf" font-size="44" fill="#1f6fb2">class label <tspan font-style="italic">y</tspan></text>
+  <text x="1645" y="630" class="sf" font-size="44" fill="#c2186b">domain label <tspan font-style="italic">d</tspan></text>
+  <text class="sf" font-size="42" fill="#1f8a4c" transform="translate(1030 160) rotate(90)">features <tspan font-weight="bold">f</tspan></text>
+  <text class="sf" font-size="42" fill="#2b2b2b" transform="translate(28 430) rotate(45)">input <tspan font-weight="bold">x</tspan></text>
+  <text class="sf" font-size="40" fill="#2b2b2b" transform="translate(992 462) rotate(42)">gradient</text>
+  <text class="sf" font-size="40" fill="#2b2b2b" transform="translate(962 495) rotate(42)">reversal</text>
+  <text class="sf" font-size="40" fill="#2b2b2b" transform="translate(948 548) rotate(42)">layer</text>
+  <rect x="22" y="628" width="916" height="178" rx="14" fill="none" stroke="#2b2b2b" stroke-width="2"/>
+  <polygon points="128,675.6 158.0,675.6 158.0,658.0 188,698 158.0,738.0 158.0,720.4 128,720.4" fill="#d9d9d9" stroke="#2b2b2b" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="160" y="790" text-anchor="middle" class="sf" font-size="34" fill="#2b2b2b">forwardprop</text>
+  <line x1="690" y1="697" x2="505" y2="697" stroke="#8a8a8a" stroke-width="7" marker-end="url(#aK)"/>
+  <rect x="547" y="644" width="104" height="108" rx="16" fill="#fff" stroke="#2b2b2b" stroke-width="3.5"/>
+  <text x="599" y="683" text-anchor="middle" class="mf" font-size="34" fill="#2b2b2b">∂<tspan font-style="italic">L</tspan><tspan font-size="24" dy="8" font-style="italic">y</tspan></text>
+  <line x1="547" y1="697" x2="651" y2="697" stroke="#2b2b2b" stroke-width="3"/>
+  <text x="599" y="733" text-anchor="middle" class="mf" font-size="34" fill="#2b2b2b">∂<tspan font-style="italic">θ</tspan><tspan font-size="24" dy="8" font-style="italic">f</tspan></text>
+  <text x="614" y="790" text-anchor="middle" class="sf" font-size="34" fill="#2b2b2b">backprop (and produced derivatives)</text>
+</svg>

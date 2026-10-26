@@ -46,7 +46,7 @@ subtitle: Some notes on structured prediction - sequential models, constrained m
 - goal: learn distribution $$P(x_1,...,x_n)$$ for sequences $$x_1,...,x_n$$
   - ex. text generation
 - *discrete Markov model*
-  - $$P(x_1,...,x_n) = \prod_i P(x_i \vert  x_{i-1})$$<!-- -->
+  - $$P(x_1,...,x_n) = \prod_i P(x_i \vert  x_{i-1})$$
   - requires
     1. initial probabilites
     2. transition matrix
@@ -59,7 +59,7 @@ subtitle: Some notes on structured prediction - sequential models, constrained m
   - learns the decision boundary only
   - ignores how data is generated (like generative models)
 - ex. *log-linear models*
-  - $$P(\mathbf{y\vert x,w}) = \frac{\exp(w^T \phi (x,y))}{\sum_y' \exp(w^T \phi (x,y'))}$$<!-- -->
+  - $$P(\mathbf{y\vert x,w}) = \frac{\exp(w^T \phi (x,y))}{\sum_y' \exp(w^T \phi (x,y'))}$$
   - training: $$w = \underset{w}{\operatorname*{argmin}} \sum \log \: P(y_i\vert x_i,w)$$
 - ex. *next-state model*
   - $P(\mathbf{y}\vert \mathbf{x})=\prod_i P(y_i\vert y_{i-1},x_i)$
@@ -106,7 +106,7 @@ subtitle: Some notes on structured prediction - sequential models, constrained m
 
 - inference constructs the output given the model
 - goal: find highest scoring state sequence
-  - $$\operatorname*{argmax}_y \: score(y) = \operatorname*{argmax}_y w^T \phi(x,y)$$<!-- -->
+  - $$\operatorname*{argmax}_y \: score(y) = \operatorname*{argmax}_y w^T \phi(x,y)$$
 - naive: score all and pick max - terribly slow
 - *viterbi* - decompose scores over edges
 - questions
@@ -144,7 +144,7 @@ subtitle: Some notes on structured prediction - sequential models, constrained m
 # learning protocols
 
 ## structural svm
-- $$\underset{w}{\min} \: \corange{\frac{1}{2} w^T w} + C \sum_i \underset{y}{\max} (\cblue{w^T \phi (x_i,y)}+ \cgreen{\Delta(y,y_i)} - \cpink{w^T \phi(x_i,y_i)} )$$<!-- -->
+- $$\underset{w}{\min} \: \corange{\frac{1}{2} w^T w} + C \sum_i \underset{y}{\max} (\cblue{w^T \phi (x_i,y)}+ \cgreen{\Delta(y,y_i)} - \cpink{w^T \phi(x_i,y_i)} )$$
   - <span class="corange">regularizer</span>, <span class="cblue">score of y</span> + <span class="cgreen">task loss</span> - <span class="cpink">score of true y</span>
 
 ## empirical risk minimization

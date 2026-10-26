@@ -18,8 +18,8 @@ subtitle: general notes on stat
 - $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
   - for unbiased estimate, divide by n-1
   - $V(X_1-X_2) = V(X_1) + V(X_2)$ if $X_1,X_2$ independent
-  - $$V(a_1X_1+...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$$<!-- -->
-  - $$V[h(X)] \approx h'(E[X])^2 V[X]$$<!-- -->
+  - $$V(a_1X_1+...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$$
+  - $$V[h(X)] \approx h'(E[X])^2 V[X]$$
   - standard deviation $\sigma(X)=\sqrt{V[X]}$
   - standard error = error of the mean = $\sigma / \sqrt n$
 - $Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X]E[Y]$
@@ -108,15 +108,15 @@ subtitle: general notes on stat
   - joint distr - split parameters into block matrices
   - want to *block diagonalize* the matrix
     - *Schur complement* of matrix M w.r.t. H: $M/H$
-    - $$\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$$<!-- -->
-    - $$\Sigma = \begin{bmatrix} \Sigma_{11} & \Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}$$<!-- -->
-    - $$p(x_1, x_2) = \underbrace{p(x_1\vert x_2)}_{\text{conditional}}\cdot\underbrace{p(x_2)}_{\text{marginal}}$$<!-- -->
+    - $$\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$$
+    - $$\Sigma = \begin{bmatrix} \Sigma_{11} & \Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}$$
+    - $$p(x_1, x_2) = \underbrace{p(x_1\vert x_2)}_{\text{conditional}}\cdot\underbrace{p(x_2)}_{\text{marginal}}$$
       - marginal
         - $\mu_2^m = \mu_2$
         - $\Sigma_2^m = \Sigma_{22}$
       - conditional
-        - $$\mu_{1\vert 2}^c = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1} (x_2 - \mu_2)$$<!-- -->
-        - $$\Sigma_{1\vert 2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$$<!-- -->
+        - $$\mu_{1\vert 2}^c = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1} (x_2 - \mu_2)$$
+        - $$\Sigma_{1\vert 2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$$
 
 # law of large numbers
 
@@ -125,7 +125,7 @@ subtitle: general notes on stat
 - equivalent statements
   - $E(\bar{X}-\mu)^2 \to 0$ as $n \to \infty,$
   - $P(\vert\bar{X}-\mu\vert \geq \epsilon) \to 0$ as $n \to \infty$
-  - $$T_o = X_1+...+X_n, E(T_o) = n\mu , V(T_o) = n\mu ^2$$<!-- -->
+  - $$T_o = X_1+...+X_n, E(T_o) = n\mu , V(T_o) = n\mu ^2$$
 - implications
   - $E(\bar{X}) = \mu$
   - $V(\bar{X}) = \frac{\sigma_x^2}{n}$
@@ -181,8 +181,8 @@ subtitle: general notes on stat
 - MLE example
   - MLE - maximize likelihood $$L(\theta) = p(X_1,...,X_n;\theta_1,...\theta_m)$$ (the agreement with a chosen distribution)
   - $\hat{\theta} = $argmax $  L(\theta)$
-      - $$L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$$<!-- -->
-      - $$\log \: L(\theta)= \ell(\theta) = \sum \log P(X_i\vert\theta)$$<!-- -->
+      - $$L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$$
+      - $$\log \: L(\theta)= \ell(\theta) = \sum \log P(X_i\vert\theta)$$
       - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
   - **fisher information** $I(\theta)=V[\frac{\partial^2}{\partial\theta^2} \overbrace{\ln(f[x;\theta])}^{\text{Fisher score function}} ]$ (for n samples, multiply by n)
       - higher info $\implies$ lower estimation error
@@ -200,13 +200,13 @@ from Michael Jordan's "An Introduction to Probabilistic Graphical Models"
      - <span class="corange">prior probability</span> $\corange{p(\theta)}$= *statistician's uncertainty*
        - *<span class="cgreen">posterior</span>* $$\cgreen{p(\theta\vert x)}$$ is what you don't observe
      - $$\hat{\theta}_{Bayes} = \int \theta \: p(\theta \vert x) d\theta$$ ~ mean of the posterior
-     - $$\hat{\theta}_{MAP} = \underset{\theta}{\operatorname*{argmax}} \: \cgreen{p(\theta\vert x)} = \underset{\theta}{\operatorname*{argmax}} \: \cblue{p(x\vert \theta)} \corange{p(\theta)}  \\\ = \underset{\theta}{\operatorname*{argmax}} \: [ \cblue{\log \: p(x\vert\theta)} + \corange{\log \: p(\theta)} ]$$<!-- -->
+     - $$\hat{\theta}_{MAP} = \underset{\theta}{\operatorname*{argmax}} \: \cgreen{p(\theta\vert x)} = \underset{\theta}{\operatorname*{argmax}} \: \cblue{p(x\vert \theta)} \corange{p(\theta)}  \\\ = \underset{\theta}{\operatorname*{argmax}} \: [ \cblue{\log \: p(x\vert\theta)} + \corange{\log \: p(\theta)} ]$$
        - like *penalized likelihood*: <span class="cblue">log-likelihood</span> + <span class="corange">log-prior</span> penalty
      - bayesians prefer whole distr. rather than parameter estimates
   2. frequentist - use estimators (ex. MLE)
      - no prior - only use priors when they correspond to objective frequencies of observing values
      - neyman / pearson
-     - $$\hat{\theta}_{MLE} = \operatorname*{argmax}_\theta \: p(x\vert\theta)$$<!-- -->
+     - $$\hat{\theta}_{MLE} = \operatorname*{argmax}_\theta \: p(x\vert\theta)$$
        - really likelihood is whatever we model (ex. for discriminative models would be $$p(y\vert x, \theta)$$)
 
 ## 3 problems

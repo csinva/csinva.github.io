@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 6 776 372" role="img" aria-labelledby="title desc">
+  <title id="title">Directed graphical model and its factor graph</title>
+  <desc id="desc">(a) A directed graphical model on X1..X5: X1 and X2 point to X3; X3 points to X5 and X4; X1 points to X5 and X2 points to X4. (b) The corresponding factor graph with six factor nodes: fa on X1; fb on X2; fc joining X1, X2, X3; fd joining X1, X3, X4; fe joining X2, X3, X5.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .var { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .sub { font-size: 17px; }
+      .panel { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- ===== (a) directed model ===== -->
+  <path class="edge" d="M67.5 139.6 L132.5 175.4" marker-end="url(#arrow)"/>
+  <path class="edge" d="M67.5 230.4 L132.5 194.6" marker-end="url(#arrow)"/>
+  <path class="edge" d="M167.5 175.4 L232.5 139.6" marker-end="url(#arrow)"/>
+  <path class="edge" d="M167.5 194.6 L232.5 230.4" marker-end="url(#arrow)"/>
+  <path class="edge" d="M68 122 Q150 78 231 124" marker-end="url(#arrow)"/>
+  <path class="edge" d="M68 248 Q150 292 231 246" marker-end="url(#arrow)"/>
+
+  <circle class="node" cx="50" cy="130" r="20"/>
+  <circle class="node" cx="50" cy="240" r="20"/>
+  <circle class="node" cx="150" cy="185" r="20"/>
+  <circle class="node" cx="250" cy="130" r="20"/>
+  <circle class="node" cx="250" cy="240" r="20"/>
+
+  <text class="var" x="46" y="96">X<tspan class="sub" dy="6">1</tspan></text>
+  <text class="var" x="46" y="292">X<tspan class="sub" dy="6">2</tspan></text>
+  <text class="var" x="146" y="152">X<tspan class="sub" dy="6">3</tspan></text>
+  <text class="var" x="246" y="96">X<tspan class="sub" dy="6">5</tspan></text>
+  <text class="var" x="246" y="292">X<tspan class="sub" dy="6">4</tspan></text>
+
+  <text class="panel" x="150" y="366">(a)</text>
+
+  <!-- ===== (b) factor graph ===== -->
+  <!-- edges (undirected) -->
+  <line class="edge" x1="390" y1="63" x2="390" y2="110"/>
+  <line class="edge" x1="390" y1="260" x2="390" y2="307"/>
+  <line class="edge" x1="407.5" y1="139.6" x2="457" y2="172"/>
+  <line class="edge" x1="407.5" y1="230.4" x2="457" y2="198"/>
+  <line class="edge" x1="483" y1="185" x2="540" y2="185"/>
+  <line class="edge" x1="576" y1="173" x2="637" y2="139"/>
+  <line class="edge" x1="576" y1="197" x2="637" y2="231"/>
+  <line class="edge" x1="663" y1="130" x2="720" y2="130"/>
+  <line class="edge" x1="663" y1="240" x2="720" y2="240"/>
+  <path class="edge" d="M410 128 Q530 108 637 126"/>
+  <path class="edge" d="M410 242 Q530 262 637 244"/>
+
+  <!-- variable nodes -->
+  <circle class="node" cx="390" cy="130" r="20"/>
+  <circle class="node" cx="390" cy="240" r="20"/>
+  <circle class="node" cx="560" cy="185" r="20"/>
+  <circle class="node" cx="740" cy="130" r="20"/>
+  <circle class="node" cx="740" cy="240" r="20"/>
+  <!-- factor nodes -->
+  <rect class="node" x="377" y="37" width="26" height="26"/>
+  <rect class="node" x="377" y="307" width="26" height="26"/>
+  <rect class="node" x="457" y="172" width="26" height="26"/>
+  <rect class="node" x="637" y="117" width="26" height="26"/>
+  <rect class="node" x="637" y="227" width="26" height="26"/>
+
+  <text class="var" x="346" y="138">X<tspan class="sub" dy="6">1</tspan></text>
+  <text class="var" x="346" y="248">X<tspan class="sub" dy="6">2</tspan></text>
+  <text class="var" x="556" y="152">X<tspan class="sub" dy="6">3</tspan></text>
+  <text class="var" x="736" y="98">X<tspan class="sub" dy="6">4</tspan></text>
+  <text class="var" x="736" y="292">X<tspan class="sub" dy="6">5</tspan></text>
+  <text class="var" x="388" y="28">f<tspan class="sub" dy="6">a</tspan></text>
+  <text class="var" x="388" y="364">f<tspan class="sub" dy="6">b</tspan></text>
+  <text class="var" x="468" y="162">f<tspan class="sub" dy="6">c</tspan></text>
+  <text class="var" x="648" y="106">f<tspan class="sub" dy="6">d</tspan></text>
+  <text class="var" x="648" y="280">f<tspan class="sub" dy="6">e</tspan></text>
+
+  <text class="panel" x="560" y="366">(b)</text>
+</svg>

@@ -1,0 +1,141 @@
+# Overlay for _notes/research_ovws/ovw_causal_inference.md
+map_label: Causal (research)           # short name on the start-page topic map
+hook: Classic causal studies, mediation, heterogeneous effects, causal discovery, invariant prediction, and neural nets for treatment effects.
+intro: |
+  The basic causal problem is the average treatment effect (ATE): how much a treatment $T$ changes an outcome
+  $Y$ on average. The page opens with classic studies that estimate it well (natural experiments,
+  instrumental variables, matching) and with paradoxes where reading the data without a causal graph goes
+  wrong.
+
+  The longest part is about problems beyond the ATE: which pathway an effect flows through (mediation), how
+  the effect varies between people (CATE and subgroups), learning the causal graph itself (causal
+  discovery), and finding predictors that stay stable across environments (ICP, IRM). Later sections cover
+  weaker assumptions (the deconfounder, synthetic control) and neural networks that learn balanced
+  representations for estimating individual effects, followed by their limits.
+sections:
+  classic studies:
+    lead: |
+      Papers worth reading for how they handle assumptions, not for new methods. Each estimates one effect on
+      real data, and several are about randomized or nearly randomized designs, where the assumptions are
+      easier to believe.
+  natural experiments:
+    lead: |
+      Studies where something outside the researcher's control assigns the treatment, like a change in water
+      supply or municipal votes on citizenship. The last paper is the caution: even with random assignment,
+      not every comparison a natural experiment offers is valid.
+  instrumental variables:
+    lead: |
+      An instrument changes the treatment but affects the outcome only through it, as a draft lottery number
+      does for veteran status. The paper connects the econometrics view of instruments with the potential
+      outcomes view from statistics.
+  '"paradoxes"':
+    lead: |
+      Each puzzle goes away once the causal graph is drawn. In the Berkeley data, department choice sits on a
+      path from gender to acceptance, so pooling departments reverses the trend seen within each one.
+  problems beyond ATE:
+    lead: |
+      The ATE is one number for the whole population. These sections ask finer questions about the same
+      treatment: through which path it acts, for whom it works, and what the causal graph is in the first
+      place.
+  mediation analysis:
+    lead: |
+      The total effect splits into a <span class="cblue">natural direct effect</span>, with the mediator $M$
+      held at the value it would take without treatment, and a <span class="corange">natural indirect
+      effect</span> that flows through $M$. Both use nested potential outcomes like $Y(1, M_0)$, which can never
+      be observed, so the estimators rest on four assumptions, one of which can't be checked.
+  heterogenous treatment effects:
+    lead: |
+      CATE is the treatment effect for units with covariates $x$. Meta-learners reduce it to ordinary
+      regression problems (S, T, X and R differ in how many models they fit and how they combine them); tree
+      and neural methods estimate it directly. Validating any of them is hard because no unit's true effect is
+      ever seen.
+    viz:
+      - name: propensity-overlap
+        params:
+          gamma: 1.5
+        caption: 'Treatment probability $e(x) = \sigma(\gamma x)$ for one covariate $x \sim N(0, 1)$. Raise $\gamma$:
+          treated units pile up at large $x$ and controls at small $x$, so $\hat \mu_1$ and $\hat \mu_0$ of a T-learner
+          are fit on different regions, the overlap between $p(x \vert T = 1)$ and $p(x \vert T = 0)$ shrinks, and inverse-propensity
+          weights become extreme. The effective sample size is the population value $1/(1 + e^{\gamma^2/2})$ of $n$ per
+          arm.'
+  causal discovery:
+    lead: |
+      Here the graph is unknown. Conditional independence tests and fit scores can only narrow it down to a
+      Markov equivalence class; telling $X \to Y$ from $Y \to X$ needs extra assumptions, such as additive
+      noise or independence between the cause and the mechanism.
+  stable/invariant predictors:
+    lead: |
+      If a predictor uses the causes of $Y$, its relationship to $Y$ should hold across environments, while
+      spurious correlations shift. Invariance across environments is therefore used as a stand-in for
+      causality.
+  invariance hierarchies:
+    lead: |
+      Stability comes in levels: invariant conditionals $P(Y\vert \mathbf Z)$, then conditional
+      interventional distributions, then counterfactuals. Being stable to every shift costs average
+      performance on the shifts actually expected.
+  invariance algorithms:
+    lead: |
+      Start with the overview list. ICP searches for feature sets with the same loss in every environment; IRM
+      learns a representation where the same classifier is optimal everywhere; AND-mask keeps only gradient
+      directions that agree across environments. The unit tests at the end are simple linear settings where
+      these methods fail.
+  misc problems:
+    lead: |
+      Questions that don't fit the earlier sections: effects of an infinitesimal change in a continuous
+      treatment, the probability that the treatment was necessary for an observed outcome, reusing causal
+      knowledge in a new domain, and an argument for including models of how data are generated.
+  transferring out-of-sample:
+    lead: |
+      External validity: when an RCT's result carries over to new units, treatments, outcomes or contexts,
+      either in size or only in sign.
+  different assumptions / experimental designs:
+    lead: |
+      Unconfoundedness, $T_i \perp (Y_i(0), Y_i(1)) \vert X_i$, is a strong assumption. The deconfounder
+      replaces it with a factor model fit to many causes, and synthetic control replaces a control group with a
+      weighted mix of untreated units.
+  synthetic control/interventions:
+    lead: |
+      For one treated unit observed over time, such as a state that passes a policy, the counterfactual
+      series is a weighted combination of untreated units, with weights fit on the period before treatment.
+  learning "causal representations":
+    lead: |
+      These networks learn a representation $\Phi(x)$ and predict outcomes for each treatment from it, while a
+      penalty makes the treated and control groups look alike in $\Phi$-space. The bound behind them: error in
+      the individual effect is at most the error of the two outcome models plus a distance (IPM) between the
+      groups.
+  limitations:
+    lead: |
+      A check on the section above: enforcing too much balance can remove information that predicts the
+      outcome.
+takeaways:
+  - Classic studies earn their credibility from the design (natural experiments, instruments, matching,
+    randomization) and from how carefully they state and check assumptions.
+  - Beyond the ATE, the open questions are which path an effect takes (mediation), who it helps (CATE), and
+    what the causal graph is (discovery); each needs assumptions that the data can't fully check.
+  - Invariance across environments is used as a stand-in for causality, but methods like ICP and IRM fail on
+    simple linear unit tests, and stability trades off against average performance.
+  - Weaker designs replace unconfoundedness with other assumptions, such as a factor model of many causes (the
+    deconfounder, whose validity is debated) or a weighted mix of control units (synthetic control).
+  - Neural estimators of individual effects learn balanced representations of treated and control units,
+    but too much balance can remove information about the outcome.
+figures:
+  mediation_graph.svg: |
+    Covariates X affect the treatment (here Z, T in the text), the mediator M and the outcome Y. The
+    treatment reaches Y directly (curved edge) and indirectly through M.
+  baron_kenny.svg: |
+    With linear models, each edge has a coefficient. The indirect effect is the product along the path through
+    the mediator, β1·θ2, and the direct effect is θ1.
+  learning_causal_pattern.png: |
+    Why the direction can be identified. (a) In the causal direction X → Y the noise (red bars) has the
+    same spread at every X. (b) Fitting the anticausal direction, the spread changes with Y, so the noise
+    can't be independent of the input. (c) With a monotonic function, the shape of P(Y) depends on the
+    function, which violates independence of cause and mechanism in the reverse direction.
+  learning_causal_repr.svg: |
+    The representation Φ is trained on two losses: the outcome error for predicting y from Φ and
+    t, and an imbalance term disc(Φ_C, Φ_T) between control and treated units.
+  ite_dnn.svg: |
+    TARNet / CFR: a shared representation Φ, then one head per treatment (h0, h1). The IPM term pulls
+    the treated and control distributions of Φ together.
+  weighted_causal_repr.svg: |
+    Same idea with a learned weighting function w on top of Φ. Weights rebalance the risk and the
+    imbalance term; dashed lines are not back-propagated through.

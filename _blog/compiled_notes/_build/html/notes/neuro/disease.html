@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.1. disease</title>
+    <title>Disease &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,11 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/neuro/disease';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.2. brain basics" href="brain_basics.html" />
-    <link rel="prev" title="7. neuro" href="neuro_section.html" />
+    <link rel="next" title="Computational neuroscience" href="comp_neuro.html" />
+    <link rel="prev" title="Development" href="development.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -172,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro_section.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -314,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/neuro/disease.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -409,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>disease</h1>
+    <h1>Disease</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,21 +471,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">7.1.1. alzheimer’s</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parkinson-s">7.1.2. parkinson’s</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pathology">7.1.3. pathology</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">7.1.3.1. basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#papers">7.1.3.2. papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">7.1.3.3. datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">Alzheimer’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parkinson-s">Parkinson’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pathology">Pathology</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#papers">Papers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancer">7.1.4. cancer</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">7.1.4.1. overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#treatments">7.1.4.1.1. treatments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancer">Cancer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#treatments">Treatments</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prostate-cancer">7.1.4.2. prostate cancer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bladder-cancer">7.1.4.3. bladder cancer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prostate-cancer">Prostate cancer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bladder-cancer">Bladder cancer</a></li>
 </ul>
 </li>
 </ul>
@@ -447,15 +499,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="disease">
-<h1><span class="section-number">7.1. </span>disease<a class="headerlink" href="#disease" title="Link to this heading">#</a></h1>
+  <p class="breadcrumb"><a href="../../parts/neuro.html">Neuroscience</a> &nbsp;·&nbsp; chapter 7 of 8 &nbsp;·&nbsp; 10 min read</p><section class="tex2jax_ignore mathjax_ignore" id="disease">
+<h1>Disease<a class="headerlink" href="#disease" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Alzheimer's and Parkinson's, then pathology and cancer grading, with papers on deep learning for whole-slide images.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>Two short neurological sections come first. Alzheimer’s starts in the hippocampus and the cholinergic basal forebrain, with amyloid plaques and tau tangles as its markers; Parkinson’s is the loss of dopamine neurons in the substantia nigra (the motor chapter explains why that stops movement).</p>
+<p>The rest is about pathology, written from the point of view of building AI tools for it: how a biopsy becomes a stained slide and a written report, how tumors are staged and graded (TNM, Gleason scores for prostate, invasiveness and grade for bladder), how much pathologists disagree with each other, and the papers that train models on very large whole-slide images with only slide-level labels.</p>
+</div>
 <ul class="simple">
 <li><p>ECT - shock therapy given to brain when patient is struggling with severe mental illness (~100k patients in the US / year)</p></li>
 </ul>
 <section id="alzheimer-s">
-<h2><span class="section-number">7.1.1. </span>alzheimer’s<a class="headerlink" href="#alzheimer-s" title="Link to this heading">#</a></h2>
+<span id="sec-disease-alzheimer-s"></span><h2>Alzheimer’s<a class="headerlink" href="#alzheimer-s" title="Link to this heading">#</a></h2>
+<p class="section-lead">The figure lays out the amyloid hypothesis as a loop: Aβ42 builds up, triggers inflammation, the injury makes more Aβ42, and so on. Most people think plaques and tangles are left behind by dead cells; some think they cause the disease.</p>
 <ul>
-<li><img style="width: 600px; max-width: 100%;" src="../assets/26_1.svg" alt="Amyloid cascade in Alzheimer&#x27;s disease"/>
+<li><figure class="align-default" id="id1">
+<a class="note-figure reference internal image-reference" href="../../_images/26_1.svg"><img alt="The amyloid cascade: sporadic causes or APP/PS1/PS2 alleles raise Aβ42, which causes inflammation and injury that produce more Aβ42. The notes beside it ask whether anti-inflammatory or Aβ42-blocking" class="note-figure" src="../../_images/26_1.svg" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> The amyloid cascade: sporadic causes or APP/PS1/PS2 alleles raise Aβ42, which causes inflammation and injury that produce more Aβ42. The notes beside it ask whether anti-inflammatory or Aβ42-blocking treatment comes too late, and list cholinergic drugs for managing symptoms.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 <li><p>overview</p>
 <ul class="simple">
@@ -476,7 +540,7 @@ document.write(`
 <ul class="simple">
 <li><p>patient HM had no hippocampus</p>
 <ul>
-<li><p>no <em>anterograde</em> memory - learning new things</p></li>
+<li><p>no <a class="term-link" href="brain_basics.html#def-anterograde" data-def="source to termination · Brain basics"><em>anterograde</em></a> memory - learning new things</p></li>
 </ul>
 </li>
 <li><p>hippocampus stores 1 day of info</p>
@@ -487,7 +551,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>basal forebrain</em> - spread synapses all over cortex</p>
+<li><p><span id="def-basal-forebrain" class="def-anchor"></span><em>basal forebrain</em> - spread synapses all over cortex</p>
 <ul class="simple">
 <li><p>uses <em>Ach</em></p></li>
 <li><p>ignition key for entire cortex</p></li>
@@ -528,9 +592,10 @@ document.write(`
 </ul>
 </section>
 <section id="parkinson-s">
-<h2><span class="section-number">7.1.2. </span>parkinson’s<a class="headerlink" href="#parkinson-s" title="Link to this heading">#</a></h2>
+<span id="sec-disease-parkinson-s"></span><h2>Parkinson’s<a class="headerlink" href="#parkinson-s" title="Link to this heading">#</a></h2>
+<p class="section-lead">Parkinson’s is the loss of dopamine neurons in the substantia nigra pars compacta, with symptoms once about 20% are left. Its Lewy bodies are clumps of alpha-synuclein, like the Aβ42 clumps of Alzheimer’s.</p>
 <ul class="simple">
-<li><p>loss of substantia nigra pars compacta dopaminergic neurons</p>
+<li><p>loss of substantia nigra <a class="term-link" href="motor.html#def-pars-compacta" data-def="dopaminergic neurons (input to striatum) · Motor system">pars compacta</a> dopaminergic neurons</p>
 <ul>
 <li><p>when you get down to 20% what you were born with</p></li>
 <li><p>dopaminergic neurons form <em>melanin</em> = dark color</p></li>
@@ -545,7 +610,7 @@ document.write(`
 <li><p>associated with early-onset Parkinson’s (rare) associated with genetic mutations</p></li>
 </ul>
 </li>
-<li><p><em>bradykinesia</em> - slowness of movement</p></li>
+<li><p><span id="def-bradykinesia" class="def-anchor"></span><em>bradykinesia</em> - slowness of movement</p></li>
 <li><p>age can give parksinson’s</p></li>
 <li><p>no evidence that toxins can induce parkinsons</p></li>
 <li><p><em>PTP/ pesticides</em> can induce Parkinson’s in test animals</p></li>
@@ -553,19 +618,27 @@ document.write(`
 </ul>
 </section>
 <section id="pathology">
-<h2><span class="section-number">7.1.3. </span>pathology<a class="headerlink" href="#pathology" title="Link to this heading">#</a></h2>
+<span id="sec-disease-pathology"></span><h2>Pathology<a class="headerlink" href="#pathology" title="Link to this heading">#</a></h2>
+<p class="section-lead">The rest of the chapter is about tissue: how slides are made and read, the deep learning papers built on them, and a public dataset.</p>
 <section id="basics">
-<h3><span class="section-number">7.1.3.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>pathologists</strong> work with tissue samples either visually or chemically</p>
+<h3>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h3>
+<p class="section-lead">The steps from tissue to diagnosis, and the vocabulary used in the papers below: H&amp;E vs. immunohistochemistry stains, whole-slide images (WSI) and tissue microarrays (TMA).</p>
 <ul>
+<li><p><strong>pathologists</strong> work with tissue samples either visually or chemically</p>
+<ul class="simple">
 <li><p><em>anatomic</em> pathology relies on the microscope whereas <em>clinical</em> pathology does not</p></li>
 </ul>
 </li>
 <li><p>pathologists convert from tissue image into written report</p></li>
 <li><p>when case is challenging, may require a second opinion (v rare)</p></li>
-<li><p>steps (process takes 9-12 hrs): <img alt="tissue_prep" src="../../_images/tissue_prep.png" /></p>
-<ul>
+<li><p>steps (process takes 9-12 hrs)</p>
+<figure class="align-default" id="id2">
+<img alt="From biopsy to digital slide: the tissue is collected, cut into cassettes, fixed and embedded in paraffin, sectioned a few microns thick, stained, and scanned." class="note-figure" src="../../_images/tissue_prep.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> From biopsy to digital slide: the tissue is collected, cut into cassettes, fixed and embedded in paraffin, sectioned a few microns thick, stained, and scanned.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>tissue is surgically removed</p>
 <ul>
 <li><p>more tissue collected is generally better (gives more context)</p></li>
@@ -579,13 +652,13 @@ document.write(`
 <li><p>microtone - cuts very thin slices of the tissue (2-3 microns)</p></li>
 <li><p>staining</p>
 <ul>
-<li><p><strong>H &amp; E</strong> - hematoxylin and eosin stain - most popular (~80%) - colors the cells in a specific way, bc cells are usually pretty transparent</p>
+<li><p><span id="def-h-e" class="def-anchor"></span><strong>H &amp; E</strong> - hematoxylin and eosin stain - most popular (~80%) - colors the cells in a specific way, bc cells are usually pretty transparent</p>
 <ul>
 <li><p>hematoxylin stains nucleic acids blue</p></li>
 <li><p>eosin stains proteins / cytoplasm pink/red</p></li>
 </ul>
 </li>
-<li><p><strong>immunohistochemistry (IHC)</strong> - tries to identify cell lineage: 10-15%</p>
+<li><p><span id="def-immunohistochemistry-ihc" class="def-anchor"></span><strong>immunohistochemistry (IHC)</strong> - tries to identify cell lineage: 10-15%</p>
 <ul>
 <li><p>identifies targets</p></li>
 <li><p>use antibodies tagged with chromophores to tag tissues</p></li>
@@ -616,13 +689,13 @@ document.write(`
 </ul>
 </li>
 <li><p>how can ai help?</p>
-<ul>
+<ul class="simple">
 <li><p>can help identify small things in large images</p></li>
 <li><p>can help with conflict resolution</p></li>
 </ul>
 </li>
 <li><p>after (successful) neoadjuvant chemotherapy, problem becomes more difficult</p>
-<ul>
+<ul class="simple">
 <li><p>very few remaining cancer cells</p></li>
 <li><p>cancer/non-cancer cells become harder to distinguish (esp. for prostate)</p></li>
 <li><p>tumor bed is patchily filled with cancer cells - need to better clarify presence of cancer</p></li>
@@ -631,7 +704,8 @@ document.write(`
 </ul>
 </section>
 <section id="papers">
-<h3><span class="section-number">7.1.3.2. </span>papers<a class="headerlink" href="#papers" title="Link to this heading">#</a></h3>
+<h3>Papers<a class="headerlink" href="#papers" title="Link to this heading">#</a></h3>
+<p class="section-lead">The recurring problem is size. A whole-slide image has far too many pixels for one network pass, and labels usually exist only for the whole slide, so most methods classify small patches and then aggregate them, often with multiple-instance learning.</p>
 <ul class="simple">
 <li><p>Deep Learning Models for Digital Pathology (<a class="reference external" href="https://arxiv.org/abs/1910.12329">bentaieb &amp; hamarneh, 2019</a>)</p>
 <ul>
@@ -646,13 +720,13 @@ document.write(`
 <ul>
 <li><p>this loses larger context</p></li>
 <li><p>one soln: pyramid representation: extract patches at different magnification levels</p></li>
-<li><p>one soln: stacked CNN - train fully-conv net, then remove linear layer, freeze, and train another fully-conv net on the activations (so it now has larger receptive field)</p></li>
+<li><p>one soln: stacked CNN - train fully-conv net, then remove linear layer, freeze, and train another fully-conv net on the activations (so it now has larger <a class="term-link" href="comp_neuro.html#def-receptive-field" data-def="the things that make a neuron fire · Computational neuroscience">receptive field</a>)</p></li>
 <li><p>one soln: use 2D LSTM to aggregate patch reprs.</p></li>
 </ul>
 </li>
 <li><p>challenge: annotations only at the entire-slide level, but must figure out how to train individual patches</p>
 <ul>
-<li><p>e.g. use aggregation techniques on patches - extract patch-wise features then do smth simple, like random forest</p></li>
+<li><p>e.g. use aggregation techniques on patches - extract patch-wise features then do smth simple, like <a class="term-link" href="../ml/classification.html#def-random-forest" data-def="for each split of each tree, choose from only m of the p possible features · Classification">random forest</a></p></li>
 <li><p>e.g. treat as weak labels or do multiple-instance learning</p>
 <ul>
 <li><p>could just give slide-level label to all patches then vote</p></li>
@@ -717,18 +791,19 @@ document.write(`
 </ul>
 </section>
 <section id="datasets">
-<h3><span class="section-number">7.1.3.3. </span>datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h3>
+<h3>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://warwick.ac.uk/fac/cross_fac/tia/data/arch">ARCH</a> - multiple instance captioning dataset to facilitate dense supervision of CP tasks</p></li>
 </ul>
 </section>
 </section>
 <section id="cancer">
-<h2><span class="section-number">7.1.4. </span>cancer<a class="headerlink" href="#cancer" title="Link to this heading">#</a></h2>
+<span id="sec-disease-cancer"></span><h2>Cancer<a class="headerlink" href="#cancer" title="Link to this heading">#</a></h2>
 <section id="overview">
-<h3><span class="section-number">7.1.4.1. </span>overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p class="section-lead">Background for the two cancers below. Staging (pTNM: tumor size, lymph nodes, distant metastases) says where a cancer is and how far it has spread; prognosis is the chance of recovery.</p>
 <ul class="simple">
-<li><p><strong>tumor</strong> = neoplasm - a mass formation from an uncontrolled growth of cells</p>
+<li><p><span id="def-tumor" class="def-anchor"></span><strong>tumor</strong> = neoplasm - a mass formation from an uncontrolled growth of cells</p>
 <ul>
 <li><p>benign tumor - typically stays confined to the organ where it is present and does not cause functional damage</p></li>
 <li><p>malignant tumor = cancer - comprises organ function and can spread to other organs (<strong>metastasis</strong>)</p></li>
@@ -740,10 +815,10 @@ document.write(`
 <li><p>cancer often mestastasize through these</p></li>
 </ul>
 </li>
-<li><p><strong>staging</strong> - describes where cancer is located and where it has spread</p>
+<li><p><span id="def-staging" class="def-anchor"></span><strong>staging</strong> - describes where cancer is located and where it has spread</p>
 <ul>
-<li><p><strong>clinical staging</strong> - based on non-tissue things</p></li>
-<li><p><strong>pathological staging</strong> - elements of staging pTNM</p>
+<li><p><span id="def-clinical-staging" class="def-anchor"></span><strong>clinical staging</strong> - based on non-tissue things</p></li>
+<li><p><span id="def-pathological-staging" class="def-anchor"></span><strong>pathological staging</strong> - elements of staging pTNM</p>
 <ul>
 <li><p>size / depth of <em>tumor</em> “T”</p></li>
 <li><p>number of lymph <em>nodes</em> / how many had cancer “N”</p></li>
@@ -753,10 +828,11 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><strong>prognosis</strong> - chance of recovery</p></li>
+<li><p><span id="def-prognosis" class="def-anchor"></span><strong>prognosis</strong> - chance of recovery</p></li>
 </ul>
 <section id="treatments">
-<h4><span class="section-number">7.1.4.1.1. </span>treatments<a class="headerlink" href="#treatments" title="Link to this heading">#</a></h4>
+<h4>Treatments<a class="headerlink" href="#treatments" title="Link to this heading">#</a></h4>
+<p class="section-lead">Chemotherapy kills replicating cells and is given after the tumor is removed (adjuvant) or before (neoadjuvant). Targeted therapies and immunotherapy aim at what makes cancer cells different, such as receptors like PD1 and CTLA4 that some tumors use to switch off immune cells.</p>
 <ul class="simple">
 <li><p>chemo</p>
 <ul>
@@ -789,8 +865,10 @@ document.write(`
 </section>
 </section>
 <section id="prostate-cancer">
-<h3><span class="section-number">7.1.4.2. </span>prostate cancer<a class="headerlink" href="#prostate-cancer" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>Prostate cancer<a class="headerlink" href="#prostate-cancer" title="Link to this heading">#</a></h3>
+<p class="section-lead">The Gleason score adds the patterns (3 to 5) of the two largest cancer regions. The human benchmarks show low agreement between pathologists (kappas mostly between 0.15 and 0.45), which is the baseline a model is compared with.</p>
+<figure class="nb-viz-figure" id="viz-rater-kappa"><div class="nb-viz" data-viz="rater-kappa" data-params="{&quot;po&quot;: 0.85, &quot;p&quot;: 0.5}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Cohen's κ, the agreement measure in these benchmarks, corrects the raw agreement \(p_o\) for the agreement two raters would reach by chance, \(p_e\), given how often each calls each grade: \(\kappa = (p_o - p_e)/(1 - p_e)\). With a 50/50 mix of grades, 85% agreement gives κ = 0.70. Keep 85% and make pattern 4 the call on 90% of slides: chance agreement rises to 82% and κ falls to 0.17, inside the range the Gleason studies report. A low κ can come with high raw agreement when one grade dominates.</figcaption></figure><ul class="simple">
 <li><p>tests</p>
 <ul>
 <li><p>feel with finger</p></li>
@@ -877,7 +955,8 @@ document.write(`
 </ul>
 </section>
 <section id="bladder-cancer">
-<h3><span class="section-number">7.1.4.3. </span>bladder cancer<a class="headerlink" href="#bladder-cancer" title="Link to this heading">#</a></h3>
+<h3>Bladder cancer<a class="headerlink" href="#bladder-cancer" title="Link to this heading">#</a></h3>
+<p class="section-lead">Two things are judged: shape (papillary or flat) and grade (low or high). Shape is much easier to call than grade, and once a tumor is high grade the question becomes how far it has invaded.</p>
 <ul class="simple">
 <li><p>tests</p>
 <ul>
@@ -950,7 +1029,7 @@ document.write(`
 <ul>
 <li><p>muscles in bladder contract and force urine out</p>
 <ul>
-<li><p><em>urethelium</em> - inner layer that is able to stretch (has many layers) - this is where cancer originates</p>
+<li><p><span id="def-urethelium" class="def-anchor"></span><em>urethelium</em> - inner layer that is able to stretch (has many layers) - this is where cancer originates</p>
 <ul>
 <li><p>in situ - cancer only here</p></li>
 <li><p>invasive - goes into the muscle</p>
@@ -1024,7 +1103,18 @@ document.write(`
 <li><p>much easier to decide shape than grade</p></li>
 <li><p>once you find high grade, look for invasiveness (and deeper layers are worse)</p></li>
 </ul>
-</section>
+<p class="mathjax-loader"><span class="math notranslate nohighlight">\(\,\)</span></p>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Alzheimer’s hits the hippocampus and the cholinergic basal forebrain first; amyloid plaques and tau tangles are its markers, and whether they cause it or follow it is debated.</p></li>
+<li><p>Parkinson’s is the loss of substantia nigra dopamine neurons, so patients know what to do but cannot start the movement.</p></li>
+<li><p>A slide goes from biopsy through fixation, paraffin, sectioning and staining (mostly H&amp;E) to a written report, and now sometimes to a scanned whole-slide image.</p></li>
+<li><p>Whole-slide images are too large for one network pass and are usually labeled only per slide, so most methods classify patches and aggregate them, often with multiple-instance learning.</p></li>
+<li><p>Pathologists often disagree on grades (Gleason kappas mostly 0.15 to 0.45), which sets the bar a model is compared with.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../neuro/vissci.html"><span class="related-part">Neuroscience</span><span class="related-title">Vision</span><span class="related-hook">The visual system from photoreceptors and retinal circuits to V1 and beyond, with the methods used to record it and the diseases that damage it.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../neuro/comp_neuro.html"><span class="related-part">Neuroscience</span><span class="related-title">Computational neuroscience</span><span class="related-hook">Models of neurons, neural codes and learning rules, then data-driven neuroscience, brain encoding models and neuro-inspired AI.</span></a></div></nav></section>
 </section>
 </section>
 
@@ -1059,20 +1149,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="neuro_section.html"
+       href="development.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>neuro</p>
+        <p class="prev-next-title">Development</p>
       </div>
     </a>
     <a class="right-next"
-       href="brain_basics.html"
+       href="comp_neuro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>brain basics</p>
+        <p class="prev-next-title">Computational neuroscience</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1092,21 +1182,21 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">7.1.1. alzheimer’s</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parkinson-s">7.1.2. parkinson’s</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pathology">7.1.3. pathology</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">7.1.3.1. basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#papers">7.1.3.2. papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">7.1.3.3. datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">Alzheimer’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parkinson-s">Parkinson’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pathology">Pathology</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#papers">Papers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancer">7.1.4. cancer</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">7.1.4.1. overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#treatments">7.1.4.1.1. treatments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancer">Cancer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#treatments">Treatments</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prostate-cancer">7.1.4.2. prostate cancer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bladder-cancer">7.1.4.3. bladder cancer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prostate-cancer">Prostate cancer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bladder-cancer">Bladder cancer</a></li>
 </ul>
 </li>
 </ul>
@@ -1133,7 +1223,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

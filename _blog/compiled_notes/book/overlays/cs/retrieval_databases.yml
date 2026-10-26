@@ -1,0 +1,43 @@
+# Overlay for _notes/cs/retrieval_databases.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Info retrieval           # short name on the start-page topic map
+title: Information retrieval and databases
+subtitle: The parts of a search engine, how retrieval differs from database lookup, and the main kinds of databases.
+hook: How a search engine is put together, how retrieval differs from exact database lookup, and the main kinds of databases.
+intro: |
+  Information retrieval is finding what is relevant to an information need in a large, mostly unstructured
+  collection. The first section lays out the pieces of a search engine (crawler and indexer, query parser, ranking
+  model) and how they connect. The second contrasts retrieval with database systems, which answer exact
+  structured queries, and defines the core terms: information need, query, document and relevance.
+
+  The last section switches to databases themselves: relational, NoSQL, object-oriented and graph databases, with
+  a few notes on SQL and on how MongoDB uses B-tree indexes.
+sections:
+  related fields:
+    lead: |
+      The table is the main contrast: databases return exactly what a structured query asks for, while retrieval
+      ranks unstructured documents by a relevance that is partly subjective.
+  introduction:
+    lead: |
+      A search engine has three parts: an indexed corpus built by a crawler and document analyzer, a query
+      parser on the user's side, and a ranking model that compares the two representations and sorts documents
+      by relevance. Query logs and user modeling feed back into ranking.
+  databases:
+    lead: |
+      A database is an organized collection of structured data, usually tables of rows and columns queried with
+      SQL. NoSQL databases relax the fixed schema to store unstructured and semistructured data, and MongoDB
+      makes queries fast with B-tree indexes from field values to documents.
+takeaways:
+  - Information retrieval finds what is relevant to an information need in a large collection of mostly
+    unstructured data.
+  - A search engine turns both documents and queries into representations, and its ranking model sorts documents
+    by comparing the two.
+  - Databases answer structured queries exactly and emphasize efficiency, while retrieval answers keyword
+    queries by relevance and emphasizes effectiveness.
+  - Relevance is vague and has several sides (topical, semantic, temporal, spatial), which is why users'
+    judgments are part of evaluating a search system.
+  - Relational databases store tables queried with SQL, while NoSQL, object-oriented and graph databases store
+    data with less fixed structure.
+figures:
+  ir_architecture.svg: |
+    The pieces of a search system. Documents and the user's query are each turned into a representation, ranking
+    compares the two, and evaluation from the user's judgments feeds back into ranking and the representations.

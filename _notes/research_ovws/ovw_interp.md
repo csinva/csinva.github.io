@@ -807,7 +807,7 @@ Note that in this section we also include *dataset interpretations* that work di
   - other hypothesis tests include the squared rank difference, 2D kolmogorov-smirnov test, and distance-based tests
 - variance-based VI(sobol's indices)
   - **ANOVA decomposition** - decompose model into conditional expectations $$Y = \cgreen{g_0} + \cblue{\sum_i g_i (X_i)} + \corange{\sum_i \sum_{j > i} g_{ij} (X_i, X_j) + \dots + g_{1,2,..., p}}$$
-    - $$\cgreen{g_0} = \mathbf E (Y)\\ \cblue{g_i} = \mathbf E(Y \vert X_i) - g_0 \\ \corange{g_{ij}} = \mathbf E (Y \vert X_i, X_j) - g_i - g_j - g_0\\...$$<!-- -->
+    - $$\cgreen{g_0} = \mathbf E (Y)\\ \cblue{g_i} = \mathbf E(Y \vert X_i) - g_0 \\ \corange{g_{ij}} = \mathbf E (Y \vert X_i, X_j) - g_i - g_j - g_0\\...$$
     - take variances of these terms
     - if there are correlations between variables some of these terms can misbehave
     - note: $$V(Y) = \cblue{\sum_i V (g_i)} + \corange{\sum_i \sum_{j > i} V(g_{ij}) + ... V(g_{1,2,...,p})}$$ - variances are orthogonal and all sum to total variance
@@ -1154,9 +1154,9 @@ How interactions are defined and summarized is a very difficult thing to specify
 - Coefficient tree regression: fast, accurate and interpretable predictive modeling ([surer, apley, & malthouse, 2021](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7)) - iteratively group linear terms with similar coefficients into a bigger term
 - The Most Important Features in GAMs Might Be Groups of Features ([bosschieter...caruana, pohl, 2025](https://arxiv.org/pdf/2506.19937)) - define importance of a group of features as the the sum over samples of the absolute value of the sum of the component functions for the group
   - single-feature importance for feature $x_j$:
-    - $$I_{x_j}=\frac{1}{\vert \mathscr{T}\vert } \sum_{t \in \mathscr{T}}\left\vert f_j\left(t_j\right)\right\vert $$<!-- -->
+    - $$I_{x_j}=\frac{1}{\vert \mathscr{T}\vert } \sum_{t \in \mathscr{T}}\left\vert f_j\left(t_j\right)\right\vert $$
   - group feature importance for group $$G=\left\{x_{i_1}, \ldots, x_{i_k}\right\}$$:
-    - $$I_G:=\frac{1}{\vert \mathscr{T}\vert } \sum_{t \in \mathscr{T}}\left\vert f_{i_1}\left(t_{i_1}\right)+\cdots+f_{i_k}\left(t_{i_k}\right)\right\vert $$<!-- -->
+    - $$I_G:=\frac{1}{\vert \mathscr{T}\vert } \sum_{t \in \mathscr{T}}\left\vert f_{i_1}\left(t_{i_1}\right)+\cdots+f_{i_k}\left(t_{i_k}\right)\right\vert $$
 
 ## finding influential examples
 

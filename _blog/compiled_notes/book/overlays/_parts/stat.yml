@@ -1,0 +1,11 @@
+intro: |
+  These chapters go from probability to inference. Start with the basics chapter: expectations and variances,
+  the common distributions, the limit theorems, and the bias and variance of estimators. The data science chapter
+  is the practical side: plotting, imbalanced and missing data, feature selection and reproducibility.
+
+  Testing and linear models are classical inference: hypothesis tests, confidence intervals, least squares and its
+  regularized versions. Time series drops the iid assumption, and information theory measures uncertainty in bits.
+  Graphical models encode which variables depend on which, and causal inference asks when that kind of structure
+  is enough to read an effect, not just a correlation, from data.
+blurb: |
+  Probability basics, data analysis, testing, linear models, time series, information theory, graphical models and causal inference.

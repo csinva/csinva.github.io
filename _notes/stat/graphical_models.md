@@ -68,7 +68,7 @@ typora-copy-images-to: ../assets
   - other variables are *hidden variables* H
 
 1. *enumeration* - just try summing over all hidden variables
-   - $$P(X\vert e) = \alpha P(X, e) = \alpha \sum_h P(X, e, h)$$<!-- -->
+   - $$P(X\vert e) = \alpha P(X, e) = \alpha \sum_h P(X, e, h)$$
      - $\alpha$ can be calculated as $1 / \sum_x P(x, e)$
    - $O(n \cdot 2^n)$
      - one summation for each of *n* variables
@@ -76,7 +76,7 @@ typora-copy-images-to: ../assets
      - we removed the factor of *n*
 2. *variable elimination* - dynamic programming **(see elimination)**
    - <img style="width: 550px; max-width: 100%;" src="../assets/bayesian_net_example.svg" alt="Burglary–alarm Bayesian network"/>
-   - $$P(B\vert j, m) = \alpha \underbrace{P(B)}_{f_1(B)} \sum_e \underbrace{P(e)}_{f_2(E)} \sum_a \underbrace{P(a\vert B,e)}_{f_3(A, B, E)} \underbrace{P(j\vert a)}_{f_4(A)} \underbrace{P(m\vert a)}_{f_5(A)}$$<!-- -->
+   - $$P(B\vert j, m) = \alpha \underbrace{P(B)}_{f_1(B)} \sum_e \underbrace{P(e)}_{f_2(E)} \sum_a \underbrace{P(a\vert B,e)}_{f_3(A, B, E)} \underbrace{P(j\vert a)}_{f_4(A)} \underbrace{P(m\vert a)}_{f_5(A)}$$
      - calculate factors in reverse order (bottom-up)
      - each factor is a vector with num entries = $\prod$ \|num_elements\| * \|num_values\|
      - when we multiply them, pointwise products
@@ -180,7 +180,7 @@ typora-copy-images-to: ../assets
   - commonly let these be exponential: $\psi_{X_C} (x_C) = \exp(-f_C(x_C))$
     - yields energy $f(x) = \sum_C f_C(x_C)$
     - yields *Boltzmann distribution*: $p(x) = \frac{1}{Z} \exp (-f(x))$
-- $$p(x) = \cblue{\frac{1}{Z}} \prod_{C \in Cliques} \corange{\psi_{X_C}(x_c)}$$<!-- -->
+- $$p(x) = \cblue{\frac{1}{Z}} \prod_{C \in Cliques} \corange{\psi_{X_C}(x_c)}$$
   - <span class="cblue">normalizer</span> $$\cblue{Z} = \sum_x \prod_{C \in Cliques} \corange{\psi_{X_C} (x_C)}$$
 - *reduced parameterizations* - impose constraints on probability distributions (e.g. Gaussian)
 - if x is dependent on all its neighbors
@@ -243,7 +243,7 @@ typora-copy-images-to: ../assets
       - *message* $m_{ji}(x_i)$ from $j$ to $i$ =*intermediate factor*
 - 2 key equations
     - $m_{ji}(x_i) = \sum_{x_j} \left( \psi^E (x_j) \psi (x_i, x_j) \prod_{k \in N(j) \backslash i} m_{kj} (x_j) \right)$
-    - $$p(x_f \vert  \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) $$<!-- -->
+    - $$p(x_f \vert  \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) $$
        - <img style="width: 520px; max-width: 100%;" src="../assets/undirected_message_passing.svg" alt="Messages in an undirected tree"/>
 - **sum-product** = **belief propagation** - inference algorithm
   - computes all single-node marginals (for certain classes of graphs) rather than only a single marginal
@@ -300,7 +300,7 @@ typora-copy-images-to: ../assets
 
 - state space model <img style="width: 420px; max-width: 100%;" src="../assets/j15_1.svg" alt="State space model as a graphical model"/>
   - the SSM as a graphical model. Each vertical slice represents a time step. The top node in each slice represents the state variable x_t and the bottom node in each slice represents the observable output variable y_t
-- $$P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \cblue{\underbrace{P(X_i \vert  X_{i-1}) }_{\text{transition model}}}  \: \corange{\underbrace{P(E_i\vert X_i)}_{\text{sensor model}}}$$<!-- -->
+- $$P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \cblue{\underbrace{P(X_i \vert  X_{i-1}) }_{\text{transition model}}}  \: \corange{\underbrace{P(E_i\vert X_i)}_{\text{sensor model}}}$$
   - agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
   - improve accuracy
     1. increase order of Markov <span class="cblue">transition model</span>
@@ -310,7 +310,7 @@ typora-copy-images-to: ../assets
   1. *filtering* = *state estimation* - compute $$P(X_t \vert  e_{1:t})$$
     - *recursive estimation*: $$\cpurple{\underbrace{P(X_{t+1}\vert e_{1:t+1})}_{\text{new state}}} = \alpha \: \corange{\underbrace{P(e_{t+1}\vert X_{t+1})}_{\text{sensor}}} \cdot \underset{x_t}{\sum} \: \cblue{\underbrace{P(X_{t+1}\vert x_t)}_{\text{transition}}} \cdot \cgreen{\underbrace{P(x_t\vert e_{1:t})}_{\text{old state}}}$$ where $\alpha$ normalizes probs
   2. *prediction* - compute $$P(X_{t+k}\vert e_{1:t})$$ for $k>0$
-- $$\cpurple{\underbrace{P(X_{t+k+1} \vert e_{1:t})}_{\text{new state}}} = \sum_{x_{t+k}} \cblue{\underbrace{P(X_{t+k+1} \vert x_{t+k})}_{\text{transition}}}  \cdot \cgreen{\underbrace{P(x_{t+k} \vert e_{1:t})}_{\text{old state}}}$$<!-- -->
+- $$\cpurple{\underbrace{P(X_{t+k+1} \vert e_{1:t})}_{\text{new state}}} = \sum_{x_{t+k}} \cblue{\underbrace{P(X_{t+k+1} \vert x_{t+k})}_{\text{transition}}}  \cdot \cgreen{\underbrace{P(x_{t+k} \vert e_{1:t})}_{\text{old state}}}$$
 
 3. *smoothing* - compute $$P(X_{k}\vert e_{1:t})$$ for $0 < k < t$
      1. 2 components $$P(X_k\vert e_{1:t}) = \alpha \cpink{\underbrace{P(X_k\vert e_{1:k})}_{\text{forward}}} \cdot \cyellow{\underbrace{P(e_{k+1:t}\vert X_k)}_{\text{backward}}}$$
@@ -329,8 +329,8 @@ typora-copy-images-to: ../assets
 - *learning* - form of EM
   - basically just count (maximizing joint likelihood of input and output)
   - initial state probs $\frac{count(start \to s)}{n}$
-  - $$P(x'\vert x) = \frac{count(s \to s')}{count(s)}$$<!-- -->
-  - $$P(y\vert x) = \frac{count (x \to y)}{count(x)}$$<!-- -->
+  - $$P(x'\vert x) = \frac{count(s \to s')}{count(s)}$$
+  - $$P(y\vert x) = \frac{count (x \to y)}{count(x)}$$
 
 ## hmm
 

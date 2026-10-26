@@ -113,8 +113,8 @@ subtitle: Material from "Statistical Models Theory and Practice" - David Freedma
   3. $\epsilon$ independent of $X$
     - $e_i$ still orthogonal to $X$
 - OLS is conditionally unbiased
-  - $$E[\hat{\theta} \vert  X] = \theta$$<!-- -->
-- $$Cov(\hat{\theta}\vert X) = \sigma^2 (X^TX)^{-1}$$<!-- -->
+  - $$E[\hat{\theta} \vert  X] = \theta$$
+- $$Cov(\hat{\theta}\vert X) = \sigma^2 (X^TX)^{-1}$$
   - $\hat{\sigma^2} = \frac{1}{n-p} \sum_i e_i^2$
     - this is unbiased - just dividing by n is too small since we have minimized $e_i$ so their variance is lower than var of $\epsilon_i$
 - *random errors* $\epsilon$
@@ -126,7 +126,7 @@ subtitle: Material from "Statistical Models Theory and Practice" - David Freedma
   4. HX = X
   5. $e \perp X$
 - basically H projects Y int R(X)
-- $$E[\hat{\sigma^2}\vert X] = \sigma^2$$<!-- -->
+- $$E[\hat{\sigma^2}\vert X] = \sigma^2$$
 - random errs don't need to be normal
 - variance
   - $\cpurple{var(Y)} = \cblue{var(X \hat{\theta})} + \corange{var(e)}$
@@ -202,7 +202,7 @@ subtitle: Material from "Statistical Models Theory and Practice" - David Freedma
 ## kernel regression
 
 - nonparametric method
-- $$\operatorname{E}(Y \vert  X=x) = \int y f(y\vert x) dy = \int y \frac{f(x,y)}{f(x)} dy$$<!-- -->
+- $$\operatorname{E}(Y \vert  X=x) = \int y f(y\vert x) dy = \int y \frac{f(x,y)}{f(x)} dy$$
 
   Using the kernel density estimation for the joint distribution ''f(x,y)'' and ''f(x)'' with a kernel '''''K''''',
 
@@ -212,13 +212,13 @@ subtitle: Material from "Statistical Models Theory and Practice" - David Freedma
 
   we get
 
-  $$\begin{align} \operatorname{\hat E}(Y \vert  X=x) &= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}$$<!-- -->
+  $$\begin{align} \operatorname{\hat E}(Y \vert  X=x) &= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}$$
 
 ## GAM = generalized additive model
 
 - generalized additive models: assume mean output is sum of functions of individual variables (no interactions)
   - learn individual functions using splines
-- $$g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$$<!-- -->
+- $$g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$$
 - can also add some interaction terms (e.g. $f(x_0, x_1)$)
 
 ## multicollinearity
@@ -290,7 +290,7 @@ from Michael Jordan's "An Introduction to Probabilistic Graphical Models"
 - weighted least squares: $J(\theta)=\frac{1}{2}\sum_n w_n (y_n - \theta^T x_n)^2$
   - yields $X^T WX \theta^* = X^T Wy$
 - probabilistic interpretation
-  - $$p(y\vert x, \theta) = \frac{1}{(2\pi\sigma^2)^{N/2}} \exp \left( \frac{-1}{2\sigma^2} \cblue{\sum_{n=1}^N (y_n - \theta^T x_n)^2} \right)$$<!-- -->
+  - $$p(y\vert x, \theta) = \frac{1}{(2\pi\sigma^2)^{N/2}} \exp \left( \frac{-1}{2\sigma^2} \cblue{\sum_{n=1}^N (y_n - \theta^T x_n)^2} \right)$$
   - $l(\theta; x,y) = - \frac{1}{2\sigma^2} \cblue{\sum_{n=1}^N (y_n - \theta^T x_n)^2}$
     - log-likelihood is equivalent to <span class="cblue">least-squares cost function</span>
 

@@ -1,0 +1,91 @@
+# Overlay for _notes/ai/cogsci.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Cog sci           # short name on the start-page topic map
+hook: How minds might form representations (nativism, empiricism, Bayesian models, deep learning), language, theory of mind, symbolic AI, and cognitive biases.
+intro: |
+  The chapter starts from the inverse problem of cognitive science: given the world (say, pixels), how does
+  a mind form representations of it? Nativists build representations in, empiricists learn them, and
+  constructivists treat children as scientists who revise theories. Probabilistic causal models make the
+  constructivist view precise with Bayes' rule, while the deep learning sections take the empiricist side:
+  little built-in structure and lots of data.
+
+  Later sections cover language development (Skinner against Chomsky), theory of mind, and the classic AI
+  view of representation from CS 188 and Russell & Norvig: physical symbol systems, heuristic search, logic,
+  semantic networks and expert systems. The chapter ends with notes on Gödel, Escher, Bach and on cognitive
+  biases from LessWrong.
+sections:
+  nativism, empiricism:
+    lead: |
+      Three answers to how representations form. Nativism builds them in, empiricism learns them from
+      experience, and constructivism (Piaget, and later the theory theory) has children revise theories as
+      scientists do. The contemporary versions follow, with their main proponents.
+  probabilistic causal models:
+    lead: |
+      Bayesian models of cognition ask which priors would make people's inferences rational. They describe
+      what is being computed, Marr's computational level, rather than the mechanism.
+  dl basics:
+    lead: |
+      Deep learning takes the empiricist side, and these notes ask how much inductive bias a network needs. The
+      bullets argue that less built-in structure plus more data has worked better, with exceptions such as CNNs
+      and LSTMs.
+  supervision:
+    lead: |
+      The source of supervision matters as much as the model. The notes compare unsupervised learning of
+      $p_\theta(x)$ (deep belief nets, autoencoders, VAEs, GANs), supervised and self-supervised learning, and
+      reinforcement learning, where the only signal is a reward that cannot be differentiated.
+  objects:
+    lead: |
+      Notes on visual concepts: adapting across datasets, explaining vision-and-language models, and learning
+      categories. A recurring point is that the gains come from data. With enough data nearest neighbors works
+      well, and human visual memory is large enough that the brain might work similarly.
+  language development:
+    lead: |
+      The central debate. Skinner's behaviorism says children learn language through reinforcement. Chomsky
+      answers that children say things they have never heard, so they must bring innate knowledge of grammar.
+  theory of mind:
+    lead: |
+      Theory of mind is understanding other agents' mental states and how they shape actions. It is acquired
+      quickly but in a long series of steps, on a similar trajectory worldwide, and it is impaired in autism.
+  representations:
+    lead: |
+      These notes follow CS 188 and Russell & Norvig on how classic AI represented knowledge: as symbols
+      manipulated by search (Newell and Simon's physical symbol system hypothesis), as logic, as semantic
+      networks and frames, or statistically.
+  symbol search:
+    lead: |
+      Newell and Simon's view: intelligence is the manipulation of symbols, and a symbol system solves problems
+      by heuristic search, generating and modifying symbol structures until one is a solution.
+  knowledge representation:
+    lead: |
+      What a representation must support (representing, inferring, inferring efficiently, acquiring new
+      knowledge) and two classic views: logic, with a syntax and a semantics, and associationist structures
+      such as semantic networks and frames. Statistical, distributed representations come last.
+  expert systems:
+    lead: |
+      An expert system stores a domain expert's knowledge as condition-action rules over a database of facts
+      and reasons by forward or backward chaining. MYCIN, an early success, used backward chaining and asked
+      the patient questions.
+  Godel, Escher, Bach:
+    lead: |
+      Hofstadter's book is about self-reference: strange loops, Gödel's incompleteness theorem, and how
+      meaning arises when a formal system is interpreted. The AI notes list the abilities he thought
+      intelligence needs and his picture of rules at several levels.
+  lesswrong:
+    lead: |
+      A cognitive bias is a systematic error in judgment, like the bias of an estimator. Base rate neglect is
+      the easiest to see with numbers.
+    viz:
+      - name: base-rate
+        params: {libShare: 0.05, shyLib: 0.8, shySales: 0.2}
+        caption: |
+          Base rate neglect with 1000 people (the numbers are illustrative). Shyness fits the librarian
+          stereotype, but librarians are rare. Count the filled dots: with these settings most shy people are
+          salespeople, simply because there are so many more salespeople. Raise the base rate to see when
+          "librarian" becomes the better guess.
+takeaways:
+  - Nativism, empiricism and constructivism differ in how much of a representation is built in and how much is learned from experience.
+  - Bayesian models of cognition work at Marr's computational level and ask which priors would make people's inferences rational.
+  - Deep learning takes the empiricist side, and in these notes less built-in structure plus more data has usually worked better.
+  - Chomsky's argument against behaviorism is that children say things they have never heard, so reinforcement alone cannot explain grammar.
+  - Classic AI represents knowledge as symbols manipulated by search, as logic, or as semantic networks and frames, and expert systems apply rules by forward or backward chaining.
+  - A cognitive bias is a systematic error in judgment, like the bias of an estimator; base rate neglect ignores how common each category is.
+figures: {}

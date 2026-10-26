@@ -1,0 +1,73 @@
+# Overlay for _notes/ai/philosophy.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: What makes something a scientific explanation (DN model, statistical relevance, causal mechanisms, unification, pragmatics), plus Deutsch, Kuhn and Durant.
+intro: |
+  Most of the chapter asks what makes something an explanation rather than a description, following the
+  Stanford Encyclopedia's entry on scientific explanation. The deductive-nomological model explains an event
+  by deriving it from a law, but fails on asymmetries (the flagpole's height explains its shadow, not the
+  reverse) and on irrelevant details. The statistical relevance, causal-mechanical, unificationist and
+  pragmatic models each try to fix part of this.
+
+  The opening section ties this to machine learning: whether uninterpretable "naked predictions" are enough
+  for science. The rest are notes on Deutsch's The Beginning of Infinity (good explanations are hard to
+  vary), Kuhn's paradigms and revolutions, Will Durant's The Story of Philosophy, and a few papers on
+  explaining versus predicting.
+sections:
+  basics:
+    lead: |
+      Two papers on interpretability and science. Hooker & Hooker ask whether naked predictions, numbers with no
+      interpretation, can be enough for science. Emmert-Streib et al. argue that a simple process may allow a
+      theory, while a complicated one allows only a description.
+  scientific explanation (SEP):
+    lead: |
+      These theories cover only explanations of why something happens, and try to separate explaining from
+      merely describing. The examples that follow (flagpole and shadow, barometer and storm, the gas law) are the
+      test cases each model is checked against.
+  DN model = Deductive-Nomological Model:
+    lead: |
+      An explanation has two parts: the explanandum, what is explained, and the explanans, what does the
+      explaining. In the DN model the explanans contains a law of nature and the explanandum follows from it
+      deductively.
+  statistical relevance - wesley salmon:
+    lead: |
+      Salmon replaces derivation with probability: an attribute $C$ is relevant if it changes the probability
+      of the outcome $B$. The barometer example shows the catch: a variable can be statistically relevant
+      without being a cause.
+  causal mechanical models:
+    lead: |
+      Salmon's second answer: explain by tracing causal processes, which carry marks through space and time,
+      and their interactions. A shadow is only a pseudoprocess. The difficulty is telling which causal details
+      matter: mass and velocity in a pool-ball collision, not a chalk mark on the ball.
+  unificationist models:
+    lead: |
+      An explanation is better the more phenomena it accounts for with fewer and more stringent arguments, as in
+      Friedman and Kitcher.
+  pragmatic = contextual explanation models:
+    lead: |
+      These models bring in the audience. For van Fraassen an explanation answers a why-question relative to a
+      set of alternatives fixed by context, and that is where the asymmetries come from.
+  the beginning of infinity (david deutsch, 2011):
+    lead: |
+      Deutsch's central claim is that progress comes from good explanations: ones that are hard to vary while
+      still accounting for what they explain.
+  thomas kuhn:
+    lead: |
+      Kuhn's picture: normal science solves puzzles within a paradigm, anomalies lead to a crisis, and a
+      revolution revises the paradigm. The incommensurability thesis says theories from different periods
+      cannot be fully compared.
+  the story of philosophy:
+    lead: |
+      Notes on Will Durant's tour from Plato to Bertrand Russell, one list per philosopher. Durant thinks
+      philosophy should focus on ethics rather than epistemology.
+  stability:
+    lead: |
+      Loose ends on justification and modeling. Foundationalism rests every chain of justification on unproven
+      basic beliefs, and Shmueli separates explanatory modeling, which tests causal explanations, from
+      prediction.
+takeaways:
+  - The DN model explains an event by deriving it from a law of nature, but it fails on asymmetries (the flagpole and its shadow) and on irrelevant details (a man taking birth control pills).
+  - Statistical relevance replaces derivation with probability, but a variable such as the barometer reading can be relevant without being a cause.
+  - The causal-mechanical, unificationist and pragmatic models each repair part of the DN model, by tracing causal processes, by covering more phenomena with fewer arguments, or by letting context fix the contrast.
+  - For Deutsch a good explanation is hard to vary while still accounting for what it explains, and progress comes from seeking such explanations.
+  - Kuhn describes science as puzzle-solving within a paradigm, interrupted by revolutions when anomalies cause a crisis.
+  - For machine learning the open question is whether uninterpretable predictions are enough for science, or whether it needs a theory or at least a description.
+figures: {}

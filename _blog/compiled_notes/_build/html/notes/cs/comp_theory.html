@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.8. cs theory</title>
+    <title>Theory of computation &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/cs/comp_theory';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. math" href="../math/math_section.html" />
-    <link rel="prev" title="2.7. info retrieval + databases" href="retrieval_databases.html" />
+    <link rel="next" title="Quantum computing" href="quantum.html" />
+    <link rel="prev" title="Information retrieval and databases" href="retrieval_databases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs_section.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/cs/comp_theory.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>cs theory</h1>
+    <h1>Theory of computation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,16 +471,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.8.1. introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-3-finite-automata-regular-expressions">2.8.2. ch 1-3 - finite automata, regular expressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">2.8.3. ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-5-context-free-grammars-and-languages">2.8.4. ch 5 - context free grammars and languages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-6-pushdown-automata">2.8.5. ch 6 - pushdown automata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-7-properties-of-cfls">2.8.6. ch 7 - properties of CFLs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-8-intro-to-turing-machines-except-8-5-3">2.8.7. ch 8 - intro to turing machines (except 8.5.3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-9-undecidability-9-1-9-2-9-3">2.8.8. ch 9 - undecidability (9.1,9.2,9.3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-10-10-1-10-4">2.8.9. Ch 10 - 10.1-10.4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-np-completeness">2.8.10. more on NP Completeness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-3-finite-automata-regular-expressions">Ch 1-3 - finite automata, regular expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">Ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-5-context-free-grammars-and-languages">Ch 5 - context free grammars and languages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-6-pushdown-automata">Ch 6 - pushdown automata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-7-properties-of-cfls">Ch 7 - properties of CFLs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-8-intro-to-turing-machines-except-8-5-3">Ch 8 - intro to turing machines (except 8.5.3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-9-undecidability-9-1-9-2-9-3">Ch 9 - undecidability (9.1,9.2,9.3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-10-10-1-10-4">Ch 10 - 10.1-10.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-np-completeness">More on NP Completeness</a></li>
 </ul>
             </nav>
         </div>
@@ -442,10 +492,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cs-theory">
-<h1><span class="section-number">2.8. </span>cs theory<a class="headerlink" href="#cs-theory" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2><span class="section-number">2.8.1. </span>introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/cs.html">Computer science</a> &nbsp;·&nbsp; chapter 7 of 8 &nbsp;·&nbsp; 11 min read</p><section class="tex2jax_ignore mathjax_ignore" id="theory-of-computation">
+<h1>Theory of computation<a class="headerlink" href="#theory-of-computation" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Automata, grammars and Turing machines, undecidability, and NP-completeness, following Hopcroft, Motwani and Ullman.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The chapter climbs the Chomsky hierarchy one machine at a time. Finite automata recognize the regular languages; adding a stack gives pushdown automata and the context-free languages; an unbounded tape gives Turing machines and the recursively enumerable languages. For each class the note covers how to define it, how to convert between equivalent forms, and how to prove a language is outside it with a pumping lemma.</p>
+<p>The second half asks what can’t be computed at all and what can’t be computed fast. Diagonalization gives a language no Turing machine accepts, and from there the halting problem and Rice’s theorem follow. The last two sections are on P, NP and NP-completeness: Cook’s theorem for SAT, reductions to other problems, and approximation algorithms for problems that are hard to solve exactly.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 10 sections</summary><ol><li><a href="#sec-comp-theory-introduction">Introduction</a><span class="ol-lead">An overview of the whole course: each class in the hierarchy is a set of languages, and each one needs a stronger machine to recognize it than the class inside it.</span></li><li><a href="#sec-comp-theory-ch-1-3-finite-automata-regular-expressions">Ch 1-3 - finite automata, regular expressions</a><span class="ol-badge">1 interactive</span><span class="ol-lead">A finite automaton reads its input once, left to right, with only its current state as memory.</span></li><li><a href="#sec-comp-theory-ch-4-properties-of-regular-languages-except-sect">Ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)</a><span class="ol-lead">The pumping lemma is the tool for showing a language is not regular: any long enough string in a regular language has a middle part that can be repeated any number of times without leaving the language.</span></li><li><a href="#sec-comp-theory-ch-5-context-free-grammars-and-languages">Ch 5 - context free grammars and languages</a><span class="ol-lead">A context-free grammar generates strings by repeatedly replacing a variable with the right side of one of its productions.</span></li><li><a href="#sec-comp-theory-ch-6-pushdown-automata">Ch 6 - pushdown automata</a><span class="ol-lead">A pushdown automaton is a finite automaton plus a stack, which is exactly the memory needed for matched structure like palindromes or balanced parentheses.</span></li><li><a href="#sec-comp-theory-ch-7-properties-of-cfls">Ch 7 - properties of CFLs</a><span class="ol-lead">The context-free counterparts of chapter 4.</span></li><li><a href="#sec-comp-theory-ch-8-intro-to-turing-machines-except-8-5-3">Ch 8 - intro to turing machines (except 8.5.3)</a><span class="ol-lead">A Turing machine has a tape it can read, write and move along in both directions.</span></li><li><a href="#sec-comp-theory-ch-9-undecidability-9-1-9-2-9-3">Ch 9 - undecidability (9.1,9.2,9.3)</a><span class="ol-lead">Turing machines can be written as binary strings, so they can be numbered and fed to each other.</span></li><li><a href="#sec-comp-theory-ch-10-10-1-10-4">Ch 10 - 10.1-10.4</a><span class="ol-lead">P is what a deterministic Turing machine solves in polynomial time, NP what a nondeterministic one does.</span></li><li><a href="#sec-comp-theory-more-on-np-completeness">More on NP Completeness</a><span class="ol-lead">The working tool is the polynomial-time reduction: map instances of one problem to another, then use a solver for the second.</span></li></ol></details><section id="introduction">
+<span id="sec-comp-theory-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p class="section-lead">An overview of the whole course: each class in the hierarchy is a set of languages, and each one needs a stronger machine to recognize it than the class inside it. The rest of this section is notation for strings, languages, automata and grammars.</p>
 <ul>
 <li><p>Chomsky hierarchy of languages: <span class="math notranslate nohighlight">\(L_3 \subset L_2 \subset L_1 \subset L_R \subset L_0 \subset Σ*\)</span></p>
 <ul class="simple">
@@ -464,7 +520,7 @@ document.write(`
 <li><p>L_2 - context-free grammars - these languages are exactly all languages that can be recognized by a non-deterministic pushdown automaton.</p></li>
 <li><p>L_3 - regular grammars - all languages that can be decided by a finite state automaton</p>
 <ul>
-<li><p>contains Σ*, $<span class="math notranslate nohighlight">\(\vert Σ*\vert \)</span>$ is countably infinite</p></li>
+<li><p>contains Σ*, <span class="math notranslate nohighlight">\(\vert Σ*\vert\)</span> is countably infinite</p></li>
 </ul>
 </li>
 </ul>
@@ -526,8 +582,10 @@ document.write(`
 </ul>
 </section>
 <section id="ch-1-3-finite-automata-regular-expressions">
-<h2><span class="section-number">2.8.2. </span>ch 1-3 - finite automata, regular expressions<a class="headerlink" href="#ch-1-3-finite-automata-regular-expressions" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-comp-theory-ch-1-3-finite-automata-regular-expressions"></span><h2>Ch 1-3 - finite automata, regular expressions<a class="headerlink" href="#ch-1-3-finite-automata-regular-expressions" title="Link to this heading">#</a></h2>
+<p class="section-lead">A finite automaton reads its input once, left to right, with only its current state as memory. A nondeterministic one can follow several transitions at once, but it recognizes the same languages: tracking the set of states it could be in turns it into a deterministic one.</p>
+<figure class="nb-viz-figure" id="viz-nfa-run"><div class="nb-viz" data-viz="nfa-run" data-params="{&quot;input&quot;: &quot;1001&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> An example NFA that accepts binary strings ending in 01. Step through the input: from q0, a 0 splits the machine into a copy that stays and a copy that guesses the end has started. The set of live states is the state of the equivalent DFA, and the input is accepted if any copy finishes in q2.</figcaption></figure><ul>
 <li><p>alphabet - any nonempty finite set</p></li>
 <li><p>string - finite sequence of symbols from an alphabet</p></li>
 <li><p>induction hypothesis - assumption that P(i) is true</p></li>
@@ -547,7 +605,7 @@ document.write(`
 </ol>
 </li>
 <li><p>language - L(M)=A - means A is the set of all strings that the machine M accepts</p></li>
-<li><p>A* = {$<span class="math notranslate nohighlight">\(x_1x_2...x_k \vert  k\geq0 \wedge x_i \in A\)</span>$}</p></li>
+<li><p>A* = {<span class="math notranslate nohighlight">\(x_1x_2...x_k \vert  k\geq0 \wedge x_i \in A\)</span>}</p></li>
 <li><p>A+ = A* - Ɛ</p></li>
 <li><p>concatenation A o B = {xy <span class="math notranslate nohighlight">\(\vert \)</span> x in A and y in B}</p></li>
 <li><p>regular language - is recognized by a finite automata</p>
@@ -580,7 +638,8 @@ document.write(`
 </ul>
 </section>
 <section id="ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">
-<h2><span class="section-number">2.8.3. </span>ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)<a class="headerlink" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-4-properties-of-regular-languages-except-sect"></span><h2>Ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)<a class="headerlink" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4" title="Link to this heading">#</a></h2>
+<p class="section-lead">The pumping lemma is the tool for showing a language is not regular: any long enough string in a regular language has a middle part that can be repeated any number of times without leaving the language.</p>
 <ul class="simple">
 <li><p>pumping lemma- proves languages not to be regular</p></li>
 <li><p>if L regular, there exists a constant n such that for every string w in L such that <span class="math notranslate nohighlight">\(\vert w\vert \geq n\)</span>, we can break w into 3 strings w=xyz, such that:</p>
@@ -605,10 +664,11 @@ document.write(`
 </ul>
 </section>
 <section id="ch-5-context-free-grammars-and-languages">
-<h2><span class="section-number">2.8.4. </span>ch 5 - context free grammars and languages<a class="headerlink" href="#ch-5-context-free-grammars-and-languages" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-5-context-free-grammars-and-languages"></span><h2>Ch 5 - context free grammars and languages<a class="headerlink" href="#ch-5-context-free-grammars-and-languages" title="Link to this heading">#</a></h2>
+<p class="section-lead">A context-free grammar generates strings by repeatedly replacing a variable with the right side of one of its productions. Derivations, parse trees and recursive inference are equivalent ways to show a string is in the language. A grammar is ambiguous when some string has two different parse trees, and some languages have only ambiguous grammars.</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(w^R\)</span> = reverse</p></li>
-<li><p>context-free grammar - more powerful way to describe a language</p></li>
+<li><p><a class="term-link" href="../ml/nlp.html#def-context-free-grammar" data-def="set of grammar rules that define a gramm · NLP">context-free grammar</a> - more powerful way to describe a language</p></li>
 <li><p>ex. substitution rules (generates 0#1)</p>
 <ul class="simple">
 <li><p>A -&gt; OA1</p></li>
@@ -666,7 +726,8 @@ document.write(`
 </ul>
 </section>
 <section id="ch-6-pushdown-automata">
-<h2><span class="section-number">2.8.5. </span>ch 6 - pushdown automata<a class="headerlink" href="#ch-6-pushdown-automata" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-6-pushdown-automata"></span><h2>Ch 6 - pushdown automata<a class="headerlink" href="#ch-6-pushdown-automata" title="Link to this heading">#</a></h2>
+<p class="section-lead">A pushdown automaton is a finite automaton plus a stack, which is exactly the memory needed for matched structure like palindromes or balanced parentheses. PDAs accept the same languages as context-free grammars.</p>
 <ul>
 <li><p>pushdown automata - have extra stack of memory - equivalent to context-free grammar</p>
 <ul class="simple">
@@ -751,7 +812,8 @@ document.write(`
 </ul>
 </section>
 <section id="ch-7-properties-of-cfls">
-<h2><span class="section-number">2.8.6. </span>ch 7 - properties of CFLs<a class="headerlink" href="#ch-7-properties-of-cfls" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-7-properties-of-cfls"></span><h2>Ch 7 - properties of CFLs<a class="headerlink" href="#ch-7-properties-of-cfls" title="Link to this heading">#</a></h2>
+<p class="section-lead">The context-free counterparts of chapter 4. Chomsky normal form makes every grammar’s productions look like <span class="math notranslate nohighlight">\(A \to BC\)</span> or <span class="math notranslate nohighlight">\(A \to a\)</span>, which drives the CFL pumping lemma (now with two pieces pumped together) and the <span class="math notranslate nohighlight">\(O(n^3)\)</span> CYK membership test. CFLs are closed under union, concatenation and closure but not under intersection or complement.</p>
 <ul>
 <li><p>Chomsky Normal Form</p>
 <ol class="arabic simple">
@@ -787,16 +849,16 @@ document.write(`
 <li><p>For all i ≥ 0, <span class="math notranslate nohighlight">\(u \cpink{v^i} w \cpink{x^i} y \in\)</span> L</p></li>
 </ol>
 <ul class="simple">
-<li><p>ex. $<span class="math notranslate nohighlight">\(\{0^n1^n\}\)</span>$</p></li>
+<li><p>ex. <span class="math notranslate nohighlight">\(\{0^n1^n\}\)</span></p></li>
 <li><p>often have to break it into cases</p></li>
 <li><p>proof uses Chomsky Normal Form</p></li>
 </ul>
 </li>
 <li><p>not context free examples</p>
 <ul class="simple">
-<li><p>$<span class="math notranslate nohighlight">\(\{0^n1^n2^n\vert n\geq1\}\)</span>$<!-- --></p></li>
+<li><p><span class="math notranslate nohighlight">\(\{0^n1^n2^n\vert n\geq1\}\)</span></p></li>
 <li><p>{<span class="math notranslate nohighlight">\(0^i1^j2^i3^j\vert i\geq 1,j\geq 1\)</span>}</p></li>
-<li><p>{ww$<span class="math notranslate nohighlight">\(\vert w \in \{0,1\}^*\)</span>$ }</p></li>
+<li><p>{ww<span class="math notranslate nohighlight">\(\vert w \in \{0,1\}^*\)</span> }</p></li>
 </ul>
 </li>
 <li><p>closed under union, concatenation, closure, and positive closure, homomorphism, reversal, inverse homomorphism, substitutions</p>
@@ -839,7 +901,8 @@ document.write(`
 </ul>
 </section>
 <section id="ch-8-intro-to-turing-machines-except-8-5-3">
-<h2><span class="section-number">2.8.7. </span>ch 8 - intro to turing machines (except 8.5.3)<a class="headerlink" href="#ch-8-intro-to-turing-machines-except-8-5-3" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-8-intro-to-turing-machines-except-8-5-3"></span><h2>Ch 8 - intro to turing machines (except 8.5.3)<a class="headerlink" href="#ch-8-intro-to-turing-machines-except-8-5-3" title="Link to this heading">#</a></h2>
+<p class="section-lead">A Turing machine has a tape it can read, write and move along in both directions. Extra tapes, tracks or nondeterminism don’t let it accept any new languages, and it can simulate a real computer with polynomial slowdown.</p>
 <ul>
 <li><p>Turing Machine def</p>
 <ol class="arabic simple">
@@ -892,7 +955,7 @@ document.write(`
 <li><p>turing machine can take 2 inputs: program P and input I</p></li>
 <li><p>ID - instantaneous description</p>
 <ul class="simple">
-<li><p>write $<span class="math notranslate nohighlight">\(X_1X_2...qX_iX_{i+1}...\)</span>$ where q is scanning X_i</p></li>
+<li><p>write <span class="math notranslate nohighlight">\(X_1X_2...qX_iX_{i+1}...\)</span> where q is scanning X_i</p></li>
 </ul>
 </li>
 <li><p>program that prints “h” as input -&gt; yes or no</p>
@@ -924,14 +987,15 @@ document.write(`
 </li>
 <li><p>intractable - take a very long time to solve (not polynomial)</p></li>
 <li><p>&lt;&gt; notation means bitstring representation</p></li>
-<li><p>$<span class="math notranslate nohighlight">\(&lt;n&gt; = 0^n\)</span>$<!-- --></p></li>
-<li><p>$<span class="math notranslate nohighlight">\(&lt;m,w&gt; means w \in L(M)\)</span>$<!-- --></p></li>
+<li><p><span class="math notranslate nohighlight">\(&lt;n&gt; = 0^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(&lt;m,w&gt; means w \in L(M)\)</span></p></li>
 <li><p>KD - “known to be distinct”</p></li>
 <li><p>idempotent - R + R = R</p></li>
 </ul>
 </section>
 <section id="ch-9-undecidability-9-1-9-2-9-3">
-<h2><span class="section-number">2.8.8. </span>ch 9 - undecidability (9.1,9.2,9.3)<a class="headerlink" href="#ch-9-undecidability-9-1-9-2-9-3" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-9-undecidability-9-1-9-2-9-3"></span><h2>Ch 9 - undecidability (9.1,9.2,9.3)<a class="headerlink" href="#ch-9-undecidability-9-1-9-2-9-3" title="Link to this heading">#</a></h2>
+<p class="section-lead">Turing machines can be written as binary strings, so they can be numbered and fed to each other. Flipping the diagonal of the machine-by-input table gives a language no machine accepts, and reductions carry that result to the universal language and the halting problem.</p>
 <ul class="simple">
 <li><p>does this TM accept (the code for) itself as input?</p></li>
 <li><p>enumerate binary strings - add a leading 1</p></li>
@@ -984,7 +1048,8 @@ document.write(`
 </ul>
 </section>
 <section id="ch-10-10-1-10-4">
-<h2><span class="section-number">2.8.9. </span>Ch 10 - 10.1-10.4<a class="headerlink" href="#ch-10-10-1-10-4" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-ch-10-10-1-10-4"></span><h2>Ch 10 - 10.1-10.4<a class="headerlink" href="#ch-10-10-1-10-4" title="Link to this heading">#</a></h2>
+<p class="section-lead">P is what a deterministic Turing machine solves in polynomial time, NP what a nondeterministic one does. A problem is NP-complete if it is in NP and every NP problem reduces to it in polynomial time, so a fast algorithm for one would give P = NP.</p>
 <ul>
 <li><p>intractable - can’t be solved in polynomial time</p></li>
 <li><p>NP-complete examples</p>
@@ -1078,7 +1143,8 @@ document.write(`
 </ul>
 </section>
 <section id="more-on-np-completeness">
-<h2><span class="section-number">2.8.10. </span>more on NP Completeness<a class="headerlink" href="#more-on-np-completeness" title="Link to this heading">#</a></h2>
+<span id="sec-comp-theory-more-on-np-completeness"></span><h2>More on NP Completeness<a class="headerlink" href="#more-on-np-completeness" title="Link to this heading">#</a></h2>
+<p class="section-lead">The working tool is the polynomial-time reduction: map instances of one problem to another, then use a solver for the second. Reductions from satisfiability show clique and 3-coloring are NP-complete. For NP-complete optimization problems such as vertex cover and max cut, simple approximation algorithms get within a factor of 2 of the optimum.</p>
 <ul>
 <li><p>a language is polynomial-time reducible to a language B if there is a polynomial time comoputable function that maps one to the other</p></li>
 <li><p>to solve a problem, efficiently transform to another problem, and then use a solver for the other problem</p></li>
@@ -1135,7 +1201,7 @@ document.write(`
 <li><p>find minimum</p>
 <ul>
 <li><p>greedy - keep going down</p></li>
-<li><p>genetic algorithms - pretty bad</p></li>
+<li><p><a class="term-link" href="../ai/search.html#def-genetic-algorithms" data-def="population of k individuals · Search and logic">genetic algorithms</a> - pretty bad</p></li>
 </ul>
 </li>
 <li><p>minimum vertex cover problem - given a graph, find a minimum set of vertices such that each edge is incident to at least one of these vertices</p>
@@ -1166,7 +1232,17 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Regular, context-free and recursively enumerable languages are recognized by finite automata, pushdown automata and Turing machines, each a stronger machine than the last.</p></li>
+<li><p>Nondeterminism does not add power to finite automata or Turing machines, since a deterministic machine can track all the branches.</p></li>
+<li><p>Pumping lemmas show a language is outside a class, because every long enough string in a regular or context-free language contains pieces that can be repeated.</p></li>
+<li><p>Diagonalization gives a language no Turing machine accepts, and reductions carry undecidability to the halting problem and Rice’s theorem.</p></li>
+<li><p>A problem is NP-complete if it is in NP and every NP problem reduces to it, so a polynomial algorithm for any one of them would give P = NP.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../ai/search.html"><span class="related-part">Artificial intelligence</span><span class="related-title">Search and logic</span><span class="related-hook">Uninformed and A* search, local search, constraint satisfaction, propositional and first-order logic, planning, and rule learning.</span></a><a class="related-card" href="../cs/data_structures.html"><span class="related-part">Computer science</span><span class="related-title">Data structures</span><span class="related-hook">Linked lists and stacks, balanced search trees, heaps and Huffman codes, hash tables, and the standard graph algorithms.</span></a><a class="related-card" href="../stat/graphical_models.html"><span class="related-part">Statistics</span><span class="related-title">Graphical models</span><span class="related-hook">Bayesian networks and undirected models, exact inference by elimination and message passing, sampling and variational inference, and HMMs and Kalman filters.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1205,15 +1281,15 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.7. </span>info retrieval + databases</p>
+        <p class="prev-next-title">Information retrieval and databases</p>
       </div>
     </a>
     <a class="right-next"
-       href="../math/math_section.html"
+       href="quantum.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>math</p>
+        <p class="prev-next-title">Quantum computing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1233,16 +1309,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.8.1. introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-3-finite-automata-regular-expressions">2.8.2. ch 1-3 - finite automata, regular expressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">2.8.3. ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-5-context-free-grammars-and-languages">2.8.4. ch 5 - context free grammars and languages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-6-pushdown-automata">2.8.5. ch 6 - pushdown automata</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-7-properties-of-cfls">2.8.6. ch 7 - properties of CFLs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-8-intro-to-turing-machines-except-8-5-3">2.8.7. ch 8 - intro to turing machines (except 8.5.3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-9-undecidability-9-1-9-2-9-3">2.8.8. ch 9 - undecidability (9.1,9.2,9.3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-10-10-1-10-4">2.8.9. Ch 10 - 10.1-10.4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-np-completeness">2.8.10. more on NP Completeness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-3-finite-automata-regular-expressions">Ch 1-3 - finite automata, regular expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">Ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-5-context-free-grammars-and-languages">Ch 5 - context free grammars and languages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-6-pushdown-automata">Ch 6 - pushdown automata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-7-properties-of-cfls">Ch 7 - properties of CFLs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-8-intro-to-turing-machines-except-8-5-3">Ch 8 - intro to turing machines (except 8.5.3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-9-undecidability-9-1-9-2-9-3">Ch 9 - undecidability (9.1,9.2,9.3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-10-10-1-10-4">Ch 10 - 10.1-10.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-np-completeness">More on NP Completeness</a></li>
 </ul>
   </nav></div>
 
@@ -1267,7 +1343,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

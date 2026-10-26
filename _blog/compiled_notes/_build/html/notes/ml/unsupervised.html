@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.5. unsupervised</title>
+    <title>Unsupervised &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ml/unsupervised';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.6. deep learning" href="deep_learning.html" />
-    <link rel="prev" title="5.4. classification" href="classification.html" />
+    <link rel="next" title="Kernels" href="kernels.html" />
+    <link rel="prev" title="Evaluation" href="evaluation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml_section.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classification.html">5.4. classification</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/ml/unsupervised.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>unsupervised</h1>
+    <h1>Unsupervised</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,27 +471,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">5.5.1. clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical">5.5.1.1. hierarchical</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partitional">5.5.1.2. partitional</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-clustering-j-10">5.5.1.3. statistical clustering (j 10)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-clustering">5.5.1.4. spectral clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">5.5.1.5. pca</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">5.5.1.6. topic modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding-sparse-dictionary-learning">5.5.1.7. sparse coding = sparse dictionary learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica">5.5.1.8. ica</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological">5.5.1.9. topological</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">5.5.1.10. misc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">5.5.1.11. gans</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-energy-based-models">5.5.1.12. diffusion / energy-based models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-models">5.5.1.13. flow models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical">Hierarchical</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partitional">Partitional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-clustering-j-10">Statistical clustering (j 10)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-mixture-models-regression-classification-j-10">Conditional mixture models - regression/classification (j 10)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-semi-supervised">5.5.2. self/semi-supervised</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-supervised">5.5.2.1. self-supervised</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised">5.5.2.2. semi-supervised</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression">5.5.2.3. compression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-learning">5.5.2.4. contrastive learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dim-reduction">Dim reduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-clustering">Spectral clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">Topic modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding-sparse-dictionary-learning">Sparse coding = sparse dictionary learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica">ICA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological">Topological</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models">Generative models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-models">Autoregressive models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes">VAEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">GANs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-energy-based-models">Diffusion / energy-based models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-models">Flow models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-semi-supervised">Self/semi-supervised</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-supervised">Self-supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised">Semi-supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression">Compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-learning">Contrastive learning</a></li>
 </ul>
 </li>
 </ul>
@@ -455,10 +514,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unsupervised">
-<h1><span class="section-number">5.5. </span>unsupervised<a class="headerlink" href="#unsupervised" title="Link to this heading">#</a></h1>
+  <p class="breadcrumb"><a href="../../parts/ml.html">Machine learning</a> &nbsp;·&nbsp; chapter 3 of 8 &nbsp;·&nbsp; 15 min read</p><section class="tex2jax_ignore mathjax_ignore" id="unsupervised">
+<h1>Unsupervised<a class="headerlink" href="#unsupervised" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some notes on clustering, dimensionality reduction, generative models, and self-supervised learning.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>Everything here learns from data without labels, in four groups. Clustering assigns points to groups, from hierarchical merging to K-means and Gaussian mixtures fit with EM. Dimensionality reduction finds a few coordinates that keep what matters. PCA and ICA are linear; MDS, t-SNE, UMAP and PaCMAP try to keep distances or neighbors. Read K-means and PCA first, since most of the later methods are compared against them.</p>
+<p>The generative models section learns <span class="math notranslate nohighlight">\(p(x)\)</span> itself. Autoregressive models, VAEs and flows fit a likelihood or a bound on it; GANs drop the likelihood for a learned discriminator, and diffusion models learn to undo added noise. The last part covers self-supervised, semi-supervised and contrastive learning, which make labels out of the data itself, plus a short section on compression.</p>
+</div>
 <section id="clustering">
-<h2><span class="section-number">5.5.1. </span>clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h2>
+<span id="sec-unsupervised-clustering"></span><h2>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h2>
+<p class="section-lead">A clustering is only as good as its distance. The properties listed first are what make a distance a metric; the Minkowski family covers Manhattan, Euclidean and sup distance.</p>
 <ul class="simple">
 <li><p>labels are not given</p></li>
 <li><p>intra-cluster distances are minimized, inter-cluster distances are maximized</p></li>
@@ -482,7 +547,8 @@ document.write(`
 <li><p>edit distance</p></li>
 </ul>
 <section id="hierarchical">
-<h3><span class="section-number">5.5.1.1. </span>hierarchical<a class="headerlink" href="#hierarchical" title="Link to this heading">#</a></h3>
+<h3>Hierarchical<a class="headerlink" href="#hierarchical" title="Link to this heading">#</a></h3>
+<p class="section-lead">Agglomerative clustering builds a tree (dendrogram) by repeatedly merging the two closest clusters. The linkage function decides what “closest” means between groups of points, and it shapes the clusters.</p>
 <ul class="simple">
 <li><p>two approaches:</p>
 <ol class="arabic simple">
@@ -503,7 +569,7 @@ document.write(`
 </ul>
 </li>
 <li><p>ex. MST - keep linking shortest link</p></li>
-<li><p><em>ultrametric distance</em> - tighter than triangle inequality</p>
+<li><p><span id="def-ultrametric-distance" class="def-anchor"></span><em>ultrametric distance</em> - tighter than triangle inequality</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(d(x, y) \leq \max[d(x,z), d(y,z)]\)</span></p></li>
 </ul>
@@ -511,7 +577,8 @@ document.write(`
 </ul>
 </section>
 <section id="partitional">
-<h3><span class="section-number">5.5.1.2. </span>partitional<a class="headerlink" href="#partitional" title="Link to this heading">#</a></h3>
+<h3>Partitional<a class="headerlink" href="#partitional" title="Link to this heading">#</a></h3>
+<p class="section-lead">Partitional methods split the points into a fixed number <span class="math notranslate nohighlight">\(K\)</span> of clusters, usually by minimizing the sum of squared distances to each cluster’s centroid. Trying every partition is too slow, so methods like K-means search locally and can get stuck; k-means++ starts with the centers spread apart.</p>
 <ul class="simple">
 <li><p>partition n objects into a set of K clusters (must be specified)</p></li>
 <li><p>globally optimal: exhaustively enumerate all partitions</p></li>
@@ -526,74 +593,172 @@ document.write(`
 </ul>
 </section>
 <section id="statistical-clustering-j-10">
-<h3><span class="section-number">5.5.1.3. </span>statistical clustering (j 10)<a class="headerlink" href="#statistical-clustering-j-10" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><em>latent vars</em> - values not specified in the observed data</p></li>
+<h3>Statistical clustering (j 10)<a class="headerlink" href="#statistical-clustering-j-10" title="Link to this heading">#</a></h3>
+<p class="section-lead">K-means and Gaussian mixtures both alternate two steps: assign points to clusters (E), then refit each cluster (M). K-means makes hard assignments to the nearest center; a GMM makes soft ones weighted by posterior probability.</p>
+<figure class="nb-viz-figure" id="viz-kmeans-steps"><div class="nb-viz" data-viz="kmeans-steps" data-params="{&quot;k&quot;: 5, &quot;seed&quot;: 5}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Step through K-means by hand. E assigns each point to its nearest center, M moves each center to the mean of its points, and the distortion \(J\) never goes up. From this start, run to convergence: two centers end up sharing one blob while another center covers two, and K-means stops there, at a \(J\) about three times the best. Press "new start" a few times to see other local minima. Starting with k-means++, which spreads the initial centers apart, gets stuck like this less often.</figcaption></figure><figure class="nb-viz-figure" id="viz-gmm-em"><div class="nb-viz" data-viz="gmm-em" data-params="{&quot;k&quot;: 3, &quot;seed&quot;: 2}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> EM for a mixture of \(K\) Gaussians on made-up 2-d data. E splits each point between the components by its responsibilities (the pies), M refits each \(\pi_i\) (the number on each mean, in percent), \(\mu_i\) and \(\Sigma_i\) as averages weighted by them, and the log-likelihood \(l(\theta\vert x)\) on the right never goes down. Unlike K-means' hard assignments, points where two clusters overlap stay split at convergence. Press "new start" a few times: some starts stop at a lower \(l\).</figcaption></figure><ul class="simple">
+<li><p><span id="def-latent-vars" class="def-anchor"></span><em>latent vars</em> - values not specified in the observed data</p></li>
 <li></li>
 </ul>
-<p>A mixture model represented as a graphical model. The latent variable Z is a multinomial node taking on one of K values <img style="width: 110px; max-width: 100%;" src="../assets/j10_1.svg" alt="Mixture model as a graphical model"/></p>
+<p>A mixture model represented as a graphical model. The latent variable Z is a multinomial node taking on one of K values</p>
+<figure class="align-default" id="id1">
+<a class="note-figure reference internal image-reference" href="../../_images/j10_1.svg"><img alt="A mixture model as a graphical model. The latent node Z picks one of K components, and the observed X is drawn from that component." class="note-figure" src="../../_images/j10_1.svg" style="width: 110px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> A mixture model as a graphical model. The latent node Z picks one of K components, and the observed X is drawn from that component.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul>
 <li><p><em>K-Means</em></p>
 <ul class="simple">
 <li><p>start with random centers</p></li>
-<li><p>E: assign everything to nearest center: $<span class="math notranslate nohighlight">\(O(\vert \text{clusters}\vert *np) \)</span>$</p></li>
+<li><p>E: assign everything to nearest center: <span class="math notranslate nohighlight">\(O(\vert \text{clusters}\vert *np)\)</span></p></li>
 <li><p>M: recompute centers <span class="math notranslate nohighlight">\(O(np)\)</span> and repeat until nothing changes</p></li>
 <li><p>partition amounts to Voronoi diagram</p></li>
-<li><p>can be viewed as minimizing <em>distortion measure</em> $<span class="math notranslate nohighlight">\(J=\sum_n \sum_i z_n^i \vert \vert x_n - \mu_i\vert \vert ^2\)</span>$</p></li>
+<li><p>can be viewed as minimizing <em>distortion measure</em> <span class="math notranslate nohighlight">\(J=\sum_n \sum_i z_n^i \vert \vert x_n - \mu_i\vert \vert ^2\)</span></p></li>
 </ul>
 </li>
-<li><p><em>GMMs</em>: $<span class="math notranslate nohighlight">\(p(x\vert \theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x\vert \mu_i, \Sigma_i)\)</span>$</p>
+<li><p><span id="def-gmms" class="def-anchor"></span><em>GMMs</em>: <span class="math notranslate nohighlight">\(p(x\vert \theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x\vert \mu_i, \Sigma_i)\)</span></p>
 <ul>
 <li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}l(\theta\vert x) = \sum_n \log \: p(x_n\vert \theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n\vert \mu_i, \Sigma_i)$$&lt;!-- --&gt;
-  - hard to maximize bcause log acts on a sum
-  - &quot;soft&quot; version of K-means - update means as weighted sums of data instead of just normal mean
-  - sometimes initialize K-means w/ GMMs\end{split}\\### conditional mixture models - regression/classification (j 10)\\```mermaid
+\[\begin{split}l(\theta\vert x) = \sum_n \log \: p(x_n\vert \theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n\vert \mu_i, \Sigma_i)\end{split}\]</div>
+</li>
+<li><p>hard to maximize bcause log acts on a sum</p></li>
+<li><p>“soft” version of K-means - update means as weighted sums of data instead of just normal mean</p></li>
+<li><p>sometimes initialize K-means w/ GMMs</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="conditional-mixture-models-regression-classification-j-10">
+<h3>Conditional mixture models - regression/classification (j 10)<a class="headerlink" href="#conditional-mixture-models-regression-classification-j-10" title="Link to this heading">#</a></h3>
+<p class="section-lead">The mixture is now conditional on the input <span class="math notranslate nohighlight">\(x\)</span>. A gate, the <span class="cblue">mixing proportions</span> <span class="math notranslate nohighlight">\(\pi_i(x, \xi)\)</span>, decides which <span class="corange">mixture component</span> (here a regression or a classifier) explains <span class="math notranslate nohighlight">\(y\)</span> near <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="mermaid-wrap"><pre class="mermaid">
 graph LR;
-  X--&gt;Y;
-  X --&gt; Z
-  Z --&gt; Y
-```\\- ex. ![](../assets/j5_16.png)
-- latent variable Z has multinomial distr.
-  - &lt;span class=&quot;cblue&quot;&gt;mixing proportions&lt;/span&gt;: $$\cblue{P(Z^i=1\vert x, \xi)}\end{aligned}\end{align} \]</div>
+X--&gt;Y;
+X --&gt; Z
+Z --&gt; Y
+</pre></div><ul>
+<li><p>ex.</p>
+<figure class="align-default" id="id2">
+<img alt="Two conditional mixtures of regressions, from Jordan's book. In (a) the latent Zₙ depends on Xₙ: the dashed curves are p(zₙ | xₙ), so each line covers its own region of x. In (b) Zₙ does not depend on" class="note-figure" src="../../_images/j5_16.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> Two conditional mixtures of regressions, from Jordan’s book. In (a) the latent Zₙ depends on Xₙ: the dashed curves are p(zₙ | xₙ), so each line covers its own region of x. In (b) Zₙ does not depend on Xₙ, so both lines apply everywhere.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>latent variable Z has multinomial distr.</p>
 <ul class="simple">
+<li><p><span class="cblue">mixing proportions</span>: <span class="math notranslate nohighlight">\(\cblue{P(Z^i=1\vert x, \xi)}\)</span></p>
+<ul>
 <li><p>ex. <span class="math notranslate nohighlight">\( \frac{e^{\xi_i^Tx}}{\sum_je^{\xi_j^Tx}}\)</span></p></li>
 </ul>
 </li>
-<li><p><span class="corange">mixture components</span>: $<span class="math notranslate nohighlight">\(\corange{p(y\vert Z^i=1, x, \theta_i)}\)</span>$ ~ different choices</p></li>
+<li><p><span class="corange">mixture components</span>: <span class="math notranslate nohighlight">\(\corange{p(y\vert Z^i=1, x, \theta_i)}\)</span> ~ different choices</p></li>
 <li><p>ex. mixture of linear regressions</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}p(y\vert  x, \theta) = \sum_i \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mathcal{N}(y\vert \beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}}$$&lt;!-- --&gt;
-  - ex. mixtures of logistic regressions
-    - $$p(y\vert x, \theta_i) = \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}}$$ where $\mu$ is the logistic function
-- also, nonlinear optimization for this (including EM)\\## dim reduction\\In general there is some tension between preserving global properties (e.g. PCA) and local peroperties (e.g. nearest neighborhoods)\\| Method              | Analysis objective | Temporal smoothing | Explicit noise model | Notes |
-|---------------------|--------------------|--------------------|----------------------|---------------------|
-| PCA                 | Covariance         | No                 | No                   | orthogonality |
-| FA                  | Covariance         | No                 | Yes                  | like PCA, but with errors (not biased by variance) |
-| LDS/GPFA            | Dynamics           | Yes                | Yes                  |  |
-| NLDS                | Dynamics           | Yes                | Yes                  |  |
-| LDA                 | Classification     | No                 | No                   |  |
-| Demixed             | Regression         | No                 | Yes/No               |  |
-| Isomap/LLE          | Manifold discovery | No                 | No                   |  |
-| T-SNE               | ....               | ....               | ...                  |  |
-| UMAP                | ...                | ...                | ...                  |  |\\- NMF - $$\min_{D \geq 0, A \geq 0} \vert \vert X-DA\vert \vert _F^2\end{aligned}\end{align} \]</div>
+<li><p><span class="math notranslate nohighlight">\(p(y\vert  x, \theta) = \sum_i \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mathcal{N}(y\vert \beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}}\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. mixtures of logistic regressions</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(y\vert x, \theta_i) = \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}}\)</span> where <span class="math notranslate nohighlight">\(\mu\)</span> is the logistic function</p></li>
+</ul>
 </li>
 </ul>
 </li>
+<li><p>also, nonlinear optimization for this (including EM)</p></li>
+</ul>
+</section>
+</section>
+<section id="dim-reduction">
+<span id="sec-unsupervised-dim-reduction"></span><h2>Dim reduction<a class="headerlink" href="#dim-reduction" title="Link to this heading">#</a></h2>
+<p class="section-lead">The table compares methods by what they preserve. The tension in the opening sentence is the main axis: PCA keeps global variance, while neighbor methods like t-SNE keep local structure.</p>
+<p>In general there is some tension between preserving global properties (e.g. PCA) and local peroperties (e.g. nearest neighborhoods)</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Analysis objective</p></th>
+<th class="head"><p>Temporal smoothing</p></th>
+<th class="head"><p>Explicit noise model</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PCA</p></td>
+<td><p>Covariance</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>orthogonality</p></td>
+</tr>
+<tr class="row-odd"><td><p>FA</p></td>
+<td><p>Covariance</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>like PCA, but with errors (not biased by variance)</p></td>
+</tr>
+<tr class="row-even"><td><p>LDS/GPFA</p></td>
+<td><p>Dynamics</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>NLDS</p></td>
+<td><p>Dynamics</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>LDA</p></td>
+<td><p>Classification</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Demixed</p></td>
+<td><p>Regression</p></td>
+<td><p>No</p></td>
+<td><p>Yes/No</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Isomap/LLE</p></td>
+<td><p>Manifold discovery</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>T-SNE</p></td>
+<td><p>….</p></td>
+<td><p>….</p></td>
+<td><p>…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>UMAP</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>NMF - <span class="math notranslate nohighlight">\(\min_{D \geq 0, A \geq 0} \vert \vert X-DA\vert \vert _F^2\)</span></p>
+<ul>
 <li><p>SEQNMF</p></li>
 </ul>
 </li>
 <li><p>LDA/QDA - finds basis that separates classes</p>
-<ul class="simple">
+<ul>
 <li><p>reduced to axes which separate classes (perpendicular to the boundaries)</p></li>
 </ul>
 </li>
 <li><p>K-means - can be viewed as a linear decomposition</p></li>
 </ul>
-</section>
 <section id="spectral-clustering">
-<h3><span class="section-number">5.5.1.4. </span>spectral clustering<a class="headerlink" href="#spectral-clustering" title="Link to this heading">#</a></h3>
+<h3>Spectral clustering<a class="headerlink" href="#spectral-clustering" title="Link to this heading">#</a></h3>
+<p class="section-lead">Reduce dimension first, then cluster: take a few eigenvectors of the similarity (adjacency) matrix and run a simple clustering in that space. The kernels chapter covers it in more detail.</p>
 <ul class="simple">
 <li><p><em>spectral</em> clustering - does dim reduction on eigenvalues (spectrum) of similarity matrix before clustering in few dims</p>
 <ul>
@@ -605,7 +770,8 @@ graph LR;
 </ul>
 </section>
 <section id="pca">
-<h3><span class="section-number">5.5.1.5. </span>pca<a class="headerlink" href="#pca" title="Link to this heading">#</a></h3>
+<h3>PCA<a class="headerlink" href="#pca" title="Link to this heading">#</a></h3>
+<p class="section-lead">PCA finds orthogonal directions of greatest variance. These are the top eigenvectors of the covariance matrix, and each eigenvalue is the variance explained along its direction.</p>
 <ul>
 <li><p>want new set of axes (linearly combine original axes) in the direction of greatest variability</p>
 <ul class="simple">
@@ -632,7 +798,7 @@ graph LR;
 <li><p>equivalently, eigenvalue decomposition of covariance matrix <span class="math notranslate nohighlight">\(\Sigma = X^TX\)</span></p>
 <ul class="simple">
 <li><p>each eigenvalue represents prop. of explained variance: <span class="math notranslate nohighlight">\(\sum \lambda_i = \operatorname{tr}(\Sigma) = \sum Var(X_i)\)</span></p></li>
-<li><p><em>screeplot</em> - eigenvalues in decreasing order, look for num dims with kink</p>
+<li><p><span id="def-screeplot" class="def-anchor"></span><em>screeplot</em> - eigenvalues in decreasing order, look for num dims with kink</p>
 <ul>
 <li><p>don’t automatically center/normalize, especially for positive data</p></li>
 </ul>
@@ -653,12 +819,12 @@ graph LR;
 <li><p>extract components sequentially, starting with highest variance so you don’t have to extract them all</p></li>
 </ul>
 </li>
-<li><p>good PCA code: <a class="reference external" href="http://cs231n.github.io/neural-networks-2/">http://cs231n.github.io/neural-networks-2/</a></p></li>
+<li><p>good PCA code: http://cs231n.github.io/neural-networks-2/</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">## zero-center data (nxd)</span>
-<span class="n">cov</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">## get cov. matrix (dxd)</span>
-<span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span> <span class="c1">## compute svd, (all dxd)</span>
-<span class="n">Xrot_reduced</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1">## project onto first 2 dimensions (n x 2)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># zero-center data (nxd)</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># get cov. matrix (dxd)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span> <span class="c1"># compute svd, (all dxd)</span>
+<span class="n">Xrot_reduced</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># project onto first 2 dimensions (n x 2)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -670,14 +836,15 @@ graph LR;
 </ul>
 </section>
 <section id="topic-modeling">
-<h3><span class="section-number">5.5.1.6. </span>topic modeling<a class="headerlink" href="#topic-modeling" title="Link to this heading">#</a></h3>
+<h3>Topic modeling<a class="headerlink" href="#topic-modeling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>similar, try to discover topics in a model (which maybe can be linearly combined to produce the original document)</p></li>
 <li><p>ex. LDA - generative model: posits that each document is a mixture of a <strong>small number of topics</strong> and that <strong>each word’s presence is attributable to one of the document’s topics</strong></p></li>
 </ul>
 </section>
 <section id="sparse-coding-sparse-dictionary-learning">
-<h3><span class="section-number">5.5.1.7. </span>sparse coding = sparse dictionary learning<a class="headerlink" href="#sparse-coding-sparse-dictionary-learning" title="Link to this heading">#</a></h3>
+<h3>Sparse coding = sparse dictionary learning<a class="headerlink" href="#sparse-coding-sparse-dictionary-learning" title="Link to this heading">#</a></h3>
+<p class="section-lead">Each input is written as a <span class="cblue">reconstruction</span> from a few dictionary columns, with an <span class="math notranslate nohighlight">\(\ell_1\)</span> <span class="corange">sparsity penalty</span> on the codes <span class="math notranslate nohighlight">\(a^{(t)}\)</span>. Learning alternates between the codes and the dictionary <span class="math notranslate nohighlight">\(D\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min \cblue{\vert \vert \mathbf{x^{(t)}} - \mathbf{Da^{(t)}}\vert \vert _2^2} + \corange{\lambda \vert \vert \mathbf{a^{(t)}}\vert \vert _1}\]</div>
 <ul class="simple">
@@ -700,7 +867,8 @@ graph LR;
 </ul>
 </section>
 <section id="ica">
-<h3><span class="section-number">5.5.1.8. </span>ica<a class="headerlink" href="#ica" title="Link to this heading">#</a></h3>
+<h3>ICA<a class="headerlink" href="#ica" title="Link to this heading">#</a></h3>
+<p class="section-lead">ICA assumes the data are a linear mix <span class="math notranslate nohighlight">\(X = Az\)</span> of independent, non-Gaussian sources and tries to unmix them. PCA only makes components uncorrelated; ICA asks for full independence.</p>
 <ul class="simple">
 <li><p>overview</p>
 <ul>
@@ -744,7 +912,7 @@ graph LR;
 </ul>
 </li>
 <li><p>ICA learns components which are completely independent, whereas PCA learns orthogonal components</p></li>
-<li><p><strong>non-linear ica</strong>: <span class="math notranslate nohighlight">\(X \approx f(z)\)</span>, where assumptions on <span class="math notranslate nohighlight">\(z\)</span> are the same, but <span class="math notranslate nohighlight">\(f\)</span> can be nonlinear</p>
+<li><p><span id="def-non-linear-ica" class="def-anchor"></span><strong>non-linear ica</strong>: <span class="math notranslate nohighlight">\(X \approx f(z)\)</span>, where assumptions on <span class="math notranslate nohighlight">\(z\)</span> are the same, but <span class="math notranslate nohighlight">\(f\)</span> can be nonlinear</p>
 <ul>
 <li><p>to obtain identifiability, we need to restrict <span class="math notranslate nohighlight">\(f\)</span> and/or constrain the distr of the sources <span class="math notranslate nohighlight">\(z\)</span></p></li>
 </ul>
@@ -756,19 +924,19 @@ graph LR;
 <li><p>then, that function <span class="math notranslate nohighlight">\(g(x)\)</span> is the cdf of <span class="math notranslate nohighlight">\(f(x)\)</span></p></li>
 </ul>
 </li>
-<li><p>in ICA, we do this for higher dims - want to map distr of $<span class="math notranslate nohighlight">\(x_1, ..., x_p\)</span><span class="math notranslate nohighlight">\( to \)</span><span class="math notranslate nohighlight">\(y_1, ..., y_p\)</span><span class="math notranslate nohighlight">\( where distr over \)</span>y_i$’s is uniform (implying that they are independent)</p>
+<li><p>in ICA, we do this for higher dims - want to map distr of <span class="math notranslate nohighlight">\(x_1, ..., x_p\)</span> to <span class="math notranslate nohighlight">\(y_1, ..., y_p\)</span> where distr over <span class="math notranslate nohighlight">\(y_i\)</span>’s is uniform (implying that they are independent)</p>
 <ul>
 <li><p>additionally we want the map to be information preserving</p></li>
 </ul>
 </li>
-<li><p>mathematically: <span class="math notranslate nohighlight">\(\underset{W} \max I(x; y) = \underset{W} \max H(y)\)</span> since $<span class="math notranslate nohighlight">\(H(y\vert x)\)</span>$ is zero (there is no randomness)</p>
+<li><p>mathematically: <span class="math notranslate nohighlight">\(\underset{W} \max I(x; y) = \underset{W} \max H(y)\)</span> since <span class="math notranslate nohighlight">\(H(y\vert x)\)</span> is zero (there is no randomness)</p>
 <ul>
 <li><p>assume <span class="math notranslate nohighlight">\(y = \sigma (W x)\)</span> where <span class="math notranslate nohighlight">\(\sigma\)</span> is elementwise</p></li>
 <li><p>(then S = WX, <span class="math notranslate nohighlight">\(W=A^{-1}\)</span>)</p></li>
-<li><p>requires certain assumptions so that <span class="math notranslate nohighlight">\(p(y)\)</span> is still a distr: $<span class="math notranslate nohighlight">\(p(y) = p(x) / \vert J\vert \)</span>$ where J is Jacobian</p></li>
+<li><p>requires certain assumptions so that <span class="math notranslate nohighlight">\(p(y)\)</span> is still a distr: <span class="math notranslate nohighlight">\(p(y) = p(x) / \vert J\vert\)</span> where J is Jacobian</p></li>
 </ul>
 </li>
-<li><p>learn W via gradient ascent $<span class="math notranslate nohighlight">\(\Delta W \propto \partial / \partial W (\log \vert J\vert )\)</span>$</p>
+<li><p>learn W via gradient ascent <span class="math notranslate nohighlight">\(\Delta W \propto \partial / \partial W (\log \vert J\vert )\)</span></p>
 <ul>
 <li><p>there is now something faster called fast ICA</p></li>
 </ul>
@@ -780,12 +948,13 @@ graph LR;
 </ul>
 </section>
 <section id="topological">
-<h3><span class="section-number">5.5.1.9. </span>topological<a class="headerlink" href="#topological" title="Link to this heading">#</a></h3>
-<ul>
-<li><p><strong>multidimensional scaling (MDS)</strong></p>
+<h3>Topological<a class="headerlink" href="#topological" title="Link to this heading">#</a></h3>
+<p class="section-lead">These methods place points in two or three dimensions so that distances or neighborhoods from the original space survive. MDS matches distances; t-SNE matches neighbor probabilities; PaCMAP balances attractive and repulsive forces between pairs.</p>
 <ul class="simple">
+<li><p><strong>multidimensional scaling (MDS)</strong></p>
+<ul>
 <li><p>given a a distance matrix, MDS tries to recover low-dim coordinates s.t. distances are preserved</p></li>
-<li><p>minimizes goodness-of-fit measure called <em>stress</em> = $<span class="math notranslate nohighlight">\(\sqrt{\sum (d_{ij} - \hat{d}_{ij})^2 / \sum d_{ij}^2}\)</span>$</p></li>
+<li><p>minimizes goodness-of-fit measure called <em>stress</em> = <span class="math notranslate nohighlight">\(\sqrt{\sum (d_{ij} - \hat{d}_{ij})^2 / \sum d_{ij}^2}\)</span></p></li>
 <li><p>visualize in low dims the similarity between individial points in high-dim dataset</p></li>
 <li><p>classical MDS assumes Euclidean distances and uses eigenvalues</p>
 <ul>
@@ -821,9 +990,9 @@ graph LR;
 </ul>
 </li>
 <li><p><strong>t-sne</strong> preserves pairwise neighbors</p>
-<ul class="simple">
+<ul>
 <li><p><a class="reference external" href="https://distill.pub/2016/misread-tsne/">t-sne tutorial</a></p></li>
-<li><p>t-sne tries to match pairwise distances between the original data and the latent space data: $<span class="math notranslate nohighlight">\(\mathbb{E}_{\substack{\mathbf{z}_i \sim q_{\boldsymbol{\phi}}(\mathbf{z} \vert \mathbf{x}_i) \\ \mathbf{z}_j \sim q_{\boldsymbol{\phi}}(\mathbf{z} \vert \mathbf{x}_j)}} \underbrace{\left[ \sum_j \mathbb{KL}\Big[ \cblue{\overbrace{p(\mathbf{x}_j \vert \mathbf{x}_i)}^{\text{dist in original space}}} \Vert \corange{\underbrace{q_{\boldsymbol{\phi}}(\mathbf{z}_j \vert \mathbf{z}_i)}_{\text{dist in latent space}}} \Big] \right]}_{\text{pairwise similarity}}\)</span>$</p></li>
+<li><p>t-sne tries to match pairwise distances between the original data and the latent space data: <span class="math notranslate nohighlight">\(\mathbb{E}_{\substack{\mathbf{z}_i \sim q_{\boldsymbol{\phi}}(\mathbf{z} \vert \mathbf{x}_i) \\ \mathbf{z}_j \sim q_{\boldsymbol{\phi}}(\mathbf{z} \vert \mathbf{x}_j)}} \underbrace{\left[ \sum_j \mathbb{KL}\Big[ \cblue{\overbrace{p(\mathbf{x}_j \vert \mathbf{x}_i)}^{\text{dist in original space}}} \Vert \corange{\underbrace{q_{\boldsymbol{\phi}}(\mathbf{z}_j \vert \mathbf{z}_i)}_{\text{dist in latent space}}} \Big] \right]}_{\text{pairwise similarity}}\)</span></p></li>
 <li><p><span class="cblue">original data</span></p>
 <ul>
 <li><p>distances are converted to probabilities by assuming points are means of Gaussians, then normalizing over all pairs</p>
@@ -842,31 +1011,29 @@ graph LR;
 </ul>
 </li>
 <li><p>kernels have some parameters that can be picked or learned</p></li>
-<li><p><strong>perplexity</strong> - how to balance between local/global aspects of data</p></li>
+<li><p><span id="def-perplexity" class="def-anchor"></span><strong>perplexity</strong> - how to balance between local/global aspects of data</p></li>
 </ul>
 </li>
 <li><p>optimization - for optimization purposes, this can be decomposed into attractive/repulsive forces</p></li>
 </ul>
 </li>
-<li><p><strong>umap</strong>: Uniform Manifold Approximation and Projection for Dimension Reduction</p>
-<ul class="simple">
+<li><p><span id="def-umap" class="def-anchor"></span><strong>umap</strong>: Uniform Manifold Approximation and Projection for Dimension Reduction</p>
+<ul>
 <li><p><a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/how_umap_works.html">umap tutorial</a></p></li>
 </ul>
 </li>
 <li><p><strong>pacmap</strong></p>
 <ul>
-<li><p>pacmap’s loss: $<span class="math notranslate nohighlight">\(\text{Loss}^{\text{PaCMAP}} = \cblue{w_{\text{neighbors}} \text{Loss}_{\text{neighbors}}} + \corange{w_{MN} \text{Loss}_{MN}} + \cgreen{w_{FP} \text{Loss}_{FP}}\)</span>$</p>
+<li><p>pacmap’s loss: <span class="math notranslate nohighlight">\(\text{Loss}^{\text{PaCMAP}} = \cblue{w_{\text{neighbors}} \text{Loss}_{\text{neighbors}}} + \corange{w_{MN} \text{Loss}_{MN}} + \cgreen{w_{FP} \text{Loss}_{FP}}\)</span></p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\text{distance}(i,j) := \Vert \boldsymbol{y}_i - \boldsymbol{y}_j \Vert^2 + 1\]</div>
-</li>
-<li><p><span class="cblue">neighbors (attractive)</span>: $<span class="math notranslate nohighlight">\(\cblue{\text{Loss}_{\text{neighbors}}} = \frac{\text{distance}(i,j)}{\text{distance}(i,j) + 10}\)</span>$</p></li>
-<li><p><span class="corange">mid-near pairs (mild attractive)</span>: $<span class="math notranslate nohighlight">\(\corange{\text{Loss}_{\text{MN}}} = \frac{\text{distance}(i,l)}{\text{distance}(i,l) + 10000}\)</span>$</p></li>
-<li><p><span class="cgreen">further points (repulsive)</span>: $<span class="math notranslate nohighlight">\(\cgreen{\text{Loss}_{\text{FP}}} = \frac{1}{\text{distance}(i,l) + 1}\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{distance}(i,j) := \Vert \boldsymbol{y}_i - \boldsymbol{y}_j \Vert^2 + 1\)</span></p></li>
+<li><p><span class="cblue">neighbors (attractive)</span>: <span class="math notranslate nohighlight">\(\cblue{\text{Loss}_{\text{neighbors}}} = \frac{\text{distance}(i,j)}{\text{distance}(i,j) + 10}\)</span></p></li>
+<li><p><span class="corange">mid-near pairs (mild attractive)</span>: <span class="math notranslate nohighlight">\(\corange{\text{Loss}_{\text{MN}}} = \frac{\text{distance}(i,l)}{\text{distance}(i,l) + 10000}\)</span></p></li>
+<li><p><span class="cgreen">further points (repulsive)</span>: <span class="math notranslate nohighlight">\(\cgreen{\text{Loss}_{\text{FP}}} = \frac{1}{\text{distance}(i,l) + 1}\)</span></p></li>
 <li><p>weights change on a schedule</p>
-<ul class="simple">
-<li><p>stage 1 (1:100): $<span class="math notranslate nohighlight">\(w_{\text{neighbors}}\)</span><span class="math notranslate nohighlight">\( is medium (2), \)</span><span class="math notranslate nohighlight">\(w_{MN}\)</span><span class="math notranslate nohighlight">\( goes from huge to small (1000 to 3), \)</span><span class="math notranslate nohighlight">\(w_{FP}\)</span>$ is medium (1)</p></li>
-<li><p>stage 2 (101-200): $<span class="math notranslate nohighlight">\(w_{\text{neighbors}}\)</span><span class="math notranslate nohighlight">\( is large (3), \)</span><span class="math notranslate nohighlight">\(w_{MN}\)</span><span class="math notranslate nohighlight">\( is small (3), \)</span><span class="math notranslate nohighlight">\(w_{FP}\)</span>$ is medium (1)</p></li>
+<ul>
+<li><p>stage 1 (1:100): <span class="math notranslate nohighlight">\(w_{\text{neighbors}}\)</span> is medium (2), <span class="math notranslate nohighlight">\(w_{MN}\)</span> goes from huge to small (1000 to 3), <span class="math notranslate nohighlight">\(w_{FP}\)</span> is medium (1)</p></li>
+<li><p>stage 2 (101-200): <span class="math notranslate nohighlight">\(w_{\text{neighbors}}\)</span> is large (3), <span class="math notranslate nohighlight">\(w_{MN}\)</span> is small (3), <span class="math notranslate nohighlight">\(w_{FP}\)</span> is medium (1)</p></li>
 </ul>
 </li>
 </ul>
@@ -876,78 +1043,135 @@ graph LR;
 </ul>
 </section>
 <section id="misc">
-<h3><span class="section-number">5.5.1.10. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h3>
-<ul>
+<h3>Misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h3>
+<ul class="simple">
 <li><p>Sparse Component Analysis (<a class="reference external" href="https://www.biorxiv.org/content/10.1101/2024.02.05.578988v1.full.pdf">zimnik…cunningham, paninski, churchland, &amp; glaser, 2024</a>)</p>
 <ul>
+<li><p><span class="math notranslate nohighlight">\(\arg \min _{U, V}\left(\cblue{\vert W(X-X U V)\vert _F^2}+\corange{\lambda_{\text {sparse }}\vert X U\vert _1}+\cgreen{\lambda_{\text {orth }}\left\vert V V^{\top}-I\right\vert _F^2}\right)\)</span></p>
+<ul>
+<li><p><span class="cblue">reconstruction</span> + <span class="corange">sparsity</span> + <span class="cgreen">orthogonality</span></p></li>
+<li><p>where <span class="math notranslate nohighlight">\(U\)</span> is encoding matrix and <span class="math notranslate nohighlight">\(V\)</span> is decoding, <span class="cgreen">the final loss term is imposing orthogonality of the columns of V</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>NNK-Means: Dictionary Learning using Non-Negative Kernel regression (<a class="reference external" href="https://arxiv.org/abs/2110.08212">shekkizhar &amp; ortega, 2021</a>)</p>
+<ul>
+<li><p>data summarization - represent large datasets by a small set of elements (e.g. k-means)</p></li>
+<li><p>here, use dictionary learning instead of k-means to summarize data</p>
+<ul>
+<li><p>each dictionary element is a sparse combination of inputs</p></li>
+<li><p>use non-negative kernel regesion (NNK) to measure distances when designing the dictionary (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9054425/">shekkizar &amp; ortega, 2020</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="generative-models">
+<span id="sec-unsupervised-generative-models"></span><h2>Generative models<a class="headerlink" href="#generative-models" title="Link to this heading">#</a></h2>
+<p class="section-lead">Maximizing likelihood is the same as minimizing the KL divergence from the data distribution to the model, which is why most models below are trained by (a bound on) likelihood.</p>
+<ul>
+<li><p>overview: https://blog.openai.com/generative-models/</p></li>
+<li><p>notes for <a class="reference external" href="https://sites.google.com/view/berkeley-cs294-158-sp20/home">deep unsupervised learning</a></p></li>
+<li><p>MLE equivalent to minimizing KL for <a class="term-link" href="../stat/stat.html#def-density-estimation" data-def="given samples of X, estimate P(X) · Stat basics">density estimation</a>:</p>
+<ul>
 <li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\arg \min _{U, V}\left(\cblue{\vert W(X-X U V)\vert _F^2}+\corange{\lambda_{\text {sparse }}\vert X U\vert _1}+\cgreen{\lambda_{\text {orth }}\left\vert V V^{\top}-I\right\vert _F^2}\right)$$&lt;!-- --&gt;
-    - &lt;span class=&quot;cblue&quot;&gt;reconstruction&lt;/span&gt; + &lt;span class=&quot;corange&quot;&gt;sparsity&lt;/span&gt; + &lt;span class=&quot;cgreen&quot;&gt;orthogonality&lt;/span&gt;
-    - where $U$ is encoding matrix and $V$ is decoding, &lt;span class=&quot;cgreen&quot;&gt;the final loss term is imposing orthogonality of the columns of V&lt;/span&gt;
-- NNK-Means: Dictionary Learning using Non-Negative Kernel regression ([shekkizhar &amp; ortega, 2021](https://arxiv.org/abs/2110.08212))
-  - data summarization - represent large datasets by a small set of elements (e.g. k-means)
-  - here, use dictionary learning instead of k-means to summarize data
-    - each dictionary element is a sparse combination of inputs
-    - use non-negative kernel regesion (NNK) to measure distances when designing the dictionary ([shekkizar &amp; ortega, 2020](https://ieeexplore.ieee.org/abstract/document/9054425/))\\## generative models\\\begin{split}- overview: https://blog.openai.com/generative-models/
-- notes for [deep unsupervised learning](https://sites.google.com/view/berkeley-cs294-158-sp20/home)
-- MLE equivalent to minimizing KL for density estimation:
-  - $$\min_\theta KL(p\vert \vert  p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]$$&lt;!-- --&gt;\end{split}\\### autoregressive models\\- model input based on input
-  - $p(x_1)$ is a histogram (learned prior)
-  - $$p(x_2\vert x_1)$$ is a distr. ouptut by a neural net (output is logits, followed by softmax)
-  - all conditional distrs. can be given by neural net
-- can model using an RNN: e.g. char-rnn (karpathy, 2015): $$\log p(x) - \sum_i \log p(x_i \vert  x_{1:i-1})$$, where each $x_i$ is a character
-- can also use masks
-  - masked autoencoder for distr. estimation - mask some weights so that autoencoder output is a factorized distr.
-    - pick an odering for the pixels to be conditioned on
-  - ex. 1d masked convolution on wavenet (use past points to predict future points)
-  - ex. pixelcnn - use masking for pixels to the topleft
-  - ex. gated pixelcnn - fixes issue with blindspot
-  - ex. pixelcnn++ - nearby pixel values are likely to cooccur
-  - ex. pixelSNAIL - uses attention and can get wider receptive field
-  - **attention:**$A(q, K, V) = \sum_i \frac{\exp(q \cdot k_i)}{\sum_j \exp (q \cdot k_j)} v_i$
-    - masked attention can be more flexible than masked convolution
-  - can do super resolution, hierarchical autoregressive model
-- problems
-  - slow - have to sample each pixel (can speed up by caching activations)
-    - can also speed up by assuming some pixels conditionally independent
-- hard to get a latent reprsentation
-  - can use **Fisher score** $\nabla_\theta \log p_\theta (x)$\\
-### vaes\\- [intuitively understanding vae](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
-- [VAE tutorial](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/)
-  - minimize $$\mathbb E_{q_\phi(z\vert x)}[\cblue{\log p_\theta(x\vert z)}- \corange{D_{KL}(q_\phi(z\vert x)\:\vert \vert \:p(z))}]\end{aligned}\end{align} \]</div>
+\[\begin{split}\min_\theta KL(p\vert \vert  p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]\end{split}\]</div>
+</li>
+</ul>
+</li>
+</ul>
+<section id="autoregressive-models">
+<h3>Autoregressive models<a class="headerlink" href="#autoregressive-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">Factor <span class="math notranslate nohighlight">\(p(x)\)</span> as a product of conditionals <span class="math notranslate nohighlight">\(p(x_i\vert x_{1:i-1})\)</span>, each given by a neural net. Masks keep each output from seeing the inputs it is predicting. Sampling is slow because it goes one variable at a time.</p>
 <ul class="simple">
+<li><p>model input based on input</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(x_1)\)</span> is a histogram (learned prior)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x_2\vert x_1)\)</span> is a distr. ouptut by a neural net (output is logits, followed by softmax)</p></li>
+<li><p>all conditional distrs. can be given by neural net</p></li>
+</ul>
+</li>
+<li><p>can model using an RNN: e.g. char-rnn (karpathy, 2015): <span class="math notranslate nohighlight">\(\log p(x) - \sum_i \log p(x_i \vert  x_{1:i-1})\)</span>, where each <span class="math notranslate nohighlight">\(x_i\)</span> is a character</p></li>
+<li><p>can also use masks</p>
+<ul>
+<li><p>masked autoencoder for distr. estimation - mask some weights so that autoencoder output is a factorized distr.</p>
+<ul>
+<li><p>pick an odering for the pixels to be conditioned on</p></li>
+</ul>
+</li>
+<li><p>ex. 1d masked convolution on wavenet (use past points to predict future points)</p></li>
+<li><p>ex. pixelcnn - use masking for pixels to the topleft</p></li>
+<li><p>ex. gated pixelcnn - fixes issue with blindspot</p></li>
+<li><p>ex. pixelcnn++ - nearby pixel values are likely to cooccur</p></li>
+<li><p>ex. pixelSNAIL - uses attention and can get wider <a class="term-link" href="../neuro/comp_neuro.html#def-receptive-field" data-def="the things that make a neuron fire · Computational neuroscience">receptive field</a></p></li>
+<li><p><strong>attention:</strong><span class="math notranslate nohighlight">\(A(q, K, V) = \sum_i \frac{\exp(q \cdot k_i)}{\sum_j \exp (q \cdot k_j)} v_i\)</span></p>
+<ul>
+<li><p>masked attention can be more flexible than masked convolution</p></li>
+</ul>
+</li>
+<li><p>can do super resolution, hierarchical autoregressive model</p></li>
+</ul>
+</li>
+<li><p>problems</p>
+<ul>
+<li><p>slow - have to sample each pixel (can speed up by caching activations)</p>
+<ul>
+<li><p>can also speed up by assuming some pixels conditionally independent</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>hard to get a latent reprsentation</p>
+<ul>
+<li><p>can use <strong>Fisher score</strong> <span class="math notranslate nohighlight">\(\nabla_\theta \log p_\theta (x)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="vaes">
+<h3>VAEs<a class="headerlink" href="#vaes" title="Link to this heading">#</a></h3>
+<p class="section-lead">A VAE is an autoencoder whose code is pushed toward a standard normal. The posterior <span class="math notranslate nohighlight">\(p(z\vert x)\)</span> can’t be computed, so an encoder <span class="math notranslate nohighlight">\(q_\phi(z\vert x)\)</span> approximates it and training maximizes the <span class="cgreen">ELBO</span>, a lower bound on <span class="math notranslate nohighlight">\(\log p(x)\)</span>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf">intuitively understanding vae</a></p></li>
+<li><p><a class="reference external" href="https://jaan.io/what-is-variational-autoencoder-vae-tutorial/">VAE tutorial</a></p>
+<ul>
+<li><p>minimize <span class="math notranslate nohighlight">\(\mathbb E_{q_\phi(z\vert x)}[\cblue{\log p_\theta(x\vert z)}- \corange{D_{KL}(q_\phi(z\vert x)\:\vert \vert \:p(z))}]\)</span></p>
+<ul>
 <li><p><span class="cblue">reconstruction</span> - <span class="corange">KL to prior</span></p></li>
 <li><p><span class="corange">want latent <span class="math notranslate nohighlight">\(z\)</span> to be standard normal</span> - keeps the space smooth</p></li>
 </ul>
 </li>
-<li><p>hard to directly calculate $<span class="math notranslate nohighlight">\(p(z\vert x)\)</span><span class="math notranslate nohighlight">\(, since it includes \)</span>p(x)<span class="math notranslate nohighlight">\(, so we approximate it with the variational posterior \)</span><span class="math notranslate nohighlight">\(q_\phi (z\vert x)\)</span>$, which we assume to be Gaussian</p></li>
-<li><p>goal: $<span class="math notranslate nohighlight">\(\text{argmin}_\phi \cpurple{KL(q_\phi(z\vert x) \:\vert \vert  \:p(z\vert x))}\)</span>$</p>
-<ul class="simple">
-<li><p>still don’t have acess to <span class="math notranslate nohighlight">\(p(x)\)</span>, so rewrite $<span class="math notranslate nohighlight">\(\log p(x) = \cgreen{ELBO(\phi)} + \cpurple{KL(q_\phi(z\vert x) \: \vert \vert  \: p(z\vert x))}\)</span>$</p></li>
-<li><p>instead of minimizing <span class="cpurple"><span class="math notranslate nohighlight">\(KL\)</span></span>, we can just maximize the $<span class="math notranslate nohighlight">\(\cgreen{ELBO}=\mathbb E_q [\log p(x, z)] - \mathbb E_q[\log q_\phi (z\vert x)]\)</span>$</p></li>
+<li><p>hard to directly calculate <span class="math notranslate nohighlight">\(p(z\vert x)\)</span>, since it includes <span class="math notranslate nohighlight">\(p(x)\)</span>, so we approximate it with the variational posterior <span class="math notranslate nohighlight">\(q_\phi (z\vert x)\)</span>, which we assume to be Gaussian</p></li>
+<li><p>goal: <span class="math notranslate nohighlight">\(\text{argmin}_\phi \cpurple{KL(q_\phi(z\vert x) \:\vert \vert  \:p(z\vert x))}\)</span></p>
+<ul>
+<li><p>still don’t have acess to <span class="math notranslate nohighlight">\(p(x)\)</span>, so rewrite <span class="math notranslate nohighlight">\(\log p(x) = \cgreen{ELBO(\phi)} + \cpurple{KL(q_\phi(z\vert x) \: \vert \vert  \: p(z\vert x))}\)</span></p></li>
+<li><p>instead of minimizing <span class="cpurple"><span class="math notranslate nohighlight">\(KL\)</span></span>, we can just maximize the <span class="math notranslate nohighlight">\(\cgreen{ELBO}=\mathbb E_q [\log p(x, z)] - \mathbb E_q[\log q_\phi (z\vert x)]\)</span></p></li>
 </ul>
 </li>
-<li><p><strong>mean-field variational inference</strong> - each point has its own params (e.g. different encoder DNN) vs <strong>amortized inference</strong> - same encoder for all points</p></li>
+<li><p><span id="def-mean-field-variational-inference" class="def-anchor"></span><strong>mean-field variational inference</strong> - each point has its own params (e.g. different encoder DNN) vs <strong>amortized inference</strong> - same encoder for all points</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://pyro.ai/examples/vae.html">pyro explanation</a></p>
-<ul class="simple">
+<ul>
 <li><p>want large evidence <span class="math notranslate nohighlight">\(\log p_\theta (\mathbf x)\)</span> (means model is a good fit to the data)</p></li>
-<li><p>want good fit to the posterior $<span class="math notranslate nohighlight">\(q_\phi(z\vert x)\)</span>$</p></li>
+<li><p>want good fit to the posterior <span class="math notranslate nohighlight">\(q_\phi(z\vert x)\)</span></p></li>
 </ul>
 </li>
 <li><p>just an autoencoder where the middle hidden layer is supposed to be unit gaussian</p>
-<ul class="simple">
+<ul>
 <li><p>add a kl loss to measure how well it matches a unit gaussian</p>
 <ul>
 <li><p>for calculation purposes, encoder actually produces means / vars of gaussians in hidden layer rather than the continuous values….</p></li>
 </ul>
 </li>
-<li><p>this kl loss is not too complicated…<a class="reference external" href="https://web.stanford.edu/class/cs294a/sparseAutoencoder.pdf">https://web.stanford.edu/class/cs294a/sparseAutoencoder.pdf</a></p></li>
+<li><p>this kl loss is not too complicated…https://web.stanford.edu/class/cs294a/sparseAutoencoder.pdf</p></li>
 </ul>
 </li>
 <li><p>generally less sharp than GANs</p>
-<ul class="simple">
+<ul>
 <li><p>uses mse loss instead of gan loss…</p></li>
 <li><p>intuition: vaes put mass between modes while GANs push mass towards modes</p></li>
 </ul>
@@ -956,14 +1180,15 @@ graph LR;
 </ul>
 </section>
 <section id="gans">
-<h3><span class="section-number">5.5.1.11. </span>gans<a class="headerlink" href="#gans" title="Link to this heading">#</a></h3>
+<h3>GANs<a class="headerlink" href="#gans" title="Link to this heading">#</a></h3>
+<p class="section-lead">A generator <span class="math notranslate nohighlight">\(G\)</span> and a discriminator <span class="math notranslate nohighlight">\(D\)</span> play a game: <span class="math notranslate nohighlight">\(D\)</span> tries to tell data from samples and <span class="math notranslate nohighlight">\(G\)</span> tries to fool it. With no likelihood to report, GANs are evaluated with scores like the inception score and FID.</p>
 <ul>
 <li><p>evaluating gans</p>
 <ul class="simple">
 <li><p>don’t have explicit objective like likelihood anymore</p></li>
 <li><p>kernel density = parzen-window density based on samples yields likelihood</p></li>
-<li><p>inception score $<span class="math notranslate nohighlight">\(IS(\mathbf x) = \exp(\cblue{\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}}} - \corange{\underbrace{H(\mathbf y\vert \mathbf x)}_{\text{each image should be distinctly recognizable}}})\)</span>$</p></li>
-<li><p><strong>FID</strong> - Frechet inception score works directly on embedded features from inception v3 model</p>
+<li><p>inception score <span class="math notranslate nohighlight">\(IS(\mathbf x) = \exp(\cblue{\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}}} - \corange{\underbrace{H(\mathbf y\vert \mathbf x)}_{\text{each image should be distinctly recognizable}}})\)</span></p></li>
+<li><p><span id="def-fid" class="def-anchor"></span><strong>FID</strong> - Frechet inception score works directly on embedded features from inception v3 model</p>
 <ul>
 <li><p>embed population of images and calculate mean + variance in embedding space</p></li>
 <li><p>measure distance between these means / variances for real/synthetic images using Frechet distance = Wasseterstein-2 distance</p></li>
@@ -973,7 +1198,13 @@ graph LR;
 </li>
 <li><p>infogan</p>
 <ul>
-<li><img style="width: 650px; max-width: 100%;" src="../assets/infogan.svg" alt="GAN vs InfoGAN"/>
+<li><figure class="align-default" id="id3">
+<a class="note-figure reference internal image-reference" href="../../_images/infogan.svg"><img alt="A GAN's discriminator only asks which source an image came from. InfoGAN also feeds a code C to the generator and adds a second head that predicts the code from the image. The extra head shares the di" class="note-figure" src="../../_images/infogan.svg" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> A GAN’s discriminator only asks which source an image came from. InfoGAN also feeds a code C to the generator and adds a second head that predicts the code from the image. The extra head shares the discriminator’s network, so it is cheap.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -1004,7 +1235,7 @@ graph LR;
 <li><p>like a binary classifier: 1 if from data, 0 from G</p></li>
 </ul>
 </li>
-<li><p><em>adversarial sample</em> - from G, but tricks D to predicting 1</p></li>
+<li><p><span id="def-adversarial-sample" class="def-anchor"></span><em>adversarial sample</em> - from G, but tricks D to predicting 1</p></li>
 </ul>
 </li>
 <li><p>training goals</p>
@@ -1055,7 +1286,8 @@ graph LR;
 </ul>
 </section>
 <section id="diffusion-energy-based-models">
-<h3><span class="section-number">5.5.1.12. </span>diffusion / energy-based models<a class="headerlink" href="#diffusion-energy-based-models" title="Link to this heading">#</a></h3>
+<h3>Diffusion / energy-based models<a class="headerlink" href="#diffusion-energy-based-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">A fixed procedure gradually turns data into noise, and a network learns to undo it one step at a time. One network with shared parameters handles every noise level.</p>
 <ul class="simple">
 <li><p>first describe a procedure for gradually turning data into noise</p></li>
 <li><p>then train a DNN to invert this procedure step-by-step</p>
@@ -1069,7 +1301,7 @@ graph LR;
 <li><p>really started earlier: Deep Unsupervised Learning using Nonequilibrium Thermodynamics (<a class="reference external" href="https://arxiv.org/abs/1503.03585">sohl-dickstein, …, ganguli, 2015</a>)</p></li>
 </ul>
 </li>
-<li><p>Improved Denoising Diffusion Probabilistic Models ([2021](<a class="reference external" href="https://arxiv.org/abs/2102.0">https://arxiv.org/abs/2102.0</a> 9672))</p>
+<li><p>Improved Denoising Diffusion Probabilistic Models ([2021](https://arxiv.org/abs/2102.0 9672))</p>
 <ul>
 <li><p>can make this class-conditionnal by incorporating classifier into the model which inverts the noise</p></li>
 <li><p>Diffusion Models Beat GANs on Image Synthesis (<a class="reference external" href="https://arxiv.org/abs/2105.05233">2021</a>)</p></li>
@@ -1078,14 +1310,15 @@ graph LR;
 </ul>
 </section>
 <section id="flow-models">
-<h3><span class="section-number">5.5.1.13. </span>flow models<a class="headerlink" href="#flow-models" title="Link to this heading">#</a></h3>
+<h3>Flow models<a class="headerlink" href="#flow-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">A flow maps noise <span class="math notranslate nohighlight">\(z\)</span> to data <span class="math notranslate nohighlight">\(x\)</span> through an invertible function, so the likelihood is exact by the change of variables formula. The work is in making the map invertible with a determinant that is cheap to compute.</p>
 <ul class="simple">
 <li><p>nice <a class="reference external" href="https://www.youtube.com/watch?v=DDq_pIfHqLs">flows/flow-matching video</a></p></li>
 <li><p>goal: learn generator function <span class="math notranslate nohighlight">\(G\)</span> to map gaussian samples z into real data samples x (like images)</p>
 <ul>
-<li><p>learn density $<span class="math notranslate nohighlight">\(p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left\vert \frac{\partial \mathbf{z}}{\partial \mathbf{x}}\right\vert \)</span><span class="math notranslate nohighlight">\( (because multiplying by \)</span>\partial x$ gives you the area under the density function)</p>
+<li><p>learn density <span class="math notranslate nohighlight">\(p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left\vert \frac{\partial \mathbf{z}}{\partial \mathbf{x}}\right\vert\)</span> (because multiplying by <span class="math notranslate nohighlight">\(\partial x\)</span> gives you the area under the density function)</p>
 <ul>
-<li><p>this generalizes to $<span class="math notranslate nohighlight">\(p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left\vert \operatorname{det}\left[\boldsymbol{J}_{\boldsymbol{G}^{-1}}\right]\right\vert \)</span>$ for multiple dimensions</p></li>
+<li><p>this generalizes to <span class="math notranslate nohighlight">\(p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left\vert \operatorname{det}\left[\boldsymbol{J}_{\boldsymbol{G}^{-1}}\right]\right\vert\)</span> for multiple dimensions</p></li>
 </ul>
 </li>
 </ul>
@@ -1102,7 +1335,7 @@ graph LR;
 <li><p>Residual flows (Invertible Residual Networks (<a class="reference external" href="https://arxiv.org/abs/1811.00995">behrmann…jacobsen, 2018</a>); Residual Flows (<a class="reference external" href="https://arxiv.org/abs/1906.02735">chen, behrmann, duvenaud &amp; jacobsen, 2019</a>)) - allow Jacobian to be relatively unconstrained but use approximations of neural net to allow invertibility</p>
 <ul>
 <li><p>output is input plus a contractive map function of the input</p></li>
-<li><p>good intro to implementing invertible neural networks: <a class="reference external" href="https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/">https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/</a></p>
+<li><p>good intro to implementing invertible neural networks: https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/</p>
 <ul>
 <li><p>input / output dimension need to have same dimension</p></li>
 <li><p>we can get around this by padding one of the dimensions with noise variables (and we might want to penalize these slightly during training)</p></li>
@@ -1139,7 +1372,7 @@ graph LR;
 <ul>
 <li><p><span class="math notranslate nohighlight">\(x \to z = f_\theta (x)\)</span>, where <span class="math notranslate nohighlight">\(z \sim p_Z(z)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p_\theta (x) dx = p(z)dz\)</span></p></li>
-<li><p>$<span class="math notranslate nohighlight">\(p_\theta(x) = p(f_\theta(x))\vert \frac {\partial f_\theta (x)}{\partial x}\vert \)</span>$<!-- --></p></li>
+<li><p><span class="math notranslate nohighlight">\(p_\theta(x) = p(f_\theta(x))\vert \frac {\partial f_\theta (x)}{\partial x}\vert\)</span></p></li>
 </ul>
 </li>
 <li><p>autoregressive flows</p>
@@ -1155,48 +1388,79 @@ graph LR;
 </li>
 <li><p>discrete data can be harder to model</p>
 <ul>
-<li><p><strong>dequantization</strong> - add noise (uniform) to discrete data</p></li>
+<li><p><span id="def-dequantization" class="def-anchor"></span><strong>dequantization</strong> - add noise (uniform) to discrete data</p></li>
 </ul>
 </li>
 </ul>
 </section>
 </section>
 <section id="self-semi-supervised">
-<h2><span class="section-number">5.5.2. </span>self/semi-supervised<a class="headerlink" href="#self-semi-supervised" title="Link to this heading">#</a></h2>
+<span id="sec-unsupervised-self-semi-supervised"></span><h2>Self/semi-supervised<a class="headerlink" href="#self-semi-supervised" title="Link to this heading">#</a></h2>
 <section id="self-supervised">
-<h3><span class="section-number">5.5.2.1. </span>self-supervised<a class="headerlink" href="#self-supervised" title="Link to this heading">#</a></h3>
+<h3>Self-supervised<a class="headerlink" href="#self-supervised" title="Link to this heading">#</a></h3>
+<p class="section-lead">Hide part of the input and predict it from the rest: the future from the past, a word from its context, color from grayscale. The task needs no labels; the representation learned along the way is what gets kept.</p>
 <ul class="simple">
-<li><p>blog: <a class="reference external" href="https://dawn.cs.stanford.edu/2017/07/16/weak-supervision/">https://dawn.cs.stanford.edu/2017/07/16/weak-supervision/</a></p>
+<li><p>blog: https://dawn.cs.stanford.edu/2017/07/16/weak-supervision/</p>
 <ul>
 <li><p>training data is hard to get</p></li>
 </ul>
 </li>
-<li><p>related paper: <a class="reference external" href="https://www.biorxiv.org/content/early/2018/06/16/339630">https://www.biorxiv.org/content/early/2018/06/16/339630</a></p></li>
+<li><p>related paper: https://www.biorxiv.org/content/early/2018/06/16/339630</p></li>
 </ul>
- <img style="width: 800px; max-width: 100%;" src="../assets/semi.svg" alt="How to get more labeled training data"/>
-- basics: predict some part of the input (e.g. present from past, bottom from top, etc.)
-  - ex. denoising autoencoder
-  - ex. in-painting (can use adversarial loss)
-  - ex. colorization, split-brain autoencoder
-    - colorization in video given first frame (helps learn tracking)
-  - ex. relative patch prediction
-  - ex. orientation prediction
-  - ex. nlp
-    - word2vec
-    - bert - predict blank word
-- contrastive predictive coding - translates generative modeling into classification
-  - *contrastive loss* = *InfoNCE loss* uses cross-entropy loss to measure how well the model can classify the “future” representation among a set of unrelated “negative” samples
-  - negative samples may be from other batches or other parts of the input
-- momentum contrast - queue of previous embeddings are "keys"
-  - match new embedding (query) against keys and use contrastive loss
-  - similar idea as memory bank
-- Unsupervised Visual Representation Learning by Context Prediction ([efros 15](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html))
-  - predict relative location of different patches
-- SimCLR ([chen et al, 2020](https://arxiv.org/abs/2002.05709))
-  - maximize agreement for different points after some augmentation (contrastive loss)
+<figure class="align-default" id="id4">
+<a class="note-figure reference internal image-reference" href="../../_images/semi.svg"><img alt="Ways to get more labeled training data, from hand labeling by experts to weak supervision, semi-supervised learning and transfer learning." class="note-figure" src="../../_images/semi.svg" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> Ways to get more labeled training data, from hand labeling by experts to weak supervision, semi-supervised learning and transfer learning.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>basics: predict some part of the input (e.g. present from past, bottom from top, etc.)</p>
+<ul>
+<li><p>ex. denoising autoencoder</p></li>
+<li><p>ex. in-painting (can use adversarial loss)</p></li>
+<li><p>ex. colorization, split-brain autoencoder</p>
+<ul>
+<li><p>colorization in video given first frame (helps learn tracking)</p></li>
+</ul>
+</li>
+<li><p>ex. relative patch prediction</p></li>
+<li><p>ex. orientation prediction</p></li>
+<li><p>ex. nlp</p>
+<ul>
+<li><p>word2vec</p></li>
+<li><p>bert - predict blank word</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>contrastive <a class="term-link" href="../neuro/vissci.html#def-predictive-coding" data-def="use surrounding regions to predict the center value · Vision">predictive coding</a> - translates generative modeling into classification</p>
+<ul>
+<li><p><span id="def-contrastive-loss" class="def-anchor"></span><em>contrastive loss</em> = <em>InfoNCE loss</em> uses cross-entropy loss to measure how well the model can classify the “future” representation among a set of unrelated “negative” samples</p></li>
+<li><p>negative samples may be from other batches or other parts of the input</p></li>
+</ul>
+</li>
+<li><p>momentum contrast - queue of previous embeddings are “keys”</p>
+<ul>
+<li><p>match new embedding (query) against keys and use contrastive loss</p></li>
+<li><p>similar idea as memory bank</p></li>
+</ul>
+</li>
+<li><p>Unsupervised Visual Representation Learning by Context Prediction (<a class="reference external" href="https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html">efros 15</a>)</p>
+<ul>
+<li><p>predict relative location of different patches</p></li>
+</ul>
+</li>
+<li><p>SimCLR (<a class="reference external" href="https://arxiv.org/abs/2002.05709">chen et al, 2020</a>)</p>
+<ul>
+<li><p>maximize agreement for different points after some augmentation (contrastive loss)</p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="semi-supervised">
-<h3><span class="section-number">5.5.2.2. </span>semi-supervised<a class="headerlink" href="#semi-supervised" title="Link to this heading">#</a></h3>
+<h3>Semi-supervised<a class="headerlink" href="#semi-supervised" title="Link to this heading">#</a></h3>
+<p class="section-lead">A few labels plus many unlabeled points. Most tricks push the model to be confident and consistent on the unlabeled data.</p>
 <ul class="simple">
 <li><p>make the classifier more confident</p>
 <ul>
@@ -1225,7 +1489,8 @@ graph LR;
 </ul>
 </section>
 <section id="compression">
-<h3><span class="section-number">5.5.2.3. </span>compression<a class="headerlink" href="#compression" title="Link to this heading">#</a></h3>
+<h3>Compression<a class="headerlink" href="#compression" title="Link to this heading">#</a></h3>
+<p class="section-lead">Compression and generative modeling are linked: a code is short when frequent symbols get short codewords, as in a Huffman code. Arithmetic coding encodes groups of symbols at once and gets better with a good autoregressive model.</p>
 <ul>
 <li><p>simplest - fixed-length code</p></li>
 <li><p>variable-length code</p>
@@ -1234,7 +1499,13 @@ graph LR;
 <li><p>general prefix-free code = binary tries</p>
 <ul>
 <li><p>codeword is path from froot to leaf</p></li>
-<li><img style="width: 560px; max-width: 100%;" src="../assets/trie.svg" alt="Huffman codeword trie"/>
+<li><figure class="align-default" id="id5">
+<a class="note-figure reference internal image-reference" href="../../_images/trie.svg"><img alt="A Huffman code (for the text ABRACADABRA!) drawn as a binary trie. Each codeword is the path from the root to a leaf, so the frequent A gets the one-bit code 0 and no codeword is a prefix of another." class="note-figure" src="../../_images/trie.svg" style="width: 560px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text"><span class="fig-num">Figure 5.</span> A Huffman code (for the text ABRACADABRA!) drawn as a binary trie. Each codeword is the path from the root to a leaf, so the frequent A gets the one-bit code 0 and no codeword is a prefix of another.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -1250,12 +1521,13 @@ graph LR;
 </ul>
 </section>
 <section id="contrastive-learning">
-<h3><span class="section-number">5.5.2.4. </span>contrastive learning<a class="headerlink" href="#contrastive-learning" title="Link to this heading">#</a></h3>
+<h3>Contrastive learning<a class="headerlink" href="#contrastive-learning" title="Link to this heading">#</a></h3>
+<p class="section-lead">InfoNCE is a cross-entropy over one <span class="cblue">positive pair</span> and <span class="corange">K negatives</span>: pull the two views of a point together, push other points away.</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(L_{\text {InfoNCE }}=-\log \frac{\cblue{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)}}{\cblue{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)}+\corange{\sum_{i=1}^K \exp \left(\operatorname{sim}\left(x, x_i^{-}\right) / \tau\right)}}\)</span></p>
 <ul class="simple">
 <li><p><span class="cblue">positive pair</span> vs. <span class="corange">K negatives</span></p></li>
-<li><p><em>sim(u, v)</em>: A similarity function</p></li>
+<li><p><span id="def-sim-u-v" class="def-anchor"></span><em>sim(u, v)</em>: A similarity function</p></li>
 <li><p><span class="math notranslate nohighlight">\(\tau\)</span> (temperature): A hyperparameter that scales the scores to control how “sharp” the probability distribution is</p>
 <ul>
 <li><p>gradient is proportional to <span class="math notranslate nohighlight">\(1/ \tau\)</span>, so lower (like <span class="math notranslate nohighlight">\(\tau &lt; 1\)</span>) makes it more sensitive to small differences in similarity score but also less stable to train</p></li>
@@ -1266,7 +1538,13 @@ graph LR;
 </li>
 <li><p>I-Con: A Unifying Framework for Representation Learning (<a class="reference external" href="https://arxiv.org/abs/2504.16929">alshammari…freeman, hamilton, 2025</a>)</p>
 <ul>
-<li><img style="width: 800px; max-width: 100%;" src="../assets/icon_table.svg" alt="I-Con periodic table of representation learning"/>
+<li><figure class="align-default" id="id6">
+<a class="note-figure reference internal image-reference" href="../../_images/icon_table.svg"><img alt="The I-Con table. Each method is a choice of supervisory distribution (column) and learned distribution (row), and the colors group them into dimensionality reduction, clustering, self-supervised and s" class="note-figure" src="../../_images/icon_table.svg" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text"><span class="fig-num">Figure 6.</span> The I-Con table. Each method is a choice of supervisory distribution (column) and learned distribution (row), and the colors group them into dimensionality reduction, clustering, self-supervised and supervised learning.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -1284,7 +1562,17 @@ graph LR;
 </li>
 <li><p>Automatically Discovering and Learning New Visual Categories with Ranking Statistics (<a class="reference external" href="https://arxiv.org/pdf/2002.05714.pdf">han et al. 2020</a>)</p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>K-means and Gaussian mixtures alternate assigning points to clusters and refitting the clusters; K-means assigns hard, a GMM soft, and both can stop at a local optimum.</p></li>
+<li><p>PCA finds orthogonal directions of greatest variance, the top eigenvectors of the covariance matrix, and each eigenvalue is the variance explained along its direction.</p></li>
+<li><p>ICA asks for independent, non-Gaussian components rather than merely uncorrelated ones; t-SNE, UMAP and PaCMAP keep local neighborhoods rather than global variance.</p></li>
+<li><p>Maximizing likelihood minimizes the KL divergence from the data to the model; autoregressive models and flows compute the likelihood exactly, VAEs maximize a lower bound (the ELBO), and GANs replace it with a learned discriminator.</p></li>
+<li><p>Self-supervised learning makes a prediction task from the data itself, and contrastive losses like InfoNCE pull two views of a point together while pushing other points away.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_disentanglement.html"><span class="related-part">Research overviews</span><span class="related-title">Disentanglement</span><span class="related-hook">Disentangled VAE losses and their variants, GAN latent spaces edited during or after training, weak supervision, and how disentanglement is measured.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../neuro/comp_neuro.html"><span class="related-part">Neuroscience</span><span class="related-title">Computational neuroscience</span><span class="related-hook">Models of neurons, neural codes and learning rules, then data-driven neuroscience, brain encoding models and neuro-inspired AI.</span></a></div></nav></section>
 </section>
 </section>
 
@@ -1319,20 +1607,20 @@ graph LR;
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="classification.html"
+       href="evaluation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.4. </span>classification</p>
+        <p class="prev-next-title">Evaluation</p>
       </div>
     </a>
     <a class="right-next"
-       href="deep_learning.html"
+       href="kernels.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.6. </span>deep learning</p>
+        <p class="prev-next-title">Kernels</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1352,27 +1640,36 @@ graph LR;
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">5.5.1. clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical">5.5.1.1. hierarchical</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partitional">5.5.1.2. partitional</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-clustering-j-10">5.5.1.3. statistical clustering (j 10)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-clustering">5.5.1.4. spectral clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">5.5.1.5. pca</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">5.5.1.6. topic modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding-sparse-dictionary-learning">5.5.1.7. sparse coding = sparse dictionary learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica">5.5.1.8. ica</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological">5.5.1.9. topological</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">5.5.1.10. misc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">5.5.1.11. gans</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-energy-based-models">5.5.1.12. diffusion / energy-based models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-models">5.5.1.13. flow models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">Clustering</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical">Hierarchical</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partitional">Partitional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-clustering-j-10">Statistical clustering (j 10)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-mixture-models-regression-classification-j-10">Conditional mixture models - regression/classification (j 10)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-semi-supervised">5.5.2. self/semi-supervised</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-supervised">5.5.2.1. self-supervised</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised">5.5.2.2. semi-supervised</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression">5.5.2.3. compression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-learning">5.5.2.4. contrastive learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dim-reduction">Dim reduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-clustering">Spectral clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-modeling">Topic modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding-sparse-dictionary-learning">Sparse coding = sparse dictionary learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ica">ICA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological">Topological</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models">Generative models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-models">Autoregressive models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes">VAEs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">GANs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-energy-based-models">Diffusion / energy-based models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-models">Flow models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-semi-supervised">Self/semi-supervised</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-supervised">Self-supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised">Semi-supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression">Compression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-learning">Contrastive learning</a></li>
 </ul>
 </li>
 </ul>
@@ -1399,7 +1696,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

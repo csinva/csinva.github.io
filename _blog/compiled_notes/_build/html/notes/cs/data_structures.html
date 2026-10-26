@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.1. data structures</title>
+    <title>Data structures &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/cs/data_structures';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.2. quantum" href="quantum.html" />
-    <link rel="prev" title="2. cs" href="cs_section.html" />
+    <link rel="next" title="Algorithms" href="algo.html" />
+    <link rel="prev" title="Computer science" href="../../parts/cs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs_section.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/cs/data_structures.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>data structures</h1>
+    <h1>Data structures</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,22 +471,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">2.1.1. lists</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">2.1.1.1. arrays and strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">2.1.1.2. queue - linkedlist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">2.1.1.3. stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">Arrays and strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">Queue - linkedlist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">Stack</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.1.2. trees</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">2.1.2.1. AVL Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">2.1.2.2. Red-Black Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">2.1.2.3. Splay Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">2.1.2.4. other trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">Trees</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">AVL Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">Red-Black Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">Splay Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">Other trees</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">2.1.3. heaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">2.1.4. Hash tables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">2.1.5. graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">Heaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">Hash tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">Graphs</a></li>
 </ul>
             </nav>
         </div>
@@ -448,19 +498,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-structures">
-<h1><span class="section-number">2.1. </span>data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h1>
+  <p class="breadcrumb"><a href="../../parts/cs.html">Computer science</a> &nbsp;·&nbsp; chapter 1 of 8 &nbsp;·&nbsp; 13 min read</p><section class="tex2jax_ignore mathjax_ignore" id="data-structures">
+<h1>Data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Lists, stacks and queues, search trees, heaps, hash tables and graphs, with their running times.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The chapter goes from simple to structured. Lists, stacks and queues come first, with a few interview-style tricks (a stack that tracks its min, a queue made of two stacks). Then trees: plain binary search trees can degrade to depth <span class="math notranslate nohighlight">\(n-1\)</span> on sorted input, and AVL, red-black and splay trees are three ways to keep the depth logarithmic, either strictly or amortized.</p>
+<p>Heaps give a priority queue stored in a plain array, and Huffman coding uses one to build prefix codes. Hash tables give constant-time find on average with no ordering, and most of that section is about collisions and the load factor <span class="math notranslate nohighlight">\(\lambda\)</span>. The last section covers graphs: representations, topological sort, Dijkstra’s shortest paths, and Prim’s and Kruskal’s minimum spanning trees.</p>
+</div>
 <section id="lists">
-<h2><span class="section-number">2.1.1. </span>lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<span id="sec-data-structures-lists"></span><h2>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<p class="section-lead">The simplest containers: arrays, and linked nodes arranged as a queue (insert at the back, remove from the front) or a stack (push and pop at the top). The bullets are interview-style tricks built from these pieces.</p>
 <section id="arrays-and-strings">
-<h3><span class="section-number">2.1.1.1. </span>arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Link to this heading">#</a></h3>
+<h3>Arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>start by checking for null, length 0</p></li>
 <li><p><em>ascii</em> is 128, extended is 256</p></li>
 </ul>
 </section>
 <section id="queue-linkedlist">
-<h3><span class="section-number">2.1.1.2. </span>queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Link to this heading">#</a></h3>
+<h3>Queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>has insert at back (enqueue) and remove from front (dequeue)</p></li>
 </ul>
@@ -482,7 +538,8 @@ document.write(`
 </ul>
 </section>
 <section id="stack">
-<h3><span class="section-number">2.1.1.3. </span>stack<a class="headerlink" href="#stack" title="Link to this heading">#</a></h3>
+<h3>Stack<a class="headerlink" href="#stack" title="Link to this heading">#</a></h3>
+<p class="section-lead">A stack is a linked list where push and pop both happen at the top node. Two stacks are enough to sort a stack or to simulate a queue, and storing the running min in each node gives a stack that reports its min.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Stack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
 <span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
 <span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -516,7 +573,8 @@ document.write(`
 </section>
 </section>
 <section id="trees">
-<h2><span class="section-number">2.1.2. </span>trees<a class="headerlink" href="#trees" title="Link to this heading">#</a></h2>
+<span id="sec-data-structures-trees"></span><h2>Trees<a class="headerlink" href="#trees" title="Link to this heading">#</a></h2>
+<p class="section-lead">Definitions first (height, depth, path length), then the binary search tree, where every key in the left subtree is smaller than the root and every key in the right subtree is larger. Find, insert and remove all cost the depth of the tree, which is why the balanced variants below exist.</p>
 <ul class="simple">
 <li><p>Balanced binary trees are generally logarithmic</p>
 <ul>
@@ -577,7 +635,8 @@ document.write(`
 </li>
 </ul>
 <section id="avl-tree">
-<h3><span class="section-number">2.1.2.1. </span>AVL Tree<a class="headerlink" href="#avl-tree" title="Link to this heading">#</a></h3>
+<h3>AVL Tree<a class="headerlink" href="#avl-tree" title="Link to this heading">#</a></h3>
+<p class="section-lead">AVL trees keep every node’s balance factor (right height minus left height) in <span class="math notranslate nohighlight">\(\{-1, 0, 1\}\)</span>. An insert that pushes a node to <span class="math notranslate nohighlight">\(\pm 2\)</span> is fixed with one or two rotations on the way back up.</p>
 <ul class="simple">
 <li><p>For every node in the tree, the height of the left and right sub-trees differs at most by 1</p>
 <ul>
@@ -597,7 +656,8 @@ document.write(`
 </ul>
 </section>
 <section id="red-black-trees">
-<h3><span class="section-number">2.1.2.2. </span>Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Link to this heading">#</a></h3>
+<h3>Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Link to this heading">#</a></h3>
+<p class="section-lead">Red-black trees balance more loosely than AVL trees: five coloring rules, the last being that every path from a node down to a leaf has the same number of black nodes. Insert starts with a red node and fixes violations case by case, depending on the colors of the parent and uncle.</p>
 <ul class="simple">
 <li><p>definition</p>
 <ol class="arabic simple">
@@ -645,7 +705,8 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="splay-trees">
-<h3><span class="section-number">2.1.2.3. </span>Splay Trees<a class="headerlink" href="#splay-trees" title="Link to this heading">#</a></h3>
+<h3>Splay Trees<a class="headerlink" href="#splay-trees" title="Link to this heading">#</a></h3>
+<p class="section-lead">Splay trees don’t store any balance information. Every access rotates the touched node up to the root, so a single operation can be slow but any sequence of <span class="math notranslate nohighlight">\(m\)</span> operations costs <span class="math notranslate nohighlight">\(O(m \log n)\)</span>.</p>
 <ul class="simple">
 <li><p>A self-balancing tree that keeps “recently” used nodes close to the top</p>
 <ul>
@@ -669,7 +730,8 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="other-trees">
-<h3><span class="section-number">2.1.2.4. </span>other trees<a class="headerlink" href="#other-trees" title="Link to this heading">#</a></h3>
+<h3>Other trees<a class="headerlink" href="#other-trees" title="Link to this heading">#</a></h3>
+<p class="section-lead">A grab bag of tree tasks: in-order traversal with an explicit stack instead of recursion, printing level by level, checking balance, and the trie, which stores a dictionary one character per node so that a prefix leads straight to its words.</p>
 <ul class="simple">
 <li><p>to go through <em>bst (without recursion) in order</em>, use stacks</p>
 <ul>
@@ -691,7 +753,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 <li><p>create pointers to nodes on the right</p></li>
 </ul>
 </li>
-<li><p><em>balanced tree</em> = no 2 nodes differ in height by more than 1</p>
+<li><p><span id="def-balanced-tree" class="def-anchor"></span><em>balanced tree</em> = no 2 nodes differ in height by more than 1</p>
 <ul>
 <li><p>(maxDepth - minDepth) &lt;=1</p></li>
 </ul>
@@ -711,7 +773,8 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </section>
 </section>
 <section id="heaps">
-<h2><span class="section-number">2.1.3. </span>heaps<a class="headerlink" href="#heaps" title="Link to this heading">#</a></h2>
+<span id="sec-data-structures-heaps"></span><h2>Heaps<a class="headerlink" href="#heaps" title="Link to this heading">#</a></h2>
+<p class="section-lead">A binary heap is an almost complete binary tree with each parent no larger than its children, so the minimum sits at the root. Because the tree is complete it fits in an array with no pointers. The section ends with compression, where Huffman coding builds its prefix codes from a min-heap of letter frequencies.</p>
 <ul>
 <li><p>Priority Queue - Binary Heap is always used for Priority Queue</p>
 <ol class="arabic simple">
@@ -817,14 +880,17 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </li>
 </ul>
 </li>
+</ul>
+<figure class="nb-viz-figure" id="viz-huffman-code"><div class="nb-viz" data-viz="huffman-code" data-params="{&quot;text&quot;: &quot;she sells sea shells by the sea shore&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Letter counts of the text become the leaf weights. Set merges to 0 and step: each merge pulls the two lightest trees off the min-heap and puts back their sum, so rare letters end up deep with long codes. Try a text like "aaaaaaab": the entropy drops well below 1 bit but every code still needs at least 1 bit.</figcaption></figure><ul class="simple">
 <li><p>ASCII characters - 7 bits, 128 characters (extended ASCII uses 8 bits, 256 characters)</p>
-<ul class="simple">
+<ul>
 <li><p>cost - total number of bits</p></li>
 <li><p>“straight cost” - bits / character = log2(numDistinctChars)</p></li>
 </ul>
 </li>
 <li><p>Priority Queue Example</p>
-<ul class="simple">
+<ul>
 <li><p>insert (x)</p></li>
 <li><p>deleteMin()</p></li>
 <li><p>findMin()</p></li>
@@ -836,8 +902,10 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="hash-tables">
-<h2><span class="section-number">2.1.4. </span>Hash tables<a class="headerlink" href="#hash-tables" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-data-structures-hash-tables"></span><h2>Hash tables<a class="headerlink" href="#hash-tables" title="Link to this heading">#</a></h2>
+<p class="section-lead">A hash function maps a key to a slot. When two keys land in the same slot there are two fixes: keep a list in every slot (separate chaining), or probe other slots in a fixed order (open addressing). Either way the cost of a find is governed by the load factor <span class="math notranslate nohighlight">\(\lambda\)</span> = elements / table size.</p>
+<figure class="nb-viz-figure" id="viz-hash-probing"><div class="nb-viz" data-viz="hash-probing" data-params="{&quot;method&quot;: &quot;linear&quot;, &quot;n&quot;: 20}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> The same keys inserted into a table of size 31 with hash(k) = k mod 31. Shading shows how many probes each key needed. Push \(n\) up under linear probing and watch occupied slots merge into long clusters; quadratic probing and double hashing jump out of them. Quadratic probing can fail to find a free slot before the table is full, and chaining keeps going past \(\lambda = 1\).</figcaption></figure><ul>
 <li><p>java: load factor = .75, default init capacity: 16, uses buckets</p></li>
 <li><p>string hash function: s[0]*31^(n-1) + s[1]*31^(n-2) + … + s[n-1] where n is length mod (table_size)</p>
 <ul class="simple">
@@ -1054,7 +1122,8 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </section>
 <section id="graphs">
-<h2><span class="section-number">2.1.5. </span>graphs<a class="headerlink" href="#graphs" title="Link to this heading">#</a></h2>
+<span id="sec-data-structures-graphs"></span><h2>Graphs<a class="headerlink" href="#graphs" title="Link to this heading">#</a></h2>
+<p class="section-lead">A graph is a set of vertices and edges, stored as an adjacency matrix (fine when dense) or adjacency lists (better when sparse, like a road map). The algorithms that follow are topological sort for DAGs, BFS and Dijkstra for shortest paths, and Prim and Kruskal for minimum spanning trees. Dijkstra and Prim are both greedy, and Prim’s runs in <span class="math notranslate nohighlight">\(\Theta(e \log v)\)</span>, the same as Dijkstra’s.</p>
 <ul>
 <li><p>Edges are of the form (v1, v2)</p>
 <ul class="simple">
@@ -1231,7 +1300,18 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>A plain binary search tree costs its depth per operation, and sorted input makes that depth <span class="math notranslate nohighlight">\(n-1\)</span>.</p></li>
+<li><p>AVL and red-black trees keep the depth <span class="math notranslate nohighlight">\(\Theta(\log n)\)</span> with rotations, while splay trees only promise <span class="math notranslate nohighlight">\(O(m \log n)\)</span> for <span class="math notranslate nohighlight">\(m\)</span> operations.</p></li>
+<li><p>A binary heap is an almost complete tree stored in an array, with children of slot <span class="math notranslate nohighlight">\(i\)</span> at <span class="math notranslate nohighlight">\(2i\)</span> and <span class="math notranslate nohighlight">\(2i+1\)</span>, so findMin is the root and insert and deleteMin percolate along one path.</p></li>
+<li><p>Huffman coding repeatedly merges the two lightest trees from a min-heap, so rare letters get long codes and no code is a prefix of another.</p></li>
+<li><p>Hash tables give constant-time find on average but no ordering, and the load factor <span class="math notranslate nohighlight">\(\lambda\)</span> controls the cost of collisions under chaining or open addressing.</p></li>
+<li><p>Adjacency lists suit sparse graphs, and Dijkstra and Prim are both greedy algorithms that grow a set one vertex at a time.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../cs/languages_parallel.html"><span class="related-part">Computer science</span><span class="related-title">Languages and parallel computing</span><span class="related-hook">Syntax references for python, c/c++, java and R, and the collective operations behind multi-GPU training.</span></a><a class="related-card" href="../cs/arch.html"><span class="related-part">Computer science</span><span class="related-title">Architecture</span><span class="related-hook">Integers and floats in bits, assembly and calling conventions, a pipelined processor, caches, exceptions and virtual memory.</span></a><a class="related-card" href="../cs/os.html"><span class="related-part">Computer science</span><span class="related-title">Operating systems</span><span class="related-hook">Processes and threads, synchronization and deadlock, CPU scheduling, paging and virtual memory, and file systems.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1265,20 +1345,20 @@ Therefore, a black node is the only possible parent for a red node</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="cs_section.html"
+       href="../../parts/cs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>cs</p>
+        <p class="prev-next-title">Computer science</p>
       </div>
     </a>
     <a class="right-next"
-       href="quantum.html"
+       href="algo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>quantum</p>
+        <p class="prev-next-title">Algorithms</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1298,22 +1378,22 @@ Therefore, a black node is the only possible parent for a red node</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">2.1.1. lists</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">2.1.1.1. arrays and strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">2.1.1.2. queue - linkedlist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">2.1.1.3. stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-strings">Arrays and strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-linkedlist">Queue - linkedlist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack">Stack</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">2.1.2. trees</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">2.1.2.1. AVL Tree</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">2.1.2.2. Red-Black Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">2.1.2.3. Splay Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">2.1.2.4. other trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trees">Trees</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#avl-tree">AVL Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#red-black-trees">Red-Black Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splay-trees">Splay Trees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-trees">Other trees</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">2.1.3. heaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">2.1.4. Hash tables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">2.1.5. graphs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heaps">Heaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash-tables">Hash tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs">Graphs</a></li>
 </ul>
   </nav></div>
 
@@ -1338,7 +1418,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

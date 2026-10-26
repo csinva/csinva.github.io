@@ -1,0 +1,95 @@
+# Overlay for _notes/stat/stat.md. Keys under `sections` are the note's header text (case and markup ignored).
+subtitle: Probability rules, common distributions, the limit theorems, and how estimators trade bias for variance.
+hook: Expectations and variances, the usual distributions, the law of large numbers and CLT, and the bias-variance trade-off.
+intro: |
+  This chapter is the probability and estimation toolkit the rest of the book leans on. It opens with the
+  rules for expectations, variances and covariances, then a reference table of common distributions with
+  their densities, means, variances and moment generating functions.
+
+  Two limit theorems explain why averages are so well behaved: the law of large numbers says the sample
+  mean settles on the true mean, and the central limit theorem says its error is roughly normal with spread
+  $\sigma/\sqrt{n}$. The rest is about estimating parameters from data. An estimator's mean squared error
+  splits exactly into bias squared plus variance, and the last section sets out the two ways of thinking
+  about estimation, Bayesian and frequentist, following Jordan's book.
+sections:
+  distributions:
+    lead: |
+      A reference table. Each row gives a distribution's CDF, its density or mass function, mean, variance and
+      moment generating function, discrete distributions first.
+  law of large numbers:
+    lead: |
+      Both results are about the sample mean $\bar X$ of $n$ independent draws with mean $\mu$ and variance
+      $\sigma^2$. Its variance is $\sigma^2/n$, which is the whole story behind both theorems.
+  central limit thm:
+    lead: |
+      The law of large numbers says where $\bar X$ ends up. The central limit theorem says what its error looks
+      like: standardized by $\sigma/\sqrt{n}$, $\bar X$ has approximately a standard normal distribution when
+      $n$ is large.
+    viz:
+      - name: central-limit
+        params: {n: 1, population: exponential}
+        caption: |
+          Each histogram shows 4,000 sample means. With n = 1 you see the population itself; as n grows the
+          histogram narrows like $\sigma/\sqrt{n}$ and turns into the normal curve, even for a skewed or
+          two-humped population.
+  bias and point estimation:
+    lead: |
+      An estimator $\hat\theta$ is a statistic used to guess a parameter $\theta$. It can miss in two ways:
+      by being off on average (bias) or by changing a lot from one sample to the next (variance). The
+      decomposition below shows that mean squared error is exactly the sum of the two.
+    viz:
+      - name: bias-variance
+        params: {degree: 3, n: 15, noise: 0.3}
+        caption: |
+          Polynomials fit to many noisy samples of the same sine curve (one sample's points are shown). Low degrees can't bend enough, so even their
+          average misses the curve (high bias). High degrees chase the noise, so the fits disagree with each
+          other (high variance). Test error is lowest in between.
+  overview - Jordan ch 5:
+    lead: |
+      Probability goes from a model to data; statistics goes from data back to a model. Bayesians treat the
+      parameter as a random variable and update a prior into a posterior. Frequentists treat it as fixed and
+      judge estimators, like the maximum likelihood estimate, by how they behave over repeated samples.
+    viz:
+      - name: bayes-update
+        params: {a: 2, b: 2, heads: 7, flips: 10}
+        caption: |
+          Estimating a coin's probability of heads. The posterior is proportional to likelihood times prior.
+          With few flips the prior matters and the MAP estimate sits between the prior's center and the MLE;
+          with many flips the likelihood dominates and all three estimates agree.
+  basics:
+    lead: |
+      The rules used everywhere else in the book: independence, conditional probability and Bayes' theorem, and
+      how expectations, variances and covariances behave under sums and linear maps. The law of total variance
+      splits $V[Y]$ into the part that $X$ <span class="corange">explains</span> and the part it
+      <span class="cblue">leaves unexplained</span>.
+  inter-rater agreement:
+    lead: |
+      Raw agreement between two raters overstates how well they agree, since some agreement happens by chance.
+      Cohen's kappa compares the observed agreement $p_o$ with the chance agreement $p_e$: it is 0 when they are
+      equal and 1 for perfect agreement.
+  inequalities:
+    lead: |
+      Bounds that hold for any distribution. Markov's inequality needs only the mean; Chebyshev's also uses the
+      variance and gives a better bound on how far $X$ strays from $\mu$. Jensen's compares $f(E[X])$ with
+      $E[f(X)]$ for convex $f$.
+  moment-generating function:
+    lead: |
+      The MGF $M_X(t) = E(e^{tX})$ holds all the moments at once: its $r$-th derivative at 0 is $E(X^r)$. The
+      MGF of a sum of independent variables is the product of their MGFs, which makes it handy for sums.
+  3 problems:
+    lead: |
+      Jordan's three basic problems: density estimation (model $P(X)$), regression (model $p(y\vert x)$) and
+      classification. Each is worked both ways, frequentist with the MLE and Bayesian with a prior, and with
+      both parametric models and nonparametric ones such as kernel density estimators.
+  model selection / averaging:
+    lead: |
+      Choosing among models of different complexity. Bayesians compare models by $p(m\vert x)$ or average
+      predictions over them. Frequentists can't compare by likelihood alone, since it always prefers the more
+      complex model, and use criteria such as AIC or cross-validation instead.
+takeaways:
+  - The variance of the sample mean is $\sigma^2/n$, so its standard error shrinks like $\sigma/\sqrt{n}$.
+  - The law of large numbers says $\bar X \to \mu$; the central limit theorem says $(\bar X - \mu)/(\sigma/\sqrt{n})$ is approximately standard normal for large $n$.
+  - An estimator's mean squared error is exactly bias squared plus variance, and more complex models trade lower bias for higher variance.
+  - The MLE maximizes $\sum \log P(X_i\vert\theta)$. MAP adds a log-prior, which acts as a penalty on the log-likelihood.
+  - Bayesians treat $\theta$ as a random variable and report its posterior; frequentists treat it as fixed and judge estimators over repeated samples.
+figures: {}

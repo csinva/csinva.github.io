@@ -1,0 +1,84 @@
+# Overlay for _notes/research_ovws/ovw_omics.md
+hook: Predicting RNA and protein structure from sequence, from dynamic programming to AlphaFold, plus engineered viruses as treatment.
+intro: |
+  Most of this page is about one problem: predicting a molecule's structure from its sequence. It starts with
+  the databases and code, then RNA, where most work predicts secondary structure (which bases pair up) with
+  dynamic programming over pairing energies, and newer methods add deep learning or go to full 3d structure.
+
+  The protein section follows the same path from basics to deep learning: multiple sequence alignments,
+  contact prediction, and then AlphaFold and the MSA Transformer. The page ends with therapeutic interfering
+  particles, engineered virus fragments that spread like a virus but suppress it.
+sections:
+  data:
+    lead: |
+      Where solved structures live: the nucleic acid database for RNA and DNA and the protein databank for
+      proteins, plus chemical probing (SHAPE) as an experimental signal about RNA structure.
+  code:
+    lead: |
+      Tools for RNA work: the Galaxy workbench and ViennaRNA for classic folding with constraints, and neural
+      folding models (SPOT-RNA, mxfold2) that later sections describe.
+  rna structure prediction:
+    lead: |
+      RNA first, because its problem is simpler to state: most of the stabilizing energy is in which bases
+      pair, so prediction mostly means secondary structure, with 3d prediction as a harder follow-up.
+  rna basics:
+    lead: |
+      RNA structure is described at three levels: the sequence (primary), the base pairs (secondary) and the 3d
+      shape (tertiary). For RNA most of the stabilizing energy comes from the secondary structure, which is why
+      "RNA folding" usually means predicting base pairs.
+  algorithms:
+    lead: |
+      Two families: minimize total pairing energy with dynamic programming (Nussinov, Zuker), or fit a
+      probabilistic grammar. Both rely on the no-crossings assumption, which gives the problem a tree structure;
+      later work relaxes it, and recent work plugs neural-net scores into the Zuker-style recursion.
+  3d rna structure prediction:
+    lead: |
+      Full 3d prediction is usually a search: propose structures, score them with an energy function, keep the
+      most stable. ARES replaces the hand-built energy function with a rotation-equivariant network.
+  protein structure prediction (dna):
+    lead: |
+      Protein methods start from a multiple sequence alignment of related proteins, modeled one column at a
+      time (PSSM) or in pairs of positions (Potts model). The usual targets are a contact map or the full 3d
+      structure.
+  protein basics:
+    lead: |
+      Why prediction is worth it: solving one structure experimentally (X-ray crystallography, NMR) is slow
+      and expensive, while sequences are cheap and shaped by evolution through mutation and selection.
+  algorithm basics:
+    lead: |
+      The inputs and targets that the deep learning papers build on: an MSA of related proteins, modeled per
+      column or per pair of positions, and either a contact map or full 3d coordinates as output. TAPE adds
+      a benchmark for protein embeddings.
+  deep-learning papers:
+    lead: |
+      AlphaFold takes two inputs, the MSA and a residue-by-residue pair representation, refines both with the
+      Evoformer, and turns them into coordinates with a structure module that respects rotations and
+      translations.
+  TIPs - using viruses for treatment:
+    lead: |
+      A separate topic. Drugs don't mutate and are hard to deliver; a TIP is a shortened copy of a virus that
+      can't replicate on its own, so it takes the virus's replication machinery, picks up its mutations, and
+      spreads along with it.
+takeaways:
+  - Structure prediction from sequence is the shared problem; RNA work targets mostly secondary structure,
+    protein work mostly contacts or full 3d structure.
+  - Classic RNA folding is dynamic programming over pairing energies under a no-crossings assumption; newer
+    work relaxes that assumption or feeds neural-net scores into the same recursion.
+  - 3d prediction, for RNA and proteins, separates into proposing structures and scoring them, and learned
+    scorers that respect rotations and translations replace hand-built energy functions.
+  - Protein methods rely on evolutionary information in multiple sequence alignments; AlphaFold and the MSA
+    Transformer process the MSA with attention.
+  - TIPs are a different idea, engineered virus fragments that take the virus's replication machinery and
+    mutations, so the treatment evolves and spreads along with the virus.
+figures:
+  rna_structure.png: |
+    The three levels of RNA structure: the base sequence (primary), base pairs forming stems and loops
+    (secondary, red bars are pairs), and the folded 3d shape (tertiary).
+  rna_secondary.svg: |
+    A secondary structure split into elements by color: stems of stacked pairs, hairpin loops at the tips, a
+    multi-loop joining three helices, a bulge and an interior loop. Energy models assign a contribution to each
+    element.
+  alphafold.png: |
+    AlphaFold's pipeline. The input sequence is searched against genetic and structure databases to build an
+    MSA and templates; the MSA and pair representations pass through 48 Evoformer blocks and 8 structure
+    module blocks, and the whole thing is recycled three times. The output structure is colored by confidence.

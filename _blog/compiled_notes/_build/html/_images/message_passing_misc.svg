@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 808" role="img" aria-labelledby="title desc">
+  <title id="title">Sum-product messages on a tree</title>
+  <desc id="desc">Four copies of a tree with X1 above X2, and X3 and X4 below X2. (a) Messages formed when computing the marginal of X1: m32(x2), m42(x2), and m12(x1) up to X1. (b) For the marginal of X2: m12(x2) down, m32(x2), m42(x2). (c) For the marginal of X4: m12(x2), m32(x2), and m24(x4). (d) All messages needed for all singleton marginals: m12(x2), m12(x1), m32(x2), m23(x3), m42(x2), m24(x4).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .var { font: italic 28px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font-size: 19px; font-style: normal; font-family: "Times New Roman", Times, serif; }
+      .panel { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- panel a -->
+  <line class="edge" x1="240.0" y1="50.0" x2="240.0" y2="150.0"/>
+  <line class="edge" x1="225.9" y1="184.1" x2="114.1" y2="295.9"/>
+  <line class="edge" x1="254.1" y1="184.1" x2="365.9" y2="295.9"/>
+  <circle class="node" cx="240" cy="30" r="20"/>
+  <circle class="node" cx="240" cy="170" r="20"/>
+  <circle class="node" cx="100" cy="310" r="20"/>
+  <circle class="node" cx="380" cy="310" r="20"/>
+  <text class="var" x="268" y="38" text-anchor="start">X<tspan class="sub" dy="6">1</tspan></text>
+  <text class="var" x="268" y="178" text-anchor="start">X<tspan class="sub" dy="6">2</tspan></text>
+  <text class="var" x="72" y="318" text-anchor="end">X<tspan class="sub" dy="6">3</tspan></text>
+  <text class="var" x="408" y="318" text-anchor="start">X<tspan class="sub" dy="6">4</tspan></text>
+  <line class="edge" x1="253" y1="117" x2="253" y2="87" marker-end="url(#arrow)"/>
+  <text class="var" x="266" y="108" text-anchor="start">m<tspan class="sub" dy="6">12</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">1</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="139.1" y1="248.3" x2="172.7" y2="214.7" marker-end="url(#arrow)"/>
+  <text class="var" x="138" y="238" text-anchor="end">m<tspan class="sub" dy="6">32</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="340.9" y1="248.3" x2="307.3" y2="214.7" marker-end="url(#arrow)"/>
+  <text class="var" x="342" y="238" text-anchor="start">m<tspan class="sub" dy="6">42</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <text class="panel" x="240" y="378">(a)</text>
+
+  <!-- panel b -->
+  <line class="edge" x1="680.0" y1="50.0" x2="680.0" y2="150.0"/>
+  <line class="edge" x1="665.9" y1="184.1" x2="554.1" y2="295.9"/>
+  <line class="edge" x1="694.1" y1="184.1" x2="805.9" y2="295.9"/>
+  <circle class="node" cx="680" cy="30" r="20"/>
+  <circle class="node" cx="680" cy="170" r="20"/>
+  <circle class="node" cx="540" cy="310" r="20"/>
+  <circle class="node" cx="820" cy="310" r="20"/>
+  <text class="var" x="708" y="38" text-anchor="start">X<tspan class="sub" dy="6">1</tspan></text>
+  <text class="var" x="708" y="178" text-anchor="start">X<tspan class="sub" dy="6">2</tspan></text>
+  <text class="var" x="512" y="318" text-anchor="end">X<tspan class="sub" dy="6">3</tspan></text>
+  <text class="var" x="848" y="318" text-anchor="start">X<tspan class="sub" dy="6">4</tspan></text>
+  <line class="edge" x1="667" y1="87" x2="667" y2="117" marker-end="url(#arrow)"/>
+  <text class="var" x="654" y="108" text-anchor="end">m<tspan class="sub" dy="6">12</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="579.1" y1="248.3" x2="612.7" y2="214.7" marker-end="url(#arrow)"/>
+  <text class="var" x="578" y="238" text-anchor="end">m<tspan class="sub" dy="6">32</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="780.9" y1="248.3" x2="747.3" y2="214.7" marker-end="url(#arrow)"/>
+  <text class="var" x="782" y="238" text-anchor="start">m<tspan class="sub" dy="6">42</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <text class="panel" x="680" y="378">(b)</text>
+
+  <!-- panel c -->
+  <line class="edge" x1="240.0" y1="470.0" x2="240.0" y2="570.0"/>
+  <line class="edge" x1="225.9" y1="604.1" x2="114.1" y2="715.9"/>
+  <line class="edge" x1="254.1" y1="604.1" x2="365.9" y2="715.9"/>
+  <circle class="node" cx="240" cy="450" r="20"/>
+  <circle class="node" cx="240" cy="590" r="20"/>
+  <circle class="node" cx="100" cy="730" r="20"/>
+  <circle class="node" cx="380" cy="730" r="20"/>
+  <text class="var" x="268" y="458" text-anchor="start">X<tspan class="sub" dy="6">1</tspan></text>
+  <text class="var" x="268" y="598" text-anchor="start">X<tspan class="sub" dy="6">2</tspan></text>
+  <text class="var" x="72" y="738" text-anchor="end">X<tspan class="sub" dy="6">3</tspan></text>
+  <text class="var" x="408" y="738" text-anchor="start">X<tspan class="sub" dy="6">4</tspan></text>
+  <line class="edge" x1="227" y1="507" x2="227" y2="537" marker-end="url(#arrow)"/>
+  <text class="var" x="214" y="528" text-anchor="end">m<tspan class="sub" dy="6">12</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="139.1" y1="668.3" x2="172.7" y2="634.7" marker-end="url(#arrow)"/>
+  <text class="var" x="138" y="658" text-anchor="end">m<tspan class="sub" dy="6">32</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="284.7" y1="657.3" x2="318.3" y2="690.9" marker-end="url(#arrow)"/>
+  <text class="var" x="294" y="714" text-anchor="middle">m<tspan class="sub" dy="6">24</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">4</tspan><tspan dy="-6">)</tspan></text>
+  <text class="panel" x="240" y="798">(c)</text>
+
+  <!-- panel d -->
+  <line class="edge" x1="680.0" y1="470.0" x2="680.0" y2="570.0"/>
+  <line class="edge" x1="665.9" y1="604.1" x2="554.1" y2="715.9"/>
+  <line class="edge" x1="694.1" y1="604.1" x2="805.9" y2="715.9"/>
+  <circle class="node" cx="680" cy="450" r="20"/>
+  <circle class="node" cx="680" cy="590" r="20"/>
+  <circle class="node" cx="540" cy="730" r="20"/>
+  <circle class="node" cx="820" cy="730" r="20"/>
+  <text class="var" x="708" y="458" text-anchor="start">X<tspan class="sub" dy="6">1</tspan></text>
+  <text class="var" x="708" y="598" text-anchor="start">X<tspan class="sub" dy="6">2</tspan></text>
+  <text class="var" x="512" y="738" text-anchor="end">X<tspan class="sub" dy="6">3</tspan></text>
+  <text class="var" x="848" y="738" text-anchor="start">X<tspan class="sub" dy="6">4</tspan></text>
+  <line class="edge" x1="667" y1="507" x2="667" y2="537" marker-end="url(#arrow)"/>
+  <text class="var" x="654" y="528" text-anchor="end">m<tspan class="sub" dy="6">12</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="693" y1="537" x2="693" y2="507" marker-end="url(#arrow)"/>
+  <text class="var" x="706" y="528" text-anchor="start">m<tspan class="sub" dy="6">12</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">1</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="579.1" y1="668.3" x2="612.7" y2="634.7" marker-end="url(#arrow)"/>
+  <text class="var" x="578" y="658" text-anchor="end">m<tspan class="sub" dy="6">32</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="780.9" y1="668.3" x2="747.3" y2="634.7" marker-end="url(#arrow)"/>
+  <text class="var" x="782" y="658" text-anchor="start">m<tspan class="sub" dy="6">42</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">2</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="635.3" y1="657.3" x2="601.7" y2="690.9" marker-end="url(#arrow)"/>
+  <text class="var" x="628" y="714" text-anchor="middle">m<tspan class="sub" dy="6">23</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">3</tspan><tspan dy="-6">)</tspan></text>
+  <line class="edge" x1="724.7" y1="657.3" x2="758.3" y2="690.9" marker-end="url(#arrow)"/>
+  <text class="var" x="728" y="716" text-anchor="middle">m<tspan class="sub" dy="6">24</tspan><tspan dy="-6">(x</tspan><tspan class="sub" dy="6">4</tspan><tspan dy="-6">)</tspan></text>
+  <text class="panel" x="680" y="798">(d)</text>
+
+</svg>

@@ -1,0 +1,112 @@
+# Overlay for _notes/research_ovws/ovw_embeddings.md
+subtitle: How text and multimodal embedding models are trained, searched and used for retrieval, plus attempts to make embeddings interpretable.
+hook: Training embedding models, contrastive losses, approximate nearest-neighbor search, RAG and interpretable embeddings.
+intro: |
+  An embedding model maps an input, usually text, to a vector so that search becomes a nearest-neighbor
+  lookup. The chapter starts with how models differ (bi-encoder, late interaction, cross-encoder) and how they
+  are trained: a staged pipeline ending in contrastive finetuning, the InfoNCE and sigmoid losses, and a
+  long list of tricks at training, indexing and query time. A timeline of top models follows, from BM25 and
+  averaged word vectors through contrastively trained and LLM-initialized models to multimodal ones.
+
+  The middle covers search itself: benchmarks, agentic search where an agent runs many queries (sometimes
+  with grep instead of vectors), and the index structures that make nearest-neighbor search fast, each with an
+  index-time and a query-time figure. The last sections are about what is built on top of or learned from
+  embeddings: interpretable embeddings built from yes/no questions, RAG, shared representations across models,
+  recovering text from its embedding, and external memory for LLMs.
+sections:
+  embedding model distinctions:
+    lead: |
+      The main design choice is where the query and document first interact. Encoding them separately makes
+      documents indexable ahead of time; encoding them together is more accurate but has to run for every
+      query-document pair.
+  best practices for training:
+    lead: |
+      The tricks are grouped by when they act: while training the model, while embedding the documents, and
+      at query time. Rerankers and query expansion cost nothing at training time but add latency per query.
+  losses:
+    lead: |
+      Both losses pull a query toward its positive and away from negatives. InfoNCE normalizes over every pair
+      in the batch, which is why batch size matters; the sigmoid loss scores each pair on its own.
+    viz:
+      - name: infonce-temperature
+        params: {tau: 0.1, negatives: 32}
+        caption: |
+          The softmax weights inside InfoNCE for one query with a positive pair and $N$ negatives. Each negative's
+          weight is also its share of the gradient. Lower the temperature $\tau$ and nearly all the weight on
+          negatives goes to the 4 hard ones, with the loss near zero once the positive wins; raise it and the
+          weight spreads evenly, which is the "focus on the hardest cases" versus "treat all negatives equally"
+          contrast in the bullets.
+  top-performing models:
+    lead: |
+      Roughly in historical order: simple baselines, bi-encoders like SBERT, contrastive pre-training with
+      synthetic data and instructions, then models initialized from a pre-trained LLM. Query expansion,
+      rerankers and contextualized chunking sit on top of any of these.
+  multimodal embeddings:
+    lead: |
+      CLIP-style dual encoders came first and have known weaknesses, such as the modality gap. Newer models
+      post-train one multimodal LLM so a screenshot or PDF page can be embedded directly; the subsections cover
+      visual document retrieval, reasoning before embedding, and models that put text, images, video and audio
+      in one space.
+  papers with a little trick:
+    lead: |
+      Single changes to an embedding model, grouped by when they act: during pre-training (masked
+      autoencoding), during training (one model for generation and embeddings, Matryoshka prefixes that work
+      as smaller embeddings), after training, or at query time (repeating the input so the second copy sees all
+      of it).
+  datasets / benchmarks:
+    lead: |
+      MTEB is the standard leaderboard but may be overfit: paraphrasing its test sets lowers scores. Newer
+      benchmarks use private data, instructions, agentic or long-context search, and the last group lists the
+      data used to train embedding models.
+  agentic search:
+    lead: |
+      Here retrieval is one tool in a loop: an agent plans searches, reads results and searches again. Two of
+      these papers find that grep over the raw corpus does as well as or better than vector retrieval here.
+  searching embeddings (approximate nearest neighbor):
+    lead: |
+      Exact nearest-neighbor search compares the query with every stored vector. Each method below avoids
+      that by building an index once (left figure) and searching only a small part of it per query (right
+      figure). Product quantization is different: it makes each comparison cheaper instead of making fewer of
+      them.
+  explainable embeddings:
+    lead: |
+      Most of these build an embedding whose dimensions mean something, usually answers an LLM gives to yes/no
+      questions about the text. Others explain why two inputs were judged similar.
+  retrieval augmented generation (RAG):
+    lead: |
+      The table from the RAG perspective paper sorts systems by what they retrieve (chunks, tokens, phrases),
+      where it enters the model, how often retrieval happens, and whether the retriever and LM are trained
+      jointly.
+  universal representations:
+    lead: |
+      Evidence that different models learn similar representations, from shared SAE features and neurons to
+      translating embeddings between models without paired data.
+  embedding inversions:
+    lead: |
+      An embedding can leak its input: these methods recover the text from an embedding, or the prompt from a
+      model's outputs. The last papers give theoretical limits on what single-vector retrieval can represent.
+  external memory enhancements for LLMs:
+    lead: |
+      Ways to give an LLM memory beyond its context window: a kNN index over past context, a datastore read at
+      inference time, a separate model trained on a corpus in place of retrieval, or a memory matrix the
+      network reads and writes. Hopfield networks connect this to attention.
+takeaways:
+  - The first design choice is where query and document interact, separately (bi-encoder), per token (late interaction) or together (cross-encoder), which trades indexing ahead of time against accuracy.
+  - Most strong models end their training with contrastive finetuning, and the temperature in InfoNCE decides how much the hardest negatives count.
+  - Approximate nearest-neighbor indexes build a structure once and search only a small part of it per query, while product quantization makes each comparison cheaper.
+  - Benchmarks like MTEB may be overfit, and agentic search results suggest grep over the raw corpus can match vector retrieval.
+  - Embeddings can be made interpretable from yes/no questions, can leak their input text, and look similar across different models.
+figures:
+  embedding_interaction_levels.svg: Three levels of interaction between query and document. A bi-encoder embeds them separately into one vector each, late interaction keeps a vector per token and compares them at the end, and a cross-encoder reads both together.
+  lsh_index_time_dark.svg: "Locality-sensitive hashing, index time: each vector is hashed by which side of a few random hyperplanes it falls on, and the sign bits pick its bucket. Several tables repeat this with different planes."
+  lsh_query_time_dark.svg: "Locality-sensitive hashing, query time: the query is hashed with the same planes and only the vectors in its buckets are compared exactly."
+  kd_tree_index_time_dark.svg: "k-d tree, index time: the data are split at the median of one dimension per level, ending in leaf buckets."
+  kd_tree_query_time_dark.svg: "k-d tree, query time: the query descends to a leaf, then backtracks into a neighboring leaf when its search ball crosses a split."
+  ivf_index_time_dark.svg: "Inverted file, index time: k-means picks centroids and each vector is added to the list of its nearest centroid."
+  ivf_query_time_dark.svg: "Inverted file, query time: the query is compared with the centroids, and only the lists of the nearest few cells are scanned."
+  pq_index_time_wide_dark_v2.svg: "Product quantization, index time: each vector is split into subvectors, and each subvector is replaced by the index of its nearest centroid in that subspace's codebook."
+  pq_query_time_wide_dark_v2.svg: "Product quantization, query time: distances from each query subvector to every centroid are precomputed once; the distance to any stored vector is then a sum of table lookups."
+  hnsw_index_time_insert_dark.svg: "HNSW, inserting one vector: it draws a random top layer, a greedy search finds candidate neighbors, and pruning drops a candidate that is closer to an already-kept neighbor than to the new vector."
+  hnsw_layered_greedy_walk_dark.svg: "HNSW, query time: the search starts on the sparse top layer, hops greedily toward the query, and drops a layer each time it can't get closer."
+  diskann_index_time_dark.svg: "DiskANN keeps only compressed PQ codes in RAM; the full vectors and the graph's edges live on SSD, one sector per node."
+  spann_index_time_dark.svg: "SPANN keeps cluster centroids in RAM and the cluster lists on SSD, storing vectors near a boundary in more than one list."

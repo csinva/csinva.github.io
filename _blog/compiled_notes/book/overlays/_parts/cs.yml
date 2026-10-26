@@ -1,0 +1,13 @@
+intro: |
+  The computer science notes come mostly from undergraduate courses at UVA, plus later additions on GPUs and
+  parallel training. Data structures and algorithms come first, since every other chapter assumes them. Then the
+  machine itself: how numbers and instructions are stored and executed (architecture) and how the operating system
+  shares processors, memory and disks between programs.
+
+  The remaining chapters stand alone. Languages is a quick reference for python, c/c++, java and R. Information
+  retrieval covers how a search engine is built and how it differs from a database. Theory of computation asks
+  which problems machines can solve at all and which they can solve fast, and the short quantum computing note asks
+  whether physics changes those answers.
+blurb: |
+  Data structures, algorithms, architecture and operating systems, programming languages and parallel training,
+  information retrieval, the theory of computation, and a little quantum computing.

@@ -211,7 +211,7 @@ subtitle: Some notes on theoretical computer science, based on UVA's course. Cha
   - often have to break it into cases
   - proof uses Chomsky Normal Form
 - not context free examples
-  - $$\{0^n1^n2^n\vert n\geq1\}$$<!-- -->
+  - $$\{0^n1^n2^n\vert n\geq1\}$$
   - {$0^i1^j2^i3^j\vert i\geq 1,j\geq 1$}
   - {ww$$\vert w \in \{0,1\}^*$$ }
 - closed under union, concatenation, closure, and positive closure, homomorphism, reversal, inverse homomorphism, substitutions
@@ -282,8 +282,8 @@ subtitle: Some notes on theoretical computer science, based on UVA's course. Cha
     - $X \leq _m Y$ - X reduces to Y - mapping reduction, solving Y solves X
 - intractable - take a very long time to solve (not polynomial)
 - <> notation means bitstring representation
-- $$<n> = 0^n$$<!-- -->
-- $$<m,w> means w \in L(M)$$<!-- -->
+- $$<n> = 0^n$$
+- $$<m,w> means w \in L(M)$$
 - KD - "known to be distinct"
 - idempotent - R + R = R
 

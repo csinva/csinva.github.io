@@ -1,0 +1,19 @@
+# Overlay for _notes/research_ovws/ovw_interesting_science.md
+map_label: Science           # short name on the start-page topic map
+hook: A grab bag of surprising results from neuroscience, biology, statistics and machine learning.
+intro: |
+  A flat list of papers and links that are worth knowing about but don't belong to any one topic. Many are
+  from neuroscience and perception: Held & Hein's moving kittens, decoding 50 face components from 206
+  neurons, semantic maps that tile the cortex, and the finding that languages trade information per syllable
+  against speaking rate, so that every language ends up with a similar information rate.
+
+  The rest mix classic papers (Shannon 1948, Hopfield networks, BOIDS) with machine learning papers on
+  generalization in deep nets, bag-of-local-features models on ImageNet and image synthesis with a single
+  robust classifier. There are no sections; skim it.
+figures:
+  income_vs_lifespan-2221629.png: Expected age at death for 40-year-olds against household income percentile in the US, for women and men. Life expectancy rises steeply across the lower incomes and flattens at the top, and women live longer than men at every income.
+takeaways:
+  - The list has no sections; most entries are single links to results that are surprising or simple to state.
+  - Several are about perception and the brain, such as Held & Hein's kittens, decoding faces from 206 neurons and semantic maps that tile the cortex.
+  - Languages trade information per syllable against speaking rate, so their information rates end up similar.
+  - The machine learning entries question how deep nets work, from rethinking generalization to bag-of-local-features models doing well on ImageNet.

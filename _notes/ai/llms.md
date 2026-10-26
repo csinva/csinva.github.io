@@ -260,3 +260,14 @@ Broadly, models can be grouped into three categories:
 - standard seq2seq
   - encoder reads input and outputs context vector (the hidden state)
   - decoder (rnn) takes this context vector and generates a sequencefagoa
+
+# inference optimization
+
+- https://x.com/philipkiely/status/2112272656217297224?s=20
+  - problem with attention: kv cache grows with sequence-length n so it's big for long sequences
+    - attention basically needs to compute softmax(QK^T)V
+    - If we could multiply Q after doing K^TV then KV cached is O(d^2) — so constant with n!
+      - But we need to get around softmax, so we swap it out to use some activation function like f(Q) f(V) T with f = ELU
+    - One issue: d^2 struggles to store info - thus we add a beta parameter for how much to overwrite state matrix
+      - another issue: you have to go one token at a time, you can’t just mask the entire upper right
+        - another improvement made this one big multiply (like running a kernel convolution by padding with a bunch of zeros and making it a big matrix multiply)

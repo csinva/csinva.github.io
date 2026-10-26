@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.4. signals</title>
+    <title>Signal processing &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/math/signals';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.5. optimization" href="optimization.html" />
-    <link rel="prev" title="3.3. linear algebra" href="linear_algebra.html" />
+    <link rel="next" title="Nonlinear dynamics and chaos" href="chaos.html" />
+    <link rel="prev" title="Optimization" href="optimization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="math_section.html">3. math</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/math/signals.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>signals</h1>
+    <h1>Signal processing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,14 +471,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">3.4.1. basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">3.4.2. intro</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">3.4.3. fourier analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-analysis">3.4.4. wavelet analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-basics">3.4.4.1. wavelet basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-different-wavelet-bases">3.4.4.2. properties of different wavelet bases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.4.4.3. wavelet analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-general-wavelets">3.4.4.4. more general wavelets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">Fourier analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-analysis">Wavelet analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-basics">Wavelet basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-different-wavelet-bases">Properties of different wavelet bases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Wavelet analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-general-wavelets">More general wavelets</a></li>
 </ul>
 </li>
 </ul>
@@ -442,27 +492,40 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="signals">
-<h1><span class="section-number">3.4. </span>signals<a class="headerlink" href="#signals" title="Link to this heading">#</a></h1>
+  <p class="breadcrumb"><a href="../../parts/math.html">Mathematics</a> &nbsp;·&nbsp; chapter 7 of 8 &nbsp;·&nbsp; 4 min read</p><section class="tex2jax_ignore mathjax_ignore" id="signal-processing">
+<h1>Signal processing<a class="headerlink" href="#signal-processing" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some notes on signal processing, mostly fourier and wavelet analysis.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>A signal can be studied in time, in frequency, or in both at once. The intro covers sampling and the common filters, and the figure at its end compares how each representation tiles the time-frequency plane. Fourier analysis is the frequency view: the discrete Fourier transform (DFT) writes a sequence as a sum of sinusoids and is computed with the FFT.</p>
+<p>Wavelets give up some frequency precision to keep time information. The wavelet sections describe the basis (shifts and dilations of a mother wavelet), common choices such as Haar and Morlet, how the discrete wavelet transform is computed with low-pass and high-pass filters, and what properties (vanishing moments, regularity) separate one wavelet basis from another.</p>
+</div>
 <section id="basics">
-<h2><span class="section-number">3.4.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<span id="sec-signals-basics"></span><h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<ul>
 <li><p>dirac-delta infinity at one point, zero everywhere else</p></li>
-<li><p><img alt="amplitude-period-ex3" src="../../_images/amplitude-period-ex3.svg" /></p></li>
+<li><figure class="align-default" id="id2">
+<img alt="A sinusoid and its parameters: amplitude (here 3), period ($0.02\pi$) and phase shift (0.01)." class="note-figure" src="../../_images/amplitude-period-ex3.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> A sinusoid and its parameters: amplitude (here 3), period (<span class="math notranslate nohighlight">\(0.02\pi\)</span>) and phase shift (0.01).</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 </section>
 <section id="intro">
-<h2><span class="section-number">3.4.2. </span>intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<span id="sec-signals-intro"></span><h2>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h2>
+<p class="section-lead">Sampling turns a continuous signal into numbers. Shannon’s statement below is the condition for losing nothing: a signal with no frequencies above <span class="math notranslate nohighlight">\(B\)</span> needs samples at least <span class="math notranslate nohighlight">\(2B\)</span> times per second.</p>
+<figure class="nb-viz-figure" id="viz-sampling-alias"><div class="nb-viz" data-viz="sampling-alias" data-params="{&quot;f&quot;: 3, &quot;fs&quot;: 10}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> A 3 Hz sine sampled 10 times a second. Lower the sampling rate below \(2f\) (or raise \(f\) above \(f_s/2\)) and the same samples also fit a slower sinusoid (green, dashed): from the samples alone the two can't be told apart.</figcaption></figure><ul class="simple">
 <li><p>signal can be <em>continuous</em> or <em>discrete</em> based on its domain (not values)</p></li>
-<li><p><em>analog signal</em> - continuous in time</p>
+<li><p><span id="def-analog-signal" class="def-anchor"></span><em>analog signal</em> - continuous in time</p>
 <ul>
-<li><p><em>sampling</em> - the process of taking individual values of a continuous-time signal</p></li>
-<li><p><em>sampling rate</em> <span class="math notranslate nohighlight">\(f_s\)</span> - the number of samples taken per second (Hz)</p></li>
-<li><p><em>sampling period</em> - time interval between samples</p></li>
+<li><p><span id="def-sampling" class="def-anchor"></span><em>sampling</em> - the process of taking individual values of a continuous-time signal</p></li>
+<li><p><span id="def-sampling-rate" class="def-anchor"></span><em>sampling rate</em> <span class="math notranslate nohighlight">\(f_s\)</span> - the number of samples taken per second (Hz)</p></li>
+<li><p><span id="def-sampling-period" class="def-anchor"></span><em>sampling period</em> - time interval between samples</p></li>
 </ul>
 </li>
-<li><p><em>digital signal</em> - discrete in time and value</p></li>
+<li><p><span id="def-digital-signal" class="def-anchor"></span><em>digital signal</em> - discrete in time and value</p></li>
 <li><p>”If a function x(t) contains no frequencies higher than B hertz, it is completely determined by giving its ordinates at a series of points spaced 1 2B seconds apart” –Shannon</p></li>
 <li><p>signals are usually studied in</p>
 <ul>
@@ -480,13 +543,21 @@ document.write(`
 <li><p>band-stop filter - pass only frequences outside a specified range</p></li>
 </ul>
 </li>
-<li><p><strong>power spectrum</strong> - how much of the signal is at a frequency <span class="math notranslate nohighlight">\(\omega\)</span>? - square of the magnitude of the coefficients of the Fourier coefficients for <span class="math notranslate nohighlight">\(\omega\)</span></p></li>
+<li><p><span id="def-power-spectrum" class="def-anchor"></span><strong>power spectrum</strong> - how much of the signal is at a frequency <span class="math notranslate nohighlight">\(\omega\)</span>? - square of the magnitude of the coefficients of the Fourier coefficients for <span class="math notranslate nohighlight">\(\omega\)</span></p></li>
 </ul>
-<img style="width: 560px; max-width: 100%;" src="../assets/transforms.svg" alt="Time-frequency tilings of signal transforms"/>
+<figure class="align-default" id="id3">
+<a class="note-figure reference internal image-reference" href="../../_images/transforms.svg"><img alt="How each representation tiles the time-frequency plane. The raw time series resolves time but not frequency, the Fourier transform the reverse, and the short-time FT uses a uniform grid. The wavelet t" class="note-figure" src="../../_images/transforms.svg" style="width: 560px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> How each representation tiles the time-frequency plane. The raw time series resolves time but not frequency, the Fourier transform the reverse, and the short-time FT uses a uniform grid. The wavelet transform uses narrow, tall cells at high frequencies and wide, short cells at low frequencies.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="fourier-analysis">
-<h2><span class="section-number">3.4.3. </span>fourier analysis<a class="headerlink" href="#fourier-analysis" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-signals-fourier-analysis"></span><h2>Fourier analysis<a class="headerlink" href="#fourier-analysis" title="Link to this heading">#</a></h2>
+<p class="section-lead">Each DFT coefficient <span class="math notranslate nohighlight">\(X_k\)</span> is the correlation between the <span class="cblue">signal</span> and one <span class="corange">complex sinusoid</span>; its <span class="cgreen">real part</span> comes from the cosine and its <span class="cpink">imaginary part</span> from the sine.</p>
+<figure class="nb-viz-figure" id="viz-fourier-partial-sums"><div class="nb-viz" data-viz="fourier-partial-sums" data-params="{&quot;wave&quot;: &quot;square&quot;, &quot;K&quot;: 5}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> A Fourier series rebuilt one harmonic at a time. The bars are the power spectrum, the squared coefficient of each harmonic. The triangle wave has no jumps and its power falls off fast, so a few harmonics are enough. The square wave and sawtooth jump: they need many more, and the partial sums keep wiggling next to each jump.</figcaption></figure><ul>
 <li><p><a class="reference external" href="http://www.thefouriertransform.com/">good tutorial</a></p></li>
 <li><p>Fourier analysis - study of way general functions can be represented by Fourier series</p></li>
 <li><p>Fourier series - periodic function composed of harmonically related sinusoids, combined by a weighted summation</p>
@@ -517,16 +588,17 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><strong>discrete Fourier transform</strong> (DFT or the analysis equation) - this is by far the most common</p>
+<li><p><span id="def-discrete-fourier-transform" class="def-anchor"></span><strong>discrete Fourier transform</strong> (DFT or the analysis equation) - this is by far the most common</p>
 <ul>
 <li><div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}X_k &amp;= \sum_{n=0}^{N-1} \cblue{x_n} \corange{e^{-2\pi i k n / N}}\\&amp;=\sum_{n=0}^{N-1} \cblue{x_n} \left[ \cgreen{\cos(2\pi k \frac n N )} - i \cpink{\sin(2 \pi k \frac n N )}\right]\end{align}$$&lt;!-- --&gt;
-    - larger k is higher freq.
-    - **inverse transform**: $x_n = \frac{1}{N} \sum_{k=0}^{N-1} X_k\cdot e^{i 2 \pi k n / N}$
-    - $$x_0, x_1, ... x_{N-1}$$ is a sequence of N complex numbers (i.e. time domain) and we transform to another sequence of complex numbers $$X_0, X_1, ..., X_{N-1}\end{split}\]</div>
+\[\begin{split}\begin{align}X_k &amp;= \sum_{n=0}^{N-1} \cblue{x_n} \corange{e^{-2\pi i k n / N}}\\&amp;=\sum_{n=0}^{N-1} \cblue{x_n} \left[ \cgreen{\cos(2\pi k \frac n N )} - i \cpink{\sin(2 \pi k \frac n N )}\right]\end{align}\end{split}\]</div>
+</li>
+<li><p>larger k is higher freq.</p></li>
+<li><p><span id="def-inverse-transform" class="def-anchor"></span><strong>inverse transform</strong>: <span class="math notranslate nohighlight">\(x_n = \frac{1}{N} \sum_{k=0}^{N-1} X_k\cdot e^{i 2 \pi k n / N}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_0, x_1, ... x_{N-1}\)</span><span class="math notranslate nohighlight">\( is a sequence of N complex numbers (i.e. time domain) and we transform to another sequence of complex numbers \)</span><span class="math notranslate nohighlight">\(X_0, X_1, ..., X_{N-1}\)</span></p>
 <ul class="simple">
 <li><p>we write <span class="math notranslate nohighlight">\(\mathbf X = \mathcal F (\mathbf x)\)</span></p></li>
-<li><p>vectors $<span class="math notranslate nohighlight">\(u_k = \left[\left. e^{ \frac{i 2\pi}{N} kn} \;\right\vert \; n=0,1,\ldots,N-1 \right]^\mathsf{T}\)</span>$
+<li><p>vectors <span class="math notranslate nohighlight">\(u_k = \left[\left. e^{ \frac{i 2\pi}{N} kn} \;\right\vert \; n=0,1,\ldots,N-1 \right]^\mathsf{T}\)</span>
 form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex vectors</p></li>
 </ul>
 </li>
@@ -548,11 +620,12 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 </li>
 <li><p>can be quickly computed using the <strong>Fast Fourier Transform</strong> in <span class="math notranslate nohighlight">\(O(n \log n)\)</span> instead of <span class="math notranslate nohighlight">\(O(n^2)\)</span></p></li>
 <li><p><strong>inverse discrete Fourier Transform</strong> (IDFT)</p></li>
-<li><p><em>windowed fourier transform</em> - chop signal into sections and analyze each section separately</p></li>
+<li><p><span id="def-windowed-fourier-transform" class="def-anchor"></span><em>windowed fourier transform</em> - chop signal into sections and analyze each section separately</p></li>
 </ul>
 </section>
 <section id="wavelet-analysis">
-<h2><span class="section-number">3.4.4. </span>wavelet analysis<a class="headerlink" href="#wavelet-analysis" title="Link to this heading">#</a></h2>
+<span id="sec-signals-wavelet-analysis"></span><h2>Wavelet analysis<a class="headerlink" href="#wavelet-analysis" title="Link to this heading">#</a></h2>
+<p class="section-lead">A sinusoid lasts forever, so a Fourier coefficient says nothing about when a frequency occurs. A wavelet is a short wave: shifting it gives time information and stretching it gives frequency.</p>
 <ul class="simple">
 <li><p>wavelet is localized in both time and frequency information</p>
 <ul>
@@ -562,7 +635,8 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 </li>
 </ul>
 <section id="wavelet-basics">
-<h3><span class="section-number">3.4.4.1. </span>wavelet basics<a class="headerlink" href="#wavelet-basics" title="Link to this heading">#</a></h3>
+<h3>Wavelet basics<a class="headerlink" href="#wavelet-basics" title="Link to this heading">#</a></h3>
+<p class="section-lead">Every wavelet basis is built from one mother wavelet <span class="math notranslate nohighlight">\(\phi\)</span> by <span class="cblue">translations</span> <span class="math notranslate nohighlight">\(b\)</span> and <span class="corange">dilations</span> <span class="math notranslate nohighlight">\(a\)</span>. The discrete wavelet transform restricts these to powers of 2 and integer shifts; the examples (Haar, Morlet, Mexican hat, Daubechies) differ in the shape of <span class="math notranslate nohighlight">\(\phi\)</span>.</p>
 <ul>
 <li><p><strong><span class="math notranslate nohighlight">\(\phi(x)\)</span> = mother wavelet</strong> (or analyzing wavelet)</p>
 <ul class="simple">
@@ -589,9 +663,15 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 <ul>
 <li><p>ex. <strong>Haar wavelet</strong> (step function on [0, 1]</p>
 <ul>
-<li><img style="width: 600px; max-width: 100%;" src="../assets/haar.svg" alt="Haar wavelet: scale and shift"/>
+<li><figure class="align-default" id="id4">
+<a class="note-figure reference internal image-reference" href="../../_images/haar.svg"><img alt="The Haar mother wavelet, $+1$ on the first half of its interval and $-1$ on the second, and four scaled and shifted copies: two at the original width and two at half the width." class="note-figure" src="../../_images/haar.svg" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> The Haar mother wavelet, <span class="math notranslate nohighlight">\(+1\)</span> on the first half of its interval and <span class="math notranslate nohighlight">\(-1\)</span> on the second, and four scaled and shifted copies: two at the original width and two at half the width.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
-<li><p>define <span class="cblue">translations</span> and <span class="corange">dilations</span> $<span class="math notranslate nohighlight">\(\phi_{jk}(x) = \text{const} \cdot \phi(\corange{2^j} x - \cblue{k})\)</span>$</p>
+<li><p>define <span class="cblue">translations</span> and <span class="corange">dilations</span> <span class="math notranslate nohighlight">\(\phi_{jk}(x) = \text{const} \cdot \phi(\corange{2^j} x - \cblue{k})\)</span></p>
 <ul class="simple">
 <li><p>j, k are still integers</p></li>
 <li><p>this is still orthogonal</p></li>
@@ -599,7 +679,7 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 </li>
 </ul>
 </li>
-<li><p>ex. <strong>Gabor==Morlet wavelet</strong>: $<span class="math notranslate nohighlight">\(\phi_\sigma(x) = c \cdot \cblue{\underbrace{e^{-\frac 1 2 x^2}}_{\text{gaussian window}}} \corange{\underbrace{(e^{i\sigma x} - \kappa_\sigma)}_{\text{frequency}}}\)</span>$</p></li>
+<li><p>ex. <strong>Gabor==Morlet wavelet</strong>: <span class="math notranslate nohighlight">\(\phi_\sigma(x) = c \cdot \cblue{\underbrace{e^{-\frac 1 2 x^2}}_{\text{gaussian window}}} \corange{\underbrace{(e^{i\sigma x} - \kappa_\sigma)}_{\text{frequency}}}\)</span></p></li>
 <li><p>ex. <strong>Mexican hat wavelet</strong> - 2nd deriv of Gaussian pdf (in 2d, called Laplacian of Gaussian)</p></li>
 <li><p>ex. <strong>Daubechies wavelet</strong></p></li>
 <li><p>ex. <strong>coiflet</strong></p></li>
@@ -614,12 +694,24 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 <li><p>DWT restricts the value of the scale and translation of the wavelets (e.g. scale must increase in powers of 2 and translation must be integer)</p></li>
 </ul>
 </li>
-<li><p><img alt="Screen Shot 2019-12-11 at 2.00.27 PM" src="../../_images/wavelet_comp.png" /></p></li>
+<li><figure class="align-default" id="id5">
+<img alt="The discrete wavelet transform of a chirp, a sinusoid whose frequency rises over time. Left: each level splits the previous low-pass (LP) output into a new low-pass and a high-pass (HP) part. Right: t" class="note-figure" src="../../_images/wavelet_comp.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> The discrete wavelet transform of a chirp, a sinusoid whose frequency rises over time. Left: each level splits the previous low-pass (LP) output into a new low-pass and a high-pass (HP) part. Right: the approximation (low-pass) and detail (high-pass) coefficients for levels 1 to 5. The fast end of the chirp shows up in the first levels’ details, the slow start only at the deepest levels.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p>The <strong>approximation coefficients</strong> represent the output of the low pass filter (averaging filter) of the DWT.</p></li>
 <li><p>The <strong>detail coefficients</strong> represent the output of the high pass filter (difference filter) of the DWT</p></li>
 <li><p><a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/2d-decompositions-overview.html">pywt 2d</a> can decompose in different ways</p>
 <ul>
-<li><img style="width: 450px; max-width: 100%;" src="../assets/wavelet_coefs.svg" alt="2-D wavelet decomposition layouts"/>
+<li><figure class="align-default" id="id6">
+<a class="note-figure reference internal image-reference" href="../../_images/wavelet_coefs.svg"><img alt="Ways to lay out a 2-D wavelet decomposition in pywt: the standard dyadic pyramid, a fully separable decomposition, and full and custom wavelet packets, which also split the detail bands." class="note-figure" src="../../_images/wavelet_coefs.svg" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text"><span class="fig-num">Figure 5.</span> Ways to lay out a 2-D wavelet decomposition in pywt: the standard dyadic pyramid, a fully separable decomposition, and full and custom wavelet packets, which also split the detail bands.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 <li><p>wavelet packet uses linear combinations of wavelets</p></li>
 </ul>
@@ -629,7 +721,8 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 </ul>
 </section>
 <section id="properties-of-different-wavelet-bases">
-<h3><span class="section-number">3.4.4.2. </span>properties of different wavelet bases<a class="headerlink" href="#properties-of-different-wavelet-bases" title="Link to this heading">#</a></h3>
+<h3>Properties of different wavelet bases<a class="headerlink" href="#properties-of-different-wavelet-bases" title="Link to this heading">#</a></h3>
+<p class="section-lead">What separates one basis from another. More vanishing moments give a smoother, more complex wavelet with longer support, and inverting the transform needs a wavelet with zero mean.</p>
 <ul class="simple">
 <li><p>vanishing moments</p>
 <ul>
@@ -656,21 +749,22 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 </ul>
 </section>
 <section id="id1">
-<h3><span class="section-number">3.4.4.3. </span>wavelet analysis<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Wavelet analysis<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>orthogonal wavelet basis: <span class="math notranslate nohighlight">\(\phi_{(s,l)} (x) = 2^{-s/2} \phi (2^{-s} x-l)\)</span></p>
 <ul>
-<li><p><em>scaling function</em> <span class="math notranslate nohighlight">\(W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)\)</span> where $<span class="math notranslate nohighlight">\(\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}\)</span>$</p></li>
+<li><p><em>scaling function</em> <span class="math notranslate nohighlight">\(W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)\)</span> where <span class="math notranslate nohighlight">\(\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}\)</span></p></li>
 </ul>
 </li>
 <li><p>one pattern of coefficients is smoothing and another brings out detail = called <em>quadrature mirror filter pair</em></p></li>
 <li><p>there is also a fast discrete wavelet transform (Mallat)</p></li>
-<li><p><em>basis of adapted waveform</em> - best basis function for a given signal representation</p></li>
+<li><p><span id="def-basis-of-adapted-waveform" class="def-anchor"></span><em>basis of adapted waveform</em> - best basis function for a given signal representation</p></li>
 <li><p>differential operator and capable of being tuned to act at any desired scale</p></li>
 </ul>
 </section>
 <section id="more-general-wavelets">
-<h3><span class="section-number">3.4.4.4. </span>more general wavelets<a class="headerlink" href="#more-general-wavelets" title="Link to this heading">#</a></h3>
+<h3>More general wavelets<a class="headerlink" href="#more-general-wavelets" title="Link to this heading">#</a></h3>
+<p class="section-lead">Extensions of the wavelet idea: generalized Daubechies and coiflet families, shearlets and curvelets for anisotropic features, and wavelets learned from data.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://bigwww.epfl.ch/publications/vonesch0702.pdf">generalized daubechet wavelet families</a></p></li>
 <li><p><a class="reference external" href="https://pdfs.semanticscholar.org/46e3/4016b8c4b187118e83392242c2165a6db3db.pdf">generalized coiflets</a></p></li>
@@ -689,7 +783,17 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Curvelet">curvelets</a> - degree of localisation in orientation varies with scale. In particular, fine-scale basis functions are long ridges</p></li>
 <li><p>modern works even learn wavelets, e.g. <a class="reference external" href="https://arxiv.org/abs/2107.09145">AWD</a></p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>A signal with no frequencies above <span class="math notranslate nohighlight">\(B\)</span> is determined by samples taken at least <span class="math notranslate nohighlight">\(2B\)</span> times per second; sampling slower aliases high frequencies onto low ones.</p></li>
+<li><p>Each DFT coefficient <span class="math notranslate nohighlight">\(X_k\)</span> is the correlation between the signal and one complex sinusoid, and the sinusoids form an orthogonal basis.</p></li>
+<li><p>The FFT computes the DFT in <span class="math notranslate nohighlight">\(O(n \log n)\)</span> instead of <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p></li>
+<li><p>Fourier coefficients have no time information; wavelets, shifted and stretched copies of one mother wavelet, are localized in both time and frequency.</p></li>
+<li><p>The discrete wavelet transform repeatedly splits a signal into low-pass approximation and high-pass detail coefficients.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_scat.html"><span class="related-part">Research overviews</span><span class="related-title">Scattering transform</span><span class="related-hook">Fixed wavelet filters in place of learned ones, from Mallat&#x27;s scattering transform to hybrid networks and adaptive wavelets.</span></a><a class="related-card" href="../ml/comp_vision.html"><span class="related-part">Machine learning</span><span class="related-title">Computer vision</span><span class="related-hook">How images form, how to filter them and find features, stereo and motion, human vision, and deep networks for vision.</span></a><a class="related-card" href="../stat/time_series.html"><span class="related-part">Statistics</span><span class="related-title">Time series</span><span class="related-hook">Trend, seasonality and stationarity, AR, MA and ARMA models, autocovariance and Yule-Walker estimation, and similarity measures like DTW.</span></a></div></nav></section>
 </section>
 </section>
 
@@ -724,20 +828,20 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="linear_algebra.html"
+       href="optimization.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>linear algebra</p>
+        <p class="prev-next-title">Optimization</p>
       </div>
     </a>
     <a class="right-next"
-       href="optimization.html"
+       href="chaos.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>optimization</p>
+        <p class="prev-next-title">Nonlinear dynamics and chaos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -757,14 +861,14 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">3.4.1. basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">3.4.2. intro</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">3.4.3. fourier analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-analysis">3.4.4. wavelet analysis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-basics">3.4.4.1. wavelet basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-different-wavelet-bases">3.4.4.2. properties of different wavelet bases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.4.4.3. wavelet analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-general-wavelets">3.4.4.4. more general wavelets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-analysis">Fourier analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-analysis">Wavelet analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wavelet-basics">Wavelet basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-different-wavelet-bases">Properties of different wavelet bases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Wavelet analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-general-wavelets">More general wavelets</a></li>
 </ul>
 </li>
 </ul>
@@ -791,7 +895,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

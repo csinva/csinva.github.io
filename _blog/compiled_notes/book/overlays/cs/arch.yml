@@ -1,0 +1,209 @@
+# Overlay for _notes/cs/arch.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Architecture           # short name on the start-page topic map
+subtitle: How numbers are stored, x86 and y86 assembly, how a processor executes and pipelines instructions, caches and virtual memory.
+hook: Integers and floats in bits, assembly and calling conventions, a pipelined processor, caches, exceptions and virtual memory.
+intro: |
+  These notes follow a course built on Bryant and O'Hallaron's "Computer Systems - A Programmer's Perspective"
+  and go bottom-up. First, how numbers are stored: endianness, two's complement and IEEE floats. Then the
+  programmer's view of the machine: x86 assembly, the call stack and calling conventions, C, and the compile
+  steps that turn source into an executable.
+
+  The middle sections build a processor for y86, a small subset of x86: the fetch, decode, execute, memory and
+  write-back stages, then pipelining and the hazards it creates. The later sections are about memory and the
+  operating system's hooks into hardware: the cache hierarchy and why locality matters, code optimizations,
+  exceptions and processes, and virtual memory. The reading notes at the end summarize the matching book chapters.
+sections:
+  units:
+    lead: |
+      Amdahl's law bounds the speedup from making part of a program faster: if a fraction $a$ is sped up by a factor
+      $k$, the total speedup is $S = 1/(1 - a + a/k)$, so the part you didn't touch sets the limit.
+  numbers:
+    lead: |
+      Everything is bits; the type decides how they are read. With two's complement, signed arithmetic is the same
+      as unsigned arithmetic with the extra bits thrown away. A float is scientific notation in base 2: a sign bit, an 8-bit exponent stored with a bias of 127,
+      and a 23-bit mantissa with an implied leading 1.
+    viz:
+      - name: float-bits
+        params: {value: 42.125}
+        caption: |
+          The 32 bits of a float, starting at 42.125 (the note's union example, 0x42288000). Click bits to flip them.
+          Try 0.1: the stored value is slightly off because its denominator isn't a power of 2. Compare the gap to the
+          next float at 1 and at the largest float to see that floats are not evenly spaced, and try 16777217, which
+          rounds to a neighbor.
+  x86:
+    lead: |
+      x86 assembly in nasm syntax: moving data between registers and memory, arithmetic, jumps, and how the stack
+      supports subroutine calls. The calling convention fixes who saves which registers and where parameters,
+      locals and the return value go. The buffer overflow example shows what happens when a write runs past a local
+      array and over the saved return address.
+  compile steps:
+    lead: |
+      Four tools take a C file to an executable. The pre-processor expands the `#` lines, the compiler emits assembly,
+      the assembler turns it into an object file, and the linker joins object files and libraries into one program.
+  strings:
+    lead: |
+      A C string is just an array of chars ending in the null character `\0`. Nothing stores the length, so functions
+      find the end by scanning for that byte, which is also why a missing terminator is a security problem.
+  memory in C:
+    lead: |
+      Memory is one big array of bytes and a pointer is an index into it. The pointer's type says how many bytes to read
+      and how far `p[i]` moves, and an int's address must be a multiple of 4.
+  call stack:
+    lead: |
+      Each call pushes a frame holding the return address, saved registers and locals. The stack grows toward lower
+      addresses.
+  types:
+    lead: |
+      The C integer types differ only in width and in whether they are signed. In two's complement a negative number is
+      stored so that addition works exactly as for unsigned numbers, and C casts between the types without complaint.
+  boolean operators:
+    lead: |
+      Logical operators (`&&`, `!`) give 0 or 1, while bitwise ones (`&`, `|`, `^`, `~`, shifts) work on every bit.
+      Masks built from shifts select or clear groups of bits, and `!!x` turns any nonzero value into 1, which is how the
+      bit puzzles build branch-free conditionals.
+  ATT x86 assembly:
+    lead: |
+      The same instructions in AT&T syntax, where the source comes first and the destination second. The section names
+      the prefixes ($ for an immediate, % for a register), the gcc and objdump flags for looking at assembly, and spells
+      out call, ret, push and pop as moves and adds on `%rsp`.
+  y86 - all we use:
+    lead: |
+      y86 is the textbook's cut-down x86 with a handful of instructions, small enough to build a processor for by
+      hand. The encoding examples show how each instruction becomes bytes, which sets up the RISC vs. CISC trade-off
+      at the end of the section.
+  hardware:
+    lead: |
+      The building blocks of the processor. A register stores its input on the rising clock edge, a mux picks one of its
+      inputs, and HCL, the book's hardware language, writes a mux as a list of guarded cases. Overclocking fails when
+      the logic between registers can't finish within one clock cycle.
+  executing instructions:
+    lead: |
+      Every instruction goes through the same stages: fetch, decode (read registers), execute, memory, write back,
+      then update the PC. The worked examples trace actual bytes and register values through each stage.
+  pipelining:
+    lead: |
+      Pipelining overlaps the stages of consecutive instructions, so throughput goes up while each instruction
+      still takes as long. The cost is hazards: an instruction may need a value or a branch outcome that an earlier
+      one hasn't produced yet. The fixes are stalling, forwarding the value from a later stage, and speculating.
+  problems:
+    lead: |
+      A dependency is a property of the program (one instruction needs another's result or its branch outcome). A hazard
+      is a property of the hardware, a dependency the pipeline could get wrong, and it can be detected by comparing the
+      registers being read with the ones being written.
+  solutions:
+    lead: |
+      Three fixes, from slowest to most complex. Stalling waits for the value, forwarding passes it from the stage that
+      already has it, and speculation guesses a branch and bubbles the wrong work if the guess fails. A pipeline diagram
+      shows whether a value is ready by the time it is needed.
+  real processors:
+    lead: |
+      Real chips differ from the five-stage y86 pipeline. Memory is slow and unpredictable, pipelines run to 10-15
+      stages, several functional units work at once, instructions run out of order when they don't depend on each other,
+      and x86 is first translated into micro ops.
+  memory:
+    lead: |
+      Fast memory is small and expensive, so values are cached in SRAM close to the CPU. Caches pay off because of
+      locality: code tends to reuse the same addresses (temporal) and nearby addresses (spatial). An address is split
+      into a tag, a set index and a block offset, and the three cache designs differ in how many lines a block may
+      sit in.
+    viz:
+      - name: cache-locality
+        params: {order: col, lines: 8, ways: 1}
+        caption: |
+          Reading a 16×16 int array through a cache with 16-byte lines. Row order hits 3 reads out of 4 with any
+          cache, because each line holds 4 neighbors. Column order misses every read until the cache can hold one
+          line per row. Raise the lines to 16 or 32 and it still misses with a direct-mapped cache (conflict misses,
+          rows sharing a set) but hits with a fully associative one. Walking columns in 4×4 blocks needs only 4 lines
+          at a time, so a 4-line fully associative cache is enough.
+  writing:
+    lead: |
+      Writes need a policy. A write-allocate cache brings the block in first; write-back then waits until the line is
+      evicted to update RAM and needs a dirty bit, while write-through updates RAM at once. The section also names the
+      three kinds of miss (cold, capacity, conflict).
+  optimization:
+    lead: |
+      The compiler can't apply every optimization, because of pointer aliasing and floating-point rounding, so some
+      rewrites are up to the programmer: unrolling loops, picking the loop order that walks memory in sequence, and
+      blocking when no order is local for every array.
+  exceptions:
+    lead: |
+      Exceptions are how the hardware hands control to the kernel. The four kinds differ in their cause and where
+      execution resumes: interrupts (from a device), traps (asked for by user code), faults (an instruction failed,
+      maybe fixable) and aborts.
+  processes:
+    lead: |
+      While one program waits on the disk, the CPU can run another. A process is code with its own address space, saved
+      PC, registers and condition codes, and a context switch freezes one process, hands the OS time for bookkeeping and
+      resumes another.
+  threads:
+    lead: |
+      Threads are several stacks and register sets within one address space, managed by user code instead of the kernel.
+  system calls:
+    lead: |
+      A system call is a trap. On Linux almost all of them go through exception 128, with `%rax` choosing the service
+      from a jump table, and most return 0 on success or an error number.
+  "signals, setjmps":
+    lead: |
+      Three mechanisms sorted by who causes the event and who handles it. Exceptions come from hardware and go to the
+      kernel, signals come from the kernel and go to a user handler (turning a fault like a divide by zero into
+      something the program can catch), and setjmp/longjmp stay inside user code, like a try and catch.
+  virtual memory:
+    lead: |
+      Every process sees its own large address space. The MMU translates virtual page numbers to physical ones
+      through a page table, and multi-level page tables avoid storing entries for the mostly empty space. The TLB
+      caches recent translations.
+  overview:
+    lead: |
+      A worked example of the TLB. The virtual page number is split into a tag and a set index, exactly like an address
+      in a set-associative cache, and each entry's block holds a single physical page number.
+  reading:
+    lead: |
+      Short notes on the matching chapters of Bryant and O'Hallaron, in book order.
+  "ch 1 (1.7, 1.9)":
+    lead: |
+      The book's overview of the abstractions the later chapters build: files as bytes, the OS between hardware and
+      programs, processes and context switches, virtual memory, threads, and kinds of parallelism such as SIMD.
+  "ch 2 (2.1, 2.4.2, 2.4.4)":
+    lead: |
+      The IEEE float format in detail. The exponent field decides the case (normalized, denormalized for very small
+      values, or infinity and NaN when it is all ones), and round-to-even is the default because it avoids statistical
+      bias.
+  "ch 3 (3.6, 3.7)":
+    lead: |
+      Machine-level control. The condition code flags (zero, carry, sign, overflow) are set by arithmetic, and jumps and
+      conditional moves read them.
+  4.3.1-4:
+    lead: |
+      SEQ, the sequential y86 processor, runs each instruction through fetch, decode, execute, memory, write back and PC
+      update. The only state it has to update is the PC, the condition codes, the register file and data memory.
+  4.4 pipelining:
+    lead: |
+      Pipelining trades latency for throughput. The slowest stage sets the clock, and because every stage adds a
+      register write, more stages give diminishing returns.
+  5 - optimization:
+    lead: |
+      The book's list of what the programmer can do that the compiler can't safely do on its own, measured in cycles per
+      element. Memory aliasing and function side effects block the compiler; loop unrolling and multiple accumulators
+      expose instruction-level parallelism.
+  "6.1.1, 6.2, 6.3":
+    lead: |
+      Storage technologies and the memory hierarchy. SRAM holds its value while powered and DRAM must be refreshed, and
+      each level of the hierarchy caches blocks from the level below, with misses classed as cold, conflict or capacity.
+  8.1 Exceptions:
+    lead: |
+      The four classes of exception and where each returns. Interrupts are asynchronous and return to the next
+      instruction, traps are intentional and also return to the next one, faults may rerun the current instruction, and
+      aborts never return.
+  9-9.5 Virtual Memory:
+    lead: |
+      DRAM acts as a fully associative, write-back cache for virtual pages stored on disk. Each page table entry has a
+      valid bit, an address and permission bits; a page fault is a miss in this cache, and thrashing is what happens
+      when locality is poor.
+takeaways:
+  - Bits have no meaning until a type reads them, and two's complement makes signed addition the same circuit as unsigned addition.
+  - A function call is a jump plus a stack frame holding the return address, saved registers and locals, which is why a buffer overflow can overwrite where the function returns to.
+  - A processor runs every instruction through fetch, decode, execute, memory and write back, and pipelining overlaps these stages at the cost of data and control hazards.
+  - Hazards are handled by stalling, forwarding or speculating, from slowest to most complex.
+  - Caches work because of temporal and spatial locality, so the order in which code walks memory can matter more than its big-O cost.
+  - Exceptions hand control to the kernel, and virtual memory gives each process its own address space through page tables, with the TLB caching translations.
+figures: {}

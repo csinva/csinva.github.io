@@ -1,0 +1,244 @@
+# Overlay for _notes/research_ovws/ovw_llms.md
+map_label: LLM research           # short name on the start-page topic map
+title: LLMs
+subtitle: Papers on LLMs and transformers, biased toward interpretability, trees, neuroscience and automated science.
+hook: Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.
+intro: |
+  The longest reading list in the book, for papers that use or study LLMs. The basics are in the LLM
+  chapter of the AI part; this one is research. Prompting
+  covers how to get a fixed model to do a task: writing or searching for prompts, chain-of-thought,
+  self-verification, decoding and ensembling. Architecture engineering covers what changes the model itself:
+  attention variants and state space models, mixtures of experts, pruning and caching, finetuning and
+  adapters, RL post-training, diffusion LLMs, reasoning models and test-time compute.
+
+  The mechanistic interpretability part opens the model up: merging and editing weights, circuits, sparse
+  autoencoders and linear directions. Explanation and discovery turns that around and uses LLMs to explain
+  datasets, check whether chain-of-thought is faithful, learn algorithms, and run data science or research
+  with agents. The last parts collect applications by modality (tabular data, audio, education) and
+  shorter topics such as security, memorization, agents and in-context learning. Sections are mostly
+  independent, so jump to the one you need.
+sections:
+  prompting:
+    lead: |
+      Ways to get a pre-trained model to do a task without changing its weights. Early work used fill-in-the-blank
+      prompts to read facts out of BERT; later sections cover chain-of-thought, checking answers, and combining
+      many prompts or calls.
+  (auto)prompting:
+    lead: |
+      Prompts can be searched for automatically. The figure orders the options from natural-language prompts,
+      which a person can read, through discrete token prompts and continuous prompt vectors to full
+      parameter-efficient training, which can't be read at all.
+  chain-of-thought:
+    lead: |
+      Asking the model to write out its reasoning before the answer, plus variants that sample several
+      reasoning paths and keep the most consistent answer, split a problem into subproblems, or let the model
+      compose its own reasoning structure.
+    viz:
+      - name: self-consistency
+        params:
+          p: 0.4
+          share: 0.4
+          k: 9
+        caption: 'Self-consistency in an idealized model: each sampled reasoning path is independently right with probability
+          $p$, otherwise it gives one of four wrong answers, and the most common final answer wins. While the correct
+          answer is the single most likely one, more samples push accuracy toward 1; drag the top wrong answer''s share
+          until it beats $p$ and voting makes things worse (real samples are correlated, so real gains are smaller).'
+  sampling / efficient inference:
+    lead: |
+      Tree-structured prompting (including tree of thoughts), ways to cut the cost of calling LLMs, such as
+      cascades that try cheaper models first, and decoding strategies from greedy to contrastive decoding.
+  self-verification:
+    lead: |
+      Ways to catch a model's own mistakes: trained verifiers that score answers and reasoning, models
+      cross-examining each other, refining an answer with self-feedback, and process reward models that check
+      each intermediate step rather than only the final answer.
+  prompt chaining / ensembling:
+    lead: |
+      Two ways to use more than one call. Chaining feeds the output of one step into the next, and some papers
+      treat a chain as a probabilistic program over text variables. Ensembling combines many prompts, for
+      example by averaging or by boosting, with or without labeled data.
+  llm querying / causal inference:
+    lead: |
+      Two directions meet here: asking LLMs to reason about cause and effect (from correlational statements or
+      as a stand-in for domain knowledge), and using causal tools such as mediation analysis and erasure to
+      study the models. The list ends with foundation models trained to estimate causal effects in context.
+  uncertainty:
+    lead: |
+      How to get a confidence for a generated answer: entropy over clusters of answers that mean the same
+      thing, consistency across samples or perturbed inputs, or asking the model to state its confidence in
+      words. Several papers find stated confidences are often overconfident.
+  classifier-guided generation:
+    lead: |
+      Steering generation toward an attribute with a separate classifier, either by pushing the hidden
+      activations along the classifier's gradient or by reweighting next-token probabilities with the
+      classifier's prediction.
+  architecture engineering & vetting:
+    lead: |
+      Papers that change the model rather than the prompt: new layers, sparsity, compression, finetuning and
+      post-training, and models that reason with extra compute at test time.
+  architecture/attention variants:
+    lead: |
+      Alternatives to standard attention. State space models are linear RNNs whose
+      <span class="cblue">hidden-state transition</span> is the same at every position, so all outputs can be
+      computed at once as a convolution; mamba makes the transition depend on the input. Also here: synthetic
+      tasks for comparing architectures, 1-bit and matmul-free models, and recurrent reasoning models.
+  mixture of experts (MoE) / routing:
+    lead: |
+      An MoE layer sends each token to a few of many expert MLPs, so the parameter count can grow without the
+      compute per token growing with it.
+  pruning / caching:
+    lead: |
+      Making a trained model cheaper to run: removing weights or whole deep layers, caching key and value
+      vectors for repeated context, speculative decoding with a small model, and exiting early from the
+      network when the answer is already clear.
+  adaptation / transfer:
+    lead: |
+      Roughly ordered by what gets trained: all the weights, a linear layer on the activations or a few chosen
+      parameters, adapters and LoRA, and finally prompting, where the weights stay frozen.
+  instruction tuning / rlhf / rl:
+    lead: |
+      Post-training a model to follow instructions. One thread steers attention or activations toward the
+      parts of the prompt or the directions that matter (PASTA, inference-time intervention); the other
+      trains on feedback from humans, natural-language critiques, explanations, or other models.
+  diffusion LLMs (dLLMs):
+    lead: |
+      Generating text by iteratively denoising a whole sequence instead of one token at a time. Continuous
+      versions diffuse in an embedding space; masked versions repeatedly fill in masked tokens and generally
+      beat uniform-state ones.
+  reasoning models / rl models:
+    lead: |
+      Training models to reason, either in a continuous latent space instead of words or with RL on rewards
+      that can be checked automatically.
+  test-time scaling/training:
+    lead: |
+      Spending more compute per question: searching over solution paths, aggregating across attempts, and
+      updating the weights at test time.
+  (mech) interp:
+    lead: |
+      Methods that look inside a trained transformer. The overview figure places them on the forward pass:
+      probing classifiers and individual neurons, causal mediation such as ROME and Patchscopes, lens methods
+      that decode tokens from earlier layers, sparse autoencoders, and chain-of-thought as a self-explanation.
+  model merging:
+    lead: |
+      Combining models with the same architecture by operating directly on their weights, from simple averaging
+      to methods that resolve conflicts between the task-specific changes.
+  editing:
+    lead: |
+      Like finetuning, but the change is kept local so that a fact or behavior is altered without hurting
+      everything else. Activation steering, which adds a vector to the hidden states at inference, is grouped
+      here too.
+  direct weight inspection:
+    lead: |
+      Reading mechanisms off the weights and activations: circuits for specific tasks, logit-lens-style decoding
+      of intermediate layers, and studies of individual neurons and heads.
+  sparse autoencoders (saes):
+    lead: |
+      An SAE re-expresses a layer's activations as a sparse combination of many learned features, in the hope
+      that each feature is interpretable. The list ends with critiques that compare SAEs against simpler
+      baselines.
+  interp for improved training (intentional design):
+    lead: |
+      Using interpretability to shape what a model learns rather than only to describe it: ablating concepts or
+      routing gradients during finetuning, choosing training data for a desired generalization, and
+      decomposing the parameters themselves into simple mechanisms (APD, SPD).
+  linear representations:
+    lead: |
+      The hypothesis that concepts such as sentiment, truth or refusal are encoded as directions in activation
+      space, along with counterexamples (multi-dimensional features, directions that drift over a
+      conversation) and methods that erase a concept by projecting out its direction.
+  interpretable LM models:
+    lead: |
+      Language models built to be readable: transformers constrained so they compile to programs, models that
+      predict the next token from n-gram style matches, and concept bottleneck LLMs whose predictions pass
+      through a layer of named concepts.
+  explanation / discovery:
+    lead: |
+      Using LLMs to explain things other than themselves: patterns in a dataset, what a neuron or module
+      responds to, and eventually whole analyses or research projects.
+  dataset / module explanation:
+    lead: |
+      Two related tasks. Dataset explanation finds a natural-language description of a pattern in data or of
+      the difference between two distributions. Module explanation describes what a neuron, feature or black
+      box text module responds to, then tests that description, often by generating new inputs.
+  "natural-language explanations: CoT faithfulness & reasoning faithfulness":
+    lead: |
+      Chain-of-thought looks like an explanation, but these papers measure whether the written reasoning
+      actually drives the answer. One common test: remove part of the explanation and see whether the
+      prediction changes.
+  directly learning algorithms:
+    lead: |
+      Systems that discover algorithms rather than explain them: LLM-driven program search in the
+      FunSearch and AlphaEvolve family, RL-discovered sorting and matrix multiplication routines, and
+      transformers trained to carry out a learning algorithm such as building a decision tree.
+  (automatic) data science / autoresearch:
+    lead: |
+      Benchmarks first (each figure shows one task from a benchmark), then agent systems that run analyses or
+      research with more or less human help, hypothesis generation, and critiques.
+  data visualization / charts:
+    lead: |
+      LLMs as tools for understanding data without fitting a model: systems that generate or recommend
+      visualizations from a request, data wrangling, and multimodal models that read charts.
+  clinical nlp:
+    lead: |
+      LLMs on medical text: decision support in real care, information extraction, following clinical
+      guidelines and decision rules, summarizing evidence, matching patients to trials, and predicting
+      outcomes from EHRs.
+  clinical/bio image segmentation:
+    lead: |
+      Segmentation models grouped by the dimension of the data: 2D images (SAM 1, BioMedParse), 2D plus time
+      (SAM 2 and its medical versions), 4D and 5D volumes over time, and Cellpose for cells.
+  other modalities / domains:
+    lead: |
+      LLMs and foundation models applied outside free text, with tabular data as the largest section.
+  tabular data / regression:
+    lead: |
+      Foundation models for tables, with TabPFN-style models that predict in context as the main thread. Other
+      approaches write numerical values as text and finetune an LLM on them, encode tables without text
+      tokens, or jointly encode a table and a text prompt; benchmarks, older work and limitations frame the
+      list.
+  misc:
+    lead: |
+      Shorter topics, each its own list: data selection, security and jailbreaks, memorization, symbolic
+      reasoning, agents and tool use, multilingual models, in-context learning, critiques, LLM-based evaluation
+      and information extraction.
+  security:
+    lead: |
+      Split into defenses (perplexity-based detection, preprocessing inputs, adversarial training, defenses
+      at generation time, classifiers trained from a constitution) and attacks (jailbreaks, red teaming,
+      backdoors, and the classic text attacks on classifiers). One paper shows that adaptive attacks get
+      past many published defenses.
+  tool use / agents:
+    lead: |
+      LLMs that call outside tools: search, code execution, APIs and knowledge bases. Toolformer learns which
+      calls help by keeping only those that lower the loss on the following tokens; ReAct interleaves
+      reasoning traces with actions; later entries are multi-agent systems.
+  in-context learning (ICL) / few-shot learning:
+    lead: |
+      Mostly synthetic studies of what a transformer can learn from examples in its prompt: trained on many
+      linear functions, it can fit a new one in context, and papers ask which algorithm it implements (least
+      squares, gradient descent, higher-order methods). Theory and limits, such as poor compositional
+      generalization, follow.
+  llm limitations / critiques:
+    lead: |
+      Arguments that LLMs separate language from reasoning poorly or must hallucinate, plus evidence that
+      prompting is brittle: irrelevant prompts work, and the order or format of examples or the position of
+      relevant context changes results.
+figures:
+  prompting_typology.svg: Typology of prompting methods from the prompting survey. Prompts vary in which pre-trained model they use, how the prompt and the answer are designed (by hand or automatically, as discrete text or continuous vectors), whether several prompts are combined, and which parameters get trained.
+  prompting_hierarchy.svg: Each box contains the methods inside it as special cases. Only the innermost, natural-language prompts can be read by a person.
+  G2Q2LwcWsAE_UIm.jpeg: Overview of interpretability methods placed on a transformer's forward pass, with example papers for each. Top row, the architecture and KV caching, with sparse autoencoders on the right; middle row, individual neurons, causal mediation (ROME) and lens methods; bottom row, probing classifiers, Patchscopes and chain-of-thought.
+  ttt_lm.svg: A test-time training layer. Its hidden state is a weight matrix $W_t$ that takes a gradient step on a self-supervised reconstruction loss at every token (inner loop, blue). The outer loop (red) meta-learns the projections that decide what that inner loss reconstructs.
+  scienceagentbench_task.svg: One ScienceAgentBench task. The agent gets (a) a task instruction, (b) the dataset and a preview of it, and (c) knowledge written by a domain expert, and must produce a self-contained Python program; (d) the annotated program written by the expert is the reference.
+  autosdt_example.svg: One AutoSDT record, scraped automatically from a GitHub repository. A fixed system instruction, a task description (here, computing material property features for a list of chemical compositions), and the Python program as the target output.
+  discoverybench.svg: A DiscoveryBench task. Given a dataset and a goal, the agent writes a workflow and a final hypothesis; evaluation compares the predicted hypothesis to the gold one piece by piece (context, variables, relationship) and combines the scores.
+  blade.svg: How BLADE is built and scored. Experts annotate a research question and dataset with the space of reasonable analysis decisions (conceptual variables, data transforms, statistical models); an LM agent's generated analysis is matched against that space automatically.
+  mlagentbench.svg: An MLAgentBench task. The agent starts from a task description and starter files including train.py, edits and runs code over many steps, and is scored by an evaluator on test performance of its submission.
+  ida_bench.svg: IDA-Bench. A user simulator built from instruction materials and reference insights gives the agent instructions over several turns, and the agent analyzes the data in a Python sandbox. The interactive setting is the point of the benchmark.
+  mlebench.svg: MLE-bench. Each task is a Kaggle competition with a description and dataset; the agent trains, tests and debugs a model, creates a submission file, and a grader places its score on the competition leaderboard.
+  dabench.svg: An InfiAgent-DABench question. The agent answers a question about one CSV file by writing and running code in a sandbox, and its answer is reformatted to match a closed-form label for automatic checking.
+takeaways:
+  - A fixed model can be pushed a long way without changing its weights: searched prompts, chains of thought, self-verification, ensembles of calls and test-time search all spend more inference compute instead.
+  - Much of the architecture work is about cost: state space models, mixtures of experts, pruning, caching and parameter-efficient adapters keep a large model while doing less work per token or per task.
+  - Mechanistic interpretability works at several levels at once (weights, neurons, circuits, sparse autoencoder features, linear directions), and a recurring open question is whether these units beat simple baselines.
+  - Whether chain-of-thought reflects the computation behind an answer is unsettled; the faithfulness papers test it by intervening on the written reasoning.
+  - LLMs are increasingly used as explainers and researchers, describing datasets and modules or running analyses as agents, and the many benchmarks show that scoring open-ended discovery is still hard.

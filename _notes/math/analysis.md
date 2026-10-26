@@ -109,7 +109,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets
 1. *comparison test*
 2. *geometric series* - $\sum_{n=0}^\infty a r^n = \frac{a}{1-r}$
 
-- $$s_m = a+ar+...+ar^{m-1} = \frac{a(1-r^m)}{1-r}$$<!-- -->
+- $$s_m = a+ar+...+ar^{m-1} = \frac{a(1-r^m)}{1-r}$$
 
 1. *absolute convergence test*
 2. *alternating series test*

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.6. architecture</title>
+    <title>Architecture &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/cs/arch';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.7. info retrieval + databases" href="retrieval_databases.html" />
-    <link rel="prev" title="2.5. os" href="os.html" />
+    <link rel="next" title="Operating systems" href="os.html" />
+    <link rel="prev" title="Languages and parallel computing" href="languages_parallel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs_section.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os.html">2.5. os</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/cs/arch.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>architecture</h1>
+    <h1>Architecture</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,65 +471,65 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">2.6.1. units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numbers">2.6.2. numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x86">2.6.3. x86</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">2.6.4. intro to C - we use ANSI standard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-steps">2.6.5. compile steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">2.6.6. strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-in-c">2.6.7. memory in C</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-stack">2.6.8. call stack</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">2.6.9. types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operators">2.6.10. boolean operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#att-x86-assembly">2.6.11. ATT x86 assembly</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y86-all-we-use">2.6.12. y86 - all we use</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">2.6.13. hardware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-instructions">2.6.14. executing instructions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-wires-opq-example">2.6.15. hardware wires - opq example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelining">2.6.16. pipelining</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">2.6.16.1. problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">2.6.16.2. solutions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-processors">2.6.16.3. real processors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numbers">Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x86">X86</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">Intro to C - we use ANSI standard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-steps">Compile steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-in-c">Memory in C</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-stack">Call stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operators">Boolean operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#att-x86-assembly">ATT x86 assembly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y86-all-we-use">Y86 - all we use</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-instructions">Executing instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-wires-opq-example">Hardware wires - opq example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelining">Pipelining</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-processors">Real processors</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">2.6.17. memory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing">2.6.17.1. writing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-anatomy">2.6.17.2. cache anatomy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing">Writing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-anatomy">Cache anatomy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">2.6.18. optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">2.6.19. exceptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">2.6.20. processes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">2.6.21. threads</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-calls">2.6.22. system calls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-exceptions">2.6.23. software exceptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signals-setjmps">2.6.24. signals, setjmps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">2.6.25. virtual memory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">2.6.26. overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segments">2.6.27. segments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-rvw">2.6.28. quiz rvw</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labs">2.6.29. labs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strlen">2.6.29.1. strlen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strsep">2.6.29.2. strsep</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-puzzles">2.6.29.3. bit puzzles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">Threads</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-calls">System calls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-exceptions">Software exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signals-setjmps">Signals, setjmps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">Virtual memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segments">Segments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-rvw">Quiz rvw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labs">Labs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strlen">Strlen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strsep">Strsep</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-puzzles">Bit puzzles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">2.6.30. reading</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-1-7-1-9">2.6.30.1. ch 1 (1.7, 1.9)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">2.6.30.2. ch 2 (2.1, 2.4.2, 2.4.4)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-3-3-6-3-7">2.6.30.3. ch 3 (3.6, 3.7)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.6.30.4. 4.1,4.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.6.30.5. 4.3.1-4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.6.30.6. 4.4 pipelining</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.6.30.7. 4.5.3, 4.5.8</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.6.30.8. 5 - optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.6.30.9. 6.1.1, 6.2, 6.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">2.6.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6.30.11. 8.1 Exceptions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.6.30.12. 8.2 Processes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-call-error-handling">2.6.30.13. 8.3 System Call Error Handling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6.30.14. 9-9.5 Virtual Memory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#address-translation">2.6.30.15. 9.6 Address Translation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-1-7-1-9">Ch 1 (1.7, 1.9)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">Ch 2 (2.1, 2.4.2, 2.4.4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-3-3-6-3-7">Ch 3 (3.6, 3.7)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1,4.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.3.1-4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.4 pipelining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.5.3, 4.5.8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5 - optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.1.1, 6.2, 6.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">6.4, 6.5 - cache memories &amp; writing cache-friendly code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.1 Exceptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.2 Processes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-call-error-handling">8.3 System Call Error Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">9-9.5 Virtual Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#address-translation">9.6 Address Translation</a></li>
 </ul>
 </li>
 </ul>
@@ -493,10 +543,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="architecture">
-<h1><span class="section-number">2.6. </span>architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<section id="units">
-<h2><span class="section-number">2.6.1. </span>units<a class="headerlink" href="#units" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/cs.html">Computer science</a> &nbsp;·&nbsp; chapter 4 of 8 &nbsp;·&nbsp; 22 min read</p><section class="tex2jax_ignore mathjax_ignore" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">How numbers are stored, x86 and y86 assembly, how a processor executes and pipelines instructions, caches and virtual memory.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>These notes follow a course built on Bryant and O’Hallaron’s “Computer Systems - A Programmer’s Perspective” and go bottom-up. First, how numbers are stored: endianness, two’s complement and IEEE floats. Then the programmer’s view of the machine: x86 assembly, the call stack and calling conventions, C, and the compile steps that turn source into an executable.</p>
+<p>The middle sections build a processor for y86, a small subset of x86: the fetch, decode, execute, memory and write-back stages, then pipelining and the hazards it creates. The later sections are about memory and the operating system’s hooks into hardware: the cache hierarchy and why locality matters, code optimizations, exceptions and processes, and virtual memory. The reading notes at the end summarize the matching book chapters.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 30 sections</summary><ol><li><a href="#sec-arch-units">Units</a><span class="ol-lead">Amdahl&#x27;s law bounds the speedup from making part of a program faster: if a fraction a is sped up by a factor k, the total speedup is S = 1/(1 - a + a/k), so the part you didn&#x27;t touch sets the limit.</span></li><li><a href="#sec-arch-numbers">Numbers</a><span class="ol-badge">1 interactive</span><span class="ol-lead">Everything is bits; the type decides how they are read.</span></li><li><a href="#sec-arch-x86">X86</a><span class="ol-lead">x86 assembly in nasm syntax: moving data between registers and memory, arithmetic, jumps, and how the stack supports subroutine calls.</span></li><li><a href="#sec-arch-intro-to-c-we-use-ansi-standard">Intro to C - we use ANSI standard</a></li><li><a href="#sec-arch-compile-steps">Compile steps</a><span class="ol-lead">Four tools take a C file to an executable.</span></li><li><a href="#sec-arch-strings">Strings</a><span class="ol-lead">A C string is just an array of chars ending in the null character `\0`.</span></li><li><a href="#sec-arch-memory-in-c">Memory in C</a><span class="ol-lead">Memory is one big array of bytes and a pointer is an index into it.</span></li><li><a href="#sec-arch-call-stack">Call stack</a><span class="ol-lead">Each call pushes a frame holding the return address, saved registers and locals.</span></li><li><a href="#sec-arch-types">Types</a><span class="ol-lead">The C integer types differ only in width and in whether they are signed.</span></li><li><a href="#sec-arch-boolean-operators">Boolean operators</a><span class="ol-lead">Logical operators (`&amp;&amp;`, `!`) give 0 or 1, while bitwise ones (`&amp;`, `|`, `^`, `~`, shifts) work on every bit.</span></li><li><a href="#sec-arch-att-x86-assembly">ATT x86 assembly</a><span class="ol-lead">The same instructions in AT&amp;T syntax, where the source comes first and the destination second.</span></li><li><a href="#sec-arch-y86-all-we-use">Y86 - all we use</a><span class="ol-lead">y86 is the textbook&#x27;s cut-down x86 with a handful of instructions, small enough to build a processor for by hand.</span></li><li><a href="#sec-arch-hardware">Hardware</a><span class="ol-lead">The building blocks of the processor.</span></li><li><a href="#sec-arch-executing-instructions">Executing instructions</a><span class="ol-lead">Every instruction goes through the same stages: fetch, decode (read registers), execute, memory, write back, then update the PC.</span></li><li><a href="#sec-arch-hardware-wires-opq-example">Hardware wires - opq example</a></li><li><a href="#sec-arch-pipelining">Pipelining</a><span class="ol-lead">Pipelining overlaps the stages of consecutive instructions, so throughput goes up while each instruction still takes as long.</span></li><li><a href="#sec-arch-memory">Memory</a><span class="ol-badge">1 interactive</span><span class="ol-lead">Fast memory is small and expensive, so values are cached in SRAM close to the CPU.</span></li><li><a href="#sec-arch-optimization">Optimization</a><span class="ol-lead">The compiler can&#x27;t apply every optimization, because of pointer aliasing and floating-point rounding, so some rewrites are up to the programmer: unrolling loops, picking the loop order that walks memory in sequence, and blocking when no order is local for every array.</span></li><li><a href="#sec-arch-exceptions">Exceptions</a><span class="ol-lead">Exceptions are how the hardware hands control to the kernel.</span></li><li><a href="#sec-arch-processes">Processes</a><span class="ol-lead">While one program waits on the disk, the CPU can run another.</span></li><li><a href="#sec-arch-threads">Threads</a><span class="ol-lead">Threads are several stacks and register sets within one address space, managed by user code instead of the kernel.</span></li><li><a href="#sec-arch-system-calls">System calls</a><span class="ol-lead">A system call is a trap.</span></li><li><a href="#sec-arch-software-exceptions">Software exceptions</a></li><li><a href="#sec-arch-signals-setjmps">Signals, setjmps</a><span class="ol-lead">Three mechanisms sorted by who causes the event and who handles it.</span></li><li><a href="#sec-arch-virtual-memory">Virtual memory</a><span class="ol-lead">Every process sees its own large address space.</span></li><li><a href="#sec-arch-overview">Overview</a><span class="ol-lead">A worked example of the TLB.</span></li><li><a href="#sec-arch-segments">Segments</a></li><li><a href="#sec-arch-quiz-rvw">Quiz rvw</a></li><li><a href="#sec-arch-labs">Labs</a></li><li><a href="#sec-arch-reading">Reading</a><span class="ol-lead">Short notes on the matching chapters of Bryant and O&#x27;Hallaron, in book order.</span></li></ol></details><section id="units">
+<span id="sec-arch-units"></span><h2>Units<a class="headerlink" href="#units" title="Link to this heading">#</a></h2>
+<p class="section-lead">Amdahl’s law bounds the speedup from making part of a program faster: if a fraction <span class="math notranslate nohighlight">\(a\)</span> is sped up by a factor <span class="math notranslate nohighlight">\(k\)</span>, the total speedup is <span class="math notranslate nohighlight">\(S = 1/(1 - a + a/k)\)</span>, so the part you didn’t touch sets the limit.</p>
 <ul class="simple">
 <li><p>we will use only the i versions (don’t have to write i):</p>
 <ul>
@@ -508,7 +564,7 @@ document.write(`
 <li><p>convert to these: 2^27 = 128M</p></li>
 <li><p>log(8K)=13</p></li>
 <li><p>hardware is parallel by default</p></li>
-<li><p>amdahl’s law: tells you how much of a speedup you get</p>
+<li><p><a class="term-link" href="os.html#def-amdahl-s-law" data-def="... · Operating systems">amdahl’s law</a>: tells you how much of a speedup you get</p>
 <ul>
 <li><p>S = 1 / (1-a+a/k)</p></li>
 <li><p>a-portion optimized, k-level of parallelization, S-total speedup
@@ -518,8 +574,10 @@ if you really want performance increase in java, allocate a very large array, th
 </ul>
 </section>
 <section id="numbers">
-<h2><span class="section-number">2.6.2. </span>numbers<a class="headerlink" href="#numbers" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-arch-numbers"></span><h2>Numbers<a class="headerlink" href="#numbers" title="Link to this heading">#</a></h2>
+<p class="section-lead">Everything is bits; the type decides how they are read. With two’s complement, signed arithmetic is the same as unsigned arithmetic with the extra bits thrown away. A float is scientific notation in base 2: a sign bit, an 8-bit exponent stored with a bias of 127, and a 23-bit mantissa with an implied leading 1.</p>
+<figure class="nb-viz-figure" id="viz-float-bits"><div class="nb-viz" data-viz="float-bits" data-params="{&quot;value&quot;: 42.125}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> The 32 bits of a float, starting at 42.125 (the note's union example, 0x42288000). Click bits to flip them. Try 0.1: the stored value is slightly off because its denominator isn't a power of 2. Compare the gap to the next float at 1 and at the largest float to see that floats are not evenly spaced, and try 16777217, which rounds to a neighbor.</figcaption></figure><ul>
 <li><p>0x means hexadecimal</p></li>
 <li><p>0 means octal</p></li>
 <li><p>bit - stores 0 or 1</p></li>
@@ -632,7 +690,8 @@ Cowlishaw encoding: use 3 bits to store a binary digit - inefficient</p>
 </ul>
 </section>
 <section id="x86">
-<h2><span class="section-number">2.6.3. </span>x86<a class="headerlink" href="#x86" title="Link to this heading">#</a></h2>
+<span id="sec-arch-x86"></span><h2>X86<a class="headerlink" href="#x86" title="Link to this heading">#</a></h2>
+<p class="section-lead">x86 assembly in nasm syntax: moving data between registers and memory, arithmetic, jumps, and how the stack supports subroutine calls. The calling convention fixes who saves which registers and where parameters, locals and the return value go. The buffer overflow example shows what happens when a write runs past a local array and over the saved return address.</p>
 <p>Assembly Language - assembler translates text into machine code
 x86 is the type of chip
 8 registers, although you can’t use 2 (stack pointer and base pointer)
@@ -825,7 +884,7 @@ pop ebp
 ret</p>
 </section>
 <section id="intro-to-c-we-use-ansi-standard">
-<h2><span class="section-number">2.6.4. </span>intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Link to this heading">#</a></h2>
+<span id="sec-arch-intro-to-c-we-use-ansi-standard"></span><h2>Intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Link to this heading">#</a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">all</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">C</span><span class="o">++</span>
 <span class="c1">// doesn&#39;t work</span>
 <span class="n">always</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="o">+=</span><span class="mi">1</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="o">++</span>
@@ -849,7 +908,8 @@ ret</p>
 </div>
 </section>
 <section id="compile-steps">
-<h2><span class="section-number">2.6.5. </span>compile steps<a class="headerlink" href="#compile-steps" title="Link to this heading">#</a></h2>
+<span id="sec-arch-compile-steps"></span><h2>Compile steps<a class="headerlink" href="#compile-steps" title="Link to this heading">#</a></h2>
+<p class="section-lead">Four tools take a C file to an executable. The pre-processor expands the <code class="docutils literal notranslate"><span class="pre">#</span></code> lines, the compiler emits assembly, the assembler turns it into an object file, and the linker joins object files and libraries into one program.</p>
 <p>source (text) -&gt; pre-processor -&gt; modified source (text) -&gt; compiler -&gt; assembly (text) -&gt; assembler -&gt; binary program -&gt; linker -&gt; executable</p>
 <ol class="arabic simple">
 <li><p>pre-processing - deals with hashtags - sets up line numbers for errors, includes external definitions, normal defines (.i)</p></li>
@@ -863,7 +923,8 @@ ret</p>
 </ol>
 </section>
 <section id="strings">
-<h2><span class="section-number">2.6.6. </span>strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h2>
+<span id="sec-arch-strings"></span><h2>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h2>
+<p class="section-lead">A C string is just an array of chars ending in the null character <code class="docutils literal notranslate"><span class="pre">\0</span></code>. Nothing stores the length, so functions find the end by scanning for that byte, which is also why a missing terminator is a security problem.</p>
 <ul class="simple">
 <li><p>char - number that fits in 1 byte</p></li>
 <li><p>string is an array of chars: char*</p></li>
@@ -893,7 +954,8 @@ ret</p>
 </div>
 </section>
 <section id="memory-in-c">
-<h2><span class="section-number">2.6.7. </span>memory in C<a class="headerlink" href="#memory-in-c" title="Link to this heading">#</a></h2>
+<span id="sec-arch-memory-in-c"></span><h2>Memory in C<a class="headerlink" href="#memory-in-c" title="Link to this heading">#</a></h2>
+<p class="section-lead">Memory is one big array of bytes and a pointer is an index into it. The pointer’s type says how many bytes to read and how far <code class="docutils literal notranslate"><span class="pre">p[i]</span></code> moves, and an int’s address must be a multiple of 4.</p>
 <ul class="simple">
 <li><p>byte is smallest accessible memory unit - 2 hex digits (ex: 0x3a)</p></li>
 </ul>
@@ -945,7 +1007,8 @@ ret</p>
 </ul>
 </section>
 <section id="call-stack">
-<h2><span class="section-number">2.6.8. </span>call stack<a class="headerlink" href="#call-stack" title="Link to this heading">#</a></h2>
+<span id="sec-arch-call-stack"></span><h2>Call stack<a class="headerlink" href="#call-stack" title="Link to this heading">#</a></h2>
+<p class="section-lead">Each call pushes a frame holding the return address, saved registers and locals. The stack grows toward lower addresses.</p>
 <ol class="arabic simple">
 <li><p>return address</p></li>
 <li><p>local variables</p></li>
@@ -976,7 +1039,8 @@ ret</p>
 </ul>
 </section>
 <section id="types">
-<h2><span class="section-number">2.6.9. </span>types<a class="headerlink" href="#types" title="Link to this heading">#</a></h2>
+<span id="sec-arch-types"></span><h2>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h2>
+<p class="section-lead">The C integer types differ only in width and in whether they are signed. In two’s complement a negative number is stored so that addition works exactly as for unsigned numbers, and C casts between the types without complaint.</p>
 <ul class="simple">
 <li><p>2’s complement: positive normal, negative subtract 1 more than biggest number you can do</p>
 <ul>
@@ -1022,7 +1086,8 @@ ret</p>
 </ul>
 </section>
 <section id="boolean-operators">
-<h2><span class="section-number">2.6.10. </span>boolean operators<a class="headerlink" href="#boolean-operators" title="Link to this heading">#</a></h2>
+<span id="sec-arch-boolean-operators"></span><h2>Boolean operators<a class="headerlink" href="#boolean-operators" title="Link to this heading">#</a></h2>
+<p class="section-lead">Logical operators (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">!</span></code>) give 0 or 1, while bitwise ones (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>, shifts) work on every bit. Masks built from shifts select or clear groups of bits, and <code class="docutils literal notranslate"><span class="pre">!!x</span></code> turns any nonzero value into 1, which is how the bit puzzles build branch-free conditionals.</p>
 <ul>
 <li><p>9 = 1001 = 1.001 x 2^3</p></li>
 <li><p>x &amp;&amp; y -&gt; {0,1}</p></li>
@@ -1052,7 +1117,8 @@ x &amp; ~((1 &lt;&lt; 3 )-1)	gives us x1x2…..000</p></li>
 </ul>
 </section>
 <section id="att-x86-assembly">
-<h2><span class="section-number">2.6.11. </span>ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Link to this heading">#</a></h2>
+<span id="sec-arch-att-x86-assembly"></span><h2>ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Link to this heading">#</a></h2>
+<p class="section-lead">The same instructions in AT&amp;T syntax, where the source comes first and the destination second. The section names the prefixes ($ for an immediate, % for a register), the gcc and objdump flags for looking at assembly, and spells out call, ret, push and pop as moves and adds on <code class="docutils literal notranslate"><span class="pre">%rsp</span></code>.</p>
 <ul class="simple">
 <li><p>there are 2 hardwares</p>
 <ul>
@@ -1156,7 +1222,8 @@ cmp</p></li>
 </ul>
 </section>
 <section id="y86-all-we-use">
-<h2><span class="section-number">2.6.12. </span>y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Link to this heading">#</a></h2>
+<span id="sec-arch-y86-all-we-use"></span><h2>Y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Link to this heading">#</a></h2>
+<p class="section-lead">y86 is the textbook’s cut-down x86 with a handful of instructions, small enough to build a processor for by hand. The encoding examples show how each instruction becomes bytes, which sets up the RISC vs. CISC trade-off at the end of the section.</p>
 <ol class="arabic simple">
 <li><p>halt - stops the chip</p></li>
 <li><p>nop - do nothing</p></li>
@@ -1291,7 +1358,8 @@ irmov \)</span>0x3330, %rdi	-&gt; 30 f7 30 33 00 00 00 00 00 00 (register-first 
 </ul>
 </section>
 <section id="hardware">
-<h2><span class="section-number">2.6.13. </span>hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h2>
+<span id="sec-arch-hardware"></span><h2>Hardware<a class="headerlink" href="#hardware" title="Link to this heading">#</a></h2>
+<p class="section-lead">The building blocks of the processor. A register stores its input on the rising clock edge, a mux picks one of its inputs, and HCL, the book’s hardware language, writes a mux as a list of guarded cases. Overclocking fails when the logic between registers can’t finish within one clock cycle.</p>
 <ul class="simple">
 <li><p>flows when control is high</p></li>
 <li><p>power - everything loses power by creating heat (every gate consumes power)</p>
@@ -1321,7 +1389,8 @@ guard:value;
 </ul>
 </section>
 <section id="executing-instructions">
-<h2><span class="section-number">2.6.14. </span>executing instructions<a class="headerlink" href="#executing-instructions" title="Link to this heading">#</a></h2>
+<span id="sec-arch-executing-instructions"></span><h2>Executing instructions<a class="headerlink" href="#executing-instructions" title="Link to this heading">#</a></h2>
+<p class="section-lead">Every instruction goes through the same stages: fetch, decode (read registers), execute, memory, write back, then update the PC. The worked examples trace actual bytes and register values through each stage.</p>
 <ul class="simple">
 <li><p>we have wires</p></li>
 </ul>
@@ -1399,10 +1468,10 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 </ul>
 </section>
 <section id="hardware-wires-opq-example">
-<h2><span class="section-number">2.6.15. </span>hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Link to this heading">#</a></h2>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="err">##</span><span class="w"> </span><span class="n">fetch</span>
-<span class="err">##</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">pc</span>
-<span class="err">##</span><span class="w"> </span><span class="mf">1.</span><span class="n">a</span><span class="p">.</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">PC</span>
+<span id="sec-arch-hardware-wires-opq-example"></span><h2>Hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Link to this heading">#</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="err">#</span><span class="w"> </span><span class="n">fetch</span>
+<span class="err">#</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">pc</span>
+<span class="err">#</span><span class="w"> </span><span class="mf">1.</span><span class="n">a</span><span class="p">.</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">PC</span>
 <span class="n">register</span><span class="w"> </span><span class="n">qS</span><span class="w"> </span><span class="p">{</span>
 <span class="w">	</span><span class="n">pc</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">	</span><span class="n">lt</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -1410,12 +1479,12 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 <span class="w">	</span><span class="n">gt</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="err">##</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">i10bytes</span>
+<span class="err">#</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">i10bytes</span>
 <span class="n">pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S_pc</span><span class="p">;</span>
 
-<span class="err">##</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">pieces</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">i10bytes</span>
+<span class="err">#</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">pieces</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">i10bytes</span>
 <span class="n">wire</span><span class="w"> </span><span class="n">icode</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">ifun</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">rA</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">rB</span><span class="p">:</span><span class="mi">4</span><span class="p">;</span>
-<span class="n">icode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i10bytes</span><span class="o">[</span><span class="mf">4..8</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="err">##</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="kt">byte</span><span class="p">:</span><span class="w"> </span><span class="mf">0..8</span><span class="w">  </span><span class="n">high</span><span class="o">-</span><span class="n">order</span><span class="w"> </span><span class="n">nibble</span><span class="w"> </span><span class="mf">4..8</span>
+<span class="n">icode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i10bytes</span><span class="o">[</span><span class="mf">4..8</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="kt">byte</span><span class="p">:</span><span class="w"> </span><span class="mf">0..8</span><span class="w">  </span><span class="n">high</span><span class="o">-</span><span class="n">order</span><span class="w"> </span><span class="n">nibble</span><span class="w"> </span><span class="mf">4..8</span>
 <span class="n">ifun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i10bytes</span><span class="o">[</span><span class="mf">0..4</span><span class="o">]</span><span class="p">;</span><span class="w"> </span>
 
 <span class="kd">const</span><span class="w"> </span><span class="n">OPQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
@@ -1435,15 +1504,14 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 
 <span class="n">valP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
 <span class="w">	</span><span class="n">icode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OPQ</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">S_pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">	</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">S_pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="err">##</span><span class="w"> </span><span class="n">picked</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">random</span>
+<span class="w">	</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">S_pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">picked</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">random</span>
 <span class="o">]</span><span class="p">;</span>
 
+<span class="n">Stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">STAT_HLT</span><span class="p">;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">fix</span><span class="w"> </span><span class="k">this</span>
 
-<span class="n">Stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">STAT_HLT</span><span class="p">;</span><span class="w"> </span><span class="err">##</span><span class="w"> </span><span class="n">fix</span><span class="w"> </span><span class="k">this</span>
+<span class="err">#</span><span class="w"> </span><span class="n">decode</span>
 
-<span class="err">##</span><span class="w"> </span><span class="n">decode</span>
-
-<span class="err">##</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">srcA</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">srcB</span>
+<span class="err">#</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">srcA</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">srcB</span>
 
 <span class="n">srcA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rA</span><span class="p">;</span>
 <span class="n">srcB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rB</span><span class="p">;</span>
@@ -1453,7 +1521,7 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 <span class="w">	</span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">NO_REGISTER</span><span class="p">;</span>
 <span class="o">]</span><span class="p">;</span>
 
-<span class="err">##</span><span class="w"> </span><span class="n">execute</span>
+<span class="err">#</span><span class="w"> </span><span class="n">execute</span>
 
 <span class="n">wire</span><span class="w"> </span><span class="n">valE</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
 
@@ -1464,26 +1532,26 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 
 <span class="n">q_lt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
 <span class="w">	</span><span class="n">icode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OPQ</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">valE</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">	</span><span class="err">##</span><span class="w"> </span><span class="p">...</span>
+<span class="w">	</span><span class="err">#</span><span class="w"> </span><span class="p">...</span>
 <span class="o">]</span><span class="p">;</span>
 
-<span class="err">##</span><span class="w"> </span><span class="n">memory</span>
+<span class="err">#</span><span class="w"> </span><span class="n">memory</span>
 
-<span class="err">##</span><span class="w"> </span><span class="n">writeback</span>
+<span class="err">#</span><span class="w"> </span><span class="n">writeback</span>
 
 <span class="n">wvalE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
 <span class="w">	</span><span class="n">icode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OPQ</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">valE</span><span class="p">;</span>
 <span class="w">	</span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="mh">0x1234567890abcdef</span><span class="p">;</span>
 <span class="o">]</span><span class="p">;</span>
 
-
-<span class="err">##</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">update</span>
+<span class="err">#</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">update</span>
 <span class="n">q_pc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valP</span><span class="p">;</span><span class="w"> </span>
 </pre></div>
 </div>
 </section>
 <section id="pipelining">
-<h2><span class="section-number">2.6.16. </span>pipelining<a class="headerlink" href="#pipelining" title="Link to this heading">#</a></h2>
+<span id="sec-arch-pipelining"></span><h2>Pipelining<a class="headerlink" href="#pipelining" title="Link to this heading">#</a></h2>
+<p class="section-lead">Pipelining overlaps the stages of consecutive instructions, so throughput goes up while each instruction still takes as long. The cost is hazards: an instruction may need a value or a branch outcome that an earlier one hasn’t produced yet. The fixes are stalling, forwarding the value from a later stage, and speculating.</p>
 <ul class="simple">
 <li><p>nonuniform partitioning - stages don’t all take same amount of time</p></li>
 <li><p>register - changes on the clock</p>
@@ -1530,7 +1598,8 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 <li><p>look at online notes - save everything in register that needs to be used later</p></li>
 </ul>
 <section id="problems">
-<h3><span class="section-number">2.6.16.1. </span>problems<a class="headerlink" href="#problems" title="Link to this heading">#</a></h3>
+<h3>Problems<a class="headerlink" href="#problems" title="Link to this heading">#</a></h3>
+<p class="section-lead">A dependency is a property of the program (one instruction needs another’s result or its branch outcome). A hazard is a property of the hardware, a dependency the pipeline could get wrong, and it can be detected by comparing the registers being read with the ones being written.</p>
 <ol class="arabic simple">
 <li><p>dependencies - outcome of one instruction depends on the outcome of another - in the software</p>
 <ol class="arabic simple">
@@ -1551,7 +1620,8 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 </ol>
 </section>
 <section id="solutions">
-<h3><span class="section-number">2.6.16.2. </span>solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h3>
+<h3>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h3>
+<p class="section-lead">Three fixes, from slowest to most complex. Stalling waits for the value, forwarding passes it from the stage that already has it, and speculation guesses a branch and bubbles the wrong work if the guess fails. A pipeline diagram shows whether a value is ready by the time it is needed.</p>
 <ul class="simple">
 <li><p>P is PC, then FDEMW</p></li>
 </ul>
@@ -1612,7 +1682,8 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </section>
 <section id="real-processors">
-<h3><span class="section-number">2.6.16.3. </span>real processors<a class="headerlink" href="#real-processors" title="Link to this heading">#</a></h3>
+<h3>Real processors<a class="headerlink" href="#real-processors" title="Link to this heading">#</a></h3>
+<p class="section-lead">Real chips differ from the five-stage y86 pipeline. Memory is slow and unpredictable, pipelines run to 10-15 stages, several functional units work at once, instructions run out of order when they don’t depend on each other, and x86 is first translated into micro ops.</p>
 <ol class="arabic simple">
 <li><p>memory is slow and unpredictably slow (10-100 cycles is reasonable)</p></li>
 <li><p>pipelines are generally 10-15 stages (Pentium 4 had 30 stages)</p></li>
@@ -1652,8 +1723,10 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </section>
 </section>
 <section id="memory">
-<h2><span class="section-number">2.6.17. </span>memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-arch-memory"></span><h2>Memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h2>
+<p class="section-lead">Fast memory is small and expensive, so values are cached in SRAM close to the CPU. Caches pay off because of locality: code tends to reuse the same addresses (temporal) and nearby addresses (spatial). An address is split into a tag, a set index and a block offset, and the three cache designs differ in how many lines a block may sit in.</p>
+<figure class="nb-viz-figure" id="viz-cache-locality"><div class="nb-viz" data-viz="cache-locality" data-params="{&quot;order&quot;: &quot;col&quot;, &quot;lines&quot;: 8, &quot;ways&quot;: 1}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> Reading a 16×16 int array through a cache with 16-byte lines. Row order hits 3 reads out of 4 with any cache, because each line holds 4 neighbors. Column order misses every read until the cache can hold one line per row. Raise the lines to 16 or 32 and it still misses with a direct-mapped cache (conflict misses, rows sharing a set) but hits with a fully associative one. Walking columns in 4×4 blocks needs only 4 lines at a time, so a 4-line fully associative cache is enough.</figcaption></figure><ul>
 <li><p>we want highest speed at lowest cost (higher speeds correspond to higher costs)</p></li>
 <li><p>fastest to slowest</p>
 <ul class="simple">
@@ -1766,7 +1839,8 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </li>
 </ul>
 <section id="writing">
-<h3><span class="section-number">2.6.17.1. </span>writing<a class="headerlink" href="#writing" title="Link to this heading">#</a></h3>
+<h3>Writing<a class="headerlink" href="#writing" title="Link to this heading">#</a></h3>
+<p class="section-lead">Writes need a policy. A write-allocate cache brings the block in first; write-back then waits until the line is evicted to update RAM and needs a dirty bit, while write-through updates RAM at once. The section also names the three kinds of miss (cold, capacity, conflict).</p>
 <ul class="simple">
 <li><p>assume write-back, write-allocate cache</p></li>
 </ul>
@@ -1813,7 +1887,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </section>
 <section id="cache-anatomy">
-<h3><span class="section-number">2.6.17.2. </span>cache anatomy<a class="headerlink" href="#cache-anatomy" title="Link to this heading">#</a></h3>
+<h3>Cache anatomy<a class="headerlink" href="#cache-anatomy" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>i-cache - holds instructions</p>
 <ul>
@@ -1827,7 +1901,8 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </section>
 </section>
 <section id="optimization">
-<h2><span class="section-number">2.6.18. </span>optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h2>
+<span id="sec-arch-optimization"></span><h2>Optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h2>
+<p class="section-lead">The compiler can’t apply every optimization, because of pointer aliasing and floating-point rounding, so some rewrites are up to the programmer: unrolling loops, picking the loop order that walks memory in sequence, and blocking when no order is local for every array.</p>
 <ul class="simple">
 <li><p>only need to worry about locality for accessing memory</p>
 <ul>
@@ -1925,7 +2000,8 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </section>
 <section id="exceptions">
-<h2><span class="section-number">2.6.19. </span>exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<span id="sec-arch-exceptions"></span><h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<p class="section-lead">Exceptions are how the hardware hands control to the kernel. The four kinds differ in their cause and where execution resumes: interrupts (from a device), traps (asked for by user code), faults (an instruction failed, maybe fixable) and aborts.</p>
 <ul>
 <li><p>processor is connected to I/O Bridge which is connected to Memory Bus and I/O Bus</p>
 <ul class="simple">
@@ -2020,7 +2096,8 @@ fault,		based on what failed	failing user-mode instruction</p></li>
 </ul>
 </section>
 <section id="processes">
-<h2><span class="section-number">2.6.20. </span>processes<a class="headerlink" href="#processes" title="Link to this heading">#</a></h2>
+<span id="sec-arch-processes"></span><h2>Processes<a class="headerlink" href="#processes" title="Link to this heading">#</a></h2>
+<p class="section-lead">While one program waits on the disk, the CPU can run another. A process is code with its own address space, saved PC, registers and condition codes, and a context switch freezes one process, hands the OS time for bookkeeping and resumes another.</p>
 <ul>
 <li><p>(user) read file -&gt; (kernel) send request to disk, wait, clean up -&gt; (user) resume</p>
 <ul class="simple">
@@ -2036,7 +2113,7 @@ fault,		based on what failed	failing user-mode instruction</p></li>
 <li><p>also has more (will learn in OS)…</p></li>
 </ul>
 </li>
-<li><p>context switch - changing from one process to another</p>
+<li><p><a class="term-link" href="os.html#def-context-switch" data-def="occurs when switching processes · Operating systems">context switch</a> - changing from one process to another</p>
 <ul class="simple">
 <li><p>generally each core of a computer is running one process</p></li>
 </ul>
@@ -2056,7 +2133,8 @@ if(increased a lot) contextSwitches++</p></li>
 </ul>
 </section>
 <section id="threads">
-<h2><span class="section-number">2.6.21. </span>threads<a class="headerlink" href="#threads" title="Link to this heading">#</a></h2>
+<span id="sec-arch-threads"></span><h2>Threads<a class="headerlink" href="#threads" title="Link to this heading">#</a></h2>
+<p class="section-lead">Threads are several stacks and register sets within one address space, managed by user code instead of the kernel.</p>
 <ul class="simple">
 <li><p>threads are like processes that user code manages, not the kernel</p>
 <ul>
@@ -2074,7 +2152,8 @@ python threads don’t run in parallel</p></li>
 </ul>
 </section>
 <section id="system-calls">
-<h2><span class="section-number">2.6.22. </span>system calls<a class="headerlink" href="#system-calls" title="Link to this heading">#</a></h2>
+<span id="sec-arch-system-calls"></span><h2>System calls<a class="headerlink" href="#system-calls" title="Link to this heading">#</a></h2>
+<p class="section-lead">A system call is a trap. On Linux almost all of them go through exception 128, with <code class="docutils literal notranslate"><span class="pre">%rax</span></code> choosing the service from a jump table, and most return 0 on success or an error number.</p>
 <ul class="simple">
 <li><p>how user code asks the kernel to do stuff</p>
 <ul>
@@ -2085,14 +2164,14 @@ python threads don’t run in parallel</p></li>
 <ul>
 <li><p>uses rax to decide what you are asking //used in a jump table inside the 128 exception handler</p></li>
 <li><p>most return 0 on success</p></li>
-<li><p>non-zero on error where the ## is errno</p></li>
+<li><p>non-zero on error where the # is errno</p></li>
 </ul>
 </li>
 <li><p>you can write assembly in C code</p></li>
 </ul>
 </section>
 <section id="software-exceptions">
-<h2><span class="section-number">2.6.23. </span>software exceptions<a class="headerlink" href="#software-exceptions" title="Link to this heading">#</a></h2>
+<span id="sec-arch-software-exceptions"></span><h2>Software exceptions<a class="headerlink" href="#software-exceptions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>you can throw an exception and then you want to return to something several method calls before you</p></li>
 <li><p>nonlocal jump</p>
@@ -2108,7 +2187,8 @@ python threads don’t run in parallel</p></li>
 </ul>
 </section>
 <section id="signals-setjmps">
-<h2><span class="section-number">2.6.24. </span>signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Link to this heading">#</a></h2>
+<span id="sec-arch-signals-setjmps"></span><h2>Signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Link to this heading">#</a></h2>
+<p class="section-lead">Three mechanisms sorted by who causes the event and who handles it. Exceptions come from hardware and go to the kernel, signals come from the kernel and go to a user handler (turning a fault like a divide by zero into something the program can catch), and setjmp/longjmp stay inside user code, like a try and catch.</p>
 <ul class="simple">
 <li><p>exceptions - caused by hardware (mostly), handled by kernel</p></li>
 <li><p>signal - caused by kernel, handled by user code (or kernel)</p>
@@ -2143,7 +2223,8 @@ python threads don’t run in parallel</p></li>
 </ul>
 </section>
 <section id="virtual-memory">
-<h2><span class="section-number">2.6.25. </span>virtual memory<a class="headerlink" href="#virtual-memory" title="Link to this heading">#</a></h2>
+<span id="sec-arch-virtual-memory"></span><h2>Virtual memory<a class="headerlink" href="#virtual-memory" title="Link to this heading">#</a></h2>
+<p class="section-lead">Every process sees its own large address space. The MMU translates virtual page numbers to physical ones through a page table, and multi-level page tables avoid storing entries for the mostly empty space. The TLB caches recent translations.</p>
 <ul>
 <li><p>2 address spaces</p>
 <ol class="arabic simple">
@@ -2287,7 +2368,8 @@ python threads don’t run in parallel</p></li>
 </ul>
 </section>
 <section id="overview">
-<h2><span class="section-number">2.6.26. </span>overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<span id="sec-arch-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p class="section-lead">A worked example of the TLB. The virtual page number is split into a tag and a set index, exactly like an address in a set-associative cache, and each entry’s block holds a single physical page number.</p>
 <ul class="simple">
 <li><p>CPU -&gt; creates virtual address</p></li>
 <li><p>virtual address: 36 bits (VPN), 12 bits (PO) //other bits are disregarded</p></li>
@@ -2311,7 +2393,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </section>
 <section id="segments">
-<h2><span class="section-number">2.6.27. </span>segments<a class="headerlink" href="#segments" title="Link to this heading">#</a></h2>
+<span id="sec-arch-segments"></span><h2>Segments<a class="headerlink" href="#segments" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>memory block</p>
 <ul>
@@ -2338,7 +2420,7 @@ val at 0xfa -&gt; 0x6b
 val at 0xb6</p>
 </section>
 <section id="quiz-rvw">
-<h2><span class="section-number">2.6.28. </span>quiz rvw<a class="headerlink" href="#quiz-rvw" title="Link to this heading">#</a></h2>
+<span id="sec-arch-quiz-rvw"></span><h2>Quiz rvw<a class="headerlink" href="#quiz-rvw" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>commands</p></li>
 <li><p>floats</p></li>
@@ -2367,9 +2449,9 @@ val at 0xb6</p>
 </ul>
 </section>
 <section id="labs">
-<h2><span class="section-number">2.6.29. </span>labs<a class="headerlink" href="#labs" title="Link to this heading">#</a></h2>
+<span id="sec-arch-labs"></span><h2>Labs<a class="headerlink" href="#labs" title="Link to this heading">#</a></h2>
 <section id="strlen">
-<h3><span class="section-number">2.6.29.1. </span>strlen<a class="headerlink" href="#strlen" title="Link to this heading">#</a></h3>
+<h3>Strlen<a class="headerlink" href="#strlen" title="Link to this heading">#</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">strlen</span><span class="p">(</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">){</span>
 <span class="w">	</span><span class="n">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
 <span class="w">	</span><span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span>
@@ -2380,7 +2462,7 @@ val at 0xb6</p>
 </div>
 </section>
 <section id="strsep">
-<h3><span class="section-number">2.6.29.2. </span>strsep<a class="headerlink" href="#strsep" title="Link to this heading">#</a></h3>
+<h3>Strsep<a class="headerlink" href="#strsep" title="Link to this heading">#</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">strsep</span><span class="p">(</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">stringp</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="p">){</span>
 <span class="w">	</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">stringp</span><span class="p">;</span>
 <span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">stringp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
@@ -2426,7 +2508,7 @@ ans.length = length;</p></li>
 </ul>
 </section>
 <section id="bit-puzzles">
-<h3><span class="section-number">2.6.29.3. </span>bit puzzles<a class="headerlink" href="#bit-puzzles" title="Link to this heading">#</a></h3>
+<h3>Bit puzzles<a class="headerlink" href="#bit-puzzles" title="Link to this heading">#</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// leastBitPos - return a mask that marks the position of the least significant 1 bit</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">leastBitPos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
@@ -2454,10 +2536,12 @@ ans.length = length;</p></li>
 </section>
 </section>
 <section id="reading">
-<h2><span class="section-number">2.6.30. </span>reading<a class="headerlink" href="#reading" title="Link to this heading">#</a></h2>
+<span id="sec-arch-reading"></span><h2>Reading<a class="headerlink" href="#reading" title="Link to this heading">#</a></h2>
+<p class="section-lead">Short notes on the matching chapters of Bryant and O’Hallaron, in book order.</p>
 <p>chapters refer to Bryant &amp; O’Hallaron’s “Computer Systems - A Programmer’s Perspective”</p>
 <section id="ch-1-1-7-1-9">
-<h3><span class="section-number">2.6.30.1. </span>ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Link to this heading">#</a></h3>
+<h3>Ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Link to this heading">#</a></h3>
+<p class="section-lead">The book’s overview of the abstractions the later chapters build: files as bytes, the OS between hardware and programs, processes and context switches, virtual memory, threads, and kinds of parallelism such as SIMD.</p>
 <ul class="simple">
 <li><p>files are stored as bytes, most in ascii</p></li>
 <li><p>all files are either text files or binary files</p></li>
@@ -2483,7 +2567,8 @@ ans.length = length;</p></li>
 </ul>
 </section>
 <section id="ch-2-2-1-2-4-2-2-4-4">
-<h3><span class="section-number">2.6.30.2. </span>ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Link to this heading">#</a></h3>
+<h3>Ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Link to this heading">#</a></h3>
+<p class="section-lead">The IEEE float format in detail. The exponent field decides the case (normalized, denormalized for very small values, or infinity and NaN when it is all ones), and round-to-even is the default because it avoids statistical bias.</p>
 <ul class="simple">
 <li><p>floating points (float, double)</p>
 <ul>
@@ -2523,7 +2608,8 @@ exponent = exp-Bias, mantissa = 1.mantissa</p></li>
 </ul>
 </section>
 <section id="ch-3-3-6-3-7">
-<h3><span class="section-number">2.6.30.3. </span>ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Link to this heading">#</a></h3>
+<h3>Ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Link to this heading">#</a></h3>
+<p class="section-lead">Machine-level control. The condition code flags (zero, carry, sign, overflow) are set by arithmetic, and jumps and conditional moves read them.</p>
 <ul class="simple">
 <li><p>computers execute machine code</p></li>
 <li><p>intel processors are all back-compatible</p></li>
@@ -2545,7 +2631,7 @@ exponent = exp-Bias, mantissa = 1.mantissa</p></li>
 </ul>
 </section>
 <section id="id1">
-<h3><span class="section-number">2.6.30.4. </span>4.1,4.2<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>4.1,4.2<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>eight registers</p>
 <ul>
@@ -2594,7 +2680,8 @@ s: A;
 </ul>
 </section>
 <section id="id2">
-<h3><span class="section-number">2.6.30.5. </span>4.3.1-4<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>4.3.1-4<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p class="section-lead">SEQ, the sequential y86 processor, runs each instruction through fetch, decode, execute, memory, write back and PC update. The only state it has to update is the PC, the condition codes, the register file and data memory.</p>
 <ul class="simple">
 <li><p>SEQ - sequential processor</p></li>
 <li><p>stages</p>
@@ -2649,10 +2736,11 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </section>
 <section id="id3">
-<h3><span class="section-number">2.6.30.6. </span>4.4 pipelining<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>4.4 pipelining<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p class="section-lead">Pipelining trades latency for throughput. The slowest stage sets the clock, and because every stage adds a register write, more stages give diminishing returns.</p>
 <ul class="simple">
 <li><p>the task to be performed is divided into a series of discrete stages</p></li>
-<li><p>increases the throughput - ## customers served per unit time</p></li>
+<li><p>increases the throughput - # customers served per unit time</p></li>
 <li><p>might increase latency - time required to service an individual customer.</p></li>
 <li><p>when pipelining, have to add time for each stage to write to register</p></li>
 <li><p>time is limited by slowest stage</p></li>
@@ -2666,7 +2754,7 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </section>
 <section id="id4">
-<h3><span class="section-number">2.6.30.7. </span>4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>several copies of values such as valC, srcA</p></li>
 <li><p>registers dD, eD, mM, wW - lowercase letter is input, uppercase is output</p></li>
@@ -2677,7 +2765,8 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </section>
 <section id="id5">
-<h3><span class="section-number">2.6.30.8. </span>5 - optimization<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>5 - optimization<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p class="section-lead">The book’s list of what the programmer can do that the compiler can’t safely do on its own, measured in cycles per element. Memory aliasing and function side effects block the compiler; loop unrolling and multiple accumulators expose instruction-level parallelism.</p>
 <ul class="simple">
 <li><p>eliminate unnecessary calls, tests, memory references</p></li>
 <li><p>instruction-level parallelism</p></li>
@@ -2710,7 +2799,8 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </section>
 <section id="id6">
-<h3><span class="section-number">2.6.30.9. </span>6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3>6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p class="section-lead">Storage technologies and the memory hierarchy. SRAM holds its value while powered and DRAM must be refreshed, and each level of the hierarchy caches blocks from the level below, with misses classed as cold, conflict or capacity.</p>
 <ul class="simple">
 <li><p>SRAM is bistable as long as power is on - will fall into one of 2 positions</p></li>
 <li><p>DRAM loses its value ~10-100 ms</p>
@@ -2767,7 +2857,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </section>
 <section id="cache-memories-writing-cache-friendly-code">
-<h3><span class="section-number">2.6.30.10. </span>6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Link to this heading">#</a></h3>
+<h3>6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Miss rate. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as #misses/#references.</p></li>
 <li><p>Hit rate. The fraction of memory references that hit. It is computed as 1 − miss rate.</p></li>
@@ -2778,7 +2868,8 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </section>
 <section id="id7">
-<h3><span class="section-number">2.6.30.11. </span>8.1 Exceptions<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3>8.1 Exceptions<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p class="section-lead">The four classes of exception and where each returns. Interrupts are asynchronous and return to the next instruction, traps are intentional and also return to the next one, faults may rerun the current instruction, and aborts never return.</p>
 <ul class="simple">
 <li><p>exceptions - partly hardware, partly OS</p></li>
 <li><p>when an event occurs, indirect procedure call (the exception) through a jump table called exception table to OS subroutine (exception handler).</p></li>
@@ -2800,7 +2891,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </li>
 <li><p>traps</p>
 <ul>
-<li><p>intentional exception (interface for making system calls), Sync, return next</p></li>
+<li><p>intentional exception (interface for making <a class="term-link" href="os.html#def-system-calls" data-def="provide an interface to os services · Operating systems">system calls</a>), Sync, return next</p></li>
 </ul>
 </li>
 <li><p>faults</p>
@@ -2824,7 +2915,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </section>
 <section id="id8">
-<h3><span class="section-number">2.6.30.12. </span>8.2 Processes<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>8.2 Processes<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>process - instance of program in execution</p>
 <ul>
@@ -2843,13 +2934,13 @@ capacity misses - the cache just can’t hold enough</p></li>
 </li>
 <li><p>private address space - like we have exclusive use of memory</p>
 <ul class="simple">
-<li><p>each process has stack, shared libraries, heap, executable</p></li>
+<li><p>each process has stack, <a class="term-link" href="os.html#def-shared-libraries" data-def="all use same library · Operating systems">shared libraries</a>, heap, executable</p></li>
 </ul>
 </li>
 </ol>
 </section>
 <section id="system-call-error-handling">
-<h3><span class="section-number">2.6.30.13. </span>8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Link to this heading">#</a></h3>
+<h3>8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>system level calls return -1, set the global integer variable errno</p>
 <ul>
@@ -2859,7 +2950,8 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </section>
 <section id="id9">
-<h3><span class="section-number">2.6.30.14. </span>9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p class="section-lead">DRAM acts as a fully associative, write-back cache for virtual pages stored on disk. Each page table entry has a valid bit, an address and permission bits; a page fault is a miss in this cache, and thrashing is what happens when locality is poor.</p>
 <ul class="simple">
 <li><p>address translation - converts virtual to physical address</p>
 <ul>
@@ -2901,7 +2993,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 <li><p>read valid bit is not set - triggers handler in kernel</p></li>
 </ul>
 </li>
-<li><p>demand paging - waiting until a miss occurs to swap in a page</p></li>
+<li><p><a class="term-link" href="os.html#def-demand-paging" data-def="load pages only when they are needed · Operating systems">demand paging</a> - waiting until a miss occurs to swap in a page</p></li>
 <li><p>malloc creates room on disk</p></li>
 <li><p>thrashing - not good locality - pages are swapped in and out continuoously</p></li>
 <li><p>virtual address space is typically larger</p>
@@ -2941,14 +3033,25 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </section>
 <section id="address-translation">
-<h3><span class="section-number">2.6.30.15. </span>9.6 Address Translation<a class="headerlink" href="#address-translation" title="Link to this heading">#</a></h3>
+<h3>9.6 Address Translation<a class="headerlink" href="#address-translation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>low order 4 bits serve
 2,3 - fault
 8c: 1000 1100
 b6</p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Bits have no meaning until a type reads them, and two’s complement makes signed addition the same circuit as unsigned addition.</p></li>
+<li><p>A function call is a jump plus a stack frame holding the return address, saved registers and locals, which is why a buffer overflow can overwrite where the function returns to.</p></li>
+<li><p>A processor runs every instruction through fetch, decode, execute, memory and write back, and pipelining overlaps these stages at the cost of data and control hazards.</p></li>
+<li><p>Hazards are handled by stalling, forwarding or speculating, from slowest to most complex.</p></li>
+<li><p>Caches work because of temporal and spatial locality, so the order in which code walks memory can matter more than its big-O cost.</p></li>
+<li><p>Exceptions hand control to the kernel, and virtual memory gives each process its own address space through page tables, with the TLB caching translations.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../cs/os.html"><span class="related-part">Computer science</span><span class="related-title">Operating systems</span><span class="related-hook">Processes and threads, synchronization and deadlock, CPU scheduling, paging and virtual memory, and file systems.</span></a><a class="related-card" href="../cs/languages_parallel.html"><span class="related-part">Computer science</span><span class="related-title">Languages and parallel computing</span><span class="related-hook">Syntax references for python, c/c++, java and R, and the collective operations behind multi-GPU training.</span></a><a class="related-card" href="../cs/data_structures.html"><span class="related-part">Computer science</span><span class="related-title">Data structures</span><span class="related-hook">Linked lists and stacks, balanced search trees, heaps and Huffman codes, hash tables, and the standard graph algorithms.</span></a></div></nav></section>
 </section>
 </section>
 
@@ -2983,20 +3086,20 @@ b6</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="os.html"
+       href="languages_parallel.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.5. </span>os</p>
+        <p class="prev-next-title">Languages and parallel computing</p>
       </div>
     </a>
     <a class="right-next"
-       href="retrieval_databases.html"
+       href="os.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.7. </span>info retrieval + databases</p>
+        <p class="prev-next-title">Operating systems</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3016,65 +3119,65 @@ b6</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">2.6.1. units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numbers">2.6.2. numbers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x86">2.6.3. x86</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">2.6.4. intro to C - we use ANSI standard</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-steps">2.6.5. compile steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">2.6.6. strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-in-c">2.6.7. memory in C</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-stack">2.6.8. call stack</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">2.6.9. types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operators">2.6.10. boolean operators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#att-x86-assembly">2.6.11. ATT x86 assembly</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y86-all-we-use">2.6.12. y86 - all we use</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">2.6.13. hardware</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-instructions">2.6.14. executing instructions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-wires-opq-example">2.6.15. hardware wires - opq example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelining">2.6.16. pipelining</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">2.6.16.1. problems</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">2.6.16.2. solutions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-processors">2.6.16.3. real processors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numbers">Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x86">X86</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">Intro to C - we use ANSI standard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-steps">Compile steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-in-c">Memory in C</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-stack">Call stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-operators">Boolean operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#att-x86-assembly">ATT x86 assembly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#y86-all-we-use">Y86 - all we use</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware">Hardware</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-instructions">Executing instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-wires-opq-example">Hardware wires - opq example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelining">Pipelining</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problems">Problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-processors">Real processors</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">2.6.17. memory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing">2.6.17.1. writing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-anatomy">2.6.17.2. cache anatomy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing">Writing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-anatomy">Cache anatomy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">2.6.18. optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">2.6.19. exceptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">2.6.20. processes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">2.6.21. threads</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-calls">2.6.22. system calls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-exceptions">2.6.23. software exceptions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signals-setjmps">2.6.24. signals, setjmps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">2.6.25. virtual memory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">2.6.26. overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segments">2.6.27. segments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-rvw">2.6.28. quiz rvw</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labs">2.6.29. labs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strlen">2.6.29.1. strlen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strsep">2.6.29.2. strsep</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-puzzles">2.6.29.3. bit puzzles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">Threads</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-calls">System calls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-exceptions">Software exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signals-setjmps">Signals, setjmps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">Virtual memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segments">Segments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-rvw">Quiz rvw</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labs">Labs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strlen">Strlen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strsep">Strsep</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-puzzles">Bit puzzles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">2.6.30. reading</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-1-7-1-9">2.6.30.1. ch 1 (1.7, 1.9)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">2.6.30.2. ch 2 (2.1, 2.4.2, 2.4.4)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-3-3-6-3-7">2.6.30.3. ch 3 (3.6, 3.7)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.6.30.4. 4.1,4.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.6.30.5. 4.3.1-4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.6.30.6. 4.4 pipelining</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.6.30.7. 4.5.3, 4.5.8</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.6.30.8. 5 - optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.6.30.9. 6.1.1, 6.2, 6.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">2.6.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6.30.11. 8.1 Exceptions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.6.30.12. 8.2 Processes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-call-error-handling">2.6.30.13. 8.3 System Call Error Handling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.6.30.14. 9-9.5 Virtual Memory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#address-translation">2.6.30.15. 9.6 Address Translation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-1-1-7-1-9">Ch 1 (1.7, 1.9)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">Ch 2 (2.1, 2.4.2, 2.4.4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ch-3-3-6-3-7">Ch 3 (3.6, 3.7)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1,4.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.3.1-4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.4 pipelining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.5.3, 4.5.8</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5 - optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.1.1, 6.2, 6.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">6.4, 6.5 - cache memories &amp; writing cache-friendly code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.1 Exceptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.2 Processes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-call-error-handling">8.3 System Call Error Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">9-9.5 Virtual Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#address-translation">9.6 Address Translation</a></li>
 </ul>
 </li>
 </ul>
@@ -3101,7 +3204,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

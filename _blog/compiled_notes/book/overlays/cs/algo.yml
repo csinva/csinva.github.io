@@ -1,0 +1,84 @@
+# Overlay for _notes/cs/algo.md. Keys under `sections` are the note's header text (case and markup ignored).
+subtitle: Asymptotic notation, sorting and searching, selection in linear time, and computational geometry.
+hook: Big-O notation, a catalog of sorting algorithms, lower bounds for finding the min and the median, and convex hulls and Voronoi diagrams.
+intro: |
+  The chapter starts with the language for running times: $O$, $\Theta$ and $\Omega$ as upper, tight and lower
+  bounds, and the recurrence theorem for divide-and-conquer. A few short sections on recursion, dynamic
+  programming (the knapsack table) and flow problems follow.
+
+  Most of the chapter is sorting and searching. Comparison sorts need $\Omega(n \log n)$ comparisons; the note
+  lists the usual ones with their trade-offs, then the non-comparison sorts that beat that bound on special
+  data. Searching works out exact comparison counts for finding the min, the min and max together, and the
+  median in linear time. The last section is computational geometry: range queries, point-in-polygon tests,
+  convex hulls (with a proof that they can't beat sorting), and Voronoi diagrams.
+sections:
+  asymptotics:
+    lead: |
+      All three notations ignore constants and small $n$: $f \in O(g)$ means $f(n) \le c \cdot g(n)$ for some $c$
+      once $n$ is large enough. So $57n + 3$ is $\Theta(n)$, and also $O(n^2)$ and $\Omega(n^{0.5})$.
+  sorting:
+    lead: |
+      Any comparison sort can be drawn as a binary decision tree with $n!$ leaves, one per ordering, so its height
+      is $\Omega(n \log n)$. Beyond the bound, sorts differ in stability, memory, adaptivity to nearly sorted input,
+      and how well they parallelize.
+  comparison-based:
+    lead: |
+      The comparison sorts, from the simple $O(n^2)$ ones (bubble, selection, insertion) to the $O(n \log n)$
+      ones (heap, merge, quick). Insertion sort and smooth sort are adaptive: they run faster when the input is
+      already close to sorted.
+    viz:
+      - name: sort-steps
+        params: {algo: insertion, input: nearly, n: 32}
+        caption: |
+          Scrub through a sort one comparison at a time. Insertion sort on nearly sorted input finishes in close to
+          $n$ comparisons, the $O(nk)$ case; switch the input to random and the count grows like $n^2$.
+          Quicksort with the last element as pivot is fast on random input but degrades on
+          sorted or reversed input, $n(n-1)/2$ comparisons, because every pivot is an extreme value. Merge sort stays near $n \log_2 n$ whatever the input.
+  not comparison-based:
+    lead: |
+      These sorts never compare two elements; they use the values themselves as array indices. That is how they get
+      under $n \log n$, at the cost of needing small or evenly spread values.
+  searching:
+    lead: |
+      This section counts comparisons exactly instead of asymptotically. The proofs track what each comparison can
+      teach you: every element except the min has to be seen larger than something at least once, which gives $n - 1$ for the min and
+      $3n/2 - 2$ for the min and max together.
+  computational geometry:
+    lead: |
+      Each problem here trades preprocessing time and space for fast queries. The convex hull part includes a
+      reduction from sorting (lift the $x_i$ onto a parabola), which shows no hull algorithm can beat
+      $\Omega(n \log n)$ comparisons.
+  recursion:
+    lead: |
+      A few recursion exercises: counting grid paths with a binomial coefficient, generating permutations, and
+      n-queens. The advice that runs through them is to settle the base case before writing the recursive step.
+  dynamic programming:
+    lead: |
+      Dynamic programming fills a table of answers to subproblems in an order where every entry only reads
+      entries already computed. In the 0/1 knapsack, $K[i][w]$ is the best value using the first $i$ items with
+      capacity $w$: either skip item $i$ and keep $K[i-1][w]$, or take it and add its value to $K[i-1][w - wt]$.
+    viz:
+      - name: knapsack-table
+        params:
+          W: 7
+        caption: The table $K[i][w]$ from the code below, for four items. Step through it and watch each cell read two
+          cells in the row above, the one straight up (skip item $i$) and the one $wt[i-1]$ columns to its left (take
+          item $i$). When the table is full, the traceback shows which items were taken; with $W = 7$ the best pick is
+          items 2 and 3, not the most valuable item.
+  sorting overview:
+    lead: |
+      The default answer is quicksort, mergesort or heapsort, but nearly sorted input favors insertion sort and
+      small integer keys favor radix sort.
+takeaways:
+  - $O$, $\Theta$ and $\Omega$ are upper, tight and lower bounds that ignore constants and small $n$.
+  - Any comparison sort needs $\Omega(n \log n)$ comparisons, and counting, bucket and radix sort get around
+    this only by using the values as indices.
+  - Sorts also differ in stability, extra space, adaptivity to nearly sorted input and parallelism, which often
+    decides the choice in practice.
+  - Exact comparison counts come from tracking what each comparison teaches, which gives $n-1$ for the min and
+    $3n/2 - 2$ for the min and max together.
+  - The median of medians guarantees each partition has at most $7n/10$ elements, so selection runs in linear
+    time in the worst case.
+  - A convex hull algorithm can sort numbers lifted onto a parabola, so convex hulls also need $\Omega(n \log
+    n)$ comparisons.
+figures: {}

@@ -1,0 +1,77 @@
+# Overlay for _notes/research_ovws/ovw_complexity.md
+hook: What complexity means for a model, from philosophy and Kolmogorov complexity to VC dimension, double descent and minimum description length.
+intro: |
+  Complexity comes up whenever you ask whether a model can be interpreted, how many samples it needs, or
+  whether it fits the problem. The page starts with philosophy, where complexity is a mix of order and
+  disorder that depends on how a system is described, then lists the standard measures: computational
+  complexity, Bayesian criteria (AIC, BIC), VC dimension, and a long list of other definitions.
+
+  Two sections matter most for modern models. Double descent shows that test risk can fall again once a model
+  has more parameters than samples, so parameter count alone is a poor measure of complexity. Minimum
+  description length (MDL) gives a different measure: the best model is the one that gives the shortest code
+  for the data plus the model, which splits the cost into <span class="cblue">noise</span> and
+  <span class="corange">learnable information</span>.
+sections:
+  philosophy:
+    lead: |
+      Definitions of complexity from outside statistics. Common threads: complexity is only useful for
+      comparison, depends on the description and the goal, and is highest between perfect order and pure
+      randomness.
+  computational complexity:
+    lead: |
+      The first of the standard measures: the resources an algorithm needs to solve a class of problems, such
+      as its run time. Parameterized complexity isolates part of the input into a parameter to handle problems
+      that are NP-hard or worse.
+  bayesian model complexity:
+    lead: |
+      Criteria that score a model by its fit plus a penalty for complexity, such as AIC and BIC. BIC comes back
+      in the MDL section as the penalty that MDL gives for OLS.
+  misc:
+    lead: |
+      Short entries on the Rashomon set (many near-equally accurate models) and a list of complexity measures
+      from physics, information theory and neuroscience.
+  entropy characterizations:
+    lead: |
+      Measure a function class by how many small balls (metric entropy) or brackets (bracket entropy) it takes
+      to cover it. This can be done for a whole class or only for the functions visited during training.
+  deep learning complexity:
+    lead: |
+      Measures meant for deep nets, where counting parameters says little. One uses the Hessian and ties
+      complexity to how smooth the function is with respect to an augmented loss.
+  double descent:
+    lead: |
+      Classical intuition says test risk rises once a model can interpolate the training data. For min-norm
+      least squares with $p$ features and $n$ samples, Hastie et al. give the limiting risk as a function of
+      $\gamma = p/n$: it blows up at $\gamma = 1$, where the model just barely interpolates, and comes down
+      again for $\gamma > 1$.
+    viz:
+      - name: ridgeless-risk
+        params: {gamma: 2, r2: 1, s2: 0.25}
+        caption: |
+          The limiting risk R(γ) from the hastie et al. entry below. For γ < 1 the risk is all variance from
+          the noise, σ²γ / (1 − γ). For γ > 1 the noise part σ² / (γ − 1) shrinks while the bias part
+          ‖β‖²(1 − 1/γ) grows toward ‖β‖². Raise the noise to widen the peak, and lower the signal below the
+          noise to see the second descent keep falling instead of reaching a minimum.
+  linear models:
+    lead: |
+      For linear models, degrees of freedom give a number for how much fitting a procedure does, which also
+      works for procedures like ridge that don't simply count parameters.
+  minimum description length:
+    lead: |
+      MDL treats model selection as compression. A model that fits well gives short codes for the data, but
+      the model's parameters must be sent too, quantized to finite precision. For OLS this gives
+      <span class="cblue">noise</span> plus <span class="corange">$(p/2) \log n$</span>, the same penalty as
+      BIC.
+  mdl in non-linear models:
+    lead: |
+      The same principle applied to tree pruning and neural nets, including a formulation that explains the
+      double descent curve.
+takeaways:
+  - Complexity depends on how a system is described and what the description is for, and it is highest between perfect order and pure randomness.
+  - The standard measures (computational complexity, AIC and BIC, VC dimension, metric entropy) each answer a different question, and the misc section lists many more.
+  - Double descent shows that test risk can fall again once a model has more parameters than samples, so parameter count is a poor measure of complexity.
+  - Minimum description length scores a model by the length of the code for the data plus the model, which splits the cost into noise and learnable information.
+figures:
+  complexity_figure1.svg: |
+    Complexity is low for a perfectly ordered system and for a fully random one, and highest in between,
+    where regularity and randomness mix.

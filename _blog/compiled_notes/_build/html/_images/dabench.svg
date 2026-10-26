@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 6 1232 714" role="img" aria-labelledby="title desc">
+  <title id="title">InfiAgent-DABench example</title>
+  <desc id="desc">InfiAgent-DABench pipeline. A problem (is there a linear relationship between GDP per capita and life expectancy score in Happiness_rank.csv? conduct linear regression and use R-squared to evaluate goodness of fit) and a CSV file (country, happiness rank, GDP per capita, life expectancy) are given to an LLM agent as a prompt. The agent writes pandas/sklearn code to load the data, fit a linear regression and print R-squared, running it in a Python sandbox in a ReAct loop (N times); stdout 0.6666363295228102. Its final answer (R-squared about 0.67, a poor fit) is reformatted and matched against a closed-form label {@coefficient_determination[0.67], @model_fit["poor fit"]}.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      text { fill: #2b2b2b; }
+      .big { font: 22px "Comic Sans MS", "Trebuchet MS", Helvetica, sans-serif; }
+      .mid { font: 19px "Comic Sans MS", "Trebuchet MS", Helvetica, sans-serif; }
+      .hd { font: bold 22px Helvetica, Arial, sans-serif; }
+      .tag { font: bold 20px Helvetica, Arial, sans-serif; }
+      .lbl { font: bold 20px Helvetica, Arial, sans-serif; }
+      .react { font: bold 26px Helvetica, Arial, sans-serif; }
+      .th { font: bold 17px Helvetica, Arial, sans-serif; }
+      .td { font: 18px Helvetica, Arial, sans-serif; }
+      .code { font: 10.6px Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+      .mono { font: 19px Menlo, Consolas, "Courier New", monospace; }
+    </style>
+  </defs>
+  <rect x="12" y="12" width="626" height="536" rx="30" fill="none" stroke="#2b2b2b" stroke-width="3.5"/>
+  <path d="M14 270 V40 Q14 14 42 14 H610 Q636 14 636 40 V270 Z" fill="#efefef"/>
+  <rect x="492.0" y="24" width="116" height="32" rx="6" fill="#d9d9d9"/>
+  <text class="tag" x="550" y="48" text-anchor="middle">Problem</text>
+  <text class="big" x="46" y="94.0" text-anchor="start">Is there a <tspan style="fill:#c0272d;font-weight:bold">linear</tspan> relationship between the <tspan style="fill:#c0272d;font-weight:bold">GDP</tspan></text>
+  <text class="big" x="46" y="122.5" text-anchor="start"><tspan style="fill:#c0272d;font-weight:bold">per capita</tspan> and the <tspan style="fill:#c0272d;font-weight:bold">life expectancy score</tspan> in the</text>
+  <text class="big" x="46" y="151.0" text-anchor="start"><tspan style="fill:#1a237e">Happiness_rank.csv</tspan>? Conduct linear regression and</text>
+  <text class="big" x="46" y="179.5" text-anchor="start">use the resulting coefficient of determination</text>
+  <text class="big" x="46" y="208.0" text-anchor="start">(R-squared) to evaluate the model's goodness of</text>
+  <text class="big" x="46" y="236.5" text-anchor="start">fit ... [omitted for brevity]</text>
+  <path d="M14 282 H636 V520 Q636 546 610 546 H40 Q14 546 14 520 Z" fill="#f5f5f5"/>
+  <rect x="372" y="284" width="248" height="34" rx="6" fill="#d9d9d9"/>
+  <rect x="386" y="290" width="22" height="22" rx="3" fill="none" stroke="#1a237e" stroke-width="2"/><text x="397" y="307" text-anchor="middle" style="font: bold 14px Helvetica, Arial, sans-serif; fill:#1a237e">x</text>
+  <text class="big" x="420" y="309" text-anchor="start" style="fill:#1a237e;font-size:21px">Happiness_rank.csv</text>
+  <rect x="24" y="334" width="604" height="34" fill="#a9cfe8"/>
+  <text class="th" x="82.0" y="357" text-anchor="middle" style="fill:#2b2b2b">Country</text>
+  <text class="th" x="215.0" y="357" text-anchor="middle" style="fill:#2b2b2b">Happiness Rank</text>
+  <text class="th" x="365.0" y="357" text-anchor="middle" style="fill:#c0272d">GDP per Capita</text>
+  <text class="th" x="514.0" y="357" text-anchor="middle" style="fill:#c0272d">Life Expectancy</text>
+  <text class="th" x="608.0" y="357" text-anchor="middle" style="fill:#2b2b2b">···</text>
+  <rect x="24" y="368" width="604" height="32" fill="#e6f1f8"/>
+  <text class="td" x="34" y="391" text-anchor="start">Switzerland</text>
+  <text class="td" x="215.0" y="391" text-anchor="middle">1</text>
+  <text class="td" x="365.0" y="391" text-anchor="middle">1.39651</text>
+  <text class="td" x="514.0" y="391" text-anchor="middle">0.94143</text>
+  <text class="td" x="608.0" y="391" text-anchor="middle">···</text>
+  <rect x="24" y="400" width="604" height="32" fill="#d6e8f4"/>
+  <text class="td" x="34" y="423" text-anchor="start">Iceland</text>
+  <text class="td" x="215.0" y="423" text-anchor="middle">2</text>
+  <text class="td" x="365.0" y="423" text-anchor="middle">1.30232</text>
+  <text class="td" x="514.0" y="423" text-anchor="middle">0.94784</text>
+  <text class="td" x="608.0" y="423" text-anchor="middle">···</text>
+  <rect x="24" y="432" width="604" height="32" fill="#e6f1f8"/>
+  <text class="td" x="34" y="455" text-anchor="start">Denmark</text>
+  <text class="td" x="215.0" y="455" text-anchor="middle">3</text>
+  <text class="td" x="365.0" y="455" text-anchor="middle">1.32548</text>
+  <text class="td" x="514.0" y="455" text-anchor="middle">0.87464</text>
+  <text class="td" x="608.0" y="455" text-anchor="middle">···</text>
+  <rect x="24" y="464" width="604" height="32" fill="#d6e8f4"/>
+  <text class="td" x="34" y="487" text-anchor="start">Norway</text>
+  <text class="td" x="215.0" y="487" text-anchor="middle">4</text>
+  <text class="td" x="365.0" y="487" text-anchor="middle">1.45900</text>
+  <text class="td" x="514.0" y="487" text-anchor="middle">0.88521</text>
+  <text class="td" x="608.0" y="487" text-anchor="middle">···</text>
+  <rect x="24" y="496" width="604" height="32" fill="#e6f1f8"/>
+  <text class="td" x="34" y="519" text-anchor="start">···</text>
+  <text class="td" x="215.0" y="519" text-anchor="middle">···</text>
+  <text class="td" x="365.0" y="519" text-anchor="middle">···</text>
+  <text class="td" x="514.0" y="519" text-anchor="middle">···</text>
+  <text class="td" x="608.0" y="519" text-anchor="middle">···</text>
+  <line x1="140" y1="334" x2="140" y2="528" stroke="#fff" stroke-width="2"/>
+  <line x1="290" y1="334" x2="290" y2="528" stroke="#fff" stroke-width="2"/>
+  <line x1="440" y1="334" x2="440" y2="528" stroke="#fff" stroke-width="2"/>
+  <line x1="588" y1="334" x2="588" y2="528" stroke="#fff" stroke-width="2"/>
+  <rect x="756" y="12" width="474" height="384" rx="16" fill="#fafafa" stroke="#a0a0a0" stroke-width="1.5"/>
+  <circle cx="788" cy="34" r="15" fill="#cfe6df" stroke="#2b2b2b" stroke-width="1.5"/>
+  <text class="hd" x="816" y="42" text-anchor="start">LLM Agent</text>
+  <text class="mid" x="772" y="76" text-anchor="start" style="font-size:17.5px">To answer this question, I need to load the dataset,</text>
+  <text class="mid" x="772" y="98" text-anchor="start" style="font-size:17.5px">conduct a linear regression analysis between <tspan style="fill:#c0272d">GDP per</tspan></text>
+  <text class="mid" x="772" y="120" text-anchor="start" style="font-size:17.5px"><tspan style="fill:#c0272d">capita</tspan> and <tspan style="fill:#c0272d">life expectancy score</tspan> ...</text>
+  <text class="mid" x="772" y="142" text-anchor="start" style="font-size:17.5px">python sandbox input:</text>
+  <text class="code" x="772" y="160.0" text-anchor="start"><tspan style="fill:#d9822b">import</tspan> pandas <tspan style="fill:#d9822b">as</tspan> pd</text>
+  <text class="code" x="772" y="172.6" text-anchor="start"><tspan style="fill:#d9822b">from</tspan> sklearn.linear_model <tspan style="fill:#d9822b">import</tspan> LinearRegression</text>
+  <text class="code" x="772" y="185.2" text-anchor="start"></text>
+  <text class="code" x="772" y="197.8" text-anchor="start"># Load the dataset</text>
+  <text class="code" x="772" y="210.4" text-anchor="start">df = <tspan style="fill:#1f6fb2">pd.read_csv</tspan>(<tspan style="fill:#1f8a4c">'/mnt/Happiness_rank.csv'</tspan>)</text>
+  <text class="code" x="772" y="223.0" text-anchor="start"></text>
+  <text class="code" x="772" y="235.6" text-anchor="start"># Extract the columns for GDP per capita and life expectancy score</text>
+  <text class="code" x="772" y="248.2" text-anchor="start">gdp_per_capita = df[<tspan style="fill:#1f8a4c">'Economy (GDP per Capita)'</tspan>].<tspan style="fill:#1f6fb2">values</tspan>.<tspan style="fill:#1f6fb2">reshape</tspan>(-1, 1)</text>
+  <text class="code" x="772" y="260.8" text-anchor="start">life_expectancy = df[<tspan style="fill:#1f8a4c">'Health (Life Expectancy)'</tspan>].<tspan style="fill:#1f6fb2">values</tspan></text>
+  <text class="code" x="772" y="273.4" text-anchor="start"></text>
+  <text class="code" x="772" y="286.0" text-anchor="start"># Conduct linear regression</text>
+  <text class="code" x="772" y="298.6" text-anchor="start">model = <tspan style="fill:#1f6fb2">LinearRegression</tspan>()</text>
+  <text class="code" x="772" y="311.2" text-anchor="start">model.fit(gdp_per_capita, life_expectancy)</text>
+  <text class="code" x="772" y="323.79999999999995" text-anchor="start">predicted_life_expectancy = model.<tspan style="fill:#d9822b">predict</tspan>(gdp_per_capita)</text>
+  <text class="code" x="772" y="336.4" text-anchor="start"></text>
+  <text class="code" x="772" y="349.0" text-anchor="start"># Calculate R-squared</text>
+  <text class="code" x="772" y="361.6" text-anchor="start">r_squared = <tspan style="fill:#1f6fb2">r2_score</tspan>(life_expectancy, predicted_life_expectancy)</text>
+  <text class="code" x="772" y="374.2" text-anchor="start"><tspan style="fill:#1f6fb2">print</tspan>(r_squared)</text>
+  <path d="M800 396 Q770 430 815 456" fill="none" stroke="#2b2b2b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M1045 456 Q1080 430 1045 396" fill="none" stroke="#2b2b2b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text class="react" x="920" y="434" text-anchor="middle">ReAct ×<tspan font-family="Times New Roman, serif" font-weight="bold">N</tspan></text>
+  <rect x="756" y="458" width="328" height="108" rx="8" fill="#fafafa" stroke="#a0a0a0" stroke-width="1.5"/>
+  <g transform="translate(788 482)"><rect x="-16" y="-16" width="20" height="20" rx="6" fill="#3a76b0"/><rect x="-2" y="-2" width="20" height="20" rx="6" fill="#f2c94c"/></g>
+  <text class="hd" x="820" y="488" text-anchor="start" style="font-size:21px">Python Sandbox</text>
+  <text class="mono" x="766" y="530" text-anchor="start" style="fill:#1f8a4c">STDOUT:</text>
+  <text class="mono" x="766" y="556" text-anchor="start">0.6666363295228102</text>
+  <rect x="10" y="586" width="632" height="128" rx="12" fill="#fafafa" stroke="#a0a0a0" stroke-width="1.5"/>
+  <rect x="186.0" y="588" width="256" height="32" rx="6" fill="#d9d9d9"/>
+  <text class="tag" x="314" y="612" text-anchor="middle">Closed-form Label</text>
+  <text class="big" x="20" y="664" text-anchor="start" style="font-size:21px">{<tspan style="fill:#c0272d">@coefficient_determination</tspan>[<tspan style="fill:#1f8a4c">0.67</tspan>],  <tspan style="fill:#c0272d">@model_fit</tspan>[<tspan style="fill:#1f8a4c">"poor fit"</tspan>]}</text>
+  <rect x="756" y="586" width="474" height="128" rx="12" fill="#fafafa" stroke="#a0a0a0" stroke-width="1.5"/>
+  <rect x="906.0" y="588" width="256" height="32" rx="6" fill="#d9d9d9"/>
+  <text class="tag" x="1034" y="612" text-anchor="middle">Final Answer</text>
+  <text class="mid" x="774" y="646" text-anchor="start" style="font-size:20.5px">The R-squared value is approximately <tspan style="fill:#1f8a4c;font-weight:bold">0.67</tspan>,</text>
+  <text class="mid" x="774" y="672" text-anchor="start" style="font-size:20.5px">which indicates a <tspan style="fill:#1f8a4c;font-weight:bold">poor fit</tspan> for the linear</text>
+  <text class="mid" x="774" y="698" text-anchor="start" style="font-size:20.5px">regression model.</text>
+  <line x1="640" y1="70" x2="752" y2="70" stroke="#2b2b2b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text class="lbl" x="652" y="102" text-anchor="start">Prompt</text>
+  <line x1="640" y1="504" x2="752" y2="504" stroke="#2b2b2b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text class="lbl" x="648" y="488" text-anchor="start">CSV File</text>
+  <line x1="312" y1="548" x2="312" y2="582" stroke="#2b2b2b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1140" y1="398" x2="1140" y2="582" stroke="#2b2b2b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="754" y1="648" x2="646" y2="648" stroke="#2b2b2b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text class="lbl" x="654" y="630" text-anchor="start">Reformat</text>
+  <text class="lbl" x="652" y="690" text-anchor="start">Matching</text>
+</svg>

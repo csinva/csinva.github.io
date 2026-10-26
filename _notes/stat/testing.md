@@ -107,7 +107,7 @@ category: stat
 - $\hat{\sigma}^2 = \frac{SSE}{n-2}$
 - $$T=\frac{\hat{\beta}_1-\beta_1}{S / \sqrt{S_{xx}}}$$ has a t distr. with n-2 df
 - $s_{\hat{\beta_1}}=\frac{s}{\sqrt{S_{xx}}}$
-- $$s_{\hat{\beta_0}+\hat{\beta_1}x^*} = s\sqrt{\frac{1}{n}+\frac{(x^*-\bar{x})^2}{S_{xx}}}$$<!-- -->
+- $$s_{\hat{\beta_0}+\hat{\beta_1}x^*} = s\sqrt{\frac{1}{n}+\frac{(x^*-\bar{x})^2}{S_{xx}}}$$
 - sample correlation coefficient $r = \frac{S_{xy}}{\sqrt{S_{xx}}\sqrt{S_{yy}}}$
 - this is a point estimate for population correlation coefficient = $\frac{Cov(X,Y)}{\sigma_X\sigma_Y}$
 - make fisher transformation - this test statistic also tests correlation

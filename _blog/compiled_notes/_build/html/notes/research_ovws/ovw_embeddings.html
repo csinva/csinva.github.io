@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.9. embeddings</title>
+    <title>Embeddings &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_embeddings';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.10. ml in medicine" href="ovw_ml_medicine.html" />
-    <link rel="prev" title="1.8. scattering transform" href="ovw_scat.html" />
+    <link rel="next" title="LLMs" href="ovw_llms.html" />
+    <link rel="prev" title="ML in medicine" href="ovw_ml_medicine.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/research_ovws/ovw_embeddings.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>embeddings</h1>
+    <h1>Embeddings</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,15 +471,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">1.9.1. overviews</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-model-distinctions">1.9.2. embedding model distinctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-training">1.9.3. best practices for training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">1.9.4. losses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explainable-embeddings">1.9.5. explainable embeddings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-generation-rag">1.9.6. retrieval augmented generation (RAG)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-representations">1.9.7. universal representations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-inversions">1.9.8. embedding inversions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-memory-enhancements-for-llms">1.9.9. external memory enhancements for LLMs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">Overviews</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-model-distinctions">Embedding model distinctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-training">Best practices for training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">Losses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-performing-models">Top-performing models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-embeddings">Multimodal embeddings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#papers-with-a-little-trick">Papers with a little trick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-benchmarks">Datasets / benchmarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-search">Agentic search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-embeddings-approximate-nearest-neighbor">Searching embeddings (approximate nearest neighbor)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explainable-embeddings">Explainable embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-generation-rag">Retrieval augmented generation (RAG)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-representations">Universal representations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-inversions">Embedding inversions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-memory-enhancements-for-llms">External memory enhancements for LLMs</a></li>
 </ul>
             </nav>
         </div>
@@ -441,22 +499,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="embeddings">
-<h1><span class="section-number">1.9. </span>embeddings<a class="headerlink" href="#embeddings" title="Link to this heading">#</a></h1>
-<p>See related papers in the <a class="reference external" href="https://csinva.io/notes/ai/llms.html">📌 llm basics</a> and <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_llms.html">📌 llm research</a> pages.</p>
+  <p class="breadcrumb"><a href="../../parts/research.html">Research overviews</a> &nbsp;·&nbsp; chapter 3 of 14 &nbsp;·&nbsp; 27 min read</p><section class="tex2jax_ignore mathjax_ignore" id="embeddings">
+<h1>Embeddings<a class="headerlink" href="#embeddings" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">How text and multimodal embedding models are trained, searched and used for retrieval, plus attempts to make embeddings interpretable.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>An embedding model maps an input, usually text, to a vector so that search becomes a nearest-neighbor lookup. The chapter starts with how models differ (bi-encoder, late interaction, cross-encoder) and how they are trained: a staged pipeline ending in contrastive finetuning, the InfoNCE and sigmoid losses, and a long list of tricks at training, indexing and query time. A timeline of top models follows, from BM25 and averaged word vectors through contrastively trained and LLM-initialized models to multimodal ones.</p>
+<p>The middle covers search itself: benchmarks, agentic search where an agent runs many queries (sometimes with grep instead of vectors), and the index structures that make nearest-neighbor search fast, each with an index-time and a query-time figure. The last sections are about what is built on top of or learned from embeddings: interpretable embeddings built from yes/no questions, RAG, shared representations across models, recovering text from its embedding, and external memory for LLMs.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 14 sections</summary><ol><li><a href="#sec-ovw-embeddings-overviews">Overviews</a></li><li><a href="#sec-ovw-embeddings-embedding-model-distinctions">Embedding model distinctions</a><span class="ol-badge">1 figure</span><span class="ol-lead">The main design choice is where the query and document first interact.</span></li><li><a href="#sec-ovw-embeddings-best-practices-for-training">Best practices for training</a><span class="ol-lead">The tricks are grouped by when they act: while training the model, while embedding the documents, and at query time.</span></li><li><a href="#sec-ovw-embeddings-losses">Losses</a><span class="ol-badge">1 interactive</span><span class="ol-lead">Both losses pull a query toward its positive and away from negatives.</span></li><li><a href="#sec-ovw-embeddings-top-performing-models">Top-performing models</a><span class="ol-lead">Roughly in historical order: simple baselines, bi-encoders like SBERT, contrastive pre-training with synthetic data and instructions, then models initialized from a pre-trained LLM.</span></li><li><a href="#sec-ovw-embeddings-papers-with-a-little-trick">Papers with a little trick</a><span class="ol-lead">Single changes to an embedding model, grouped by when they act: during pre-training (masked autoencoding), during training (one model for generation and embeddings, Matryoshka prefixes that work as smaller embeddings), after training, or at query time (repeating the input so the second copy sees all of it).</span></li><li><a href="#sec-ovw-embeddings-datasets-benchmarks">Datasets / benchmarks</a><span class="ol-lead">MTEB is the standard leaderboard but may be overfit: paraphrasing its test sets lowers scores.</span></li><li><a href="#sec-ovw-embeddings-agentic-search">Agentic search</a><span class="ol-lead">Here retrieval is one tool in a loop: an agent plans searches, reads results and searches again.</span></li><li><a href="#sec-ovw-embeddings-searching-embeddings-approximate-nearest-neighbo">Searching embeddings (approximate nearest neighbor)</a><span class="ol-badge">12 figures</span><span class="ol-lead">Exact nearest-neighbor search compares the query with every stored vector.</span></li><li><a href="#sec-ovw-embeddings-explainable-embeddings">Explainable embeddings</a><span class="ol-lead">Most of these build an embedding whose dimensions mean something, usually answers an LLM gives to yes/no questions about the text.</span></li><li><a href="#sec-ovw-embeddings-retrieval-augmented-generation-rag">Retrieval augmented generation (RAG)</a><span class="ol-lead">The table from the RAG perspective paper sorts systems by what they retrieve (chunks, tokens, phrases), where it enters the model, how often retrieval happens, and whether the retriever and LM are trained jointly.</span></li><li><a href="#sec-ovw-embeddings-universal-representations">Universal representations</a><span class="ol-lead">Evidence that different models learn similar representations, from shared SAE features and neurons to translating embeddings between models without paired data.</span></li><li><a href="#sec-ovw-embeddings-embedding-inversions">Embedding inversions</a><span class="ol-lead">An embedding can leak its input: these methods recover the text from an embedding, or the prompt from a model&#x27;s outputs.</span></li><li><a href="#sec-ovw-embeddings-external-memory-enhancements-for-llms">External memory enhancements for LLMs</a><span class="ol-lead">Ways to give an LLM memory beyond its context window: a kNN index over past context, a datastore read at inference time, a separate model trained on a corpus in place of retrieval, or a memory matrix the network reads and writes.</span></li></ol></details><p>See related papers in the <a class="reference internal" href="../ai/llms.html"><span class="std std-doc">📌 llm basics</span></a> and <a class="reference internal" href="ovw_llms.html"><span class="std std-doc">📌 llm research</span></a> pages.</p>
 <p><strong>Embedding models</strong> take in unstructured input (here, often text) and transform it into a vector representation that is usually used for search. Key considerations include: fast inference for embedding a new input, small/quantized embeddings for efficient storage, indexability for fast search with retrieval algorithms.</p>
 <section id="overviews">
-<h2><span class="section-number">1.9.1. </span>overviews<a class="headerlink" href="#overviews" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-overviews"></span><h2>Overviews<a class="headerlink" href="#overviews" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>detailed overview of info retrieval (<a class="reference external" href="https://arxiv.org/abs/2401.09350.pdf">bruch, 2024</a>)</p></li>
 <li><p>introductory <a class="reference external" href="https://osanseviero.github.io/hackerllama/blog/posts/sentence_embeddings/">blog post</a> on embeddings</p></li>
 </ul>
 </section>
 <section id="embedding-model-distinctions">
-<h2><span class="section-number">1.9.2. </span>embedding model distinctions<a class="headerlink" href="#embedding-model-distinctions" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<span id="sec-ovw-embeddings-embedding-model-distinctions"></span><h2>Embedding model distinctions<a class="headerlink" href="#embedding-model-distinctions" title="Link to this heading">#</a></h2>
+<p class="section-lead">The main design choice is where the query and document first interact. Encoding them separately makes documents indexable ahead of time; encoding them together is more accurate but has to run for every query-document pair.</p>
+<ul>
 <li><p>leading models as of summer 2026: google (gemini embedding), voyage (voyage series, open-source voyage-4-nano), alibaba (qwen embedding, GTE), cohere, openai (relatively outdated), BAAI (BGE), Jina (bought by elastic), NVIDIA (NV-Embed), Microsoft (E5), nomic (nomic-embed)</p></li>
-<li><p>embedding approaches: <img alt="embedding_interaction_levels" src="../../_images/embedding_interaction_levels.svg" /></p></li>
+<li><p>embedding approaches</p>
+<figure class="align-default" id="id1">
+<img alt="Three levels of interaction between query and document. A bi-encoder embeds them separately into one vector each, late interaction keeps a vector per token and compares them at the end, and a cross-en" class="note-figure" src="../../_images/embedding_interaction_levels.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> Three levels of interaction between query and document. A bi-encoder embeds them separately into one vector each, late interaction keeps a vector per token and compares them at the end, and a cross-encoder reads both together.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p>3 levels of interaction</p></li>
 </ul>
 <ol class="arabic simple">
@@ -471,7 +542,8 @@ document.write(`
 </ol>
 </section>
 <section id="best-practices-for-training">
-<h2><span class="section-number">1.9.3. </span>best practices for training<a class="headerlink" href="#best-practices-for-training" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-best-practices-for-training"></span><h2>Best practices for training<a class="headerlink" href="#best-practices-for-training" title="Link to this heading">#</a></h2>
+<p class="section-lead">The tricks are grouped by when they act: while training the model, while embedding the documents, and at query time. Rerankers and query expansion cost nothing at training time but add latency per query.</p>
 <ul class="simple">
 <li><p>basic training pipeline</p>
 <ol class="arabic simple">
@@ -485,7 +557,7 @@ document.write(`
 <ul>
 <li><p>training-time</p>
 <ul>
-<li><p>instruction/task conditioning: prompt or prefixes like <em>search query</em>, <em>search document</em>, <em>classification</em>, <em>clustering</em> before embedding so model knows how to customize the embedding</p></li>
+<li><p>instruction/task conditioning: prompt or prefixes like <em>search query</em>, <em>search document</em>, <em>classification</em>, <a class="term-link" href="../stat/stat.html#def-clustering" data-def="use mixture models · Stat basics"><em>clustering</em></a> before embedding so model knows how to customize the embedding</p></li>
 <li><p>synthetic data from LLMs: generate tuples of (task, query, positive, hard negative) for contrastive training, especially crafting good hard negatives</p></li>
 <li><p>distillation from more compute-intensive model: e.g. cross-encoder to bi-encoder or post-reranker to before reranker</p></li>
 <li><p>quantization-aware training</p></li>
@@ -493,7 +565,7 @@ document.write(`
 <li><p>sparse representation learning (e.g. UHD-BERT (<a class="reference external" href="https://arxiv.org/abs/2104.07198">jang…seo, 2021</a>))</p></li>
 <li><p>joint learning with index</p></li>
 <li><p>prior work: query expansion, term dependency model (e.g. tf-idf), topic model, translation model</p></li>
-<li><p>matryoshka representation learning - apply the contrastive loss simultaneously at dims 256, 512, 1024, 2048, etc so users can truncate to tradeoff acc for storage/speed</p></li>
+<li><p>matryoshka representation learning - apply the <a class="term-link" href="../ml/unsupervised.html#def-contrastive-loss" data-def="InfoNCE loss uses cross-entropy loss to measure how well the model can classify the “future” representation among a set of unrelated “negative” samples · Unsupervised">contrastive loss</a> simultaneously at dims 256, 512, 1024, 2048, etc so users can truncate to tradeoff acc for storage/speed</p></li>
 <li><p>tailoring to specialized domains (e.g. medical, finance)</p></li>
 <li><p>sharing embedding spaces across different model sizes (like in <a class="reference external" href="https://blog.voyageai.com/2026/01/15/voyage-4/">voyage-4</a>) so different sizes can be used for embedding/querying</p></li>
 <li><p>same backbone across modalities (like in <a class="reference external" href="https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/">voyage-3.5-multimodal</a>) so that inputs aren’t biased towards any one modality</p></li>
@@ -517,254 +589,650 @@ document.write(`
 </ul>
 </section>
 <section id="losses">
-<h2><span class="section-number">1.9.4. </span>losses<a class="headerlink" href="#losses" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-losses"></span><h2>Losses<a class="headerlink" href="#losses" title="Link to this heading">#</a></h2>
+<p class="section-lead">Both losses pull a query toward its positive and away from negatives. InfoNCE normalizes over every pair in the batch, which is why batch size matters; the sigmoid loss scores each pair on its own.</p>
+<figure class="nb-viz-figure" id="viz-infonce-temperature"><div class="nb-viz" data-viz="infonce-temperature" data-params="{&quot;tau&quot;: 0.1, &quot;negatives&quot;: 32}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> The softmax weights inside InfoNCE for one query with a positive pair and \(N\) negatives. Each negative's weight is also its share of the gradient. Lower the temperature \(\tau\) and nearly all the weight on negatives goes to the 4 hard ones, with the loss near zero once the positive wins; raise it and the weight spreads evenly, which is the "focus on the hardest cases" versus "treat all negatives equally" contrast in the bullets.</figcaption></figure><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{var(--nb-c-green)}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{var(--nb-c-orange)}{\tau}\right)}}{\textcolor{var(--nb-c-purple)}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{var(--nb-c-orange)}{\tau}\right)}}\right]\quad\textcolor{var(--nb-c-green)}{\text{positive pair}},\;\textcolor{var(--nb-c-purple)}{\text{all pairs (norm.)}},\;\textcolor{var(--nb-c-orange)}{\tau=\text{temperature}}\)</span></p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$$&lt;!-- --&gt;
-  - large batch sizes are important, can speed up computation with gradcache ([gao et al. 2021](https://arxiv.org/abs/2101.06983)) (computes loss wrt embs, then backprops through whole computation different examples at at time)
-  - low temp. signals &quot;focus on the hardest cases&quot; while high temp says &quot;treat all negatives equally&quot;
-  - note: this is the same as cross-entropy loss using the exp(similarity score) as the probability
-  - this is what is used in CLIP, SimCLR, most popular
-  - issue: can be computationally annoying to have large batch sizes / compute the denominator
-- $$ L_{BCE} = -\mathbb{E} \Big[\, {\color{teal}y_{ij}}\log\sigma\big({\color{green}t} \cdot {\color{purple}\text{sim}(z_i, z_j)} + {\color{orange}b}\big) + (1-{\color{teal}y_{ij}})\log\big(1-\sigma({\color{green}t} \cdot {\color{purple}\text{sim}(z_i, z_j)} + {\color{orange}b})\big) \,\Big] $$ Where: - $\color{teal}y_{ij}$ = label (1 if true positive pair, 0 otherwise) and $\color{green}t$ = learnable temperature (scale) - $\color{orange}b$ = learnable bias
-  - can be easier to compute because it doesn't require large batches / normalization
-  - easier to integrate in graded information, not just pos/neg (infoNCE sturggles because we don't usually have graded labels across examples in the batch; if you did, could use them directly)
-  - used in SigLIP and more
-- Proxy-NCA ([movshovitz-attias et al. 2017](https://arxiv.org/abs/1703.07464)) generalizes this by learning a proxy embedding per class and comparing samples to proxies, sidestepping the combinatorial explosion of pair/triplet sampling\\## top-performing models\\*Can monitor model popularity via [openrouter](https://openrouter.ai/models?output_modalities=embeddings) and some evals at [artificial analysis index](https://artificialanalysis.ai/agents/search-api)*\\- baseline simple models
-  - BM25 - uses TF-IDF based on word counts and document frequences
-  - Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang &amp; ma, 2017](https://openreview.net/forum?id=SyK00v5xx))
-    - average word embeddings in a sentence, downweighting words by their frequency
-    - to remove the &quot;common background direction&quot;, compute the top pca component from many sentence embeddings then remove that direction
-- early models just trained with bi-encoders, e.g. SBERT=Sentence BERT ([reimers &amp; gurevych, 2019](https://arxiv.org/abs/1908.10084)), SimCSE ([gao, yao &amp; chen, 2021](https://arxiv.org/abs/2104.08821))
-  - PromptBERT ([jiang...furu wei...zhang, 2022](https://arxiv.org/abs/2201.04337)): `This sentence: “ [text] ” means [MASK]` then use the embedding of the mask token - this prevents how all raw embeddings have similar cosine similarities
-    - Scaling Sentence Embeddings with LLMs ([jiang, ..., zhuang, 2023](https://arxiv.org/abs/2307.16645)): `This sentence: “ [text] ” means in one word:` then use the embedding of the final token
-- next era of models started using contrastive pre-training, e.g. E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533)), GTE ([li...zhang, 2023](https://arxiv.org/abs/2308.03281)), and BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
-  - this era included instruction-conditioned embeddings, e.g. Instructor ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io))
-  - synthetic data became important here, e.g. Promptagator ([dai…wei chang, 2022](https://arxiv.org/abs/2209.11755)) and Gecko ([lee...naim, 2024](https://arxiv.org/abs/2403.20327))
-  - Nomic Embed ([nussbaum, morris, duderstadt, &amp; mulyar, 2024](https://static.nomic.ai/reports/2024_Nomic_Embed_Text_Technical_Report.pdf)), ([blog post](https://blog.nomic.ai/posts/nomic-embed-text-v1))
-  - Jina Embeddings 2 ([gunther...xiao, 2024](https://arxiv.org/abs/2310.19923)) - achieves long context (8192 tokens)
-- next, models initialized using a pre-trained LLM, e.g. E5-mistral-instruct ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)), SGPT ([muennighoff, 2022](https://arxiv.org/abs/2202.08904))
-  - during post-training, remove attention masking so stuff is bidirectional, e.g. NV-Embed ([lee...ping, 2024](https://arxiv.org/abs/2405.17428)), LLM2Vec ([behnamghader...reddy, 2024](https://arxiv.org/abs/2404.05961))
-  - Nemotron-3-Embed ([blog post, 2026](https://huggingface.co/blog/nvidia/nemotron-3-embed-wins-rteb)) - 3 sizes: 8B (BF16), 1B (BF16), 1B (NVFP4), all available with very permissive `openmdw-1.1` license
-    - 8B model is adapted from Ministral-3-8B-Instruct-2512 ([mistral, jan 2026](https://arxiv.org/abs/2601.08584))
-    - 1B model is adapted in two stages, first post-training Ministral-3-3B-Instruct-2512, then distilling it to 2B and posttraining, then distilling it to 1B and posttraining
-- query inference-time expansions
-  - query2doc expansion
-    - HyDE ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - at inference time, generate synthetic doc from query + instruction &amp; find match for that doc
-  - multi-query fusion
-    - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
-    - retrieve based on multiple paraphrases and then average their reciprocal ranks to get the final reciprocal ranks
-  - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage-to-query model on MS MARCO then retrieve with BM-25
-  - Iterative Query Expansion with Retrieval-Grounded Relevance Feedback ([bigdeli...bagheri, 2026](https://arxiv.org/abs/2606.13905)) - at inference time, expand query (with LLM), retrieve docs for expanded query, measure similarity *to original query*, then re-expand and repeat (with LLM given context)
-  - Adaptive Re-Ranking ([genc, korukluoglu &amp; allan, 2026](https://arxiv.org/abs/2606.25249)) - sends each query to the cheapest effective re-ranking strategy, cutting latency by avoiding heavy cross-encoders on simple queries
-  - distilling query expansions during training time
-    - SoftQE ([pimpalkhute et al., 2024](https://arxiv.org/abs/2402.12663)) - trains the query encoder to match embeddings of LLM-expanded queries
-      - ExpandR ([yao et al., 2025](https://arxiv.org/abs/2502.17057)) - jointly trains the retriever on LLM expansions while aligning the LLM with DPO
-    - CAPSTONE ([he et al., 2023](https://arxiv.org/pdf/2212.09114)) - moves expansion to the document side with curriculum sampling, so all generation cost is paid at indexing rather than query time
-    - Retrieval-Feedback Distillation + Preference Alignment ([li &amp; zhou, 2026](https://arxiv.org/html/2603.13776)) - Transfers retrieval-friendly expansion behavior from a teacher LLM to a compact student via retrieval feedback
-      - AQE ([yang et al., 2025](https://arxiv.org/abs/2507.11042)) - finetune small LLM to generate retrieval-optimized expansions
-- rerankers
-  - 3 common versions: pointwise (score each document independently), pairwise (learn &quot;A beats B&quot;), listwise (optimize the ordering of the whole list, targeting metrics like NDCG directly)
-  - early models like ms-marco-MiniLM were cross-encoders, people later found that prompting an LLM did well but was expensive, so these were distilled
-  - newer models like Rank1 use reasoning for reranking
-  - voyage rerank-2.5 ([aug 2025](https://blog.voyageai.com/2025/08/11/rerank-2-5/)) - includes instruction following, e.g. “Prioritize the title and ignore the abstract”
-  - Retrieving a Set, Not Independent Passages: Set-Level Compatibility Learning for Efficient Set Exploration ([song &amp; lee, 2026](https://arxiv.org/abs/2607.05712)) - Introduces a set-level retrieval framework for multi-hop QA that scores query–passage-set compatibility instead of ranking passages independently
-  - jina-reranker-v3.5: An Efficient Listwise Reranker with Hybrid Attention and Self-Distillation ([nasika, wang, krasakis &amp; xiao, 2026](https://arxiv.org/abs/2607.18152))
-- contextualized chunking
-  - voyage does this via explicitly training a model to output separate vectors for each chunk
-  - jina does this via [late chunking](https://jina.ai/news/late-chunking-in-long-context-embedding-models/) (embed whole doc, get embeddings for a chunk by mean pooling over its tokens)
-  - Contextual retreival ([anthropic blog post, 2024](https://www.anthropic.com/news/contextual-retrieval)) - prepends an LLM-generated summary to every chunk before embedding
-  - pplx-embed-v2-context-9b-preview ([perplexity &amp; turbopuffer, sep 2026](https://www.perplexity.ai/hub/blog/contextual-embedding-beyond-the-gold-passage)) ([HF](https://huggingface.co/perplexity-ai/pplx-embed-v2-context-9b-preview)) - contextual (late-chunking) embedding model trained to retrieve the answer chunk plus its supporting context, rather than a single gold passage
-  - more researchy
-    - RAPTOR ([sarthi...manning, 2024](https://arxiv.org/abs/2401.18059)) - build hierarchical index by embedding, clustering, summarizing, and embedding the summaries
-    - Contextual Document Embeddings ([morris &amp; rush, 2024](https://arxiv.org/abs/2410.02525)) - embed docs conditioned on other docs (requires training to do this well)\\### multimodal embeddings\\- image-text starts with CLIP ([openai, 2021](https://arxiv.org/abs/2103.00020)), open-source replications like OpenCLIP ([LAION/stability, 2022](https://arxiv.org/abs/2212.07143)), and improvements like MetaCLIP ([meta, 2023](https://arxiv.org/abs/2309.16671)) and EVA-CLIP ([BAAI, 2023](https://arxiv.org/abs/2303.15389))
-  - SigLIP ([zhai…beyer, 2023](https://arxiv.org/abs/2303.15343)) - replace softmax InfoNCE with a pairwise sigmoid loss so each image-text pair is an independent binary problem (no batch-wide normalization → works at small batch sizes, cheaper); SigLIP 2 ([tschannen…zhai, 2025](https://arxiv.org/abs/2502.14786)) adds captioning + self-distillation + masked-prediction losses and native-resolution variants - now the default vision tower inside most VLMs (e.g. Qwen3-VL, PaliGemma)
-  - LLM2CLIP ([huang…furu wei, 2024](https://arxiv.org/abs/2411.04997)) - swap CLIP's text tower for a contrastively finetuned LLM to fix the 77-token limit and bag-of-words text understanding
-  - Perception Encoder ([bolya…feichtenhofer; meta, 2025](https://arxiv.org/abs/2504.13181)) - contrastive vision-language pretraining alone yields strong general features, but the best ones live in intermediate layers and need alignment tuning to pull out
-- known weaknesses of dual encoders: modality gap - image and text embeddings occupy disjoint cones even after training ([liang…zou, 2022](https://arxiv.org/abs/2203.02053)); can't embed interleaved text+image; bag-of-words behavior on compositional queries
-  - can have many modality embeddings aligned through images ImageBind ([meta, 2023](https://arxiv.org/abs/2305.05665)) or through text LanguageBind ([PKU, 2023](https://arxiv.org/abs/2310.01852))
-  - audio-text analogue of CLIP: CLAP ([elizalde…wang; microsoft, 2022](https://arxiv.org/abs/2206.04769)), LAION-CLAP ([wu…dubnov, 2023](https://arxiv.org/abs/2211.06687))
-- more modern multimodal embeddings are built by post-training existing large multimodal models (single backbone sees interleaved text+images, so a screenshot or PDF page is embedded directly with no OCR/ETL), e.g. VLM2Vec ([salesforce/waterloo, 2024](https://arxiv.org/abs/2410.05160)), GME ([alibaba, 2024](https://arxiv.org/abs/2412.16855)), voyage-multimodal-3 ([voyage AI, 2024](https://blog.voyageai.com/2024/11/12/voyage-multimodal-3/)), jina-embeddings-v4 ([jina AI, 2025](https://arxiv.org/abs/2506.18902)), Gemini Embedding ([google deepmind, 2025](https://arxiv.org/abs/2503.07891)), Cohere Embed v4 ([cohere, 2025](https://docs.cohere.com/docs/cohere-embed))
-  - precursors that framed &quot;universal multimodal retrieval&quot; (any-modality query → any-modality doc, instruction-conditioned): UniIR / M-BEIR benchmark ([wei…chen, 2023](https://arxiv.org/abs/2311.17136)), MagicLens ([zhang…chang; google, 2024](https://arxiv.org/abs/2403.19651)) - mines implicitly related image pairs from the same web page and has an LLM write the relation as the instruction
-  - E5-V ([BUAA/microsoft, 2024](https://arxiv.org/abs/2407.12580)): even with a *shared* MLLM encoder, untuned image and text embeddings still show a modality gap; they train on text-only NLI pairs with a &quot;summarize in one word&quot; prompt and it transfers to images
-  - MM-Embed ([NVIDIA, 2024](https://arxiv.org/abs/2411.02571)): MLLM retrievers exhibit *modality bias* (asked for an image, they retrieve text), fixed with modality-aware hard-negative mining + a continued text-only finetuning stage to keep MTEB scores
-  - hard-negative tricks: LLaVE ([lan…tang, 2025](https://arxiv.org/abs/2503.04812)) weights in-batch negatives by hardness; UniME ([gu…deng, 2025](https://arxiv.org/abs/2504.17432)) distills from a text LLM then does hard-negative finetuning, and UniME-V2 ([gu…bing, 2025](https://arxiv.org/abs/2510.13515)) uses an MLLM-as-judge to score candidates and train against *soft* matching scores rather than binary pos/neg; QQMM ([2025](https://arxiv.org/abs/2510.xxxxx)) explicitly amplifies the gradient from hard negatives in InfoNCE
-  - keeping generative ability: VladVA ([ouali…tzimiropoulos, 2024](https://arxiv.org/abs/2412.04378)) and CAFe ([yu…, 2025](https://arxiv.org/abs/2503.19900)) add an autoregressive LM loss alongside contrastive loss so the embedder doesn't forget how to generate
-  - MoEMB ([sep 2026](https://arxiv.org/abs/2609.08663)) - finds one embedder trained jointly over all tasks underperforms per-task models (gradient interference or capacity), motivating sparse MoE embedders
-  - Douyin Multimodal Embedding ([chen…dou; bytedance, aug 2026](https://arxiv.org/abs/2608.02148)) - industrial recipe: large-scale contrastive pretraining for a broad space, then a stage that recovers the fine-grained discrimination of CoT-based models without paying generation cost at serving time
-- visual document retrieval (embed page screenshots instead of extracted text)
-  - DSE: Document Screenshot Embedding ([ma…lin, 2024](https://arxiv.org/abs/2406.11251)) - single-vector version
-  - ColPali ([faysse…colombo, 2024](https://arxiv.org/abs/2407.01449)) - late interaction over VLM patch tokens: each page → ~1024 patch embeddings (128-d), scored with MaxSim against query tokens; introduced ViDoRe; skips chunking entirely
-    - family: ColQwen2/2.5/3 (Qwen-VL backbones), ColSmol, ColModernVBERT ([teiletche…, 2025](https://arxiv.org/abs/2510.01149)) - 250M params within 0.6 nDCG of ColPali, Nemotron ColEmbed V2 ([NVIDIA, 2026](https://arxiv.org/abs/2602.03992)) - Qwen3-VL 4B/8B with bidirectional attention; projecting to 128-d keeps ~95% accuracy at 3% storage, but 1M pages still need ~180GB
-    - jina-embeddings-v4 outputs *both* a 2048-d dense vector (MRL-truncatable to 128) and 128-d per-token vectors from one model, so you can trade indexing cost for precision without switching models
-    - MetaEmbed ([meta, 2025](https://arxiv.org/abs/2509.18095)) - append a small set of learnable &quot;meta tokens&quot; and train so any prefix of them works as a multi-vector embedding → test-time scaling of retrieval quality vs cost (matryoshka over *number* of vectors)
-    - storage is the pain point → training-free multi-vector compression via token pooling / anchor pruning (e.g. Structural Anchor Pruning ([2026](https://arxiv.org/abs/2601.20107))), or MUVERA-style fixed-dimensional encodings that let multi-vector sets use standard ANN
-    - visual-token efficiency for single-vector models: Magic-MM-Embedding ([li…liu, 2026](https://arxiv.org/abs/2602.05275)) reduces visual tokens before pooling
-- reasoning-driven embeddings - let the MLLM think before emitting the vector
-  - UME-R1 ([2025](https://arxiv.org/abs/2511.00405)) - generate a CoT then pool; RL-trained; big gains on compositional/instruction tasks but impractical to serve online
-  - Embed-RL ([jiang…tang, 2026](https://arxiv.org/abs/2602.13823)) - Embedder-Reasoner RL loop where the embedder supervises the reasoner so CoT traces stay aligned with embedding tasks
-  - PLUME ([he…wang, 2026](https://arxiv.org/abs/2604.02073)) - latent (non-verbal) reasoning tokens instead of explicit CoT to recover most of the gain at bi-encoder cost
-- omni-modal (text + image + video + audio in one space)
-  - Omni-Embed-Nemotron ([NVIDIA, 2025](https://arxiv.org/abs/2511.10954)), LCO-Embedding ([2025](https://arxiv.org/abs/2510.11693)) - language-centric omnimodal training on Qwen2.5-Omni
-  - Gemini Embedding 2 ([google deepmind, may 2026](https://arxiv.org/abs/2605.27295)) - native multimodal from Gemini; arbitrary interleaved text/image/video/audio/document inputs; multi-task multi-stage contrastive training; SoTA across unimodal, cross-modal, and mixed-modal retrieval simultaneously (69.9 MTEB multilingual, 84.0 MTEB code)
-  - jina-embeddings-v5-omni ([jina, 2026](https://jina.ai/news/jina-embeddings-v5-omni-multimodal-embeddings-for-text-image-audio-and-video/)) - nano (0.95B) / small (1.57B); bolts SigLIP2 vision + Whisper audio encoders onto the frozen v5 text model so text quality is bit-identical; small matches 7B omni baselines on average, video is the remaining gap
-  - Conan-embedding-v3 ([2026](https://arxiv.org/abs/2606.09331)) - *merge* separately trained modality-specialist backbones; works for vision/video/doc but audio regresses because the projector was calibrated to the audio-specialist backbone (&quot;projector drift&quot;), fixed by re-tuning the projector with backbone frozen
-  - Ovis-Omni-Embedding-3B - initialize from Qwen2.5-Omni Thinker (drop Talker + LM head), last-token pooling; leads MMEB-V3 aggregate
-- video - usually samples frames and embeds them rather than explicit temporal modeling
-  - voyage-multimodal-3.5 ([jan 2026](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/)) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens; first production video model with matryoshka dims
-  - VLM2Vec-V2 ([meng…chen, 2025](https://arxiv.org/abs/2507.04590)) - extends VLM2Vec to videos + visual docs, introduces MMEB-V2
-  - WAVE - unified audio-visual embeddings for audio↔video retrieva\\
-## papers with a little trick\\- mask removal (masked autoencoder MAE)-time
-  - DupMAE = RetroMAE v2: Duplex Masked Auto-Encoder For Pre-Training Retrieval-Oriented Language Models ([xiao &amp; liu, 2022](https://arxiv.org/abs/2211.08769)) - add loss so that CLS token can recover the entire input and individual token embeddings can recover bag-of-words
-    - then, use low-dim representation of both embeddings concatenated as the embedding
-- training-time
-  - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
-  - Matryoshka Representation Learning ([kusupati...kakade, jain, &amp; farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc).
-    - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
-    - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/abs/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
-  - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng &amp; shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
-  - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang &amp; yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
-  - Relevance-Based Embeddings ([shevkunov, ploskonosov &amp; prokhorenkova, 2026](https://arxiv.org/abs/2607.03515)) - rather than biencoder, generate embedding vector by concatenating the cross-encoder similarity of query to a list of support docs
-  - Lightweight Fine-Tuning for Flexible Multi-Vector Compression ([josef, 2026](https://arxiv.org/abs/2607.06036)) - lightweight k-means pooling-aware fine-tuning lets ColBERT models compress vectors with no accuracy loss
-  - AutoIndex: Learning Representation Programs for Retrieval ([o'nuallain...drozdov, 2026](https://arxiv.org/abs/2607.18603)) - autoresearch for learning how to embed using a fixed BM25 retriever
-  - post-hoc
-    - Your UnEmbedding Matrix is Secretly a Feature Lens for Text Embeddings ([wu...yan, 2026](https://arxiv.org/abs/2606.07502)) - project out directions for small SVs of unembedding matrix inverse (these are in the null space and where constant bias is held) and for large SVs (these are shared between everything and not helpful for embeddings)
-- query inference-time
-  - EchoEmbeddings: Repetition Improves LM Embeddings ([springer, kotha, fried, neubig, &amp; raghunathan, 2024](https://arxiv.org/abs/2402.15449.pdf))
-    - Feed a prompt such as “Rewrite the sentence: x, rewritten sentence: x” to the LM and pool the contextualized embeddings of the 2nd occurence of x\\
-## datasets / benchmarks\\- **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** - most common (but potentially overfitted) benchmark
-  - [MMTEB](https://arxiv.org/abs/2502.13595) - multilingual version
-  - mutimodal
-    - standard: MMEB ([huang...meng, 2026](https://arxiv.org/abs/2604.23321)), MIEB: Massive Image Embedding Benchmark ([xiao...muennighoff, 2025](https://arxiv.org/abs/2504.10471))
-    - visual document retrieval: [ViDoRe](https://arxiv.org/abs/2407.01449), [ViDoRe v2](https://arxiv.org/abs/2505.17166), [MIRACL-VISION](https://arxiv.org/abs/2505.11651)
-    - video retrieval: [MSR-VTT](https://openaccess.thecvf.com/content_cvpr_2016/papers/Xu_MSR-VTT_A_Large_CVPR_2016_paper.pdf), [YouCook2](https://arxiv.org/abs/1703.09788), [DiDeMo](https://arxiv.org/abs/1708.01641)
-  - PTEB paper ([frank &amp; afli, 2025](https://arxiv.org/abs/2510.06730)) finds that paraphrasing MTEB test sets substantially lowers scores (suggesting overfitting)
-  - SAGE: A Realistic Benchmark for Semantic Understanding ([goel, lee &amp; ramchandran, 2025](https://arxiv.org/abs/2509.21310)) - evaluates retreival robustness under adversarial and noisy conditions
-  - AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark ([chen...liu, 2024](https://arxiv.org/abs/2412.13102)) - refreshable llm-generated eval data
-  - Older: [BEIR benchmark](https://arxiv.org/abs/2104.08663) (part of MTEB)
-- newer retrieval benchmarks
-  - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets; newer and hopes to avoid MMTEB overfitting
-  - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah &amp; khattab, 2026](https://arxiv.org/abs/2605.06235))
-  - EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge ([sun...butler, 2026](https://arxiv.org/abs/2605.05253))
-  - MAIR (Massive Instructed Retrieval) benchmark ([sun et al. 2024](https://arxiv.org/abs/2410.10127)) - dataset for instruction-informed retrieval
-    - BERRI: Task-aware Retrieval with Instructions ([asai...riedel, hajishirzi, &amp; yih, 2023](https://aclanthology.org/2023.findings-acl.225/))
-    - FollowIR ([weller...soldaini, 2024](https://arxiv.org/abs/2403.15246))
-- agentic search
-  - BrowseComp-Plus ([chen...lin, 2025](https://arxiv.org/abs/2508.06600)) - evaluates deep research when searching a fixed corpus
-    - extends BrowseComp ([wei...glaese, 2025](https://arxiv.org/abs/2504.12516)) - uses web search to evaluate QA
-  - InfoDeepSeek: Benchmarking Agentic Information Seeking for RAG ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
-- Long context datasets
-  - [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval)
-  - Jina Long Context Benchmark ([günther et al. 2023](https://arxiv.org/abs/2310.19923.pdf))
-- Misc minor
-  - [TREC-RAG](https://trec-rag.github.io/) dataset
-  - Instructor eval: Billboard, Prompt retrieval
-- Training datasets
-  - Nomic 235M curated text pairs (mostly filtered from [here](https://huggingface.co/datasets/sentence-transformers/embedding-training-data))
-    - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
-  - MEDI (from Instructor paper): combines 300 datasets from Super-NaturalInstructions with 30 datasets from existing collections designed for embedding training\\## agentic search\\*Agentic search - agent actively plans, executes, and iterates on searches to answer a query, rather than just running a single keyword lookup and handing back results*\\- FastContext: Training Efficient Repository Explorer for Coding Agents ([zhang...fu, 2026](https://arxiv.org/abs/2606.14066)) - exploration models from 4B-30B
-- Search-R1: Training LLMs to Reason and Leverage Search Engines with RL ([jin...han, 2025](https://arxiv.org/abs/2503.09516))
-- Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction ([li...zhang, 2026](https://arxiv.org/abs/2605.05242)) - agent searches the raw corpus directly using **`grep`, `find`, `bash`, shell pipelines** rather than embedding models
-- Chroma Context-1: Training a Self-Editing Search Agent ([bashir, hong, jiang, &amp; shi, 2026](https://www.trychroma.com/research/context-1))
-- MemReranker: Reasoning-Aware Reranking for Agent Memory Retrieval ([li...li, 2026](https://arxiv.org/abs/2605.06132))
-- Are We Ready For An Agent-Native Memory System? ([zhou...wu, 2026](https://arxiv.org/abs/2606.24775))
-  - MemoryBank: Enhancing LLMs with Long-Term Memory ([zhong...wang, 2023](https://arxiv.org/abs/2305.10250)) - maintains experiences as timestamped memory streams and periodically summarizes them into higher-level reflections
-- Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval ([yang, ma, chen &amp; shrivastava, 2026](https://arxiv.org/abs/2605.06647))
-  - asks which terms are likely to separate the desired evidence from corpus-level confusers
-  - doc side: LLM enriches each document offline with missing search vocabulary
-  - query side: predicts evidence vocabulary omitted by the query &amp; document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin
-  - final retrieval step is weighted BM25 call combining the original query with the validated expansion
-- GrepSeek: Training Search Agents for Direct Corpus Interaction ([salemi...zamani, 2026](https://arxiv.org/abs/2605.29307v1)) - trains a compact search agent to find, filter, and compose evidence
-  from large text corpora
-  - Is Grep All You Need? How Agent Harnesses Reshape Agentic Search ([sen...subbiah, 2026](https://arxiv.org/abs/2605.15184)) - grep generally outperforms vector retrieval in agentic RAG workflows, but overall accuracy depends heavily on agent harness
-- MemEx: A Programmable Scratchpad for LLM Agents ([databricks research team, 2026](https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents)) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time
-- Adapting Embedding Models for Agent Capability Retrieval ([chen...xu, 2026](https://arxiv.org/abs/2607.17347)) - fnetunes 3 retrieval models on synthetic capability-profile data
-- https://jbarrow.ai/2026-06-12-searching-fast-and-slow/:
-  - ![IR-pareto-frontier](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg) ([ref](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/))\\
-## searching embeddings (approximate nearest neighbor)\\- locality-sensitive hashing (outdated) is a [fuzzy hashing](https://en.wikipedia.org/wiki/Fuzzy_hashing) technique that hashes similar input items into the same &quot;buckets&quot; with high probability
-  - idea is to project vector along random dimensions to create buckets, and then match those buckets before searching the rest
-  - issue is that the number of dimensions needed to get good performance can quickly grow, obviating the benefit
-  - hash collisions are maximized, rather than minimized as they are in dictionaries
-  - finding embeddings via DNNs is a special case of this (e.g. might call it &quot;semantic hashing&quot;)
-&lt;p float=&quot;left&quot;&gt;
-  &lt;img src=&quot;../assets/lsh_index_time_dark.svg&quot; width=&quot;45%&quot; /&gt;
-  &lt;img src=&quot;../assets/lsh_query_time_dark.svg&quot; width=&quot;45%&quot; /&gt;
-&lt;/p&gt;
-- k-d (k-dimensional) tree
-  - balanced binary tree over data with arbitrary dimensions, where each node splits one dim
-  - at inference time, go to leaf and then search all neighbors of the leaf by going back up it
-  - [annoy](https://github.com/spotify/annoy) optimized this to instead use a forest of random trees and to do data-driven splitting (take 2 random points and split on the direction between them) rather than the median of a single dim
-&lt;p float=&quot;left&quot;&gt;
-  &lt;img src=&quot;../assets/kd_tree_index_time_dark.svg&quot; width=&quot;45%&quot; /&gt;
-  &lt;img src=&quot;../assets/kd_tree_query_time_dark.svg&quot; width=&quot;45%&quot; /&gt;
-&lt;/p&gt;
-- inverted file (IVF) - k-means the embeddings into clusters, then at inference first search the cluster centers before searching within the top clusters
-  - to improve performance, add neighbors into mutiple clusters
-&lt;p float=&quot;left&quot;&gt;
-  &lt;img src=&quot;../assets/ivf_index_time_dark.svg&quot; width=&quot;45%&quot; /&gt;
-  &lt;img src=&quot;../assets/ivf_query_time_dark.svg&quot; width=&quot;45%&quot; /&gt;
-&lt;/p&gt;
-- product quantization ([jegou et al. 2011](https://ieeexplore.ieee.org/document/5432202)) - this speeds up the vector comparison time (different from everything else)
-  - separate vector into subvectors (e.g. first half, second half), run k-means for each subvector, then replace the subvector with the index of its closest center mean
-  - at inference time, split the query into the same subvectors, and pre-compute the squared distance to each of the center means for each subvector
-    - then, for each vector, rather than doing the dot-product, just look up the pre-computed distances for each subvector (add them together to get the squared distance for the whole vector)
-    - note: splitting vectors and clustering struggles if there are lots of correlations between different subvector parts, one fix for this is [Optimized PQ](https://www.microsoft.com/en-us/research/wp-content/uploads/2013/11/pami13opq.pdf) (OPQ), which learns a rotation to apply before splitting so the variance is balanced and decorrelated across subspaces
-&lt;p float=&quot;left&quot;&gt;
-  &lt;img src=&quot;../assets/pq_index_time_wide_dark_v2.svg&quot; width=&quot;45%&quot; /&gt;
-  &lt;img src=&quot;../assets/pq_query_time_wide_dark_v2.svg&quot; width=&quot;45%&quot; /&gt;
-&lt;/p&gt;\\- HNSW ([malkov &amp; yashunin, 2016](https://arxiv.org/abs/1603.09320)) - Hierarchical Navigable Small World graphs (most popular modern system including Lucene, pgvector, Qdrant, Weaviate, Milvus, Pinecone's early stack for medium-large scale &lt;10M vectors)
-  - idea is to build a proximity graph over the vectors, and answer queries with greedy best-first traversal - start somewhere, repeatedly hop to the neighbor closest to the query, and search its neighbors
-    - hierarchy: does search at a higher layer, then drops to neighbors in lower layer which are more refined
-    - edge-selection at insert time
-      - note: naive graph of neighbors doesn't work because it's very hard to find a new neighbor if you search in the wrong place; instead NSW inserts points in random order and connects each to its M nearest *at insertion time* (this leaves long-range edges from the early added nodes)
-  - supports incremental inserts (although build and insert are both expensive)
-    - delete is a pain
-    - requires a lot of RAM (rather than disk access)
-&lt;p float=&quot;left&quot;&gt;
-  &lt;img src=&quot;../assets/hnsw_index_time_insert_dark.svg&quot; width=&quot;45%&quot; /&gt;
-  &lt;img src=&quot;../assets/hnsw_layered_greedy_walk_dark.svg&quot; width=&quot;45%&quot; /&gt;
-&lt;/p&gt;\\- moving more stuff to disk instead of RAM (default for very large scale, 100M+ vectors)
-  - DiskANN ([subramanya...harsha vardhan simhadri, 2019; CMU, UT austin, &amp; MSR](https://suhasjs.github.io/files/diskann_neurips19.pdf)) - store the full-precision vectors and graph on SSD, keep only PQ-compressed vectors in RAM
-    - introduce Vamana graph construction algorithm to produces fewer, longer-range hops in the graph to minimize SSD round-trips
-  - SPANN ([chen...wang, 2021](https://arxiv.org/abs/2111.08566)) - same thing but for IVF cluster approach rather than PQ
-&lt;p float=&quot;left&quot;&gt;
-  &lt;span style=&quot;display: inline-block; width: 45%; text-align: center;&quot;&gt;
-    &lt;b&gt;DiskANN&lt;/b&gt;&lt;br&gt;
-    &lt;img src=&quot;../assets/diskann_index_time_dark.svg&quot; width=&quot;100%&quot; /&gt;
-  &lt;/span&gt;
-  &lt;span style=&quot;display: inline-block; width: 45%; text-align: center;&quot;&gt;
-    &lt;b&gt;SPANN&lt;/b&gt;&lt;br&gt;
-    &lt;img src=&quot;../assets/spann_index_time_dark.svg&quot; width=&quot;100%&quot; /&gt;
-  &lt;/span&gt;
-&lt;/p&gt;
-- other considerations
-  - modern libraries often deal carefully with quantization and GPU usability
-  - building compressions/graphs that are filter-aware, e.g. user issues queries like &quot;nearest neighbors WHERE tenant=X AND date&gt;Y.&quot; should not break the search
-- libraries:\\| Library                                                     | What it is                                                   | Methods it connects to                                       |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Faiss](https://github.com/facebookresearch/faiss) (Meta)   | The field's reference library, CPU and GPU. Nearly every classical index type, composable (e.g. IVF coarse layer + PQ codes + rescoring). | Brute force, IVF, PQ/OPQ, IVF-PQ (asymmetric distance computation), HNSW, scalar/binary quantization |
-| [hnswlib](https://github.com/nmslib/hnswlib) (Malkov)       | The canonical lightweight HNSW implementation by the paper's author; embedded inside many engines. Sibling research library: [nmslib](https://github.com/nmslib/nmslib) (original NSW). | HNSW exactly — M, efConstruction, efSearch, diversity pruning |
-| [ScaNN](https://github.com/google-research/scann) (Google)  | Partitioning plus anisotropic quantization — the PQ loss reshaped to penalize ranking-relevant error. | IVF + PQ with a smarter estimator (&quot;train the index for the metric&quot;) |
-| [DiskANN](https://github.com/microsoft/DiskANN) (Microsoft) | Vamana graphs served from SSD; Fresh (streaming) and Filtered variants. | DiskANN — α-prune build, PQ-steered beam search, packed SSD sector reads |
-| [SPTAG](https://github.com/microsoft/SPTAG) (Microsoft)     | Tree-plus-graph library; home of the SPANN design used in Bing-scale search. | SPANN — in-RAM centroid routing, closure assignment for boundary vectors |
-| [Annoy](https://github.com/spotify/annoy) (Spotify)         | Random-projection tree forest; mmap-friendly, immutable, simple. Largely legacy now but still deployed. | The tree lineage — the KD-tree's randomized, ensembled descendant |
-| [FALCONN](https://github.com/FALCONN-LIB/FALCONN)           | Research-grade LSH (cross-polytope and hyperplane families) with multi-probe. | LSH, with the modern hash families and fewer tables          |
-| [cuVS](https://github.com/rapidsai/cuvs) (NVIDIA)           | GPU-native ANN: CAGRA graph build and search, GPU IVF-PQ; build speedups that change reindexing economics. | Graph traversal + IVF-PQ, rebuilt for massive parallelism    |\\| Engine                                                       | What it is                                                   | Methods it connects to                                       |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Lucene](https://lucene.apache.org/) (→ Elasticsearch, OpenSearch, MongoDB Atlas) | Segment-based search engine whose vector support underlies Elasticsearch, OpenSearch, and Atlas Vector Search; immutable segments sidestep graph deletes. | HNSW per segment + int8/binary quantization with exact rescoring |
-| [pgvector](https://github.com/pgvector/pgvector)             | Postgres extension; vectors as a column type with SQL filtering and joins. | HNSW, IVF (IVFFlat), and exact brute-force scans             |
-| [Milvus](https://github.com/milvus-io/milvus)                | Distributed vector database; its Knowhere engine wraps multiple index families behind one API. | Nearly everything: Faiss indexes, HNSW, DiskANN, GPU variants |
-| [Qdrant](https://github.com/qdrant/qdrant)                   | Rust vector database emphasizing payload filtering and compression. | HNSW + scalar/binary quantization; filter-aware traversal    |
-| [Weaviate](https://github.com/weaviate/weaviate)             | Go vector database with hybrid (BM25 + vector) search built in. | Custom HNSW with PQ/binary compression and rescoring         |\\*Notes: popularity and internals shift quickly — verify against [ann-benchmarks.com](https://ann-benchmarks.com/) before depending on any of these. The engines section contains no new algorithms: each is HNSW-or-IVF plus quantization plus the operational layer (filtering, replication, segments, hybrid search).*\\- foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
-- similarity metrics
-  - Anisotropy Decides Cosine vs. Rank Metrics for Text Embeddings ([parupudi, 2026](https://arxiv.org/abs/2606.29571)) - choice of similarity metric depends on embedding geometry: cosine is best when variance spreads evenly &amp; L1-type metrics win when variance concentrates into a few directions
-  - euclidean, cosine, and dot product are most common
-    - when embeddings normalized to have norm 1, euclidean and dot product yield the same rankings because $$\Vert q - d\Vert ^2 = \Vert q\Vert ^2 + \Vert d\Vert ^2 - 2(q \cdot d) = 2 - 2(q \cdot d)\end{aligned}\end{align} \]</div>
+<li><p>large batch sizes are important, can speed up computation with gradcache (<a class="reference external" href="https://arxiv.org/abs/2101.06983">gao et al. 2021</a>) (computes loss wrt embs, then backprops through whole computation different examples at at time)</p></li>
+<li><p>low temp. signals “focus on the hardest cases” while high temp says “treat all negatives equally”</p></li>
+<li><p>note: this is the same as cross-entropy loss using the exp(similarity score) as the probability</p></li>
+<li><p>this is what is used in CLIP, SimCLR, most popular</p></li>
+<li><p>issue: can be computationally annoying to have large batch sizes / compute the denominator</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(L_{BCE} = -\mathbb{E} \Big[\, {\color{var(--nb-c-green)}y_{ij}}\log\sigma\big({\color{var(--nb-c-green)}t} \cdot {\color{var(--nb-c-purple)}\text{sim}(z_i, z_j)} + {\color{var(--nb-c-orange)}b}\big) + (1-{\color{var(--nb-c-green)}y_{ij}})\log\big(1-\sigma({\color{var(--nb-c-green)}t} \cdot {\color{var(--nb-c-purple)}\text{sim}(z_i, z_j)} + {\color{var(--nb-c-orange)}b})\big) \,\Big]\)</span> Where: - <span class="math notranslate nohighlight">\(\color{var(--nb-c-green)}y_{ij}\)</span> = label (1 if true positive pair, 0 otherwise) and <span class="math notranslate nohighlight">\(\color{var(--nb-c-green)}t\)</span> = learnable temperature (scale) - <span class="math notranslate nohighlight">\(\color{var(--nb-c-orange)}b\)</span> = learnable bias</p>
+<ul>
+<li><p>can be easier to compute because it doesn’t require large batches / normalization</p></li>
+<li><p>easier to integrate in graded information, not just pos/neg (infoNCE sturggles because we don’t usually have graded labels across examples in the batch; if you did, could use them directly)</p></li>
+<li><p>used in SigLIP and more</p></li>
+</ul>
+</li>
+<li><p>Proxy-NCA (<a class="reference external" href="https://arxiv.org/abs/1703.07464">movshovitz-attias et al. 2017</a>) generalizes this by learning a proxy embedding per class and comparing samples to proxies, sidestepping the combinatorial explosion of pair/triplet sampling</p></li>
+</ul>
+</section>
+<section id="top-performing-models">
+<span id="sec-ovw-embeddings-top-performing-models"></span><h2>Top-performing models<a class="headerlink" href="#top-performing-models" title="Link to this heading">#</a></h2>
+<p class="section-lead">Roughly in historical order: simple baselines, bi-encoders like SBERT, contrastive pre-training with synthetic data and instructions, then models initialized from a pre-trained LLM. Query expansion, rerankers and contextualized chunking sit on top of any of these.</p>
+<p><em>Can monitor model popularity via <a class="reference external" href="https://openrouter.ai/models?output_modalities=embeddings">openrouter</a> and some evals at <a class="reference external" href="https://artificialanalysis.ai/agents/search-api">artificial analysis index</a></em></p>
+<ul class="simple">
+<li><p>baseline simple models</p>
+<ul>
+<li><p>BM25 - uses TF-IDF based on word counts and document frequences</p></li>
+<li><p>Simple but Tough-to-Beat Baseline for Sentence Embeddings (<a class="reference external" href="https://openreview.net/forum?id=SyK00v5xx">arora, liang &amp; ma, 2017</a>)</p>
+<ul>
+<li><p>average word embeddings in a sentence, downweighting words by their frequency</p></li>
+<li><p>to remove the “common background direction”, compute the top pca component from many sentence embeddings then remove that direction</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>early models just trained with bi-encoders, e.g. SBERT=Sentence BERT (<a class="reference external" href="https://arxiv.org/abs/1908.10084">reimers &amp; gurevych, 2019</a>), SimCSE (<a class="reference external" href="https://arxiv.org/abs/2104.08821">gao, yao &amp; chen, 2021</a>)</p>
+<ul>
+<li><p>PromptBERT (<a class="reference external" href="https://arxiv.org/abs/2201.04337">jiang…furu wei…zhang, 2022</a>): <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">sentence:</span> <span class="pre">“</span> <span class="pre">[text]</span> <span class="pre">”</span> <span class="pre">means</span> <span class="pre">[MASK]</span></code> then use the embedding of the mask token - this prevents how all raw embeddings have similar cosine similarities</p>
+<ul>
+<li><p>Scaling Sentence Embeddings with LLMs (<a class="reference external" href="https://arxiv.org/abs/2307.16645">jiang, …, zhuang, 2023</a>): <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">sentence:</span> <span class="pre">“</span> <span class="pre">[text]</span> <span class="pre">”</span> <span class="pre">means</span> <span class="pre">in</span> <span class="pre">one</span> <span class="pre">word:</span></code> then use the embedding of the final token</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>next era of models started using contrastive pre-training, e.g. E5 (<a class="reference external" href="https://arxiv.org/abs/2212.03533">wang…wei, 2022</a>), GTE (<a class="reference external" href="https://arxiv.org/abs/2308.03281">li…zhang, 2023</a>), and BGE (<a class="reference external" href="https://github.com/FlagOpen/FlagEmbedding">github</a>)</p>
+<ul>
+<li><p>this era included instruction-conditioned embeddings, e.g. Instructor (<a class="reference external" href="https://instructor-embedding.github.io">su, …, smith, zettlemoyer, yu, 2022</a>)</p></li>
+<li><p>synthetic data became important here, e.g. Promptagator (<a class="reference external" href="https://arxiv.org/abs/2209.11755">dai…wei chang, 2022</a>) and Gecko (<a class="reference external" href="https://arxiv.org/abs/2403.20327">lee…naim, 2024</a>)</p></li>
+<li><p>Nomic Embed (<a class="reference external" href="https://static.nomic.ai/reports/2024_Nomic_Embed_Text_Technical_Report.pdf">nussbaum, morris, duderstadt, &amp; mulyar, 2024</a>), (<a class="reference external" href="https://blog.nomic.ai/posts/nomic-embed-text-v1">blog post</a>)</p></li>
+<li><p>Jina Embeddings 2 (<a class="reference external" href="https://arxiv.org/abs/2310.19923">gunther…xiao, 2024</a>) - achieves long context (8192 tokens)</p></li>
+</ul>
+</li>
+<li><p>next, models initialized using a pre-trained LLM, e.g. E5-mistral-instruct (<a class="reference external" href="https://arxiv.org/abs/2401.00368">wang…wei, 2023</a>), SGPT (<a class="reference external" href="https://arxiv.org/abs/2202.08904">muennighoff, 2022</a>)</p>
+<ul>
+<li><p>during post-training, remove attention masking so stuff is bidirectional, e.g. NV-Embed (<a class="reference external" href="https://arxiv.org/abs/2405.17428">lee…ping, 2024</a>), LLM2Vec (<a class="reference external" href="https://arxiv.org/abs/2404.05961">behnamghader…reddy, 2024</a>)</p></li>
+<li><p>Nemotron-3-Embed (<a class="reference external" href="https://huggingface.co/blog/nvidia/nemotron-3-embed-wins-rteb">blog post, 2026</a>) - 3 sizes: 8B (BF16), 1B (BF16), 1B (NVFP4), all available with very permissive <code class="docutils literal notranslate"><span class="pre">openmdw-1.1</span></code> license</p>
+<ul>
+<li><p>8B model is adapted from Ministral-3-8B-Instruct-2512 (<a class="reference external" href="https://arxiv.org/abs/2601.08584">mistral, jan 2026</a>)</p></li>
+<li><p>1B model is adapted in two stages, first post-training Ministral-3-3B-Instruct-2512, then distilling it to 2B and posttraining, then distilling it to 1B and posttraining</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>query inference-time expansions</p>
+<ul>
+<li><p>query2doc expansion</p>
+<ul>
+<li><p>HyDE (<a class="reference external" href="https://arxiv.org/abs/2212.10496.pdf">gao…callan, 2022</a>) - at inference time, generate synthetic doc from query + instruction &amp; find match for that doc</p></li>
+</ul>
+</li>
+<li><p>multi-query fusion</p>
+<ul>
+<li><p>InPars (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3477495.3531863">bonifacio…nogueira, 2022</a>) – generate questions with GPT-3; retrieve with BM25</p></li>
+<li><p>retrieve based on multiple paraphrases and then average their reciprocal ranks to get the final reciprocal ranks</p></li>
+</ul>
+</li>
+<li><p>doc2query (<a class="reference external" href="https://arxiv.org/abs/1904.08375">noguiera, … cho, 2019</a>) – train passage-to-query model on MS MARCO then retrieve with BM-25</p></li>
+<li><p>Iterative Query Expansion with Retrieval-Grounded Relevance Feedback (<a class="reference external" href="https://arxiv.org/abs/2606.13905">bigdeli…bagheri, 2026</a>) - at inference time, expand query (with LLM), retrieve docs for expanded query, measure similarity <em>to original query</em>, then re-expand and repeat (with LLM given context)</p></li>
+<li><p>Adaptive Re-Ranking (<a class="reference external" href="https://arxiv.org/abs/2606.25249">genc, korukluoglu &amp; allan, 2026</a>) - sends each query to the cheapest effective re-ranking strategy, cutting latency by avoiding heavy cross-encoders on simple queries</p></li>
+<li><p>distilling query expansions during training time</p>
+<ul>
+<li><p>SoftQE (<a class="reference external" href="https://arxiv.org/abs/2402.12663">pimpalkhute et al., 2024</a>) - trains the query encoder to match embeddings of LLM-expanded queries</p>
+<ul>
+<li><p>ExpandR (<a class="reference external" href="https://arxiv.org/abs/2502.17057">yao et al., 2025</a>) - jointly trains the retriever on LLM expansions while aligning the LLM with DPO</p></li>
+</ul>
+</li>
+<li><p>CAPSTONE (<a class="reference external" href="https://arxiv.org/pdf/2212.09114">he et al., 2023</a>) - moves expansion to the document side with curriculum sampling, so all generation cost is paid at indexing rather than query time</p></li>
+<li><p>Retrieval-Feedback Distillation + Preference Alignment (<a class="reference external" href="https://arxiv.org/html/2603.13776">li &amp; zhou, 2026</a>) - Transfers retrieval-friendly expansion behavior from a teacher LLM to a compact student via retrieval feedback</p>
+<ul>
+<li><p>AQE (<a class="reference external" href="https://arxiv.org/abs/2507.11042">yang et al., 2025</a>) - finetune small LLM to generate retrieval-optimized expansions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>rerankers</p>
+<ul>
+<li><p>3 common versions: pointwise (score each document independently), pairwise (learn “A beats B”), listwise (optimize the ordering of the whole list, targeting metrics like NDCG directly)</p></li>
+<li><p>early models like ms-marco-MiniLM were cross-encoders, people later found that prompting an LLM did well but was expensive, so these were distilled</p></li>
+<li><p>newer models like Rank1 use reasoning for reranking</p></li>
+<li><p>voyage rerank-2.5 (<a class="reference external" href="https://blog.voyageai.com/2025/08/11/rerank-2-5/">aug 2025</a>) - includes instruction following, e.g. “Prioritize the title and ignore the abstract”</p></li>
+<li><p>Retrieving a Set, Not Independent Passages: Set-Level Compatibility Learning for Efficient Set Exploration (<a class="reference external" href="https://arxiv.org/abs/2607.05712">song &amp; lee, 2026</a>) - Introduces a set-level retrieval framework for multi-hop QA that scores query–passage-set compatibility instead of ranking passages independently</p></li>
+<li><p>jina-reranker-v3.5: An Efficient Listwise Reranker with Hybrid Attention and Self-Distillation (<a class="reference external" href="https://arxiv.org/abs/2607.18152">nasika, wang, krasakis &amp; xiao, 2026</a>)</p></li>
+</ul>
+</li>
+<li><p>contextualized chunking</p>
+<ul>
+<li><p>voyage does this via explicitly training a model to output separate vectors for each chunk</p></li>
+<li><p>jina does this via <a class="reference external" href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/">late chunking</a> (embed whole doc, get embeddings for a chunk by mean pooling over its tokens)</p></li>
+<li><p>Contextual retreival (<a class="reference external" href="https://www.anthropic.com/news/contextual-retrieval">anthropic blog post, 2024</a>) - prepends an LLM-generated summary to every chunk before embedding</p></li>
+<li><p>pplx-embed-v2-context-9b-preview (<a class="reference external" href="https://www.perplexity.ai/hub/blog/contextual-embedding-beyond-the-gold-passage">perplexity &amp; turbopuffer, sep 2026</a>) (<a class="reference external" href="https://huggingface.co/perplexity-ai/pplx-embed-v2-context-9b-preview">HF</a>) - contextual (late-chunking) embedding model trained to retrieve the answer chunk plus its supporting context, rather than a single gold passage</p></li>
+<li><p>more researchy</p>
+<ul>
+<li><p>RAPTOR (<a class="reference external" href="https://arxiv.org/abs/2401.18059">sarthi…manning, 2024</a>) - build hierarchical index by embedding, clustering, summarizing, and embedding the summaries</p></li>
+<li><p>Contextual Document Embeddings (<a class="reference external" href="https://arxiv.org/abs/2410.02525">morris &amp; rush, 2024</a>) - embed docs conditioned on other docs (requires training to do this well)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="multimodal-embeddings">
+<h3>Multimodal embeddings<a class="headerlink" href="#multimodal-embeddings" title="Link to this heading">#</a></h3>
+<p class="section-lead">CLIP-style dual encoders came first and have known weaknesses, such as the modality gap. Newer models post-train one multimodal LLM so a screenshot or PDF page can be embedded directly; the subsections cover visual document retrieval, reasoning before embedding, and models that put text, images, video and audio in one space.</p>
+<ul class="simple">
+<li><p>image-text starts with CLIP (<a class="reference external" href="https://arxiv.org/abs/2103.00020">openai, 2021</a>), open-source replications like OpenCLIP (<a class="reference external" href="https://arxiv.org/abs/2212.07143">LAION/stability, 2022</a>), and improvements like MetaCLIP (<a class="reference external" href="https://arxiv.org/abs/2309.16671">meta, 2023</a>) and EVA-CLIP (<a class="reference external" href="https://arxiv.org/abs/2303.15389">BAAI, 2023</a>)</p>
+<ul>
+<li><p>SigLIP (<a class="reference external" href="https://arxiv.org/abs/2303.15343">zhai…beyer, 2023</a>) - replace softmax InfoNCE with a pairwise sigmoid loss so each image-text pair is an independent binary problem (no batch-wide normalization → works at small batch sizes, cheaper); SigLIP 2 (<a class="reference external" href="https://arxiv.org/abs/2502.14786">tschannen…zhai, 2025</a>) adds captioning + self-distillation + masked-prediction losses and native-resolution variants - now the default vision tower inside most VLMs (e.g. Qwen3-VL, PaliGemma)</p></li>
+<li><p>LLM2CLIP (<a class="reference external" href="https://arxiv.org/abs/2411.04997">huang…furu wei, 2024</a>) - swap CLIP’s text tower for a contrastively finetuned LLM to fix the 77-token limit and bag-of-words text understanding</p></li>
+<li><p>Perception Encoder (<a class="reference external" href="https://arxiv.org/abs/2504.13181">bolya…feichtenhofer; meta, 2025</a>) - contrastive vision-language pretraining alone yields strong general features, but the best ones live in intermediate layers and need alignment tuning to pull out</p></li>
+</ul>
+</li>
+<li><p>known weaknesses of dual encoders: modality gap - image and text embeddings occupy disjoint cones even after training (<a class="reference external" href="https://arxiv.org/abs/2203.02053">liang…zou, 2022</a>); can’t embed interleaved text+image; bag-of-words behavior on compositional queries</p>
+<ul>
+<li><p>can have many modality embeddings aligned through images ImageBind (<a class="reference external" href="https://arxiv.org/abs/2305.05665">meta, 2023</a>) or through text LanguageBind (<a class="reference external" href="https://arxiv.org/abs/2310.01852">PKU, 2023</a>)</p></li>
+<li><p>audio-text analogue of CLIP: CLAP (<a class="reference external" href="https://arxiv.org/abs/2206.04769">elizalde…wang; microsoft, 2022</a>), LAION-CLAP (<a class="reference external" href="https://arxiv.org/abs/2211.06687">wu…dubnov, 2023</a>)</p></li>
+</ul>
+</li>
+<li><p>more modern multimodal embeddings are built by post-training existing large multimodal models (single backbone sees interleaved text+images, so a screenshot or PDF page is embedded directly with no OCR/ETL), e.g. VLM2Vec (<a class="reference external" href="https://arxiv.org/abs/2410.05160">salesforce/waterloo, 2024</a>), GME (<a class="reference external" href="https://arxiv.org/abs/2412.16855">alibaba, 2024</a>), voyage-multimodal-3 (<a class="reference external" href="https://blog.voyageai.com/2024/11/12/voyage-multimodal-3/">voyage AI, 2024</a>), jina-embeddings-v4 (<a class="reference external" href="https://arxiv.org/abs/2506.18902">jina AI, 2025</a>), Gemini Embedding (<a class="reference external" href="https://arxiv.org/abs/2503.07891">google deepmind, 2025</a>), Cohere Embed v4 (<a class="reference external" href="https://docs.cohere.com/docs/cohere-embed">cohere, 2025</a>)</p>
+<ul>
+<li><p>precursors that framed “universal multimodal retrieval” (any-modality query → any-modality doc, instruction-conditioned): UniIR / M-BEIR benchmark (<a class="reference external" href="https://arxiv.org/abs/2311.17136">wei…chen, 2023</a>), MagicLens (<a class="reference external" href="https://arxiv.org/abs/2403.19651">zhang…chang; google, 2024</a>) - mines implicitly related image pairs from the same web page and has an LLM write the relation as the instruction</p></li>
+<li><p>E5-V (<a class="reference external" href="https://arxiv.org/abs/2407.12580">BUAA/microsoft, 2024</a>): even with a <em>shared</em> MLLM encoder, untuned image and text embeddings still show a modality gap; they train on text-only NLI pairs with a “summarize in one word” prompt and it transfers to images</p></li>
+<li><p>MM-Embed (<a class="reference external" href="https://arxiv.org/abs/2411.02571">NVIDIA, 2024</a>): MLLM retrievers exhibit <em>modality bias</em> (asked for an image, they retrieve text), fixed with modality-aware hard-negative mining + a continued text-only finetuning stage to keep MTEB scores</p></li>
+<li><p>hard-negative tricks: LLaVE (<a class="reference external" href="https://arxiv.org/abs/2503.04812">lan…tang, 2025</a>) weights in-batch negatives by hardness; UniME (<a class="reference external" href="https://arxiv.org/abs/2504.17432">gu…deng, 2025</a>) distills from a text LLM then does hard-negative finetuning, and UniME-V2 (<a class="reference external" href="https://arxiv.org/abs/2510.13515">gu…bing, 2025</a>) uses an MLLM-as-judge to score candidates and train against <em>soft</em> matching scores rather than binary pos/neg; QQMM (<a class="reference external" href="https://arxiv.org/abs/2510.xxxxx">2025</a>) explicitly amplifies the gradient from hard negatives in InfoNCE</p></li>
+<li><p>keeping generative ability: VladVA (<a class="reference external" href="https://arxiv.org/abs/2412.04378">ouali…tzimiropoulos, 2024</a>) and CAFe (<a class="reference external" href="https://arxiv.org/abs/2503.19900">yu…, 2025</a>) add an autoregressive LM loss alongside contrastive loss so the embedder doesn’t forget how to generate</p></li>
+<li><p>MoEMB (<a class="reference external" href="https://arxiv.org/abs/2609.08663">sep 2026</a>) - finds one embedder trained jointly over all tasks underperforms per-task models (gradient interference or capacity), motivating sparse MoE embedders</p></li>
+<li><p>Douyin Multimodal Embedding (<a class="reference external" href="https://arxiv.org/abs/2608.02148">chen…dou; bytedance, aug 2026</a>) - industrial recipe: large-scale contrastive pretraining for a broad space, then a stage that recovers the fine-grained discrimination of CoT-based models without paying generation cost at serving time</p></li>
+</ul>
+</li>
+<li><p>visual document retrieval (embed page screenshots instead of extracted text)</p>
+<ul>
+<li><p>DSE: Document Screenshot Embedding (<a class="reference external" href="https://arxiv.org/abs/2406.11251">ma…lin, 2024</a>) - single-vector version</p></li>
+<li><p>ColPali (<a class="reference external" href="https://arxiv.org/abs/2407.01449">faysse…colombo, 2024</a>) - late interaction over VLM patch tokens: each page → ~1024 patch embeddings (128-d), scored with MaxSim against query tokens; introduced ViDoRe; skips chunking entirely</p>
+<ul>
+<li><p>family: ColQwen2/2.5/3 (Qwen-VL backbones), ColSmol, ColModernVBERT (<a class="reference external" href="https://arxiv.org/abs/2510.01149">teiletche…, 2025</a>) - 250M params within 0.6 nDCG of ColPali, Nemotron ColEmbed V2 (<a class="reference external" href="https://arxiv.org/abs/2602.03992">NVIDIA, 2026</a>) - Qwen3-VL 4B/8B with bidirectional attention; projecting to 128-d keeps ~95% accuracy at 3% storage, but 1M pages still need ~180GB</p></li>
+<li><p>jina-embeddings-v4 outputs <em>both</em> a 2048-d dense vector (MRL-truncatable to 128) and 128-d per-token vectors from one model, so you can trade indexing cost for precision without switching models</p></li>
+<li><p>MetaEmbed (<a class="reference external" href="https://arxiv.org/abs/2509.18095">meta, 2025</a>) - append a small set of learnable “meta tokens” and train so any prefix of them works as a multi-vector embedding → test-time scaling of retrieval quality vs cost (matryoshka over <em>number</em> of vectors)</p></li>
+<li><p>storage is the pain point → training-free multi-vector compression via token pooling / anchor pruning (e.g. Structural Anchor Pruning (<a class="reference external" href="https://arxiv.org/abs/2601.20107">2026</a>)), or MUVERA-style fixed-dimensional encodings that let multi-vector sets use standard ANN</p></li>
+<li><p>visual-token efficiency for single-vector models: Magic-MM-Embedding (<a class="reference external" href="https://arxiv.org/abs/2602.05275">li…liu, 2026</a>) reduces visual tokens before pooling</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>reasoning-driven embeddings - let the MLLM think before emitting the vector</p>
+<ul>
+<li><p>UME-R1 (<a class="reference external" href="https://arxiv.org/abs/2511.00405">2025</a>) - generate a CoT then pool; RL-trained; big gains on compositional/instruction tasks but impractical to serve online</p></li>
+<li><p>Embed-RL (<a class="reference external" href="https://arxiv.org/abs/2602.13823">jiang…tang, 2026</a>) - Embedder-Reasoner RL loop where the embedder supervises the reasoner so CoT traces stay aligned with embedding tasks</p></li>
+<li><p>PLUME (<a class="reference external" href="https://arxiv.org/abs/2604.02073">he…wang, 2026</a>) - latent (non-verbal) reasoning tokens instead of explicit CoT to recover most of the gain at bi-encoder cost</p></li>
+</ul>
+</li>
+<li><p>omni-modal (text + image + video + audio in one space)</p>
+<ul>
+<li><p>Omni-Embed-Nemotron (<a class="reference external" href="https://arxiv.org/abs/2511.10954">NVIDIA, 2025</a>), LCO-Embedding (<a class="reference external" href="https://arxiv.org/abs/2510.11693">2025</a>) - language-centric omnimodal training on Qwen2.5-Omni</p></li>
+<li><p>Gemini Embedding 2 (<a class="reference external" href="https://arxiv.org/abs/2605.27295">google deepmind, may 2026</a>) - native multimodal from Gemini; arbitrary interleaved text/image/video/audio/document inputs; multi-task multi-stage contrastive training; SoTA across unimodal, cross-modal, and mixed-modal retrieval simultaneously (69.9 MTEB multilingual, 84.0 MTEB code)</p></li>
+<li><p>jina-embeddings-v5-omni (<a class="reference external" href="https://jina.ai/news/jina-embeddings-v5-omni-multimodal-embeddings-for-text-image-audio-and-video/">jina, 2026</a>) - nano (0.95B) / small (1.57B); bolts SigLIP2 vision + Whisper audio encoders onto the frozen v5 text model so text quality is bit-identical; small matches 7B omni baselines on average, video is the remaining gap</p></li>
+<li><p>Conan-embedding-v3 (<a class="reference external" href="https://arxiv.org/abs/2606.09331">2026</a>) - <em>merge</em> separately trained modality-specialist backbones; works for vision/video/doc but audio regresses because the projector was calibrated to the audio-specialist backbone (“projector drift”), fixed by re-tuning the projector with backbone frozen</p></li>
+<li><p>Ovis-Omni-Embedding-3B - initialize from Qwen2.5-Omni Thinker (drop Talker + LM head), last-token pooling; leads MMEB-V3 aggregate</p></li>
+</ul>
+</li>
+<li><p>video - usually samples frames and embeds them rather than explicit temporal modeling</p>
+<ul>
+<li><p>voyage-multimodal-3.5 (<a class="reference external" href="https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/">jan 2026</a>) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens; first production video model with matryoshka dims</p></li>
+<li><p>VLM2Vec-V2 (<a class="reference external" href="https://arxiv.org/abs/2507.04590">meng…chen, 2025</a>) - extends VLM2Vec to videos + visual docs, introduces MMEB-V2</p></li>
+<li><p>WAVE - unified audio-visual embeddings for audio↔video retrieva</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="papers-with-a-little-trick">
+<span id="sec-ovw-embeddings-papers-with-a-little-trick"></span><h2>Papers with a little trick<a class="headerlink" href="#papers-with-a-little-trick" title="Link to this heading">#</a></h2>
+<p class="section-lead">Single changes to an embedding model, grouped by when they act: during pre-training (masked autoencoding), during training (one model for generation and embeddings, Matryoshka prefixes that work as smaller embeddings), after training, or at query time (repeating the input so the second copy sees all of it).</p>
+<ul class="simple">
+<li><p>mask removal (masked autoencoder MAE)-time</p>
+<ul>
+<li><p>DupMAE = RetroMAE v2: Duplex Masked Auto-Encoder For Pre-Training Retrieval-Oriented Language Models (<a class="reference external" href="https://arxiv.org/abs/2211.08769">xiao &amp; liu, 2022</a>) - add loss so that CLS token can recover the entire input and individual token embeddings can recover bag-of-words</p>
+<ul>
+<li><p>then, use low-dim representation of both embeddings concatenated as the embedding</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>training-time</p>
+<ul>
+<li><p>GritLM (<a class="reference external" href="https://arxiv.org/abs/2402.09906">meunninghoff…kiela, 2024</a>) - train a single model that, given different instructions, can produce either generations or embeddings</p></li>
+<li><p>Matryoshka Representation Learning (<a class="reference external" href="https://arxiv.org/abs/2205.13147">kusupati…kakade, jain, &amp; farhadi, 2022</a>) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc).</p>
+<ul>
+<li><p>Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation (<a class="reference external" href="https://arxiv.org/abs/2503.01776">wen…you, 2025</a>) - instead learn sparse mask on top of original embedding</p></li>
+<li><p>AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings (<a class="reference external" href="https://arxiv.org/abs/2405.15028">reddy…potdar, 2024</a>) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level</p></li>
+</ul>
+</li>
+<li><p>EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory (<a class="reference external" href="https://arxiv.org/abs/2606.21649">nie, fu, feng &amp; shan, 2026</a>) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings</p></li>
+<li><p>DREAM: Dense Retrieval Embeddings via Autoregressive Modeling (<a class="reference external" href="https://arxiv.org/abs/2606.24667">tang &amp; yang, 2026</a>) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task</p></li>
+<li><p>Relevance-Based Embeddings (<a class="reference external" href="https://arxiv.org/abs/2607.03515">shevkunov, ploskonosov &amp; prokhorenkova, 2026</a>) - rather than biencoder, generate embedding vector by concatenating the cross-encoder similarity of query to a list of support docs</p></li>
+<li><p>Lightweight Fine-Tuning for Flexible Multi-Vector Compression (<a class="reference external" href="https://arxiv.org/abs/2607.06036">josef, 2026</a>) - lightweight k-means pooling-aware fine-tuning lets ColBERT models compress vectors with no accuracy loss</p></li>
+<li><p>AutoIndex: Learning Representation Programs for Retrieval (<a class="reference external" href="https://arxiv.org/abs/2607.18603">o’nuallain…drozdov, 2026</a>) - autoresearch for learning how to embed using a fixed BM25 retriever</p></li>
+<li><p>post-hoc</p>
+<ul>
+<li><p>Your UnEmbedding Matrix is Secretly a Feature Lens for Text Embeddings (<a class="reference external" href="https://arxiv.org/abs/2606.07502">wu…yan, 2026</a>) - project out directions for small SVs of unembedding matrix inverse (these are in the null space and where constant bias is held) and for large SVs (these are shared between everything and not helpful for embeddings)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>query inference-time</p>
+<ul>
+<li><p>EchoEmbeddings: Repetition Improves LM Embeddings (<a class="reference external" href="https://arxiv.org/abs/2402.15449.pdf">springer, kotha, fried, neubig, &amp; raghunathan, 2024</a>)</p>
+<ul>
+<li><p>Feed a prompt such as “Rewrite the sentence: x, rewritten sentence: x” to the LM and pool the contextualized embeddings of the 2nd occurence of x</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="datasets-benchmarks">
+<span id="sec-ovw-embeddings-datasets-benchmarks"></span><h2>Datasets / benchmarks<a class="headerlink" href="#datasets-benchmarks" title="Link to this heading">#</a></h2>
+<p class="section-lead">MTEB is the standard leaderboard but may be overfit: paraphrasing its test sets lowers scores. Newer benchmarks use private data, instructions, agentic or long-context search, and the last group lists the data used to train embedding models.</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://huggingface.co/spaces/mteb/leaderboard">MTEB leaderboard</a></strong> - most common (but potentially overfitted) benchmark</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2502.13595">MMTEB</a> - multilingual version</p></li>
+<li><p>mutimodal</p>
+<ul>
+<li><p>standard: MMEB (<a class="reference external" href="https://arxiv.org/abs/2604.23321">huang…meng, 2026</a>), MIEB: Massive Image Embedding Benchmark (<a class="reference external" href="https://arxiv.org/abs/2504.10471">xiao…muennighoff, 2025</a>)</p></li>
+<li><p>visual document retrieval: <a class="reference external" href="https://arxiv.org/abs/2407.01449">ViDoRe</a>, <a class="reference external" href="https://arxiv.org/abs/2505.17166">ViDoRe v2</a>, <a class="reference external" href="https://arxiv.org/abs/2505.11651">MIRACL-VISION</a></p></li>
+<li><p>video retrieval: <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2016/papers/Xu_MSR-VTT_A_Large_CVPR_2016_paper.pdf">MSR-VTT</a>, <a class="reference external" href="https://arxiv.org/abs/1703.09788">YouCook2</a>, <a class="reference external" href="https://arxiv.org/abs/1708.01641">DiDeMo</a></p></li>
+</ul>
+</li>
+<li><p>PTEB paper (<a class="reference external" href="https://arxiv.org/abs/2510.06730">frank &amp; afli, 2025</a>) finds that paraphrasing MTEB test sets substantially lowers scores (suggesting overfitting)</p></li>
+<li><p>SAGE: A Realistic Benchmark for Semantic Understanding (<a class="reference external" href="https://arxiv.org/abs/2509.21310">goel, lee &amp; ramchandran, 2025</a>) - evaluates retreival robustness under adversarial and noisy conditions</p></li>
+<li><p>AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark (<a class="reference external" href="https://arxiv.org/abs/2412.13102">chen…liu, 2024</a>) - refreshable llm-generated eval data</p></li>
+<li><p>Older: <a class="reference external" href="https://arxiv.org/abs/2104.08663">BEIR benchmark</a> (part of MTEB)</p></li>
+</ul>
+</li>
+<li><p>newer retrieval benchmarks</p>
+<ul>
+<li><p><a class="reference external" href="https://huggingface.co/blog/rteb">RTEB</a> - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets; newer and hopes to avoid MMTEB overfitting</p></li>
+<li><p>OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries (<a class="reference external" href="https://arxiv.org/abs/2605.06235">tchuindjo, shah &amp; khattab, 2026</a>)</p></li>
+<li><p>EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge (<a class="reference external" href="https://arxiv.org/abs/2605.05253">sun…butler, 2026</a>)</p></li>
+<li><p>MAIR (Massive Instructed Retrieval) benchmark (<a class="reference external" href="https://arxiv.org/abs/2410.10127">sun et al. 2024</a>) - dataset for instruction-informed retrieval</p>
+<ul>
+<li><p>BERRI: Task-aware Retrieval with Instructions (<a class="reference external" href="https://aclanthology.org/2023.findings-acl.225/">asai…riedel, hajishirzi, &amp; yih, 2023</a>)</p></li>
+<li><p>FollowIR (<a class="reference external" href="https://arxiv.org/abs/2403.15246">weller…soldaini, 2024</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>agentic search</p>
+<ul>
+<li><p>BrowseComp-Plus (<a class="reference external" href="https://arxiv.org/abs/2508.06600">chen…lin, 2025</a>) - evaluates deep research when searching a fixed corpus</p>
+<ul>
+<li><p>extends BrowseComp (<a class="reference external" href="https://arxiv.org/abs/2504.12516">wei…glaese, 2025</a>) - uses web search to evaluate QA</p></li>
+</ul>
+</li>
+<li><p>InfoDeepSeek: Benchmarking Agentic Information Seeking for RAG (<a class="reference external" href="https://arxiv.org/abs/2505.15872">xi…yu, 2025</a>)</p></li>
+</ul>
+</li>
+<li><p>Long context datasets</p>
+<ul>
+<li><p><a class="reference external" href="https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval">LoCo Benchmark</a></p></li>
+<li><p>Jina Long Context Benchmark (<a class="reference external" href="https://arxiv.org/abs/2310.19923.pdf">günther et al. 2023</a>)</p></li>
+</ul>
+</li>
+<li><p>Misc minor</p>
+<ul>
+<li><p><a class="reference external" href="https://trec-rag.github.io/">TREC-RAG</a> dataset</p></li>
+<li><p>Instructor eval: Billboard, Prompt retrieval</p></li>
+</ul>
+</li>
+<li><p>Training datasets</p>
+<ul>
+<li><p>Nomic 235M curated text pairs (mostly filtered from <a class="reference external" href="https://huggingface.co/datasets/sentence-transformers/embedding-training-data">here</a>)</p>
+<ul>
+<li><p>Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.</p></li>
+</ul>
+</li>
+<li><p>MEDI (from Instructor paper): combines 300 datasets from Super-NaturalInstructions with 30 datasets from existing collections designed for embedding training</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="agentic-search">
+<span id="sec-ovw-embeddings-agentic-search"></span><h2>Agentic search<a class="headerlink" href="#agentic-search" title="Link to this heading">#</a></h2>
+<p class="section-lead">Here retrieval is one tool in a loop: an agent plans searches, reads results and searches again. Two of these papers find that grep over the raw corpus does as well as or better than vector retrieval here.</p>
+<p><em>Agentic search - agent actively plans, executes, and iterates on searches to answer a query, rather than just running a single keyword lookup and handing back results</em></p>
+<ul>
+<li><p>FastContext: Training Efficient Repository Explorer for Coding Agents (<a class="reference external" href="https://arxiv.org/abs/2606.14066">zhang…fu, 2026</a>) - exploration models from 4B-30B</p></li>
+<li><p>Search-R1: Training LLMs to Reason and Leverage Search Engines with RL (<a class="reference external" href="https://arxiv.org/abs/2503.09516">jin…han, 2025</a>)</p></li>
+<li><p>Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction (<a class="reference external" href="https://arxiv.org/abs/2605.05242">li…zhang, 2026</a>) - agent searches the raw corpus directly using <strong><code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">find</span></code>, <code class="docutils literal notranslate"><span class="pre">bash</span></code>, shell pipelines</strong> rather than embedding models</p></li>
+<li><p>Chroma Context-1: Training a Self-Editing Search Agent (<a class="reference external" href="https://www.trychroma.com/research/context-1">bashir, hong, jiang, &amp; shi, 2026</a>)</p></li>
+<li><p>MemReranker: Reasoning-Aware Reranking for Agent Memory Retrieval (<a class="reference external" href="https://arxiv.org/abs/2605.06132">li…li, 2026</a>)</p></li>
+<li><p>Are We Ready For An Agent-Native Memory System? (<a class="reference external" href="https://arxiv.org/abs/2606.24775">zhou…wu, 2026</a>)</p>
+<ul class="simple">
+<li><p>MemoryBank: Enhancing LLMs with Long-Term Memory (<a class="reference external" href="https://arxiv.org/abs/2305.10250">zhong…wang, 2023</a>) - maintains experiences as timestamped memory streams and periodically summarizes them into higher-level reflections</p></li>
+</ul>
+</li>
+<li><p>Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval (<a class="reference external" href="https://arxiv.org/abs/2605.06647">yang, ma, chen &amp; shrivastava, 2026</a>)</p>
+<ul class="simple">
+<li><p>asks which terms are likely to separate the desired evidence from corpus-level confusers</p></li>
+<li><p>doc side: LLM enriches each document offline with missing search vocabulary</p></li>
+<li><p>query side: predicts evidence vocabulary omitted by the query &amp; document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin</p></li>
+<li><p>final retrieval step is weighted BM25 call combining the original query with the validated expansion</p></li>
+</ul>
+</li>
+<li><p>GrepSeek: Training Search Agents for Direct Corpus Interaction (<a class="reference external" href="https://arxiv.org/abs/2605.29307v1">salemi…zamani, 2026</a>) - trains a compact search agent to find, filter, and compose evidence
+from large text corpora</p>
+<ul class="simple">
+<li><p>Is Grep All You Need? How Agent Harnesses Reshape Agentic Search (<a class="reference external" href="https://arxiv.org/abs/2605.15184">sen…subbiah, 2026</a>) - grep generally outperforms vector retrieval in agentic RAG workflows, but overall accuracy depends heavily on agent harness</p></li>
+</ul>
+</li>
+<li><p>MemEx: A Programmable Scratchpad for LLM Agents (<a class="reference external" href="https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents">databricks research team, 2026</a>) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time</p></li>
+<li><p>Adapting Embedding Models for Agent Capability Retrieval (<a class="reference external" href="https://arxiv.org/abs/2607.17347">chen…xu, 2026</a>) - fnetunes 3 retrieval models on synthetic capability-profile data</p></li>
+<li><p>https://jbarrow.ai/2026-06-12-searching-fast-and-slow/:</p>
+<ul>
+<li><p>(<a class="reference external" href="https://jbarrow.ai/2026-06-12-searching-fast-and-slow/">ref</a>)</p>
+<figure class="align-default">
+<img alt="IR-pareto-frontier" class="note-figure" src="https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg" />
+</figure>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="searching-embeddings-approximate-nearest-neighbor">
+<span id="sec-ovw-embeddings-searching-embeddings-approximate-nearest-neighbo"></span><h2>Searching embeddings (approximate nearest neighbor)<a class="headerlink" href="#searching-embeddings-approximate-nearest-neighbor" title="Link to this heading">#</a></h2>
+<p class="section-lead">Exact nearest-neighbor search compares the query with every stored vector. Each method below avoids that by building an index once (left figure) and searching only a small part of it per query (right figure). Product quantization is different: it makes each comparison cheaper instead of making fewer of them.</p>
+<ul class="simple">
+<li><p>locality-sensitive hashing (outdated) is a <a class="reference external" href="https://en.wikipedia.org/wiki/Fuzzy_hashing">fuzzy hashing</a> technique that hashes similar input items into the same “buckets” with high probability</p>
+<ul>
+<li><p>idea is to project vector along random dimensions to create buckets, and then match those buckets before searching the rest</p></li>
+<li><p>issue is that the number of dimensions needed to get good performance can quickly grow, obviating the benefit</p></li>
+<li><p>hash collisions are maximized, rather than minimized as they are in dictionaries</p></li>
+<li><p>finding embeddings via DNNs is a special case of this (e.g. might call it “semantic hashing”)</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id2">
+<img alt="Locality-sensitive hashing, index time: each vector is hashed by which side of a few random hyperplanes it falls on, and the sign bits pick its bucket. Several tables repeat this with different planes" class="note-figure" src="../../_images/lsh_index_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> Locality-sensitive hashing, index time: each vector is hashed by which side of a few random hyperplanes it falls on, and the sign bits pick its bucket. Several tables repeat this with different planes.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id3">
+<img alt="Locality-sensitive hashing, query time: the query is hashed with the same planes and only the vectors in its buckets are compared exactly." class="note-figure" src="../../_images/lsh_query_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> Locality-sensitive hashing, query time: the query is hashed with the same planes and only the vectors in its buckets are compared exactly.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>k-d (k-dimensional) tree</p>
+<ul>
+<li><p>balanced binary tree over data with arbitrary dimensions, where each node splits one dim</p></li>
+<li><p>at inference time, go to leaf and then search all neighbors of the leaf by going back up it</p></li>
+<li><p><a class="reference external" href="https://github.com/spotify/annoy">annoy</a> optimized this to instead use a forest of random trees and to do data-driven splitting (take 2 random points and split on the direction between them) rather than the median of a single dim</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id4">
+<img alt="k-d tree, index time: the data are split at the median of one dimension per level, ending in leaf buckets." class="note-figure" src="../../_images/kd_tree_index_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> k-d tree, index time: the data are split at the median of one dimension per level, ending in leaf buckets.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id5">
+<img alt="k-d tree, query time: the query descends to a leaf, then backtracks into a neighboring leaf when its search ball crosses a split." class="note-figure" src="../../_images/kd_tree_query_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text"><span class="fig-num">Figure 5.</span> k-d tree, query time: the query descends to a leaf, then backtracks into a neighboring leaf when its search ball crosses a split.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>inverted file (IVF) - k-means the embeddings into clusters, then at inference first search the cluster centers before searching within the top clusters</p>
+<ul>
+<li><p>to improve performance, add neighbors into mutiple clusters</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id6">
+<img alt="Inverted file, index time: k-means picks centroids and each vector is added to the list of its nearest centroid." class="note-figure" src="../../_images/ivf_index_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text"><span class="fig-num">Figure 6.</span> Inverted file, index time: k-means picks centroids and each vector is added to the list of its nearest centroid.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id7">
+<img alt="Inverted file, query time: the query is compared with the centroids, and only the lists of the nearest few cells are scanned." class="note-figure" src="../../_images/ivf_query_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text"><span class="fig-num">Figure 7.</span> Inverted file, query time: the query is compared with the centroids, and only the lists of the nearest few cells are scanned.</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>product quantization (<a class="reference external" href="https://ieeexplore.ieee.org/document/5432202">jegou et al. 2011</a>) - this speeds up the vector comparison time (different from everything else)</p>
+<ul>
+<li><p>separate vector into subvectors (e.g. first half, second half), run k-means for each subvector, then replace the subvector with the index of its closest center mean</p></li>
+<li><p>at inference time, split the query into the same subvectors, and pre-compute the squared distance to each of the center means for each subvector</p>
+<ul>
+<li><p>then, for each vector, rather than doing the dot-product, just look up the pre-computed distances for each subvector (add them together to get the squared distance for the whole vector)</p></li>
+<li><p>note: splitting vectors and clustering struggles if there are lots of correlations between different subvector parts, one fix for this is <a class="reference external" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2013/11/pami13opq.pdf">Optimized PQ</a> (OPQ), which learns a rotation to apply before splitting so the variance is balanced and decorrelated across subspaces</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id8">
+<img alt="Product quantization, index time: each vector is split into subvectors, and each subvector is replaced by the index of its nearest centroid in that subspace's codebook." class="note-figure" src="../../_images/pq_index_time_wide_dark_v2.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text"><span class="fig-num">Figure 8.</span> Product quantization, index time: each vector is split into subvectors, and each subvector is replaced by the index of its nearest centroid in that subspace’s codebook.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id9">
+<img alt="Product quantization, query time: distances from each query subvector to every centroid are precomputed once; the distance to any stored vector is then a sum of table lookups." class="note-figure" src="../../_images/pq_query_time_wide_dark_v2.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text"><span class="fig-num">Figure 9.</span> Product quantization, query time: distances from each query subvector to every centroid are precomputed once; the distance to any stored vector is then a sum of table lookups.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>HNSW (<a class="reference external" href="https://arxiv.org/abs/1603.09320">malkov &amp; yashunin, 2016</a>) - Hierarchical Navigable Small World graphs (most popular modern system including Lucene, pgvector, Qdrant, Weaviate, Milvus, Pinecone’s early stack for medium-large scale &lt;10M vectors)</p>
+<ul>
+<li><p>idea is to build a proximity graph over the vectors, and answer queries with greedy <a class="term-link" href="../ai/search.html#def-best-first" data-def="choose nodes with best f · Search and logic">best-first</a> traversal - start somewhere, repeatedly hop to the neighbor closest to the query, and search its neighbors</p>
+<ul>
+<li><p>hierarchy: does search at a higher layer, then drops to neighbors in lower layer which are more refined</p></li>
+<li><p>edge-selection at insert time</p>
+<ul>
+<li><p>note: naive graph of neighbors doesn’t work because it’s very hard to find a new neighbor if you search in the wrong place; instead NSW inserts points in random order and connects each to its M nearest <em>at insertion time</em> (this leaves long-range edges from the early added nodes)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>supports incremental inserts (although build and insert are both expensive)</p>
+<ul>
+<li><p>delete is a pain</p></li>
+<li><p>requires a lot of RAM (rather than disk access)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id10">
+<img alt="HNSW, inserting one vector: it draws a random top layer, a greedy search finds candidate neighbors, and pruning drops a candidate that is closer to an already-kept neighbor than to the new vector." class="note-figure" src="../../_images/hnsw_index_time_insert_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text"><span class="fig-num">Figure 10.</span> HNSW, inserting one vector: it draws a random top layer, a greedy search finds candidate neighbors, and pruning drops a candidate that is closer to an already-kept neighbor than to the new vector.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id11">
+<img alt="HNSW, query time: the search starts on the sparse top layer, hops greedily toward the query, and drops a layer each time it can't get closer." class="note-figure" src="../../_images/hnsw_layered_greedy_walk_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text"><span class="fig-num">Figure 11.</span> HNSW, query time: the search starts on the sparse top layer, hops greedily toward the query, and drops a layer each time it can’t get closer.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>moving more stuff to disk instead of RAM (default for very large scale, 100M+ vectors)</p>
+<ul>
+<li><p>DiskANN (<a class="reference external" href="https://suhasjs.github.io/files/diskann_neurips19.pdf">subramanya…harsha vardhan simhadri, 2019; CMU, UT austin, &amp; MSR</a>) - store the full-precision vectors and graph on SSD, keep only PQ-compressed vectors in RAM</p>
+<ul>
+<li><p>introduce Vamana graph construction algorithm to produces fewer, longer-range hops in the graph to minimize SSD round-trips</p></li>
+</ul>
+</li>
+<li><p>SPANN (<a class="reference external" href="https://arxiv.org/abs/2111.08566">chen…wang, 2021</a>) - same thing but for IVF cluster approach rather than PQ</p></li>
+</ul>
+</li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id12">
+<img alt="DiskANN keeps only compressed PQ codes in RAM; the full vectors and the graph's edges live on SSD, one sector per node." class="note-figure" src="../../_images/diskann_index_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text"><span class="fig-num">Figure 12.</span> DiskANN keeps only compressed PQ codes in RAM; the full vectors and the graph’s edges live on SSD, one sector per node.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id13">
+<img alt="SPANN keeps cluster centroids in RAM and the cluster lists on SSD, storing vectors near a boundary in more than one list." class="note-figure" src="../../_images/spann_index_time_dark.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text"><span class="fig-num">Figure 13.</span> SPANN keeps cluster centroids in RAM and the cluster lists on SSD, storing vectors near a boundary in more than one list.</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>other considerations</p>
+<ul>
+<li><p>modern libraries often deal carefully with quantization and GPU usability</p></li>
+<li><p>building compressions/graphs that are filter-aware, e.g. user issues queries like “nearest neighbors WHERE tenant=X AND date&gt;Y.” should not break the search</p></li>
+</ul>
+</li>
+<li><p>libraries:</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>What it is</p></th>
+<th class="head"><p>Methods it connects to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/facebookresearch/faiss">Faiss</a> (Meta)</p></td>
+<td><p>The field’s reference library, CPU and GPU. Nearly every classical index type, composable (e.g. IVF coarse layer + PQ codes + rescoring).</p></td>
+<td><p>Brute force, IVF, PQ/OPQ, IVF-PQ (asymmetric distance computation), HNSW, scalar/binary quantization</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/nmslib/hnswlib">hnswlib</a> (Malkov)</p></td>
+<td><p>The canonical lightweight HNSW implementation by the paper’s author; embedded inside many engines. Sibling research library: <a class="reference external" href="https://github.com/nmslib/nmslib">nmslib</a> (original NSW).</p></td>
+<td><p>HNSW exactly — M, efConstruction, efSearch, diversity pruning</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/google-research/scann">ScaNN</a> (Google)</p></td>
+<td><p>Partitioning plus anisotropic quantization — the PQ loss reshaped to penalize ranking-relevant error.</p></td>
+<td><p>IVF + PQ with a smarter estimator (“train the index for the metric”)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/microsoft/DiskANN">DiskANN</a> (Microsoft)</p></td>
+<td><p>Vamana graphs served from SSD; Fresh (streaming) and Filtered variants.</p></td>
+<td><p>DiskANN — α-prune build, PQ-steered beam search, packed SSD sector reads</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/microsoft/SPTAG">SPTAG</a> (Microsoft)</p></td>
+<td><p>Tree-plus-graph library; home of the SPANN design used in Bing-scale search.</p></td>
+<td><p>SPANN — in-RAM centroid routing, closure assignment for boundary vectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/spotify/annoy">Annoy</a> (Spotify)</p></td>
+<td><p>Random-projection tree forest; mmap-friendly, immutable, simple. Largely legacy now but still deployed.</p></td>
+<td><p>The tree lineage — the KD-tree’s randomized, ensembled descendant</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/FALCONN-LIB/FALCONN">FALCONN</a></p></td>
+<td><p>Research-grade LSH (cross-polytope and hyperplane families) with multi-probe.</p></td>
+<td><p>LSH, with the modern hash families and fewer tables</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/rapidsai/cuvs">cuVS</a> (NVIDIA)</p></td>
+<td><p>GPU-native ANN: CAGRA graph build and search, GPU IVF-PQ; build speedups that change reindexing economics.</p></td>
+<td><p>Graph traversal + IVF-PQ, rebuilt for massive parallelism</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Engine</p></th>
+<th class="head"><p>What it is</p></th>
+<th class="head"><p>Methods it connects to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://lucene.apache.org/">Lucene</a> (→ Elasticsearch, OpenSearch, MongoDB Atlas)</p></td>
+<td><p>Segment-based search engine whose vector support underlies Elasticsearch, OpenSearch, and Atlas Vector Search; immutable segments sidestep graph deletes.</p></td>
+<td><p>HNSW per segment + int8/binary quantization with exact rescoring</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/pgvector/pgvector">pgvector</a></p></td>
+<td><p>Postgres extension; vectors as a column type with SQL filtering and joins.</p></td>
+<td><p>HNSW, IVF (IVFFlat), and exact brute-force scans</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/milvus-io/milvus">Milvus</a></p></td>
+<td><p>Distributed vector database; its Knowhere engine wraps multiple index families behind one API.</p></td>
+<td><p>Nearly everything: Faiss indexes, HNSW, DiskANN, GPU variants</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/qdrant/qdrant">Qdrant</a></p></td>
+<td><p>Rust vector database emphasizing payload filtering and compression.</p></td>
+<td><p>HNSW + scalar/binary quantization; filter-aware traversal</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/weaviate/weaviate">Weaviate</a></p></td>
+<td><p>Go vector database with hybrid (BM25 + vector) search built in.</p></td>
+<td><p>Custom HNSW with PQ/binary compression and rescoring</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Notes: popularity and internals shift quickly — verify against <a class="reference external" href="https://ann-benchmarks.com/">ann-benchmarks.com</a> before depending on any of these. The engines section contains no new algorithms: each is HNSW-or-IVF plus quantization plus the operational layer (filtering, replication, segments, hybrid search).</em></p>
+<ul class="simple">
+<li><p>foundations of vector retrieval book (<a class="reference external" href="https://arxiv.org/abs/2401.09350.pdf">bruch, 2024</a>)</p></li>
+<li><p>similarity metrics</p>
+<ul>
+<li><p>Anisotropy Decides Cosine vs. Rank Metrics for Text Embeddings (<a class="reference external" href="https://arxiv.org/abs/2606.29571">parupudi, 2026</a>) - choice of similarity metric depends on embedding geometry: cosine is best when variance spreads evenly &amp; L1-type metrics win when variance concentrates into a few directions</p></li>
+<li><p>euclidean, cosine, and dot product are most common</p>
+<ul>
+<li><p>when embeddings normalized to have norm 1, euclidean and dot product yield the same rankings because <span class="math notranslate nohighlight">\(\Vert q - d\Vert ^2 = \Vert q\Vert ^2 + \Vert d\Vert ^2 - 2(q \cdot d) = 2 - 2(q \cdot d)\)</span></p></li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </section>
 <section id="explainable-embeddings">
-<h2><span class="section-number">1.9.5. </span>explainable embeddings<a class="headerlink" href="#explainable-embeddings" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-explainable-embeddings"></span><h2>Explainable embeddings<a class="headerlink" href="#explainable-embeddings" title="Link to this heading">#</a></h2>
+<p class="section-lead">Most of these build an embedding whose dimensions mean something, usually answers an LLM gives to yes/no questions about the text. Others explain why two inputs were judged similar.</p>
 <ul class="simple">
 <li><p>QA-Emb: Crafting Interpretable Embeddings by Asking LLMs Questions (<a class="reference external" href="https://arxiv.org/abs/2405.16714">benara…gao, 2024</a>) - use yes/no questions to extract embeddings from text</p>
 <ul>
@@ -846,7 +1314,8 @@ document.write(`
 </ul>
 </section>
 <section id="retrieval-augmented-generation-rag">
-<h2><span class="section-number">1.9.6. </span>retrieval augmented generation (RAG)<a class="headerlink" href="#retrieval-augmented-generation-rag" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-retrieval-augmented-generation-rag"></span><h2>Retrieval augmented generation (RAG)<a class="headerlink" href="#retrieval-augmented-generation-rag" title="Link to this heading">#</a></h2>
+<p class="section-lead">The table from the RAG perspective paper sorts systems by what they retrieve (chunks, tokens, phrases), where it enters the model, how often retrieval happens, and whether the retriever and LM are trained jointly.</p>
 <ul>
 <li><p>RAG perspective paper (<a class="reference external" href="https://arxiv.org/abs/2403.03187.pdf">asai, zhong, chen, koh, zettlemoyer, hajishirzi, &amp; yih, 2024</a>)</p>
 <ul>
@@ -922,7 +1391,7 @@ document.write(`
 </div>
 </li>
 <li><p>RAGGED: Towards Informed Design of Retrieval Augmented Generation Systems (<a class="reference external" href="https://arxiv.org/abs/2403.09040.pdf">hsia…neubig, 2024</a>) - gives benchmark of multi-hop QA questions for evaluating RAG systems holistically</p></li>
-<li><p><a class="reference external" href="https://pageindex.ai/">https://pageindex.ai/</a> - popular system that replaces vector-based rag with table-of-contents based search for docs that are already well organized</p></li>
+<li><p>https://pageindex.ai/ - popular system that replaces vector-based rag with table-of-contents based search for docs that are already well organized</p></li>
 <li><p>Seven Failure Points When Engineering a Retrieval Augmented Generation System (<a class="reference external" href="https://arxiv.org/abs/2401.05856">barnet…abdelrazek, 2024</a>)</p></li>
 </ul>
 </li>
@@ -956,7 +1425,7 @@ document.write(`
 </li>
 <li><p>retrieval-augmented in-context learning (put retrieved info into context, or something very similar)</p>
 <ul class="simple">
-<li><p>RETRO (<a class="reference external" href="https://arxiv.org/abs/2112.04426">deepmind, 2022</a>) - nearest neighbors to model’s input are retrieved, encoded, and conditioned on with chunked cross-attention</p></li>
+<li><p>RETRO (<a class="reference external" href="https://arxiv.org/abs/2112.04426">deepmind, 2022</a>) - nearest neighbors to model’s input are retrieved, encoded, and conditioned on with chunked <a class="term-link" href="../ai/llms.html#def-cross-attention" data-def="primary/context vectors can come from different places · LLMs">cross-attention</a></p></li>
 <li><p>Decomposed prompting (<a class="reference external" href="https://arxiv.org/abs/2210.02406.pdf">khot et al., 2022</a>) - decompose tasks via prompting which are delegated to a shared library of prompting-based LLMs dedicated to these sub-tasks</p></li>
 <li><p>retrieval-in-context approach (<a class="reference external" href="https://arxiv.org/abs/2301.12652">shi, min et al. 2023</a>; <a class="reference external" href="https://arxiv.org/abs/2302.00083">ram…shoham, 2023</a>) - retrieve docs and preprend to the context</p></li>
 <li><p>LLM-Augmenter (<a class="reference external" href="https://arxiv.org/abs/2302.12813">peng, galley…gao, 2023</a>) - (1) consolidates evidence from external knowledge for the LLM to generate responses grounded in evidence, and (2) revising LLM’s (candidate) responses using automated feedback</p></li>
@@ -987,7 +1456,8 @@ document.write(`
 </ul>
 </section>
 <section id="universal-representations">
-<h2><span class="section-number">1.9.7. </span>universal representations<a class="headerlink" href="#universal-representations" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-universal-representations"></span><h2>Universal representations<a class="headerlink" href="#universal-representations" title="Link to this heading">#</a></h2>
+<p class="section-lead">Evidence that different models learn similar representations, from shared SAE features and neurons to translating embeddings between models without paired data.</p>
 <ul class="simple">
 <li><p>Universal Sparse Autoencoders: Interpretable Cross-Model Concept Alignment (<a class="reference external" href="https://arxiv.org/abs/2502.03714">thasarathan…derpanis, 2025</a>)</p>
 <ul>
@@ -1021,7 +1491,8 @@ document.write(`
 </ul>
 </section>
 <section id="embedding-inversions">
-<h2><span class="section-number">1.9.8. </span>embedding inversions<a class="headerlink" href="#embedding-inversions" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-embedding-inversions"></span><h2>Embedding inversions<a class="headerlink" href="#embedding-inversions" title="Link to this heading">#</a></h2>
+<p class="section-lead">An embedding can leak its input: these methods recover the text from an embedding, or the prompt from a model’s outputs. The last papers give theoretical limits on what single-vector retrieval can represent.</p>
 <ul class="simple">
 <li><p>Generative Embedding Inversion Attack to Recover the Whole Sentence (<a class="reference external" href="https://arxiv.org/abs/2305.03010">li…song, 2023</a>) - train projection to LM jointly to reconstruct input</p>
 <ul>
@@ -1038,7 +1509,7 @@ document.write(`
 <ul>
 <li><p>logit2prompt (<a class="reference external" href="https://arxiv.org/abs/2311.13647">morris, …, rush, 2024</a>) - recover prompt from output logits</p></li>
 <li><p>output2prompt (<a class="reference external" href="https://arxiv.org/abs/2405.15012">zhang, morris, &amp; shmatikov, 2024</a>) - recover prompt from long text outputs (by building a model of the sparse encodings of the outputs)</p></li>
-<li><p>ZSInvert: universal zero-shot embedding inversion (<a class="reference external" href="https://arxiv.org/abs/2504.00147">zhang, morris, &amp; shmatikov, 2025</a>) - beam search but keep prefixes that have best similarity with given embedding &amp; train text-to-text correction model that helps refine hypotheses</p>
+<li><p>ZSInvert: universal zero-shot embedding inversion (<a class="reference external" href="https://arxiv.org/abs/2504.00147">zhang, morris, &amp; shmatikov, 2025</a>) - <a class="term-link" href="../ai/rl_decisions.html#def-beam-search" data-def="consider only n best moves · RL and decisions">beam search</a> but keep prefixes that have best similarity with given embedding &amp; train text-to-text correction model that helps refine hypotheses</p>
 <ul>
 <li><p>builds on adversarial decoding (<a class="reference external" href="https://arxiv.org/abs/2410.02163">zhang, zhang, &amp; shmatikov, 2024</a>) - use beam search with multiple scorers besides just perplexity (e.g. for defense evasion)</p></li>
 </ul>
@@ -1054,7 +1525,8 @@ document.write(`
 </ul>
 </section>
 <section id="external-memory-enhancements-for-llms">
-<h2><span class="section-number">1.9.9. </span>external memory enhancements for LLMs<a class="headerlink" href="#external-memory-enhancements-for-llms" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-embeddings-external-memory-enhancements-for-llms"></span><h2>External memory enhancements for LLMs<a class="headerlink" href="#external-memory-enhancements-for-llms" title="Link to this heading">#</a></h2>
+<p class="section-lead">Ways to give an LLM memory beyond its context window: a kNN index over past context, a datastore read at inference time, a separate model trained on a corpus in place of retrieval, or a memory matrix the network reads and writes. Hopfield networks connect this to attention.</p>
 <ul class="simple">
 <li><p>The AI Hippocampus: How Far are We From Human Memory? (<a class="reference external" href="https://arxiv.org/abs/2601.09113">jia…zhu, 2026</a>)</p>
 <ul>
@@ -1102,7 +1574,7 @@ document.write(`
 <li><p>keys: each input has a key vector which “represents info about this input” (e.g. this is a noun)</p></li>
 <li><p>queries: each input has a query vector which “asks for other inputs that would be useful context” (e.g. what adjectives describe this word)</p>
 <ul>
-<li><p>in self-attention these queries also come from the input whereas in just regular attention they come from somewhere else (e.g. the output of a translation task)</p></li>
+<li><p>in <a class="term-link" href="../ai/llms.html#def-self-attention" data-def="layer that lets word learn its relation to other layers · LLMs">self-attention</a> these queries also come from the input whereas in just regular attention they come from somewhere else (e.g. the output of a translation task)</p></li>
 </ul>
 </li>
 <li><p>transformer finds similarity between each key with each query then takes softmax - this provides weights for each of the inputs, as context for the original input</p>
@@ -1119,7 +1591,17 @@ document.write(`
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>The first design choice is where query and document interact, separately (bi-encoder), per token (late interaction) or together (cross-encoder), which trades indexing ahead of time against accuracy.</p></li>
+<li><p>Most strong models end their training with contrastive finetuning, and the temperature in InfoNCE decides how much the hardest negatives count.</p></li>
+<li><p>Approximate nearest-neighbor indexes build a structure once and search only a small part of it per query, while product quantization makes each comparison cheaper.</p></li>
+<li><p>Benchmarks like MTEB may be overfit, and agentic search results suggest grep over the raw corpus can match vector retrieval.</p></li>
+<li><p>Embeddings can be made interpretable from yes/no questions, can leak their input text, and look similar across different models.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_llms.html"><span class="related-part">Research overviews</span><span class="related-title">LLMs</span><span class="related-hook">Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../ai/llms.html"><span class="related-part">Artificial intelligence</span><span class="related-title">LLMs</span><span class="related-hook">The shapes inside a decoder-only transformer, KV caching, self-attention worked by hand, and a reading list of influential transformer models.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1153,20 +1635,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ovw_scat.html"
+       href="ovw_ml_medicine.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.8. </span>scattering transform</p>
+        <p class="prev-next-title">ML in medicine</p>
       </div>
     </a>
     <a class="right-next"
-       href="ovw_ml_medicine.html"
+       href="ovw_llms.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.10. </span>ml in medicine</p>
+        <p class="prev-next-title">LLMs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1186,15 +1668,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">1.9.1. overviews</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-model-distinctions">1.9.2. embedding model distinctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-training">1.9.3. best practices for training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">1.9.4. losses</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explainable-embeddings">1.9.5. explainable embeddings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-generation-rag">1.9.6. retrieval augmented generation (RAG)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-representations">1.9.7. universal representations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-inversions">1.9.8. embedding inversions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-memory-enhancements-for-llms">1.9.9. external memory enhancements for LLMs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">Overviews</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-model-distinctions">Embedding model distinctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-training">Best practices for training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#losses">Losses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-performing-models">Top-performing models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-embeddings">Multimodal embeddings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#papers-with-a-little-trick">Papers with a little trick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets-benchmarks">Datasets / benchmarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentic-search">Agentic search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-embeddings-approximate-nearest-neighbor">Searching embeddings (approximate nearest neighbor)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explainable-embeddings">Explainable embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-generation-rag">Retrieval augmented generation (RAG)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-representations">Universal representations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-inversions">Embedding inversions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-memory-enhancements-for-llms">External memory enhancements for LLMs</a></li>
 </ul>
   </nav></div>
 
@@ -1219,7 +1709,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

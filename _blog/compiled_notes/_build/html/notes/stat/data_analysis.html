@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.3. data science</title>
+    <title>Data science &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/stat/data_analysis';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.4. testing" href="testing.html" />
-    <link rel="prev" title="4.2. graphical models" href="graphical_models.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Stat basics" href="stat.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stat.html">Stat basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat_section.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/stat/data_analysis.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>data science</h1>
+    <h1>Data science</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,36 +471,41 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pqrs">4.3.1. pqrs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">4.3.2. visualization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-context-1">4.3.2.1. understand the context (1)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-effective-visual-2">4.3.2.2. choose an effective visual (2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminate-clutter-3">4.3.2.3. eliminate clutter (3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-attention-4">4.3.2.4. focus attention (4)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">4.3.2.5. tell a story / think like a designer (5)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summaries">4.3.2.6. visual summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pqrs">Pqrs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-context-1">Understand the context (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-effective-visual-2">Choose an effective visual (2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminate-clutter-3">Eliminate clutter (3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-attention-4">Focus attention (4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">Tell a story / think like a designer (5)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summaries">Visual summaries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">4.3.3. preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">4.3.4. feature selection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-select-based-on-summary-statistic">4.3.4.1. filtering - select based on summary statistic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-recursively-eliminate-features">4.3.4.2. wrapper - recursively eliminate features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-select-from-a-model">4.3.4.3. embedding - select from a model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-data">Imbalanced data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data-imputation">Missing-data imputation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-completion">Matrix completion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">4.3.5. reproducibility</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#containerization">4.3.5.1. containerization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-version-control">4.3.5.2. data version control</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">4.3.5.3. hyperparameter tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-and-biases">4.3.5.4. weights and biases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-management">4.3.5.5. workflow management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">Feature selection</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-select-based-on-summary-statistic">Filtering - select based on summary statistic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-recursively-eliminate-features">Wrapper - recursively eliminate features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-select-from-a-model">Embedding - select from a model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles">4.3.6. principles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breiman">4.3.6.1. breiman</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-tukey">4.3.6.2. box + tukey</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">4.3.6.3. models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exaggerated-claims">4.3.6.4. exaggerated claims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#containerization">Containerization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-version-control">Data version control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-and-biases">Weights and biases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-management">Workflow management</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles">Principles</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breiman">Breiman</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-tukey">Box + tukey</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exaggerated-claims">Exaggerated claims</a></li>
 </ul>
 </li>
 </ul>
@@ -464,12 +519,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-science">
-<h1><span class="section-number">4.3. </span>data science<a class="headerlink" href="#data-science" title="Link to this heading">#</a></h1>
-<section id="pqrs">
-<h2><span class="section-number">4.3.1. </span>pqrs<a class="headerlink" href="#pqrs" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/stat.html">Statistics</a> &nbsp;·&nbsp; chapter 2 of 8 &nbsp;·&nbsp; 11 min read</p><section class="tex2jax_ignore mathjax_ignore" id="data-science">
+<h1>Data science<a class="headerlink" href="#data-science" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some notes on doing data science - visualization, messy data, feature selection, and reproducibility.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>This chapter is the practical side of working with data. It opens with the PQRS frame for an analysis (population, question, representative data, scrutinizing answers), then the advice from the book Storytelling with Data on making plots that make one point clearly, then visual summaries, transformations and smoothers for looking at relationships.</p>
+<p>The middle sections are about fixing data before modeling: rebalancing rare classes, imputing missing values (where the missingness mechanism decides what is possible), preprocessing, and three families of feature selection. The chapter ends with tools for reproducible experiments and notes on Breiman, Box and Tukey’s views of what statistics should be.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 8 sections</summary><ol><li><a href="#sec-data-analysis-pqrs">Pqrs</a><span class="ol-lead">The steps of an analysis aimed at inference.</span></li><li><a href="#sec-data-analysis-visualization">Visualization</a><span class="ol-badge">1 interactive</span><span class="ol-lead">The first five subsections follow the book&#x27;s steps: understand the context, choose a visual, cut clutter, focus attention, and tell a story.</span></li><li><a href="#sec-data-analysis-imbalanced-data">Imbalanced data</a><span class="ol-badge">1 figure</span><span class="ol-lead">Fixes for a rare class, roughly from simplest to most involved: resample, reweight the loss, synthesize new minority points, remove majority points near the boundary, or change the features or the model.</span></li><li><a href="#sec-data-analysis-missing-data-imputation">Missing-data imputation</a><span class="ol-badge">1 interactive</span><span class="ol-lead">What can be done depends on why values are missing.</span></li><li><a href="#sec-data-analysis-preprocessing">Preprocessing</a><span class="ol-lead">Two transformations applied before modeling: discretizing features, and whitening, which maps inputs X to decorrelated features Z with \Sigma_Z = I.</span></li><li><a href="#sec-data-analysis-feature-selection">Feature selection</a><span class="ol-lead">Three families, by how they use the predictor: filters score features with a summary statistic and no model, wrappers search over subsets with the model as a black box, and embedded methods select features while fitting (e.g.</span></li><li><a href="#sec-data-analysis-reproducibility">Reproducibility</a><span class="ol-lead">Tools for rerunning an analysis and getting the same answer: containers for the software environment, data version control for data and models, and trackers for hyperparameters, metrics and workflows.</span></li><li><a href="#sec-data-analysis-principles">Principles</a><span class="ol-lead">Notes on papers and talks about what statistics is for: Breiman&#x27;s two cultures, Box and Tukey on data analysis as a science, and Kass on how claims get exaggerated.</span></li></ol></details><section id="pqrs">
+<span id="sec-data-analysis-pqrs"></span><h2>Pqrs<a class="headerlink" href="#pqrs" title="Link to this heading">#</a></h2>
+<p class="section-lead">The steps of an analysis aimed at inference. The sampling formulas show why the R matters: under simple random sampling the variance of <span class="math notranslate nohighlight">\(\bar X\)</span> is <span class="math notranslate nohighlight">\(\sigma^2/n\)</span>, a bit smaller when sampling without replacement.</p>
 <ul class="simple">
-<li><p>Goal: <em>inference</em> - conclusion or opinion formed from evidence</p></li>
+<li><p>Goal: <a class="term-link" href="causal_inference.html#def-inference" data-def="prediction/association, intervention, counterfactuals · Causal inference"><em>inference</em></a> - conclusion or opinion formed from evidence</p></li>
 <li><p><em>PQRS</em></p>
 <ul>
 <li><p>P - population</p></li>
@@ -495,13 +556,15 @@ document.write(`
 </ul>
 </section>
 <section id="visualization">
-<h2><span class="section-number">4.3.2. </span>visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h2>
+<span id="sec-data-analysis-visualization"></span><h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h2>
+<p class="section-lead">The first five subsections follow the book’s steps: understand the context, choose a visual, cut clutter, focus attention, and tell a story. The images are examples of the chart types and fixes it recommends.</p>
 <p>First 5 parts here are based on the book <a class="reference external" href="http://www.storytellingwithdata.com/">storytelling with data</a> by cole nussbaumer knaflic</p>
 <ul class="simple">
 <li><p>difference between showing data + storytelling with data</p></li>
 </ul>
 <section id="understand-the-context-1">
-<h3><span class="section-number">4.3.2.1. </span>understand the context (1)<a class="headerlink" href="#understand-the-context-1" title="Link to this heading">#</a></h3>
+<h3>Understand the context (1)<a class="headerlink" href="#understand-the-context-1" title="Link to this heading">#</a></h3>
+<p class="section-lead">Before drawing anything, decide who the audience is and what they should know or do. Exploratory analysis is for finding things; explanatory analysis shows the one thing found, distilled to a one-sentence Big Idea.</p>
 <ul class="simple">
 <li><p>who is your audience? what do you need them to know/do?</p></li>
 <li><p><strong>exploratory</strong> vs <strong>explanatory</strong> analysis</p></li>
@@ -512,22 +575,23 @@ document.write(`
 </ul>
 </section>
 <section id="choose-an-effective-visual-2">
-<h3><span class="section-number">4.3.2.2. </span>choose an effective visual (2)<a class="headerlink" href="#choose-an-effective-visual-2" title="Link to this heading">#</a></h3>
+<h3>Choose an effective visual (2)<a class="headerlink" href="#choose-an-effective-visual-2" title="Link to this heading">#</a></h3>
+<p class="section-lead">Which chart to use. The examples favor simple bars, lines and minimal tables over pie charts, 3D charts and secondary y-axes, and bar charts start at 0.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><img style="width: 100%; max-width: 300px;" src="../assets/good_plots.svg" alt="Bar chart types"/></p></th>
-<th class="head"><p><img style="width: 100%; max-width: 300px;" src="../assets/good_visualizations.svg" alt="Common visual types"/></p></th>
+<tr class="row-odd"><th class="head"><p><img alt="Bar chart types" src="../../_images/good_plots.svg" /></p></th>
+<th class="head"><p><img alt="Common visual types" src="../../_images/good_visualizations.svg" /></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><img style="width: 100%; max-width: 320px;" src="../assets/stacked_hbar_chart.svg" alt="100% stacked horizontal bar chart"/></p></td>
-<td><p><img style="width: 100%; max-width: 320px;" src="../assets/grid_breakdown.svg" alt="Interview breakdown"/></p></td>
+<tr class="row-even"><td><p><img alt="100% stacked horizontal bar chart" src="../../_images/stacked_hbar_chart.svg" /></p></td>
+<td><p><img alt="Interview breakdown" src="../../_images/grid_breakdown.svg" /></p></td>
 </tr>
-<tr class="row-odd"><td><p><img style="width: 100%; max-width: 320px;" src="../assets/avoiding_secondary_axis.svg" alt="Avoiding a secondary y-axis"/></p></td>
-<td><p><img style="width: 100%; max-width: 320px;" src="../assets/strategic_contrast.svg" alt="Using contrast strategically"/></p></td>
+<tr class="row-odd"><td><p><img alt="Avoiding a secondary y-axis" src="../../_images/avoiding_secondary_axis.svg" /></p></td>
+<td><p><img alt="Using contrast strategically" src="../../_images/strategic_contrast.svg" /></p></td>
 </tr>
-<tr class="row-even"><td><p><img style="width: 100%; max-width: 420px;" src="../assets/preattentive_attributes.svg" alt="Preattentive attributes"/></p></td>
-<td><p><img style="width: 100%; max-width: 320px;" src="../assets/line_charts.svg" alt="Line charts by category"/></p></td>
+<tr class="row-even"><td><p><img alt="Preattentive attributes" src="../../_images/preattentive_attributes.svg" /></p></td>
+<td><p><img alt="Line charts by category" src="../../_images/line_charts.svg" /></p></td>
 </tr>
 </tbody>
 </table>
@@ -549,7 +613,8 @@ document.write(`
 </ul>
 </section>
 <section id="eliminate-clutter-3">
-<h3><span class="section-number">4.3.2.3. </span>eliminate clutter (3)<a class="headerlink" href="#eliminate-clutter-3" title="Link to this heading">#</a></h3>
+<h3>Eliminate clutter (3)<a class="headerlink" href="#eliminate-clutter-3" title="Link to this heading">#</a></h3>
+<p class="section-lead">Every element that doesn’t support the point competes for attention. The gestalt principles say which things a viewer sees as a group; the rest are concrete fixes: titles top-left, no diagonal or centered text, lines labeled directly.</p>
 <ul class="simple">
 <li><p>gestalt principles of vision</p>
 <ul>
@@ -571,13 +636,14 @@ document.write(`
 </ul>
 </section>
 <section id="focus-attention-4">
-<h3><span class="section-number">4.3.2.4. </span>focus attention (4)<a class="headerlink" href="#focus-attention-4" title="Link to this heading">#</a></h3>
+<h3>Focus attention (4)<a class="headerlink" href="#focus-attention-4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>visual hierarchy - outlines what is important</p></li>
 </ul>
 </section>
 <section id="tell-a-story-think-like-a-designer-5">
-<h3><span class="section-number">4.3.2.5. </span>tell a story / think like a designer (5)<a class="headerlink" href="#tell-a-story-think-like-a-designer-5" title="Link to this heading">#</a></h3>
+<h3>Tell a story / think like a designer (5)<a class="headerlink" href="#tell-a-story-think-like-a-designer-5" title="Link to this heading">#</a></h3>
+<p class="section-lead">A presentation works like a story: a beginning that poses a problem, a middle that shows what could be, and an end that calls for action. Horizontal logic means the slide titles alone tell that story.</p>
 <ul class="simple">
 <li><p>affordances - aspects that make it obvious how something will be used (e.g. a button affords pushing)</p></li>
 <li><p>“You know you’ve achieved perfection, not when you have nothing more to add, but when you have nothing to take away” (Saint‐Exupery, 1943)</p></li>
@@ -593,8 +659,10 @@ document.write(`
 </ul>
 </section>
 <section id="visual-summaries">
-<h3><span class="section-number">4.3.2.6. </span>visual summaries<a class="headerlink" href="#visual-summaries" title="Link to this heading">#</a></h3>
-<ul>
+<h3>Visual summaries<a class="headerlink" href="#visual-summaries" title="Link to this heading">#</a></h3>
+<p class="section-lead">Numerical and visual summaries, then transformations and smoothers for looking at relationships. A kernel smoother replaces each point with a weighted average of the <span class="math notranslate nohighlight">\(y\)</span> values near it, and the bandwidth <span class="math notranslate nohighlight">\(h\)</span> sets how wide “near” is.</p>
+<figure class="nb-viz-figure" id="viz-kernel-smoother"><div class="nb-viz" data-viz="kernel-smoother" data-params="{&quot;h&quot;: 0.08, &quot;method&quot;: &quot;nw&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Sixty noisy points from a smooth curve. A small \(h\) averages only a few neighbors, so the smooth follows the noise; a large \(h\) averages almost everything and flattens the curve. The right panel scores each \(h\) by leave-one-out prediction error, one way to find the optimal bandwidth. At \(h\) around 0.1, switch to local linear and watch the two ends: the local average is pulled toward the inside points there, the local line much less.</figcaption></figure><ul>
 <li><p>numerical summaries</p>
 <ul class="simple">
 <li><p>mean vs. median</p></li>
@@ -604,9 +672,9 @@ document.write(`
 <li><p>visual summaries</p>
 <ul class="simple">
 <li><p>histogram</p></li>
-<li><p><em>kernel density plot</em> - Gaussian kernels</p>
+<li><p><span id="def-kernel-density-plot" class="def-anchor"></span><em>kernel density plot</em> - Gaussian kernels</p>
 <ul>
-<li><p>with <em>bandwidth</em> h <span class="math notranslate nohighlight">\(K_h(t) = 1/h K(t/h)\)</span></p></li>
+<li><p>with <a class="term-link" href="../cs/os.html#def-bandwidth" data-def="total number of bytes transferred, divided by time · Operating systems"><em>bandwidth</em></a> h <span class="math notranslate nohighlight">\(K_h(t) = 1/h K(t/h)\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -617,7 +685,7 @@ document.write(`
 <li><p>scatter plot / q-q plot</p></li>
 </ol>
 <ul class="simple">
-<li><p><em>q-q plot</em> = <em>probability plot</em> - easily check normality</p>
+<li><p><span id="def-q-q-plot" class="def-anchor"></span><em>q-q plot</em> = <em>probability plot</em> - easily check normality</p>
 <ul>
 <li><p>plot percentiles of a data set against percentiles of a theoretical distr.</p></li>
 <li><p>should be straight line if they match</p></li>
@@ -628,20 +696,20 @@ document.write(`
 <li><p>transformations = feature engineering</p>
 <ul class="simple">
 <li><p>log/sqrt make long-tail data more centered and more normal</p></li>
-<li><p><strong>delta-method</strong> - sets comparable bw (wrt variance) after log or sqrt transform: $<span class="math notranslate nohighlight">\(Var(g(X)) \approx [g'(\mu_X)]^2 Var(X)\)</span><span class="math notranslate nohighlight">\( where \)</span>\mu_X = E(X)$</p></li>
+<li><p><span id="def-delta-method" class="def-anchor"></span><strong>delta-method</strong> - sets comparable bw (wrt variance) after log or sqrt transform: <span class="math notranslate nohighlight">\(Var(g(X)) \approx [g'(\mu_X)]^2 Var(X)\)</span> where <span class="math notranslate nohighlight">\(\mu_X = E(X)\)</span></p></li>
 <li><p>if assumptions don’t work, sometimes we can transform data so they work</p></li>
-<li><p><em>transform x</em> - if residuals generally normal and have constant variance</p>
+<li><p><span id="def-transform-x" class="def-anchor"></span><em>transform x</em> - if residuals generally normal and have constant variance</p>
 <ul>
 <li><p><em>corrects nonlinearity</em></p></li>
 </ul>
 </li>
-<li><p><em>transform y</em> - if relationship generally linear, but non-constant error variance</p>
+<li><p><span id="def-transform-y" class="def-anchor"></span><em>transform y</em> - if relationship generally linear, but non-constant error variance</p>
 <ul>
 <li><p><em>stabilizes variance</em></p></li>
 </ul>
 </li>
 <li><p>if both problems, try y first</p></li>
-<li><p>Box-Cox: Y’ = $<span class="math notranslate nohighlight">\(Y^l \: if \: l \neq 0\)</span>$, else log(Y)</p></li>
+<li><p>Box-Cox: Y’ = <span class="math notranslate nohighlight">\(Y^l \: if \: l \neq 0\)</span>, else log(Y)</p></li>
 </ul>
 </li>
 <li><p><em>least squares</em></p></li>
@@ -651,107 +719,199 @@ document.write(`
 <li><p>regression effect - things tend to the mean (ex. bball children are shorter)</p></li>
 <li><p>in high dims, l2 worked best</p></li>
 </ul>
-<ol class="arabic" start="5">
+<ol class="arabic simple" start="5">
 <li><p>kernel smoothing + lowess</p>
-<ul>
+<ul class="simple">
 <li><p>can find optimal bandwidth</p></li>
-<li><p><em>nadaraya-watson kernel smoother</em> - locally weighted scatter plot smoothing</p>
+<li><p><span id="def-nadaraya-watson-kernel-smoother" class="def-anchor"></span><em>nadaraya-watson kernel smoother</em> - locally weighted scatter plot smoothing</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}g_h(x) = \frac{\sum K_h(x_i - x) y_i}{\sum K_h (x_i - x)}$$ where h is bandwidth
-     - *loess* - multiple predictors / *lowess* - only 1 predictor
-       - also called *local polynomial smoother* - locally weighted polynomial
-       - take a window (span) around a point and fit weighted least squares line to that point
-       - replace the point with the prediction of the windowed line
-       - can use local polynomial fits rather than local linear fits
-  6. *silhouette plots* - good clusters members are close to each other and far from other clustersf
-     1. popular graphic method for K selection
-     2. measure of separation between clusters $s(i) = \frac{\corange{b(i)} - \cblue{a(i)}}{\max(\cblue{a(i)}, \corange{b(i)})}$
-       1. &lt;span class=&quot;cblue&quot;&gt;a(i)&lt;/span&gt; - ave dissimilarity of data point i with other points within same cluster
-       2. &lt;span class=&quot;corange&quot;&gt;b(i)&lt;/span&gt; - lowest average dissimilarity of point i to any other cluster
-     3. good values of k maximize the average silhouette score
-  7. lack-of-fit test - based on repeated Y values at same X values\\## imbalanced data\\1. randomly oversample minority class
-2. randomly undersample majority class
-3. weighting classes in the loss function - more efficient, but requires modifying model code
-4. generate synthetic minority class samples
-   1. smote ([chawla et al. 2002](https://jair.org/index.php/jair/article/view/10302)) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate&lt;img style=&quot;width: 600px; max-width: 100%;&quot; src=&quot;../assets/smote.svg&quot; alt=&quot;SMOTE oversampling&quot;/&gt;
-      1. adasyn ([he et al. 2008](https://ieeexplore.ieee.org/abstract/document/4633969/)) - smote, generate more synthetic data for minority examples which are harder to learn (number of samples is proportional to number of nearby samples in a different class)
-   2. [smrt](https://github.com/tgsmith61591/smrt) - generate with vae
-5. selectively removing majority class samples
-   1. tomek links ([tomek 1976](https://pdfs.semanticscholar.org/090a/6772a1d69f07bfe7e89f99934294a0dac1b9.pdf?_ga=2.141687734.587787484.1573518991-2102528433.1505064485)) - selectively remove majority examples until al lminimally distanced nearest-neighbor pairs are of the same class
-   2. near-miss ([zhang &amp; mani 2003](https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf)) - select samples from the majority class which are close to the minority class. Example: select samples from the majority class for which the average distance of the N *closest* samples of a minority class is smallest
-   3. edited nearest neighbors ([wilson 1972](https://ieeexplore.ieee.org/abstract/document/4309137)) - &quot;edit&quot; the dataset by removing samples that don't agree &quot;enough&quot; with their neighborhood
-6. feature selection and extraction
-   1. minority class samples can be discarded as noise - removing irrelevant features can reduce this risk
-   2. feature selection - select a subset of features and classify in this space
-   3. feature extraction - extract new features and classify in this space
-   4. ideas
-      1. use majority class to find different low dimensions to investigate
-      2. in this dim, do density estimation
-      3. residuals - iteratively reweight these (like in boosting) to improve performance
-7. incorporate sampling / class-weighting into ensemble method (e.g. treat different trees differently)
-   1. ex. undersampling + ensemble learning (e.g. [IFME](https://dl.acm.org/citation.cfm?id=2467736), Becca's work)
-8. algorithmic classifier modifications
-9. misc papers
-   1. enrichment ([jegierski &amp; saganowski 2019](https://arxiv.org/pdf/1911.06965v1.pdf)) - add samples from an external dataset
-10. ref
-   1. [imblanced-learn package](https://imbalanced-learn.readthedocs.io/en/stable/api.html) with several methods for dealing with imbalanced data
-   2. [good blog post](https://www.jeremyjordan.me/imbalanced-data/)
-   3. Learning from class-imbalanced data: Review of methods and applications ([haixiang et al. 2017](https://www-sciencedirect-com.libproxy.berkeley.edu/science/article/pii/S0957417416307175))
-   4. sample majority class w/ density (to get best samples)
-   5. log-spline - doesn't scale\\## missing-data imputation\\- Missing value imputation: a review and analysis of the literature ([lin &amp; tsai 2019](https://link.springer.com/article/10.1007/s10462-019-09709-4))
-- Causal Inference: A Missing Data Perspective ([ding &amp; li, 2018](https://arxiv.org/abs/1712.06170))
-- different missingness mechanisms ([little &amp; rubin, 1987](https://www.jstor.org/stable/1165119))
-  - MCAR = missing completely at random - no relationship between the missingness of the data and any values, observed or missing
-  - MAR = missing at random - propensity of missing values depends on *observed* data, but *not* the missing data
-    - can easily test for this vs MCAR
-  - MNAR = missing not at random - propensity of missing values depends both on observed and unobserved data
-  - connections to causal: MCAR is much like randomization, MAR like ignorability (although slightly more general), and MNAR like unmeasured unconfounding
-- imputation problem: propensity of missing values depends on the unobserved values themselves (not ignorable)
-  - simplest approach: drop rows with missing vals
-  - mean/median imputation
-  - probabilistic approach
-    - EM approach, MCMC, GMM, sampling
-  - matrix completion: low-rank, PCA, SVD
-  - nearest-neighbor / matching: hot-deck
-  - (weighted) prediction approaches
-    - linear regr, LDA, naive bayes, regr. trees
-    - can do weighting using something similar to inverse propensities, although less common to check things like covariate balance
-  - multiple imputation: impute multiple times to get better estimates
-    - MICE (passes / imputes data multiple times sequentially)
-- can perform sensitivity analysis to evaluate the assumption that things are not MNAR
-  - two standard models for nonignorable missing data are the *selection* models and the *pattern-mixture* models ([Little and Rubin, 2002](https://books.google.com/books?hl=en&amp;lr=&amp;id=BemMDwAAQBAJ&amp;oi=fnd&amp;pg=PR11&amp;dq=Little,+R.+J.+and+Rubin,+D.+B.+(2002).+Statistical+analysis+with+missing+data.+John+Wiley+%26+Sons.&amp;ots=FByXa-CVWU&amp;sig=jIjvaI90RNK1rNfJoKoGvGJsz-E#v=onepage&amp;q=Little%2C%20R.%20J.%20and%20Rubin%2C%20D.%20B.%20(2002).%20Statistical%20analysis%20with%20missing%20data.%20John%20Wiley%20%26%20Sons.&amp;f=false), Chapter 15)
-- performance evaluation
-  - acc at finding missing vals
-  - acc in downstream task
-- applications
-  - Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research ([fuchs et al. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/))\\### matrix completion\\- A Survey on Matrix Completion: Perspective of Signal Processing ([li...zhao, 2019](https://arxiv.org/pdf/1901.10885.pdf))
-  - formulations
-    - Exact matrix completion via convex optimization ([candes &amp; recht, 2012](https://dl.acm.org/doi/abs/10.1145/2184319.2184343))
-      - $$\min _{\boldsymbol{M}} \operatorname{rank}(\boldsymbol{M})$$, s.t. $$\left\vert \boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\right\vert _F \leq \delta$$: - this is NP-hard
-    - nuclear norm approxmiation
-      - $$\min _{\boldsymbol{M}}\vert \boldsymbol{M}\vert _*$$, s.t. $$\vert \vert \boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\vert \vert _F \leq \delta\end{aligned}\end{align} \]</div>
+<li><p><span class="math notranslate nohighlight">\(g_h(x) = \frac{\sum K_h(x_i - x) y_i}{\sum K_h (x_i - x)}\)</span> where h is bandwidth</p></li>
+</ul>
+</li>
+<li><p><span id="def-loess" class="def-anchor"></span><em>loess</em> - multiple predictors / <em>lowess</em> - only 1 predictor</p>
+<ul>
+<li><p>also called <em>local polynomial smoother</em> - locally weighted polynomial</p></li>
+<li><p>take a window (span) around a point and fit weighted least squares line to that point</p></li>
+<li><p>replace the point with the prediction of the windowed line</p></li>
+<li><p>can use local polynomial fits rather than local linear fits</p></li>
+</ul>
 </li>
 </ul>
 </li>
+<li><p><span id="def-silhouette-plots" class="def-anchor"></span><em>silhouette plots</em> - good clusters members are close to each other and far from other clustersf</p>
+<ol class="arabic simple">
+<li><p>popular graphic method for K selection</p></li>
+<li><p>measure of separation between clusters <span class="math notranslate nohighlight">\(s(i) = \frac{\corange{b(i)} - \cblue{a(i)}}{\max(\cblue{a(i)}, \corange{b(i)})}\)</span></p></li>
+<li><p><span class="cblue">a(i)</span> - ave dissimilarity of data point i with other points within same cluster</p></li>
+<li><p><span class="corange">b(i)</span> - lowest average dissimilarity of point i to any other cluster</p></li>
+<li><p>good values of k maximize the average silhouette score</p></li>
+</ol>
+</li>
+<li><p>lack-of-fit test - based on repeated Y values at same X values</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+<section id="imbalanced-data">
+<span id="sec-data-analysis-imbalanced-data"></span><h2>Imbalanced data<a class="headerlink" href="#imbalanced-data" title="Link to this heading">#</a></h2>
+<p class="section-lead">Fixes for a rare class, roughly from simplest to most involved: resample, reweight the loss, synthesize new minority points, remove majority points near the boundary, or change the features or the model.</p>
+<ol class="arabic">
+<li><p>randomly oversample minority class</p></li>
+<li><p>randomly undersample majority class</p></li>
+<li><p>weighting classes in the loss function - more efficient, but requires modifying model code</p></li>
+<li><p>generate synthetic minority class samples</p>
+<ol class="arabic">
+<li><p>smote (<a class="reference external" href="https://jair.org/index.php/jair/article/view/10302">chawla et al. 2002</a>) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate</p>
+<figure class="align-default" id="id1">
+<a class="note-figure reference internal image-reference" href="../../_images/smote.svg"><img alt="SMOTE. Each synthetic minority point (red) lies on a segment between a minority point and one of its nearest minority neighbors." class="note-figure" src="../../_images/smote.svg" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> SMOTE. Each synthetic minority point (red) lies on a segment between a minority point and one of its nearest minority neighbors.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>adasyn (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4633969/">he et al. 2008</a>) - smote, generate more synthetic data for minority examples which are harder to learn (number of samples is proportional to number of nearby samples in a different class)</p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="https://github.com/tgsmith61591/smrt">smrt</a> - generate with vae</p></li>
+</ol>
+</li>
+<li><p>selectively removing majority class samples</p>
+<ol class="arabic simple">
+<li><p>tomek links (<a class="reference external" href="https://pdfs.semanticscholar.org/090a/6772a1d69f07bfe7e89f99934294a0dac1b9.pdf?_ga=2.141687734.587787484.1573518991-2102528433.1505064485">tomek 1976</a>) - selectively remove majority examples until al lminimally distanced nearest-neighbor pairs are of the same class</p></li>
+<li><p>near-miss (<a class="reference external" href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf">zhang &amp; mani 2003</a>) - select samples from the majority class which are close to the minority class. Example: select samples from the majority class for which the average distance of the N <em>closest</em> samples of a minority class is smallest</p></li>
+<li><p>edited nearest neighbors (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4309137">wilson 1972</a>) - “edit” the dataset by removing samples that don’t agree “enough” with their neighborhood</p></li>
+</ol>
+</li>
+<li><p>feature selection and extraction</p>
+<ol class="arabic simple">
+<li><p>minority class samples can be discarded as noise - removing irrelevant features can reduce this risk</p></li>
+<li><p>feature selection - select a subset of features and classify in this space</p></li>
+<li><p>feature extraction - extract new features and classify in this space</p></li>
+<li><p>ideas</p>
+<ol class="arabic simple">
+<li><p>use majority class to find different low dimensions to investigate</p></li>
+<li><p>in this dim, do <a class="term-link" href="stat.html#def-density-estimation" data-def="given samples of X, estimate P(X) · Stat basics">density estimation</a></p></li>
+<li><p>residuals - iteratively reweight these (like in boosting) to improve performance</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>incorporate sampling / class-weighting into ensemble method (e.g. treat different trees differently)</p>
+<ol class="arabic simple">
+<li><p>ex. undersampling + ensemble learning (e.g. <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2467736">IFME</a>, Becca’s work)</p></li>
+</ol>
+</li>
+<li><p>algorithmic classifier modifications</p></li>
+<li><p>misc papers</p>
+<ol class="arabic simple">
+<li><p>enrichment (<a class="reference external" href="https://arxiv.org/pdf/1911.06965v1.pdf">jegierski &amp; saganowski 2019</a>) - add samples from an external dataset</p></li>
+</ol>
+</li>
+<li><p>ref</p></li>
+<li><p><a class="reference external" href="https://imbalanced-learn.readthedocs.io/en/stable/api.html">imblanced-learn package</a> with several methods for dealing with imbalanced data</p></li>
+<li><p><a class="reference external" href="https://www.jeremyjordan.me/imbalanced-data/">good blog post</a></p></li>
+<li><p>Learning from class-imbalanced data: Review of methods and applications (<a class="reference external" href="https://www-sciencedirect-com.libproxy.berkeley.edu/science/article/pii/S0957417416307175">haixiang et al. 2017</a>)</p></li>
+<li><p>sample majority class w/ density (to get best samples)</p></li>
+<li><p>log-spline - doesn’t scale</p></li>
+</ol>
+</section>
+<section id="missing-data-imputation">
+<span id="sec-data-analysis-missing-data-imputation"></span><h2>Missing-data imputation<a class="headerlink" href="#missing-data-imputation" title="Link to this heading">#</a></h2>
+<p class="section-lead">What can be done depends on why values are missing. Under MCAR and MAR the missingness can be modeled from what is observed. Under MNAR it also depends on the unobserved values, and sensitivity analysis checks how much that matters.</p>
+<figure class="nb-viz-figure" id="viz-missing-data"><div class="nb-viz" data-viz="missing-data" data-params="{&quot;mech&quot;: &quot;mar&quot;, &quot;s&quot;: 2}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> 300 rows where \(X\) is always observed and about 40% of the \(Y\) values are missing (hollow circles are the values that were never seen). The horizontal lines are three estimates of the mean of \(Y\): over all rows, which would need the missing values; after dropping incomplete rows; and after imputing each missing \(Y\) (green) from a linear regression on \(X\) fit to the complete rows. Under MCAR all three agree up to noise. Under MAR, larger \(X\) makes \(Y\) more likely to be missing: dropping rows biases the mean down, but the regression on the observed \(X\) corrects it. Under MNAR, larger \(Y\) itself makes \(Y\) missing, and both estimates stay biased.</figcaption></figure><ul class="simple">
+<li><p>Missing value imputation: a review and analysis of the literature (<a class="reference external" href="https://link.springer.com/article/10.1007/s10462-019-09709-4">lin &amp; tsai 2019</a>)</p></li>
+<li><p>Causal Inference: A Missing Data Perspective (<a class="reference external" href="https://arxiv.org/abs/1712.06170">ding &amp; li, 2018</a>)</p></li>
+<li><p>different missingness mechanisms (<a class="reference external" href="https://www.jstor.org/stable/1165119">little &amp; rubin, 1987</a>)</p>
+<ul>
+<li><p>MCAR = missing completely at random - no relationship between the missingness of the data and any values, observed or missing</p></li>
+<li><p>MAR = missing at random - propensity of missing values depends on <em>observed</em> data, but <em>not</em> the missing data</p>
+<ul>
+<li><p>can easily test for this vs MCAR</p></li>
+</ul>
+</li>
+<li><p>MNAR = missing not at random - propensity of missing values depends both on observed and unobserved data</p></li>
+<li><p>connections to causal: MCAR is much like randomization, MAR like ignorability (although slightly more general), and MNAR like unmeasured unconfounding</p></li>
+</ul>
+</li>
+<li><p>imputation problem: propensity of missing values depends on the unobserved values themselves (not ignorable)</p>
+<ul>
+<li><p>simplest approach: drop rows with missing vals</p></li>
+<li><p>mean/median imputation</p></li>
+<li><p>probabilistic approach</p>
+<ul>
+<li><p>EM approach, MCMC, GMM, sampling</p></li>
+</ul>
+</li>
+<li><p>matrix completion: low-rank, PCA, SVD</p></li>
+<li><p>nearest-neighbor / matching: hot-deck</p></li>
+<li><p>(weighted) prediction approaches</p>
+<ul>
+<li><p>linear regr, LDA, naive bayes, regr. trees</p></li>
+<li><p>can do weighting using something similar to inverse propensities, although less common to check things like covariate balance</p></li>
+</ul>
+</li>
+<li><p>multiple imputation: impute multiple times to get better estimates</p>
+<ul>
+<li><p>MICE (passes / imputes data multiple times sequentially)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>can perform sensitivity analysis to evaluate the assumption that things are not MNAR</p>
+<ul>
+<li><p>two standard models for nonignorable missing data are the <em>selection</em> models and the <em>pattern-mixture</em> models (<a class="reference external" href="https://books.google.com/books?hl=en&amp;amp;lr=&amp;amp;id=BemMDwAAQBAJ&amp;amp;oi=fnd&amp;amp;pg=PR11&amp;amp;dq=Little,+R.+J.+and+Rubin,+D.+B.+(2002).+Statistical+analysis+with+missing+data.+John+Wiley+%26+Sons.&amp;amp;ots=FByXa-CVWU&amp;amp;sig=jIjvaI90RNK1rNfJoKoGvGJsz-E#v=onepage&amp;amp;q=Little%2C%20R.%20J.%20and%20Rubin%2C%20D.%20B.%20(2002).%20Statistical%20analysis%20with%20missing%20data.%20John%20Wiley%20%26%20Sons.&amp;amp;f=false">Little and Rubin, 2002</a>, Chapter 15)</p></li>
+</ul>
+</li>
+<li><p>performance evaluation</p>
+<ul>
+<li><p>acc at finding missing vals</p></li>
+<li><p>acc in downstream task</p></li>
+</ul>
+</li>
+<li><p>applications</p>
+<ul>
+<li><p>Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/">fuchs et al. 2014</a>)</p></li>
+</ul>
+</li>
+</ul>
+<section id="matrix-completion">
+<h3>Matrix completion<a class="headerlink" href="#matrix-completion" title="Link to this heading">#</a></h3>
+<p class="section-lead">Filling in the missing entries of a matrix by assuming the full matrix has low rank. Minimizing the rank is NP-hard, so the formulations below relax it: the nuclear norm, a rank constraint on a noisy fit, or a factorization <span class="math notranslate nohighlight">\(UV^T\)</span> that is faster but non-convex.</p>
+<ul class="simple">
+<li><p>A Survey on Matrix Completion: Perspective of Signal Processing (<a class="reference external" href="https://arxiv.org/pdf/1901.10885.pdf">li…zhao, 2019</a>)</p>
+<ul>
+<li><p>formulations</p>
+<ul>
+<li><p>Exact matrix completion via convex optimization (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/2184319.2184343">candes &amp; recht, 2012</a>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{M}} \operatorname{rank}(\boldsymbol{M})\)</span>, s.t. <span class="math notranslate nohighlight">\(\left\vert \boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\right\vert _F \leq \delta\)</span>: - this is NP-hard</p></li>
+</ul>
+</li>
+<li><p>nuclear norm approxmiation</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{M}}\vert \boldsymbol{M}\vert _*\)</span><span class="math notranslate nohighlight">\(, s.t. \)</span><span class="math notranslate nohighlight">\(\vert \vert \boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\vert \vert _F \leq \delta\)</span></p></li>
 <li><p>this has be formulated as semidefinite programming, nuclear norm relaxation, or robust PCA</p></li>
 </ul>
 </li>
-</ol>
-<ul>
 <li><p>minimum rank approximation helps with the assumption that the data are corrupted by noise (e.g. ADMiRA (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5550497/">lee &amp; bresler, 2010</a>))</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\min _{\boldsymbol{M}}\left\vert (\boldsymbol{M})_{\Omega}-\boldsymbol{X}_{\Omega}\right\vert _F^2$$, s.t. $\operatorname{rank}(\boldsymbol{M}) \leq r$
-    - matrix factorization is a faster but non-convex approximation (e.g. LMaFit ([wen, yin, &amp; zhang, 2012](https://link.springer.com/article/10.1007/s12532-012-0044-1)))
-      - $$\min _{\boldsymbol{U}, \boldsymbol{V}, \boldsymbol{Z}}\left\vert \boldsymbol{U} \boldsymbol{V}^T-\boldsymbol{Z}\right\vert _F^2$$, s.t. $$\boldsymbol{Z}_{\Omega}=\boldsymbol{X}_{\Omega}\]</div>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{M}}\left\vert (\boldsymbol{M})_{\Omega}-\boldsymbol{X}_{\Omega}\right\vert _F^2\)</span>, s.t. <span class="math notranslate nohighlight">\(\operatorname{rank}(\boldsymbol{M}) \leq r\)</span></p></li>
+</ul>
 </li>
+<li><p>matrix factorization is a faster but non-convex approximation (e.g. LMaFit (<a class="reference external" href="https://link.springer.com/article/10.1007/s12532-012-0044-1">wen, yin, &amp; zhang, 2012</a>))</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{U}, \boldsymbol{V}, \boldsymbol{Z}}\left\vert \boldsymbol{U} \boldsymbol{V}^T-\boldsymbol{Z}\right\vert _F^2\)</span><span class="math notranslate nohighlight">\(, s.t. \)</span><span class="math notranslate nohighlight">\(\boldsymbol{Z}_{\Omega}=\boldsymbol{X}_{\Omega}\)</span></p></li>
 </ul>
 </li>
 <li><p><span class="math notranslate nohighlight">\(\ell_p\)</span>-Norm minimization - use a different norm than Frobenius to handle specific types of noise</p></li>
 <li><p>Adaptive outlier pruning (<a class="reference external" href="https://link.springer.com/article/10.1007/s10915-013-9682-3">yan, yang, &amp; osher, 2013</a>) - better handles outliers</p></li>
+</ul>
+</li>
 <li><p>algorithms</p>
-<ul class="simple">
+<ul>
 <li><p>gradient-based</p>
 <ul>
 <li><p>gradient descent</p></li>
@@ -770,7 +930,7 @@ document.write(`
 </ul>
 </li>
 <li><p>Newer approaches</p>
-<ul class="simple">
+<ul>
 <li><p>Simple, Fast, and Flexible Framework for Matrix Completion with Infinite Width Neural Networks (<a class="reference external" href="https://arxiv.org/abs/2108.00131">radhakrishnan…belkin, uhler, 2022</a>) - use NTK for FCN/CNN to do matrix completion</p></li>
 <li><p>Graph Convolutional Matrix Completion (<a class="reference external" href="https://arxiv.org/abs/1706.02263">van den berg, kipf, &amp; welling, 2017</a>)</p></li>
 <li><p>Transformer methods for image inpainting (e.g. mask-aware tranfsormer, <a class="reference internal" href="#"><span class="xref myst">2022</span></a>)</p></li>
@@ -780,7 +940,8 @@ document.write(`
 </section>
 </section>
 <section id="preprocessing">
-<h2><span class="section-number">4.3.3. </span>preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<span id="sec-data-analysis-preprocessing"></span><h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<p class="section-lead">Two transformations applied before modeling: discretizing features, and whitening, which maps inputs <span class="math notranslate nohighlight">\(X\)</span> to decorrelated features <span class="math notranslate nohighlight">\(Z\)</span> with <span class="math notranslate nohighlight">\(\Sigma_Z = I\)</span>. The choice of whitening matrix <span class="math notranslate nohighlight">\(W\)</span> (PCA, ZCA, Cholesky) decides what else <span class="math notranslate nohighlight">\(Z\)</span> preserves.</p>
 <ul class="simple">
 <li><p>often good to discretize/binarize features</p>
 <ul>
@@ -806,9 +967,11 @@ document.write(`
 </ul>
 </section>
 <section id="feature-selection">
-<h2><span class="section-number">4.3.4. </span>feature selection<a class="headerlink" href="#feature-selection" title="Link to this heading">#</a></h2>
+<span id="sec-data-analysis-feature-selection"></span><h2>Feature selection<a class="headerlink" href="#feature-selection" title="Link to this heading">#</a></h2>
+<p class="section-lead">Three families, by how they use the predictor: filters score features with a summary statistic and no model, wrappers search over subsets with the model as a black box, and embedded methods select features while fitting (e.g. the lasso).</p>
 <section id="filtering-select-based-on-summary-statistic">
-<h3><span class="section-number">4.3.4.1. </span>filtering - select based on summary statistic<a class="headerlink" href="#filtering-select-based-on-summary-statistic" title="Link to this heading">#</a></h3>
+<h3>Filtering - select based on summary statistic<a class="headerlink" href="#filtering-select-based-on-summary-statistic" title="Link to this heading">#</a></h3>
+<p class="section-lead">Filters score features without the final model. Univariate scores are fast but judge each feature alone, and they differ in what they detect: correlation sees only linear dependence, mutual information sees any dependence.</p>
 <ul class="simple">
 <li><p>ranks features or feature subsets independently of the predictor</p></li>
 <li><p>univariate methods (consider one variable at a time)</p>
@@ -831,33 +994,36 @@ document.write(`
 </ul>
 </section>
 <section id="wrapper-recursively-eliminate-features">
-<h3><span class="section-number">4.3.4.2. </span>wrapper - recursively eliminate features<a class="headerlink" href="#wrapper-recursively-eliminate-features" title="Link to this heading">#</a></h3>
+<h3>Wrapper - recursively eliminate features<a class="headerlink" href="#wrapper-recursively-eliminate-features" title="Link to this heading">#</a></h3>
+<p class="section-lead">Wrappers treat the model as a black box and search over feature subsets, scoring each subset on held-out data. Forward selection adds features one at a time, backward elimination removes them.</p>
 <ul class="simple">
 <li><p>uses a predictor to assess features of feature subsets</p></li>
 <li><p>learner is considered a black-box - use train, validate, test set</p></li>
 <li><p>forward selection - start with nothing and keep adding</p></li>
 <li><p>backward elimination - start with all and keep removing</p></li>
-<li><p>others: Beam search - keep k best path at teach step, GSFS, PTA(l,r), floating search - SFS then SBS</p></li>
+<li><p>others: <a class="term-link" href="../ai/rl_decisions.html#def-beam-search" data-def="consider only n best moves · RL and decisions">Beam search</a> - keep k best path at teach step, GSFS, PTA(l,r), floating search - SFS then SBS</p></li>
 </ul>
 </section>
 <section id="embedding-select-from-a-model">
-<h3><span class="section-number">4.3.4.3. </span>embedding - select from a model<a class="headerlink" href="#embedding-select-from-a-model" title="Link to this heading">#</a></h3>
+<h3>Embedding - select from a model<a class="headerlink" href="#embedding-select-from-a-model" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>uses a predictor to build a model with a subset of features that are internally selected</p></li>
-<li><p>ex. lasso, ridge regression, random forest</p></li>
+<li><p>ex. lasso, ridge regression, <a class="term-link" href="../ml/classification.html#def-random-forest" data-def="for each split of each tree, choose from only m of the p possible features · Classification">random forest</a></p></li>
 </ul>
 </section>
 </section>
 <section id="reproducibility">
-<h2><span class="section-number">4.3.5. </span>reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h2>
+<span id="sec-data-analysis-reproducibility"></span><h2>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h2>
+<p class="section-lead">Tools for rerunning an analysis and getting the same answer: containers for the software environment, data version control for data and models, and trackers for hyperparameters, metrics and workflows.</p>
 <section id="containerization">
-<h3><span class="section-number">4.3.5.1. </span>containerization<a class="headerlink" href="#containerization" title="Link to this heading">#</a></h3>
+<h3>Containerization<a class="headerlink" href="#containerization" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>e.g. <a class="reference external" href="https://docs.docker.com/get-started/overview/">docker</a></p></li>
 </ul>
 </section>
 <section id="data-version-control">
-<h3><span class="section-number">4.3.5.2. </span>data version control<a class="headerlink" href="#data-version-control" title="Link to this heading">#</a></h3>
+<h3>Data version control<a class="headerlink" href="#data-version-control" title="Link to this heading">#</a></h3>
+<p class="section-lead">DVC works alongside git: small <code class="docutils literal notranslate"><span class="pre">.dvc</span></code> metafiles in the repository track large data and model files, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> plus <code class="docutils literal notranslate"><span class="pre">dvc</span> <span class="pre">checkout</span></code> bring back an old state. The other tools log parameters, metrics and outputs for each run.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://dvc.org/">dvc</a> - data version control</p>
 <ul>
@@ -897,7 +1063,7 @@ document.write(`
 </ul>
 </section>
 <section id="hyperparameter-tuning">
-<h3><span class="section-number">4.3.5.3. </span>hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Link to this heading">#</a></h3>
+<h3>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>weaker versions</p>
 <ul>
@@ -909,7 +1075,7 @@ document.write(`
 </ul>
 </section>
 <section id="weights-and-biases">
-<h3><span class="section-number">4.3.5.4. </span>weights and biases<a class="headerlink" href="#weights-and-biases" title="Link to this heading">#</a></h3>
+<h3>Weights and biases<a class="headerlink" href="#weights-and-biases" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">wandb.login()</span></code> - login to W&amp;B at the start of your session</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">wandb.init()</span></code> - initialise a new W&amp;B, returns a “run” object</p></li>
@@ -917,7 +1083,7 @@ document.write(`
 </ul>
 </section>
 <section id="workflow-management">
-<h3><span class="section-number">4.3.5.5. </span>workflow management<a class="headerlink" href="#workflow-management" title="Link to this heading">#</a></h3>
+<h3>Workflow management<a class="headerlink" href="#workflow-management" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.prefect.io/core">prefect</a></p>
 <ul>
@@ -929,9 +1095,11 @@ document.write(`
 </section>
 </section>
 <section id="principles">
-<h2><span class="section-number">4.3.6. </span>principles<a class="headerlink" href="#principles" title="Link to this heading">#</a></h2>
+<span id="sec-data-analysis-principles"></span><h2>Principles<a class="headerlink" href="#principles" title="Link to this heading">#</a></h2>
+<p class="section-lead">Notes on papers and talks about what statistics is for: Breiman’s two cultures, Box and Tukey on data analysis as a science, and Kass on how claims get exaggerated.</p>
 <section id="breiman">
-<h3><span class="section-number">4.3.6.1. </span>breiman<a class="headerlink" href="#breiman" title="Link to this heading">#</a></h3>
+<h3>Breiman<a class="headerlink" href="#breiman" title="Link to this heading">#</a></h3>
+<p class="section-lead">Breiman’s two cultures. The generative culture assumes a stochastic model produced the data and checks it by goodness of fit; the predictive culture treats the mechanism as unknown and checks models by prediction accuracy. He argued statistics leaned too far toward the first.</p>
 <ul>
 <li><p>conversation</p>
 <ul class="simple">
@@ -948,7 +1116,7 @@ document.write(`
 </li>
 <li><p>2 cultures paper</p>
 <ol class="arabic simple">
-<li><p><em>generative</em> - data are generated by a given stochastic model</p></li>
+<li><p><span id="def-generative" class="def-anchor"></span><em>generative</em> - data are generated by a given stochastic model</p></li>
 </ol>
 <ul class="simple">
 <li><p>stat does this too much and needs to move to 2</p></li>
@@ -956,7 +1124,7 @@ document.write(`
 <li><p>validation: goodness-of-fit and residuals</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p><em>predictive</em> - use algorithmic model and data mechanism unknown</p></li>
+<li><p><span id="def-predictive" class="def-anchor"></span><em>predictive</em> - use algorithmic model and data mechanism unknown</p></li>
 </ol>
 <ul>
 <li><p>assume nothing about x and y</p></li>
@@ -965,12 +1133,12 @@ document.write(`
 <li><p>axioms</p>
 <ol class="arabic simple">
 <li><p>Occam</p></li>
-<li><p><em>Rashomon</em> - lots of different good models, which explains best?</p>
+<li><p><span id="def-rashomon" class="def-anchor"></span><em>Rashomon</em> - lots of different good models, which explains best?</p>
 <ul class="simple">
 <li><p>ex. rf is not robust at all</p></li>
 </ul>
 </li>
-<li><p><em>Bellman</em> - curse of dimensionality</p></li>
+<li><p><span id="def-bellman" class="def-anchor"></span><em>Bellman</em> - curse of dimensionality</p></li>
 </ol>
 <ul class="simple">
 <li><p>might actually want to increase dimensionality (ex. svms embedded in higher dimension)</p></li>
@@ -982,7 +1150,8 @@ document.write(`
 </ul>
 </section>
 <section id="box-tukey">
-<h3><span class="section-number">4.3.6.2. </span>box + tukey<a class="headerlink" href="#box-tukey" title="Link to this heading">#</a></h3>
+<h3>Box + tukey<a class="headerlink" href="#box-tukey" title="Link to this heading">#</a></h3>
+<p class="section-lead">Two older papers on what statistics is for. Box describes science as iteration between theory and practice and warns against cookbookery and mathematistry. Tukey argues that data analysis is a science of its own, that all models have flaws, and that there is no best model.</p>
 <ul>
 <li><p>questions</p>
 <ol class="arabic simple">
@@ -1054,8 +1223,8 @@ document.write(`
 </li>
 <li><p>flaws</p>
 <ul>
-<li><p><em>cookbookery</em> - forcing all problems into 1 or 2 routine techniques</p></li>
-<li><p><em>mathematistry</em> - development of theory for theory’s sake</p></li>
+<li><p><span id="def-cookbookery" class="def-anchor"></span><em>cookbookery</em> - forcing all problems into 1 or 2 routine techniques</p></li>
+<li><p><span id="def-mathematistry" class="def-anchor"></span><em>mathematistry</em> - development of theory for theory’s sake</p></li>
 </ul>
 </li>
 </ul>
@@ -1075,7 +1244,7 @@ document.write(`
 <ul class="simple">
 <li><p>could just trim highest and lowest values</p>
 <ul>
-<li><p><em>winzorizing</em> - replace suspect values with closest values that aren’t</p></li>
+<li><p><span id="def-winzorizing" class="def-anchor"></span><em>winzorizing</em> - replace suspect values with closest values that aren’t</p></li>
 </ul>
 </li>
 <li><p>must decide when to use new techniques, even when not fully understood</p></li>
@@ -1118,7 +1287,7 @@ document.write(`
 </ul>
 </section>
 <section id="models">
-<h3><span class="section-number">4.3.6.3. </span>models<a class="headerlink" href="#models" title="Link to this heading">#</a></h3>
+<h3>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>normative - fully interpretable + modelled</p>
 <ul>
@@ -1135,7 +1304,8 @@ document.write(`
 </ul>
 </section>
 <section id="exaggerated-claims">
-<h3><span class="section-number">4.3.6.4. </span>exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Link to this heading">#</a></h3>
+<h3>Exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Link to this heading">#</a></h3>
+<p class="section-lead">From a talk by Rob Kass. Concepts like “central tendency” or “information” have several mathematical versions, and “controlling for” a variable in a regression makes causal assumptions, so a claim can say more than the analysis supports.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?time_continue=4&amp;amp;v=PwCyvSDkUCY&amp;amp;feature=emb_logo">video</a> by Rob Kass</p></li>
 <li><p>concepts are ambiguous and have many mathematical instantiations</p>
@@ -1170,7 +1340,18 @@ document.write(`
 </li>
 <li><p>scientific knowledge is always uncertain - depends on scientific method</p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Under simple random sampling <span class="math notranslate nohighlight">\(var(\bar X) = \sigma^2/n\)</span>, smaller by the factor <span class="math notranslate nohighlight">\(1 - n/N\)</span> when sampling without replacement.</p></li>
+<li><p>A good plot is built for one audience and one point; choose a simple visual, cut clutter, and use contrast to direct attention.</p></li>
+<li><p>For a rare class, resample, reweight the loss, synthesize minority points (SMOTE), or remove majority points near the boundary.</p></li>
+<li><p>What can be done about missing values depends on the mechanism. Under MCAR and MAR the missingness can be modeled from observed data; under MNAR it cannot, and sensitivity analysis is the fallback.</p></li>
+<li><p>Feature selection methods differ in how they use the model. Filters ignore it, wrappers search with it as a black box, and embedded methods select while fitting.</p></li>
+<li><p>Breiman, Box and Tukey judge models by usefulness rather than truth. All models have flaws and there is no best one.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../research_ovws/ovw_llms.html"><span class="related-part">Research overviews</span><span class="related-title">LLMs</span><span class="related-hook">Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.</span></a><a class="related-card" href="../research_ovws/ovw_causal_inference.html"><span class="related-part">Research overviews</span><span class="related-title">Causal inference</span><span class="related-hook">Classic causal studies, mediation, heterogeneous effects, causal discovery, invariant prediction, and neural nets for treatment effects.</span></a></div></nav></section>
 </section>
 </section>
 
@@ -1205,12 +1386,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="graphical_models.html"
+       href="stat.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>graphical models</p>
+        <p class="prev-next-title">Stat basics</p>
       </div>
     </a>
     <a class="right-next"
@@ -1218,7 +1399,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.4. </span>testing</p>
+        <p class="prev-next-title">Testing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1238,36 +1419,41 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pqrs">4.3.1. pqrs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">4.3.2. visualization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-context-1">4.3.2.1. understand the context (1)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-effective-visual-2">4.3.2.2. choose an effective visual (2)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminate-clutter-3">4.3.2.3. eliminate clutter (3)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-attention-4">4.3.2.4. focus attention (4)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">4.3.2.5. tell a story / think like a designer (5)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summaries">4.3.2.6. visual summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pqrs">Pqrs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-context-1">Understand the context (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-effective-visual-2">Choose an effective visual (2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminate-clutter-3">Eliminate clutter (3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-attention-4">Focus attention (4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">Tell a story / think like a designer (5)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summaries">Visual summaries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">4.3.3. preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">4.3.4. feature selection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-select-based-on-summary-statistic">4.3.4.1. filtering - select based on summary statistic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-recursively-eliminate-features">4.3.4.2. wrapper - recursively eliminate features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-select-from-a-model">4.3.4.3. embedding - select from a model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-data">Imbalanced data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data-imputation">Missing-data imputation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-completion">Matrix completion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">4.3.5. reproducibility</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#containerization">4.3.5.1. containerization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-version-control">4.3.5.2. data version control</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">4.3.5.3. hyperparameter tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-and-biases">4.3.5.4. weights and biases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-management">4.3.5.5. workflow management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">Feature selection</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-select-based-on-summary-statistic">Filtering - select based on summary statistic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-recursively-eliminate-features">Wrapper - recursively eliminate features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-select-from-a-model">Embedding - select from a model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles">4.3.6. principles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breiman">4.3.6.1. breiman</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-tukey">4.3.6.2. box + tukey</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">4.3.6.3. models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exaggerated-claims">4.3.6.4. exaggerated claims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#containerization">Containerization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-version-control">Data version control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-and-biases">Weights and biases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-management">Workflow management</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles">Principles</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breiman">Breiman</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-tukey">Box + tukey</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exaggerated-claims">Exaggerated claims</a></li>
 </ul>
 </li>
 </ul>
@@ -1294,7 +1480,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

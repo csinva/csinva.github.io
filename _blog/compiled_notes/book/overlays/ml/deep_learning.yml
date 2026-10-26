@@ -1,0 +1,97 @@
+# Overlay for _notes/ml/deep_learning.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Deep learning
+subtitle: Backpropagation, CNNs, RNNs and graph networks, normalization layers, and the empirical tricks that make training work.
+hook: Backpropagation, the main architectures (CNNs, RNNs, GNNs), normalization layers, and training tricks.
+intro: |
+  The basics section covers what every network shares: activation functions, the two standard losses, and
+  backpropagation, which is the chain rule run from the loss back to each weight. The architecture sections
+  follow. A short list of historical networks comes first, then CNNs (convolutions, pooling, what the filters
+  learn), RNNs and LSTMs for sequences, and graph neural networks built on permutation invariance. A reading list
+  on top-down feedback in vision comes after.
+
+  The empirical notes at the end are about getting a deep network to train at all: vanishing and exploding
+  gradients, dropout, tricks to squeeze out performance, and batch, layer and RMS normalization. For
+  transformers and language models see the NLP chapter and the LLM research overviews.
+sections:
+  basics:
+    lead: |
+      Backpropagation runs the network forward to get every intermediate value, then sends the gradient
+      $\frac{dL}{dz}$ backward one gate at a time. Each gate multiplies the incoming gradient by its own local
+      derivative.
+    viz:
+      - name: backprop-graph
+        params:
+          x: -2
+          y: 5
+          z: -4
+          node: mul
+        caption: 'The graph from the figure below, f = (x + y) z, with forward values in green above each wire and gradients
+      
+          df/d(·) in pink below it. Pick a gate to see its chain-rule step: the incoming gradient times the gate''s local
+      
+          derivative. Move x and notice that df/dz changes (it equals q = x + y) while df/dx stays equal to z, because
+      
+          the × gate hands each input the other input''s value and the + gate passes the gradient through unchanged.
+      
+          '
+  some historical popular nets:
+    lead: |
+      Landmark architectures grouped by what they were for: classification CNNs from LeNet to VGG, deeper nets
+      (Inception modules, ResNet's residual connections), searched and efficient architectures, then detection,
+      segmentation and other tasks.
+  CNNs:
+    lead: |
+      A convolutional layer slides the same small filter over every position of the image, so it has few weights
+      and responds the same way wherever a pattern appears. Pooling then downsamples.
+  RNNs:
+    lead: |
+      An RNN applies the same update $h_t = f(h_{t-1}, x_t)$ at every time step and is trained by unrolling it
+      through time. Gradients shrink exponentially with the time lag, which LSTMs address with gates that let the
+      state pass through unchanged.
+  graph neural networks:
+    lead: |
+      A graph has no natural ordering of its nodes, so a layer must give the same answer under any permutation
+      (invariance), or permute its output the same way (equivariance). Each GNN layer updates a node from its
+      own features and an aggregate over its neighbors.
+  top-down feedback:
+    lead: |
+      A reading list on networks where later layers send signals back to earlier ones, instead of computing in a
+      single feedforward pass.
+  misc:
+    lead: |
+      Loose ends: NeRF, which overfits one network to a single scene to render new views, pruning and low-rank
+      compression of trained weights, and neural architecture search.
+  empirical notes:
+    lead: |
+      Backprop multiplies one local derivative per layer, so in a deep network the gradient can shrink or grow
+      exponentially with depth. That is the vanishing and exploding gradients problem.
+    viz:
+      - name: grad-flow
+        params: {act: sigmoid, gain: 1}
+        caption: |
+          The size of the gradient at each layer of a randomly initialized 20-layer network, relative to its size at
+          the output (log scale). With sigmoids it vanishes at every weight scale on the slider: each layer multiplies
+          it by a derivative $\sigma' \leq 1/4$ as well as by the weights.
+          Switch to ReLU: near $g = 1.4$ (that is, $\sqrt 2$) it stays flat, below that it vanishes, and above it
+          explodes. Tanh stays near flat around $g = 1$.
+  norm layers:
+    lead: |
+      All three standardize activations, then rescale with learned parameters. They differ in what they average
+      over: the batch for batch norm, the features of one example for layer norm. RMS norm also skips the mean
+      subtraction and the shift $\beta$.
+takeaways:
+  - Backpropagation is reverse-mode automatic differentiation: a forward pass stores every intermediate value, then the chain rule runs from the loss back to each weight.
+  - Convolutions share one small filter across every position of the image; pooling downsamples, and stacks of small layers are generally better than big ones.
+  - RNNs reuse one update through time, and their gradients vanish exponentially with the time lag; LSTM gates let the state pass through unchanged.
+  - GNN layers must be invariant or equivariant to permutations of the nodes, and update each node from its own features and its neighbors'.
+  - Gradients can vanish in early layers (sigmoids, dead ReLUs) or explode (RNNs), because backprop multiplies one local derivative per layer.
+  - Dropout trains something like a large ensemble of models that share weights; batch, layer and RMS norm standardize activations over the batch or over the features.
+figures:
+  backprop.svg: |
+    Backpropagation on f = (x + y) z with x = −2, y = 5, z = −4. Forward values are in green, gradients in
+    red. The multiply gate sends each input the other input's value times the incoming gradient: z gets
+    q = 3 and q gets z = −4. The add gate passes −4 unchanged to both x and y.
+  gnn_layers.png: |
+    The three flavors of GNN layer, from simplest to most general. Convolutional layers weight neighbors by
+    fixed constants c_ij. Attentional layers compute the weights a(xᵢ, xⱼ) from the features. Message
+    passing computes a whole vector ψ(xᵢ, xⱼ) for each edge.

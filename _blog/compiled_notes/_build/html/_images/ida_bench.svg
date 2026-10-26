@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1740 1046" role="img" aria-labelledby="title desc">
+  <title id="title">IDA-Bench setup and trajectory</title>
+  <desc id="desc">(a) IDA-Bench setup: instruction materials (background, goal, metric, reference insights such as I1: explore customer's age) feed a simulated user ("You are a user interacting with a data analysis agent..."), who talks with the agent ("You are an advanced data analysis agent specializing in Python-based tasks..."), which uses a sandbox with train.csv, test.csv, sample.csv and a Python executor. (b) Trajectory: guided by insight I1, the user asks "Show me the mean age of customers." The agent runs mean_age = df['age'].mean() and prints it; the sandbox outputs "Mean age of customers: 53.3"; the agent answers 53.3. With I1 satisfied, the user moves to I2: "Okay, they're middle-aged. Then, let's see what people aged 40-60 bought and how often."</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/></marker>
+    <style>
+      text { fill: #2b2b2b; }
+      .title { font: 38px "Times New Roman", Times, serif; }
+      .lab { font: 27px "Comic Sans MS", "Trebuchet MS", Helvetica, sans-serif; }
+      .txt { font: 23px "Comic Sans MS", "Trebuchet MS", Helvetica, sans-serif; }
+      .txti { font: italic 23px "Comic Sans MS", "Trebuchet MS", Helvetica, sans-serif; }
+      .bub { font: 28px "Comic Sans MS", "Trebuchet MS", Helvetica, sans-serif; }
+      .code { font: 26px Menlo, Consolas, monospace; }
+      .cd { font: 17px Menlo, Consolas, monospace; }
+    </style>
+  </defs>
+  <text class="title" x="318" y="46" text-anchor="middle">(a) IDA-Bench setup</text>
+  <text class="title" x="1224" y="46" text-anchor="middle">(b) IDA-Bench trajectory</text>
+  <rect x="16" y="130" width="608" height="200" rx="28" fill="#d6cdf7"/>
+  <circle cx="125" cy="195" r="45" fill="#1a1f7a"/>
+  <rect x="102.5" y="174.5" width="45.0" height="11.7" rx="3.9" fill="none" stroke="#fff" stroke-width="3.8"/>
+  <line x1="109.2" y1="180.4" x2="118.2" y2="180.4" stroke="#fff" stroke-width="3.2"/>
+  <rect x="102.5" y="189.2" width="45.0" height="11.7" rx="3.9" fill="none" stroke="#fff" stroke-width="3.8"/>
+  <line x1="109.2" y1="195.0" x2="118.2" y2="195.0" stroke="#fff" stroke-width="3.2"/>
+  <rect x="102.5" y="203.8" width="45.0" height="11.7" rx="3.9" fill="none" stroke="#fff" stroke-width="3.8"/>
+  <line x1="109.2" y1="209.6" x2="118.2" y2="209.6" stroke="#fff" stroke-width="3.2"/>
+  <text class="lab" x="128" y="276" text-anchor="middle">Instruction</text>
+  <text class="lab" x="124" y="308" text-anchor="middle">Materials</text>
+  <rect x="230" y="250" width="110" height="28" fill="#ece36a"/>
+  <text class="txt" x="216" y="172" text-anchor="start">- Background: <tspan font-style="italic">the data comes from...</tspan></text>
+  <text class="txt" x="216" y="206" text-anchor="start">- Goal: <tspan font-style="italic">predict...</tspan></text>
+  <text class="txt" x="216" y="240" text-anchor="start">- Metric: <tspan font-style="italic">accuracy</tspan></text>
+  <text class="txt" x="216" y="274" text-anchor="start">- Reference insights:</text>
+  <text class="txt" x="244" y="308" text-anchor="start">- I1: explore <tspan font-style="italic">customer's age...</tspan></text>
+  <rect x="12" y="362" width="610" height="200" rx="28" fill="#dbe6f7"/>
+  <circle cx="122" cy="398.0" r="22.0" fill="#3a8fd6"/>
+  <path d="M82.0 468.0 Q82.0 428.0 122 428.0 Q162.0 428.0 162.0 468.0 Z" fill="#3a8fd6"/>
+  <text class="lab" x="122" y="506" text-anchor="middle">Simulated</text>
+  <text class="lab" x="122" y="540" text-anchor="middle">User</text>
+  <text class="txt" x="222" y="438" text-anchor="start">System prompt:</text>
+  <text class="txti" x="222" y="472" text-anchor="start">"You are a user interacting with a</text>
+  <text class="txti" x="222" y="506" text-anchor="start">data analysis agent..."</text>
+  <rect x="12" y="598" width="610" height="200" rx="28" fill="#ececec"/>
+  <g transform="translate(121 700) scale(0.85)" fill="#b8b8b8">
+    <circle cx="0" cy="-58" r="7"/><rect x="-3" y="-54" width="6" height="14"/>
+    <rect x="-46" y="-40" width="92" height="80" rx="18"/>
+    <rect x="-58" y="-14" width="8" height="34"/><rect x="50" y="-14" width="8" height="34"/>
+    <circle cx="-16" cy="0" r="7" fill="#fff"/><circle cx="16" cy="0" r="7" fill="#fff"/>
+  </g>
+  <text class="lab" x="121" y="775" text-anchor="middle">Agent</text>
+  <text class="txt" x="226" y="654" text-anchor="start">System prompt:</text>
+  <text class="txti" x="226" y="688" text-anchor="start">"You are an advanced data analysis</text>
+  <text class="txti" x="226" y="722" text-anchor="start">agent specializing in Python-based</text>
+  <text class="txti" x="226" y="756" text-anchor="start">tasks. Your role is to assist..."</text>
+  <rect x="12" y="830" width="610" height="200" rx="28" fill="#fdf0c8"/>
+  <g transform="translate(115 912) scale(1.0)" stroke="#fff" stroke-width="5" stroke-linejoin="round">
+    <polygon points="0,-50 46,-26 0,-2 -46,-26" fill="#e3b04b"/>
+    <polygon points="-46,-26 0,-2 0,52 -46,28" fill="#d9a43a"/>
+    <polygon points="46,-26 0,-2 0,52 46,28" fill="#e8bb5c"/>
+  </g>
+  <text class="lab" x="114" y="1008" text-anchor="middle">Sandbox</text>
+  <text class="txt" x="233" y="872" text-anchor="middle">train.csv</text>
+  <rect x="205" y="888" width="56" height="50" rx="3" fill="none" stroke="#2b2b2b" stroke-width="5"/>
+  <line x1="205" y1="904" x2="261" y2="904" stroke="#2b2b2b" stroke-width="4"/><line x1="205" y1="921" x2="261" y2="921" stroke="#2b2b2b" stroke-width="4"/>
+  <line x1="224" y1="904" x2="224" y2="938" stroke="#2b2b2b" stroke-width="4"/><line x1="242" y1="904" x2="242" y2="938" stroke="#2b2b2b" stroke-width="4"/>
+  <text class="txt" x="358" y="872" text-anchor="middle">test.csv</text>
+  <rect x="330" y="888" width="56" height="50" rx="3" fill="none" stroke="#2b2b2b" stroke-width="5"/>
+  <line x1="330" y1="904" x2="386" y2="904" stroke="#2b2b2b" stroke-width="4"/><line x1="330" y1="921" x2="386" y2="921" stroke="#2b2b2b" stroke-width="4"/>
+  <line x1="349" y1="904" x2="349" y2="938" stroke="#2b2b2b" stroke-width="4"/><line x1="367" y1="904" x2="367" y2="938" stroke="#2b2b2b" stroke-width="4"/>
+  <text class="txt" x="480" y="872" text-anchor="middle">sample.csv</text>
+  <rect x="452" y="888" width="56" height="50" rx="3" fill="none" stroke="#2b2b2b" stroke-width="5"/>
+  <line x1="452" y1="904" x2="508" y2="904" stroke="#2b2b2b" stroke-width="4"/><line x1="452" y1="921" x2="508" y2="921" stroke="#2b2b2b" stroke-width="4"/>
+  <line x1="471" y1="904" x2="471" y2="938" stroke="#2b2b2b" stroke-width="4"/><line x1="489" y1="904" x2="489" y2="938" stroke="#2b2b2b" stroke-width="4"/>
+  <text class="txt" x="563" y="914" text-anchor="middle">......</text>
+  <text class="txt" x="314" y="996" text-anchor="start">Python executor</text>
+  <g transform="translate(272 988)"><rect x="-22" y="-24" width="24" height="24" rx="7" fill="#3a76b0"/><rect x="-2" y="-2" width="24" height="24" rx="7" fill="#f2c94c"/></g>
+  <line x1="122" y1="318" x2="122" y2="382" stroke="#2b2b2b" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line x1="120" y1="548" x2="120" y2="630" stroke="#2b2b2b" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line x1="120" y1="788" x2="120" y2="856" stroke="#2b2b2b" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <circle cx="764" cy="148" r="32" fill="#1a1f7a"/>
+  <rect x="748.0" y="133.4" width="32.0" height="8.3" rx="2.8" fill="none" stroke="#fff" stroke-width="2.7"/>
+  <line x1="752.8" y1="137.6" x2="759.2" y2="137.6" stroke="#fff" stroke-width="2.3"/>
+  <rect x="748.0" y="143.8" width="32.0" height="8.3" rx="2.8" fill="none" stroke="#fff" stroke-width="2.7"/>
+  <line x1="752.8" y1="148.0" x2="759.2" y2="148.0" stroke="#fff" stroke-width="2.3"/>
+  <rect x="748.0" y="154.2" width="32.0" height="8.3" rx="2.8" fill="none" stroke="#fff" stroke-width="2.7"/>
+  <line x1="752.8" y1="158.4" x2="759.2" y2="158.4" stroke="#fff" stroke-width="2.3"/>
+  <path d="M766 182 Q760 232 836 234" fill="none" stroke="#8a8a8a" stroke-width="3" marker-end="url(#arrowG)"/>
+  <text class="code" x="798" y="214" text-anchor="middle">I1</text>
+  <circle cx="880" cy="193.0" r="22.0" fill="#3a8fd6"/>
+  <path d="M840.0 263.0 Q840.0 223.0 880 223.0 Q920.0 223.0 920.0 263.0 Z" fill="#3a8fd6"/>
+  <rect x="970" y="172" width="516" height="82" rx="16" fill="#dce7f8"/>
+  <polygon points="970,200 936,214 970,228" fill="#dce7f8"/>
+  <text class="bub" x="984" y="226" text-anchor="start">Show me the mean age of customers.</text>
+  <rect x="992" y="296" width="546" height="228" rx="16" fill="#ececec"/>
+  <polygon points="1538,356 1574,370 1538,384" fill="#ececec"/>
+  <g transform="translate(1655 360) scale(1.0)" fill="#b8b8b8">
+    <circle cx="0" cy="-58" r="7"/><rect x="-3" y="-54" width="6" height="14"/>
+    <rect x="-46" y="-40" width="92" height="80" rx="18"/>
+    <rect x="-58" y="-14" width="8" height="34"/><rect x="50" y="-14" width="8" height="34"/>
+    <circle cx="-16" cy="0" r="7" fill="#fff"/><circle cx="16" cy="0" r="7" fill="#fff"/>
+  </g>
+  <text class="bub" x="1026" y="352" text-anchor="start">Okay, I will compute the mean age of</text>
+  <text class="bub" x="1026" y="388" text-anchor="start">customers using Python code.</text>
+  <rect x="1014" y="404" width="502" height="102" rx="14" fill="#f7f7f7" stroke="#8a8a8a" stroke-width="1.5"/>
+  <text class="cd" x="1034" y="444" text-anchor="start" style="fill:#2b2b2b"><tspan style="fill:#1f6fb2">mean_age</tspan> = <tspan style="fill:#1f6fb2">df</tspan>[<tspan style="fill:#d1342f">'age'</tspan>].<tspan style="fill:#d9822b">mean</tspan>()</text>
+  <text class="cd" x="1034" y="476" text-anchor="start" style="fill:#2b2b2b"><tspan style="fill:#d9822b">print</tspan>(<tspan style="fill:#7b4fb5">f</tspan><tspan style="fill:#d1342f">"Mean age of customers: </tspan><tspan style="fill:#7b4fb5">{</tspan><tspan style="fill:#1f6fb2">mean_age</tspan><tspan style="fill:#7b4fb5">}</tspan><tspan style="fill:#d1342f">"</tspan>)</text>
+  <g transform="translate(876 612) scale(0.95)" stroke="#fff" stroke-width="5" stroke-linejoin="round">
+    <polygon points="0,-50 46,-26 0,-2 -46,-26" fill="#e3b04b"/>
+    <polygon points="-46,-26 0,-2 0,52 -46,28" fill="#d9a43a"/>
+    <polygon points="46,-26 0,-2 0,52 46,28" fill="#e8bb5c"/>
+  </g>
+  <rect x="970" y="560" width="410" height="106" rx="16" fill="#fdf0c8"/>
+  <polygon points="970,598 936,612 970,626" fill="#fdf0c8"/>
+  <text class="bub" x="984" y="606" text-anchor="start">Outputs:</text>
+  <text class="bub" x="984" y="642" text-anchor="start">Mean age of customers: 53.3</text>
+  <rect x="1344" y="702" width="206" height="82" rx="16" fill="#ececec"/>
+  <polygon points="1550,728 1586,742 1550,756" fill="#ececec"/>
+  <text class="bub" x="1362" y="752" text-anchor="start">Answer: 53.3</text>
+  <g transform="translate(1655 736) scale(1.0)" fill="#b8b8b8">
+    <circle cx="0" cy="-58" r="7"/><rect x="-3" y="-54" width="6" height="14"/>
+    <rect x="-46" y="-40" width="92" height="80" rx="18"/>
+    <rect x="-58" y="-14" width="8" height="34"/><rect x="50" y="-14" width="8" height="34"/>
+    <circle cx="-16" cy="0" r="7" fill="#fff"/><circle cx="16" cy="0" r="7" fill="#fff"/>
+  </g>
+  <circle cx="764" cy="804" r="32" fill="#1a1f7a"/>
+  <rect x="748.0" y="789.4" width="32.0" height="8.3" rx="2.8" fill="none" stroke="#fff" stroke-width="2.7"/>
+  <line x1="752.8" y1="793.6" x2="759.2" y2="793.6" stroke="#fff" stroke-width="2.3"/>
+  <rect x="748.0" y="799.8" width="32.0" height="8.3" rx="2.8" fill="none" stroke="#fff" stroke-width="2.7"/>
+  <line x1="752.8" y1="804.0" x2="759.2" y2="804.0" stroke="#fff" stroke-width="2.3"/>
+  <rect x="748.0" y="810.2" width="32.0" height="8.3" rx="2.8" fill="none" stroke="#fff" stroke-width="2.7"/>
+  <line x1="752.8" y1="814.4" x2="759.2" y2="814.4" stroke="#fff" stroke-width="2.3"/>
+  <path d="M880 806 Q886 780 810 790" fill="none" stroke="#8a8a8a" stroke-width="3" marker-end="url(#arrowG)"/>
+  <text class="code" x="840" y="778" text-anchor="middle">I1</text>
+  <text class="code" x="872" y="778" text-anchor="middle" style="fill:#1f8a4c">✓</text>
+  <path d="M766 838 Q760 884 836 884" fill="none" stroke="#8a8a8a" stroke-width="3" marker-end="url(#arrowG)"/>
+  <text class="code" x="802" y="866" text-anchor="middle">I2</text>
+  <circle cx="880" cy="844.0" r="22.0" fill="#3a8fd6"/>
+  <path d="M840.0 914.0 Q840.0 874.0 880 874.0 Q920.0 874.0 920.0 914.0 Z" fill="#3a8fd6"/>
+  <rect x="978" y="822" width="486" height="150" rx="16" fill="#dce7f8"/>
+  <polygon points="978,848 944,862 978,876" fill="#dce7f8"/>
+  <text class="bub" x="1000" y="870" text-anchor="start">Okay, they're middle-aged. Then,</text>
+  <text class="bub" x="1000" y="906" text-anchor="start">let's see what people aged 40-60</text>
+  <text class="bub" x="1000" y="942" text-anchor="start">bought and how often.</text>
+</svg>

@@ -1,0 +1,86 @@
+# Overlay for _notes/cs/os.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: OS           # short name on the start-page topic map
+title: Operating systems
+hook: Processes and threads, synchronization and deadlock, CPU scheduling, paging and virtual memory, and file systems.
+intro: |
+  The chapter follows the order of a standard operating systems textbook. The first two sections are vocabulary:
+  what the kernel is, user and kernel mode, system calls, and the ways an OS can be structured. Then come the units
+  of work: processes (their states, scheduling, fork and exec, and how they communicate) and threads, which share
+  one address space.
+
+  Sharing creates the next problem, race conditions, and the synchronization section covers locks, semaphores,
+  monitors and the four conditions for deadlock. The memory sections go from contiguous allocation to paging and
+  then to virtual memory, where a process can run with only part of it in RAM and the question becomes which page
+  to evict. The chapter ends with disks, file systems and I/O.
+sections:
+  introduction:
+    lead: |
+      The OS sits between the hardware and application programs and hands out CPU time, memory, storage and I/O. The
+      one program always running is the kernel. Much of this section is definitions that the later sections rely on.
+  os structures:
+    lead: |
+      What the OS offers and how it is put together. Programs reach OS services through system calls, usually
+      wrapped by an API such as libc. The design choices run from a monolithic kernel (little overhead) through
+      layers and a microkernel (smaller, cleaner, slower because of message passing) to loadable modules, and real
+      systems are hybrids.
+  processes:
+    lead: |
+      A process is a program in execution: its code plus a program counter, registers, stack and heap. The kernel
+      keeps each one's state in a process control block, moves processes between queues, and context-switches by
+      saving one block and loading another.
+  threads:
+    lead: |
+      A thread has its own program counter, registers and stack but shares the rest of its process, so threads are
+      cheaper to create than processes. Amdahl's law says the serial part of a program limits how
+      much more cores can help.
+  process synchronization:
+    lead: |
+      When two processes update shared data at the same time the result depends on timing, a race condition. Each
+      tool here enforces mutual exclusion around a critical section: hardware atomic instructions, mutex locks,
+      semaphores and monitors. Deadlock needs four conditions at once, so breaking any one of them prevents it.
+  cpu scheduling:
+    lead: |
+      The short-term scheduler picks which ready process runs next. The algorithms differ in whether they can preempt
+      a running process and in whether a long or low-priority job can starve.
+  main memory:
+    lead: |
+      Each process needs its own protected range of memory. Contiguous allocation leads to external fragmentation;
+      segmentation and paging avoid needing one contiguous block. Paging is the one in common use, with a page table
+      per process and a TLB to cache translations.
+  virtual memory:
+    lead: |
+      With demand paging a page is only loaded when it is first used, so a process can be larger than physical memory.
+      When memory is full, a page fault has to evict some page, and the replacement algorithm decides which one.
+    viz:
+      - name: page-replacement
+        params: {algo: fifo, frames: 3, string: belady}
+        caption: |
+          Each column is one memory reference; a highlighted cell is a page loaded on a fault. On the string
+          1 2 3 4 1 2 5 1 2 3 4 5, FIFO has 9 faults with 3 frames and 10 with 4: Belady's anomaly, visible as the
+          bump in the orange curve. LRU and OPT are stack algorithms, so their curves never go up. OPT is the lower
+          bound but needs to know the future.
+  mass-storage structure:
+    lead: |
+      Disk scheduling orders pending requests to cut head movement. SCAN sweeps back and forth across the disk
+      like an elevator.
+  file-system interface:
+    lead: |
+      What a file system looks like to the user: open files tracked in an open-file table, sequential or direct
+      access, and directories that grow from two levels into a tree. Links make the tree a graph, and cycles force
+      slow garbage collection.
+  file-system implementation:
+    lead: |
+      How files sit on disk. Blocks can be allocated contiguously, as a linked list (as in FAT) or through an index
+      block holding all the pointers, and the free blocks are tracked with a bit map, a linked list, grouping or
+      counting.
+  i/o systems:
+    lead: |
+      The CPU talks to devices over a bus through a few registers (data-in, data-out, status, control). Interrupts
+      tell the CPU a device is ready, and direct memory access moves large chunks without the CPU copying each byte.
+takeaways:
+  - The kernel runs in kernel mode, and user code reaches it only through system calls, traps and interrupts.
+  - A process is a program in execution with its own address space; threads share that address space and keep only their own registers and stack.
+  - Shared data needs mutual exclusion around critical sections, and deadlock needs mutual exclusion, hold and wait, no preemption and circular wait all at once.
+  - Paging removes the need for one contiguous block of memory, and a TLB caches the page-table lookups.
+  - With demand paging a process can be larger than RAM, and the page replacement algorithm decides how often it faults.
+figures: {}

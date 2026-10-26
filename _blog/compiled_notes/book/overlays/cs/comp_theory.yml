@@ -1,0 +1,86 @@
+# Overlay for _notes/cs/comp_theory.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: CS theory           # short name on the start-page topic map
+title: Theory of computation
+subtitle: Automata, grammars and Turing machines, undecidability, and NP-completeness, following Hopcroft, Motwani and Ullman.
+hook: Finite automata, context-free grammars and pushdown automata, Turing machines, undecidability, and NP-completeness.
+intro: |
+  The chapter climbs the Chomsky hierarchy one machine at a time. Finite automata recognize the regular languages;
+  adding a stack gives pushdown automata and the context-free languages; an unbounded tape gives Turing machines
+  and the recursively enumerable languages. For each class the note covers how to define it, how to convert between
+  equivalent forms, and how to prove a language is outside it with a pumping lemma.
+
+  The second half asks what can't be computed at all and what can't be computed fast. Diagonalization gives a
+  language no Turing machine accepts, and from there the halting problem and Rice's theorem follow. The last two
+  sections are on P, NP and NP-completeness: Cook's theorem for SAT, reductions to other problems, and approximation
+  algorithms for problems that are hard to solve exactly.
+sections:
+  introduction:
+    lead: |
+      An overview of the whole course: each class in the hierarchy is a set of languages, and each one needs a
+      stronger machine to recognize it than the class inside it. The rest of this section is notation for strings, languages,
+      automata and grammars.
+  ch 1-3 - finite automata, regular expressions:
+    lead: |
+      A finite automaton reads its input once, left to right, with only its current state as memory. A
+      nondeterministic one can follow several transitions at once, but it recognizes the same languages: tracking
+      the set of states it could be in turns it into a deterministic one.
+    viz:
+      - name: nfa-run
+        params: {input: "1001"}
+        caption: |
+          An example NFA that accepts binary strings ending in 01. Step through the input: from q0, a 0 splits the
+          machine into a copy that stays and a copy that guesses the end has started. The set of live states is the
+          state of the equivalent DFA, and the input is accepted if any copy finishes in q2.
+  ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4):
+    lead: |
+      The pumping lemma is the tool for showing a language is not regular: any long enough string in a regular
+      language has a middle part that can be repeated any number of times without leaving the language.
+  ch 6 - pushdown automata:
+    lead: |
+      A pushdown automaton is a finite automaton plus a stack, which is exactly the memory needed for matched
+      structure like palindromes or balanced parentheses. PDAs accept the same languages as context-free grammars.
+  ch 8 - intro to turing machines (except 8.5.3):
+    lead: |
+      A Turing machine has a tape it can read, write and move along in both directions. Extra tapes, tracks or
+      nondeterminism don't let it accept any new languages, and it can simulate a real computer with polynomial
+      slowdown.
+  ch 9 - undecidability (9.1,9.2,9.3):
+    lead: |
+      Turing machines can be written as binary strings, so they can be numbered and fed to each other. Flipping the
+      diagonal of the machine-by-input table gives a language no machine accepts, and reductions carry that result
+      to the universal language and the halting problem.
+  Ch 10 - 10.1-10.4:
+    lead: |
+      P is what a deterministic Turing machine solves in polynomial time, NP what a nondeterministic one does. A
+      problem is NP-complete if it is in NP and every NP problem reduces to it in polynomial time, so a fast algorithm
+      for one would give P = NP.
+  ch 5 - context free grammars and languages:
+    lead: |
+      A context-free grammar generates strings by repeatedly replacing a variable with the right side of one of
+      its productions. Derivations, parse trees and recursive inference are equivalent ways to show a string is
+      in the language. A grammar is ambiguous when some string has two different parse trees, and some languages
+      have only ambiguous grammars.
+  ch 7 - properties of CFLs:
+    lead: |
+      The context-free counterparts of chapter 4. Chomsky normal form makes every grammar's productions look
+      like $A \to BC$ or $A \to a$, which drives the CFL pumping lemma (now with two pieces pumped together) and
+      the $O(n^3)$ CYK membership test. CFLs are closed under union, concatenation and closure but not under
+      intersection or complement.
+  more on NP Completeness:
+    lead: |
+      The working tool is the polynomial-time reduction: map instances of one problem to another, then use a
+      solver for the second. Reductions from satisfiability show clique and 3-coloring are NP-complete. For
+      NP-complete optimization problems such as vertex cover and max cut, simple approximation algorithms get
+      within a factor of 2 of the optimum.
+takeaways:
+  - Regular, context-free and recursively enumerable languages are recognized by finite automata, pushdown
+    automata and Turing machines, each a stronger machine than the last.
+  - Nondeterminism does not add power to finite automata or Turing machines, since a deterministic machine can
+    track all the branches.
+  - Pumping lemmas show a language is outside a class, because every long enough string in a regular or
+    context-free language contains pieces that can be repeated.
+  - Diagonalization gives a language no Turing machine accepts, and reductions carry undecidability to the
+    halting problem and Rice's theorem.
+  - A problem is NP-complete if it is in NP and every NP problem reduces to it, so a polynomial algorithm for
+    any one of them would give P = NP.
+figures: {}

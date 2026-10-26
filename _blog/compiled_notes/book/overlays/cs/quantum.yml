@@ -1,0 +1,62 @@
+# Overlay for _notes/cs/quantum.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Quantum computing
+subtitle: Short notes on what quantum computers could do, why amplitudes matter, Maxwell's demon, and quantum probability.
+hook: Qubits and amplitudes, which problems quantum computers might speed up, Maxwell's demon, and a matrix view of probability.
+intro: |
+  The note starts from a question about the limits of computation: could physics let us beat a Turing machine
+  running in polynomial time? It lists some physical "computers" that don't, then gets to quantum computing. An
+  $n$-qubit state is $2^n$ complex amplitudes whose squared magnitudes sum to 1, updated by unitary matrices.
+
+  The central idea is that amplitudes can be negative, so paths to a wrong answer can cancel. The rest covers what
+  that might buy (factoring, Grover's square-root speedup, simulation) and what gets in the way (decoherence), then
+  two side topics: Maxwell's demon and a matrix view of joint probability distributions.
+sections:
+  intro:
+    lead: |
+      Probabilities are computed from amplitudes: add the amplitudes of every path to an outcome, then square the
+      magnitude of the sum. Because amplitudes can have opposite signs, two ways of reaching the same place can
+      cancel.
+    viz:
+      - name: two-slit-amplitudes
+        params: {sep: 3, wavelength: 0.6, pos: 0}
+        caption: |
+          Each slit contributes an amplitude at every point of the screen, drawn as an arrow on the right. Move the
+          screen position to a dark fringe: the arrows point in opposite directions and their sum is near 0, even
+          though each slit alone would send the photon there. Turn on "measure which slit" and the probabilities
+          add instead, which wipes out the fringes.
+  maxwell's demon:
+    lead: |
+      A thought experiment that seems to break the second law of thermodynamics by sorting fast and slow molecules
+      into separate sides. The catch is that the demon has to track every particle, which generates heat.
+  basics:
+    lead: |
+      An $n$-bit computer is in one of $2^n$ states and its operations are stochastic matrices. An $n$-qubit
+      computer is described by $2^n$ complex coefficients whose squares sum to 1, and its operations are unitary
+      matrices, which keep that sum at 1.
+  quantum probability:
+    lead: |
+      A side topic from a blog post: write a joint distribution of X and Y as a matrix $M$ of square roots of
+      the probabilities. The marginals, which usually throw information away, then appear on the diagonals of
+      $M^T M$ and $M M^T$, and the eigenvectors of those matrices keep the conditional distributions.
+takeaways:
+  - The church-turing thesis suggests a polynomial-time Turing machine is the best computer possible, and most
+    physical shortcuts (soap films, relativity, faster clocks) fail by getting stuck or costing exponential energy.
+  - An $n$-qubit state is $2^n$ complex amplitudes whose squared magnitudes sum to 1, changed only by unitary
+    matrices.
+  - Amplitudes can be negative, so paths to a wrong answer can cancel while paths to the right answer add up in
+    phase.
+  - Quantum computers could factor integers in polynomial time and give Grover's square-root speedup, but it is
+    unclear that they can solve NP-complete problems.
+  - Decoherence, interaction with the outside world, is what makes scaling up hard, and error-correcting codes
+    are the way around it.
+figures:
+  double_slit.svg: |
+    Photons pass two slits and land on a screen in bands. A dark patch has probability $|a_1 + a_2|^2 = 0$, since
+    the amplitudes through the two slits cancel, yet with one slit closed the photon can land there.
+  demon.svg: |
+    Maxwell's demon works the door between two gas chambers, letting fast molecules into one side and slow ones into
+    the other. One side heats up and the other cools, which would lower entropy and break the second law.
+  matrix_prob.svg: |
+    A joint distribution of X and Y written as a matrix M of square roots of the probabilities. The diagonal of
+    $M^T M$ is the marginal on Y and the diagonal of $M M^T$ is the marginal on X; their eigenvectors give conditional
+    distributions.

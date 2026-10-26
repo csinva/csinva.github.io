@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.4. languages</title>
+    <title>Languages and parallel computing &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -59,10 +60,105 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/cs/languages_parallel';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.5. os" href="os.html" />
-    <link rel="prev" title="2.3. algorithms" href="algo.html" />
+    <link rel="next" title="Architecture" href="arch.html" />
+    <link rel="prev" title="Algorithms" href="algo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,8 +250,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -172,90 +268,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algo.html">Algorithms</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs_section.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -314,70 +428,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/cs/languages_parallel.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -409,7 +459,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>languages</h1>
+    <h1>Languages and parallel computing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,39 +469,39 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">2.4.1. python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic">2.4.1.1. basic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">2.4.1.2. data structures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful">2.4.1.3. useful</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-level">2.4.1.4. higher level</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented">2.4.1.5. object-oriented</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-pandas">2.4.1.6. numpy/pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic">Basic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful">Useful</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-level">Higher level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented">Object-oriented</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-pandas">Numpy/pandas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-parallelization">2.4.2. gpu / parallelization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">2.4.2.1. computations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">2.4.2.2. pytorch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">2.4.2.3. parallelization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-parallelization">GPU / parallelization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">Computations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">Pytorch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">Parallelization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filetypes">2.4.3. filetypes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-c">2.4.4. c/c++</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-basic">2.4.4.1. C basic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#malloc">2.4.4.2. malloc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">2.4.4.3. memory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structs">2.4.4.4. structs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">2.4.4.5. strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pointers">2.4.4.6. pointers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filetypes">Filetypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-c">C/c++</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-basic">C basic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#malloc">Malloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structs">Structs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pointers">Pointers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java">2.4.5. java</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.4.5.1. data structures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.5.2. useful</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4.5.3. higher level</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.4.5.4. object-oriented</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java">Java</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Data structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Useful</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Higher level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Object-oriented</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r">2.4.6. R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r">R</a></li>
 </ul>
             </nav>
         </div>
@@ -463,18 +513,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="languages">
-<h1><span class="section-number">2.4. </span>languages<a class="headerlink" href="#languages" title="Link to this heading">#</a></h1>
-<section id="python">
-<h2><span class="section-number">2.4.1. </span>python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/cs.html">Computer science</a> &nbsp;·&nbsp; chapter 3 of 8 &nbsp;·&nbsp; 12 min read</p><section class="tex2jax_ignore mathjax_ignore" id="languages-and-parallel-computing">
+<h1>Languages and parallel computing<a class="headerlink" href="#languages-and-parallel-computing" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Quick references for python, c/c++, java and R, plus how training is split across GPUs.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>Most of this chapter is reference material: the python, java and R calls that come up all the time (lists, deques, dicts, string formatting, sorting with a key), and c/c++ details on pointers, references, memory, classes and virtual dispatch. Read whichever language you need; the sections don’t depend on each other.</p>
+<p>The GPU section is different in kind. It starts from the point that moving data between GPU memories often costs more than the arithmetic, then describes how training is split across devices: the collective operations (AllReduce, ReduceScatter, AllGather), how DDP and FSDP use them, and the levels of parallelism (data, tensor, pipeline).</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 6 sections</summary><ol><li><a href="#sec-languages-parallel-python">Python</a><span class="ol-lead">Python reference: the built-in data structures and what each is implemented as, string and sorting idioms, how arguments are passed, classes, and a few pandas calls.</span></li><li><a href="#sec-languages-parallel-gpu-parallelization">GPU / parallelization</a><span class="ol-badge">1 interactive</span><span class="ol-lead">On a GPU, pointwise operations spend more time moving data from DRAM to SRAM than computing.</span></li><li><a href="#sec-languages-parallel-filetypes">Filetypes</a><span class="ol-lead">Parquet stores a table by column instead of by row, so a query reads only the columns it needs and each column compresses well.</span></li><li><a href="#sec-languages-parallel-c-c">C/c++</a><span class="ol-lead">Unlike python and java, C and C++ make you manage memory yourself.</span></li><li><a href="#sec-languages-parallel-java">Java</a><span class="ol-lead">The java collections and string tools that come up most, then the type rules: like python, java passes primitives by value and objects by copying a reference.</span></li><li><a href="#sec-languages-parallel-r">R</a><span class="ol-lead">R basics: `&lt;-` for assignment, vectors with named elements, 1-indexed matrices, factors for categorical variables, and data frames with variables as columns and observations as rows.</span></li></ol></details><section id="python">
+<span id="sec-languages-parallel-python"></span><h2>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<p class="section-lead">Python reference: the built-in data structures and what each is implemented as, string and sorting idioms, how arguments are passed, classes, and a few pandas calls.</p>
 <section id="basic">
-<h3><span class="section-number">2.4.1.1. </span>basic<a class="headerlink" href="#basic" title="Link to this heading">#</a></h3>
+<h3>Basic<a class="headerlink" href="#basic" title="Link to this heading">#</a></h3>
+<p class="section-lead">The one trap here is copying. <code class="docutils literal notranslate"><span class="pre">x.copy()</span></code> is shallow, so a list inside a list is still shared with the original, and nested objects need <code class="docutils literal notranslate"><span class="pre">deepcopy</span></code>.</p>
 <ul class="simple">
 <li><p>from math import log, log2, floor, ceil</p></li>
 <li></li>
 <li><p>from random import random</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">random.random()</span> <span class="pre">###</span> <span class="pre">[0,</span> <span class="pre">1.0)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random.random()</span> <span class="pre">##</span> <span class="pre">[0,</span> <span class="pre">1.0)</span></code></p></li>
 </ul>
 </li>
 <li><p>copying: x.copy() for list, dict, numpy</p>
@@ -490,16 +547,17 @@ document.write(`
 </ul>
 </section>
 <section id="data-structures">
-<h3><span class="section-number">2.4.1.2. </span>data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">list</span> <span class="n">l</span> <span class="p">(</span><span class="n">use</span> <span class="n">this</span> <span class="k">for</span> <span class="n">stack</span> <span class="k">as</span> <span class="n">well</span><span class="p">)</span> <span class="c1">### implemented like an arraylist</span>
+<h3>Data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h3>
+<p class="section-lead">Which built-in to reach for: a list doubles as a stack (it is implemented like an arraylist), <code class="docutils literal notranslate"><span class="pre">deque</span></code> is the queue (a doubly linked list, so both ends are cheap), and <code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code> and <code class="docutils literal notranslate"><span class="pre">Counter</span></code> cover heaps and counting.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">list</span> <span class="n">l</span> <span class="p">(</span><span class="n">use</span> <span class="n">this</span> <span class="k">for</span> <span class="n">stack</span> <span class="k">as</span> <span class="n">well</span><span class="p">)</span> <span class="c1">## implemented like an arraylist</span>
  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
-  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="c1">## by default, idx=-1</span>
+  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="c1"># by default, idx=-1</span>
   <span class="o">-</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
   <span class="o">-</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
-  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">l2</span><span class="p">)</span> <span class="c1">## add all elements of l2 to l1</span>
-  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;dog&#39;</span><span class="p">)</span> <span class="c1">## index of element, throws err if not found</span>
-<span class="o">-</span> <span class="n">queue</span><span class="p">:</span> <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span> <span class="c1">### implemented as doubly linked list</span>
+  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">l2</span><span class="p">)</span> <span class="c1"># add all elements of l2 to l1</span>
+  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;dog&#39;</span><span class="p">)</span> <span class="c1"># index of element, throws err if not found</span>
+<span class="o">-</span> <span class="n">queue</span><span class="p">:</span> <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span> <span class="c1">## implemented as doubly linked list</span>
       <span class="o">-</span> <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
       <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
       <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
@@ -507,7 +565,7 @@ document.write(`
       <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
       <span class="o">-</span> <span class="n">index</span> <span class="n">like</span> <span class="n">normal</span>
       <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-<span class="o">-</span> <span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span> <span class="c1">### this implements a linkedlist</span>
+<span class="o">-</span> <span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span> <span class="c1">## this implements a linkedlist</span>
   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="nb">next</span><span class="p">):</span>
    <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
    <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
@@ -525,27 +583,27 @@ document.write(`
     <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="o">-</span> <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
- <span class="o">-</span> <span class="n">Counter</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span> <span class="c1">### this counts unique values and makes it into a dict of counts</span>
+ <span class="o">-</span> <span class="n">Counter</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span> <span class="c1">## this counts unique values and makes it into a dict of counts</span>
 </pre></div>
 </div>
 </section>
 <section id="useful">
-<h3><span class="section-number">2.4.1.3. </span>useful<a class="headerlink" href="#useful" title="Link to this heading">#</a></h3>
+<h3>Useful<a class="headerlink" href="#useful" title="Link to this heading">#</a></h3>
 <p><em>strings</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> 
-<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1">### convert to all upper case</span>
-<span class="o">-</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">### reverse the str</span>
-<span class="o">-</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="c1">### fastest way to join lots of strings (with _ between them)</span>
-<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span> <span class="c1">### split into a list wherever there is an e</span>
-<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;new_str&quot;</span><span class="p">)</span> <span class="c1">### replaces all instances</span>
-<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span> <span class="c1">### list index function</span>
-<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span> <span class="c1">### returns first index, otherwise -1</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1">## convert to all upper case</span>
+<span class="o">-</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">## reverse the str</span>
+<span class="o">-</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="c1">## fastest way to join lots of strings (with _ between them)</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span> <span class="c1">## split into a list wherever there is an e</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;new_str&quot;</span><span class="p">)</span> <span class="c1">## replaces all instances</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span> <span class="c1">## list index function</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span> <span class="c1">## returns first index, otherwise -1</span>
 <span class="o">-</span> <span class="n">formatting</span>
- <span class="o">-</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1">## f-string</span>
- <span class="o">-</span> <span class="s2">&quot;05d&quot;</span> <span class="c1">## pad to fill 5 spaces</span>
- <span class="o">-</span> <span class="s2">&quot;8.3f&quot;</span> <span class="c1">## max number of digits</span>
- <span class="o">-</span> <span class="s2">&quot;-d&quot;</span> <span class="c1">## left justify</span>
- <span class="o">-</span> <span class="s2">&quot;,d&quot;</span> <span class="c1">## print commas ex. &quot;1,000,000&quot;</span>
+ <span class="o">-</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># f-string</span>
+ <span class="o">-</span> <span class="s2">&quot;05d&quot;</span> <span class="c1"># pad to fill 5 spaces</span>
+ <span class="o">-</span> <span class="s2">&quot;8.3f&quot;</span> <span class="c1"># max number of digits</span>
+ <span class="o">-</span> <span class="s2">&quot;-d&quot;</span> <span class="c1"># left justify</span>
+ <span class="o">-</span> <span class="s2">&quot;,d&quot;</span> <span class="c1"># print commas ex. &quot;1,000,000&quot;</span>
   <span class="o">-</span> <span class="n">d</span> <span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">f</span> <span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">s</span> <span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="o">-</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;0b1010&#39;</span>
@@ -557,14 +615,14 @@ document.write(`
 </div>
 <p><em>sorting</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;bb&#39;</span><span class="p">]</span>
-<span class="o">-</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">### ascending order (set reverse=True for decreasing)</span>
+<span class="o">-</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">## ascending order (set reverse=True for decreasing)</span>
  <span class="o">-</span> <span class="n">example</span> <span class="n">keys</span><span class="p">:</span> <span class="n">values</span> <span class="k">for</span> <span class="n">key</span>
    <span class="o">-</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span>
     <span class="o">-</span> <span class="n">key</span><span class="o">=</span><span class="n">func_name</span>
     <span class="o">-</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="o">-</span> <span class="k">def</span><span class="w"> </span><span class="nf">func_name</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
        <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">### sorts in place</span>
+<span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">## sorts in place</span>
 </pre></div>
 </div>
 <p><em>exceptions</em></p>
@@ -579,9 +637,10 @@ document.write(`
 </div>
 </section>
 <section id="higher-level">
-<h3><span class="section-number">2.4.1.4. </span>higher level<a class="headerlink" href="#higher-level" title="Link to this heading">#</a></h3>
+<h3>Higher level<a class="headerlink" href="#higher-level" title="Link to this heading">#</a></h3>
+<p class="section-lead">Python passes everything by copying a reference. Changing an object through the reference is visible to the caller; rebinding the name inside the function is not.</p>
 <ul class="simple">
-<li><p><em>primitives</em>: <code class="docutils literal notranslate"><span class="pre">int,</span> <span class="pre">float,</span> <span class="pre">bool,</span> <span class="pre">str</span></code></p></li>
+<li><p><span id="def-primitives" class="def-anchor"></span><em>primitives</em>: <code class="docutils literal notranslate"><span class="pre">int,</span> <span class="pre">float,</span> <span class="pre">bool,</span> <span class="pre">str</span></code></p></li>
 <li><p>only primitive and reference <em>types</em></p>
 <ul>
 <li><p>when you assign primitives to each other, it’s fine</p></li>
@@ -596,8 +655,9 @@ document.write(`
 </ul>
 </section>
 <section id="object-oriented">
-<h3><span class="section-number">2.4.1.5. </span>object-oriented<a class="headerlink" href="#object-oriented" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### example of a class</span>
+<h3>Object-oriented<a class="headerlink" href="#object-oriented" title="Link to this heading">#</a></h3>
+<p class="section-lead">A base class can leave a method unimplemented by raising <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> for subclasses to override. Instance methods get <code class="docutils literal notranslate"><span class="pre">self</span></code> and can change the object, class methods get only the class, and static methods get neither.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## example of a class</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Document</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -605,18 +665,18 @@ document.write(`
     <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>         
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Subclass must implement abstract method&quot;</span><span class="p">)</span>
 
-<span class="c1">### example of inheritance</span>
+<span class="c1">## example of inheritance</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Pdf</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;Show pdf contents!&#39;</span>
 
-<span class="c1">### example of different types of methods</span>
+<span class="c1">## example of different types of methods</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">### can modify self (and class)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">## can modify self (and class)</span>
         <span class="k">return</span> <span class="s1">&#39;instance method called&#39;</span><span class="p">,</span> <span class="bp">self</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">classmethod</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span> <span class="c1">### can only modify class</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">classmethod</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span> <span class="c1">## can only modify class</span>
         <span class="k">return</span> <span class="s1">&#39;class method called&#39;</span><span class="p">,</span> <span class="bp">cls</span>
 
     <span class="nd">@staticmethod</span>
@@ -626,7 +686,7 @@ document.write(`
 </div>
 </section>
 <section id="numpy-pandas">
-<h3><span class="section-number">2.4.1.6. </span>numpy/pandas<a class="headerlink" href="#numpy-pandas" title="Link to this heading">#</a></h3>
+<h3>Numpy/pandas<a class="headerlink" href="#numpy-pandas" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span> <span class="n">indexes</span> <span class="n">by</span> <span class="n">val</span>
 <span class="n">df</span><span class="o">.</span><span class="n">iloc</span> <span class="n">indexes</span> <span class="n">by</span> <span class="n">index</span> <span class="n">position</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span> <span class="n">returns</span> <span class="n">a</span> <span class="nb">dict</span>
@@ -638,7 +698,8 @@ document.write(`
 </section>
 </section>
 <section id="gpu-parallelization">
-<h2><span class="section-number">2.4.2. </span>gpu / parallelization<a class="headerlink" href="#gpu-parallelization" title="Link to this heading">#</a></h2>
+<span id="sec-languages-parallel-gpu-parallelization"></span><h2>GPU / parallelization<a class="headerlink" href="#gpu-parallelization" title="Link to this heading">#</a></h2>
+<p class="section-lead">On a GPU, pointwise operations spend more time moving data from DRAM to SRAM than computing. Fusing several operations into one pass saves those trips, which is why activation functions of very different complexity cost about the same.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://horace.io/brrr_intro.html">https://horace.io/brrr_intro.html</a></p>
 <ul>
@@ -653,8 +714,10 @@ document.write(`
 </li>
 </ul>
 <section id="computations">
-<h3><span class="section-number">2.4.2.1. </span>computations<a class="headerlink" href="#computations" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>Computations<a class="headerlink" href="#computations" title="Link to this heading">#</a></h3>
+<p class="section-lead">These are the collective operations used when one model is trained on several GPUs (ranks). DDP keeps a full copy of the model on every GPU and averages gradients with AllReduce. FSDP splits the model itself across GPUs, gathers the pieces before each pass, and scatters the summed gradients afterwards.</p>
+<figure class="nb-viz-figure" id="viz-allreduce-steps"><div class="nb-viz" data-viz="allreduce-steps" data-params="{&quot;stage&quot;: 0}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Four ranks, each with its own vector cut into four slices. Step through ReduceScatter: rank r ends up with the sum of slice r over all ranks. AllGather then copies every summed slice to every rank, and the result is exactly what AllReduce gives. The dots show whose numbers each cell contains.</figcaption></figure><ul class="simple">
 <li><p><strong>AllReduce:</strong> reduce (e.g. sum) values across ranks = ReduceScatter then AllGather</p>
 <ul>
 <li><p><strong>ReduceScatter:</strong> reduce some slice across ranks and store it scattered across ranks</p></li>
@@ -676,7 +739,8 @@ document.write(`
 </ul>
 </section>
 <section id="pytorch">
-<h3><span class="section-number">2.4.2.2. </span>pytorch<a class="headerlink" href="#pytorch" title="Link to this heading">#</a></h3>
+<h3>Pytorch<a class="headerlink" href="#pytorch" title="Link to this heading">#</a></h3>
+<p class="section-lead">The three levels of splitting a model across GPUs differ in what is split. Data parallelism splits batches and copies the model, tensor parallelism splits parts of an input, and pipeline parallelism puts different layers on different GPUs. The rest lists which pytorch wrapper fits one machine or many.</p>
 <ul>
 <li><p>new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable</p></li>
 <li><p>huggingface <a class="reference external" href="https://huggingface.co/docs/transformers/main/en/performance">performance</a> overview</p></li>
@@ -726,19 +790,20 @@ document.write(`
 </li>
 <li><p>there’s a <code class="docutils literal notranslate"><span class="pre">torch.nn.Flatten</span></code> module</p></li>
 <li><p>following example <a class="reference external" href="https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51">here</a></p></li>
-<li><h2 class="rubric" id="roofline-analyses-https-jax-ml-github-io-scaling-book-roofline">roofline analyses: <a class="reference external" href="https://jax-ml.github.io/scaling-book/roofline/">https://jax-ml.github.io/scaling-book/roofline/</a></h2>
+<li><h2 class="rubric" id="roofline-analyses-https-jax-ml-github-io-scaling-book-roofline">roofline analyses: https://jax-ml.github.io/scaling-book/roofline/</h2>
 </li>
 </ul>
 </section>
 <section id="parallelization">
-<h3><span class="section-number">2.4.2.3. </span>parallelization<a class="headerlink" href="#parallelization" title="Link to this heading">#</a></h3>
+<h3>Parallelization<a class="headerlink" href="#parallelization" title="Link to this heading">#</a></h3>
+<p class="section-lead">Vocabulary first: cores within a node, nodes with separate memory, processes, and threads inside a process. Libraries like dask and ray handle the message passing between nodes so the code doesn’t have to.</p>
 <ul class="simple">
-<li><p><strong>cores</strong> = cpus = processors - individual processing units available on a single node</p></li>
-<li><p><strong>node</strong> - different computers with distinct memory</p></li>
-<li><p><strong>processes</strong> - instances of a program executing on a machine</p>
+<li><p><span id="def-cores" class="def-anchor"></span><strong>cores</strong> = cpus = processors - individual processing units available on a single node</p></li>
+<li><p><span id="def-node" class="def-anchor"></span><strong>node</strong> - different computers with distinct memory</p></li>
+<li><p><span id="def-processes" class="def-anchor"></span><strong>processes</strong> - instances of a program executing on a machine</p>
 <ul>
 <li><p>shouldn’t have more user processes than cores on a node</p></li>
-<li><p><strong>threads</strong> - multiple paths of execution within a single process</p>
+<li><p><span id="def-threads" class="def-anchor"></span><strong>threads</strong> - multiple paths of execution within a single process</p>
 <ul>
 <li><p>like a process, but more lightweight</p></li>
 </ul>
@@ -752,8 +817,8 @@ document.write(`
 </li>
 <li><p>python packages</p>
 <ul>
-<li><p><em>dask</em>: parallelizing tasks, distributed datasets, one or more machines</p></li>
-<li><p><em>ray</em>: parallelizing tasks, building distributed applications, one or more machines</p></li>
+<li><p><span id="def-dask" class="def-anchor"></span><em>dask</em>: parallelizing tasks, distributed datasets, one or more machines</p></li>
+<li><p><span id="def-ray" class="def-anchor"></span><em>ray</em>: parallelizing tasks, building distributed applications, one or more machines</p></li>
 </ul>
 </li>
 <li><p>dask</p>
@@ -785,11 +850,13 @@ document.write(`
 </section>
 </section>
 <section id="filetypes">
-<h2><span class="section-number">2.4.3. </span>filetypes<a class="headerlink" href="#filetypes" title="Link to this heading">#</a></h2>
+<span id="sec-languages-parallel-filetypes"></span><h2>Filetypes<a class="headerlink" href="#filetypes" title="Link to this heading">#</a></h2>
+<p class="section-lead">Parquet stores a table by column instead of by row, so a query reads only the columns it needs and each column compresses well.</p>
 <p><strong>Apache Parquet</strong> - an open-source, column-oriented data file format designed for efficient data storage and high-performance retrieval in big data analytics. Unlike row-based formats (like CSV), Parquet stores data by column, allowing for better compression and faster analytical queries by only reading necessary columns</p>
 </section>
 <section id="c-c">
-<h2><span class="section-number">2.4.4. </span>c/c++<a class="headerlink" href="#c-c" title="Link to this heading">#</a></h2>
+<span id="sec-languages-parallel-c-c"></span><h2>C/c++<a class="headerlink" href="#c-c" title="Link to this heading">#</a></h2>
+<p class="section-lead">Unlike python and java, C and C++ make you manage memory yourself. Locals live on the stack, globals in a data segment, and anything from malloc or new lives on the heap until it is freed or deleted.</p>
 <ul class="simple">
 <li><p>The C memory model: global, local, and heap variables. Where they are stored, their properties, etc.</p></li>
 <li><p>Variable scope</p></li>
@@ -797,7 +864,7 @@ document.write(`
 <li><p>Managing the heap: malloc/free, new/delete</p></li>
 </ul>
 <section id="c-basic">
-<h3><span class="section-number">2.4.4.1. </span>C basic<a class="headerlink" href="#c-basic" title="Link to this heading">#</a></h3>
+<h3>C basic<a class="headerlink" href="#c-basic" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>#include &lt;stdio.h&gt;</p></li>
 <li><p>printf(“the variable ‘i’ is: %d”, i);</p></li>
@@ -806,7 +873,8 @@ document.write(`
 </ul>
 </section>
 <section id="malloc">
-<h3><span class="section-number">2.4.4.2. </span>malloc<a class="headerlink" href="#malloc" title="Link to this heading">#</a></h3>
+<h3>Malloc<a class="headerlink" href="#malloc" title="Link to this heading">#</a></h3>
+<p class="section-lead"><code class="docutils literal notranslate"><span class="pre">malloc</span></code> returns a <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*</span></code> to fresh heap memory that has to be cast, and every block must be freed exactly once. A string literal, by contrast, points into read-only memory.</p>
 <ul class="simple">
 <li><p>malloc ex.</p></li>
 <li><p>There is no bool keyword in C</p></li>
@@ -829,7 +897,7 @@ document.write(`
 </ul>
 </section>
 <section id="memory">
-<h3><span class="section-number">2.4.4.3. </span>memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h3>
+<h3>Memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>heap variables stay - they are allocated with malloc</p></li>
 <li><p>local variables are stored on the stack</p></li>
@@ -837,7 +905,7 @@ document.write(`
 </ul>
 </section>
 <section id="structs">
-<h3><span class="section-number">2.4.4.4. </span>structs<a class="headerlink" href="#structs" title="Link to this heading">#</a></h3>
+<h3>Structs<a class="headerlink" href="#structs" title="Link to this heading">#</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
@@ -850,14 +918,16 @@ document.write(`
 </div>
 </section>
 <section id="strings">
-<h3><span class="section-number">2.4.4.5. </span>strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h3>
+<h3>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h3>
+<p class="section-lead">A C string is a char array ending in the null character <code class="docutils literal notranslate"><span class="pre">\0</span></code>, and <code class="docutils literal notranslate"><span class="pre">strlen</span></code> does not count it.</p>
 <ul class="simple">
 <li><p>array with extra null character at end ‘\0’</p></li>
 <li><p>strlen doesn’t include null character</p></li>
 </ul>
 </section>
 <section id="pointers">
-<h3><span class="section-number">2.4.4.6. </span>pointers<a class="headerlink" href="#pointers" title="Link to this heading">#</a></h3>
+<h3>Pointers<a class="headerlink" href="#pointers" title="Link to this heading">#</a></h3>
+<p class="section-lead">A long tour of C++ in the author’s course notes. In a declaration <code class="docutils literal notranslate"><span class="pre">*</span></code> makes a pointer and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> a reference; in an expression <code class="docutils literal notranslate"><span class="pre">*</span></code> dereferences and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> takes an address. It goes on to <code class="docutils literal notranslate"><span class="pre">new</span></code> and <code class="docutils literal notranslate"><span class="pre">delete</span></code>, references as pointers that can’t be reseated, parameter passing by value, by reference and by constant reference, and classes, inheritance and virtual dispatch through a virtual method table.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">fake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// declare a pointer</span>
@@ -866,7 +936,7 @@ document.write(`
 </pre></div>
 </div>
 <p>//Hello World</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">## include &lt;iostream&gt;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span><span class="w"> </span><span class="c1">//always comes after the includes, like a weaker version of packages</span>
 <span class="c1">//everything needs to be in a namespace otherwise you have to writed std::cout to look in iostream - you would use this for very long programs</span>
@@ -876,31 +946,31 @@ document.write(`
 <span class="p">}</span>
 
 <span class="n">Preprocessor</span>
-<span class="cp">## include &lt;iostream&gt; </span><span class="c1">//System file - angle brackets</span>
-<span class="cp">## include &quot;ListNode.h&quot; </span><span class="c1">//user file - inserts the contents of the file in this place</span>
-<span class="cp">## ifndef - &quot;if not defined&quot;</span>
-<span class="cp">## define - defines a macro (direct text replacement)</span>
-<span class="cp">## define TRUE 0 </span><span class="c1">//like a final int, we usually put it in all caps</span>
+<span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> //System file - angle brackets</span>
+<span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&quot;ListNode.h&quot;</span><span class="c1"> //user file - inserts the contents of the file in this place</span>
+<span class="cp"># ifndef - &quot;if not defined&quot;</span>
+<span class="cp"># define - defines a macro (direct text replacement)</span>
+<span class="cp"># define TRUE 0 </span><span class="c1">//like a final int, we usually put it in all caps</span>
 <span class="k">if</span><span class="p">(</span><span class="n">TRUE</span><span class="w"> </span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
-<span class="cp">## define MY_OBJECT_H </span><span class="c1">//doesn&#39;t give it a value - all it does is make #ifdef true and #ifndef false</span>
-<span class="cp">## if/#ifdef needs to be closed with #endif</span>
+<span class="cp"># define MY_OBJECT_H </span><span class="c1">//doesn&#39;t give it a value - all it does is make #ifdef true and #ifndef false</span>
+<span class="cp"># if/#ifdef needs to be closed with #endif</span>
 <span class="k">if</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">other</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">include</span><span class="w"> </span><span class="n">loop</span>
 <span class="n">we</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">solve</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">.</span><span class="n">h</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">everything</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">defined</span><span class="w"> </span><span class="n">once</span>
 <span class="n">odd</span><span class="p">.</span><span class="n">h</span><span class="o">:</span>
-<span class="cp">## ifndef ODD_H</span>
-<span class="cp">## define ODD_H</span>
-<span class="cp">## include &quot;even.h&quot;</span>
+<span class="cp"># ifndef ODD_H</span>
+<span class="cp"># define ODD_H</span>
+<span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&quot;even.h&quot;</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">odd</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="cp">## endif</span>
+<span class="cp"># endif</span>
 <span class="n">even</span><span class="p">.</span><span class="n">h</span><span class="o">:</span>
-<span class="cp">## ifndef EVEN_H</span>
-<span class="cp">## define EVEN_H</span>
-<span class="cp">## include &quot;odd.h&quot;</span>
+<span class="cp"># ifndef EVEN_H</span>
+<span class="cp"># define EVEN_H</span>
+<span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&quot;odd.h&quot;</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">even</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
-<span class="cp">## endif</span>
+<span class="cp"># endif</span>
 
 <span class="n">I</span><span class="o">/</span><span class="n">O</span>
-<span class="cp">## include &lt;iostream&gt;</span>
+<span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
@@ -1250,9 +1320,10 @@ b[0] = new Integer (1);</p>
 </section>
 </section>
 <section id="java">
-<h2><span class="section-number">2.4.5. </span>java<a class="headerlink" href="#java" title="Link to this heading">#</a></h2>
+<span id="sec-languages-parallel-java"></span><h2>Java<a class="headerlink" href="#java" title="Link to this heading">#</a></h2>
+<p class="section-lead">The java collections and string tools that come up most, then the type rules: like python, java passes primitives by value and objects by copying a reference. The JVM reclaims objects that are no longer referenced by running a mark-and-sweep garbage collector now and then.</p>
 <section id="id1">
-<h3><span class="section-number">2.4.5.1. </span>data structures<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Data structures<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="n">LinkedList</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayList</span>
 <span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="w"> </span><span class="n">e</span><span class="p">),</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">Element</span><span class="w"> </span><span class="n">e</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span>
 <span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">remove</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
@@ -1282,7 +1353,7 @@ b[0] = new Integer (1);</p>
 </ul>
 </section>
 <section id="id2">
-<h3><span class="section-number">2.4.5.2. </span>useful<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>Useful<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p><em>iterator</em></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="n">value</span>
 <span class="o">-</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">returns</span><span class="w"> </span><span class="kt">boolean</span>
@@ -1336,9 +1407,9 @@ b[0] = new Integer (1);</p>
 </ul>
 </section>
 <section id="id3">
-<h3><span class="section-number">2.4.5.3. </span>higher level<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>Higher level<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><em>primitives</em> - <code class="docutils literal notranslate"><span class="pre">byte,</span> <span class="pre">short,</span> <span class="pre">char,</span> <span class="pre">int,</span> <span class="pre">long,</span> <span class="pre">float,</span> <span class="pre">double</span></code></p></li>
+<li><p><span id="def-primitives-2" class="def-anchor"></span><em>primitives</em> - <code class="docutils literal notranslate"><span class="pre">byte,</span> <span class="pre">short,</span> <span class="pre">char,</span> <span class="pre">int,</span> <span class="pre">long,</span> <span class="pre">float,</span> <span class="pre">double</span></code></p></li>
 <li><p>java only has primitive and reference <em>types</em></p>
 <ul>
 <li><p>when you assign primitives to each other, it’s fine</p></li>
@@ -1365,7 +1436,7 @@ b[0] = new Integer (1);</p>
 </ul>
 </section>
 <section id="id4">
-<h3><span class="section-number">2.4.5.4. </span>object-oriented<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>Object-oriented<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>declare</p></th>
@@ -1382,14 +1453,14 @@ b[0] = new Integer (1);</p>
 </table>
 </div>
 <ul class="simple">
-<li><p><em>class method</em> = <em>static</em></p>
+<li><p><span id="def-class-method" class="def-anchor"></span><em>class method</em> = <em>static</em></p>
 <ul>
 <li><p>called with Foo.DoIt()</p></li>
 <li><p>initialized before constructor</p></li>
 <li><p>class shares one copy, can’t refer to non-static</p></li>
 </ul>
 </li>
-<li><p><em>instance method</em> - invoked on specific instance of the class</p>
+<li><p><span id="def-instance-method" class="def-anchor"></span><em>instance method</em> - invoked on specific instance of the class</p>
 <ul>
 <li><p>called with f.DoIt()</p></li>
 </ul>
@@ -1399,9 +1470,10 @@ b[0] = new Integer (1);</p>
 </section>
 </section>
 <section id="r">
-<h2><span class="section-number">2.4.6. </span>R<a class="headerlink" href="#r" title="Link to this heading">#</a></h2>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">%%</span><span class="m">2</span><span class="w"> </span><span class="c1">## modulus</span>
-<span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="c1">## assignment</span>
+<span id="sec-languages-parallel-r"></span><h2>R<a class="headerlink" href="#r" title="Link to this heading">#</a></h2>
+<p class="section-lead">R basics: <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> for assignment, vectors with named elements, 1-indexed matrices, factors for categorical variables, and data frames with variables as columns and observations as rows.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">%%</span><span class="m">2</span><span class="w"> </span><span class="c1"># modulus</span>
+<span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="c1"># assignment</span>
 <span class="nf">class</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">checks</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span>
 <span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
 </pre></div>
@@ -1427,19 +1499,30 @@ b[0] = new Integer (1);</p>
 <li><p>dim(m) prints dimensions</p></li>
 </ul>
 </li>
-<li><p><em>factor</em> - data type for storing categorical variable</p></li>
-<li><p><em>data frame</em> - when you want different types of data</p>
+<li><p><span id="def-factor" class="def-anchor"></span><em>factor</em> - data type for storing categorical variable</p></li>
+<li><p><span id="def-data-frame" class="def-anchor"></span><em>data frame</em> - when you want different types of data</p>
 <ul>
 <li><p>columns are variables, rows are observations</p></li>
 </ul>
 </li>
-<li><p><em>lists</em> - ordered, can hold any data type</p>
+<li><p><span id="def-lists" class="def-anchor"></span><em>lists</em> - ordered, can hold any data type</p>
 <ul>
 <li><p>length(list)</p></li>
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Python and java pass objects by copying a reference, so a function can change an object but not rebind the caller’s variable.</p></li>
+<li><p>Python’s <code class="docutils literal notranslate"><span class="pre">x.copy()</span></code> is shallow; nested objects need <code class="docutils literal notranslate"><span class="pre">deepcopy</span></code>.</p></li>
+<li><p>{‘In C you manage memory yourself’: “locals on the stack, globals in a data segment, and malloc’d memory on the heap until it is freed.”}</p></li>
+<li><p>C++ dispatches statically by default and only looks up the run-time type for <code class="docutils literal notranslate"><span class="pre">virtual</span></code> methods, through a table of method pointers; java makes every method virtual.</p></li>
+<li><p>On a GPU, moving data between memories often costs more than the arithmetic, which is why fusing operations helps.</p></li>
+<li><p>AllReduce is ReduceScatter followed by AllGather; DDP uses it to average gradients, and FSDP gathers model shards before each pass and reduce-scatters the gradients after.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../cs/arch.html"><span class="related-part">Computer science</span><span class="related-title">Architecture</span><span class="related-hook">Integers and floats in bits, assembly and calling conventions, a pipelined processor, caches, exceptions and virtual memory.</span></a><a class="related-card" href="../cs/os.html"><span class="related-part">Computer science</span><span class="related-title">Operating systems</span><span class="related-hook">Processes and threads, synchronization and deadlock, CPU scheduling, paging and virtual memory, and file systems.</span></a><a class="related-card" href="../cs/data_structures.html"><span class="related-part">Computer science</span><span class="related-title">Data structures</span><span class="related-hook">Linked lists and stacks, balanced search trees, heaps and Huffman codes, hash tables, and the standard graph algorithms.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1478,15 +1561,15 @@ b[0] = new Integer (1);</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.3. </span>algorithms</p>
+        <p class="prev-next-title">Algorithms</p>
       </div>
     </a>
     <a class="right-next"
-       href="os.html"
+       href="arch.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.5. </span>os</p>
+        <p class="prev-next-title">Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1506,39 +1589,39 @@ b[0] = new Integer (1);</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">2.4.1. python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic">2.4.1.1. basic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">2.4.1.2. data structures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful">2.4.1.3. useful</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-level">2.4.1.4. higher level</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented">2.4.1.5. object-oriented</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-pandas">2.4.1.6. numpy/pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic">Basic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful">Useful</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-level">Higher level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented">Object-oriented</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-pandas">Numpy/pandas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-parallelization">2.4.2. gpu / parallelization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">2.4.2.1. computations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">2.4.2.2. pytorch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">2.4.2.3. parallelization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-parallelization">GPU / parallelization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">Computations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">Pytorch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelization">Parallelization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filetypes">2.4.3. filetypes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-c">2.4.4. c/c++</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-basic">2.4.4.1. C basic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#malloc">2.4.4.2. malloc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">2.4.4.3. memory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structs">2.4.4.4. structs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">2.4.4.5. strings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pointers">2.4.4.6. pointers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filetypes">Filetypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-c">C/c++</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-basic">C basic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#malloc">Malloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structs">Structs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pointers">Pointers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java">2.4.5. java</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.4.5.1. data structures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.5.2. useful</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4.5.3. higher level</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.4.5.4. object-oriented</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java">Java</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Data structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Useful</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Higher level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Object-oriented</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r">2.4.6. R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r">R</a></li>
 </ul>
   </nav></div>
 
@@ -1563,7 +1646,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

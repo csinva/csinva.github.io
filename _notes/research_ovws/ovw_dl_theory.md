@@ -82,7 +82,7 @@ some more concrete questions:
 - datasets for measuring causality
   - Inferring Hidden Statuses and Actions in Video by Causal Reasoning - about finding causality in the video, not interpretation
 - **PL condition** = Polyak-Lojawsiewicz condition guarantees global convergence of loca methods
-  - $$\vert \vert \nabla f(x)\vert \vert ^2 \geq \alpha f(x) \geq 0$$<!-- -->
+  - $$\vert \vert \nabla f(x)\vert \vert ^2 \geq \alpha f(x) \geq 0$$
 
 ## semantic biases: what correlations will a net learn?
 
@@ -211,7 +211,7 @@ some more concrete questions:
   - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using <span class="corange">constraints</span>:
     - $X_1 = \phi(W_1 X_0)$
     - $X_2 = \phi(W_2 X_1)$
-  - $$\begin{align} &\min \cblue{(y - \hat y)^2}\\s.t. \corange{X_1} &\corange{ {}= \phi(WX_0)}\\\corange{X_2} &\corange{ {}= \phi(WX_1)}\end{align}$$<!-- -->
+  - $$\begin{align} &\min \cblue{(y - \hat y)^2}\\s.t. \corange{X_1} &\corange{ {}= \phi(WX_0)}\\\corange{X_2} &\corange{ {}= \phi(WX_1)}\end{align}$$
   - can be written using Lagrangian multipliers: $$\min \cblue{(y - \hat y)^2} + \corange{\lambda_1( X_1 - \phi(WX_0)) + \lambda_2(X_2 - \phi(WX_1))}$$
     - <span class="cblue">loss</span> + <span class="corange">constraint terms</span>
 - Fenchel Lifted Networks: A Lagrange Relaxation of Neural Network Training ([gu et al. 2018](https://arxiv.org/abs/1811.08039))

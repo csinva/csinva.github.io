@@ -1,0 +1,157 @@
+# Overlay for _notes/ml/classification.md. Keys under `sections` are the note's header text (case and markup ignored).
+subtitle: Discriminative and generative classifiers, trees and rules, nearest neighbors, and boosting.
+hook: Linear classifiers as regularizer plus loss, SVMs, trees and forests, naive Bayes and Gaussian classifiers, nearest neighbors, and boosting.
+intro: |
+  The chapter is organized by the split in the overview. Discriminative models fit $P(Y\vert X)$ directly:
+  logistic regression, SVMs, decision trees, rules and Gaussian processes. Generative models fit
+  $P(X, Y) = P(X\vert Y) P(Y)$ and get the posterior from Bayes' rule: Gaussian class-conditioned classifiers
+  (LDA and QDA), naive Bayes, and exponential family models. Read the binary classification table first.
+  Perceptron, linear SVM and logistic regression share the same form, a regularizer plus a loss, and differ
+  only in the loss.
+
+  Nearest neighbors, which keep the training data instead of fitting parameters, come after the two families.
+  Then come the maximum likelihood calculations behind naive Bayes (Bernoulli and multinomial counts), and
+  boosting, which combines many weak learners by reweighting data points or fitting residuals.
+sections:
+  overview:
+    lead: |
+      Generative models assume something about how $X$ is produced, which costs bias but helps them converge
+      faster and handle missing features. Discriminative models assume less and usually reach a lower
+      asymptotic error.
+  binary classification:
+    lead: |
+      Each model predicts $\hat y = \text{sign}(\theta^T x)$. They differ only in the
+      <span class="corange">loss</span> charged for each example's margin $y_i \theta^T x_i$, plus whether a
+      <span class="cblue">regularizer</span> keeps $\theta$ small.
+    viz:
+      - name: perceptron-train
+        params:
+          k: 3
+          data: separable
+        caption: 'The perceptron cycles through the points, and for each misclassified one ($y_i \theta^T x_i \leq 0$,
+          the
+      
+          points that add to its <span class="corange">loss</span>) it updates $\theta \leftarrow \theta + y_i x_i$, with
+      
+          $x = (1, x_1, x_2)$ so $\theta_0$ is the bias. Step through the updates: each one turns the boundary toward
+          the
+      
+          circled point, sometimes breaking others, until no mistakes are left. Switch to the data with two flipped labels:
+      
+          no line separates it, and the mistake count on the right never reaches 0.
+      
+          '
+  multiclass classification:
+    lead: |
+      Two routes: combine several binary classifiers (one-against-all, one-vs-one), or train a single model
+      that scores every class and predicts the highest score (multiclass perceptron, multiclass SVM, softmax).
+  logistic regression:
+    lead: |
+      Logistic regression models $Y$ as Bernoulli with $p = \text{logistic}(\theta^T x)$, so the log odds are linear
+      in $x$. It is fit by maximum likelihood, and the weights need a penalty, since otherwise they can go to
+      infinity.
+  binary models:
+    lead: |
+      Other links from the linear score $\theta^T x$ to a probability: the Gaussian CDF (probit) instead of the
+      logistic, and exponential forms such as the noise-OR model, where $Y$ is an OR of causes that can each fail.
+  svms:
+    lead: |
+      The margin is the distance from the separating hyperplane to the closest training points. Fixing the
+      functional margin at 1 turns maximizing it into minimizing $\vert\vert\theta\vert\vert^2$, a quadratic
+      program. Its dual only uses dot products, so a kernel can replace them.
+  decision trees / rfs - Russell & Norvig 18.3; Hastie, Tibshirani & Friedman 9.2.1-9.2.3:
+    lead: |
+      Trees are grown greedily, one split at a time, then pruned. A single tree has high variance, so most of
+      the section is about fixing that: pruning, bagging, and random forests, which also sample the features
+      at each split.
+  decision rules:
+    lead: |
+      A rule is an if-then on a few features. Rules trade support (how many points a rule covers) against
+      accuracy, and are learned one feature at a time (oneR), one rule at a time (sequential covering), or from
+      mined patterns. RuleFit uses rules from trees as features in a sparse linear model.
+  gaussian processes:
+    lead: |
+      A Gaussian process puts a multivariate Gaussian on the function's values, with a kernel as the covariance.
+      Predicting means conditioning that Gaussian on the observed values.
+  gaussian class-conditioned classifiers:
+    lead: |
+      Model each class as a Gaussian and apply Bayes' rule. The posterior is a sigmoid (softmax for many
+      classes). Its boundary is linear when the classes share one covariance (LDA) and quadratic when each class
+      has its own (QDA).
+    viz:
+      - name: lda-qda
+        params: {alpha: 1, spread: 1.8, tilt: 0.6}
+        caption: |
+          Two classes, each fit with a Gaussian by maximum likelihood; shading is the posterior $p(Y=1\vert x)$.
+          The α slider is regularized discriminant analysis, $\Sigma_k = \alpha \Sigma_k + (1-\alpha)\Sigma$.
+          At α = 1 (QDA) the boundary bends around the wider class. Slide α to 0 (LDA) and it becomes a straight
+          line. Set the spread to 1 and the tilt to 0 so both classes really share a covariance, and the two
+          boundaries nearly agree.
+  naive bayes classifier:
+    lead: |
+      The naive assumption is that features are independent given the class. Then
+      $P(X_1, ..., X_p\vert Y)$ factors into $p$ one-dimensional distributions, so the number of distributions to
+      learn grows with the sum of the feature sizes instead of their product.
+  exponential family class-conditioned classifiers:
+    lead: |
+      The Gaussian result generalizes: if every class-conditional distribution is in the exponential family, the
+      posterior is a logistic function of a linear function of $x$.
+  text classification:
+    lead: |
+      Naive Bayes on bag-of-words vectors, which ignore word order. In practice the probabilities are summed as
+      logs, <span class="corange">log prior</span> plus <span class="cblue">log likelihood</span>, so the product
+      of many small numbers doesn't underflow to 0.
+  instance-based (nearest neighbors):
+    lead: |
+      No model is fit. A new point is labeled by a vote of the closest training points, so the choice of
+      distance does all the work.
+  likelihood calcs:
+    lead: |
+      The maximum likelihood estimates behind naive Bayes on text: set the derivative of the log likelihood to
+      zero, and the estimates come out as observed fractions.
+  boosting:
+    lead: |
+      Boosting trains weak learners one after another, each focused on what the previous ones got wrong.
+      AdaBoost reweights the data points; gradient boosting fits the residuals. The table lists the loss each
+      variant minimizes.
+    viz:
+      - name: adaboost-stumps
+        params:
+          rounds: 5
+          shape: diagonal
+        caption: 'AdaBoost with decision stumps (one split on one feature) on toy data. Each round fits the stump with
+          the lowest
+      
+          weighted error $\epsilon_t$, gives it the vote $\alpha_t = \frac{1}{2}\log\frac{1-\epsilon_t}{\epsilon_t}$,
+          and
+      
+          multiplies the weights of the points it got wrong by $e^{\alpha_t}$ and the rest by $e^{-\alpha_t}$ (marker
+          size shows the weights the current
+      
+          stump was trained on; outlined points are the ones it gets wrong). Raise the rounds and watch the big points
+          sit along the boundary, and the ensemble''s
+      
+          staircase follow the diagonal until its training error reaches 0, even though each new stump is only a bit
+      
+          better than chance.
+      
+          '
+takeaways:
+  - Discriminative models fit $P(Y\vert X)$ and usually reach a lower asymptotic error; generative models fit $P(X, Y)$, converge faster and can handle missing data.
+  - Perceptron, linear SVM and logistic regression all minimize a regularizer plus a loss on the margin $y_i \theta^T x_i$, and differ only in the loss.
+  - The SVM maximizes the margin, which acts like regularization, and its dual uses only dot products, so a kernel can replace them.
+  - A single decision tree has high variance; pruning, bagging and random forests reduce it.
+  - Gaussian class-conditioned classifiers give a sigmoid or softmax posterior, with a linear boundary when the classes share a covariance (LDA) and a quadratic one otherwise (QDA).
+  - Boosting combines weak learners trained one after another, by reweighting the points (AdaBoost) or by fitting residuals (gradient boosting).
+figures:
+  j7_10.svg: Discriminative model. The features X₁, ..., Xₘ point to the label Y, so only P(Y | X) is modeled.
+  j7_4.svg: |
+    Generative models, where the label Y points to the features. (a) Naive Bayes, with features conditionally
+    independent given Y. (b) The same with some dependence between features. (c) All features as one node X.
+  losses.svg: |
+    Each loss for a positive example (y = 1) as a function of the score f(x). The 0-1 loss is a step at 0. The
+    perceptron loss is zero once the point is on the right side, the hinge loss keeps charging until f(x) = 1, and
+    the log loss never reaches zero.
+  svm_margin.svg: |
+    The geometric margin γ⁽ⁱ⁾ of a point A is its distance to the separating line, measured along w,
+    which is perpendicular to the line. The SVM maximizes the smallest of these distances.

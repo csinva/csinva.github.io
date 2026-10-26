@@ -1,0 +1,15 @@
+# Part page and start-page blurb for the research overviews (category: research).
+blurb: |
+  Annotated reading lists on open research topics, from LLMs, embeddings and interpretability to uncertainty,
+  causal inference and deep learning theory. Most papers come with a short note on what they do.
+intro: |
+  These chapters are reading lists rather than lecture notes. Each collects papers on one research topic,
+  grouped by approach, usually with a short note on what each paper does and a link to it. Recent entries
+  sit next to the classic papers they build on.
+
+  The first group is about modern models: LLMs (prompting, architectures, mechanistic interpretability,
+  automated science), embeddings and retrieval, transfer learning and adversarial robustness, and uncertainty.
+  Interpretability, the longest list after LLMs, covers transparent models, post-hoc explanations and how
+  to evaluate them. The rest cover the statistics and theory side (generalization, complexity, deep learning theory,
+  causal inference, disentanglement, the scattering transform) and applications in medicine and in protein
+  and RNA structure, plus a short list of science results that are simply interesting.

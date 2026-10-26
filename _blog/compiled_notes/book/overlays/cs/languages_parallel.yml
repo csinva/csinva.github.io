@@ -1,0 +1,100 @@
+# Overlay for _notes/cs/languages_parallel.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Languages           # short name on the start-page topic map
+title: Languages and parallel computing
+subtitle: Quick references for python, c/c++, java and R, plus how training is split across GPUs.
+hook: Syntax references for python, c/c++, java and R, and the collective operations behind multi-GPU training.
+intro: |
+  Most of this chapter is reference material: the python, java and R calls that come up all the time
+  (lists, deques, dicts, string formatting, sorting with a key), and c/c++ details on pointers, references,
+  memory, classes and virtual dispatch. Read whichever language you need; the sections don't depend on each other.
+
+  The GPU section is different in kind. It starts from the point that moving data between GPU memories often
+  costs more than the arithmetic, then describes how training is split across devices: the collective operations
+  (AllReduce, ReduceScatter, AllGather), how DDP and FSDP use them, and the levels of parallelism (data, tensor,
+  pipeline).
+sections:
+  python:
+    lead: |
+      Python reference: the built-in data structures and what each is implemented as, string and sorting idioms, how
+      arguments are passed, classes, and a few pandas calls.
+  basic:
+    lead: |
+      The one trap here is copying. `x.copy()` is shallow, so a list inside a list is still shared with the original,
+      and nested objects need `deepcopy`.
+  data structures:
+    lead: |
+      Which built-in to reach for: a list doubles as a stack (it is implemented like an arraylist), `deque` is the queue
+      (a doubly linked list, so both ends are cheap), and `PriorityQueue` and `Counter` cover heaps and counting.
+  higher level:
+    lead: |
+      Python passes everything by copying a reference. Changing an object through the reference is visible to the
+      caller; rebinding the name inside the function is not.
+  object-oriented:
+    lead: |
+      A base class can leave a method unimplemented by raising `NotImplementedError` for subclasses to override.
+      Instance methods get `self` and can change the object, class methods get only the class, and static methods get
+      neither.
+  gpu / parallelization:
+    lead: |
+      On a GPU, pointwise operations spend more time moving data from DRAM to SRAM than computing. Fusing several
+      operations into one pass saves those trips, which is why activation functions of very different complexity
+      cost about the same.
+  computations:
+    lead: |
+      These are the collective operations used when one model is trained on several GPUs (ranks). DDP keeps a full
+      copy of the model on every GPU and averages gradients with AllReduce. FSDP splits the model itself across GPUs,
+      gathers the pieces before each pass, and scatters the summed gradients afterwards.
+    viz:
+      - name: allreduce-steps
+        params: {stage: 0}
+        caption: |
+          Four ranks, each with its own vector cut into four slices. Step through ReduceScatter: rank r ends up
+          with the sum of slice r over all ranks. AllGather then copies every summed slice to every rank, and the
+          result is exactly what AllReduce gives. The dots show whose numbers each cell contains.
+  pytorch:
+    lead: |
+      The three levels of splitting a model across GPUs differ in what is split. Data parallelism splits batches and
+      copies the model, tensor parallelism splits parts of an input, and pipeline parallelism puts different layers on
+      different GPUs. The rest lists which pytorch wrapper fits one machine or many.
+  parallelization:
+    lead: |
+      Vocabulary first: cores within a node, nodes with separate memory, processes, and threads inside a process.
+      Libraries like dask and ray handle the message passing between nodes so the code doesn't have to.
+  filetypes:
+    lead: |
+      Parquet stores a table by column instead of by row, so a query reads only the columns it needs and each column
+      compresses well.
+  c/c++:
+    lead: |
+      Unlike python and java, C and C++ make you manage memory yourself. Locals live on the stack, globals in a
+      data segment, and anything from malloc or new lives on the heap until it is freed or deleted.
+  malloc:
+    lead: |
+      `malloc` returns a `void *` to fresh heap memory that has to be cast, and every block must be freed exactly once.
+      A string literal, by contrast, points into read-only memory.
+  strings:
+    lead: |
+      A C string is a char array ending in the null character `\0`, and `strlen` does not count it.
+  pointers:
+    lead: |
+      A long tour of C++ in the author's course notes. In a declaration `*` makes a pointer and `&` a reference; in an
+      expression `*` dereferences and `&` takes an address. It goes on to `new` and `delete`, references as pointers
+      that can't be reseated, parameter passing by value, by reference and by constant reference, and classes,
+      inheritance and virtual dispatch through a virtual method table.
+  java:
+    lead: |
+      The java collections and string tools that come up most, then the type rules: like python, java passes primitives
+      by value and objects by copying a reference. The JVM reclaims objects that are no longer referenced by running
+      a mark-and-sweep garbage collector now and then.
+  R:
+    lead: |
+      R basics: `<-` for assignment, vectors with named elements, 1-indexed matrices, factors for categorical variables,
+      and data frames with variables as columns and observations as rows.
+takeaways:
+  - Python and java pass objects by copying a reference, so a function can change an object but not rebind the caller's variable.
+  - Python's `x.copy()` is shallow; nested objects need `deepcopy`.
+  - In C you manage memory yourself: locals on the stack, globals in a data segment, and malloc'd memory on the heap until it is freed.
+  - C++ dispatches statically by default and only looks up the run-time type for `virtual` methods, through a table of method pointers; java makes every method virtual.
+  - On a GPU, moving data between memories often costs more than the arithmetic, which is why fusing operations helps.
+  - AllReduce is ReduceScatter followed by AllGather; DDP uses it to average gradients, and FSDP gathers model shards before each pass and reduce-scatters the gradients after.
+figures: {}

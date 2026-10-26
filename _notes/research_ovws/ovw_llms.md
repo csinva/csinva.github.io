@@ -276,7 +276,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
       - inputs x, hidden states h, outputs y
       - 3 matrices: $A, B, C$
       - $y_i = C h_i$
-      - $$h_i = \cblue{A h_{i-1}} + \corange{B x_i}$$<!-- -->
+      - $$h_i = \cblue{A h_{i-1}} + \corange{B x_i}$$
         - note: there is no nonlinearity between hidden states
         - note: the <span class="cblue">transition from one hidden state to the next</span> is the same for all positions (except for the <span class="corange">input</span>)
       - can compute hidden states simultaneously by just pre-multiplying these A and B matrices with x the right number of times ( a convolution operation)
@@ -799,9 +799,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
   - 2 circuits
     - <span class="cpurple">QK circuit</span> determines which "source" token the present "destination" token attends back to and copies information from
-    - $$W_{E}^{T} \cpurple{W_{Q}^{T} W_{K}} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$$<!-- -->
+    - $$W_{E}^{T} \cpurple{W_{Q}^{T} W_{K}} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$$
     - <span class="cgreen">OV circuit</span> describes what the resulting effect on the "out" predictions for the next token is
-    - $$W_{U} \cgreen{W_{O} W_{V}} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$$<!-- -->
+    - $$W_{U} \cgreen{W_{O} W_{V}} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$$
   - if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
   - **induction heads** search previous examples of present token
     - If they don't find it, they attend to the first token and do nothing

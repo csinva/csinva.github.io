@@ -1,0 +1,96 @@
+# Overlay for _notes/cs/data_structures.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Data structures
+subtitle: Lists, stacks and queues, search trees, heaps, hash tables and graphs, with their running times.
+hook: Linked lists and stacks, balanced search trees, heaps and Huffman codes, hash tables, and the standard graph algorithms.
+intro: |
+  The chapter goes from simple to structured. Lists, stacks and queues come first, with a few interview-style
+  tricks (a stack that tracks its min, a queue made of two stacks). Then trees: plain binary search trees can
+  degrade to depth $n-1$ on sorted input, and AVL, red-black and splay trees are three ways to keep the depth
+  logarithmic, either strictly or amortized.
+
+  Heaps give a priority queue stored in a plain array, and Huffman coding uses one to build prefix codes. Hash
+  tables give constant-time find on average with no ordering, and most of that section is about collisions and
+  the load factor $\lambda$. The last section covers graphs: representations, topological sort, Dijkstra's
+  shortest paths, and Prim's and Kruskal's minimum spanning trees.
+sections:
+  trees:
+    lead: |
+      Definitions first (height, depth, path length), then the binary search tree, where every key in the left
+      subtree is smaller than the root and every key in the right subtree is larger. Find, insert and remove all
+      cost the depth of the tree, which is why the balanced variants below exist.
+  AVL Tree:
+    lead: |
+      AVL trees keep every node's balance factor (right height minus left height) in $\{-1, 0, 1\}$. An insert
+      that pushes a node to $\pm 2$ is fixed with one or two rotations on the way back up.
+  Splay Trees:
+    lead: |
+      Splay trees don't store any balance information. Every access rotates the touched node up to the root, so a
+      single operation can be slow but any sequence of $m$ operations costs $O(m \log n)$.
+  heaps:
+    lead: |
+      A binary heap is an almost complete binary tree with each parent no larger than its children, so the
+      minimum sits at the root. Because the tree is complete it fits in an array with no pointers. The section
+      ends with compression, where Huffman coding builds its prefix codes from a min-heap of letter frequencies.
+    viz:
+      - name: huffman-code
+        after: Huffman coding
+        params:
+          text: she sells sea shells by the sea shore
+        caption: 'Letter counts of the text become the leaf weights. Set merges to 0 and step: each merge pulls the two
+      
+          lightest trees off the min-heap and puts back their sum, so rare letters end up deep with long codes. Try a
+      
+          text like "aaaaaaab": the entropy drops well below 1 bit but every code still needs at least 1 bit.
+      
+          '
+  Hash tables:
+    lead: |
+      A hash function maps a key to a slot. When two keys land in the same slot there are two fixes: keep a list
+      in every slot (separate chaining), or probe other slots in a fixed order (open addressing). Either way the
+      cost of a find is governed by the load factor $\lambda$ = elements / table size.
+    viz:
+      - name: hash-probing
+        params: {method: linear, n: 20}
+        caption: |
+          The same keys inserted into a table of size 31 with hash(k) = k mod 31. Shading shows how many probes each
+          key needed. Push $n$ up under linear probing and watch occupied slots merge into long clusters; quadratic
+          probing and double hashing jump out of them. Quadratic probing can fail to find a free slot before the
+          table is full, and chaining keeps going past $\lambda = 1$.
+  graphs:
+    lead: |
+      A graph is a set of vertices and edges, stored as an adjacency matrix (fine when dense) or adjacency lists
+      (better when sparse, like a road map). The algorithms that follow are topological sort for DAGs, BFS and
+      Dijkstra for shortest paths, and Prim and Kruskal for minimum spanning trees. Dijkstra and Prim are both
+      greedy, and Prim's runs in $\Theta(e \log v)$, the same as Dijkstra's.
+  lists:
+    lead: |
+      The simplest containers: arrays, and linked nodes arranged as a queue (insert at the back, remove from the
+      front) or a stack (push and pop at the top). The bullets are interview-style tricks built from these
+      pieces.
+  stack:
+    lead: |
+      A stack is a linked list where push and pop both happen at the top node. Two stacks are enough to sort a
+      stack or to simulate a queue, and storing the running min in each node gives a stack that reports its min.
+  Red-Black Trees:
+    lead: |
+      Red-black trees balance more loosely than AVL trees: five coloring rules, the last being that every path
+      from a node down to a leaf has the same number of black nodes. Insert starts with a red node and fixes
+      violations case by case, depending on the colors of the parent and uncle.
+  other trees:
+    lead: |
+      A grab bag of tree tasks: in-order traversal with an explicit stack instead of recursion, printing level
+      by level, checking balance, and the trie, which stores a dictionary one character per node so that a
+      prefix leads straight to its words.
+takeaways:
+  - A plain binary search tree costs its depth per operation, and sorted input makes that depth $n-1$.
+  - AVL and red-black trees keep the depth $\Theta(\log n)$ with rotations, while splay trees only promise $O(m
+    \log n)$ for $m$ operations.
+  - A binary heap is an almost complete tree stored in an array, with children of slot $i$ at $2i$ and $2i+1$,
+    so findMin is the root and insert and deleteMin percolate along one path.
+  - Huffman coding repeatedly merges the two lightest trees from a min-heap, so rare letters get long codes and
+    no code is a prefix of another.
+  - Hash tables give constant-time find on average but no ordering, and the load factor $\lambda$ controls the
+    cost of collisions under chaining or open addressing.
+  - Adjacency lists suit sparse graphs, and Dijkstra and Prim are both greedy algorithms that grow a set one
+    vertex at a time.
+figures: {}

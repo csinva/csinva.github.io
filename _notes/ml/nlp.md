@@ -106,9 +106,9 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 ## eval/training metrics
 
 - **loss**: cross-entropy (with binary labels) ends up just the likelihood of the data:
-  - $$-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{<t}\right)$$<!-- -->
+  - $$-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{<t}\right)$$
 - **perplexity (PP)** - exponent of the loss
-  - $$\begin{array}{r}\operatorname{PPL}=\exp \left(-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{<t}\right)\right) \\ =\left(\prod_{t=1}^T p_\theta\left(x_t \mid x_{<t}\right)\right)^{-1 / T}\end{array}$$<!-- -->
+  - $$\begin{array}{r}\operatorname{PPL}=\exp \left(-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{<t}\right)\right) \\ =\left(\prod_{t=1}^T p_\theta\left(x_t \mid x_{<t}\right)\right)^{-1 / T}\end{array}$$
   - should only be compared across models w/ same vocab
 - BLEU
 - bert-score: https://github.com/Tiiiger/bert_score
@@ -190,7 +190,7 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - rules can be probabilities (so we search for the most probable parse tree, rather than returning all)
 - phrase tree
   - <img style="width: 560px; max-width: 100%;" src="../assets/phrase_tree.svg" alt="Phrase-structure tree"/>
-  - $$\begin{array}{lll}\text { Symbol } & \text { Meaning } & \text { Example } \\ \text { S } & \text { sentence } & \text { the man walked } \\ \text { NP } & \text { noun phrase } & \text { a dog } \\ \text { VP } & \text { verb phrase } & \text { saw a park } \\ \text { PP } & \text { prepositional phrase } & \text { with a telescope } \\ \text { Det } & \text { determiner } & \text { the } \\ \text { N }& \text { noun } & \text { dog } \\ \text { V } & \text { verb } & \text { walked } \\ \text{ P} & \text { preposition } & \text { in }\end{array}$$<!-- -->
+  - $$\begin{array}{lll}\text { Symbol } & \text { Meaning } & \text { Example } \\ \text { S } & \text { sentence } & \text { the man walked } \\ \text { NP } & \text { noun phrase } & \text { a dog } \\ \text { VP } & \text { verb phrase } & \text { saw a park } \\ \text { PP } & \text { prepositional phrase } & \text { with a telescope } \\ \text { Det } & \text { determiner } & \text { the } \\ \text { N }& \text { noun } & \text { dog } \\ \text { V } & \text { verb } & \text { walked } \\ \text{ P} & \text { preposition } & \text { in }\end{array}$$
   - note: chunking yields a similar partition of a sequence rather than a tree
 - algorithms
   - top-down parsing (e.g. recursive descent parsing) - starts from $S$ , and keep expanding the grammar rules until finding a match

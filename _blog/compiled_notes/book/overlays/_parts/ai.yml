@@ -1,0 +1,11 @@
+# Part page and start-page text for the AI part.
+intro: |
+  This part covers AI beyond machine learning: the classic algorithms for search, logic, planning and
+  decisions, the models behind today's language systems, and the questions from psychology, cognitive
+  science and philosophy that AI keeps running into.
+
+  Start with search and logic, then decisions and reinforcement learning; both follow Russell & Norvig and
+  Berkeley's CS 188. The LLM chapter covers the transformer and the models built on it. The remaining
+  chapters are about minds and society: how people explain and reason, how cognitive science thinks about
+  representation, what counts as a scientific explanation, fairness and ethics, and where AI may be headed.
+blurb: Search, logic, decisions and reinforcement learning, transformers and LLMs, and the psychology, philosophy and ethics around AI.

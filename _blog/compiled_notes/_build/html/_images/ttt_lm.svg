@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Test-time training (TTT) layer</title>
+  <desc id="desc">General idea: at each token position, inner weights are updated by predicting the current token, helping to contextually adapt for subsequent tokens. Inner loop (blue): the hidden state is a weight matrix W_t; W_0 to W_1 to ... to W_t, with input tokens x_t below and output tokens z_t = f(x_t; W_t) above, where f is linear or a 2-layer MLP. W_t is updated at each token position to minimize a token-level loss: W_t = W_(t-1) - eta grad l(W_(t-1); x_t); the loss reconstructs a corrupted version of the token input, l(W; x_t) = ||f(x~_t; W) - x_t||^2. Outer loop (red): choosing a corrupted version is hard, so instead metalearn low-rank projections theta for inputs, labels and outputs, shared across sequences: l(W; x_t) = ||f(theta_K x_t; W) - theta_V x_t||^2 and z_t = f(theta_Q x_t; W_t).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f6fb2"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .eb { fill: none; stroke: #1f6fb2; stroke-width: 2; stroke-linecap: round; }
+      .er { fill: none; stroke: #d1342f; stroke-width: 2; stroke-linecap: round; }
+      .row { font: 24px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .m { font: italic 28px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; text-anchor: middle; }
+      .mr { font: 26px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .i { font-style: italic; }
+      .sub { font-size: 19px; font-style: normal; }
+      .subi { font-size: 19px; font-style: italic; }
+      .note { font: 22px Helvetica, Arial, sans-serif; fill: #8a8a8a; }
+      .blue { font: 22px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .red { font: 22px Helvetica, Arial, sans-serif; fill: #d1342f; }
+      .hb { font: bold 28px Helvetica, Arial, sans-serif; fill: #1f6fb2; }
+      .hr { font: bold 28px Helvetica, Arial, sans-serif; fill: #d1342f; }
+    </style>
+  </defs>
+
+  <text class="note" x="70" y="26">General idea: at each token position, inner weights are updated by predicting the current</text>
+  <text class="note" x="70" y="54">token, helping to contextually adapt for subsequent tokens</text>
+
+  <rect x="4" y="74" width="1192" height="520" rx="60" fill="none" stroke="#d1342f" stroke-width="2.5"/>
+  <rect x="14" y="92" width="1172" height="310" rx="50" fill="none" stroke="#1f6fb2" stroke-width="2.5"/>
+
+  <!-- row labels -->
+  <text class="row" x="34" y="132">Output tokens</text>
+  <text class="row" x="34" y="192">Hidden state</text>
+  <text class="row" x="34" y="250">Input tokens</text>
+
+  <!-- chain -->
+  <text class="m" x="235" y="194">W<tspan class="sub" dy="6">0</tspan></text>
+  <line class="edge" x1="260" y1="186" x2="296" y2="186" marker-end="url(#arrow)"/>
+  <text class="m" x="320" y="194">W<tspan class="sub" dy="6">1</tspan></text>
+  <line class="edge" x1="350" y1="186" x2="386" y2="186" marker-end="url(#arrow)"/>
+  <text class="m" x="412" y="192">…</text>
+  <line class="edge" x1="440" y1="186" x2="476" y2="186" marker-end="url(#arrow)"/>
+  <text class="m" x="510" y="194">W<tspan class="subi" dy="6">t</tspan><tspan class="sub">−1</tspan></text>
+  <line class="edge" x1="550" y1="186" x2="586" y2="186" marker-end="url(#arrow)"/>
+  <text class="m" x="610" y="194">W<tspan class="subi" dy="6">t</tspan></text>
+
+  <!-- inputs / outputs -->
+  <text class="m" x="320" y="252">x<tspan class="sub" dy="6">1</tspan></text>
+  <text class="m" x="510" y="252">x<tspan class="subi" dy="6">t</tspan><tspan class="sub">−1</tspan></text>
+  <text class="m" x="610" y="252">x<tspan class="subi" dy="6">t</tspan></text>
+  <line class="edge" x1="320" y1="228" x2="320" y2="204" marker-end="url(#arrow)"/>
+  <line class="edge" x1="510" y1="228" x2="510" y2="204" marker-end="url(#arrow)"/>
+  <line class="edge" x1="610" y1="228" x2="610" y2="204" marker-end="url(#arrow)"/>
+  <line class="edge" x1="320" y1="166" x2="320" y2="142" marker-end="url(#arrow)"/>
+  <line class="edge" x1="510" y1="166" x2="510" y2="142" marker-end="url(#arrow)"/>
+  <line class="edge" x1="610" y1="166" x2="610" y2="142" marker-end="url(#arrow)"/>
+  <text class="m" x="320" y="132">z<tspan class="sub" dy="6">1</tspan></text>
+  <text class="m" x="510" y="132">z<tspan class="subi" dy="6">t</tspan><tspan class="sub">−1</tspan></text>
+  <text class="mr" x="598" y="132"><tspan class="i">z</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6"> = </tspan><tspan class="i">f</tspan>(<tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">; </tspan><tspan class="i">W</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">)</tspan></text>
+
+  <!-- annotation: f -->
+  <line class="eb" x1="760" y1="124" x2="806" y2="112" marker-end="url(#arrowB)"/>
+  <text class="blue" x="814" y="118"><tspan font-style="italic">f</tspan> is linear or 2-layer MLP</text>
+
+  <!-- annotation: W_t update -->
+  <line class="eb" x1="650" y1="182" x2="790" y2="200" marker-end="url(#arrowB)"/>
+  <text class="blue" x="800" y="190"><tspan font-style="italic">W</tspan><tspan font-size="15" font-style="italic" dy="5">t</tspan><tspan dy="-5"> is updated at each token</tspan></text>
+  <text class="blue" x="800" y="216">position to minimize</text>
+  <text class="blue" x="800" y="242">token-level loss:</text>
+  <text class="mr" x="790" y="284"><tspan class="i">W</tspan><tspan class="subi" dy="6">t</tspan><tspan class="sub">−1</tspan><tspan dy="-6"> − </tspan><tspan class="i">η</tspan>∇<tspan class="i">ℓ</tspan>(<tspan class="i">W</tspan><tspan class="subi" dy="6">t</tspan><tspan class="sub">−1</tspan><tspan dy="-6">; </tspan><tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">)</tspan></text>
+  <line class="eb" x1="900" y1="296" x2="860" y2="326" marker-end="url(#arrowB)"/>
+
+  <!-- annotation: reconstruction loss -->
+  <text class="blue" x="740" y="350" text-anchor="middle">Loss reconstructs “corrupted</text>
+  <text class="blue" x="740" y="376" text-anchor="middle">version” of token input:</text>
+  <text class="mr" x="900" y="366"><tspan class="i">ℓ</tspan>(<tspan class="i">W</tspan>; <tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">) = ‖</tspan><tspan class="i">f</tspan>(<tspan class="i">x̃</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">; </tspan><tspan class="i">W</tspan>) − <tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">‖</tspan><tspan class="sub" dy="-12">2</tspan></text>
+
+  <text class="hb" x="40" y="384">Single TTT layer: Inner loop</text>
+
+  <!-- outer loop -->
+  <line class="er" x1="900" y1="380" x2="840" y2="430" marker-end="url(#arrowR)"/>
+  <text class="red" x="610" y="456" text-anchor="middle">Choosing a “corrupted version” is hard. We can</text>
+  <text class="red" x="610" y="482" text-anchor="middle">instead <tspan font-style="italic">metalearn</tspan> low-rank projections (theta)</text>
+  <text class="red" x="610" y="508" text-anchor="middle">for inputs, labels, and outputs</text>
+  <text class="red" x="610" y="534" text-anchor="middle">(shared across sequences)</text>
+
+  <text class="red" x="1022" y="432" text-anchor="middle">input</text>
+  <line x1="966" y1="438" x2="1078" y2="438" stroke="#d1342f" stroke-width="1.5"/>
+  <text class="red" x="1142" y="432" text-anchor="middle">label</text>
+  <line x1="1112" y1="438" x2="1172" y2="438" stroke="#d1342f" stroke-width="1.5"/>
+  <text class="mr" x="872" y="472" font-size="23"><tspan class="i">ℓ</tspan>(<tspan class="i">W</tspan>; <tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">) = ‖</tspan><tspan class="i">f</tspan>(<tspan class="i">θ</tspan><tspan class="subi" dy="6">K</tspan><tspan dy="-6"> </tspan><tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">; </tspan><tspan class="i">W</tspan>) − <tspan class="i">θ</tspan><tspan class="subi" dy="6">V</tspan><tspan dy="-6"> </tspan><tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">‖</tspan><tspan class="sub" dy="-12">2</tspan></text>
+  <text class="red" x="1050" y="514" text-anchor="middle">output</text>
+  <line x1="996" y1="520" x2="1104" y2="520" stroke="#d1342f" stroke-width="1.5"/>
+  <text class="mr" x="960" y="558" font-size="23"><tspan class="i">z</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6"> = </tspan><tspan class="i">f</tspan>(<tspan class="i">θ</tspan><tspan class="subi" dy="6">Q</tspan><tspan dy="-6"> </tspan><tspan class="i">x</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">; </tspan><tspan class="i">W</tspan><tspan class="subi" dy="6">t</tspan><tspan dy="-6">)</tspan></text>
+
+  <text class="hr" x="40" y="570">Single TTT layer: Outer loop</text>
+</svg>

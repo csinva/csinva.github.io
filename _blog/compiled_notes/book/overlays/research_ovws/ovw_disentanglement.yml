@@ -1,0 +1,108 @@
+# Overlay for _notes/research_ovws/ovw_disentanglement.md
+map_label: Disentanglement           # short name on the start-page topic map
+hook: Disentangled VAE losses and their variants, GAN latent spaces edited during or after training, weak supervision, and how disentanglement is measured.
+intro: |
+  A disentangled representation is one where each latent dimension tracks one factor of variation in the
+  data, such as color or rotation. The page starts with VAEs, because their loss splits cleanly into three
+  terms (<span class="cblue">reconstruction</span>, <span class="corange">compactness prior</span> and
+  <span class="cgreen">total correlation</span>), and most variants (beta-VAE, factor-VAE, beta-TC-VAE)
+  change how those terms are weighted or estimated. Read the loss table first; the rest of the VAE section
+  refers back to it by color.
+
+  GANs come next, split into models built to disentangle during training (InfoGAN, StyleGAN, the Hessian
+  penalty) and methods that find meaningful directions in a trained generator's latent space. Then come
+  methods that use some labels or pairs, metrics for scoring disentanglement, and ICA as the non-deep
+  starting point. One result from the evaluation section applies to all of it: unsupervised disentanglement is impossible
+  without inductive biases, and results depend heavily on architecture and hyperparameters.
+sections:
+  VAEs:
+    lead: |
+      The encoder maps $\mathbf x$ to a distribution over codes $\mathbf z$, a code is sampled, and the decoder
+      maps it back. Disentanglement work keeps this setup and changes the loss.
+  disentangled vae losses:
+    lead: |
+      Each column of the table is one term of the loss. The <span class="corange">compactness prior</span> term
+      can itself be split into a mutual information term and a factorial prior term, and the
+      <span class="cgreen">total correlation</span> term is the one that pushes latent dimensions to be
+      independent.
+    viz:
+      - name: beta-vae-tradeoff
+        params:
+          beta: 1
+        caption: 'A toy where the beta-VAE optimum has a closed form: six independent Gaussian factors with variances
+          $\lambda_i$, a linear encoder and decoder, and decoder noise $\sigma^2$. Each latent either reconstructs its
+          factor down to error $\beta\sigma^2$ at a <span class="corange">compactness</span> cost of $\frac12\log(\lambda_i/\beta\sigma^2)$
+          nats, or switches off. Raise $\beta$: the latents with the smallest variance turn off first, so the code uses
+          fewer dimensions while the <span class="cblue">reconstruction error</span> grows. The right panel traces the
+          whole trade-off.'
+  disentangled vae in code:
+    lead: |
+      A sketch of the same losses in PyTorch. The returned value is the beta-VAE loss; the mutual information,
+      total correlation and dimension-wise KL terms show how beta-TC-VAE splits the KL.
+  various vaes:
+    lead: |
+      Mostly variations on the loss above: a weight on the compactness term (beta-VAE), an explicit total
+      correlation term (factor-VAE, beta-TC-VAE), or a different distance between distributions (WAE). Later
+      entries change the prior or add new objectives, such as the SNE term in VAE-SNE.
+  GANs:
+    lead: |
+      A GAN has no encoder, so the questions change: can the generator be built so its inputs are disentangled,
+      and if not, can directions in the latent space of a trained generator be found that change one attribute
+      at a time?
+  model-based (disentangle during training):
+    lead: |
+      These change the architecture or loss. InfoGAN maximizes mutual information between a subset of latent
+      codes and the image; StyleGAN maps $z$ to an intermediate style space $w$ that feeds every layer.
+  post-hoc (disentangle after training):
+    lead: |
+      These leave the generator fixed. Most find a direction in latent space for each attribute, for example
+      with a linear classifier, PCA or clustering, then move along it to edit images or to probe a classifier
+      for bias.
+  misc:
+    lead: |
+      Two entries outside the VAE and GAN families. Maximal coding rate reduction replaces cross-entropy with a
+      rate-distortion objective: features of different classes should span different low-dimensional
+      subspaces, and features within a class should be compressible. The second separates foreground from
+      background using video.
+  (semi)-supervised disentanglement:
+    lead: |
+      Since unsupervised disentanglement needs inductive biases anyway, these papers add weak supervision:
+      labels for some factors, pairs that share a factor, or pairs ranked by a factor.
+  evaluating disentanglement:
+    lead: |
+      Metrics need datasets with known generative factors, like dSprites. They differ in what they check:
+      that one latent dimension changes when one factor changes, or that one factor can be read off from
+      one latent dimension.
+  non-deep methods:
+    lead: |
+      ICA is the classic non-deep version: find components $z$ that are as non-Gaussian as possible. The entry
+      connects it to VAEs through nonlinear ICA.
+takeaways:
+  - Most disentangled VAEs change how the loss weights or estimates three terms, reconstruction, the compactness prior and total correlation.
+  - Raising the weight $\beta$ on the compactness term trades reconstruction quality for a code that uses fewer latent dimensions.
+  - GAN work splits into generators built to disentangle during training and methods that find attribute directions in a trained generator's latent space.
+  - Unsupervised disentanglement is impossible without inductive biases, so later papers add weak supervision such as labels for some factors or pairs that share a factor.
+  - Metrics need data with known generative factors, and the two definitions differ on whether one latent should track one factor or one factor should move one latent.
+figures:
+  wae.svg: |
+    VAE (a) vs WAE (b). The VAE pushes each encoded point's own distribution (red discs) to match the prior
+    P_Z. The WAE only matches the overall distribution of codes Q_Z (green) to the prior, which can make
+    reconstructions less blurry.
+  alae.svg: |
+    Adversarial Latent Autoencoder. The discriminator works on latent codes produced by the encoder E, so a
+    GAN loss and an autoencoder loss (Δ between w and E's output) can be trained together.
+  stylegan.svg: |
+    A traditional generator (a) feeds z into the first layer. StyleGAN (b) first maps z to w with a
+    mapping network, then injects w as a style (A, via AdaIN) and per-layer noise (B) at every resolution,
+    starting from a learned constant.
+  stylegan2.svg: |
+    From StyleGAN (a, b) to StyleGAN2 (c, d): only the standard deviation is modulated, bias and noise move
+    outside the style block, and AdaIN is replaced by modulating and demodulating the conv weights directly.
+  semi_supervised_vae.svg: |
+    The encoder splits the code into a discrete vector y for class factors, trained with weak supervision,
+    and a continuous vector z for style. The loss keeps y and z independent of each other, and keeps the
+    elements within each one independent (total correlation).
+  unsupervised_settings.svg: |
+    The kinds of supervision as graphical models (shaded = observed): none, labels for some factors s_I
+    (restricted labeling), pairs that share s_I (match pairing), and pairs with a label y comparing
+    s_I (rank pairing).

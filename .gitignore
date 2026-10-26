@@ -13,3 +13,4 @@ pres/ai_resources
 
 # uv environment for the jupyter-book build
 _blog/compiled_notes/.venv/
+_blog/compiled_notes/src/

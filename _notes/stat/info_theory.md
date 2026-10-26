@@ -19,7 +19,7 @@ subtitle: Material from Cover "Elements of Information Theory"
 
 ## entropy
 
-- $$H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$$<!-- -->
+- $$H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$$
   - $h(p)= - \log(p)$
   - $H(p)$ implies p is binary
   - usually for discrete variables only
@@ -34,8 +34,8 @@ subtitle: Material from Cover "Elements of Information Theory"
   - $H(X) \geq 0$ since $p(x) \in [0, 1]$
   - funtion of distr. only, not the specific values the RV takes (the support of the RV)
   - gaussian has max entropy s.t. variance constraint
-- $$H(Y\vert X)=\sum p(x) H(Y\vert X=x) =- \sum_x p(x) \sum_y  p(y\vert x) \log \: p(y\vert x)$$<!-- -->
-  - $$H(X,Y)=H(X)+H(Y\vert X) =H(Y)+H(X\vert Y)$$<!-- -->
+- $$H(Y\vert X)=\sum p(x) H(Y\vert X=x) =- \sum_x p(x) \sum_y  p(y\vert x) \log \: p(y\vert x)$$
+  - $$H(X,Y)=H(X)+H(Y\vert X) =H(Y)+H(X\vert Y)$$
 
 ## relative entropy / mutual info
 
@@ -43,14 +43,14 @@ subtitle: Material from Cover "Elements of Information Theory"
   - $$D(p\Vert \Vert q) = \sum_x p(x) \log \frac{p(x)}{q(x)} = \mathbb E_p \log \frac{p(X)}{q(X)} = \cblue{\mathbb E_p[-\log q(X)]} - \corange{H(p)}	$$
   - if we knew the true distribution p of the random variable, we could construct a code with <span class="corange">average description length $\corange{H(p)}$</span>
   - If, instead, we used the code for a distribution q, we would need <span class="cblue">H(p) + D(p\|\|q) bits</span> on average to describe the random variable.
-  - $$D(p\vert \vert q) \neq D(q\vert \vert p)$$<!-- -->
+  - $$D(p\vert \vert q) \neq D(q\vert \vert p)$$
   - properties
     - nonnegative
     - not symmetric
 - *mutual info I(X; Y)*: how much you can predict about one given the other
-  - $$I(X; Y) = \sum_X \sum_y p(x,y) \log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\vert \vert p(x) p(y))$$<!-- -->
+  - $$I(X; Y) = \sum_X \sum_y p(x,y) \log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\vert \vert p(x) p(y))$$
   - $I(X; Y) =  -H(X,Y) + H(X) + H(Y))$
-    - $$=I(Y\vert X)$$<!-- -->
+    - $$=I(Y\vert X)$$
   - $I(X; X) = H(X)$ so entropy sometimes called *self-information*
 
 
@@ -64,9 +64,9 @@ subtitle: Material from Cover "Elements of Information Theory"
 
 - *entropy* $$H(X_1, ..., X_n) = \sum_i H(X_i \vert  X_{i-1}, ..., X_1) = H(X_n \vert  X_{n-1}, ..., X_1) + ... + H(X_1)$$
 - *conditional mutual info* $$I(X; Y\vert Z) = H(X\vert Z) - H(X\vert Y,Z)$$
-  - $$I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\vert X_{i-1}, ... , X_1)$$<!-- -->
+  - $$I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\vert X_{i-1}, ... , X_1)$$
 - *conditional relative entropy* $$D(p(y\vert x) \vert \vert  q(y\vert x)) = \sum_x p(x) \sum_y p(y\vert x) \log \frac{p(y\vert x)}{q(y\vert x)}$$
-  - $$D(p(x, y)\vert \vert q(x, y)) = D(p(x)\vert \vert q(x)) + D(p(y\vert x)\vert \vert q(y\vert x))$$<!-- -->
+  - $$D(p(x, y)\vert \vert q(x, y)) = D(p(x)\vert \vert q(x)) + D(p(y\vert x)\vert \vert q(y\vert x))$$
 
 ## axiomatic approach
 
@@ -77,7 +77,7 @@ subtitle: Material from Cover "Elements of Information Theory"
   2. $f(ML) = f(M)+f(L)$ where $M,L \in \mathbb{Z}^+$
   3. *grouping axiom*
   4. $H(p,1-p)$ is continuous function of $p$
-- $$H(p_1,...,p_M) = - \sum p_i \log p_i = E[h(p_i)]$$<!-- -->
+- $$H(p_1,...,p_M) = - \sum p_i \log p_i = E[h(p_i)]$$
   - $h(p_i)= - \log(p_i)$
   - only solution satisfying above axioms
   - H(p,1-p) has max at 1/2
@@ -85,14 +85,14 @@ subtitle: Material from Cover "Elements of Information Theory"
   - intuitively, $\sum p_i \log q_i$ is maximized when $p_i=q_i$, like a dot product
 - $$H(p_1,...,p_M) \leq \log M$$ with equality iff all $p_i = 1/M$
 - $H(X,Y) \leq H(X) + H(Y)$ with equality iff X and Y are independent
-- $$I(X,Y)=H(Y)-H(Y\vert X)$$<!-- -->
+- $$I(X,Y)=H(Y)-H(Y\vert X)$$
 - sometimes allow p=0 by saying 0log0 = 0
 - information $I(x)=\log_2 \frac{1}{p(x)}=-\log_2p(x)$
 - reduction in uncertainty (amount of surprise in the outcome)
 - if the probability of event happening is small and it happens the info is large
     - entropy $H(X)=E[I(X)]=\sum_i p(x_i)I(x_i)=-\sum_i p(x_i)\log_2 p(x_i)$
 - information gain $$IG(X,Y)=H(Y)-H(Y\vert X)$$
-    - $$=-\sum_j p(x_j) \sum_i p(y_i\vert x_j) \log_2 p(y_i\vert x_j)$$<!-- -->
+    - $$=-\sum_j p(x_j) \sum_i p(y_i\vert x_j) \log_2 p(y_i\vert x_j)$$
 - parts
   1. random variable X taking on $$x_1,...,x_M$$ with probabilities $$p_1,...,p_M$$
   2. code alphabet = set $$a_1,...,a_D$$ . Each symbol $x_i$ is assigned to finite sequence of code characters called *code word* associated with $x_i$
@@ -113,7 +113,7 @@ subtitle: Material from Cover "Elements of Information Theory"
   - *information inequality* $$D(p\vert \vert q) \geq 0$$ with equality iff p(x)=q(x) for all x
   - $$H(X) \leq \log \vert X\vert $$ where \|X\| denotes the number of elements in the range of X, with equality if and only X has a uniform distr
   - $$H(X\vert Y) \leq H(X)$$ - information can't hurt
-  - $$H(X_1, ..., X_n) \leq \sum_i H(X_i)$$<!-- -->
+  - $$H(X_1, ..., X_n) \leq \sum_i H(X_i)$$
 
 # [mdl](https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf)
 
@@ -176,7 +176,7 @@ subtitle: Material from Cover "Elements of Information Theory"
     - among countably infinite codes, can still send $k$ to index the code, although $k$ can get very large
     - ex. bayesian universal model - assign prior distr to codes
   - ex. **nml** is an optimal (minimizes worst-case regret) universal model
-      - $$\bar P_{\text{nml}} (x^n) = \frac{\cblue{P(x^n \vert  \hat \theta (x^n))}}{\corange{\sum_{z^n \in \mathcal X^n} P(z^n \vert  \hat \theta (z^n))}}$$<!-- -->
+      - $$\bar P_{\text{nml}} (x^n) = \frac{\cblue{P(x^n \vert  \hat \theta (x^n))}}{\corange{\sum_{z^n \in \mathcal X^n} P(z^n \vert  \hat \theta (z^n))}}$$
       - literally a <span class="corange">normalized</span> <span class="cblue">likelihood</span>
       - **regret** of $\bar P$ relative to $M$: $−\log \bar P(x^n)− \min_{P \in M} -\log P(x^n )$
         - measures the performance of universal models relative to a set of candidate sources M

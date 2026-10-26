@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.5. os</title>
+    <title>Operating systems &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/cs/os';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.6. architecture" href="arch.html" />
-    <link rel="prev" title="2.4. languages" href="languages_parallel.html" />
+    <link rel="next" title="Information retrieval and databases" href="retrieval_databases.html" />
+    <link rel="prev" title="Architecture" href="arch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">Architecture</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="cs_section.html">2. cs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/cs/os.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>os</h1>
+    <h1>Operating systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,18 +471,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.5.1. introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-structures">2.5.2. os structures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">2.5.3. processes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">2.5.4. threads</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-synchronization">2.5.5. process synchronization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-scheduling">2.5.6. cpu scheduling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-memory">2.5.7. main memory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">2.5.8. virtual memory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-storage-structure">2.5.9. mass-storage structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-interface">2.5.10. file-system interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-implementation">2.5.11. file-system implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-systems">2.5.12. i/o systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-structures">OS structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">Threads</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-synchronization">Process synchronization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-scheduling">CPU scheduling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-memory">Main memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">Virtual memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-storage-structure">Mass-storage structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-interface">File-system interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-implementation">File-system implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-systems">I/o systems</a></li>
 </ul>
             </nav>
         </div>
@@ -444,14 +494,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="os">
-<h1><span class="section-number">2.5. </span>os<a class="headerlink" href="#os" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2><span class="section-number">2.5.1. </span>introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/cs.html">Computer science</a> &nbsp;·&nbsp; chapter 5 of 8 &nbsp;·&nbsp; 23 min read</p><section class="tex2jax_ignore mathjax_ignore" id="operating-systems">
+<h1>Operating systems<a class="headerlink" href="#operating-systems" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some notes on operating systems - processes, threads, synchronization, memory, and file systems.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The chapter follows the order of a standard operating systems textbook. The first two sections are vocabulary: what the kernel is, user and kernel mode, system calls, and the ways an OS can be structured. Then come the units of work: processes (their states, scheduling, fork and exec, and how they communicate) and threads, which share one address space.</p>
+<p>Sharing creates the next problem, race conditions, and the synchronization section covers locks, semaphores, monitors and the four conditions for deadlock. The memory sections go from contiguous allocation to paging and then to virtual memory, where a process can run with only part of it in RAM and the question becomes which page to evict. The chapter ends with disks, file systems and I/O.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 12 sections</summary><ol><li><a href="#sec-os-introduction">Introduction</a><span class="ol-lead">The OS sits between the hardware and application programs and hands out CPU time, memory, storage and I/O.</span></li><li><a href="#sec-os-os-structures">OS structures</a><span class="ol-lead">What the OS offers and how it is put together.</span></li><li><a href="#sec-os-processes">Processes</a><span class="ol-lead">A process is a program in execution: its code plus a program counter, registers, stack and heap.</span></li><li><a href="#sec-os-threads">Threads</a><span class="ol-lead">A thread has its own program counter, registers and stack but shares the rest of its process, so threads are cheaper to create than processes.</span></li><li><a href="#sec-os-process-synchronization">Process synchronization</a><span class="ol-lead">When two processes update shared data at the same time the result depends on timing, a race condition.</span></li><li><a href="#sec-os-cpu-scheduling">CPU scheduling</a><span class="ol-lead">The short-term scheduler picks which ready process runs next.</span></li><li><a href="#sec-os-main-memory">Main memory</a><span class="ol-lead">Each process needs its own protected range of memory.</span></li><li><a href="#sec-os-virtual-memory">Virtual memory</a><span class="ol-badge">1 interactive</span><span class="ol-lead">With demand paging a page is only loaded when it is first used, so a process can be larger than physical memory.</span></li><li><a href="#sec-os-mass-storage-structure">Mass-storage structure</a><span class="ol-lead">Disk scheduling orders pending requests to cut head movement.</span></li><li><a href="#sec-os-file-system-interface">File-system interface</a><span class="ol-lead">What a file system looks like to the user: open files tracked in an open-file table, sequential or direct access, and directories that grow from two levels into a tree.</span></li><li><a href="#sec-os-file-system-implementation">File-system implementation</a><span class="ol-lead">How files sit on disk.</span></li><li><a href="#sec-os-i-o-systems">I/o systems</a><span class="ol-lead">The CPU talks to devices over a bus through a few registers (data-in, data-out, status, control).</span></li></ol></details><section id="introduction">
+<span id="sec-os-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p class="section-lead">The OS sits between the hardware and application programs and hands out CPU time, memory, storage and I/O. The one program always running is the kernel. Much of this section is definitions that the later sections rely on.</p>
 <ul>
 <li><p><strong>what operating systems do</strong></p>
 <ul class="simple">
-<li><p><em>computer system</em> - hierarchical approach = layered approach</p></li>
+<li><p><span id="def-computer-system" class="def-anchor"></span><em>computer system</em> - hierarchical approach = layered approach</p></li>
 </ul>
 <ol class="arabic simple">
 <li><p>hardware</p></li>
@@ -482,7 +538,7 @@ document.write(`
 <li><p>application programs</p></li>
 </ol>
 <ul class="simple">
-<li><p><em>middleware</em> - set of software frameworks that provide additional services to application developers</p></li>
+<li><p><span id="def-middleware" class="def-anchor"></span><em>middleware</em> - set of software frameworks that provide additional services to application developers</p></li>
 </ul>
 </li>
 <li><p><strong>computer-system organization</strong></p>
@@ -507,10 +563,10 @@ document.write(`
 </li>
 <li><p>memory</p>
 <ul class="simple">
-<li><p><em>von Neumann architecture</em> - uses instruction register</p></li>
+<li><p><span id="def-von-neumann-architecture" class="def-anchor"></span><em>von Neumann architecture</em> - uses instruction register</p></li>
 <li><p>main memory is <em>RAM</em></p>
 <ul>
-<li><p><em>volatile</em> - lost when power off</p></li>
+<li><p><span id="def-volatile" class="def-anchor"></span><em>volatile</em> - lost when power off</p></li>
 </ul>
 </li>
 <li><p><em>secondary storage</em> is non-volatile (ex. hard disk)</p></li>
@@ -525,7 +581,7 @@ document.write(`
 <li><p>I/O</p>
 <ul class="simple">
 <li><p><em>device driver</em> for I/O devices</p></li>
-<li><p><em>direct memory access (DMA)</em> - transfers entire blocks of data w/out CPU intervention</p>
+<li><p><span id="def-direct-memory-access-dma" class="def-anchor"></span><em>direct memory access (DMA)</em> - transfers entire blocks of data w/out CPU intervention</p>
 <ul>
 <li><p>otherwise device controller must move data to its local buffer and return pointer to that</p></li>
 </ul>
@@ -560,43 +616,43 @@ document.write(`
 <li><p>increased reliability = <em>graceful degradation</em> = <em>fault tolerant</em></p></li>
 <li><p>types</p>
 <ol class="arabic simple">
-<li><p><em>asymmetric multiprocessing</em> - boss processor controls the system</p></li>
-<li><p><em>symmetric multiprocessing (SMP)</em> - each processor performs all tasks</p></li>
+<li><p><span id="def-asymmetric-multiprocessing" class="def-anchor"></span><em>asymmetric multiprocessing</em> - boss processor controls the system</p></li>
+<li><p><span id="def-symmetric-multiprocessing-smp" class="def-anchor"></span><em>symmetric multiprocessing (SMP)</em> - each processor performs all tasks</p></li>
 </ol>
 </li>
 <li><p>more common</p>
 <ol class="arabic simple">
-<li><p><em>blade server</em> - multiple independence multiprocessor systems in same chassis</p></li>
-<li><p><em>clustered system</em> - multiple loosely coupled cpus</p></li>
+<li><p><span id="def-blade-server" class="def-anchor"></span><em>blade server</em> - multiple independence multiprocessor systems in same chassis</p></li>
+<li><p><span id="def-clustered-system" class="def-anchor"></span><em>clustered system</em> - multiple loosely coupled cpus</p></li>
 </ol>
 </li>
 <li><p>types</p>
 <ol class="arabic simple">
-<li><p><em>asymmetric clustering</em> - one machine runs while other monitors it (<em>hot-standby mode</em>)</p></li>
-<li><p><em>symmetric clustering</em> - both run something</p></li>
+<li><p><span id="def-asymmetric-clustering" class="def-anchor"></span><em>asymmetric clustering</em> - one machine runs while other monitors it (<em>hot-standby mode</em>)</p></li>
+<li><p><span id="def-symmetric-clustering" class="def-anchor"></span><em>symmetric clustering</em> - both run something</p></li>
 </ol>
 </li>
 <li><p>parallel clusters</p></li>
 <li><p>require <em>disributed lock manager</em> to stop conflicting parallel operations</p></li>
 <li><p>can share same data via <em>storage-area-networks</em></p></li>
-<li><p><em>beowulf cluster</em> - use ordinary PCs to make cluster</p></li>
+<li><p><span id="def-beowulf-cluster" class="def-anchor"></span><em>beowulf cluster</em> - use ordinary PCs to make cluster</p></li>
 </ul>
 </li>
 <li><p><strong>operating-system structure</strong></p>
 <ul class="simple">
-<li><p><em>multiprogramming</em> - increases CPU utilization so CPU is always doing something</p>
+<li><p><span id="def-multiprogramming" class="def-anchor"></span><em>multiprogramming</em> - increases CPU utilization so CPU is always doing something</p>
 <ul>
 <li><p>keeps <em>job pool</em> ready on disk</p></li>
-<li><p><em>time sharing / multitasking</em> - multiple jobs switch so fast that both can be interacted with</p>
+<li><p><span id="def-time-sharing-multitasking" class="def-anchor"></span><em>time sharing / multitasking</em> - multiple jobs switch so fast that both can be interacted with</p>
 <ul>
 <li><p>requires an <em>interactive</em> computer system</p></li>
 </ul>
 </li>
-<li><p><em>process</em> - program loaded into memory</p></li>
+<li><p><span id="def-process" class="def-anchor"></span><em>process</em> - program loaded into memory</p></li>
 <li><p>scheduling</p>
 <ul>
-<li><p><em>job scheduling</em> - picking jobs from job pool (disk -&gt; memory)</p></li>
-<li><p><em>CPU scheduling</em> - what to run first (memory -&gt; cpu)</p></li>
+<li><p><span id="def-job-scheduling" class="def-anchor"></span><em>job scheduling</em> - picking jobs from job pool (disk -&gt; memory)</p></li>
+<li><p><span id="def-cpu-scheduling" class="def-anchor"></span><em>CPU scheduling</em> - what to run first (memory -&gt; cpu)</p></li>
 </ul>
 </li>
 <li><p>memory</p>
@@ -611,7 +667,7 @@ document.write(`
 </li>
 <li><p><strong>operating-system operations</strong></p>
 <ul class="simple">
-<li><p><em>trap / exception</em> - software-generated <em>interrupt</em></p></li>
+<li><p><span id="def-trap-exception" class="def-anchor"></span><em>trap / exception</em> - software-generated <em>interrupt</em></p></li>
 <li><p><em>user-mode</em> and <em>kernel mode</em> (also called system mode)</p>
 <ul>
 <li><p>when in kernel mode, <em>mode bit</em> is 0</p></li>
@@ -648,9 +704,9 @@ document.write(`
 <li><p>defines <em>file</em> as logical storage unit</p></li>
 <li><p>most programs stored on disk until loaded</p></li>
 <li><p>in addition to secondary storage, there is <em>tertiary storage</em> (like DVDs)</p></li>
-<li><p><em>caching</em> - save frequent items on faster things</p>
+<li><p><span id="def-caching" class="def-anchor"></span><em>caching</em> - save frequent items on faster things</p>
 <ul>
-<li><p><em>cache coherency</em> - make sure cache coherency is properly updated with parallel processes</p></li>
+<li><p><span id="def-cache-coherency" class="def-anchor"></span><em>cache coherency</em> - make sure cache coherency is properly updated with parallel processes</p></li>
 </ul>
 </li>
 </ul>
@@ -658,8 +714,8 @@ document.write(`
 <li><p><strong>protection &amp; security</strong></p>
 <ul class="simple">
 <li><p>process can execute only within its address space</p></li>
-<li><p><em>protection</em> - controlling access to resources</p></li>
-<li><p><em>security</em> - defends a system from attacks</p></li>
+<li><p><span id="def-protection" class="def-anchor"></span><em>protection</em> - controlling access to resources</p></li>
+<li><p><span id="def-security" class="def-anchor"></span><em>security</em> - defends a system from attacks</p></li>
 <li><p>maintain list of <em>user IDs</em> and <em>group IDs</em></p>
 <ul>
 <li><p>can temporarily <em>escalate privileges</em> to an <em>effective UID</em> - <em>setuid</em> command</p></li>
@@ -669,24 +725,24 @@ document.write(`
 </li>
 <li><p><strong>basic data structures</strong></p>
 <ul class="simple">
-<li><p><em>bitmap</em> - string of n binary digits</p></li>
+<li><p><span id="def-bitmap" class="def-anchor"></span><em>bitmap</em> - string of n binary digits</p></li>
 </ul>
 </li>
 <li><p><strong>computing environments</strong></p>
 <ul class="simple">
-<li><p><em>network computers</em> - are essentially terminals that understand web-based computing</p></li>
-<li><p><em>distributed system</em> - shares resources among separate computer systems</p>
+<li><p><span id="def-network-computers" class="def-anchor"></span><em>network computers</em> - are essentially terminals that understand web-based computing</p></li>
+<li><p><span id="def-distributed-system" class="def-anchor"></span><em>distributed system</em> - shares resources among separate computer systems</p>
 <ul>
-<li><p><em>network</em> - communication path between two or more computers</p></li>
+<li><p><span id="def-network" class="def-anchor"></span><em>network</em> - communication path between two or more computers</p></li>
 <li><p><em>TCP/IP</em> is most common network protocol</p></li>
 </ul>
 </li>
 <li><p>networks</p>
 <ul>
-<li><p><em>PAN</em> - personal-area network (like bluetooth)</p></li>
-<li><p><em>LAN</em> - local-area network connects computers within a room, building, or campus</p></li>
-<li><p><em>WAN</em> - wide-area network</p></li>
-<li><p><em>MAN</em> - metropolitan-area network</p></li>
+<li><p><span id="def-pan" class="def-anchor"></span><em>PAN</em> - personal-area network (like bluetooth)</p></li>
+<li><p><span id="def-lan" class="def-anchor"></span><em>LAN</em> - local-area network connects computers within a room, building, or campus</p></li>
+<li><p><span id="def-wan" class="def-anchor"></span><em>WAN</em> - wide-area network</p></li>
+<li><p><span id="def-man" class="def-anchor"></span><em>MAN</em> - metropolitan-area network</p></li>
 <li><p><em>network OS</em> provides features like file sharing across the network</p></li>
 <li><p><em>distributed OS</em> provides less autonomy - makes it feel like one OS controls entire network</p></li>
 </ul>
@@ -694,8 +750,8 @@ document.write(`
 <li><p><em>client-server</em> computing</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>compute-server</em> - performs actions for user</p></li>
-<li><p><em>file-server</em> - stores files</p></li>
+<li><p><span id="def-compute-server" class="def-anchor"></span><em>compute-server</em> - performs actions for user</p></li>
+<li><p><span id="def-file-server" class="def-anchor"></span><em>file-server</em> - stores files</p></li>
 </ol>
 <ul class="simple">
 <li><p><em>peer-to-peer</em> computing</p></li>
@@ -706,13 +762,13 @@ document.write(`
 </ol>
 <ul class="simple">
 <li><p>uses <em>discovery protocol</em> - puts out request and other peer must respond</p></li>
-<li><p><em>virtualization</em> - allows OS to run within another OS</p>
+<li><p><span id="def-virtualization" class="def-anchor"></span><em>virtualization</em> - allows OS to run within another OS</p>
 <ul>
-<li><p><em>interpretation</em> - run programs as non-native code (ex. java runs on JVM)</p></li>
+<li><p><span id="def-interpretation" class="def-anchor"></span><em>interpretation</em> - run programs as non-native code (ex. java runs on JVM)</p></li>
 <li><p>BASIC can be compiled or interpreted</p></li>
 </ul>
 </li>
-<li><p><em>cloud-computing</em> - computing, storage, and applications as a service accross a network</p>
+<li><p><span id="def-cloud-computing" class="def-anchor"></span><em>cloud-computing</em> - computing, storage, and applications as a service accross a network</p>
 <ul>
 <li><p>public cloud</p></li>
 <li><p>private cloud</p></li>
@@ -723,7 +779,7 @@ document.write(`
 <li><p>cloud is behind a firewall, can only make requests to it</p></li>
 </ul>
 </li>
-<li><p><em>embedded systems</em> - like microwaves / robots</p>
+<li><p><span id="def-embedded-systems" class="def-anchor"></span><em>embedded systems</em> - like microwaves / robots</p>
 <ul>
 <li><p>specific tasks</p></li>
 <li><p>have <em>real-time OS</em> - fixed time constraints</p></li>
@@ -734,24 +790,25 @@ document.write(`
 </ul>
 </section>
 <section id="os-structures">
-<h2><span class="section-number">2.5.2. </span>os structures<a class="headerlink" href="#os-structures" title="Link to this heading">#</a></h2>
+<span id="sec-os-os-structures"></span><h2>OS structures<a class="headerlink" href="#os-structures" title="Link to this heading">#</a></h2>
+<p class="section-lead">What the OS offers and how it is put together. Programs reach OS services through system calls, usually wrapped by an API such as libc. The design choices run from a monolithic kernel (little overhead) through layers and a microkernel (smaller, cleaner, slower because of message passing) to loadable modules, and real systems are hybrids.</p>
 <ul>
 <li><p><strong>os services</strong></p>
 <ul class="simple">
 <li><p>for the user</p>
 <ul>
-<li><p><em>user interface</em> - command-line interface and graphical user interface</p></li>
-<li><p><em>program execution</em> - load a program and run it</p></li>
-<li><p><em>I/O operations</em> - file or device</p></li>
+<li><p><span id="def-user-interface" class="def-anchor"></span><em>user interface</em> - command-line interface and graphical user interface</p></li>
+<li><p><span id="def-program-execution" class="def-anchor"></span><em>program execution</em> - load a program and run it</p></li>
+<li><p><span id="def-i-o-operations" class="def-anchor"></span><em>I/O operations</em> - file or device</p></li>
 <li><p><em>File-system manipulation</em></p></li>
-<li><p><em>communications</em> - between processes / computer systems</p></li>
+<li><p><span id="def-communications" class="def-anchor"></span><em>communications</em> - between processes / computer systems</p></li>
 <li><p><em>error detection</em></p></li>
 </ul>
 </li>
 <li><p>for system operation</p>
 <ul>
 <li><p><em>resource allocation</em></p></li>
-<li><p><em>accounting</em> - keeping stats on users / processes</p></li>
+<li><p><span id="def-accounting" class="def-anchor"></span><em>accounting</em> - keeping stats on users / processes</p></li>
 <li><p><em>protection / security</em></p></li>
 </ul>
 </li>
@@ -759,7 +816,7 @@ document.write(`
 </li>
 <li><p><strong>user and os interface</strong></p>
 <ol class="arabic simple">
-<li><p><em>command interpreter</em> = <em>shell</em> - gets and executes next user-specified command</p></li>
+<li><p><span id="def-command-interpreter" class="def-anchor"></span><em>command interpreter</em> = <em>shell</em> - gets and executes next user-specified command</p></li>
 </ol>
 <ul class="simple">
 <li><p>could contain the code to execute the command</p></li>
@@ -772,10 +829,10 @@ document.write(`
 </li>
 <li><p><strong>system calls</strong></p>
 <ul class="simple">
-<li><p><em>system calls</em> - provide an interface to os services</p></li>
+<li><p><span id="def-system-calls" class="def-anchor"></span><em>system calls</em> - provide an interface to os services</p></li>
 <li><p>API usually wraps system calls (ex. java)</p>
 <ul>
-<li><p><em>libc</em> - provided by Linux/Mac OS for C</p></li>
+<li><p><span id="def-libc" class="def-anchor"></span><em>libc</em> - provided by Linux/Mac OS for C</p></li>
 <li><p><em>system-call interface</em> links API calls to system calls</p></li>
 </ul>
 </li>
@@ -814,7 +871,7 @@ document.write(`
 <ul class="simple">
 <li><p>each computer has <em>host name</em> and <em>network identifier</em> (IP address)</p></li>
 <li><p>each process has <em>process name</em></p></li>
-<li><p><em>daemons</em> - system programs for receiving connections (like servers waiting for a client)</p></li>
+<li><p><span id="def-daemons" class="def-anchor"></span><em>daemons</em> - system programs for receiving connections (like servers waiting for a client)</p></li>
 </ul>
 <ol class="arabic simple">
 <li><p><em>shared-memory model</em></p></li>
@@ -823,7 +880,7 @@ document.write(`
 </li>
 <li><p><strong>system programs</strong></p>
 <ul class="simple">
-<li><p><em>system programs</em> = <em>system utilities</em></p></li>
+<li><p><span id="def-system-programs" class="def-anchor"></span><em>system programs</em> = <em>system utilities</em></p></li>
 <li><p>some provide interfaces for system calls</p></li>
 <li><p>other uses</p></li>
 </ul>
@@ -839,12 +896,12 @@ document.write(`
 </li>
 <li><p><strong>os design and implementation</strong></p>
 <ul class="simple">
-<li><p><em>mechanism</em> - how to do something</p>
+<li><p><span id="def-mechanism" class="def-anchor"></span><em>mechanism</em> - how to do something</p>
 <ul>
 <li><p>want this to be general so only certain parameters change</p></li>
 </ul>
 </li>
-<li><p><em>policy</em> - what will be done</p></li>
+<li><p><span id="def-policy" class="def-anchor"></span><em>policy</em> - what will be done</p></li>
 <li><p>os mostly in C, low-level kernel in assembly</p>
 <ul>
 <li><p>high-level is easier to port but slower</p></li>
@@ -867,10 +924,10 @@ document.write(`
 <li><p>hard to define layers, less efficient</p></li>
 </ul>
 </li>
-<li><p><em>microkernel approach</em> - used in os <em>Mach</em></p>
+<li><p><span id="def-microkernel-approach" class="def-anchor"></span><em>microkernel approach</em> - used in os <em>Mach</em></p>
 <ul>
 <li><p>move nonessential kernel components to system / user-level</p></li>
-<li><p>smaller kernel, everything communicates with <em>message passing</em></p></li>
+<li><p>smaller kernel, everything communicates with <a class="term-link" href="#def-message-passing" data-def="messages between coordinating processes · Operating systems"><em>message passing</em></a></p></li>
 <li><p>makes extending os easier, but slower functions due to system overhead</p></li>
 </ul>
 </li>
@@ -886,18 +943,18 @@ document.write(`
 <ul class="simple">
 <li><p>errors are written to <em>log file</em> and <em>core dump</em> (memory snapshot) is written to file</p></li>
 <li><p>if kernel crashes, must save its dump to s special area</p></li>
-<li><p><em>performance tuning</em> - removing <em>bottlenecks</em></p>
+<li><p><span id="def-performance-tuning" class="def-anchor"></span><em>performance tuning</em> - removing <em>bottlenecks</em></p>
 <ul>
 <li><p>monitor <em>trace listings</em> - log if interesting events with times / parameters</p></li>
 </ul>
 </li>
 <li><p>SolarisDTrace is a tool to debug and tune the os</p></li>
-<li><p><em>profiling</em> - periodically samples instruction pointer to determine which code is being executed</p></li>
+<li><p><span id="def-profiling" class="def-anchor"></span><em>profiling</em> - periodically samples instruction pointer to determine which code is being executed</p></li>
 </ul>
 </li>
 <li><p><strong>generation</strong></p>
 <ul class="simple">
-<li><p><em>system generation</em> - configuring os on a computer</p>
+<li><p><span id="def-system-generation" class="def-anchor"></span><em>system generation</em> - configuring os on a computer</p>
 <ul>
 <li><p>usually on a CD-ROM</p></li>
 <li><p>lots of things must be determined (like what CPU to use)</p></li>
@@ -913,13 +970,14 @@ document.write(`
 </ul>
 </section>
 <section id="processes">
-<h2><span class="section-number">2.5.3. </span>processes<a class="headerlink" href="#processes" title="Link to this heading">#</a></h2>
+<span id="sec-os-processes"></span><h2>Processes<a class="headerlink" href="#processes" title="Link to this heading">#</a></h2>
+<p class="section-lead">A process is a program in execution: its code plus a program counter, registers, stack and heap. The kernel keeps each one’s state in a process control block, moves processes between queues, and context-switches by saving one block and loading another.</p>
 <ul>
 <li><p><strong>process concept</strong></p>
 <ul class="simple">
-<li><p><em>process</em> - program in execution</p>
+<li><p><span id="def-process-2" class="def-anchor"></span><em>process</em> - program in execution</p>
 <ul>
-<li><p>batch system executes <em>jobs</em> = <em>processes</em></p></li>
+<li><p>batch system executes <em>jobs</em> = <a class="term-link" href="languages_parallel.html#def-processes" data-def="instances of a program executing on a machine · Languages and parallel computing"><em>processes</em></a></p></li>
 <li><p>time-shared system has user programs or <em>tasks</em></p></li>
 <li><p>program is passive while process is active</p></li>
 </ul>
@@ -945,7 +1003,7 @@ document.write(`
 <li><p>terminated</p></li>
 </ul>
 </li>
-<li><p><em>process control block (PCB)</em> = <em>task control block</em> - repository for any info that varies process to process</p>
+<li><p><span id="def-process-control-block-pcb" class="def-anchor"></span><em>process control block (PCB)</em> = <em>task control block</em> - repository for any info that varies process to process</p>
 <ul>
 <li><p>process state</p></li>
 <li><p>program counter</p></li>
@@ -957,12 +1015,12 @@ document.write(`
 <li><p>could include information for each thread</p></li>
 </ul>
 </li>
-<li><p><em>parent</em> - process that created another process</p></li>
+<li><p><span id="def-parent" class="def-anchor"></span><em>parent</em> - process that created another process</p></li>
 </ul>
 </li>
 <li><p><strong>process scheduling</strong></p>
 <ul class="simple">
-<li><p><em>process scheduler</em> - selects available process for multi-tasking</p>
+<li><p><span id="def-process-scheduler" class="def-anchor"></span><em>process scheduler</em> - selects available process for multi-tasking</p>
 <ul>
 <li><p>processes begin in <em>job queue</em></p></li>
 <li><p>processes that are ready and waiting are in the <em>ready queue</em> until they are <em>dispatched</em> - usually stored as a linked list</p></li>
@@ -971,14 +1029,14 @@ document.write(`
 <li><p>ex. make I/O request and go to I/O queue</p></li>
 </ul>
 </li>
-<li><p><em>I/O-bound process</em> - spends more time doing I/O</p></li>
-<li><p><em>CPU-bound process</em> - spends more time doing computations</p></li>
+<li><p><span id="def-i-o-bound-process" class="def-anchor"></span><em>I/O-bound process</em> - spends more time doing I/O</p></li>
+<li><p><span id="def-cpu-bound-process" class="def-anchor"></span><em>CPU-bound process</em> - spends more time doing computations</p></li>
 <li><p>each device has a list of process waiting in its <em>device queue</em></p></li>
 </ul>
 </li>
-<li><p><em>scheduler</em> - selects processes from queues</p>
+<li><p><span id="def-scheduler" class="def-anchor"></span><em>scheduler</em> - selects processes from queues</p>
 <ul>
-<li><p><em>long-term scheduler</em> - selects from processes on disk to load into memory</p>
+<li><p><span id="def-long-term-scheduler" class="def-anchor"></span><em>long-term scheduler</em> - selects from processes on disk to load into memory</p>
 <ul>
 <li><p>controls the <em>degree of multiprogramming</em> = number of processes in memory</p></li>
 <li><p>has much more time than short-term scheduler</p></li>
@@ -986,7 +1044,7 @@ document.write(`
 <li><p>sometimes this doesn’t exist</p></li>
 </ul>
 </li>
-<li><p><em>short-term / CPU scheduler</em> - selects from processes ready to execute and allocates CPU to one of them</p></li>
+<li><p><span id="def-short-term-cpu-scheduler" class="def-anchor"></span><em>short-term / CPU scheduler</em> - selects from processes ready to execute and allocates CPU to one of them</p></li>
 <li><p>sometimes <em>medium-term scheduler</em></p>
 <ul>
 <li><p>does <em>swapping</em> - remove a process from memory and later reintroduce it</p></li>
@@ -994,7 +1052,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>context switch</em> - occurs when switching processes</p>
+<li><p><span id="def-context-switch" class="def-anchor"></span><em>context switch</em> - occurs when switching processes</p>
 <ul>
 <li><p>when interrupt occurs, kernel saves <em>context</em> of old process and loads saved context of new process</p></li>
 <li><p>context is in the PCB</p></li>
@@ -1052,8 +1110,8 @@ document.write(`
 <li><p><em>exit()</em> kills process (return in main calls exit)</p></li>
 <li><p>process can return status value</p></li>
 <li><p>parent can terminate child if it knows its pid</p></li>
-<li><p><em>cascading termination</em> - if parent dies, its children die</p></li>
-<li><p><em>zombie process</em> - terminated but parent hasn’t called wait() yet</p>
+<li><p><span id="def-cascading-termination" class="def-anchor"></span><em>cascading termination</em> - if parent dies, its children die</p></li>
+<li><p><span id="def-zombie-process" class="def-anchor"></span><em>zombie process</em> - terminated but parent hasn’t called wait() yet</p>
 <ul>
 <li><p>remains because parent wants to know what exit status was</p></li>
 <li><p>if parent terminates without wait(), <em>orphan</em> child is assigned <em>init</em> as new parent (init periodically invokes wait())</p></li>
@@ -1073,10 +1131,10 @@ document.write(`
 <li><p>convenience</p></li>
 </ul>
 </li>
-<li><p><em>interprocess communication (IPC)</em> - allows exchange of data and info</p></li>
+<li><p><span id="def-interprocess-communication-ipc" class="def-anchor"></span><em>interprocess communication (IPC)</em> - allows exchange of data and info</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>shared memory</em> - shared region of memory is established</p></li>
+<li><p><span id="def-shared-memory" class="def-anchor"></span><em>shared memory</em> - shared region of memory is established</p></li>
 </ol>
 <ul class="simple">
 <li><p>one process establishes region</p></li>
@@ -1085,13 +1143,13 @@ document.write(`
 <li><p>suffers from cache coherency</p></li>
 <li><p>ex. producer consumer</p></li>
 <li><p>producer fills buffer and consumer empties it</p></li>
-<li><p><em>unbounded buffer</em> - producer can keep producing indefinitely</p></li>
-<li><p><em>bounded buffer</em> - consumer waits if empty, producer waits if full</p></li>
+<li><p><span id="def-unbounded-buffer" class="def-anchor"></span><em>unbounded buffer</em> - producer can keep producing indefinitely</p></li>
+<li><p><span id="def-bounded-buffer" class="def-anchor"></span><em>bounded buffer</em> - consumer waits if empty, producer waits if full</p></li>
 <li><p>in points to next free position</p></li>
 <li><p>out points to first full position</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>message passing</em> - messages between coordinating processes</p></li>
+<li><p><span id="def-message-passing" class="def-anchor"></span><em>message passing</em> - messages between coordinating processes</p></li>
 </ol>
 <ul>
 <li><p>useful for smaller data</p></li>
@@ -1140,7 +1198,7 @@ document.write(`
 </li>
 <li><p><strong>communication in client-server systems</strong></p>
 <ol class="arabic simple">
-<li><p><em>sockets</em> - endpoint for communication</p></li>
+<li><p><span id="def-sockets" class="def-anchor"></span><em>sockets</em> - endpoint for communication</p></li>
 </ol>
 <ul class="simple">
 <li><p>IP address + port number</p></li>
@@ -1158,7 +1216,7 @@ document.write(`
 <li><p>sockets are <em>low-level</em> - can only send unstructured bytes</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p><em>remote procedure calls (RPCs)</em> - remote message-based communication</p></li>
+<li><p><span id="def-remote-procedure-calls-rpcs" class="def-anchor"></span><em>remote procedure calls (RPCs)</em> - remote message-based communication</p></li>
 </ol>
 <ul class="simple">
 <li><p>like IPC, but between different computers</p></li>
@@ -1174,7 +1232,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>binding info (port numbers) may be predetermined and unchangeable</p></li>
 <li><p>binding can be dynamic with rendezvous deaemon (<em>matchmaker</em>) on a fixed RPC port</p></li>
-<li><p><em>pipes</em> - conduit allowing 2 processes to communicate</p></li>
+<li><p><span id="def-pipes" class="def-anchor"></span><em>pipes</em> - conduit allowing 2 processes to communicate</p></li>
 </ol>
 </li>
 <li><p>four issues</p>
@@ -1185,7 +1243,7 @@ document.write(`
 <li><p>communicate over a network?</p></li>
 </ol>
 </li>
-<li><p><em>ordinary pipe</em> - write at one end, read at the other</p></li>
+<li><p><span id="def-ordinary-pipe" class="def-anchor"></span><em>ordinary pipe</em> - write at one end, read at the other</p></li>
 <li><p>unix function <code class="docutils literal notranslate"><span class="pre">pipe(int</span> <span class="pre">fd[])</span></code></p></li>
 <li><p>fd[0] is read-end and fd[1] is write-end</p></li>
 <li><p>only exists while a child and parent process are communicating</p></li>
@@ -1193,7 +1251,7 @@ document.write(`
 <li><p>parent and child should both close unused ends of the pipe</p></li>
 <li><p>on windows, called <em>anonymous pipes</em></p></li>
 <li><p>requires security attributes</p></li>
-<li><p><em>named pipe</em> - can be bidirectional</p></li>
+<li><p><span id="def-named-pipe" class="def-anchor"></span><em>named pipe</em> - can be bidirectional</p></li>
 <li><p>called <em>FIFOs</em> in Unix</p></li>
 <li><p>only half-duplex, requires same machine</p></li>
 <li><p>Windows - fulll-duplex and can be different machines</p></li>
@@ -1203,9 +1261,10 @@ document.write(`
 </ul>
 </section>
 <section id="threads">
-<h2><span class="section-number">2.5.4. </span>threads<a class="headerlink" href="#threads" title="Link to this heading">#</a></h2>
+<span id="sec-os-threads"></span><h2>Threads<a class="headerlink" href="#threads" title="Link to this heading">#</a></h2>
+<p class="section-lead">A thread has its own program counter, registers and stack but shares the rest of its process, so threads are cheaper to create than processes. Amdahl’s law says the serial part of a program limits how much more cores can help.</p>
 <ul class="simple">
-<li><p><em>thread</em> - basic unit of CPU utilization</p></li>
+<li><p><span id="def-thread" class="def-anchor"></span><em>thread</em> - basic unit of CPU utilization</p></li>
 </ul>
 <ol class="arabic simple">
 <li><p>program counter</p></li>
@@ -1226,15 +1285,15 @@ document.write(`
 <ul>
 <li><p><strong>multicore programming</strong></p>
 <ul class="simple">
-<li><p><em>amdahl’s law</em>: <span class="math notranslate nohighlight">\(speedup \leq \frac{1}{S+(1-S)/N_{cores}}\)</span></p>
+<li><p><span id="def-amdahl-s-law" class="def-anchor"></span><em>amdahl’s law</em>: <span class="math notranslate nohighlight">\(speedup \leq \frac{1}{S+(1-S)/N_{cores}}\)</span></p>
 <ul>
 <li><p>S is serial portion</p></li>
 </ul>
 </li>
 <li><p>parallelism</p>
 <ul>
-<li><p><em>data parallelism</em> - distributing subsets of data across cores and performing same operation on each core</p></li>
-<li><p><em>task parallelism</em> - distribution tasks across cores</p></li>
+<li><p><span id="def-data-parallelism" class="def-anchor"></span><em>data parallelism</em> - distributing subsets of data across cores and performing same operation on each core</p></li>
+<li><p><span id="def-task-parallelism" class="def-anchor"></span><em>task parallelism</em> - distribution tasks across cores</p></li>
 </ul>
 </li>
 </ul>
@@ -1244,7 +1303,7 @@ document.write(`
 <li><p>need relationship between <em>user threads</em> and <em>kernel threads</em></p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>many-to-one model</em> - maps user-level threads to one kernel thread</p></li>
+<li><p><span id="def-many-to-one-model" class="def-anchor"></span><em>many-to-one model</em> - maps user-level threads to one kernel thread</p></li>
 </ol>
 <ul class="simple">
 <li><p>can’t be parallel on multicore systems</p></li>
@@ -1267,7 +1326,7 @@ document.write(`
 </li>
 <li><p><strong>thread libraries</strong></p>
 <ul class="simple">
-<li><p><em>thread library</em> - provides programmer with an API for creating/managing threads</p></li>
+<li><p><span id="def-thread-library" class="def-anchor"></span><em>thread library</em> - provides programmer with an API for creating/managing threads</p></li>
 <li><p><em>asynchronous</em> v. <em>synchronous</em> threading
 1 - POSIX Pthreads</p></li>
 </ul>
@@ -1288,18 +1347,18 @@ document.write(`
 </li>
 <li><p><strong>implicit threading</strong></p>
 <ul class="simple">
-<li><p><em>implicit threading</em> - handle threading in run-time libraries and compilers</p></li>
+<li><p><span id="def-implicit-threading" class="def-anchor"></span><em>implicit threading</em> - handle threading in run-time libraries and compilers</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>thread pool</em> - number of threads at startup that sit in a pool and wait for work</p></li>
-<li><p><em>OpenMP</em> - set of compiler directives / API for parallel programming</p></li>
+<li><p><span id="def-thread-pool" class="def-anchor"></span><em>thread pool</em> - number of threads at startup that sit in a pool and wait for work</p></li>
+<li><p><span id="def-openmp" class="def-anchor"></span><em>OpenMP</em> - set of compiler directives / API for parallel programming</p></li>
 </ol>
 <ul class="simple">
 <li><p>identifies <em>parallel regions</em></p></li>
 <li><p>uses #pragma</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>Grand central dispatch</em> - extends C</p></li>
+<li><p><span id="def-grand-central-dispatch" class="def-anchor"></span><em>Grand central dispatch</em> - extends C</p></li>
 </ol>
 <ul class="simple">
 <li><p>uses <em>dispatch queue</em></p></li>
@@ -1317,11 +1376,11 @@ document.write(`
 <ul class="simple">
 <li><p>delivering a signal to a process: <code class="docutils literal notranslate"><span class="pre">kill(pid_t</span> <span class="pre">pid,</span> <span class="pre">int</span> <span class="pre">signal)</span></code></p></li>
 <li><p>delivering a signal to a thread: <code class="docutils literal notranslate"><span class="pre">pthread_kill(pthread_t</span> <span class="pre">tid,</span> <span class="pre">int</span> <span class="pre">signal)</span></code></p></li>
-<li><p><em>thread cancellation</em> - terminating <em>target thread</em> before it has completed</p></li>
+<li><p><span id="def-thread-cancellation" class="def-anchor"></span><em>thread cancellation</em> - terminating <em>target thread</em> before it has completed</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>asynchronous cancellation</em> - one thread immediately terminates target thread</p></li>
-<li><p><em>deferred cancellation</em> - target thread periodically checks whether it should terminate</p></li>
+<li><p><span id="def-asynchronous-cancellation" class="def-anchor"></span><em>asynchronous cancellation</em> - one thread immediately terminates target thread</p></li>
+<li><p><span id="def-deferred-cancellation" class="def-anchor"></span><em>deferred cancellation</em> - target thread periodically checks whether it should terminate</p></li>
 </ol>
 <ul class="simple">
 <li><p>pthread_cancel(tid)</p>
@@ -1330,11 +1389,11 @@ document.write(`
 <li><p>cancellation occurs only when thread reaches <em>cancellation point</em></p></li>
 </ul>
 </li>
-<li><p><em>thread-local storage</em> - when threads need separate copies of data</p></li>
-<li><p><em>lightweight process</em> = <em>LWP</em> - between user thread and kernel thread</p></li>
-<li><p><em>scheduler activation</em> - kernel provides application with LWPs</p>
+<li><p><span id="def-thread-local-storage" class="def-anchor"></span><em>thread-local storage</em> - when threads need separate copies of data</p></li>
+<li><p><span id="def-lightweight-process" class="def-anchor"></span><em>lightweight process</em> = <em>LWP</em> - between user thread and kernel thread</p></li>
+<li><p><span id="def-scheduler-activation" class="def-anchor"></span><em>scheduler activation</em> - kernel provides application with LWPs</p>
 <ul>
-<li><p><em>upcall</em> - kernel informs application about certain events</p></li>
+<li><p><span id="def-upcall" class="def-anchor"></span><em>upcall</em> - kernel informs application about certain events</p></li>
 </ul>
 </li>
 </ul>
@@ -1348,7 +1407,8 @@ document.write(`
 </ul>
 </section>
 <section id="process-synchronization">
-<h2><span class="section-number">2.5.5. </span>process synchronization<a class="headerlink" href="#process-synchronization" title="Link to this heading">#</a></h2>
+<span id="sec-os-process-synchronization"></span><h2>Process synchronization<a class="headerlink" href="#process-synchronization" title="Link to this heading">#</a></h2>
+<p class="section-lead">When two processes update shared data at the same time the result depends on timing, a race condition. Each tool here enforces mutual exclusion around a critical section: hardware atomic instructions, mutex locks, semaphores and monitors. Deadlock needs four conditions at once, so breaking any one of them prevents it.</p>
 <ul>
 <li><p><em>cooperating process</em> can effect or be affected by other executing processes</p></li>
 <li><p>ex. consumer/producer</p>
@@ -1363,9 +1423,9 @@ document.write(`
 <li><p>3 requirements</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>mutual exclusion</em> - 2 processes can’t concurrently do critical section</p></li>
-<li><p><em>progress</em> - things should be in critical section</p></li>
-<li><p><em>bounded waiting</em> - every process should eventually get to critical section</p></li>
+<li><p><span id="def-mutual-exclusion" class="def-anchor"></span><em>mutual exclusion</em> - 2 processes can’t concurrently do critical section</p></li>
+<li><p><span id="def-progress" class="def-anchor"></span><em>progress</em> - things should be in critical section</p></li>
+<li><p><span id="def-bounded-waiting" class="def-anchor"></span><em>bounded waiting</em> - every process should eventually get to critical section</p></li>
 </ol>
 <ul class="simple">
 <li><p>kernels</p></li>
@@ -1394,7 +1454,7 @@ document.write(`
 </li>
 <li><p><strong>synchronization hardware</strong></p>
 <ul class="simple">
-<li><p><em>locking</em> - protecting critical regions using locks</p></li>
+<li><p><span id="def-locking" class="def-anchor"></span><em>locking</em> - protecting critical regions using locks</p></li>
 <li><p>single-processor solution</p>
 <ul>
 <li><p>prevent interrupts while shared variable is being modified</p></li>
@@ -1424,8 +1484,8 @@ document.write(`
 <ul class="simple">
 <li><p><em>semaphore</em> S - integer variable accessed through <em>wait()</em> (like trying to execute) and <em>signal()</em> (like releasing)</p>
 <ul>
-<li><p><em>counting semaphore</em> - unrestricted domain</p></li>
-<li><p><em>binary semaphore</em> - 0 and 1</p></li>
+<li><p><span id="def-counting-semaphore" class="def-anchor"></span><em>counting semaphore</em> - unrestricted domain</p></li>
+<li><p><span id="def-binary-semaphore" class="def-anchor"></span><em>binary semaphore</em> - 0 and 1</p></li>
 </ul>
 </li>
 </ul>
@@ -1466,8 +1526,8 @@ document.write(`
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><em>deadlocked</em> - 2 processes are in waiting queues, can’t wakeup unless other process signals them</p></li>
-<li><p><em>indefinite blocking=starving</em> - could happen if we remove processes from waiting queue in LIFO order</p>
+<li><p><span id="def-deadlocked" class="def-anchor"></span><em>deadlocked</em> - 2 processes are in waiting queues, can’t wakeup unless other process signals them</p></li>
+<li><p><span id="def-indefinite-blocking-starving" class="def-anchor"></span><em>indefinite blocking=starving</em> - could happen if we remove processes from waiting queue in LIFO order</p>
 <ul>
 <li><p>bottom never gets out</p></li>
 </ul>
@@ -1499,7 +1559,7 @@ document.write(`
 </li>
 <li><p><strong>monitors</strong></p>
 <ul class="simple">
-<li><p><em>monitor</em> - highl-level synchronization construct</p>
+<li><p><span id="def-monitor" class="def-anchor"></span><em>monitor</em> - highl-level synchronization construct</p>
 <ul>
 <li><p>only 1 process can run at a time</p></li>
 <li><p><em>abstract data type</em> which includes a set of programmer-defined operations with mutual exclusion</p></li>
@@ -1598,7 +1658,7 @@ document.write(`
 <ul class="simple">
 <li><p>deadlocks can be described by <em>system resource-allocation graph</em></p>
 <ul>
-<li><p><em>request edge</em> - directed edge from process P to resource R means P has requested instance of resource type R</p></li>
+<li><p><span id="def-request-edge" class="def-anchor"></span><em>request edge</em> - directed edge from process P to resource R means P has requested instance of resource type R</p></li>
 <li><p><em>assignment edge</em> - R-&gt; P</p></li>
 <li><p>if the graph has no cycles, not deadlocked</p></li>
 <li><p>if cycle, possible deadlock</p></li>
@@ -1618,9 +1678,10 @@ document.write(`
 </ul>
 </section>
 <section id="cpu-scheduling">
-<h2><span class="section-number">2.5.6. </span>cpu scheduling<a class="headerlink" href="#cpu-scheduling" title="Link to this heading">#</a></h2>
+<span id="sec-os-cpu-scheduling"></span><h2>CPU scheduling<a class="headerlink" href="#cpu-scheduling" title="Link to this heading">#</a></h2>
+<p class="section-lead">The short-term scheduler picks which ready process runs next. The algorithms differ in whether they can preempt a running process and in whether a long or low-priority job can starve.</p>
 <ul>
-<li><p><em>preemptive</em> - can stop and switch a process that is currently running</p></li>
+<li><p><span id="def-preemptive" class="def-anchor"></span><em>preemptive</em> - can stop and switch a process that is currently running</p></li>
 <li><p><strong>algorithms</strong></p>
 <ol class="arabic simple">
 <li><p>first-come, first-served</p></li>
@@ -1656,7 +1717,7 @@ document.write(`
 </li>
 <li><p><strong>thread scheduling</strong></p>
 <ul class="simple">
-<li><p><em>process contention scope</em> - competition for CPU takes place among threads belonging to same process</p>
+<li><p><span id="def-process-contention-scope" class="def-anchor"></span><em>process contention scope</em> - competition for CPU takes place among threads belonging to same process</p>
 <ul>
 <li><p>PTHREAD_SCOPE_PROCESS - user-level threads onto available LWPs</p></li>
 <li><p>PTHREAD_SCOPE_SYSTEM - binds LWP for each user-level thread</p></li>
@@ -1669,8 +1730,8 @@ document.write(`
 <li><p>asymmetric vs. symmetric</p>
 <ul class="simple">
 <li><p>almost everything is symmetric (SMP)</p></li>
-<li><p><em>processor affinity</em> - try to not switch too much</p></li>
-<li><p><em>load balancing</em> - try to make sure all processes share work</p></li>
+<li><p><span id="def-processor-affinity" class="def-anchor"></span><em>processor affinity</em> - try to not switch too much</p></li>
+<li><p><span id="def-load-balancing" class="def-anchor"></span><em>load balancing</em> - try to make sure all processes share work</p></li>
 <li><p><em>multithreading</em></p></li>
 </ul>
 <ol class="arabic simple">
@@ -1682,10 +1743,10 @@ document.write(`
 </li>
 <li><p><strong>real-time systems</strong></p>
 <ul class="simple">
-<li><p><em>event latency</em> - amount of time that elapses from when an event occurs to when it is serviced</p></li>
+<li><p><span id="def-event-latency" class="def-anchor"></span><em>event latency</em> - amount of time that elapses from when an event occurs to when it is serviced</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>interrupt latency</em> - period of time from the arrival of an interrupt at the CPU to the start of the routine that services the interrupt</p></li>
+<li><p><span id="def-interrupt-latency" class="def-anchor"></span><em>interrupt latency</em> - period of time from the arrival of an interrupt at the CPU to the start of the routine that services the interrupt</p></li>
 <li><p><em>dispatch latency</em></p></li>
 <li><p>Preemption of any process running in the kernel</p></li>
 <li><p>Release by low-priority processes of resources needed by a high-priority process</p></li>
@@ -1697,7 +1758,8 @@ document.write(`
 </ul>
 </section>
 <section id="main-memory">
-<h2><span class="section-number">2.5.7. </span>main memory<a class="headerlink" href="#main-memory" title="Link to this heading">#</a></h2>
+<span id="sec-os-main-memory"></span><h2>Main memory<a class="headerlink" href="#main-memory" title="Link to this heading">#</a></h2>
+<p class="section-lead">Each process needs its own protected range of memory. Contiguous allocation leads to external fragmentation; segmentation and paging avoid needing one contiguous block. Paging is the one in common use, with a page table per process and a TLB to cache translations.</p>
 <ul>
 <li><p><strong>background</strong></p>
 <ul class="simple">
@@ -1710,8 +1772,8 @@ document.write(`
 <li><p>processes need separate memory spaces</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>base register</em> - holds smallest usable address</p></li>
-<li><p><em>limit register</em> - specifies size of range</p></li>
+<li><p><span id="def-base-register" class="def-anchor"></span><em>base register</em> - holds smallest usable address</p></li>
+<li><p><span id="def-limit-register" class="def-anchor"></span><em>limit register</em> - specifies size of range</p></li>
 </ol>
 <ul class="simple">
 <li><p>os / hardware check these, throw a trap if there was error</p></li>
@@ -1730,23 +1792,23 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>dynamic loading</em> - don’t load whole process, only load things when called</p></li>
-<li><p><em>dynamically linked libraries</em> - system libraries linked to user programs when the programs are run</p>
+<li><p><span id="def-dynamic-loading" class="def-anchor"></span><em>dynamic loading</em> - don’t load whole process, only load things when called</p></li>
+<li><p><span id="def-dynamically-linked-libraries" class="def-anchor"></span><em>dynamically linked libraries</em> - system libraries linked to user programs when the programs are run</p>
 <ul>
-<li><p><em>stub</em> - tells how to load / locate library routine</p></li>
+<li><p><span id="def-stub" class="def-anchor"></span><em>stub</em> - tells how to load / locate library routine</p></li>
 </ul>
 </li>
-<li><p><em>shared libraries</em> - all use same library</p></li>
+<li><p><span id="def-shared-libraries" class="def-anchor"></span><em>shared libraries</em> - all use same library</p></li>
 </ul>
 </li>
 <li><p><strong>contiguous memory allocation</strong></p>
 <ul class="simple">
-<li><p><em>contiguous memory allocation</em> - each process has a section</p>
+<li><p><span id="def-contiguous-memory-allocation" class="def-anchor"></span><em>contiguous memory allocation</em> - each process has a section</p>
 <ul>
 <li><p>put OS in low memory and process memory in higher</p></li>
 </ul>
 </li>
-<li><p><em>transient OS code</em> - not often used</p>
+<li><p><span id="def-transient-os-code" class="def-anchor"></span><em>transient OS code</em> - not often used</p>
 <ul>
 <li><p>ex. drivers</p></li>
 <li><p>can remove this and change OS memory usage by decreasing val in OS limit register</p></li>
@@ -1755,15 +1817,15 @@ document.write(`
 <li><p>split mem into <em>partitions</em></p>
 <ul>
 <li><p>each partition can only have 1 process</p></li>
-<li><p><em>multiple-partition method</em> - free partitions take a new process</p></li>
-<li><p><em>variable-partition scheme</em> - OS keeps table of free mem</p>
+<li><p><span id="def-multiple-partition-method" class="def-anchor"></span><em>multiple-partition method</em> - free partitions take a new process</p></li>
+<li><p><span id="def-variable-partition-scheme" class="def-anchor"></span><em>variable-partition scheme</em> - OS keeps table of free mem</p>
 <ul>
 <li><p>all available mem = <em>hole</em></p></li>
 <li><p>holes are divided between processes</p>
 <ol class="arabic simple">
-<li><p><em>first-fit</em> - allocate first hole big enough</p></li>
-<li><p><em>best-fit</em> - allocate smallest hole that is big enough</p></li>
-<li><p><em>worst-fit</em> - allocate largest hole (largest leftover hole)</p></li>
+<li><p><span id="def-first-fit" class="def-anchor"></span><em>first-fit</em> - allocate first hole big enough</p></li>
+<li><p><span id="def-best-fit" class="def-anchor"></span><em>best-fit</em> - allocate smallest hole that is big enough</p></li>
+<li><p><span id="def-worst-fit" class="def-anchor"></span><em>worst-fit</em> - allocate largest hole (largest leftover hole)</p></li>
 </ol>
 </li>
 </ul>
@@ -1771,9 +1833,9 @@ document.write(`
 <li><p>worst</p></li>
 </ul>
 </li>
-<li><p><em>external fragmentation</em> - there is enough free mem, but it isn’t contiguous</p>
+<li><p><span id="def-external-fragmentation" class="def-anchor"></span><em>external fragmentation</em> - there is enough free mem, but it isn’t contiguous</p>
 <ul>
-<li><p><em>50-percent rule</em> - 1/3 of mem is unusable</p></li>
+<li><p><span id="def-50-percent-rule" class="def-anchor"></span><em>50-percent rule</em> - 1/3 of mem is unusable</p></li>
 <li><p>solved with <em>compaction</em> - shuffle mem to put free mem together</p>
 <ul>
 <li><p>can be expensive to move mem around</p></li>
@@ -1781,7 +1843,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>internal fragmentation</em> - extra mem a proc is allocated but not using (because given in block sizes)</p></li>
+<li><p><span id="def-internal-fragmentation" class="def-anchor"></span><em>internal fragmentation</em> - extra mem a proc is allocated but not using (because given in block sizes)</p></li>
 <li><p>2 types of non-contiguous solutions</p></li>
 </ul>
 <ol class="arabic simple">
@@ -1857,7 +1919,7 @@ document.write(`
 <li><p>page tables can get quite large (total mem / page size)</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p><em>hierarchical paging</em> - ex. two-level page table</p></li>
+<li><p><span id="def-hierarchical-paging" class="def-anchor"></span><em>hierarchical paging</em> - ex. two-level page table</p></li>
 </ol>
 <ul class="simple">
 <li><p>also called <em>forward-mapped page table</em></p></li>
@@ -1869,7 +1931,7 @@ document.write(`
 </ol>
 <ul class="simple">
 <li><p>virtual page number is hash key -&gt; physical page number</p></li>
-<li><p><em>clustered page tables</em> - each entry stores everal pages, can be faster</p></li>
+<li><p><span id="def-clustered-page-tables" class="def-anchor"></span><em>clustered page tables</em> - each entry stores everal pages, can be faster</p></li>
 </ul>
 <ol class="arabic simple" start="2">
 <li><p><em>inverted page tables</em></p></li>
@@ -1885,8 +1947,10 @@ document.write(`
 </ul>
 </section>
 <section id="virtual-memory">
-<h2><span class="section-number">2.5.8. </span>virtual memory<a class="headerlink" href="#virtual-memory" title="Link to this heading">#</a></h2>
-<ul>
+<span id="sec-os-virtual-memory"></span><h2>Virtual memory<a class="headerlink" href="#virtual-memory" title="Link to this heading">#</a></h2>
+<p class="section-lead">With demand paging a page is only loaded when it is first used, so a process can be larger than physical memory. When memory is full, a page fault has to evict some page, and the replacement algorithm decides which one.</p>
+<figure class="nb-viz-figure" id="viz-page-replacement"><div class="nb-viz" data-viz="page-replacement" data-params="{&quot;algo&quot;: &quot;fifo&quot;, &quot;frames&quot;: 3, &quot;string&quot;: &quot;belady&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Each column is one memory reference; a highlighted cell is a page loaded on a fault. On the string 1 2 3 4 1 2 5 1 2 3 4 5, FIFO has 9 faults with 3 frames and 10 with 4: Belady's anomaly, visible as the bump in the orange curve. LRU and OPT are stack algorithms, so their curves never go up. OPT is the lower bound but needs to know the future.</figcaption></figure><ul>
 <li><p><strong>background</strong></p>
 <ul class="simple">
 <li><p>lots of code is seldom used</p></li>
@@ -1903,13 +1967,13 @@ document.write(`
 </li>
 <li><p><strong>demand paging</strong></p>
 <ul>
-<li><p><em>demand paging</em> - load pages only when they are needed</p>
+<li><p><span id="def-demand-paging" class="def-anchor"></span><em>demand paging</em> - load pages only when they are needed</p>
 <ul class="simple">
-<li><p><em>lazy pager</em> - only swaps a page into memory when it is needed</p></li>
+<li><p><span id="def-lazy-pager" class="def-anchor"></span><em>lazy pager</em> - only swaps a page into memory when it is needed</p></li>
 <li><p>can use valid-invalid bit in page table to signal whether a page is in memory</p></li>
 </ul>
 </li>
-<li><p><em>memory resident</em> - residing in memory</p></li>
+<li><p><span id="def-memory-resident" class="def-anchor"></span><em>memory resident</em> - residing in memory</p></li>
 <li><p>accessing page marked invalid causes <em>page fault</em></p>
 <ul class="simple">
 <li><p>must restart after fetching page</p></li>
@@ -1919,7 +1983,7 @@ document.write(`
 <li><p>use registers to store state before fetching</p></li>
 </ol>
 </li>
-<li><p><em>pure demand paging</em> - never bring a page into memory until it is required</p>
+<li><p><span id="def-pure-demand-paging" class="def-anchor"></span><em>pure demand paging</em> - never bring a page into memory until it is required</p>
 <ul class="simple">
 <li><p>programs tend to have <em>locality of reference</em>, so we bring in chunks at a time</p></li>
 </ul>
@@ -1933,19 +1997,19 @@ document.write(`
 </ol>
 <ul class="simple">
 <li><p>effective access time is directly proportional to <em>page-fault rate</em></p></li>
-<li><p><em>anonymous memory</em> - pages not associated with a file</p></li>
+<li><p><span id="def-anonymous-memory" class="def-anchor"></span><em>anonymous memory</em> - pages not associated with a file</p></li>
 </ul>
 </li>
 <li><p><strong>copy-on-write</strong></p>
 <ul class="simple">
-<li><p><em>copy-on-write</em> - allows parent and child processes intially to share the same pages</p>
+<li><p><span id="def-copy-on-write" class="def-anchor"></span><em>copy-on-write</em> - allows parent and child processes intially to share the same pages</p>
 <ul>
 <li><p>if either process writes, copy of shared page is created</p></li>
 <li><p>new pages can come from a set <em>pool</em></p></li>
 </ul>
 </li>
-<li><p><em>zero-fill-on-demand</em> - zeroed out before being allocated</p></li>
-<li><p><em>virtual memory fork</em> - not copy-on-write</p>
+<li><p><span id="def-zero-fill-on-demand" class="def-anchor"></span><em>zero-fill-on-demand</em> - zeroed out before being allocated</p></li>
+<li><p><span id="def-virtual-memory-fork" class="def-anchor"></span><em>virtual memory fork</em> - not copy-on-write</p>
 <ul>
 <li><p>child uses address space of parent</p></li>
 <li><p>parent suspended</p></li>
@@ -1974,7 +2038,7 @@ document.write(`
 <li><p>test with <em>reference string</em>, which is just a list of memory references</p></li>
 <li><p>if no frame is free, find one not being used and free it</p></li>
 <li><p>write its contents to swap space</p></li>
-<li><p><em>modify bit</em>=<em>dirty bit</em> reduces overhead</p>
+<li><p><span id="def-modify-bit" class="def-anchor"></span><em>modify bit</em>=<em>dirty bit</em> reduces overhead</p>
 <ul>
 <li><p>if hasn’t been modified then don’t have to rewrite it to disk</p></li>
 </ul>
@@ -1985,7 +2049,7 @@ document.write(`
 <li><p>FIFO</p></li>
 </ol>
 <ul class="simple">
-<li><p><em>Belady’s anomaly</em> - for some algorithms, page-fault rate may increase as number of allocate frames increases</p></li>
+<li><p><span id="def-belady-s-anomaly" class="def-anchor"></span><em>Belady’s anomaly</em> - for some algorithms, page-fault rate may increase as number of allocate frames increases</p></li>
 </ul>
 <ol class="arabic simple">
 <li><p>optimal (OPT / MIN)</p></li>
@@ -1999,18 +2063,18 @@ document.write(`
 <li><p>stack of page numbers (whenever something is used, put it on top)</p></li>
 </ol>
 <ul class="simple">
-<li><p><em>stack algorithms</em> - set of pages in memory for n frames is always a subset of the set of pages that would be in memory with n + 1 frames</p></li>
+<li><p><span id="def-stack-algorithms" class="def-anchor"></span><em>stack algorithms</em> - set of pages in memory for n frames is always a subset of the set of pages that would be in memory with n + 1 frames</p></li>
 <li><p>don’t suffer from Belady’s anomaly</p></li>
 </ul>
 <ol class="arabic simple">
 <li><p>LRU-approximation</p></li>
 </ol>
 <ul class="simple">
-<li><p><em>reference bit</em> - set whenever a page is used</p></li>
+<li><p><span id="def-reference-bit" class="def-anchor"></span><em>reference bit</em> - set whenever a page is used</p></li>
 <li><p>can keep <em>additional reference bits</em> by recording reference bits at regular intervals1</p></li>
 <li><p><em>second-chance</em> algorithm - FIFO, but if ref bit is 1, set ref bit to 0 and move on to next FIFO page</p></li>
 <li><p>can have clock algorithm</p></li>
-<li><p><em>enhanced second-chance</em> - uses reference bit and modify bit</p></li>
+<li><p><span id="def-enhanced-second-chance" class="def-anchor"></span><em>enhanced second-chance</em> - uses reference bit and modify bit</p></li>
 <li><p>give preference to pages that have been modified</p></li>
 </ul>
 <ol class="arabic simple">
@@ -2031,20 +2095,20 @@ document.write(`
 <ul class="simple">
 <li><p>if low-priority process gets too few frames, swap it out</p>
 <ul>
-<li><p><em>thrashing</em> - process spends more time paging than executing</p>
+<li><p><span id="def-thrashing" class="def-anchor"></span><em>thrashing</em> - process spends more time paging than executing</p>
 <ul>
 <li><p>CPU utilization stops increasing</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><em>local replacement algorithm</em> = <em>priority replacement algorithm</em> - if one process starts thrashing, cannot steal frames from another</p>
+<li><p><span id="def-local-replacement-algorithm" class="def-anchor"></span><em>local replacement algorithm</em> = <em>priority replacement algorithm</em> - if one process starts thrashing, cannot steal frames from another</p>
 <ul>
-<li><p><em>locality model</em> - each locality is a set of pages actively used together</p></li>
+<li><p><span id="def-locality-model" class="def-anchor"></span><em>locality model</em> - each locality is a set of pages actively used together</p></li>
 <li><p>give process enough for its current locality</p></li>
 </ul>
 </li>
-<li><p><em>working-set model</em> - still based on locality</p>
+<li><p><span id="def-working-set-model" class="def-anchor"></span><em>working-set model</em> - still based on locality</p>
 <ul>
 <li><p>defines <em>working-set window</em> <span class="math notranslate nohighlight">\(\delta\)</span></p></li>
 <li><p>defines <em>working set</em> as pages in most recent <span class="math notranslate nohighlight">\(\delta\)</span> refs</p></li>
@@ -2052,7 +2116,7 @@ document.write(`
 <li><p>approximate with fixed-interval timer</p></li>
 </ul>
 </li>
-<li><p><em>page-fault frequency</em> - add / decrease pages based on targe page-fault rate</p></li>
+<li><p><span id="def-page-fault-frequency" class="def-anchor"></span><em>page-fault frequency</em> - add / decrease pages based on targe page-fault rate</p></li>
 </ul>
 </li>
 <li><p><strong>buddy system</strong></p>
@@ -2060,7 +2124,7 @@ document.write(`
 <li><p>memory allocated with <em>power-of-2 allocator</em> - requests are given powers of 2</p>
 <ul>
 <li><p>each page is split into 2 <em>buddies</em> and each of those splits again recursively</p></li>
-<li><p><em>coalescing</em> - buddies can be combined quickly</p></li>
+<li><p><span id="def-coalescing" class="def-anchor"></span><em>coalescing</em> - buddies can be combined quickly</p></li>
 </ul>
 </li>
 </ul>
@@ -2068,11 +2132,12 @@ document.write(`
 </ul>
 </section>
 <section id="mass-storage-structure">
-<h2><span class="section-number">2.5.9. </span>mass-storage structure<a class="headerlink" href="#mass-storage-structure" title="Link to this heading">#</a></h2>
+<span id="sec-os-mass-storage-structure"></span><h2>Mass-storage structure<a class="headerlink" href="#mass-storage-structure" title="Link to this heading">#</a></h2>
+<p class="section-lead">Disk scheduling orders pending requests to cut head movement. SCAN sweeps back and forth across the disk like an elevator.</p>
 <ul class="simple">
 <li><p><strong>disk scheduling</strong></p>
 <ul>
-<li><p><em>bandwidth</em> - total number of bytes transferred, divided by time</p></li>
+<li><p><span id="def-bandwidth" class="def-anchor"></span><em>bandwidth</em> - total number of bytes transferred, divided by time</p></li>
 <li><p>first-come first-served</p></li>
 <li><p>shortest-seek-time-first</p></li>
 <li><p><em>SCAN</em> algorithm - disk swings side to side servicing requests on the way</p>
@@ -2085,14 +2150,14 @@ document.write(`
 </li>
 <li><p><strong>disk management</strong></p>
 <ul>
-<li><p><em>low-level formatting</em> - dividing disk into sectors that <em>controller</em> can read/write</p>
+<li><p><span id="def-low-level-formatting" class="def-anchor"></span><em>low-level formatting</em> - dividing disk into sectors that <em>controller</em> can read/write</p>
 <ul>
 <li><p>blocks have header / trailer with error-correcting codes</p></li>
 </ul>
 </li>
 <li><p><em>bad blocks</em> are corrupted - need to replace them with others = <em>sector sparing</em> = <em>forwarding</em></p>
 <ul>
-<li><p><em>sector slipping</em> - just renumbers to not index bad blocks</p></li>
+<li><p><span id="def-sector-slipping" class="def-anchor"></span><em>sector slipping</em> - just renumbers to not index bad blocks</p></li>
 </ul>
 </li>
 </ul>
@@ -2100,7 +2165,8 @@ document.write(`
 </ul>
 </section>
 <section id="file-system-interface">
-<h2><span class="section-number">2.5.10. </span>file-system interface<a class="headerlink" href="#file-system-interface" title="Link to this heading">#</a></h2>
+<span id="sec-os-file-system-interface"></span><h2>File-system interface<a class="headerlink" href="#file-system-interface" title="Link to this heading">#</a></h2>
+<p class="section-lead">What a file system looks like to the user: open files tracked in an open-file table, sequential or direct access, and directories that grow from two levels into a tree. Links make the tree a graph, and cycles force slow garbage collection.</p>
 <ul class="simple">
 <li><p>os maintains <em>open-file table</em></p></li>
 <li><p>might require file locking</p></li>
@@ -2108,7 +2174,7 @@ document.write(`
 <li><p><strong>access methods</strong></p>
 <ul>
 <li><p>simplest - <em>sequential</em></p></li>
-<li><p><em>direct access</em> = <em>relative access</em></p>
+<li><p><span id="def-direct-access" class="def-anchor"></span><em>direct access</em> = <em>relative access</em></p>
 <ul>
 <li><p>uses relative block numbers</p></li>
 </ul>
@@ -2128,11 +2194,12 @@ document.write(`
 <li><p>cycles require very slow <em>garbage collection</em></p></li>
 </ul>
 </li>
-<li><p><em>link</em> - pointer to another thing</p></li>
+<li><p><span id="def-link" class="def-anchor"></span><em>link</em> - pointer to another thing</p></li>
 </ul>
 </section>
 <section id="file-system-implementation">
-<h2><span class="section-number">2.5.11. </span>file-system implementation<a class="headerlink" href="#file-system-implementation" title="Link to this heading">#</a></h2>
+<span id="sec-os-file-system-implementation"></span><h2>File-system implementation<a class="headerlink" href="#file-system-implementation" title="Link to this heading">#</a></h2>
+<p class="section-lead">How files sit on disk. Blocks can be allocated contiguously, as a linked list (as in FAT) or through an index block holding all the pointers, and the free blocks are tracked with a bit map, a linked list, grouping or counting.</p>
 <ul class="simple">
 <li><p><em>file-control block (FCB)</em> contains info about file ownership, etc.</p></li>
 <li><p>contiguous allocation</p></li>
@@ -2148,14 +2215,15 @@ document.write(`
 </ul>
 </li>
 <li><p>keep track of linked list of free space</p></li>
-<li><p><em>grouping</em> - block stores n-1 free blocks and 1 pointer to next block</p></li>
-<li><p><em>counting</em> - keep track of ptr to next block and the number of free blocks after that</p></li>
+<li><p><span id="def-grouping" class="def-anchor"></span><em>grouping</em> - block stores n-1 free blocks and 1 pointer to next block</p></li>
+<li><p><span id="def-counting" class="def-anchor"></span><em>counting</em> - keep track of ptr to next block and the number of free blocks after that</p></li>
 </ul>
 </section>
 <section id="i-o-systems">
-<h2><span class="section-number">2.5.12. </span>i/o systems<a class="headerlink" href="#i-o-systems" title="Link to this heading">#</a></h2>
+<span id="sec-os-i-o-systems"></span><h2>I/o systems<a class="headerlink" href="#i-o-systems" title="Link to this heading">#</a></h2>
+<p class="section-lead">The CPU talks to devices over a bus through a few registers (data-in, data-out, status, control). Interrupts tell the CPU a device is ready, and direct memory access moves large chunks without the CPU copying each byte.</p>
 <ul class="simple">
-<li><p><em>bus</em> - shared set of wires</p></li>
+<li><p><span id="def-bus" class="def-anchor"></span><em>bus</em> - shared set of wires</p></li>
 <li><p>registers</p>
 <ul>
 <li><p>data-in - read by the host</p></li>
@@ -2164,13 +2232,23 @@ document.write(`
 <li><p>control</p></li>
 </ul>
 </li>
-<li><p><em>interrupt chaining</em> - each element in the interrupt vector points to the had of a list of interrupt handlers</p></li>
+<li><p><span id="def-interrupt-chaining" class="def-anchor"></span><em>interrupt chaining</em> - each element in the interrupt vector points to the had of a list of interrupt handlers</p></li>
 <li><p>system calls use software interrupt</p></li>
-<li><p><em>direct memory access</em> - read large chunks instead of one byte at a time</p></li>
+<li><p><span id="def-direct-memory-access" class="def-anchor"></span><em>direct memory access</em> - read large chunks instead of one byte at a time</p></li>
 <li><p><em>device-status table</em></p></li>
-<li><p><em>spool</em> - buffer for device (ex. printer) that can’t hold interleaved data</p></li>
+<li><p><span id="def-spool" class="def-anchor"></span><em>spool</em> - buffer for device (ex. printer) that can’t hold interleaved data</p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>The kernel runs in kernel mode, and user code reaches it only through system calls, traps and interrupts.</p></li>
+<li><p>A process is a program in execution with its own address space; threads share that address space and keep only their own registers and stack.</p></li>
+<li><p>Shared data needs mutual exclusion around critical sections, and deadlock needs mutual exclusion, hold and wait, no preemption and circular wait all at once.</p></li>
+<li><p>Paging removes the need for one contiguous block of memory, and a TLB caches the page-table lookups.</p></li>
+<li><p>With demand paging a process can be larger than RAM, and the page replacement algorithm decides how often it faults.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../cs/arch.html"><span class="related-part">Computer science</span><span class="related-title">Architecture</span><span class="related-hook">Integers and floats in bits, assembly and calling conventions, a pipelined processor, caches, exceptions and virtual memory.</span></a><a class="related-card" href="../cs/languages_parallel.html"><span class="related-part">Computer science</span><span class="related-title">Languages and parallel computing</span><span class="related-hook">Syntax references for python, c/c++, java and R, and the collective operations behind multi-GPU training.</span></a><a class="related-card" href="../cs/data_structures.html"><span class="related-part">Computer science</span><span class="related-title">Data structures</span><span class="related-hook">Linked lists and stacks, balanced search trees, heaps and Huffman codes, hash tables, and the standard graph algorithms.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2204,20 +2282,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="languages_parallel.html"
+       href="arch.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.4. </span>languages</p>
+        <p class="prev-next-title">Architecture</p>
       </div>
     </a>
     <a class="right-next"
-       href="arch.html"
+       href="retrieval_databases.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.6. </span>architecture</p>
+        <p class="prev-next-title">Information retrieval and databases</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2237,18 +2315,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.5.1. introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-structures">2.5.2. os structures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">2.5.3. processes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">2.5.4. threads</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-synchronization">2.5.5. process synchronization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-scheduling">2.5.6. cpu scheduling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-memory">2.5.7. main memory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">2.5.8. virtual memory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-storage-structure">2.5.9. mass-storage structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-interface">2.5.10. file-system interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-implementation">2.5.11. file-system implementation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-systems">2.5.12. i/o systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-structures">OS structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes">Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">Threads</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-synchronization">Process synchronization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-scheduling">CPU scheduling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-memory">Main memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-memory">Virtual memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-storage-structure">Mass-storage structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-interface">File-system interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system-implementation">File-system implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-systems">I/o systems</a></li>
 </ul>
   </nav></div>
 
@@ -2273,7 +2351,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

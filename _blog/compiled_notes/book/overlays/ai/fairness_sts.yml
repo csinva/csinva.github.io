@@ -1,0 +1,84 @@
+# Overlay for _notes/ai/fairness_sts.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Fairness           # short name on the start-page topic map
+title: Fairness and STS
+subtitle: Algorithmic fairness, ethics, and science and technology studies (STS) as applied to AI.
+hook: Fairness definitions and fixes, harms of computer vision, a legal test for proxy variables, ethics and moral trade, STS, and effective altruism.
+intro: |
+  The chapter starts with the technical side of fairness: where bias comes from, the competing definitions
+  (demographic parity, equalized odds, predictive rate parity, individual and counterfactual fairness), and
+  the three places an algorithm can intervene: before, during or after training. A tutorial on computer
+  vision, NIST's face recognition benchmark and a legal framework built on Title VII then show how these
+  questions play out with real systems, data and law.
+
+  The second half steps back: basic ethical frameworks, Ord's idea of moral trade, science and technology
+  studies (do artifacts have politics?), effective altruism, and a list of concrete harms of AI.
+sections:
+  metrics:
+    lead: |
+      The group definitions ask for different things to be equal across groups: the rate of positive
+      predictions (demographic parity), the error rates among people with the same true label (equalized
+      odds), or how often a positive prediction is right (predictive rate parity). The widget below shows that
+      they pull apart when the groups' base rates differ.
+    viz:
+      - name: fairness-thresholds
+        params: {baseA: 0.5, baseB: 0.25, tA: 0.5, tB: 0.5}
+        caption: |
+          Post-processing with one threshold per group. The scores are equally informative in both groups; only
+          the base rate differs. With equal thresholds the TPR and FPR match (equalized odds), but group B gets
+          fewer positive predictions and a lower PPV. Use the buttons to make B match A on one quantity and watch
+          the others move apart. Set B's base rate to 0.5 and all four agree.
+  harms of CV:
+    lead: |
+      Some harms come from errors, such as gender classifiers that are worse for Black women (Gender Shades).
+      Others come from the task itself: face recognition used for surveillance, profiling or targeting an ethnic
+      group, and gender recognition in the first place.
+  data ethics:
+    lead: |
+      Harms take different forms: unequal error rates across subgroups, a task that should not exist, or a tool
+      used by whoever holds power. Datasets carry values, and most people see data collection as the most
+      important place to intervene.
+  where do we go?:
+    lead: |
+      Technology and science are not value-neutral. The concrete steps: ethics-informed evaluations
+      (disaggregated, counterfactual), dataset documentation, knowing the limits of technical fixes, and
+      listening to marginalized groups.
+  facial rec. demographic benchmarking:
+    lead: |
+      NIST measured false positive and false negative rates by demographic group, for one-to-one verification
+      and one-to-many identification, on four sets of government photos.
+  legal perspectives:
+    lead: |
+      Under Title VII the question is who carries the burden of proof. The paper's input accountability test
+      turns two legal questions (is the target legitimate, is the proxy biased) into a regression: predict the
+      proxy from the legitimate target and check whether the residuals correlate with the protected group.
+  some basics:
+    lead: |
+      Four ways to judge an option: utilitarian (the most good and the least harm), deontological (respect
+      rights and principles), consequentialist questions about who is affected, and virtue ethics (what would
+      the person I want to be do).
+  moral trade:
+    lead: |
+      Ord's idea: people with different moral views can trade so that each is better off by their own lights,
+      as when one eats less meat in exchange for the other donating more. Such trades can be Pareto
+      improvements, but they need trust that both sides follow through and would not have done it anyway.
+  sts:
+    lead: |
+      STS (science and technology studies) asks how technology and society shape each other. Winner's essay
+      argues against pure social determinism: some artifacts, like low bridges or nuclear power, carry
+      politics in their design.
+  effective altruism:
+    lead: |
+      Effective altruism ranks causes by scale, neglect and tractability. Its three big areas are extreme
+      poverty, animal suffering and the long-term future, which includes existential risks.
+  concrete ai harms:
+    lead: |
+      Ways AI changes the world even when it works as intended: consolidated power, a shift toward the
+      quantitative, automation, energy use and fake media, plus the worry that pandemic tracking makes
+      surveillance normal.
+takeaways:
+  - Bias enters through the data: skewed samples, tainted examples, limited features, sample size disparity and proxies for sensitive attributes.
+  - The group fairness definitions (demographic parity, equalized odds, predictive rate parity) ask for different quantities to be equal across groups, and they pull apart when the groups' base rates differ.
+  - An algorithm can be made fairer before training (remove sensitive information), during training (regularization) or after it (group-specific thresholds).
+  - The input accountability test regresses a proxy on the legitimate target and excludes the proxy if the residuals correlate with the protected group.
+  - Some harms come not from errors but from the task itself or from who uses it, and STS asks how artifacts carry politics in their design.
+figures: {}

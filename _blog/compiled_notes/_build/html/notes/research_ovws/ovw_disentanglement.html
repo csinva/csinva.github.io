@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.2. disentanglement</title>
+    <title>Disentanglement &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_disentanglement';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.3. omics" href="ovw_omics.html" />
-    <link rel="prev" title="1.1. transfer learning" href="ovw_transfer_learning.html" />
+    <link rel="next" title="Causal inference" href="ovw_causal_inference.html" />
+    <link rel="prev" title="Generalization" href="ovw_generalization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/research_ovws/ovw_disentanglement.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>disentanglement</h1>
+    <h1>Disentanglement</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,22 +471,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes">1.2.1. VAEs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-losses">1.2.1.1. disentangled vae losses</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-in-code">1.2.1.2. disentangled vae in code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes-for-interpretation">1.2.1.3. vaes for interpretation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#various-vaes">1.2.1.4. various vaes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes">VAEs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-losses">Disentangled vae losses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-in-code">Disentangled vae in code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes-for-interpretation">VAEs for interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#various-vaes">Various vaes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">1.2.2. GANs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-disentangle-during-training">1.2.2.1. model-based (disentangle during training)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-disentangle-after-training">1.2.2.2. post-hoc (disentangle after training)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">GANs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-disentangle-during-training">Model-based (disentangle during training)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-disentangle-after-training">Post-hoc (disentangle after training)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">1.2.3. misc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-disentanglement">1.2.4. (semi)-supervised disentanglement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-disentanglement">1.2.5. evaluating disentanglement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-deep-methods">1.2.6. non-deep methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-disentanglement">(semi)-supervised disentanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-disentanglement">Evaluating disentanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-deep-methods">Non-deep methods</a></li>
 </ul>
             </nav>
         </div>
@@ -448,19 +498,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="iframe-box" style="margin-top: 0px">
+  <p class="breadcrumb"><a href="../../parts/research.html">Research overviews</a> &nbsp;·&nbsp; chapter 9 of 14 &nbsp;·&nbsp; 12 min read</p><section class="tex2jax_ignore mathjax_ignore" id="disentanglement">
+<h1>Disentanglement<a class="headerlink" href="#disentanglement" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some papers on learning disentangled representations with VAEs, GANs, and other methods.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>A disentangled representation is one where each latent dimension tracks one factor of variation in the data, such as color or rotation. The page starts with VAEs, because their loss splits cleanly into three terms (<span class="cblue">reconstruction</span>, <span class="corange">compactness prior</span> and <span class="cgreen">total correlation</span>), and most variants (beta-VAE, factor-VAE, beta-TC-VAE) change how those terms are weighted or estimated. Read the loss table first; the rest of the VAE section refers back to it by color.</p>
+<p>GANs come next, split into models built to disentangle during training (InfoGAN, StyleGAN, the Hessian penalty) and methods that find meaningful directions in a trained generator’s latent space. Then come methods that use some labels or pairs, metrics for scoring disentanglement, and ICA as the non-deep starting point. One result from the evaluation section applies to all of it: unsupervised disentanglement is impossible without inductive biases, and results depend heavily on architecture and hyperparameters.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 6 sections</summary><ol><li><a href="#sec-ovw-disentanglement-vaes">VAEs</a><span class="ol-badge">1 interactive</span><span class="ol-badge">2 figures</span><span class="ol-lead">The encoder maps \mathbf x to a distribution over codes \mathbf z, a code is sampled, and the decoder maps it back.</span></li><li><a href="#sec-ovw-disentanglement-gans">GANs</a><span class="ol-badge">2 figures</span><span class="ol-lead">A GAN has no encoder, so the questions change: can the generator be built so its inputs are disentangled, and if not, can directions in the latent space of a trained generator be found that change one attribute at a time?</span></li><li><a href="#sec-ovw-disentanglement-misc">Misc</a><span class="ol-lead">Two entries outside the VAE and GAN families.</span></li><li><a href="#sec-ovw-disentanglement-semi-supervised-disentanglement">(semi)-supervised disentanglement</a><span class="ol-badge">2 figures</span><span class="ol-lead">Since unsupervised disentanglement needs inductive biases anyway, these papers add weak supervision: labels for some factors, pairs that share a factor, or pairs ranked by a factor.</span></li><li><a href="#sec-ovw-disentanglement-evaluating-disentanglement">Evaluating disentanglement</a><span class="ol-lead">Metrics need datasets with known generative factors, like dSprites.</span></li><li><a href="#sec-ovw-disentanglement-non-deep-methods">Non-deep methods</a><span class="ol-lead">ICA is the classic non-deep version: find components z that are as non-Gaussian as possible.</span></li></ol></details><div class="iframe-box" style="margin-top: 0px">
 <iframe class="iframe" src="https://csinva.github.io/notes/cheat_sheets/disentanglement_cheat_sheet#/"
         frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="disentanglement">
-<h1><span class="section-number">1.2. </span>disentanglement<a class="headerlink" href="#disentanglement" title="Link to this heading">#</a></h1>
 <section id="vaes">
-<h2><span class="section-number">1.2.1. </span>VAEs<a class="headerlink" href="#vaes" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-disentanglement-vaes"></span><h2>VAEs<a class="headerlink" href="#vaes" title="Link to this heading">#</a></h2>
+<p class="section-lead">The encoder maps <span class="math notranslate nohighlight">\(\mathbf x\)</span> to a distribution over codes <span class="math notranslate nohighlight">\(\mathbf z\)</span>, a code is sampled, and the decoder maps it back. Disentanglement work keeps this setup and changes the loss.</p>
 <p><em>Some good disentangled VAE implementations are <a class="reference external" href="https://github.com/YannDubs/disentangling-vae">here</a> and more general VAE implementations are <a class="reference external" href="https://github.com/AntixK/PyTorch-VAE">here</a></em>. Tensorflow implementations available <a class="reference external" href="https://github.com/google-research/disentanglement_lib">here</a></p>
 <p>The goal is to obtain a nice latent representation <span class="math notranslate nohighlight">\(\mathbf z\)</span> for our inputs <span class="math notranslate nohighlight">\(\mathbf x\)</span>. To do this, we learn parameters <span class="math notranslate nohighlight">\(\phi\)</span> for the encoder <span class="math notranslate nohighlight">\(p_\phi( \mathbf z\vert \mathbf x)\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> for the decoder <span class="math notranslate nohighlight">\(q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)\)</span>. We do this with the standard vae setup, whereby a code <span class="math notranslate nohighlight">\(z\)</span> is sampled, using the output of the encoder (intro to VAEs <a class="reference external" href="https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf">here</a>).</p>
 <section id="disentangled-vae-losses">
-<h3><span class="section-number">1.2.1.1. </span>disentangled vae losses<a class="headerlink" href="#disentangled-vae-losses" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
+<h3>Disentangled vae losses<a class="headerlink" href="#disentangled-vae-losses" title="Link to this heading">#</a></h3>
+<p class="section-lead">Each column of the table is one term of the loss. The <span class="corange">compactness prior</span> term can itself be split into a mutual information term and a factorial prior term, and the <span class="cgreen">total correlation</span> term is the one that pushes latent dimensions to be independent.</p>
+<figure class="nb-viz-figure" id="viz-beta-vae-tradeoff"><div class="nb-viz" data-viz="beta-vae-tradeoff" data-params="{&quot;beta&quot;: 1}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> A toy where the beta-VAE optimum has a closed form: six independent Gaussian factors with variances \(\lambda_i\), a linear encoder and decoder, and decoder noise \(\sigma^2\). Each latent either reconstructs its factor down to error \(\beta\sigma^2\) at a <span class="corange">compactness</span> cost of \(\frac12\log(\lambda_i/\beta\sigma^2)\) nats, or switches off. Raise \(\beta\): the latents with the smallest variance turn off first, so the code uses fewer dimensions while the <span class="cblue">reconstruction error</span> grows. The right panel traces the whole trade-off.</figcaption></figure><div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="cblue">reconstruction loss</span></p></th>
 <th class="head"><p><span class="corange">compactness prior loss</span></p></th>
@@ -480,9 +538,9 @@ document.write(`
 <ul>
 <li><p><span class="cblue"><strong>reconstruction loss</strong></span> - measures the quality of the reconstruction, the form of the loss changes based on the assumed distribution of the likelihood of each pixel</p>
 <ul>
-<li><p><em>binary cross entropy loss</em> - corresopnds to bernoulli distr., most common - doesn’t penalize (0.1, 0.2) and (0.4, 0.5) the same way, which might be problematic</p></li>
-<li><p><em>mse loss</em> - gaussian distr. - tends to focus on a fex pixels that are very wrong</p></li>
-<li><p><em>l1 loss</em> - laplace distr.</p></li>
+<li><p><span id="def-binary-cross-entropy-loss" class="def-anchor"></span><em>binary cross entropy loss</em> - corresopnds to bernoulli distr., most common - doesn’t penalize (0.1, 0.2) and (0.4, 0.5) the same way, which might be problematic</p></li>
+<li><p><span id="def-mse-loss" class="def-anchor"></span><em>mse loss</em> - gaussian distr. - tends to focus on a fex pixels that are very wrong</p></li>
+<li><p><span id="def-l1-loss" class="def-anchor"></span><em>l1 loss</em> - laplace distr.</p></li>
 </ul>
 </li>
 <li><p><span class="corange"><strong>compactness prior loss</strong></span></p>
@@ -491,7 +549,7 @@ document.write(`
 <li><p>tries to push all the points to the same place</p></li>
 <li><p>emphasises smoothness of z, using as few dimensions of z as possible, and the main axes of z to capture most of the data variability</p></li>
 <li><p>usually assume prior is standard normal, resulting in pushing the code means to 0 and code variance to 1</p></li>
-<li><p>we can again split this term $<span class="math notranslate nohighlight">\(\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} = \cpurple{\underbrace{\sum_i I(x; z)}_{\text{mutual info}}} + \cpink{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{factorial prior loss}}}\)</span>$</p>
+<li><p>we can again split this term <span class="math notranslate nohighlight">\(\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} = \cpurple{\underbrace{\sum_i I(x; z)}_{\text{mutual info}}} + \cpink{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{factorial prior loss}}}\)</span></p>
 <ul>
 <li><p>(see factor-vae paper for proof (<a class="reference external" href="https://arxiv.org/pdf/1802.05983.pdf">kim &amp; mnih 2018</a>))</p></li>
 </ul>
@@ -500,7 +558,7 @@ document.write(`
 </li>
 <li><p><span class="cgreen"><strong>total correlation loss</strong></span> - encourages factors to be independent</p>
 <ul>
-<li><p>measures dependence between marginals of the latent vars</p></li>
+<li><p>measures dependence between marginals of the <a class="term-link" href="../ml/unsupervised.html#def-latent-vars" data-def="values not specified in the observed data · Unsupervised">latent vars</a></p></li>
 <li><p>intractable (requires pass through the whole dset)</p></li>
 <li><p>instead sample <span class="math notranslate nohighlight">\(dec_\phi(\mathbf z\vert \mathbf x)\)</span> and create <span class="math notranslate nohighlight">\(\prod_j dec_\phi( \mathbf z_i\vert \mathbf x) \)</span> by permuting across the batch dimension</p>
 <ul>
@@ -514,8 +572,9 @@ document.write(`
 </ul>
 </section>
 <section id="disentangled-vae-in-code">
-<h3><span class="section-number">1.2.1.2. </span>disentangled vae in code<a class="headerlink" href="#disentangled-vae-in-code" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Reconstruction + KL divergence losses summed over all elements and batch</span>
+<h3>Disentangled vae in code<a class="headerlink" href="#disentangled-vae-in-code" title="Link to this heading">#</a></h3>
+<p class="section-lead">A sketch of the same losses in PyTorch. The returned value is the beta-VAE loss; the mutual information, total correlation and dimension-wise KL terms show how beta-TC-VAE splits the KL.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reconstruction + KL divergence losses summed over all elements and batch</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">loss_function</span><span class="p">(</span><span class="n">x_reconstructed</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">  Params</span>
@@ -526,22 +585,22 @@ document.write(`
 <span class="sd">		input, values unrestricted</span>
 <span class="sd">  &#39;&#39;&#39;</span>
   
-  <span class="c1">## reconstruction loss (assuming bernoulli distr.)</span>
-  <span class="c1">## BCE = sum_i [x_rec_i * log(x_i) + (1 - x_rec_i) * log(1-x_i)]</span>
+  <span class="c1"># reconstruction loss (assuming bernoulli distr.)</span>
+  <span class="c1"># BCE = sum_i [x_rec_i * log(x_i) + (1 - x_rec_i) * log(1-x_i)]</span>
 	<span class="n">rec_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">binary_cross_entropy</span><span class="p">(</span><span class="n">x_reconstructed</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
 
-  <span class="c1">## compactness prior loss</span>
-	<span class="c1">## 0.5 * sum(1 + log(sigma^2) - mu^2 - sigma^2)</span>
+  <span class="c1"># compactness prior loss</span>
+	<span class="c1"># 0.5 * sum(1 + log(sigma^2) - mu^2 - sigma^2)</span>
 	<span class="n">KLD</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">logvar</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">logvar</span><span class="o">.</span><span class="n">exp</span><span class="p">())</span>
   
-  <span class="c1">## total correlation loss (calculate tc-vae way)</span>
+  <span class="c1"># total correlation loss (calculate tc-vae way)</span>
 	<span class="n">z_sample</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">logvar</span><span class="p">))</span>
 	<span class="n">log_pz</span><span class="p">,</span> <span class="n">log_qz</span><span class="p">,</span> <span class="n">log_prod_qzi</span><span class="p">,</span> <span class="n">log_q_zCx</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">z_sample</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">)</span>
-  <span class="c1">## I[z;x] = KL[q(z,x)\vert\vertq(x)q(z)] = E_x[KL[q(z\vertx)\vert\vertq(z)]]</span>
+  <span class="c1"># I[z;x] = KL[q(z,x)\vert\vertq(x)q(z)] = E_x[KL[q(z\vertx)\vert\vertq(z)]]</span>
   <span class="n">mi_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_q_zCx</span> <span class="o">-</span> <span class="n">log_qz</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-  <span class="c1">## TC[z] = KL[q(z)\vert\vert\prod_i z_i]</span>
+  <span class="c1"># TC[z] = KL[q(z)\vert\vert\prod_i z_i]</span>
   <span class="n">tc_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_qz</span> <span class="o">-</span> <span class="n">log_prod_qzi</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-  <span class="c1">## dw_kl_loss is KL[q(z)\vert\vertp(z)] instead of usual KL[q(z\vertx)\vert\vertp(z))]</span>
+  <span class="c1"># dw_kl_loss is KL[q(z)\vert\vertp(z)] instead of usual KL[q(z\vertx)\vert\vertp(z))]</span>
   <span class="n">dw_kl_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_prod_qzi</span> <span class="o">-</span> <span class="n">log_pz</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
   
 	<span class="k">return</span> <span class="n">rec_loss</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">KLD</span>
@@ -549,7 +608,7 @@ document.write(`
 </div>
 </section>
 <section id="vaes-for-interpretation">
-<h3><span class="section-number">1.2.1.3. </span>vaes for interpretation<a class="headerlink" href="#vaes-for-interpretation" title="Link to this heading">#</a></h3>
+<h3>VAEs for interpretation<a class="headerlink" href="#vaes-for-interpretation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>icam (<a class="reference external" href="https://proceedings.neurips.cc/paper/2020/file/56f9f88906aebf4ad985aaec7fa01313-Paper.pdf">bass et al. 2020</a>) - learn disentangled repr using vae with adv loss to make repr class-relevant</p>
 <ul>
@@ -559,53 +618,99 @@ document.write(`
 </ul>
 </section>
 <section id="various-vaes">
-<h3><span class="section-number">1.2.1.4. </span>various vaes<a class="headerlink" href="#various-vaes" title="Link to this heading">#</a></h3>
+<h3>Various vaes<a class="headerlink" href="#various-vaes" title="Link to this heading">#</a></h3>
+<p class="section-lead">Mostly variations on the loss above: a weight on the compactness term (beta-VAE), an explicit total correlation term (factor-VAE, beta-TC-VAE), or a different distance between distributions (WAE). Later entries change the prior or add new objectives, such as the SNE term in VAE-SNE.</p>
 <ul>
 <li><p>vae (<a class="reference external" href="https://arxiv.org/abs/1312.6114">kingma &amp; welling, 2013</a>)</p></li>
 <li><p>beta-vae (<a class="reference external" href="https://openreview.net/references/pdf?id=Sy2fzU9gl">higgins et al. 2017</a>) - add hyperparameter <span class="math notranslate nohighlight">\(\beta\)</span> to weight the <span class="corange">compactness prior term</span></p></li>
 <li><p>beta-vae H (<a class="reference external" href="https://arxiv.org/pdf/1804.03599.pdf">burgess et al. 2018</a>) - add parameter <span class="math notranslate nohighlight">\(C\)</span> to control the contribution of the <span class="corange">compactness prior term</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \cblue{\underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}}} ]      		+ \textcolor{var(--nb-c-green)}{\beta}\; \vert\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} -C\vert\)</span></p></li>
+<li><p>C is gradually increased from zero (allowing for a larger <span class="corange">compactness prior loss</span>) until good quality <span class="cblue">reconstruction</span> is achieved</p></li>
+</ul>
+</li>
+<li><p>factor-vae (<a class="reference external" href="https://arxiv.org/abs/1802.05983">kim &amp; minh 2018</a>) - adds <span class="cgreen">total correlation loss</span> term</p>
+<ul class="simple">
+<li><p>computes <em>total correlation loss term</em> using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)</p></li>
+<li><p>beta-TC-VAE = beta-total-correlation VAE (<a class="reference external" href="https://arxiv.org/abs/1802.04942">chen et al. 2018</a>) - same objective but computed without need for discriminator</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \cblue{\underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} -C\vert$$&lt;!-- --&gt;
-  - C is gradually increased from zero (allowing for a larger &lt;span class=&quot;corange&quot;&gt;compactness prior loss&lt;/span&gt;) until good quality &lt;span class=&quot;cblue&quot;&gt;reconstruction&lt;/span&gt; is achieved
-- factor-vae ([kim &amp; minh 2018](https://arxiv.org/abs/1802.05983)) - adds &lt;span class=&quot;cgreen&quot;&gt;total correlation loss&lt;/span&gt; term
-  - computes *total correlation loss term* using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
-  - beta-TC-VAE = beta-total-correlation VAE ([chen et al. 2018](https://arxiv.org/abs/1802.04942)) - same objective but computed without need for discriminator
-    - use minibatch-weighted sampling to compute each of the 3 terms that make up the original VAE *compactness prior loss*
-    - main idea is to better approximate $q(z)$ by weighting samples appropriately - biased, but easier to compute
-  - Interpretable VAEs for nonlinear group factor analysis ([ainsworth et al. 2018](https://arxiv.org/abs/1802.06765))
-- Wasserstein Auto-Encoders ([tolstikhin et al.](https://arxiv.org/pdf/1711.01558.pdf)) - removes the mutual info part of the loss
-  - wasserstein distance = earth-movers distance, how far apart are 2 distrs
-  - minimizes wasserstein distance + penalty which is similar to auto-encoding penalty, without the mutual info term
-  - another intuition: rather than map each point to a ball (since VAE adds noise to each latent repr), we only constraint the overall distr of Z, potentially making reconstructions less blurry (but potentially making latent space less smooth)
-  - &lt;img style=&quot;width: 750px; max-width: 100%;&quot; src=&quot;../assets/wae.svg&quot; alt=&quot;VAE vs WAE&quot;/&gt;
-- Adversarial Latent Autoencoder ([pidhorskyi et al. 2020](https://arxiv.org/pdf/2004.04467.pdf))
-  - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
-  - &lt;img style=&quot;width: 700px; max-width: 100%;&quot; src=&quot;../assets/alae.svg&quot; alt=&quot;ALAE architecture&quot;/&gt;
-- Variational Autoencoders Pursue PCA Directions (by Accident) ([rolinek et al. 2018](https://arxiv.org/pdf/1812.06775.pdf))
-  - local orthogonality of the embedding transformation
-  - prior $p(z)$ is standard normal, so encoder is assumed to be Gaussian with a certain mean, and **diagonal covariance**
-  - disentanglement is sensitive to rotations of the latent embeddings but reconstruction err doesn't care
-  - for linear autoencoder w/ square-error as reconstruction loss, we recover PCA decomp
-- Disentangling Disentanglement in Variational Autoencoders ([2019](https://arxiv.org/pdf/1812.02833.pdf))
-  - independence can be too simplistic, instead 2 things:
-    - the latent encodings of data having an appropriate level of overlap
-      - keeps encodings from just being a lookup table
-      - when encoder is unimodal, $I(x; z)$ gives us a good handle on this
-    - prior structure on the latents (e.g. independence, sparsity)
-  - to trade these off, can penalize divergence between $q_\phi(z)$ and $p(z)$
-  - nonisotropic priors - isotropic priors are only good up to rotation in the latent space
-    - by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily
-  - sparse prior - can help do clustering
-- VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering ([graving &amp; couzin 2020](https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf)) - reduce dims + cluster without specifying number of clusters
-  - objective\]</div>
-<p>\begin{aligned}
-\underset{\boldsymbol\theta,\boldsymbol\phi}{\arg\min}; -\text{SNELBO}(\mathbf X,\boldsymbol\theta,\boldsymbol\phi) &amp;= \underset{\boldsymbol\theta,\boldsymbol\phi}{\arg\min}; -\frac{1}{N}\sum_i \text{ELBO}<em>i(\mathbf x_i,\boldsymbol\theta,\boldsymbol\phi) - \alpha, \text{SNE}<em>i(\mathbf X,\boldsymbol\phi) \
-\text{ELBO}<em>i(\mathbf x_i,\boldsymbol\theta,\boldsymbol\phi) &amp;= \gamma, \mathbb E</em>{\mathbf z_i\sim q</em>{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i)} \underbrace{\left[\log p</em>{\boldsymbol\theta}(\mathbf x_i \vert \mathbf z_i)\right]}<em>{\text{distortion}} - \beta, \underbrace{\mathbb{KL}\left[q</em>{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) ,\Vert, p_{\boldsymbol\theta}(\mathbf z)\right]}<em>{\text{rate}} \
-\text{SNE}<em>i(\mathbf X,\boldsymbol\phi) &amp;= \mathbb E</em>{\substack{\mathbf z_i\sim q</em>{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \ \mathbf z_j\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_j)}} \left[\sum_j \text{SNE}<em>{j \vert i}(\mathbf x_i,\mathbf x_j,\boldsymbol\phi)\right] \
-&amp;= \mathbb E</em>{\substack{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \ \mathbf z_j\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_j)}} \underbrace{\left[\sum_j \mathbb{KL}\Big[\overbrace{p(\mathbf x_j \vert \mathbf x_i)}^{\text{dist in original space}} ,\Big\Vert, \underbrace{q_{\boldsymbol\phi}(\mathbf z_j \vert \mathbf z_i)}<em>{\text{dist in latent space}}\Big]\right]}</em>{\text{pairwise similarity}}
-\end{aligned}
-$$</p>
+<li><p>use minibatch-weighted sampling to compute each of the 3 terms that make up the original VAE <em>compactness prior loss</em></p></li>
+<li><p>main idea is to better approximate <span class="math notranslate nohighlight">\(q(z)\)</span> by weighting samples appropriately - biased, but easier to compute</p></li>
+</ul>
+</li>
+<li><p>Interpretable VAEs for nonlinear group factor analysis (<a class="reference external" href="https://arxiv.org/abs/1802.06765">ainsworth et al. 2018</a>)</p></li>
+</ul>
+</li>
+<li><p>Wasserstein Auto-Encoders (<a class="reference external" href="https://arxiv.org/pdf/1711.01558.pdf">tolstikhin et al.</a>) - removes the mutual info part of the loss</p>
+<ul>
+<li><p>wasserstein distance = earth-movers distance, how far apart are 2 distrs</p></li>
+<li><p>minimizes wasserstein distance + penalty which is similar to auto-encoding penalty, without the mutual info term</p></li>
+<li><p>another intuition: rather than map each point to a ball (since VAE adds noise to each latent repr), we only constraint the overall distr of Z, potentially making reconstructions less blurry (but potentially making latent space less smooth)</p></li>
+<li><figure class="align-default" id="id1">
+<a class="note-figure reference internal image-reference" href="../../_images/wae.svg"><img alt="VAE (a) vs WAE (b). The VAE pushes each encoded point's own distribution (red discs) to match the prior P_Z. The WAE only matches the overall distribution of codes Q_Z (green) to the prior, which can" class="note-figure" src="../../_images/wae.svg" style="width: 750px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> VAE (a) vs WAE (b). The VAE pushes each encoded point’s own distribution (red discs) to match the prior P_Z. The WAE only matches the overall distribution of codes Q_Z (green) to the prior, which can make reconstructions less blurry.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>Adversarial Latent Autoencoder (<a class="reference external" href="https://arxiv.org/pdf/2004.04467.pdf">pidhorskyi et al. 2020</a>)</p>
+<ul>
+<li><p>improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss</p></li>
+<li><figure class="align-default" id="id2">
+<a class="note-figure reference internal image-reference" href="../../_images/alae.svg"><img alt="Adversarial Latent Autoencoder. The discriminator works on latent codes produced by the encoder E, so a GAN loss and an autoencoder loss (Δ between w and E's output) can be trained together." class="note-figure" src="../../_images/alae.svg" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> Adversarial Latent Autoencoder. The discriminator works on latent codes produced by the encoder E, so a GAN loss and an autoencoder loss (Δ between w and E’s output) can be trained together.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>Variational Autoencoders Pursue PCA Directions (by Accident) (<a class="reference external" href="https://arxiv.org/pdf/1812.06775.pdf">rolinek et al. 2018</a>)</p>
+<ul class="simple">
+<li><p>local orthogonality of the embedding transformation</p></li>
+<li><p>prior <span class="math notranslate nohighlight">\(p(z)\)</span> is standard normal, so encoder is assumed to be Gaussian with a certain mean, and <strong>diagonal covariance</strong></p></li>
+<li><p>disentanglement is sensitive to rotations of the latent embeddings but reconstruction err doesn’t care</p></li>
+<li><p>for linear autoencoder w/ square-error as reconstruction loss, we recover PCA decomp</p></li>
+</ul>
+</li>
+<li><p>Disentangling Disentanglement in Variational Autoencoders (<a class="reference external" href="https://arxiv.org/pdf/1812.02833.pdf">2019</a>)</p>
+<ul class="simple">
+<li><p>independence can be too simplistic, instead 2 things:</p>
+<ul>
+<li><p>the latent encodings of data having an appropriate level of overlap</p>
+<ul>
+<li><p>keeps encodings from just being a lookup table</p></li>
+<li><p>when encoder is unimodal, <span class="math notranslate nohighlight">\(I(x; z)\)</span> gives us a good handle on this</p></li>
+</ul>
+</li>
+<li><p>prior structure on the latents (e.g. independence, sparsity)</p></li>
+</ul>
+</li>
+<li><p>to trade these off, can penalize divergence between <span class="math notranslate nohighlight">\(q_\phi(z)\)</span> and <span class="math notranslate nohighlight">\(p(z)\)</span></p></li>
+<li><p>nonisotropic priors - isotropic priors are only good up to rotation in the latent space</p>
+<ul>
+<li><p>by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily</p></li>
+</ul>
+</li>
+<li><p>sparse prior - can help do clustering</p></li>
+</ul>
+</li>
+<li><p>VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering (<a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf">graving &amp; couzin 2020</a>) - reduce dims + cluster without specifying number of clusters</p>
+<ul>
+<li><p>objective</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \underset{\boldsymbol\theta,\boldsymbol\phi}{\arg\min}\; -\text{SNELBO}(\mathbf X,\boldsymbol\theta,\boldsymbol\phi) &amp;= \underset{\boldsymbol\theta,\boldsymbol\phi}{\arg\min}\; -\frac{1}{N}\sum_i \text{ELBO}_i(\mathbf x_i,\boldsymbol\theta,\boldsymbol\phi) - \alpha\, \text{SNE}_i(\mathbf X,\boldsymbol\phi) \\
+    \text{ELBO}_i(\mathbf x_i,\boldsymbol\theta,\boldsymbol\phi) &amp;= \gamma\, \mathbb E_{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i)} \underbrace{\left[\log p_{\boldsymbol\theta}(\mathbf x_i \vert \mathbf z_i)\right]}_{\text{distortion}} - \beta\, \underbrace{\mathbb{KL}\left[q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \,\Vert\, p_{\boldsymbol\theta}(\mathbf z)\right]}_{\text{rate}} \\
+    \text{SNE}_i(\mathbf X,\boldsymbol\phi) &amp;= \mathbb E_{\substack{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \\ \mathbf z_j\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_j)}} \left[\sum_j \text{SNE}_{j \vert i}(\mathbf x_i,\mathbf x_j,\boldsymbol\phi)\right] \\
+    &amp;= \mathbb E_{\substack{\mathbf z_i\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_i) \\ \mathbf z_j\sim q_{\boldsymbol\phi}(\mathbf z \vert \mathbf x_j)}} \underbrace{\left[\sum_j \mathbb{KL}\Big[\overbrace{p(\mathbf x_j \vert \mathbf x_i)}^{\text{dist in original space}} \,\Big\Vert\, \underbrace{q_{\boldsymbol\phi}(\mathbf z_j \vert \mathbf z_i)}_{\text{dist in latent space}}\Big]\right]}_{\text{pairwise similarity}}
+    \end{aligned}
+    \end{split}\]</div>
 </li>
 <li><p><strong>stochastic neighbor regularizer</strong> that optimizes pairwise similarity kernels between original and latent distrs. to strengthen local neighborhood preservation</p>
 <ul class="simple">
@@ -642,7 +747,7 @@ $$</p>
 <li><p>desiderata</p>
 <ul>
 <li><p><strong>compact</strong></p></li>
-<li><p><strong>faithful</strong> - preserve info required for task</p></li>
+<li><p><span id="def-faithful" class="def-anchor"></span><strong>faithful</strong> - preserve info required for task</p></li>
 <li><p><strong>explicitly</strong> represent the attributes required for the task at hand</p></li>
 <li><p><strong>interpretable</strong> by humans</p></li>
 </ul>
@@ -717,9 +822,11 @@ $$</p>
 </section>
 </section>
 <section id="gans">
-<h2><span class="section-number">1.2.2. </span>GANs<a class="headerlink" href="#gans" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-disentanglement-gans"></span><h2>GANs<a class="headerlink" href="#gans" title="Link to this heading">#</a></h2>
+<p class="section-lead">A GAN has no encoder, so the questions change: can the generator be built so its inputs are disentangled, and if not, can directions in the latent space of a trained generator be found that change one attribute at a time?</p>
 <section id="model-based-disentangle-during-training">
-<h3><span class="section-number">1.2.2.1. </span>model-based (disentangle during training)<a class="headerlink" href="#model-based-disentangle-during-training" title="Link to this heading">#</a></h3>
+<h3>Model-based (disentangle during training)<a class="headerlink" href="#model-based-disentangle-during-training" title="Link to this heading">#</a></h3>
+<p class="section-lead">These change the architecture or loss. InfoGAN maximizes mutual information between a subset of latent codes and the image; StyleGAN maps <span class="math notranslate nohighlight">\(z\)</span> to an intermediate style space <span class="math notranslate nohighlight">\(w\)</span> that feeds every layer.</p>
 <ul>
 <li><p>disentangling architectures</p>
 <ul>
@@ -736,9 +843,22 @@ $$</p>
 <li><p>Stylegan (<a class="reference external" href="https://arxiv.org/abs/1812.04948">karras et al. 2018</a>)</p>
 <ul>
 <li><p>introduced perceptual path length and linear separability to measure the disentanglement property of latent space</p></li>
-<li><img style="width: 650px; max-width: 100%;" src="../assets/stylegan.svg" alt="StyleGAN generator"/>
+<li><figure class="align-default" id="id3">
+<a class="note-figure reference internal image-reference" href="../../_images/stylegan.svg"><img alt="A traditional generator (a) feeds z into the first layer. StyleGAN (b) first maps z to w with a mapping network, then injects w as a style (A, via AdaIN) and per-layer noise (B) at every resolution, s" class="note-figure" src="../../_images/stylegan.svg" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> A traditional generator (a) feeds z into the first layer. StyleGAN (b) first maps z to w with a mapping network, then injects w as a style (A, via AdaIN) and per-layer noise (B) at every resolution, starting from a learned constant.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
-<li><p>Stylegan2 (<a class="reference external" href="https://arxiv.org/abs/1912.04958">karras et al. 2019</a>): <img style="width: 950px; max-width: 100%;" src="../assets/stylegan2.svg" alt="StyleGAN2 generator revisions"/></p>
+<li><p>Stylegan2 (<a class="reference external" href="https://arxiv.org/abs/1912.04958">karras et al. 2019</a>)</p>
+<figure class="align-default" id="id4">
+<a class="note-figure reference internal image-reference" href="../../_images/stylegan2.svg"><img alt="From StyleGAN (a, b) to StyleGAN2 (c, d): only the standard deviation is modulated, bias and noise move outside the style block, and AdaIN is replaced by modulating and demodulating the conv weights d" class="note-figure" src="../../_images/stylegan2.svg" style="width: 950px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> From StyleGAN (a, b) to StyleGAN2 (c, d): only the standard deviation is modulated, bias and noise move outside the style block, and AdaIN is replaced by modulating and demodulating the conv weights directly.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\psi\)</span> scales the deviation of <em>w</em> from the average - <span class="math notranslate nohighlight">\(\psi=1\)</span> is original, moving towards 0 improves quality but reduces variety</p></li>
 <li><p>also has jacobian penalty on mapping from style space <span class="math notranslate nohighlight">\(w\)</span> to output image <span class="math notranslate nohighlight">\(y\)</span></p></li>
@@ -767,7 +887,8 @@ $$</p>
 </ul>
 </section>
 <section id="post-hoc-disentangle-after-training">
-<h3><span class="section-number">1.2.2.2. </span>post-hoc (disentangle after training)<a class="headerlink" href="#post-hoc-disentangle-after-training" title="Link to this heading">#</a></h3>
+<h3>Post-hoc (disentangle after training)<a class="headerlink" href="#post-hoc-disentangle-after-training" title="Link to this heading">#</a></h3>
+<p class="section-lead">These leave the generator fixed. Most find a direction in latent space for each attribute, for example with a linear classifier, PCA or clustering, then move along it to edit images or to probe a classifier for bias.</p>
 <ul class="simple">
 <li><p>mapping latent space</p>
 <ul>
@@ -882,16 +1003,17 @@ $$</p>
 </section>
 </section>
 <section id="misc">
-<h2><span class="section-number">1.2.3. </span>misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-disentanglement-misc"></span><h2>Misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<p class="section-lead">Two entries outside the VAE and GAN families. Maximal coding rate reduction replaces cross-entropy with a rate-distortion objective: features of different classes should span different low-dimensional subspaces, and features within a class should be compressible. The second separates foreground from background using video.</p>
 <ul class="simple">
 <li><p>Learning Diverse and Discriminative Representations via the Principle of Maximal Coding Rate Reduction (<a class="reference external" href="https://arxiv.org/abs/2006.08558">yu, …, &amp; ma, 2020</a>)</p>
 <ul>
 <li><p>goal: learn low-dimensional structure from high-dim (labeled or unlabeled) data</p></li>
 <li><p>approach: instead of cross-entropy loss, use <strong>maximal coding rate reduction</strong> = MCR loss function to learn linear feature space where:</p>
 <ul>
-<li><p><em>inter-class discriminative</em> - features of samples from different classes/clusters are uncorrelated + different low-dim linear subspaces</p></li>
-<li><p><em>intra-class compressible</em> - features of samples from same class/cluster are correlated (i.e. belong to low-dim linear subspace)</p></li>
-<li><p><em>maximally diverse</em> - dimension (or variance) of features for each class/cluster should be as large as possible as long as uncorrelated from other classes/clusters</p></li>
+<li><p><span id="def-inter-class-discriminative" class="def-anchor"></span><em>inter-class discriminative</em> - features of samples from different classes/clusters are uncorrelated + different low-dim linear subspaces</p></li>
+<li><p><span id="def-intra-class-compressible" class="def-anchor"></span><em>intra-class compressible</em> - features of samples from same class/cluster are correlated (i.e. belong to low-dim linear subspace)</p></li>
+<li><p><span id="def-maximally-diverse" class="def-anchor"></span><em>maximally diverse</em> - dimension (or variance) of features for each class/cluster should be as large as possible as long as uncorrelated from other classes/clusters</p></li>
 </ul>
 </li>
 <li><p>related to nonlinear generalized PCA</p></li>
@@ -901,7 +1023,7 @@ $$</p>
 <li><p>can compute for each class (diagonal matrices represent class/cluster membership in loss function)</p></li>
 <li><p>MCR maximizes (rate distortion for all features) - (rate distortion for all data separated into classes)</p>
 <ul>
-<li><p>like a generalization of information gain</p></li>
+<li><p>like a generalization of <a class="term-link" href="../ml/classification.html#def-information-gain" data-def="decrease in entropy · Classification">information gain</a></p></li>
 </ul>
 </li>
 </ul>
@@ -917,22 +1039,36 @@ $$</p>
 </ul>
 </section>
 <section id="semi-supervised-disentanglement">
-<h2><span class="section-number">1.2.4. </span>(semi)-supervised disentanglement<a class="headerlink" href="#semi-supervised-disentanglement" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-disentanglement-semi-supervised-disentanglement"></span><h2>(semi)-supervised disentanglement<a class="headerlink" href="#semi-supervised-disentanglement" title="Link to this heading">#</a></h2>
+<p class="section-lead">Since unsupervised disentanglement needs inductive biases anyway, these papers add weak supervision: labels for some factors, pairs that share a factor, or pairs ranked by a factor.</p>
 <p><strong>these papers use some form of supervision for the latent space when disentangling</strong></p>
 <ul>
 <li><p>Semi-supervised Disentanglement with Independent Vector Variational Autoencoders (<a class="reference external" href="https://arxiv.org/pdf/2003.06581.pdf">kim et al. 2020</a>)</p>
 <ul>
-<li><img style="width: 650px; max-width: 100%;" src="../assets/semi_supervised_vae.svg" alt="Independent vector VAE"/>
+<li><figure class="align-default" id="id5">
+<a class="note-figure reference internal image-reference" href="../../_images/semi_supervised_vae.svg"><img alt="The encoder splits the code into a discrete vector y for class factors, trained with weak supervision, and a continuous vector z for style. The loss keeps y and z independent of each other, and keeps" class="note-figure" src="../../_images/semi_supervised_vae.svg" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text"><span class="fig-num">Figure 5.</span> The encoder splits the code into a discrete vector y for class factors, trained with weak supervision, and a continuous vector z for style. The loss keeps y and z independent of each other, and keeps the elements within each one independent (total correlation).</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
 <li><p>Learning Disentangled Representations with Semi-Supervised Deep Generative Models (<a class="reference external" href="https://arxiv.org/abs/1706.00400">siddharth et al. 2017</a>) - put priors on interpretable variables during training and learn the rest</p></li>
 <li><p>Weakly Supervised Disentanglement with Guarantees (<a class="reference external" href="https://arxiv.org/abs/1910.09772">shu et al. 2019</a>)</p>
-<ul class="simple">
-<li><p>prove results on disentanglement for rank pairing</p></li>
-<li><p>different types of available supervision<img style="width: 750px; max-width: 100%;" src="../assets/unsupervised_settings.svg" alt="Weak supervision settings"/></p>
 <ul>
-<li><p><strong>restricted labeling</strong> - given labels for some groundtruth factors (e.g. label “glasses”, “gender” for all images)</p></li>
+<li><p>prove results on disentanglement for rank pairing</p></li>
+<li><p>different types of available supervision</p>
+<figure class="align-default" id="id6">
+<a class="note-figure reference internal image-reference" href="../../_images/unsupervised_settings.svg"><img alt="The kinds of supervision as graphical models (shaded = observed): none, labels for some factors s_I (restricted labeling), pairs that share s_I (match pairing), and pairs with a label y comparing s_I" class="note-figure" src="../../_images/unsupervised_settings.svg" style="width: 750px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text"><span class="fig-num">Figure 6.</span> The kinds of supervision as graphical models (shaded = observed): none, labels for some factors s_I (restricted labeling), pairs that share s_I (match pairing), and pairs with a label y comparing s_I (rank pairing).</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span id="def-restricted-labeling" class="def-anchor"></span><strong>restricted labeling</strong> - given labels for some groundtruth factors (e.g. label “glasses”, “gender” for all images)</p></li>
 <li><p>match pairing - given pairs or groups (e.g. these images all have glasses)</p></li>
 <li><p>rank pairing - label whether a feature is greater than another (e.g. this image has darker skin tone than this one)</p></li>
 </ul>
@@ -943,7 +1079,8 @@ $$</p>
 </ul>
 </section>
 <section id="evaluating-disentanglement">
-<h2><span class="section-number">1.2.5. </span>evaluating disentanglement<a class="headerlink" href="#evaluating-disentanglement" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-disentanglement-evaluating-disentanglement"></span><h2>Evaluating disentanglement<a class="headerlink" href="#evaluating-disentanglement" title="Link to this heading">#</a></h2>
+<p class="section-lead">Metrics need datasets with known generative factors, like dSprites. They differ in what they check: that one latent dimension changes when one factor changes, or that one factor can be read off from one latent dimension.</p>
 <ul class="simple">
 <li><p>Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations (<a class="reference external" href="http://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf">locatello et al. 2019</a>)</p>
 <ul>
@@ -977,10 +1114,10 @@ $$</p>
 <li><p>defn 2 (Locatello et al., 2018; Kumar et al., 2017): A disentangled representation is a representation where a change in a single generative factor leads to a change in a single factor in the learned representation.</p></li>
 <li><p>metrics</p>
 <ul>
-<li><p><strong>DCI</strong>: Eastwood and Williams (2018) - informativeness based on predicting gt factors using latent factors</p></li>
-<li><p><strong>SAP</strong>: Kumar et al. (2017) - how much does top latent factor match gt more than 2nd latent factor</p></li>
-<li><p><strong>mutual info gap MIG</strong>: Chen et al. 2018 - mutual info to compute the same thing</p></li>
-<li><p><strong>modularity</strong> (ridgeway &amp; mozer, 2018) - if each dimension of r(x) depends on at most a factor of variation using their mutual info</p></li>
+<li><p><span id="def-dci" class="def-anchor"></span><strong>DCI</strong>: Eastwood and Williams (2018) - informativeness based on predicting gt factors using latent factors</p></li>
+<li><p><span id="def-sap" class="def-anchor"></span><strong>SAP</strong>: Kumar et al. (2017) - how much does top latent factor match gt more than 2nd latent factor</p></li>
+<li><p><span id="def-mutual-info-gap-mig" class="def-anchor"></span><strong>mutual info gap MIG</strong>: Chen et al. 2018 - mutual info to compute the same thing</p></li>
+<li><p><span id="def-modularity" class="def-anchor"></span><strong>modularity</strong> (ridgeway &amp; mozer, 2018) - if each dimension of r(x) depends on at most a factor of variation using their mutual info</p></li>
 </ul>
 </li>
 </ul>
@@ -988,7 +1125,8 @@ $$</p>
 </ul>
 </section>
 <section id="non-deep-methods">
-<h2><span class="section-number">1.2.6. </span>non-deep methods<a class="headerlink" href="#non-deep-methods" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-disentanglement-non-deep-methods"></span><h2>Non-deep methods<a class="headerlink" href="#non-deep-methods" title="Link to this heading">#</a></h2>
+<p class="section-lead">ICA is the classic non-deep version: find components <span class="math notranslate nohighlight">\(z\)</span> that are as non-Gaussian as possible. The entry connects it to VAEs through nonlinear ICA.</p>
 <ul class="simple">
 <li><p>unifying vae and nonlinear ica (<a class="reference external" href="https://arxiv.org/pdf/1907.04809.pdf">khemakhem et al. 2020</a>)</p>
 <ul>
@@ -1001,7 +1139,17 @@ $$</p>
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Most disentangled VAEs change how the loss weights or estimates three terms, reconstruction, the compactness prior and total correlation.</p></li>
+<li><p>Raising the weight <span class="math notranslate nohighlight">\(\beta\)</span> on the compactness term trades reconstruction quality for a code that uses fewer latent dimensions.</p></li>
+<li><p>GAN work splits into generators built to disentangle during training and methods that find attribute directions in a trained generator’s latent space.</p></li>
+<li><p>Unsupervised disentanglement is impossible without inductive biases, so later papers add weak supervision such as labels for some factors or pairs that share a factor.</p></li>
+<li><p>Metrics need data with known generative factors, and the two definitions differ on whether one latent should track one factor or one factor should move one latent.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../ml/unsupervised.html"><span class="related-part">Machine learning</span><span class="related-title">Unsupervised</span><span class="related-hook">Clustering, dimensionality reduction, deep generative models (VAEs, GANs, diffusion, flows), and self-supervised and contrastive learning.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../research_ovws/ovw_llms.html"><span class="related-part">Research overviews</span><span class="related-title">LLMs</span><span class="related-hook">Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1035,20 +1183,20 @@ $$</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ovw_transfer_learning.html"
+       href="ovw_generalization.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>transfer learning</p>
+        <p class="prev-next-title">Generalization</p>
       </div>
     </a>
     <a class="right-next"
-       href="ovw_omics.html"
+       href="ovw_causal_inference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>omics</p>
+        <p class="prev-next-title">Causal inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1068,22 +1216,22 @@ $$</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes">1.2.1. VAEs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-losses">1.2.1.1. disentangled vae losses</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-in-code">1.2.1.2. disentangled vae in code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes-for-interpretation">1.2.1.3. vaes for interpretation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#various-vaes">1.2.1.4. various vaes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes">VAEs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-losses">Disentangled vae losses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disentangled-vae-in-code">Disentangled vae in code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vaes-for-interpretation">VAEs for interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#various-vaes">Various vaes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">1.2.2. GANs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-disentangle-during-training">1.2.2.1. model-based (disentangle during training)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-disentangle-after-training">1.2.2.2. post-hoc (disentangle after training)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gans">GANs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-disentangle-during-training">Model-based (disentangle during training)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-disentangle-after-training">Post-hoc (disentangle after training)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">1.2.3. misc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-disentanglement">1.2.4. (semi)-supervised disentanglement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-disentanglement">1.2.5. evaluating disentanglement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-deep-methods">1.2.6. non-deep methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">Misc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-disentanglement">(semi)-supervised disentanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-disentanglement">Evaluating disentanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-deep-methods">Non-deep methods</a></li>
 </ul>
   </nav></div>
 
@@ -1108,7 +1256,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

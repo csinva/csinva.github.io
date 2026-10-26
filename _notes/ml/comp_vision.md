@@ -171,7 +171,7 @@ category: ml
   - rotation matrix
     - can replace cross product with matrix multiplication with a skew symmetric $(B^T = -B)$ matrix:
     - $$\begin{bmatrix} t_1 \\ t_2 \\ t_3\end{bmatrix}$$ ^ $$\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} t_2 x_3 - t_3 x_2 \\ t_3 x_1 - t_1 x_3 \\ t_1 x_2 - t_2 x_1\end{bmatrix}$$
-      - $$\hat{t} = [t_\times] = \begin{bmatrix}  0 & -t_3 & t_2 \\ t_3 & 0 & -t_1 \\ -t_2 & t_1 & 0\end{bmatrix}$$<!-- -->
+      - $$\hat{t} = [t_\times] = \begin{bmatrix}  0 & -t_3 & t_2 \\ t_3 & 0 & -t_1 \\ -t_2 & t_1 & 0\end{bmatrix}$$
   - proof
     - $\dot{q(t)} = \hat{w} q(t)$
     - $\implies q(t) = e^{\hat{w}t}q(0)$
@@ -314,7 +314,7 @@ category: ml
 - equations: relate optical flow in image to world coords
   - optical flow at $(u, v) = (\Delta x / \Delta t,  \Delta y/ \Delta t)$ in time $\Delta t$
     - function in image space (produces vector field)
-  - $$\begin{bmatrix} \dot{X}\\ \dot{Y} \\ \dot{Z} \end{bmatrix} = \cblue{-t} \corange{-\omega \times \begin{bmatrix} X \\ Y \\ Z\end{bmatrix}} \implies \begin{bmatrix} \dot{x}\\ \dot{y}\end{bmatrix}= \cblue{\frac{1}{Z} \begin{bmatrix}  -1 & 0 & x\\ 0 & 1 & y\end{bmatrix} \begin{bmatrix} t_x \\ t_y \\ t_z \end{bmatrix}}+ \corange{\begin{bmatrix} xy & -(1+x^2) & y \\ 1+y^2 & -xy & -x\end{bmatrix}\begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z\end{bmatrix}}$$<!-- -->
+  - $$\begin{bmatrix} \dot{X}\\ \dot{Y} \\ \dot{Z} \end{bmatrix} = \cblue{-t} \corange{-\omega \times \begin{bmatrix} X \\ Y \\ Z\end{bmatrix}} \implies \begin{bmatrix} \dot{x}\\ \dot{y}\end{bmatrix}= \cblue{\frac{1}{Z} \begin{bmatrix}  -1 & 0 & x\\ 0 & 1 & y\end{bmatrix} \begin{bmatrix} t_x \\ t_y \\ t_z \end{bmatrix}}+ \corange{\begin{bmatrix} xy & -(1+x^2) & y \\ 1+y^2 & -xy & -x\end{bmatrix}\begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z\end{bmatrix}}$$
   - decomposed into <span class="cblue">translation component</span> + <span class="corange">rotation component</span>
   - $t_z / Z$ is time to impact for a point
 - <span class="cblue">translational component</span> of flow fields is more important - tells us $Z(x, y)$ and translation $t$

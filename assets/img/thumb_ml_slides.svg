@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Intro ML slides: a slide with a max-margin linear classifier">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#11161c"/><stop offset="1" stop-color="#07090c"/></linearGradient>
+  <radialGradient id="glow" cx="0.75" cy="0.2" r="0.75"><stop offset="0" stop-color="#5bc0de" stop-opacity="0.14"/><stop offset="1" stop-color="#5bc0de" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#glow)"/><g transform="translate(-20,12)">
+<rect x="170" y="64" width="560" height="390" rx="22" fill="#141a21" stroke="#2b3440" stroke-width="2"/>
+<rect x="140" y="92" width="560" height="390" rx="22" fill="#171e26" stroke="#2f3a46" stroke-width="2"/>
+<rect x="110" y="120" width="560" height="390" rx="22" fill="#1b232c" stroke="#3a4654" stroke-width="2.5"/>
+<clipPath id="sl"><rect x="110" y="120" width="560" height="390" rx="22"/></clipPath><g clip-path="url(#sl)">
+<polygon points="30,706 750,46 750,-76 30,584" fill="#5bc0de" fill-opacity="0.08"/>
+<line x1="30" y1="584" x2="750" y2="-76" stroke="#6b7785" stroke-width="3" stroke-dasharray="10 9"/>
+<line x1="30" y1="706" x2="750" y2="46" stroke="#6b7785" stroke-width="3" stroke-dasharray="10 9"/>
+<line x1="30" y1="645" x2="750" y2="-15" stroke="#e7e9ec" stroke-width="5" stroke-dasharray=""/>
+<circle cx="284.1" cy="233.0" r="11" fill="#5bc0de"/>
+<circle cx="258.8" cy="238.2" r="11" fill="#5bc0de"/>
+<circle cx="328.7" cy="235.5" r="11" fill="#5bc0de"/>
+<circle cx="285.4" cy="287.1" r="11" fill="#5bc0de"/>
+<circle cx="242.5" cy="263.0" r="11" fill="#5bc0de"/>
+<circle cx="293.2" cy="235.1" r="11" fill="#5bc0de"/>
+<circle cx="292.3" cy="283.3" r="11" fill="#5bc0de"/>
+<circle cx="256.0" cy="194.2" r="11" fill="#5bc0de"/>
+<circle cx="270.8" cy="344.6" r="11" fill="#5bc0de"/>
+<circle cx="297.7" cy="268.0" r="11" fill="#5bc0de"/>
+<circle cx="222.8" cy="297.1" r="11" fill="#5bc0de"/>
+<circle cx="250.5" cy="255.6" r="11" fill="#5bc0de"/>
+<circle cx="260.5" cy="251.2" r="11" fill="#5bc0de"/>
+<circle cx="241.3" cy="266.0" r="11" fill="#5bc0de"/>
+<circle cx="337.2" cy="287.1" r="11" fill="#5bc0de"/>
+<circle cx="230.0" cy="257.0" r="11" fill="#5bc0de"/>
+<rect x="444.5" y="394.1" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="510.7" y="332.0" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="493.7" y="378.2" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="555.7" y="346.9" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="476.2" y="309.4" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="442.6" y="357.9" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="521.2" y="366.0" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="459.0" y="349.3" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="460.8" y="393.0" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="460.3" y="312.1" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="507.2" y="377.6" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="521.6" y="352.9" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="494.6" y="429.1" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="491.6" y="324.2" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="512.6" y="319.5" width="20" height="20" rx="4" fill="#8b939e"/>
+<rect x="563.1" y="346.5" width="20" height="20" rx="4" fill="#8b939e"/>
+</g>
+</g></svg>

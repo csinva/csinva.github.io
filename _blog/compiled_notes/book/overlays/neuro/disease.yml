@@ -1,0 +1,83 @@
+# Overlay for _notes/neuro/disease.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Disease
+subtitle: Alzheimer's and Parkinson's, then pathology and cancer grading, with papers on deep learning for whole-slide images.
+hook: Alzheimer's and Parkinson's, then how pathologists grade cancer from tissue slides and where deep learning fits in.
+intro: |
+  Two short neurological sections come first. Alzheimer's starts in the hippocampus and the cholinergic
+  basal forebrain, with amyloid plaques and tau tangles as its markers; Parkinson's is the loss of dopamine
+  neurons in the substantia nigra (the motor chapter explains why that stops movement).
+
+  The rest is about pathology, written from the point of view of building AI tools for it: how a biopsy
+  becomes a stained slide and a written report, how tumors are staged and graded (TNM, Gleason scores for
+  prostate, invasiveness and grade for bladder), how much pathologists disagree with each other, and the
+  papers that train models on very large whole-slide images with only slide-level labels.
+sections:
+  alzheimer's:
+    lead: |
+      The figure lays out the amyloid hypothesis as a loop: Aβ42 builds up, triggers inflammation, the
+      injury makes more Aβ42, and so on. Most people think plaques and tangles are left behind by dead cells;
+      some think they cause the disease.
+  parkinson's:
+    lead: |
+      Parkinson's is the loss of dopamine neurons in the substantia nigra pars compacta, with symptoms once
+      about 20% are left. Its Lewy bodies are clumps of alpha-synuclein, like the Aβ42 clumps of Alzheimer's.
+  pathology:
+    lead: |
+      The rest of the chapter is about tissue: how slides are made and read, the deep learning papers built on
+      them, and a public dataset.
+  basics:
+    lead: |
+      The steps from tissue to diagnosis, and the vocabulary used in the papers below: H&E vs.
+      immunohistochemistry stains, whole-slide images (WSI) and tissue microarrays (TMA).
+  papers:
+    lead: |
+      The recurring problem is size. A whole-slide image has far too many pixels for one network pass, and
+      labels usually exist only for the whole slide, so most methods classify small patches and then
+      aggregate them, often with multiple-instance learning.
+  overview:
+    lead: |
+      Background for the two cancers below. Staging (pTNM: tumor size, lymph nodes, distant metastases) says
+      where a cancer is and how far it has spread; prognosis is the chance of recovery.
+  treatments:
+    lead: |
+      Chemotherapy kills replicating cells and is given after the tumor is removed (adjuvant) or before
+      (neoadjuvant). Targeted therapies and immunotherapy aim at what makes cancer cells different, such as
+      receptors like PD1 and CTLA4 that some tumors use to switch off immune cells.
+  prostate cancer:
+    lead: |
+      The Gleason score adds the patterns (3 to 5) of the two largest cancer regions. The human benchmarks
+      show low agreement between pathologists (kappas mostly between 0.15 and 0.45), which is the baseline
+      a model is compared with.
+    viz:
+      - name: rater-kappa
+        params: {po: 0.85, p: 0.5}
+        caption: |
+          Cohen's κ, the agreement measure in these benchmarks, corrects the raw agreement $p_o$ for the
+          agreement two raters would reach by chance, $p_e$, given how often each calls each grade:
+          $\kappa = (p_o - p_e)/(1 - p_e)$. With a 50/50 mix of grades, 85% agreement gives κ = 0.70. Keep
+          85% and make pattern 4 the call on 90% of slides: chance agreement rises to 82% and κ falls to
+          0.17, inside the range the Gleason studies report. A low κ can come with high raw agreement when one
+          grade dominates.
+  bladder cancer:
+    lead: |
+      Two things are judged: shape (papillary or flat) and grade (low or high). Shape is much easier to call
+      than grade, and once a tumor is high grade the question becomes how far it has invaded.
+takeaways:
+  - Alzheimer's hits the hippocampus and the cholinergic basal forebrain first; amyloid plaques and tau
+    tangles are its markers, and whether they cause it or follow it is debated.
+  - Parkinson's is the loss of substantia nigra dopamine neurons, so patients know what to do but cannot start
+    the movement.
+  - A slide goes from biopsy through fixation, paraffin, sectioning and staining (mostly H&E) to a written
+    report, and now sometimes to a scanned whole-slide image.
+  - Whole-slide images are too large for one network pass and are usually labeled only per slide, so most
+    methods classify patches and aggregate them, often with multiple-instance learning.
+  - Pathologists often disagree on grades (Gleason kappas mostly 0.15 to 0.45), which sets the bar a model is
+    compared with.
+figures:
+  26_1.svg: |
+    The amyloid cascade: sporadic causes or APP/PS1/PS2 alleles raise Aβ42, which causes inflammation and
+    injury that produce more Aβ42. The notes beside it ask whether anti-inflammatory or Aβ42-blocking
+    treatment comes too late, and list cholinergic drugs for managing symptoms.
+  tissue_prep.png: |
+    From biopsy to digital slide: the tissue is collected, cut into cassettes, fixed and embedded in
+    paraffin, sectioned a few microns thick, stained, and scanned.

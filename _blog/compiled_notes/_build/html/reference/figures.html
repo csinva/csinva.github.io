@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interactive figures &#8212; ML-AI Guide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/book.css?v=d567833e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/figures';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Glossary" href="glossary.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/cs/quantum.html">Quantum computing</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/math/chaos.html">Nonlinear dynamics and chaos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/stat/causal_inference.html">Causal inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ml/learning_theory.html">Learning theory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/ai/ai_futures.html">AI futures</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/neuro/comp_neuro.html">Computational neuroscience</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interactive figures</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/csinva/csinva.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Interactive figures</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-science">Computer science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematics">Mathematics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-intelligence">Artificial intelligence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroscience">Neuroscience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-overviews">Research overviews</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="interactive-figures">
+<h1>Interactive figures<a class="headerlink" href="#interactive-figures" title="Link to this heading">#</a></h1>
+<p>Every interactive figure in the book, grouped by part. Each one illustrates a single idea from its chapter; follow the link to see it in context.</p>
+<section id="computer-science">
+<h2>Computer science<a class="headerlink" href="#computer-science" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/cs/data_structures.html#viz-huffman-code"><span class="fig-name">Huffman code</span><span class="fig-where">Data structures · heaps</span><span class="fig-desc">Letter counts of the text become the leaf weights.</span></a>
+<a class="fig-item" href="../notes/cs/data_structures.html#viz-hash-probing"><span class="fig-name">Hash probing</span><span class="fig-where">Data structures · Hash tables</span><span class="fig-desc">The same keys inserted into a table of size 31 with hash(k) = k mod 31.</span></a>
+<a class="fig-item" href="../notes/cs/algo.html#viz-knapsack-table"><span class="fig-name">Knapsack table</span><span class="fig-where">Algorithms · dynamic programming</span><span class="fig-desc">The table \(K[i][w]\) from the code below, for four items.</span></a>
+<a class="fig-item" href="../notes/cs/algo.html#viz-sort-steps"><span class="fig-name">Sort steps</span><span class="fig-where">Algorithms · comparison-based</span><span class="fig-desc">Scrub through a sort one comparison at a time.</span></a>
+<a class="fig-item" href="../notes/cs/languages_parallel.html#viz-allreduce-steps"><span class="fig-name">Allreduce steps</span><span class="fig-where">Languages and parallel computing · computations</span><span class="fig-desc">Four ranks, each with its own vector cut into four slices.</span></a>
+<a class="fig-item" href="../notes/cs/arch.html#viz-float-bits"><span class="fig-name">Float bits</span><span class="fig-where">Architecture · numbers</span><span class="fig-desc">The 32 bits of a float, starting at 42.125 (the note's union example, 0x42288000).</span></a>
+<a class="fig-item" href="../notes/cs/arch.html#viz-cache-locality"><span class="fig-name">Cache locality</span><span class="fig-where">Architecture · memory</span><span class="fig-desc">Reading a 16×16 int array through a cache with 16-byte lines.</span></a>
+<a class="fig-item" href="../notes/cs/os.html#viz-page-replacement"><span class="fig-name">Page replacement</span><span class="fig-where">Operating systems · virtual memory</span><span class="fig-desc">Each column is one memory reference; a highlighted cell is a page loaded on a fault.</span></a>
+<a class="fig-item" href="../notes/cs/comp_theory.html#viz-nfa-run"><span class="fig-name">Nfa run</span><span class="fig-where">Theory of computation · ch 1-3 - finite automata, regular expressions</span><span class="fig-desc">An example NFA that accepts binary strings ending in 01.</span></a>
+<a class="fig-item" href="../notes/cs/quantum.html#viz-two-slit-amplitudes"><span class="fig-name">Two slit amplitudes</span><span class="fig-where">Quantum computing · intro</span><span class="fig-desc">Each slit contributes an amplitude at every point of the screen, drawn as an arrow on the right.</span></a>
+</div></section>
+<section id="mathematics">
+<h2>Mathematics<a class="headerlink" href="#mathematics" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/math/math_basics.html#viz-complex-polar"><span class="fig-name">Complex polar</span><span class="fig-where">Math basics · imaginary numbers</span><span class="fig-desc">Set the magnitude and angle of \(z_1\) and \(z_2\).</span></a>
+<a class="fig-item" href="../notes/math/calculus.html#viz-taylor-approx"><span class="fig-name">Taylor approx</span><span class="fig-where">Calculus · taylor expansion</span><span class="fig-desc">The dashed curves are the 0th- (blue), 1st- (orange) and 2nd-order (green) approximations, colored like the terms in the expansion below; purple is order \(N\).</span></a>
+<a class="fig-item" href="../notes/math/linear_algebra.html#viz-eigen-directions"><span class="fig-name">Eigen directions</span><span class="fig-where">Linear algebra · eigenvalues intro - Strang 5.1</span><span class="fig-desc">Drag \(v\) and watch \(Av\).</span></a>
+<a class="fig-item" href="../notes/math/linear_algebra.html#viz-svd-ellipse"><span class="fig-name">Svd ellipse</span><span class="fig-where">Linear algebra · Strang 6.3 - singular value decomposition</span><span class="fig-desc">Set the entries of a 2×2 matrix \(X\) and follow the unit circle through \(V^T\), \(\Sigma\) and \(U\).</span></a>
+<a class="fig-item" href="../notes/math/linear_algebra.html#viz-power-iteration"><span class="fig-name">Power iteration</span><span class="fig-where">Linear algebra · Strang 5.3 - difference eqs and power $A^k$</span><span class="fig-desc">Iterating \(u_{k+1} = A u_k\) with eigenvectors \(q_1, q_2\) and eigenvalues \(\lambda_1, \lambda_2\).</span></a>
+<a class="fig-item" href="../notes/math/differential_equations.html#viz-char-roots"><span class="fig-name">Char roots</span><span class="fig-where">Differential equations · Differential Equations</span><span class="fig-desc">The constant-coefficient case \(y'' + py' + qy = 0\), starting from \(y(0) = 1\), \(y'(0) = 0\).</span></a>
+<a class="fig-item" href="../notes/math/analysis.html#viz-epsilon-n"><span class="fig-name">Epsilon n</span><span class="fig-where">Real analysis · ch 2 - sequences and series</span><span class="fig-desc">The definition of convergence.</span></a>
+<a class="fig-item" href="../notes/math/analysis.html#viz-uniform-convergence"><span class="fig-name">Uniform convergence</span><span class="fig-where">Real analysis · 6.2 uniform convergence of a sequence of functions</span><span class="fig-desc">Each \(f_n\) converges pointwise to \(f\) (orange).</span></a>
+<a class="fig-item" href="../notes/math/optimization.html#viz-lagrange-geometry"><span class="fig-name">Lagrange geometry</span><span class="fig-where">Optimization · optimality conditions</span><span class="fig-desc">Minimize \(f_0\) on the circle \(h(x) = 0\) (illustrative \(f_0\)).</span></a>
+<a class="fig-item" href="../notes/math/optimization.html#viz-gradient-descent"><span class="fig-name">Gradient descent</span><span class="fig-where">Optimization · gd method</span><span class="fig-desc">Gradient descent on \(f = (\theta_1^2 + \kappa\,\theta_2^2)/2\), whose Hessian has condition number \(\kappa\).</span></a>
+<a class="fig-item" href="../notes/math/optimization.html#viz-gradient-descent-3"><span class="fig-name">Gradient descent</span><span class="fig-where">Optimization · why is it hard?</span><span class="fig-desc">A winding canyon: the Rosenbrock function has its minimum at \((1, 1)\) at the end of a curved, flat-bottomed valley.</span></a>
+<a class="fig-item" href="../notes/math/signals.html#viz-sampling-alias"><span class="fig-name">Sampling alias</span><span class="fig-where">Signal processing · intro</span><span class="fig-desc">A 3 Hz sine sampled 10 times a second.</span></a>
+<a class="fig-item" href="../notes/math/signals.html#viz-fourier-partial-sums"><span class="fig-name">Fourier partial sums</span><span class="fig-where">Signal processing · fourier analysis</span><span class="fig-desc">A Fourier series rebuilt one harmonic at a time.</span></a>
+<a class="fig-item" href="../notes/math/chaos.html#viz-logistic-cobweb"><span class="fig-name">Logistic cobweb</span><span class="fig-where">Nonlinear dynamics and chaos · Discrete Nonlinear Dynamical Systems</span><span class="fig-desc">The cobweb plot iterates the map: go up to the curve, across to the diagonal, and repeat.</span></a>
+</div></section>
+<section id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/stat/stat.html#viz-central-limit"><span class="fig-name">Central limit</span><span class="fig-where">Stat basics · central limit thm</span><span class="fig-desc">Each histogram shows 4,000 sample means.</span></a>
+<a class="fig-item" href="../notes/stat/stat.html#viz-bias-variance"><span class="fig-name">Bias variance</span><span class="fig-where">Stat basics · bias and point estimation</span><span class="fig-desc">Polynomials fit to many noisy samples of the same sine curve (one sample's points are shown).</span></a>
+<a class="fig-item" href="../notes/stat/stat.html#viz-bayes-update"><span class="fig-name">Bayes update</span><span class="fig-where">Stat basics · overview - Jordan ch 5</span><span class="fig-desc">Estimating a coin's probability of heads.</span></a>
+<a class="fig-item" href="../notes/stat/data_analysis.html#viz-kernel-smoother"><span class="fig-name">Kernel smoother</span><span class="fig-where">Data science · visual summaries</span><span class="fig-desc">Sixty noisy points from a smooth curve.</span></a>
+<a class="fig-item" href="../notes/stat/data_analysis.html#viz-missing-data"><span class="fig-name">Missing data</span><span class="fig-where">Data science · missing-data imputation</span><span class="fig-desc">300 rows where \(X\) is always observed and about 40% of the \(Y\) values are missing (hollow circles are the values that were never seen).</span></a>
+<a class="fig-item" href="../notes/stat/testing.html#viz-multiple-testing"><span class="fig-name">Multiple testing</span><span class="fig-where">Testing · basics</span><span class="fig-desc">50 one-sided tests, \(k\) of them with a true effect (illustrative effect size of 3 standard errors).</span></a>
+<a class="fig-item" href="../notes/stat/testing.html#viz-test-power"><span class="fig-name">Test power</span><span class="fig-where">Testing · tests on hypotheses</span><span class="fig-desc">An upper-tailed test of \(\theta = 0\) against \(\theta &gt; 0\) from the mean of \(n\) draws.</span></a>
+<a class="fig-item" href="../notes/stat/linear_models.html#viz-hat-influence"><span class="fig-name">Hat influence</span><span class="fig-where">Linear models · introduction</span><span class="fig-desc">Least squares on twelve fixed points (gray) and one point you move (pink).</span></a>
+<a class="fig-item" href="../notes/stat/linear_models.html#viz-reg-path"><span class="fig-name">Reg path</span><span class="fig-where">Linear models · regularization</span><span class="fig-desc">Coefficient paths on one dataset with six standardized features, where \(x_1\) and \(x_2\) have correlation about 0.9 and \(\beta_4 = \beta_6 = 0\).</span></a>
+<a class="fig-item" href="../notes/stat/time_series.html#viz-ar-process"><span class="fig-name">Ar process</span><span class="fig-where">Time series · ch 3 - linear time series</span><span class="fig-desc">An AR(1) series driven by the same white noise for every \(\phi\).</span></a>
+<a class="fig-item" href="../notes/stat/info_theory.html#viz-kl-divergence"><span class="fig-name">Kl divergence</span><span class="fig-where">Information theory · relative entropy / mutual info</span><span class="fig-desc">A binary variable with \(P(X = 1) = p\).</span></a>
+<a class="fig-item" href="../notes/stat/info_theory.html#viz-mutual-info"><span class="fig-name">Mutual info</span><span class="fig-where">Information theory · relative entropy / mutual info</span><span class="fig-desc">Two binary variables.</span></a>
+<a class="fig-item" href="../notes/stat/graphical_models.html#viz-burglary-net"><span class="fig-name">Burglary net</span><span class="fig-where">Graphical models · exact inference</span><span class="fig-desc">Enumeration on the network in the figure below: each number is a sum of the joint over all 32 assignments that agree with the evidence.</span></a>
+<a class="fig-item" href="../notes/stat/graphical_models.html#viz-kalman-1d"><span class="fig-name">Kalman 1d</span><span class="fig-where">Graphical models · kalman filtering</span><span class="fig-desc">A 1d random walk tracked by a Kalman filter.</span></a>
+<a class="fig-item" href="../notes/stat/causal_inference.html#viz-simpson-paradox"><span class="fig-name">Simpson paradox</span><span class="fig-where">Causal inference · basics</span><span class="fig-desc">The note's example as a binary treatment, with illustrative numbers: within each age group exercise lowers cholesterol by 10, and old people have higher cholesterol.</span></a>
+<a class="fig-item" href="../notes/stat/causal_inference.html#viz-backdoor-paths"><span class="fig-name">Backdoor paths</span><span class="fig-where">Causal inference · back-door criterion: capture parents of T</span><span class="fig-desc">Click a node to add it to the adjustment set \(S\) (shaded); \(U_1\) and \(U_2\) are unmeasured.</span></a>
+<a class="fig-item" href="../notes/stat/causal_inference.html#viz-ipw-confounding"><span class="fig-name">Ipw confounding</span><span class="fig-where">Causal inference · inverse propensity weighting</span><span class="fig-desc">A confounder \(X\) raises both the chance of treatment and the outcome, and the true effect is \(\tau = 1\).</span></a>
+</div></section>
+<section id="machine-learning">
+<h2>Machine learning<a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/ml/classification.html#viz-perceptron-train"><span class="fig-name">Perceptron train</span><span class="fig-where">Classification · binary classification</span><span class="fig-desc">The perceptron cycles through the points, and for each misclassified one (\(y_i \theta^T x_i \leq 0\), the points that add to its loss) it updates \(\theta \leftarrow \theta + y_i x_i\), with \(x = (1, x_1, x_2)\) so ...</span></a>
+<a class="fig-item" href="../notes/ml/classification.html#viz-lda-qda"><span class="fig-name">Lda qda</span><span class="fig-where">Classification · gaussian class-conditioned classifiers</span><span class="fig-desc">Two classes, each fit with a Gaussian by maximum likelihood; shading is the posterior \(p(Y=1\vert x)\).</span></a>
+<a class="fig-item" href="../notes/ml/classification.html#viz-adaboost-stumps"><span class="fig-name">Adaboost stumps</span><span class="fig-where">Classification · boosting</span><span class="fig-desc">AdaBoost with decision stumps (one split on one feature) on toy data.</span></a>
+<a class="fig-item" href="../notes/ml/evaluation.html#viz-roc-threshold"><span class="fig-name">Roc threshold</span><span class="fig-where">Evaluation · measures</span><span class="fig-desc">Scores for negatives and positives as two overlapping normal curves, with equal numbers of each.</span></a>
+<a class="fig-item" href="../notes/ml/evaluation.html#viz-kfold-cv"><span class="fig-name">Kfold cv</span><span class="fig-where">Evaluation · cv</span><span class="fig-desc">K-fold cross-validation choosing the degree of a polynomial fit to 24 noisy points from a sine curve.</span></a>
+<a class="fig-item" href="../notes/ml/unsupervised.html#viz-kmeans-steps"><span class="fig-name">Kmeans steps</span><span class="fig-where">Unsupervised · statistical clustering (j 10)</span><span class="fig-desc">Step through K-means by hand.</span></a>
+<a class="fig-item" href="../notes/ml/unsupervised.html#viz-gmm-em"><span class="fig-name">Gmm em</span><span class="fig-where">Unsupervised · statistical clustering (j 10)</span><span class="fig-desc">EM for a mixture of \(K\) Gaussians on made-up 2-d data.</span></a>
+<a class="fig-item" href="../notes/ml/kernels.html#viz-gram-psd"><span class="fig-name">Gram psd</span><span class="fig-where">Kernels · kernel basics</span><span class="fig-desc">The Gram matrix \(K_n\) of a function \(K(x, z)\) on \(n\) points of a line (left, points sorted so neighbors sit next to each other) and its eigenvalues (right).</span></a>
+<a class="fig-item" href="../notes/ml/kernels.html#viz-spectral-rings"><span class="fig-name">Spectral rings</span><span class="fig-where">Kernels · spectral clustering</span><span class="fig-desc">Two noisy rings, an RBF kernel \(K(x, z) = \exp(-r\vert\vert x-z\vert\vert^2)\), and Shi and Malik's normalized cut: points are split by the sign of the second smallest generalized eigenvector of \(L_n\).</span></a>
+<a class="fig-item" href="../notes/ml/deep_learning.html#viz-backprop-graph"><span class="fig-name">Backprop graph</span><span class="fig-where">Deep learning · basics</span><span class="fig-desc">The graph from the figure below, f = (x + y) z, with forward values in green above each wire and gradients df/d(·) in pink below it.</span></a>
+<a class="fig-item" href="../notes/ml/deep_learning.html#viz-grad-flow"><span class="fig-name">Grad flow</span><span class="fig-where">Deep learning · empirical notes</span><span class="fig-desc">The size of the gradient at each layer of a randomly initialized 20-layer network, relative to its size at the output (log scale).</span></a>
+<a class="fig-item" href="../notes/ml/comp_vision.html#viz-aliasing-sampler"><span class="fig-name">Aliasing sampler</span><span class="fig-where">Computer vision · image preprocessing</span><span class="fig-desc">A cosine sampled once per time step.</span></a>
+<a class="fig-item" href="../notes/ml/comp_vision.html#viz-image-filters"><span class="fig-name">Image filters</span><span class="fig-where">Computer vision · image preprocessing</span><span class="fig-desc">Pick a kernel and hover over (or tap) an output pixel: the pink square on the input is the patch whose weighted sum gives that pixel.</span></a>
+<a class="fig-item" href="../notes/ml/nlp.html#viz-bpe-merges"><span class="fig-name">Bpe merges</span><span class="fig-where">NLP · tokenization</span><span class="fig-desc">BPE on a small corpus, with each word's count on the right and "_" marking the end of a word.</span></a>
+<a class="fig-item" href="../notes/ml/nlp.html#viz-ngram-smoothing"><span class="fig-name">Ngram smoothing</span><span class="fig-where">NLP · language modeling</span><span class="fig-desc">A bigram model trained on five short sentences, with add-\(k\) smoothing \(P(w\vert v) = (c(v, w) + k)/(c(v) + kV)\).</span></a>
+<a class="fig-item" href="../notes/ml/learning_theory.html#viz-rectangle-game"><span class="fig-name">Rectangle game</span><span class="fig-where">Learning theory · rectangle learning game - Kearns</span><span class="fig-desc">Left: one game with \(m\) uniform examples.</span></a>
+<a class="fig-item" href="../notes/ml/learning_theory.html#viz-vc-shatter"><span class="fig-name">Vc shatter</span><span class="fig-where">Learning theory · VC dimension</span><span class="fig-desc">Every labeling of the points on the left, positives green and negatives pink, with a hypothesis that produces it in blue or a × if none does.</span></a>
+</div></section>
+<section id="artificial-intelligence">
+<h2>Artificial intelligence<a class="headerlink" href="#artificial-intelligence" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/ai/search.html#viz-astar-grid"><span class="fig-name">Astar grid</span><span class="fig-where">Search and logic · informed search</span><span class="fig-desc">Search from S to G on a grid where a step costs 1 (a diagonal step \(\sqrt 2\)) and \(h\) is the cost of the path to G if there were no walls, so it never overestimates.</span></a>
+<a class="fig-item" href="../notes/ai/search.html#viz-csp-forward-check"><span class="fig-name">Csp forward check</span><span class="fig-where">Search and logic · backtracking</span><span class="fig-desc">Backtracking search for a 3-coloring: neighbors must get different colors.</span></a>
+<a class="fig-item" href="../notes/ai/rl_decisions.html#viz-alpha-beta"><span class="fig-name">Alpha beta</span><span class="fig-where">RL and decisions · game trees - Russell &amp; Norvig 5.2-5.5</span><span class="fig-desc">Minimax with alpha-beta pruning on a 3-ply tree with random leaf values.</span></a>
+<a class="fig-item" href="../notes/ai/rl_decisions.html#viz-value-iteration"><span class="fig-name">Value iteration</span><span class="fig-where">RL and decisions · value iteration</span><span class="fig-desc">Russell &amp; Norvig's 4×3 grid world.</span></a>
+<a class="fig-item" href="../notes/ai/rl_decisions.html#viz-q-learning-grid"><span class="fig-name">Q learning grid</span><span class="fig-where">RL and decisions · learning action-utility function $Q(s, a)$</span><span class="fig-desc">Q-learning with ε-greedy exploration on the 4×3 grid world from the value iteration figure, without a model of the transitions.</span></a>
+<a class="fig-item" href="../notes/ai/llms.html#viz-ngram-backoff"><span class="fig-name">Ngram backoff</span><span class="fig-where">LLMs · ngram-based models</span><span class="fig-desc">An n-gram model with backoff on a corpus of five short sentences.</span></a>
+<a class="fig-item" href="../notes/ai/llms.html#viz-attention-scores"><span class="fig-name">Attention scores</span><span class="fig-where">LLMs · visual explanation of self-attention</span><span class="fig-desc">Attention weights \(\text{softmax}(QK^T/\sqrt{d})\) for five tokens with random queries and keys.</span></a>
+<a class="fig-item" href="../notes/ai/psychology.html#viz-hawk-dove"><span class="fig-name">Hawk dove</span><span class="fig-where">Psychology · social strife</span><span class="fig-desc">Maynard Smith's hawk-dove game.</span></a>
+<a class="fig-item" href="../notes/ai/cogsci.html#viz-base-rate"><span class="fig-name">Base rate</span><span class="fig-where">Cognitive science · lesswrong</span><span class="fig-desc">Base rate neglect with 1000 people (the numbers are illustrative).</span></a>
+<a class="fig-item" href="../notes/ai/fairness_sts.html#viz-fairness-thresholds"><span class="fig-name">Fairness thresholds</span><span class="fig-where">Fairness and STS · metrics</span><span class="fig-desc">Post-processing with one threshold per group.</span></a>
+</div></section>
+<section id="neuroscience">
+<h2>Neuroscience<a class="headerlink" href="#neuroscience" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/neuro/brain_basics.html#viz-nernst-potential"><span class="fig-name">Nernst potential</span><span class="fig-where">Brain basics · 2 - electrical signals of nerve cells</span><span class="fig-desc">The Nernst potential \(V_{ion} = 58/z \cdot \log(X_{out}/X_{in})\) in mV.</span></a>
+<a class="fig-item" href="../notes/neuro/brain_basics.html#viz-quantal-release"><span class="fig-name">Quantal release</span><span class="fig-where">Brain basics · synaptic transmission</span><span class="fig-desc">A toy model of quantal release.</span></a>
+<a class="fig-item" href="../notes/neuro/sensory_input.html#viz-canal-adaptation"><span class="fig-name">Canal adaptation</span><span class="fig-where">Sensory input · 14 - vestibular system</span><span class="fig-desc">The horizontal canal as the note describes it: when the head starts turning, the fluid lags and bends the cupula, so the canal fires.</span></a>
+<a class="fig-item" href="../notes/neuro/vissci.html#viz-sta-cone-mosaic"><span class="fig-name">Sta cone mosaic</span><span class="fig-where">Vision · electrode arrays</span><span class="fig-desc">A toy ganglion cell whose receptive field is eight cones (right), shown Gaussian white noise and firing Poisson spikes at a rate that grows exponentially with its filtered input.</span></a>
+<a class="fig-item" href="../notes/neuro/vissci.html#viz-center-surround"><span class="fig-name">Center surround</span><span class="fig-where">Vision · horizontal cells - outer retinal signaling and lateral inhibition</span><span class="fig-desc">An on-center receptive field as a narrow positive center minus a wide negative surround (left), and its response to a centered light spot (right).</span></a>
+<a class="fig-item" href="../notes/neuro/vissci.html#viz-gabor-orientation"><span class="fig-name">Gabor orientation</span><span class="fig-where">Vision · v1 (primary)</span><span class="fig-desc">The oriented linear filter of the standard model, drawn as a Gabor receptive field (top left) and tested with gratings at its preferred spatial frequency (bottom left).</span></a>
+<a class="fig-item" href="../notes/neuro/motor.html#viz-basal-ganglia-gate"><span class="fig-name">Basal ganglia gate</span><span class="fig-where">Motor system · 18 basal ganglia (choose what you want to do)</span><span class="fig-desc">A toy rate model of the body movement loop.</span></a>
+<a class="fig-item" href="../notes/neuro/development.html#viz-axon-competition"><span class="fig-name">Axon competition</span><span class="fig-where">Development · 23 circuit formation</span><span class="fig-desc">Several motor axons start out innervating one muscle fiber and share its fixed supply of neurotrophin; an axon that takes up more grows and takes up more still.</span></a>
+<a class="fig-item" href="../notes/neuro/disease.html#viz-rater-kappa"><span class="fig-name">Rater kappa</span><span class="fig-where">Disease · prostate cancer</span><span class="fig-desc">Cohen's κ, the agreement measure in these benchmarks, corrects the raw agreement \(p_o\) for the agreement two raters would reach by chance, \(p_e\), given how often each calls each grade: \(\kappa = (p_o - p_e)/(1 - p_e)\).</span></a>
+<a class="fig-item" href="../notes/neuro/comp_neuro.html#viz-hodgkin-huxley"><span class="fig-name">Hodgkin huxley</span><span class="fig-where">Computational neuroscience · modeling neurons</span><span class="fig-desc">The Hodgkin-Huxley equation with the classic squid-axon parameters, driven by current pulses (pink).</span></a>
+<a class="fig-item" href="../notes/neuro/comp_neuro.html#viz-lif-neuron"><span class="fig-name">Lif neuron</span><span class="fig-where">Computational neuroscience · simplified model neurons</span><span class="fig-desc">A leaky integrate-and-fire neuron with \(E_L = -65\) mV, \(V_{th} = -50\) mV and a 2 ms refractory period.</span></a>
+<a class="fig-item" href="../notes/neuro/comp_neuro.html#viz-population-vector"><span class="fig-name">Population vector</span><span class="fig-where">Computational neuroscience · neural decoding</span><span class="fig-desc">Each neuron has a rectified cosine tuning curve with a peak rate of 50 Hz (illustrative) and adds its preferred direction weighted by its firing rate; the sum is the population vector.</span></a>
+<a class="fig-item" href="../notes/neuro/comp_neuro.html#viz-hopfield-memory"><span class="fig-name">Hopfield memory</span><span class="fig-where">Computational neuroscience · hopfield nets</span><span class="fig-desc">A net of \(d = 100\) units stores \(P\) patterns with the Hebbian rule; pattern 1 is the smiley, the rest are random.</span></a>
+<a class="fig-item" href="../notes/neuro/comp_neuro.html#viz-oja-rule"><span class="fig-name">Oja rule</span><span class="fig-where">Computational neuroscience · synaptic plasticity, hebb&#x27;s rule, and statistical learning</span><span class="fig-desc">A neuron \(v = \mathbf{w} \cdot \mathbf{x}\) sees one 2-d input at a time and updates \(\mathbf{w}\).</span></a>
+</div></section>
+<section id="research-overviews">
+<h2>Research overviews<a class="headerlink" href="#research-overviews" title="Link to this heading">#</a></h2>
+<div class="figure-index mathjax_process">
+<a class="fig-item" href="../notes/research_ovws/ovw_embeddings.html#viz-infonce-temperature"><span class="fig-name">Infonce temperature</span><span class="fig-where">Embeddings · losses</span><span class="fig-desc">The softmax weights inside InfoNCE for one query with a positive pair and \(N\) negatives.</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_llms.html#viz-self-consistency"><span class="fig-name">Self consistency</span><span class="fig-where">LLMs · chain-of-thought</span><span class="fig-desc">Self-consistency in an idealized model: each sampled reasoning path is independently right with probability \(p\), otherwise it gives one of four wrong answers, and the most common final answer wins.</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_transfer_learning.html#viz-covariate-shift"><span class="fig-name">Covariate shift</span><span class="fig-where">Transfer learning · domain invariance</span><span class="fig-desc">Covariate shift with a misspecified model (illustrative): a line fit to \(y = \sin x\) + noise, with training \(x\) from \(p_\text{train}\) and test \(x\) from \(p_\text{test}\).</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_uncertainty.html#viz-platt-calibration"><span class="fig-name">Platt calibration</span><span class="fig-where">Uncertainty · basics</span><span class="fig-desc">An overconfident classifier on simulated data: its raw probabilities are too extreme, so in the reliability diagram the observed frequencies (blue) sit closer to 0.5 than the predictions, and the pink gaps are large.</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_uncertainty.html#viz-conformal-intervals"><span class="fig-name">Conformal intervals</span><span class="fig-where">Uncertainty · conformal inference</span><span class="fig-desc">Split conformal on illustrative data whose noise grows with \(x\): fit \(\hat f\) on a training split, take the \(\lceil (n+1)(1-\alpha) \rceil\)-th smallest calibration residual as \(\hat q\), and predict $\hat f(x) \pm \hat ...</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_interp.html#viz-shapley-values"><span class="fig-name">Shapley values</span><span class="fig-where">Interpretability · model-agnostic</span><span class="fig-desc">Exact Shapley values for an illustrative model with an interaction, \(f(x) = 1 + 2x_1 + x_2 - 1.5x_3 + \gamma x_1 x_2\), explained against the baseline \(b = 0\).</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_disentanglement.html#viz-beta-vae-tradeoff"><span class="fig-name">Beta vae tradeoff</span><span class="fig-where">Disentanglement · disentangled vae losses</span><span class="fig-desc">A toy where the beta-VAE optimum has a closed form: six independent Gaussian factors with variances \(\lambda_i\), a linear encoder and decoder, and decoder noise \(\sigma^2\).</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_causal_inference.html#viz-propensity-overlap"><span class="fig-name">Propensity overlap</span><span class="fig-where">Causal inference · heterogenous treatment effects</span><span class="fig-desc">Treatment probability \(e(x) = \sigma(\gamma x)\) for one covariate \(x \sim N(0, 1)\).</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_complexity.html#viz-ridgeless-risk"><span class="fig-name">Ridgeless risk</span><span class="fig-where">Complexity · double descent</span><span class="fig-desc">The limiting risk R(γ) from the hastie et al.</span></a>
+<a class="fig-item" href="../notes/research_ovws/ovw_dl_theory.html#viz-min-norm-gd"><span class="fig-name">Min norm gd</span><span class="fig-where">Deep learning theory · inductive bias=implicit regularization: gradient descent finds good minima</span><span class="fig-desc">Least squares with one data point and two weights: every point on the blue line fits exactly.</span></a>
+</div><p class="mathjax-loader"><span class="math notranslate nohighlight">\(\,\)</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./reference"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="glossary.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Glossary</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-science">Computer science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematics">Mathematics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-intelligence">Artificial intelligence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroscience">Neuroscience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#research-overviews">Research overviews</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chandan Singh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

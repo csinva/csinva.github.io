@@ -1,0 +1,110 @@
+# Overlay for _notes/math/linear_algebra.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Matrix properties, matrix calculus, vector and matrix norms, and the eigenvalue and singular value decompositions.
+intro: |
+  The linear algebra used across the rest of the book. The first section collects definitions and
+  matrix facts: inner products, determinants, rank, inverses and pseudo-inverses, and the four
+  fundamental subspaces. Matrix calculus follows, with worked gradients of $a^Tx$, $x^TAx$ and
+  $\log\det X$.
+
+  The second half is norms and eigenstuff. Eigenvalues come first (Strang 5.1), then the two
+  decompositions: $A = Q\Lambda Q^T$ for symmetric matrices and the SVD $X = U\Sigma V^T$ for any matrix.
+  Most of the norms, the condition number and the pseudo-inverse are easiest to read off the singular
+  values, so the SVD section ties the chapter together.
+sections:
+  matrix calc:
+    lead: |
+      The trick behind every example below: write out $f(x + \Delta)$ and keep the part that is linear in
+      $\Delta$. For scalar functions of a matrix, rewriting a quadratic form as a trace often makes the
+      derivative a one-liner.
+  norms:
+    lead: |
+      Vector norms first, then matrix norms. Several matrix norms are vector norms applied to the singular
+      values: the nuclear norm sums them, the Frobenius norm is their $L_2$ norm, and the spectral norm is the largest.
+  eigenstuff:
+    lead: |
+      Section numbers follow Strang. For a symmetric matrix the eigenvalues give the determinant (their
+      product), the trace (their sum) and the extremes of $x^TAx / x^Tx$.
+  Strang 6.3 - singular value decomposition:
+    lead: |
+      Every matrix, square or not, factors into <span class="cgreen">a rotation</span>, <span class="corange">a
+      stretch along the axes</span> and <span class="cblue">another rotation</span>. The stretches are the
+      singular values.
+    viz:
+      - name: svd-ellipse
+        params: {a: 1.2, b: 0.8, c: 0.3, d: 0.9}
+        caption: |
+          Set the entries of a 2×2 matrix $X$ and follow the unit circle through $V^T$, $\Sigma$ and $U$.
+          It ends up as an ellipse whose semi-axes are $\sigma_1 u_1$ and $\sigma_2 u_2$. Drag $X$ toward a
+          singular matrix (for example rows that are multiples of each other): $\sigma_2$ goes to 0, the
+          ellipse flattens to a line, and the condition number $\sigma_{\max}/\sigma_{\min}$ blows up.
+  eigenvalues intro - Strang 5.1:
+    lead: |
+      An eigenvector keeps its direction under $A$: $Ax = \lambda x$, so the eigenvalues are the roots of
+      $\det(A - \lambda I) = 0$. For symmetric matrices they give the determinant, trace, $L_2$ and Frobenius
+      norms, and positive semi-definite matrices are the symmetric ones with no negative eigenvalues.
+    viz:
+      - name: eigen-directions
+        params:
+          preset: general
+          angle: 60
+        caption: 'Drag $v$ and watch $Av$. Along the blue lines $Av$ stays on the line through $v$, so $Av = \lambda v$
+          and
+      
+          the length changes by the eigenvalue. The symmetric preset has orthogonal eigenvectors. The rotation has
+      
+          complex eigenvalues $\pm i$ and turns every $v$, and the shear has a repeated eigenvalue with only one
+      
+          eigenvector direction (a defective matrix).
+      
+          '
+  linear basics:
+    lead: |
+      Definitions used throughout: the trace inner product between matrices, linearity, determinants,
+      independence, and the facts about rank, inverses and subspaces that later sections lean on.
+  matrix properties:
+    lead: |
+      A matrix is invertible exactly when its determinant is nonzero and its null space is just 0. When it isn't
+      square, the pseudo-inverse takes its place, $A^\dagger = (A^T A)^{-1} A^T$ when the columns are
+      independent. The range and null space are orthogonal complements, which fixes their dimensions at $r$ and $n - r$.
+  vector norms:
+    lead: |
+      The $L_p$ norms, the quadratic norm $\|x\|_P$ defined by a positive definite $P$, and the dual norm, the
+      largest $z^T x$ over the unit ball of the original norm. The $L_1$ and $L_\infty$ norms are duals of each
+      other and $L_2$ is its own dual.
+  Strang 5.2 - diagonalization:
+    lead: |
+      A symmetric matrix factors as <span class="cblue">$Q$</span> <span class="corange">$\Lambda$</span> <span
+      class="cblue">$Q^T$</span> with orthonormal eigenvectors and the eigenvalues on the diagonal. In that
+      basis powers, inverses and square roots act on each eigenvalue separately.
+  Strang 5.3 - difference eqs and power $A^k$:
+    lead: |
+      In repeated multiplication $u_{k+1} = A u_k$, $A^k$ scales each
+      eigenvector by $\lambda_i^k$. So the eigenvalue magnitudes decide whether $u_k$ dies out, stays bounded or
+      blows up, and the largest one eventually dominates, which is the power method.
+    viz:
+      - name: power-iteration
+        params:
+          l1: 1.2
+          l2: 0.6
+          k: 8
+        caption: Iterating $u_{k+1} = A u_k$ with eigenvectors $q_1, q_2$ and eigenvalues $\lambda_1, \lambda_2$. With
+          both $\vert\lambda\vert < 1$ the iterates shrink to 0, and with one $\vert\lambda\vert > 1$ they run off. Either
+          way the direction lines up with the eigenvector of the larger $\vert\lambda\vert$, at the rate $\vert\lambda_2/\lambda_1\vert^k$
+          shown on the right; that is the power method. Set $\vert\lambda_1\vert = \vert\lambda_2\vert$ and it never settles.
+takeaways:
+  - The four fundamental subspaces pair up as orthogonal complements, with dimensions $r$, $n - r$, $r$ and $m -
+    r$.
+  - Matrix gradients come from keeping the part of $f(x + \Delta)$ linear in $\Delta$, often after rewriting a
+    quadratic form as a trace.
+  - Many matrix norms are vector norms of the singular values, such as nuclear (sum), Frobenius ($L_2$) and
+    spectral (max).
+  - A symmetric matrix is $Q \Lambda Q^T$ with orthonormal eigenvectors, and it is PSD exactly when every
+    eigenvalue is nonnegative.
+  - Every matrix has an SVD $U \Sigma V^T$, and the singular values give the condition number
+    $\sigma_{\max}/\sigma_{\min}$, and terms with small $\sigma_i$ can be thrown away.
+  - In $u_{k+1} = A u_k$ the eigenvalue magnitudes decide stability, and the power method finds the eigenvector
+    of the largest one.
+figures:
+  area_parallelogram_determinant.svg: |
+    The rows $(a, b)$ and $(c, d)$ span a parallelogram. Its area is $|ad - bc|$, the absolute value of the
+    determinant.

@@ -58,13 +58,13 @@ category: ml
     - if label=i, want $\theta_i ^Tx > \theta_j^T x \quad \forall j$
     - if not, update $\theta_i$ and $\theta_j$* accordingly
     - *kessler construction*
-      - $$\theta =  [\theta_1 ... \theta_k] $$<!-- -->
+      - $$\theta =  [\theta_1 ... \theta_k] $$
       - want $\theta_i^T x > \theta_j^T x \quad \forall j$
       - rewrite $\theta^T \phi (x,i) > \theta^T \phi (x,j) \quad \forall j$
         - here $\phi (x, i)$ puts x in the ith spot and zeros elsewhere
         - $\phi$ is often used for feature representation
       - define margin:
-        $$\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\ 0& if \: y=y'\end{cases}$$<!-- -->
+        $$\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\ 0& if \: y=y'\end{cases}$$
       - check if $$y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')$$
   - multiclass SVMs (Crammer & Singer)
     - minimize total norm of weights s.t. true label score is at least 1 more than second best label
@@ -75,7 +75,7 @@ category: ml
 
 ## logistic regression
 
-- $$p(Y=1\vert x, \theta) = \text{logistic}(\theta^Tx)$$<!-- -->
+- $$p(Y=1\vert x, \theta) = \text{logistic}(\theta^Tx)$$
   1. assume Y ~ $\text{Bernoulli}(p)$ with $p=\text{logistic}(\theta^Tx$)
   2. can solve this online with GD of ***likelihood***
   3. better to solve with iteratively reweighted least squares
@@ -93,7 +93,7 @@ category: ml
 - noise-OR (binary) model
   - consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
   - define $\theta$ to be the failure probabilities
-  - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$<!-- -->
+  - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$
 - other (binary) exponential models
   - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$ but x doesn't have to be binary
   - *complementary log-log model*: $$p(Y=1\vert x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]$$
@@ -106,8 +106,8 @@ category: ml
   3. nonparametric - retains training examples (although often get rid of many)
      1. at test time, can't just store w - have to store support vectors
 - <img style="width: 320px; max-width: 100%;" src="../assets/svm_margin.svg" alt="SVM geometric margin"/>
-- $$\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$$<!-- -->
-- $$\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$$<!-- -->
+- $$\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$$
+- $$\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$$
   - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
     - limit the size of $(\theta, b)$ so we can't arbitrarily increase functional margin
     - function margin $\hat{\gamma}$ is smallest functional margin in a training set
@@ -269,7 +269,7 @@ from "Artificial Intelligence - A Modern Approach" and "The Elements of Statisti
   - given x, predict $$\hat{y}=\text{argmax}_y \cpurple{P(y\vert X_1,...,X_p)}=\text{argmax}_y \cblue{P(X_1,...,X_p\vert y)} \corange{P(y)}$$
     - generally ignore constant <span class="cgreen">denominator</span>
 - naive assumption - assume that all input attributes are conditionally independent given y
-  - $$P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$$<!-- -->
+  - $$P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$$
 - learning
   - learn $L$ priors $$P(y_1),P(y_2),...,P(y_l)$$
   - for i in 1:$\vert Y \vert$
@@ -284,7 +284,7 @@ from "Artificial Intelligence - A Modern Approach" and "The Elements of Statisti
 ## exponential family class-conditioned classifiers
 
 1. includes Gaussian, binomial, Poisson, gamma, Dirichlet
-2. $$p(x\vert \eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$$<!-- -->
+2. $$p(x\vert \eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$$
 3. for classification, anything from exponential family will result in posterior probability that is logistic function of a linear function of x
 
 ## text classification
@@ -302,7 +302,7 @@ from "Artificial Intelligence - A Modern Approach" and "The Elements of Statisti
 - implementation
   - have symbol for unknown words
   - underflow prevention - take logs of all probabilities so we don't get 0
-  - $$y = \text{argmax }\corange{\log \:P(y)} + \cblue{\sum_i \log \: P(X_i\vert y)}$$<!-- -->
+  - $$y = \text{argmax }\corange{\log \:P(y)} + \cblue{\sum_i \log \: P(X_i\vert y)}$$
     - log <span class="corange">prior</span> + log <span class="cblue">likelihood</span>
 
 # instance-based (nearest neighbors)

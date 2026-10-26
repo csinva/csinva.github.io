@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 624 416" role="img" aria-labelledby="title desc">
+  <title id="title">Burglary–alarm Bayesian network</title>
+  <desc id="desc">Burglary and Earthquake both point to Alarm, which points to JohnCalls and MaryCalls. Conditional probability tables: P(B)=.001; P(E)=.002; P(A) given B,E: t t .95, t f .94, f t .29, f f .001; P(J) given A: t .90, f .05; P(M) given A: t .70, f .01.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .tbl { fill: none; stroke: #2b2b2b; stroke-width: 1.5; }
+      .name { font: italic 26px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; dominant-baseline: central; }
+      .hd { font: italic 20px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .tv { font: italic 20px Georgia, "Times New Roman", serif; fill: #2b2b2b; text-anchor: middle; }
+      .num { font: 21px "Times New Roman", Times, serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- edges -->
+  <path class="edge" d="M136 69 L222 160" marker-end="url(#arrow)"/>
+  <path class="edge" d="M384 70 L302 160" marker-end="url(#arrow)"/>
+  <path class="edge" d="M232 214 L140 340" marker-end="url(#arrow)"/>
+  <path class="edge" d="M292 214 L384 340" marker-end="url(#arrow)"/>
+
+  <!-- nodes -->
+  <ellipse class="node" cx="98" cy="42" rx="80" ry="30"/>
+  <text class="name" x="98" y="42">Burglary</text>
+  <ellipse class="node" cx="418" cy="42" rx="102" ry="30"/>
+  <text class="name" x="418" y="42">Earthquake</text>
+  <ellipse class="node" cx="262" cy="187" rx="68" ry="30"/>
+  <text class="name" x="262" y="187">Alarm</text>
+  <ellipse class="node" cx="98" cy="372" rx="96" ry="30"/>
+  <text class="name" x="98" y="372">JohnCalls</text>
+  <ellipse class="node" cx="420" cy="372" rx="96" ry="30"/>
+  <text class="name" x="420" y="372">MaryCalls</text>
+
+  <!-- P(B) -->
+  <rect class="tbl" x="194" y="12" width="80" height="62"/>
+  <line class="tbl" x1="194" y1="42" x2="274" y2="42"/>
+  <text class="hd" x="234" y="35">P(B)</text>
+  <text class="num" x="234" y="66">.001</text>
+
+  <!-- P(E) -->
+  <rect class="tbl" x="536" y="12" width="80" height="62"/>
+  <line class="tbl" x1="536" y1="42" x2="616" y2="42"/>
+  <text class="hd" x="576" y="35">P(E)</text>
+  <text class="num" x="576" y="66">.002</text>
+
+  <!-- P(A | B, E) -->
+  <rect class="tbl" x="344" y="124" width="186" height="146"/>
+  <line class="tbl" x1="344" y1="154" x2="530" y2="154"/>
+  <line class="tbl" x1="440" y1="124" x2="440" y2="270"/>
+  <text class="hd" x="368" y="147">B</text>
+  <text class="hd" x="410" y="147">E</text>
+  <text class="hd" x="485" y="147">P(A)</text>
+  <text class="tv" x="368" y="181">t</text><text class="tv" x="410" y="181">t</text><text class="num" x="485" y="181">.95</text>
+  <text class="tv" x="368" y="206">t</text><text class="tv" x="410" y="206">f</text><text class="num" x="485" y="206">.94</text>
+  <text class="tv" x="368" y="231">f</text><text class="tv" x="410" y="231">t</text><text class="num" x="485" y="231">.29</text>
+  <text class="tv" x="368" y="256">f</text><text class="tv" x="410" y="256">f</text><text class="num" x="485" y="256">.001</text>
+
+  <!-- P(J | A) -->
+  <rect class="tbl" x="208" y="322" width="96" height="88"/>
+  <line class="tbl" x1="208" y1="352" x2="304" y2="352"/>
+  <line class="tbl" x1="240" y1="322" x2="240" y2="410"/>
+  <text class="hd" x="224" y="345">A</text>
+  <text class="hd" x="272" y="345">P(J)</text>
+  <text class="tv" x="224" y="377">t</text><text class="num" x="272" y="377">.90</text>
+  <text class="tv" x="224" y="401">f</text><text class="num" x="272" y="401">.05</text>
+
+  <!-- P(M | A) -->
+  <rect class="tbl" x="524" y="322" width="98" height="88"/>
+  <line class="tbl" x1="524" y1="352" x2="622" y2="352"/>
+  <line class="tbl" x1="556" y1="322" x2="556" y2="410"/>
+  <text class="hd" x="540" y="345">A</text>
+  <text class="hd" x="589" y="345">P(M)</text>
+  <text class="tv" x="540" y="377">t</text><text class="num" x="589" y="377">.70</text>
+  <text class="tv" x="540" y="401">f</text><text class="num" x="589" y="401">.01</text>
+</svg>

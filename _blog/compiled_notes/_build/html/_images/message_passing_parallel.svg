@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 622" role="img" aria-labelledby="title desc">
+  <title id="title">Parallel message passing</title>
+  <desc id="desc">Message passing under a synchronous parallel algorithm on a six-node tree, shown at four time steps (a)–(d). Solid arrows are messages passed at the current time step; dashed arrows are those passed at earlier steps. (b) leaves send to their parents; (c) the two internal nodes exchange messages; (d) internal nodes send back down to the leaves.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="arrowd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8a8a"/>
+    </marker>
+    <style>
+      .edge { fill: none; stroke: #2b2b2b; stroke-width: 2; stroke-linecap: round; }
+      .dash { stroke: #8a8a8a; stroke-dasharray: 4 4; stroke-linecap: butt; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2; }
+      .panel { font: 24px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- panel a -->
+  <line class="edge" x1="114.7" y1="37.8" x2="65.3" y2="79.2"/>
+  <line class="edge" x1="145.3" y1="37.8" x2="194.7" y2="79.2"/>
+  <line class="edge" x1="130.0" y1="45.0" x2="130.0" y2="145.0"/>
+  <line class="edge" x1="114.7" y1="177.8" x2="65.3" y2="219.2"/>
+  <line class="edge" x1="145.3" y1="177.8" x2="194.7" y2="219.2"/>
+  <circle class="node" cx="130" cy="25" r="20"/>
+  <circle class="node" cx="50" cy="92" r="20"/>
+  <circle class="node" cx="210" cy="92" r="20"/>
+  <circle class="node" cx="130" cy="165" r="20"/>
+  <circle class="node" cx="50" cy="232" r="20"/>
+  <circle class="node" cx="210" cy="232" r="20"/>
+  <text class="panel" x="130" y="292">(a)</text>
+
+  <!-- panel b -->
+  <line class="edge" x1="414.7" y1="37.8" x2="365.3" y2="79.2"/>
+  <line class="edge" x1="445.3" y1="37.8" x2="494.7" y2="79.2"/>
+  <line class="edge" x1="430.0" y1="45.0" x2="430.0" y2="145.0"/>
+  <line class="edge" x1="414.7" y1="177.8" x2="365.3" y2="219.2"/>
+  <line class="edge" x1="445.3" y1="177.8" x2="494.7" y2="219.2"/>
+  <circle class="node" cx="430" cy="25" r="20"/>
+  <circle class="node" cx="350" cy="92" r="20"/>
+  <circle class="node" cx="510" cy="92" r="20"/>
+  <circle class="node" cx="430" cy="165" r="20"/>
+  <circle class="node" cx="350" cy="232" r="20"/>
+  <circle class="node" cx="510" cy="232" r="20"/>
+  <line class="edge" x1="367.3" y1="60.6" x2="391.3" y2="40.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="492.7" y1="60.6" x2="468.7" y2="40.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="367.3" y1="200.6" x2="391.3" y2="180.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="492.7" y1="200.6" x2="468.7" y2="180.5" marker-end="url(#arrow)"/>
+  <text class="panel" x="430" y="292">(b)</text>
+
+  <!-- panel c -->
+  <line class="edge" x1="114.7" y1="357.8" x2="65.3" y2="399.2"/>
+  <line class="edge" x1="145.3" y1="357.8" x2="194.7" y2="399.2"/>
+  <line class="edge" x1="130.0" y1="365.0" x2="130.0" y2="465.0"/>
+  <line class="edge" x1="114.7" y1="497.8" x2="65.3" y2="539.2"/>
+  <line class="edge" x1="145.3" y1="497.8" x2="194.7" y2="539.2"/>
+  <circle class="node" cx="130" cy="345" r="20"/>
+  <circle class="node" cx="50" cy="412" r="20"/>
+  <circle class="node" cx="210" cy="412" r="20"/>
+  <circle class="node" cx="130" cy="485" r="20"/>
+  <circle class="node" cx="50" cy="552" r="20"/>
+  <circle class="node" cx="210" cy="552" r="20"/>
+  <line class="edge dash" x1="67.3" y1="380.6" x2="91.3" y2="360.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="192.7" y1="380.6" x2="168.7" y2="360.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="67.3" y1="520.6" x2="91.3" y2="500.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="192.7" y1="520.6" x2="168.7" y2="500.5" marker-end="url(#arrowd)"/>
+  <line class="edge" x1="120" y1="398" x2="120" y2="432" marker-end="url(#arrow)"/>
+  <line class="edge" x1="140" y1="432" x2="140" y2="398" marker-end="url(#arrow)"/>
+  <text class="panel" x="130" y="612">(c)</text>
+
+  <!-- panel d -->
+  <line class="edge" x1="414.7" y1="357.8" x2="365.3" y2="399.2"/>
+  <line class="edge" x1="445.3" y1="357.8" x2="494.7" y2="399.2"/>
+  <line class="edge" x1="430.0" y1="365.0" x2="430.0" y2="465.0"/>
+  <line class="edge" x1="414.7" y1="497.8" x2="365.3" y2="539.2"/>
+  <line class="edge" x1="445.3" y1="497.8" x2="494.7" y2="539.2"/>
+  <circle class="node" cx="430" cy="345" r="20"/>
+  <circle class="node" cx="350" cy="412" r="20"/>
+  <circle class="node" cx="510" cy="412" r="20"/>
+  <circle class="node" cx="430" cy="485" r="20"/>
+  <circle class="node" cx="350" cy="552" r="20"/>
+  <circle class="node" cx="510" cy="552" r="20"/>
+  <line class="edge dash" x1="367.3" y1="380.6" x2="391.3" y2="360.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="492.7" y1="380.6" x2="468.7" y2="360.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="367.3" y1="520.6" x2="391.3" y2="500.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="492.7" y1="520.6" x2="468.7" y2="500.5" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="420" y1="398" x2="420" y2="432" marker-end="url(#arrowd)"/>
+  <line class="edge dash" x1="440" y1="432" x2="440" y2="398" marker-end="url(#arrowd)"/>
+  <line class="edge" x1="407.9" y1="380.4" x2="383.9" y2="400.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="452.1" y1="380.4" x2="476.1" y2="400.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="407.9" y1="520.4" x2="383.9" y2="540.5" marker-end="url(#arrow)"/>
+  <line class="edge" x1="452.1" y1="520.4" x2="476.1" y2="540.5" marker-end="url(#arrow)"/>
+  <text class="panel" x="430" y="612">(d)</text>
+
+</svg>

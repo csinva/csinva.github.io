@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.7. learning theory</title>
+    <title>Learning theory &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ml/learning_theory';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.8. evaluation" href="evaluation.html" />
-    <link rel="prev" title="5.6. deep learning" href="deep_learning.html" />
+    <link rel="next" title="Artificial intelligence" href="../../parts/ai.html" />
+    <link rel="prev" title="NLP" href="nlp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml_section.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/ml/learning_theory.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>learning theory</h1>
+    <h1>Learning theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,16 +471,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution">5.7.1. evolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-problems">5.7.2. sample problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-learning-theory">5.7.3. computational learning theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell">5.7.3.1. PAC - probably learning an approximately correct hypothesis - Mitchell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-complexity-for-finite-hypothesis-space-mitchell">5.7.3.2. sample complexity for finite hypothesis space - Mitchell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangle-learning-game-kearns">5.7.3.3. rectangle learning game - Kearns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vc-dimension">5.7.3.4. VC dimension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution">Evolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-problems">Sample problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-learning-theory">Computational learning theory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell">PAC - probably learning an approximately correct hypothesis - Mitchell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-complexity-for-finite-hypothesis-space-mitchell">Sample complexity for finite hypothesis space - Mitchell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangle-learning-game-kearns">Rectangle learning game - Kearns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vc-dimension">VC dimension</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concept-learning-and-the-general-to-specific-ordering">5.7.4. concept learning and the general-to-specific ordering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concept-learning-and-the-general-to-specific-ordering">Concept learning and the general-to-specific ordering</a></li>
 </ul>
             </nav>
         </div>
@@ -442,11 +492,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="learning-theory">
-<h1><span class="section-number">5.7. </span>learning theory<a class="headerlink" href="#learning-theory" title="Link to this heading">#</a></h1>
+  <p class="breadcrumb"><a href="../../parts/ml.html">Machine learning</a> &nbsp;·&nbsp; chapter 8 of 8 &nbsp;·&nbsp; 3 min read</p><section class="tex2jax_ignore mathjax_ignore" id="learning-theory">
+<h1>Learning theory<a class="headerlink" href="#learning-theory" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">PAC learning, sample complexity, VC dimension, and concept learning with version spaces.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The central question is sample complexity: how many training examples a learner needs before it is probably (<span class="math notranslate nohighlight">\(1-\delta\)</span>) approximately (<span class="math notranslate nohighlight">\(\epsilon\)</span>) correct. The PAC section defines this. The finite hypothesis space section and Kearns’ rectangle game answer it in two simple cases. VC dimension then measures the capacity of an infinite hypothesis space and plugs it into the general bound.</p>
+<p>The last section, from Mitchell, is older and more concrete: concept learning as search through hypotheses ordered from general to specific. Find-S and candidate elimination keep track of the version space, the set of hypotheses consistent with the data so far. The two short sections at the top are worked probability problems.</p>
+</div>
 <p><em>references: (1) Machine Learning - Tom Mitchell, (2) An Introduction to Computational Learning Theory - Kearns &amp; Vazirani</em></p>
 <section id="evolution">
-<h2><span class="section-number">5.7.1. </span>evolution<a class="headerlink" href="#evolution" title="Link to this heading">#</a></h2>
+<span id="sec-learning-theory-evolution"></span><h2>Evolution<a class="headerlink" href="#evolution" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>performance is correlation <span class="math notranslate nohighlight">\(Perf_D (h,c) = \sum h(x) \cdot c(x) \cdot P(x)\)</span></p>
 <ul>
@@ -456,7 +511,8 @@ document.write(`
 </ul>
 </section>
 <section id="sample-problems">
-<h2><span class="section-number">5.7.2. </span>sample problems<a class="headerlink" href="#sample-problems" title="Link to this heading">#</a></h2>
+<span id="sec-learning-theory-sample-problems"></span><h2>Sample problems<a class="headerlink" href="#sample-problems" title="Link to this heading">#</a></h2>
+<p class="section-lead">Two warm-up problems about how many random draws it takes to see every kind of marble. The time to see one new marble is geometric, so the expected total is a sum of geometric means.</p>
 <ul class="simple">
 <li><p>ex: N marbles in a bag. How many draws with replacement needed before we draw all N marbles?</p>
 <ul>
@@ -466,7 +522,7 @@ document.write(`
 <li><p>mean times is sum of mean of each geometric</p></li>
 </ul>
 </li>
-<li><p>in order to get probabilities of seeing all the marbles instead of just mean[## draws], want to use Markov’s inequailty</p></li>
+<li><p>in order to get probabilities of seeing all the marbles instead of just mean[# draws], want to use Markov’s inequailty</p></li>
 </ul>
 </li>
 <li><p>box full of 1e6 marbles</p>
@@ -477,7 +533,8 @@ document.write(`
 </ul>
 </section>
 <section id="computational-learning-theory">
-<h2><span class="section-number">5.7.3. </span>computational learning theory<a class="headerlink" href="#computational-learning-theory" title="Link to this heading">#</a></h2>
+<span id="sec-learning-theory-computational-learning-theory"></span><h2>Computational learning theory<a class="headerlink" href="#computational-learning-theory" title="Link to this heading">#</a></h2>
+<p class="section-lead">Three questions about a learner: how many examples it needs (sample complexity), how much computation, and how many mistakes it makes on the way. Each needs a definition of convergence that holds with some probability.</p>
 <ul class="simple">
 <li><p>frameworks</p>
 <ol class="arabic simple">
@@ -487,15 +544,16 @@ document.write(`
 </li>
 <li><p>questions</p>
 <ol class="arabic simple">
-<li><p><em>sample complexity</em> - how many training examples needed to converge</p></li>
-<li><p><em>computational complexity</em> - how much computational effort needed to converge</p></li>
-<li><p><em>mistake bound</em> - how many training examples will learner misclassify before converging</p></li>
+<li><p><span id="def-sample-complexity" class="def-anchor"></span><em>sample complexity</em> - how many training examples needed to converge</p></li>
+<li><p><span id="def-computational-complexity" class="def-anchor"></span><em>computational complexity</em> - how much computational effort needed to converge</p></li>
+<li><p><span id="def-mistake-bound" class="def-anchor"></span><em>mistake bound</em> - how many training examples will learner misclassify before converging</p></li>
 </ol>
 </li>
 <li><p>must define convergence based on some probability</p></li>
 </ul>
 <section id="pac-probably-learning-an-approximately-correct-hypothesis-mitchell">
-<h3><span class="section-number">5.7.3.1. </span>PAC - probably learning an approximately correct hypothesis - Mitchell<a class="headerlink" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell" title="Link to this heading">#</a></h3>
+<h3>PAC - probably learning an approximately correct hypothesis - Mitchell<a class="headerlink" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell" title="Link to this heading">#</a></h3>
+<p class="section-lead">Two tolerances: the hypothesis may be wrong on up to an <span class="math notranslate nohighlight">\(\epsilon\)</span> fraction of inputs (<span class="corange">approximately correct</span>), and the learner may fail to find such a hypothesis with probability up to <span class="math notranslate nohighlight">\(\delta\)</span> (<span class="cblue">probably</span>). Both must hold for every target concept and every input distribution.</p>
 <ul class="simple">
 <li><p>want to learn C</p>
 <ul>
@@ -509,12 +567,12 @@ document.write(`
 </ul>
 </li>
 <li><p>getting <span class="math notranslate nohighlight">\(err_D(h)=0\)</span> is infeasible</p></li>
-<li><p><em>PAC learnable</em> - consider concept class C defined over set of instances X of length n and a learner L using hypothesis space H</p>
+<li><p><span id="def-pac-learnable" class="def-anchor"></span><em>PAC learnable</em> - consider concept class C defined over set of instances X of length n and a learner L using hypothesis space H</p>
 <ul>
 <li><p>C is PAC-learnable by L using H if for all <span class="math notranslate nohighlight">\(c \in C\)</span>, distributions D over X, <span class="math notranslate nohighlight">\(\epsilon\)</span> s.t. 0 &lt; <span class="math notranslate nohighlight">\(\epsilon\)</span> &lt; 1/2 <span class="math notranslate nohighlight">\(\delta\)</span> s.t. <span class="math notranslate nohighlight">\(0&lt;\delta&lt;1/2\)</span>, learner L will with probability at least <span class="math notranslate nohighlight">\(\cblue{(1-\delta)}\)</span> output a hypothesis <span class="math notranslate nohighlight">\(h \in H\)</span> s.t <span class="math notranslate nohighlight">\(\corange{err_D(h) \leq \epsilon}\)</span></p></li>
 </ul>
 </li>
-<li><p><em>efficiently PAC learnable</em> - <em>time</em> that is polynomial in <span class="math notranslate nohighlight">\(1/\epsilon, 1/\delta, n, size(c )\)</span></p>
+<li><p><span id="def-efficiently-pac-learnable" class="def-anchor"></span><em>efficiently PAC learnable</em> - <em>time</em> that is polynomial in <span class="math notranslate nohighlight">\(1/\epsilon, 1/\delta, n, size(c )\)</span></p>
 <ul>
 <li><p><span class="cblue">probably</span> - probability of failure bounded by some constant <span class="math notranslate nohighlight">\(\cblue{\delta}\)</span></p></li>
 <li><p><span class="corange">approximately correct</span> - err bounded by some constant <span class="math notranslate nohighlight">\(\corange{\epsilon}\)</span></p></li>
@@ -524,10 +582,11 @@ document.write(`
 </ul>
 </section>
 <section id="sample-complexity-for-finite-hypothesis-space-mitchell">
-<h3><span class="section-number">5.7.3.2. </span>sample complexity for finite hypothesis space - Mitchell<a class="headerlink" href="#sample-complexity-for-finite-hypothesis-space-mitchell" title="Link to this heading">#</a></h3>
+<h3>Sample complexity for finite hypothesis space - Mitchell<a class="headerlink" href="#sample-complexity-for-finite-hypothesis-space-mitchell" title="Link to this heading">#</a></h3>
+<p class="section-lead">A consistent learner outputs some hypothesis in the version space, the hypotheses that fit the training data. If every hypothesis left in the version space has error below <span class="math notranslate nohighlight">\(\epsilon\)</span>, the version space is <span class="math notranslate nohighlight">\(\epsilon\)</span>-exhausted, and any consistent learner is then approximately correct.</p>
 <ul class="simple">
-<li><p><em>sample complexity</em> - growth in the number of training examples required</p></li>
-<li><p><em>consistent learner</em> - outputs hypotheses that perfectly fit training data whenever possible</p>
+<li><p><span id="def-sample-complexity-2" class="def-anchor"></span><em>sample complexity</em> - growth in the number of training examples required</p></li>
+<li><p><span id="def-consistent-learner" class="def-anchor"></span><em>consistent learner</em> - outputs hypotheses that perfectly fit training data whenever possible</p>
 <ul>
 <li><p>outputs a hypothesis belonging to the version space</p></li>
 </ul>
@@ -536,8 +595,10 @@ document.write(`
 </ul>
 </section>
 <section id="rectangle-learning-game-kearns">
-<h3><span class="section-number">5.7.3.3. </span>rectangle learning game - Kearns<a class="headerlink" href="#rectangle-learning-game-kearns" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>Rectangle learning game - Kearns<a class="headerlink" href="#rectangle-learning-game-kearns" title="Link to this heading">#</a></h3>
+<p class="section-lead">The target is an axis-aligned rectangle and the learner outputs the tightest rectangle around the positive examples. That rectangle sits inside the target, so it errs only on the strip it misses. Splitting that strip into four sides gives the bound below.</p>
+<figure class="nb-viz-figure" id="viz-rectangle-game"><div class="nb-viz" data-viz="rectangle-game" data-params="{&quot;m&quot;: 30, &quot;eps&quot;: 0.1}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> Left: one game with \(m\) uniform examples. Positives are green, the dashed box is the target and the orange box is the learned one; its error is the target area it misses. Right: over 400 games per \(m\), how often that error exceeds \(\epsilon\) (blue), and the bound \(4(1-\epsilon/4)^m\) (pink). The bound always sits above the simulation, and both fall exponentially in \(m\). Shrink \(\epsilon\) and both curves move right, since more examples are needed.</figcaption></figure><ul class="simple">
 <li><p>data X is sampled with Distribution D</p></li>
 <li><p>simple soln: tightest-fit rectangle</p></li>
 <li><p>define region T so prob a draw misses T is <span class="math notranslate nohighlight">\(1-\epsilon /4\)</span></p>
@@ -552,35 +613,38 @@ document.write(`
 </ul>
 </section>
 <section id="vc-dimension">
-<h3><span class="section-number">5.7.3.4. </span>VC dimension<a class="headerlink" href="#vc-dimension" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>VC dimension<a class="headerlink" href="#vc-dimension" title="Link to this heading">#</a></h3>
+<p class="section-lead">A hypothesis class shatters a set if it can label the set’s points in every possible way. The VC dimension is the size of the largest set it can shatter. It is the <span class="math notranslate nohighlight">\(d\)</span> in the bound on <span class="math notranslate nohighlight">\(m\)</span> from the fundamental theorem at the end of the section.</p>
+<figure class="nb-viz-figure" id="viz-vc-shatter"><div class="nb-viz" data-viz="vc-shatter" data-params="{&quot;cls&quot;: &quot;halfplane&quot;, &quot;preset&quot;: &quot;tri&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> Every labeling of the points on the left, positives green and negatives pink, with a hypothesis that produces it in blue or a × if none does. Half-planes shatter three points in general position, but not three on a line (a positive between two negatives fails). No four points work: try the square and the diamond, or click to place your own, and some labeling always fails. So the VC dimension of half-planes in the plane is 3. Switch to axis-aligned rectangles: the square fails but the diamond is shattered, which is enough for a VC dimension of at least 4, since the definition only needs one set of that size.</figcaption></figure><ul class="simple">
 <li><p><em>VC dimension</em> measures <em>capacity</em> of a space of functions that can be learend by a statistical classification algorithm</p>
 <ul>
 <li><p>let H be set of sets and C be a set</p></li>
-<li><p>$<span class="math notranslate nohighlight">\(H \cap C := \{ h \cap C \: \vert  h \in H \}\)</span>$<!-- --></p></li>
+<li><p><span class="math notranslate nohighlight">\(H \cap C := \{ h \cap C \: \vert  h \in H \}\)</span></p></li>
 <li><p>a set C is <em>shattered</em> by H if <span class="math notranslate nohighlight">\(H \cap C\)</span> contains all subsets of C</p></li>
 <li><p>The VC dimension of <span class="math notranslate nohighlight">\(H\)</span> is the largest integer <span class="math notranslate nohighlight">\(D\)</span> such that there exists a set <span class="math notranslate nohighlight">\(C\)</span> with cardinality <span class="math notranslate nohighlight">\(D\)</span> that is shattered by <span class="math notranslate nohighlight">\(H\)</span></p></li>
 </ul>
 </li>
 <li><p>VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)</p></li>
 <li><p>VC dimension 0 -&gt; hypothesis either always returns false or always returns true</p></li>
-<li><p><em>Sauer’s lemma</em> - let <span class="math notranslate nohighlight">\(d \geq 0, m \geq 1\)</span>, <span class="math notranslate nohighlight">\(H\)</span> hypothesis space, VC-dim(H) = d. Then, <span class="math notranslate nohighlight">\(\Pi_H(m) \leq \phi (d,m)\)</span></p></li>
+<li><p><span id="def-sauer-s-lemma" class="def-anchor"></span><em>Sauer’s lemma</em> - let <span class="math notranslate nohighlight">\(d \geq 0, m \geq 1\)</span>, <span class="math notranslate nohighlight">\(H\)</span> hypothesis space, VC-dim(H) = d. Then, <span class="math notranslate nohighlight">\(\Pi_H(m) \leq \phi (d,m)\)</span></p></li>
 <li><p>fundamental theorem of learning theory provides bound of m that guarantees learning: <span class="math notranslate nohighlight">\(m \geq [\frac{4}{\epsilon} \cdot (d \cdot \ln(\frac{12}{\epsilon}) + \ln(\frac{2}{\delta}))]\)</span></p></li>
 </ul>
 </section>
 </section>
 <section id="concept-learning-and-the-general-to-specific-ordering">
-<h2><span class="section-number">5.7.4. </span>concept learning and the general-to-specific ordering<a class="headerlink" href="#concept-learning-and-the-general-to-specific-ordering" title="Link to this heading">#</a></h2>
+<span id="sec-learning-theory-concept-learning-and-the-general-to-specific-ord"></span><h2>Concept learning and the general-to-specific ordering<a class="headerlink" href="#concept-learning-and-the-general-to-specific-ordering" title="Link to this heading">#</a></h2>
+<p class="section-lead">Hypotheses are ordered from specific to general, and with this ordering a learner can store the whole version space through its two boundaries: the most specific members <span class="math notranslate nohighlight">\(S\)</span> and the most general members <span class="math notranslate nohighlight">\(G\)</span>.</p>
 <ul class="simple">
 <li><p>definitions</p>
 <ul>
-<li><p><em>concept learning</em> - acquiring the definition of a general category given a sample of positive and negative training examples of the category</p>
+<li><p><span id="def-concept-learning" class="def-anchor"></span><em>concept learning</em> - acquiring the definition of a general category given a sample of positive and negative training examples of the category</p>
 <ul>
 <li><p>concept is boolean function that returns true for specific things</p></li>
 <li><p>can represent function as vector acceptable features, ?, or null (if any null, then entire vector is null)</p></li>
 </ul>
 </li>
-<li><p><em>general hypothesis</em> - more generally true</p>
+<li><p><span id="def-general-hypothesis" class="def-anchor"></span><em>general hypothesis</em> - more generally true</p>
 <ul>
 <li><p>general defines a partial ordering</p></li>
 </ul>
@@ -589,7 +653,7 @@ document.write(`
 <li><p>an example x <em>satisfies</em> a hypothesis h if h(x) = 1</p></li>
 </ul>
 </li>
-<li><p><em>find-S</em> - finding a maximally specific hypothesis</p>
+<li><p><span id="def-find-s" class="def-anchor"></span><em>find-S</em> - finding a maximally specific hypothesis</p>
 <ul>
 <li><p>start with most specific possible</p></li>
 <li><p>generalize each time it fails to cover an observed positive training example</p></li>
@@ -606,10 +670,10 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><em>version space</em> - set of all hypotheses consistent with the training examples</p>
+<li><p><span id="def-version-space" class="def-anchor"></span><em>version space</em> - set of all hypotheses consistent with the training examples</p>
 <ul>
-<li><p><em>list-then-eliminate</em> - list all hypotheses and eliminate any that are inconsistent (slow)</p></li>
-<li><p><em>candidate-elimination</em> - represent most general (G) and specific (S) members of version space</p>
+<li><p><span id="def-list-then-eliminate" class="def-anchor"></span><em>list-then-eliminate</em> - list all hypotheses and eliminate any that are inconsistent (slow)</p></li>
+<li><p><span id="def-candidate-elimination" class="def-anchor"></span><em>candidate-elimination</em> - represent most general (G) and specific (S) members of version space</p>
 <ul>
 <li><p>version space representation theorem - version space can be found from most general / specific version space members</p></li>
 <li><p>for positive examples</p>
@@ -637,7 +701,17 @@ document.write(`
 </li>
 <li><p>inductive bias of candidate-elimination - target concept c is contained in H</p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>PAC learning asks for a hypothesis with error at most <span class="math notranslate nohighlight">\(\epsilon\)</span>, found with probability at least <span class="math notranslate nohighlight">\(1-\delta\)</span>, for every target concept and every input distribution.</p></li>
+<li><p>Sample complexity is how many examples are needed for that guarantee; for the rectangle game, choosing <span class="math notranslate nohighlight">\(m\)</span> so that <span class="math notranslate nohighlight">\(4(1-\epsilon/4)^m \leq \delta\)</span> is enough.</p></li>
+<li><p>A set is shattered by <span class="math notranslate nohighlight">\(H\)</span> if <span class="math notranslate nohighlight">\(H\)</span> can produce every labeling of it, and the VC dimension is the size of the largest shattered set.</p></li>
+<li><p>The fundamental theorem bounds the number of examples needed by the VC dimension <span class="math notranslate nohighlight">\(d\)</span>, <span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span> alone, so a hypothesis space with infinitely many members but a finite VC dimension can still be learned.</p></li>
+<li><p>Candidate elimination stores the whole version space through its most specific and most general members, <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../ml/classification.html"><span class="related-part">Machine learning</span><span class="related-title">Classification</span><span class="related-hook">Linear classifiers as regularizer plus loss, SVMs, trees and forests, naive Bayes and Gaussian classifiers, nearest neighbors, and boosting.</span></a><a class="related-card" href="../research_ovws/ovw_complexity.html"><span class="related-part">Research overviews</span><span class="related-title">Complexity</span><span class="related-hook">What complexity means for a model, from philosophy and Kolmogorov complexity to VC dimension, double descent and minimum description length.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -671,20 +745,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="deep_learning.html"
+       href="nlp.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.6. </span>deep learning</p>
+        <p class="prev-next-title">NLP</p>
       </div>
     </a>
     <a class="right-next"
-       href="evaluation.html"
+       href="../../parts/ai.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.8. </span>evaluation</p>
+        <p class="prev-next-title">Artificial intelligence</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -704,16 +778,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution">5.7.1. evolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-problems">5.7.2. sample problems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-learning-theory">5.7.3. computational learning theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell">5.7.3.1. PAC - probably learning an approximately correct hypothesis - Mitchell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-complexity-for-finite-hypothesis-space-mitchell">5.7.3.2. sample complexity for finite hypothesis space - Mitchell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangle-learning-game-kearns">5.7.3.3. rectangle learning game - Kearns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vc-dimension">5.7.3.4. VC dimension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evolution">Evolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-problems">Sample problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-learning-theory">Computational learning theory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell">PAC - probably learning an approximately correct hypothesis - Mitchell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-complexity-for-finite-hypothesis-space-mitchell">Sample complexity for finite hypothesis space - Mitchell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangle-learning-game-kearns">Rectangle learning game - Kearns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vc-dimension">VC dimension</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concept-learning-and-the-general-to-specific-ordering">5.7.4. concept learning and the general-to-specific ordering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concept-learning-and-the-general-to-specific-ordering">Concept learning and the general-to-specific ordering</a></li>
 </ul>
   </nav></div>
 
@@ -738,7 +812,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

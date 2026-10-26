@@ -31,7 +31,7 @@ typora-copy-images-to: ../assets
 - *supporting hyperplane thm*: {$$x\vert a^tx = a^t x_0$$} where $x_0$ on boundary of convex C
 - dual cone $K^*$ = {$$y\vert x^Ty \geq 0 \: \forall x \in K$$}
   - $\preceq_{K^*}$ is dual of $\preceq_K$
-  - $$x \preceq_K y \iff \lambda^T x \leq \lambda^T y \quad \forall \: \lambda \succeq_{K^*} 0$$<!-- -->
+  - $$x \preceq_K y \iff \lambda^T x \leq \lambda^T y \quad \forall \: \lambda \succeq_{K^*} 0$$
 
 ### geometry
 - *ellipsoid*: {$$x \in \mathbb{R}^n \vert  (x-x_c)^T P^{-1} (x-x_c) \leq 1$$} where P symmetric, PSD
@@ -56,7 +56,7 @@ typora-copy-images-to: ../assets
   - *wide sense function* - can take on values $\pm \infty$
     - = dom f = {$$x \vert  f(x) < \infty$$}
   - *wide sense convex func*: $$f(x) = \inf \{ t \in \mathbb{R} \vert  (x, t) \in F\}$$ where $F \subseteq \mathbb{R}^{n+1}$
-    - $$F(x) = \inf \{ t \in \mathbb{R} \vert  (x, t) \in F \}$$<!-- -->
+    - $$F(x) = \inf \{ t \in \mathbb{R} \vert  (x, t) \in F \}$$
   - $\alpha$-sublevel set of convex func is convex
 - operations that preserve convexity
   - nonnegative weighted sums ~ multiplies for logs
@@ -66,13 +66,13 @@ typora-copy-images-to: ../assets
   - perspective
   - minimization ~ sometimes
 - *conjugate* of f
-  - $$f^*(y) = \underset{x \in dom f}{\sup} \: y^T x - f(x)$$<!-- -->
+  - $$f^*(y) = \underset{x \in dom f}{\sup} \: y^T x - f(x)$$
   - dom $f^*$ = {$$y\vert f^*(y)$$ is finite}
   - called *Legendre transform* when f differentiable
   - *fenchel's inequality*: $f(x) + f^*(y) \geq x^ty$
   - $f^{**} = f$ iff convex, closed
 - ex. $$f(S) = \log \: \det X^{-1}$$
-  - $$f^*(Y) = \underset{X}{\sup} [\operatorname{tr}(YX) + \log \: \det X]$$<!-- -->
+  - $$f^*(Y) = \underset{X}{\sup} [\operatorname{tr}(YX) + \log \: \det X]$$
     - $$= -n - \log \: \det(-Y) $$ if $-Y \in S^n_{++}$
 - can use conj. to go other way: $f(y) = \underset{x}{\sup}(y^Tx - f^*(x))$
 
@@ -141,7 +141,7 @@ typora-copy-images-to: ../assets
   - $\lambda \succeq 0 \implies g(\lambda, \nu) \leq p^*$
 - $(\lambda, \nu)$ *dual feasible* if
   1. $\lambda \succeq 0$
-  2. $$(\lambda, \nu) \in dom \: g$$<!-- -->
+  2. $$(\lambda, \nu) \in dom \: g$$
   - when $p^* = - \infty$, dual infeasible
   - when $d^*=\infty$, primal infeasible
 - dual related to to conjugate func
@@ -154,7 +154,7 @@ typora-copy-images-to: ../assets
   - $$\exists x \in relint \: D\\f_i(x) < 0\\Ax = b$$ ~ point is strictly feasible
   - to weaken this, affine $f_i$ can be $\leq 0$
 - *sion's minimax thm*: $x \to f(x, y)$ ~ conditions
-  - $$\implies \underset{x}{\min} \: \underset{y}{\sup} \: f(x,y) = \underset{y}{\sup} \: \underset{x}{\min} \: f(x,y)$$<!-- -->
+  - $$\implies \underset{x}{\min} \: \underset{y}{\sup} \: f(x,y) = \underset{y}{\sup} \: \underset{x}{\min} \: f(x,y)$$
 
 ## optimality conditions
 - *duality gap*: $f_0(x) - g(\lambda, \nu)$
@@ -165,8 +165,8 @@ typora-copy-images-to: ../assets
   1. $f_i(x^*) \leq 0$
   2. $h_i(x^*) = 0$
   3. $\lambda_i^* \geq 0$
-  4. $$\lambda_i^*f(x_i^*) = 0$$<!-- -->
-  5. $$\nabla f_0 (x^*) + \sum \lambda_i^* \nabla f_i (x_i^*) + \sum \nu_i^* \nabla h_i (x^*) = 0$$<!-- -->
+  4. $$\lambda_i^*f(x_i^*) = 0$$
+  5. $$\nabla f_0 (x^*) + \sum \lambda_i^* \nabla f_i (x_i^*) + \sum \nu_i^* \nabla h_i (x^*) = 0$$
 
 
 ## thms of alternatives
@@ -174,8 +174,8 @@ typora-copy-images-to: ../assets
 - *strong alternative* - exactly one is true
   - ex. Fredholm alternative
   - ex. Farkas's lamma
-    1. $$\exists x \: Ax \leq 0, c^Tx < 0$$<!-- -->
-    2. $$\exists y \: y \geq 0, A^Ty + c = 0$$<!-- -->
+    1. $$\exists x \: Ax \leq 0, c^Tx < 0$$
+    2. $$\exists y \: y \geq 0, A^Ty + c = 0$$
 
 # approx + fitting (boyd 6)
 
@@ -213,7 +213,7 @@ typora-copy-images-to: ../assets
 # unconstrained minimization (boyd 9)
 
 ## unconstrained problems
-- $$x^* = \text{argmin} \: f(x) \implies \nabla f(x^*) = 0$$<!-- -->
+- $$x^* = \text{argmin} \: f(x) \implies \nabla f(x^*) = 0$$
 - examples
   - ex. quadratic: $$\min \: 1/2 x^TPX + q^Tx + r$$
     - solved w/ $Px^* + q = 0$, if $P \succeq 0$, unique soln $-P^{-1}q$
@@ -228,14 +228,14 @@ typora-copy-images-to: ../assets
 - $0 \preceq \cgreen{\underset{\text{strong convexity}}{mI}} \preceq \nabla^2 f(x) \preceq \corange{\underset{\text{smoothness}}{MI}}$
   - $\kappa = M/m$ bounds *condition number* of $\nabla^2 f = \frac{\lambda_{\max}(\nabla^2 f)}{\lambda_{\min}(\nabla^2 f)}$
   - <span class="cgreen">strongly convex</span>: $\nabla^2 f(x) \succeq \cgreen{mI}$
-    - $$\implies f(x_2) \geq f(x_1) + \nabla f(x_1)^T(x_2-x_1) + \cgreen{m/2 \vert \vert x_2-x_1\vert \vert _2^2}$$<!-- -->
+    - $$\implies f(x_2) \geq f(x_1) + \nabla f(x_1)^T(x_2-x_1) + \cgreen{m/2 \vert \vert x_2-x_1\vert \vert _2^2}$$
     - minimizing yields $$p^* \geq f(x) - 1/(2m) \vert \vert \nabla f(x)\vert \vert _2^2$$
     - if the gradient of f at x is small enough, then the difference between f(x) and p⋆ is small
   - <span class="corange">smooth</span>: $$\exists \: M, \: \nabla^2f(x) \preceq \corange{MI}$$
-    - $$\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + \corange{M/2 \vert \vert y-x\vert \vert _2^2}$$<!-- -->
+    - $$\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + \corange{M/2 \vert \vert y-x\vert \vert _2^2}$$
 - cond(*C*) = $W_{\max}^2 / W_{\min}^2$
   - *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $$\vert \vert q\vert \vert _2=1$$
-  - $$W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz$$<!-- -->
+  - $$W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz$$
 - *alpha-level subset*: $$C_\alpha = \{x\vert f(x) \leq \alpha\}$$
 
 ## descent methods
@@ -307,7 +307,7 @@ typora-copy-images-to: ../assets
      3. faster
 3. newton's method for optimization
    - *second-order* optimization - requires 1st & 2nd derivatives
-   - $$\theta_{k+1} = \theta_k - \corange{H_K^{-1}} \cblue{g_k}$$<!-- -->
+   - $$\theta_{k+1} = \theta_k - \corange{H_K^{-1}} \cblue{g_k}$$
    - update with <span class="corange">inverse of Hessian</span> as alpha - this is an approximation to a taylor series
    - finding inverse of Hessian can be hard / expensive
 4. ADMM - *alternating direction method of multipliers* (ADMM) is an algorithm that solves convex optimization problems by breaking them into smaller pieces, each of which are then easier to handle
@@ -324,7 +324,7 @@ from Michael Jordan's "An Introduction to Probabilistic Graphical Models"
   - *expected complete log-likelihood* $$E_{p'}[l(\theta; x,z)] = \sum_z p'(z\vert x,\theta) \cdot \log \: p(x,z\vert \theta)$$
     - p' distribution is assignment to z vars
   - deriving *auxilary function* $$\mathcal L(q, \theta, x) = \sum_z p'(z\vert x) \log \frac{p(x,z\vert \theta)}{p'(z\vert x)}$$ - lower bound for the log likelihood
-  - $$\begin{align} l(\theta; x) &= \log \: p(x\vert \theta) & \text{incomplete log-likelihood} \\&= \log \sum_z p(x,z\vert \theta) &\text{complete log-likelihood}\\&= \log\sum_z p'(z\vert x) \frac{p(x,z\vert \theta)}{p'(z\vert x)} &\text{multiplying by 1} \\ &\geq \sum_z p'(z\vert x) \log \frac{p(x,z\vert \theta)}{p'(z\vert x)} &\text{Jensen's inequality}\\&\triangleq \mathcal L (p', \theta) \end{align}$$<!-- -->
+  - $$\begin{align} l(\theta; x) &= \log \: p(x\vert \theta) & \text{incomplete log-likelihood} \\&= \log \sum_z p(x,z\vert \theta) &\text{complete log-likelihood}\\&= \log\sum_z p'(z\vert x) \frac{p(x,z\vert \theta)}{p'(z\vert x)} &\text{multiplying by 1} \\ &\geq \sum_z p'(z\vert x) \log \frac{p(x,z\vert \theta)}{p'(z\vert x)} &\text{Jensen's inequality}\\&\triangleq \mathcal L (p', \theta) \end{align}$$
   - this removes dependence on z
 - steps
   - E: $$p'(z\vert x, \theta) = \underset{p'}{\text{argmax}}\: \mathcal L(p',\theta, x)$$
@@ -355,7 +355,7 @@ from Michael Jordan's "An Introduction to Probabilistic Graphical Models"
     $$\corange{v_t}=\beta_2 \corange{v_{t-1}}+\left(1-\beta_2\right) g_t^2$$ (<span class="corange">2nd moment</span>)
     $$\cblue{\widehat{m}_t}=\frac{\cblue{m_t}}{1-\beta_1^t}$$ (bias correction)
     $$\corange{\hat{v}_t}=\frac{\corange{v_t}}{1-\beta_2^t}$$ (bias correction)
-    $$\theta_t=\theta_{t-1}-\alpha \frac{\cblue{\widehat{m}_t}}{\sqrt{\corange{\hat{v}_t}}+\epsilon}$$<!-- -->
+    $$\theta_t=\theta_{t-1}-\alpha \frac{\cblue{\widehat{m}_t}}{\sqrt{\corange{\hat{v}_t}}+\epsilon}$$
   - Hyperparameters: $\beta_1=0.9, \beta_2=0.999, \epsilon= 10^{-8}$
   - Intuition: $m_t$ is an <span class="cblue">EMA of gradients (momentum)</span>, and $v_t$ is an <span class="corange">EMA of squared gradients</span> (adaptive per-parameter scaling, like RMSProp). Dividing by $\sqrt{\hat{v}_t}$ gives each parameter its own effective learning rate - large-gradient directions get damped, small-gradient directions get amplified. The bias-correction terms fix the fact that $m_t$ and $v_t$ are biased toward zero in early steps (since they're initialized at zero) with $m_0=v_0=0$.
   - keep track of per-parameter learning rate (based on first moment of gradients tracked) and per-parameter second moment (based on variance of gradients tracked)

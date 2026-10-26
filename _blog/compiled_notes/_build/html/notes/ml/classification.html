@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.4. classification</title>
+    <title>Classification &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ml/classification';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.5. unsupervised" href="unsupervised.html" />
-    <link rel="prev" title="5.3. computer vision" href="comp_vision.html" />
+    <link rel="next" title="Evaluation" href="evaluation.html" />
+    <link rel="prev" title="Machine learning" href="../../parts/ml.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ml_section.html">5. ml</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/ml/classification.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>classification</h1>
+    <h1>Classification</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,25 +471,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.4.1. overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">5.4.2. binary classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">5.4.3. multiclass classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminative">5.4.4. discriminative</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">5.4.4.1. logistic regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svms">5.4.4.2. svms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3">5.4.4.3. decision trees / rfs - Russell &amp; Norvig 18.3; Hastie, Tibshirani &amp; Friedman 9.2.1-9.2.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rules">5.4.4.4. decision rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-processes">5.4.4.5. gaussian processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">Multiclass classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminative">Discriminative</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-models">Binary models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svms">SVMs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3">Decision trees / rfs - Russell &amp; Norvig 18.3; Hastie, Tibshirani &amp; Friedman 9.2.1-9.2.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rules">Decision rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-processes">Gaussian processes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative">5.4.5. generative</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-class-conditioned-classifiers">5.4.5.1. gaussian class-conditioned classifiers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-classifier">5.4.5.2. naive bayes classifier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-family-class-conditioned-classifiers">5.4.5.3. exponential family class-conditioned classifiers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">5.4.5.4. multinomial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative">Generative</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-class-conditioned-classifiers">Gaussian class-conditioned classifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-classifier">Naive bayes classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-family-class-conditioned-classifiers">Exponential family class-conditioned classifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-classification">Text classification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">5.4.6. boosting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-based-nearest-neighbors">Instance-based (nearest neighbors)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-calcs">Likelihood calcs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-bernoulli">Single Bernoulli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">Multinomial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">Boosting</a></li>
 </ul>
             </nav>
         </div>
@@ -451,40 +508,62 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="classification">
-<h1><span class="section-number">5.4. </span>classification<a class="headerlink" href="#classification" title="Link to this heading">#</a></h1>
-<section id="overview">
-<h2><span class="section-number">5.4.1. </span>overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>regressors don’t classify well</p>
+  <p class="breadcrumb"><a href="../../parts/ml.html">Machine learning</a> &nbsp;·&nbsp; chapter 1 of 8 &nbsp;·&nbsp; 9 min read</p><section class="tex2jax_ignore mathjax_ignore" id="classification">
+<h1>Classification<a class="headerlink" href="#classification" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Discriminative and generative classifiers, trees and rules, nearest neighbors, and boosting.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The chapter is organized by the split in the overview. Discriminative models fit <span class="math notranslate nohighlight">\(P(Y\vert X)\)</span> directly: logistic regression, SVMs, decision trees, rules and Gaussian processes. Generative models fit <span class="math notranslate nohighlight">\(P(X, Y) = P(X\vert Y) P(Y)\)</span> and get the posterior from Bayes’ rule: Gaussian class-conditioned classifiers (LDA and QDA), naive Bayes, and exponential family models. Read the binary classification table first. Perceptron, linear SVM and logistic regression share the same form, a regularizer plus a loss, and differ only in the loss.</p>
+<p>Nearest neighbors, which keep the training data instead of fitting parameters, come after the two families. Then come the maximum likelihood calculations behind naive Bayes (Bernoulli and multinomial counts), and boosting, which combines many weak learners by reweighting data points or fitting residuals.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 8 sections</summary><ol><li><a href="#sec-classification-overview">Overview</a><span class="ol-badge">2 figures</span><span class="ol-lead">Generative models assume something about how X is produced, which costs bias but helps them converge faster and handle missing features.</span></li><li><a href="#sec-classification-binary-classification">Binary classification</a><span class="ol-badge">1 interactive</span><span class="ol-badge">1 figure</span><span class="ol-lead">Each model predicts \hat y = \text{sign}(\theta^T x).</span></li><li><a href="#sec-classification-multiclass-classification">Multiclass classification</a><span class="ol-lead">Two routes: combine several binary classifiers (one-against-all, one-vs-one), or train a single model that scores every class and predicts the highest score (multiclass perceptron, multiclass SVM, softmax).</span></li><li><a href="#sec-classification-discriminative">Discriminative</a><span class="ol-badge">1 figure</span></li><li><a href="#sec-classification-generative">Generative</a><span class="ol-badge">1 interactive</span></li><li><a href="#sec-classification-instance-based-nearest-neighbors">Instance-based (nearest neighbors)</a><span class="ol-lead">No model is fit.</span></li><li><a href="#sec-classification-likelihood-calcs">Likelihood calcs</a><span class="ol-lead">The maximum likelihood estimates behind naive Bayes on text: set the derivative of the log likelihood to zero, and the estimates come out as observed fractions.</span></li><li><a href="#sec-classification-boosting">Boosting</a><span class="ol-badge">1 interactive</span><span class="ol-lead">Boosting trains weak learners one after another, each focused on what the previous ones got wrong.</span></li></ol></details><section id="overview">
+<span id="sec-classification-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p class="section-lead">Generative models assume something about how <span class="math notranslate nohighlight">\(X\)</span> is produced, which costs bias but helps them converge faster and handle missing features. Discriminative models assume less and usually reach a lower asymptotic error.</p>
 <ul>
+<li><p>regressors don’t classify well</p>
+<ul class="simple">
 <li><p>e.g. outliers skew fit</p></li>
 </ul>
 </li>
 <li><p>asymptotic classifier - assumes infinite data</p></li>
 <li><p>linear classifer <span class="math notranslate nohighlight">\(\implies\)</span> boundaries are hyperplanes</p></li>
-<li><p><em>discriminative</em> - model <span class="math notranslate nohighlight">\(P(Y\vert X)\)</span> directly <img style="width: 360px; max-width: 100%;" src="../assets/j7_10.svg" alt="Discriminative classification model"/></p>
-<ul>
+<li><p><span id="def-discriminative" class="def-anchor"></span><em>discriminative</em> - model <span class="math notranslate nohighlight">\(P(Y\vert X)\)</span> directly</p>
+<figure class="align-default" id="id1">
+<a class="note-figure reference internal image-reference" href="../../_images/j7_10.svg"><img alt="Discriminative model. The features X₁, ..., Xₘ point to the label Y, so only P(Y | X) is modeled." class="note-figure" src="../../_images/j7_10.svg" style="width: 360px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> Discriminative model. The features X₁, …, Xₘ point to the label Y, so only P(Y | X) is modeled.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>usually lower bias <span class="math notranslate nohighlight">\(\implies\)</span>smaller asymptotic error</p></li>
 <li><p>slow convergence ~ <span class="math notranslate nohighlight">\(O(p)\)</span></p></li>
 </ul>
 </li>
-<li><p><em>generative</em> - model <span class="math notranslate nohighlight">\(P(X, Y) = P(X\vert Y) P(Y)\)</span> <img style="width: 600px; max-width: 100%;" src="../assets/j7_4.svg" alt="Three generative classification models"/></p>
-<ul>
+<li><p><span id="def-generative" class="def-anchor"></span><em>generative</em> - model <span class="math notranslate nohighlight">\(P(X, Y) = P(X\vert Y) P(Y)\)</span></p>
+<figure class="align-default" id="id2">
+<a class="note-figure reference internal image-reference" href="../../_images/j7_4.svg"><img alt="Generative models, where the label Y points to the features. (a) Naive Bayes, with features conditionally independent given Y. (b) The same with some dependence between features. (c) All features as o" class="note-figure" src="../../_images/j7_4.svg" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> Generative models, where the label Y points to the features. (a) Naive Bayes, with features conditionally independent given Y. (b) The same with some dependence between features. (c) All features as one node X.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>usually higher bias <span class="math notranslate nohighlight">\(\implies\)</span> can handle missing data</p>
 <ul>
 <li><p>this is because we assume some underlying X</p></li>
 </ul>
 </li>
 <li><p>fast convergence ~ <span class="math notranslate nohighlight">\(O[\log(p)]\)</span></p></li>
-<li><p><em>decision theory</em> - models don’t require finding <span class="math notranslate nohighlight">\(p(y \vert x)\)</span> at all</p></li>
+<li><p><span id="def-decision-theory" class="def-anchor"></span><em>decision theory</em> - models don’t require finding <span class="math notranslate nohighlight">\(p(y \vert x)\)</span> at all</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="binary-classification">
-<h2><span class="section-number">5.4.2. </span>binary classification<a class="headerlink" href="#binary-classification" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<span id="sec-classification-binary-classification"></span><h2>Binary classification<a class="headerlink" href="#binary-classification" title="Link to this heading">#</a></h2>
+<p class="section-lead">Each model predicts <span class="math notranslate nohighlight">\(\hat y = \text{sign}(\theta^T x)\)</span>. They differ only in the <span class="corange">loss</span> charged for each example’s margin <span class="math notranslate nohighlight">\(y_i \theta^T x_i\)</span>, plus whether a <span class="cblue">regularizer</span> keeps <span class="math notranslate nohighlight">\(\theta\)</span> small.</p>
+<figure class="nb-viz-figure" id="viz-perceptron-train"><div class="nb-viz" data-viz="perceptron-train" data-params="{&quot;k&quot;: 3, &quot;data&quot;: &quot;separable&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> The perceptron cycles through the points, and for each misclassified one (\(y_i \theta^T x_i \leq 0\), the points that add to its <span class="corange">loss</span>) it updates \(\theta \leftarrow \theta + y_i x_i\), with \(x = (1, x_1, x_2)\) so \(\theta_0\) is the bias. Step through the updates: each one turns the boundary toward the circled point, sometimes breaking others, until no mistakes are left. Switch to the data with two flipped labels: no line separates it, and the mistake count on the right never reaches 0.</figcaption></figure><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\hat{y} = \text{sign}(\theta^T x)\)</span></p></li>
 <li><p>usually <span class="math notranslate nohighlight">\(\theta^Tx\)</span> includes bias term, but generally we don’t want to regularize bias</p></li>
 </ul>
@@ -510,21 +589,28 @@ document.write(`
 <ul>
 <li><p><span class="cblue">regularizer</span> + <span class="corange">loss</span></p></li>
 <li><p>svm, perceptron use +1/-1, logistic use 1/0</p></li>
-<li><p><em>perceptron</em> - tries to find separating hyperplane</p>
+<li><p><span id="def-perceptron" class="def-anchor"></span><em>perceptron</em> - tries to find separating hyperplane</p>
 <ul class="simple">
 <li><p>whenever misclassified, update w</p></li>
 <li><p>can add in delta term to maximize margin</p></li>
 </ul>
 </li>
-<li><img style="width: 420px; max-width: 100%;" src="../assets/losses.svg" alt="Classification loss functions"/>
+<li><figure class="align-default" id="id3">
+<a class="note-figure reference internal image-reference" href="../../_images/losses.svg"><img alt="Each loss for a positive example (y = 1) as a function of the score f(x). The 0-1 loss is a step at 0. The perceptron loss is zero once the point is on the right side, the hinge loss keeps charging un" class="note-figure" src="../../_images/losses.svg" style="width: 420px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> Each loss for a positive example (y = 1) as a function of the score f(x). The 0-1 loss is a step at 0. The perceptron loss is zero once the point is on the right side, the hinge loss keeps charging until f(x) = 1, and the log loss never reaches zero.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </section>
 <section id="multiclass-classification">
-<h2><span class="section-number">5.4.3. </span>multiclass classification<a class="headerlink" href="#multiclass-classification" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>reducing multiclass (K categories) to binary</p>
+<span id="sec-classification-multiclass-classification"></span><h2>Multiclass classification<a class="headerlink" href="#multiclass-classification" title="Link to this heading">#</a></h2>
+<p class="section-lead">Two routes: combine several binary classifiers (one-against-all, one-vs-one), or train a single model that scores every class and predicts the highest score (multiclass perceptron, multiclass SVM, softmax).</p>
 <ul class="simple">
+<li><p>reducing multiclass (K categories) to binary</p>
+<ul>
 <li><p><em>one-against-all</em></p>
 <ul>
 <li><p>train K binary classifiers</p></li>
@@ -532,7 +618,7 @@ document.write(`
 <li><p>take max of predictions</p></li>
 </ul>
 </li>
-<li><p><em>one-vs-one</em> = <em>all-vs-all</em></p>
+<li><p><span id="def-one-vs-one" class="def-anchor"></span><em>one-vs-one</em> = <em>all-vs-all</em></p>
 <ul>
 <li><p>train <span class="math notranslate nohighlight">\(C(K, 2)\)</span> binary classifiers</p></li>
 <li><p>labels are class i and class j</p></li>
@@ -550,27 +636,28 @@ document.write(`
 <li><p>if not, update <span class="math notranslate nohighlight">\(\theta_i\)</span> and <span class="math notranslate nohighlight">\(\theta_j\)</span>* accordingly</p></li>
 <li><p><em>kessler construction</em></p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\begin{split}\theta =  [\theta_1 ... \theta_k] $$&lt;!-- --&gt;
-      - want $\theta_i^T x &gt; \theta_j^T x \quad \forall j$
-      - rewrite $\theta^T \phi (x,i) &gt; \theta^T \phi (x,j) \quad \forall j$
-        - here $\phi (x, i)$ puts x in the ith spot and zeros elsewhere
-        - $\phi$ is often used for feature representation
-      - define margin:
-        $$\Delta (y,y') = \begin{cases} \delta&amp; if \: y \neq y' \\ 0&amp; if \: y=y'\end{cases}$$&lt;!-- --&gt;
-      - check if $$y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')\end{split}\]</div>
+<li><p><span class="math notranslate nohighlight">\(\theta =  [\theta_1 ... \theta_k]\)</span></p></li>
+<li><p>want <span class="math notranslate nohighlight">\(\theta_i^T x &gt; \theta_j^T x \quad \forall j\)</span></p></li>
+<li><p>rewrite <span class="math notranslate nohighlight">\(\theta^T \phi (x,i) &gt; \theta^T \phi (x,j) \quad \forall j\)</span></p>
+<ul>
+<li><p>here <span class="math notranslate nohighlight">\(\phi (x, i)\)</span> puts x in the ith spot and zeros elsewhere</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> is often used for feature representation</p></li>
+</ul>
 </li>
+<li><p>define margin:
+<span class="math notranslate nohighlight">\(\Delta (y,y') = \begin{cases} \delta&amp; if \: y \neq y' \\ 0&amp; if \: y=y'\end{cases}\)</span></p></li>
+<li><p>check if <span class="math notranslate nohighlight">\(y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')\)</span></p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>multiclass SVMs (Crammer &amp; Singer)</p>
-<ul class="simple">
+<ul>
 <li><p>minimize total norm of weights s.t. true label score is at least 1 more than second best label</p></li>
 </ul>
 </li>
 <li><p>multinomial logistic regression = multi-class <em>log-linear</em> model (softmax on outputs)</p>
-<ul class="simple">
+<ul>
 <li><p>we control the peakedness of this by dividing by stddev</p></li>
 </ul>
 </li>
@@ -579,34 +666,56 @@ document.write(`
 </ul>
 </section>
 <section id="discriminative">
-<h2><span class="section-number">5.4.4. </span>discriminative<a class="headerlink" href="#discriminative" title="Link to this heading">#</a></h2>
+<span id="sec-classification-discriminative"></span><h2>Discriminative<a class="headerlink" href="#discriminative" title="Link to this heading">#</a></h2>
 <section id="logistic-regression">
-<h3><span class="section-number">5.4.4.1. </span>logistic regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<h3>Logistic regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<p class="section-lead">Logistic regression models <span class="math notranslate nohighlight">\(Y\)</span> as Bernoulli with <span class="math notranslate nohighlight">\(p = \text{logistic}(\theta^T x)\)</span>, so the log odds are linear in <span class="math notranslate nohighlight">\(x\)</span>. It is fit by maximum likelihood, and the weights need a penalty, since otherwise they can go to infinity.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta) = \text{logistic}(\theta^Tx)\)</span></p>
+<ol class="arabic simple">
+<li><p>assume Y ~ <span class="math notranslate nohighlight">\(\text{Bernoulli}(p)\)</span> with <span class="math notranslate nohighlight">\(p=\text{logistic}(\theta^Tx\)</span>)</p></li>
+<li><p>can solve this online with GD of <em><strong>likelihood</strong></em></p></li>
+<li><p>better to solve with iteratively reweighted least squares</p></li>
+</ol>
+</li>
+<li><p><span class="math notranslate nohighlight">\(Logit(p) = \log[p / (1-p)] = \theta^Tx\)</span></p></li>
+<li><p>multiway logistic classification</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}p(Y=1\vert x, \theta) = \text{logistic}(\theta^Tx)$$&lt;!-- --&gt;
-  1. assume Y ~ $\text{Bernoulli}(p)$ with $p=\text{logistic}(\theta^Tx$)
-  2. can solve this online with GD of ***likelihood***
-  3. better to solve with iteratively reweighted least squares
-- $Logit(p) = \log[p / (1-p)] = \theta^Tx$
-- multiway logistic classification
-  - assume $$P(Y^k=1\vert x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}$$, just as arises from class-conditional exponential family distributions
-- logistic weight change represents change in odds
-- fitting requires penalty on weights, otherwise they might not converge (i.e. go to infinity)\\### binary models\\- probit (binary) regression
-  - $$p(Y=1\vert x, \theta) = \phi(\theta^Tx)$$ where $\phi$ is the Gaussian CDF
-  - pretty similar to logistic
-- noise-OR (binary) model
-  - consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
-  - define $\theta$ to be the failure probabilities
-  - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$&lt;!-- --&gt;
-- other (binary) exponential models
-  - $$p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}$$ but x doesn't have to be binary
-  - *complementary log-log model*: $$p(Y=1\vert x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]\end{aligned}\end{align} \]</div>
+<li><p>assume <span class="math notranslate nohighlight">\(P(Y^k=1\vert x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}\)</span>, just as arises from class-conditional exponential family distributions</p></li>
+</ul>
+</li>
+<li><p>logistic weight change represents change in odds</p></li>
+<li><p>fitting requires penalty on weights, otherwise they might not converge (i.e. go to infinity)</p></li>
+</ul>
+</section>
+<section id="binary-models">
+<h3>Binary models<a class="headerlink" href="#binary-models" title="Link to this heading">#</a></h3>
+<p class="section-lead">Other links from the linear score <span class="math notranslate nohighlight">\(\theta^T x\)</span> to a probability: the Gaussian CDF (probit) instead of the logistic, and exponential forms such as the noise-OR model, where <span class="math notranslate nohighlight">\(Y\)</span> is an OR of causes that can each fail.</p>
+<ul class="simple">
+<li><p>probit (binary) regression</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta) = \phi(\theta^Tx)\)</span> where <span class="math notranslate nohighlight">\(\phi\)</span> is the Gaussian CDF</p></li>
+<li><p>pretty similar to logistic</p></li>
+</ul>
+</li>
+<li><p>noise-OR (binary) model</p>
+<ul>
+<li><p>consider <span class="math notranslate nohighlight">\(Y = X_1 \lor X_2 \lor … X_m\)</span> where each has a probability of failing</p></li>
+<li><p>define <span class="math notranslate nohighlight">\(\theta\)</span> to be the failure probabilities</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}\)</span></p></li>
+</ul>
+</li>
+<li><p>other (binary) exponential models</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta) = 1-e^{-\theta^Tx}\)</span> but x doesn’t have to be binary</p></li>
+<li><p><span id="def-complementary-log-log-model" class="def-anchor"></span><em>complementary log-log model</em>: <span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]\)</span></p></li>
+</ul>
 </li>
 </ul>
 </section>
 <section id="svms">
-<h3><span class="section-number">5.4.4.2. </span>svms<a class="headerlink" href="#svms" title="Link to this heading">#</a></h3>
+<h3>SVMs<a class="headerlink" href="#svms" title="Link to this heading">#</a></h3>
+<p class="section-lead">The margin is the distance from the separating hyperplane to the closest training points. Fixing the functional margin at 1 turns maximizing it into minimizing <span class="math notranslate nohighlight">\(\vert\vert\theta\vert\vert^2\)</span>, a quadratic program. Its dual only uses dot products, so a kernel can replace them.</p>
 <ul>
 <li><p>svm benefits</p>
 <ol class="arabic simple">
@@ -619,28 +728,43 @@ document.write(`
 </li>
 </ol>
 </li>
-<li><img style="width: 320px; max-width: 100%;" src="../assets/svm_margin.svg" alt="SVM geometric margin"/>
+<li><figure class="align-default" id="id4">
+<a class="note-figure reference internal image-reference" href="../../_images/svm_margin.svg"><img alt="The geometric margin γ⁽ⁱ⁾ of a point A is its distance to the separating line, measured along w, which is perpendicular to the line. The SVM maximizes the smallest of these distances." class="note-figure" src="../../_images/svm_margin.svg" style="width: 320px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> The geometric margin γ⁽ⁱ⁾ of a point A is its distance to the separating line, measured along w, which is perpendicular to the line. The SVM maximizes the smallest of these distances.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y} =\begin{cases}   1 &amp;\text{if } w^Tx +b \geq 0 \\ -1 &amp;\text{otherwise}\end{cases}\)</span></p></li>
 <li><div class="math notranslate nohighlight">
-\[\begin{split}\hat{y} =\begin{cases}   1 &amp;\text{if } w^Tx +b \geq 0 \\ -1 &amp;\text{otherwise}\end{cases}$$&lt;!-- --&gt;
-- $$\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$$&lt;!-- --&gt;
-  - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
-    - limit the size of $(\theta, b)$ so we can't arbitrarily increase functional margin
-    - function margin $\hat{\gamma}$ is smallest functional margin in a training set
-  - *geometric margin* = functional margin / $\vert \vert \theta \vert \vert $
-    - if $\vert \vert \theta \vert \vert =1$, then same as functional margin
-    - invariant to scaling of w
-  - derived from maximizing margin: $$\max \: \gamma \\\: s.t. \: y^{(i)} (\theta^T x^{(i)} + b) \geq \gamma, i=1,..,m\\ \vert \vert \theta\vert \vert =1\end{split}\]</div>
+\[\begin{split}\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m\end{split}\]</div>
 <ul class="simple">
+<li><p><em>functional margin</em> <span class="math notranslate nohighlight">\(\gamma^{(i)} = y^{(i)} (\theta^T x +b)\)</span></p>
+<ul>
+<li><p>limit the size of <span class="math notranslate nohighlight">\((\theta, b)\)</span> so we can’t arbitrarily increase functional margin</p></li>
+<li><p>function margin <span class="math notranslate nohighlight">\(\hat{\gamma}\)</span> is smallest functional margin in a training set</p></li>
+</ul>
+</li>
+<li><p><span id="def-geometric-margin" class="def-anchor"></span><em>geometric margin</em> = functional margin / <span class="math notranslate nohighlight">\(\vert \vert \theta \vert \vert \)</span></p>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\(\vert \vert \theta \vert \vert =1\)</span>, then same as functional margin</p></li>
+<li><p>invariant to scaling of w</p></li>
+</ul>
+</li>
+<li><p>derived from maximizing margin: <span class="math notranslate nohighlight">\(\max \: \gamma \\\: s.t. \: y^{(i)} (\theta^T x^{(i)} + b) \geq \gamma, i=1,..,m\\ \vert \vert \theta\vert \vert =1\)</span></p>
+<ul>
 <li><p>difficult to solve, especially because of <span class="math notranslate nohighlight">\(\vert \vert w\vert \vert =1\)</span> constraint</p></li>
 <li><p>assume <span class="math notranslate nohighlight">\(\hat{\gamma}=1\)</span> ~ just a scaling factor</p></li>
 <li><p>now we are maximizing <span class="math notranslate nohighlight">\(1/\vert \vert w\vert \vert \)</span></p></li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><em>soft margin</em> classifier - allows misclassifications</p>
 <ul class="simple">
 <li><p>assigns them <span class="cblue">penalty</span> proportional to distance required to move them back to correct side</p></li>
-<li><p>min $<span class="math notranslate nohighlight">\(\frac{1}{2}\vert \vert \theta\vert \vert ^2 \cblue{ + C \sum_i^n \epsilon_i} \\s.t. y^{(i)} (\theta^T x^{(i)} + b) \geq 1 \cblue{- \epsilon_i}, i=1:m \\ \cblue{\epsilon_i \geq0, 1:m}\)</span>$</p></li>
+<li><p>min <span class="math notranslate nohighlight">\(\frac{1}{2}\vert \vert \theta\vert \vert ^2 \cblue{ + C \sum_i^n \epsilon_i} \\s.t. y^{(i)} (\theta^T x^{(i)} + b) \geq 1 \cblue{- \epsilon_i}, i=1:m \\ \cblue{\epsilon_i \geq0, 1:m}\)</span></p></li>
 <li><p>large C can lead to overfitting</p></li>
 </ul>
 </li>
@@ -672,7 +796,8 @@ document.write(`
 </ul>
 </section>
 <section id="decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3">
-<h3><span class="section-number">5.4.4.3. </span>decision trees / rfs - Russell &amp; Norvig 18.3; Hastie, Tibshirani &amp; Friedman 9.2.1-9.2.3<a class="headerlink" href="#decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3" title="Link to this heading">#</a></h3>
+<h3>Decision trees / rfs - Russell &amp; Norvig 18.3; Hastie, Tibshirani &amp; Friedman 9.2.1-9.2.3<a class="headerlink" href="#decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3" title="Link to this heading">#</a></h3>
+<p class="section-lead">Trees are grown greedily, one split at a time, then pruned. A single tree has high variance, so most of the section is about fixing that: pruning, bagging, and random forests, which also sample the features at each split.</p>
 <p>from “Artificial Intelligence - A Modern Approach” and “The Elements of Statistical Learning”</p>
 <ul class="simple">
 <li><p>follow rules: predict based on prob distr. of points in same leaf you end up in</p></li>
@@ -698,7 +823,7 @@ document.write(`
 </li>
 <li><p>growing algorithm</p>
 <ol class="arabic simple">
-<li><p><em>information gain</em> - decrease in entropy</p>
+<li><p><span id="def-information-gain" class="def-anchor"></span><em>information gain</em> - decrease in entropy</p>
 <ul>
 <li><p>weight resulting branches by their probs</p></li>
 <li><p>biased towards attributes with many values</p></li>
@@ -728,9 +853,9 @@ document.write(`
 <li><p>empirically, early stopping is worse than overfitting then pruning (bc it doesn’t see combinations of useful attributes)</p></li>
 <li><p>overfit then prune - proven more succesful</p>
 <ul>
-<li><p><em>reduced-error pruning</em> - prune only if doesn’t decrease error on validation set</p></li>
+<li><p><span id="def-reduced-error-pruning" class="def-anchor"></span><em>reduced-error pruning</em> - prune only if doesn’t decrease error on validation set</p></li>
 <li><p><em><span class="math notranslate nohighlight">\(\chi^2\)</span> pruning</em> - test if each split is statistically significant with <span class="math notranslate nohighlight">\(\chi^2\)</span> test</p></li>
-<li><p><em>rule post-pruning</em> = <em>cost-complexity pruning</em></p>
+<li><p><span id="def-rule-post-pruning" class="def-anchor"></span><em>rule post-pruning</em> = <em>cost-complexity pruning</em></p>
 <ol class="arabic simple">
 <li><p>infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.</p></li>
 <li><p>convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.</p>
@@ -770,14 +895,14 @@ document.write(`
 <li><p>high variance - instability - small changes in data yield changes to tree</p></li>
 <li><p>many trees</p>
 <ul>
-<li><p><em>bagging</em> = bootstrap aggregation - an ensemble method</p>
+<li><p><span id="def-bagging" class="def-anchor"></span><em>bagging</em> = bootstrap aggregation - an ensemble method</p>
 <ul>
-<li><p><em>bootstrap</em> - resampling with replacement</p></li>
+<li><p><span id="def-bootstrap" class="def-anchor"></span><em>bootstrap</em> - resampling with replacement</p></li>
 <li><p>train multiple models by randomly drawing new training data</p></li>
 <li><p>bootstrap with replacement can keep the sampling size the same as the original size</p></li>
 </ul>
 </li>
-<li><p><em>random forest</em> - for each split of each tree, choose from only m of the p possible features</p>
+<li><p><span id="def-random-forest" class="def-anchor"></span><em>random forest</em> - for each split of each tree, choose from only m of the p possible features</p>
 <ul>
 <li><p>smaller m decorrelates trees, reduces variance</p></li>
 <li><p>RF with m=p <span class="math notranslate nohighlight">\(\implies\)</span> bagging</p></li>
@@ -791,7 +916,7 @@ document.write(`
 <li><p>reduces variance, better for improving more variable (unstable) models</p></li>
 </ul>
 </li>
-<li><p><em>adaboost</em> - weight models based on their performance</p></li>
+<li><p><span id="def-adaboost" class="def-anchor"></span><em>adaboost</em> - weight models based on their performance</p></li>
 </ul>
 </li>
 </ul>
@@ -819,7 +944,8 @@ document.write(`
 </ul>
 </section>
 <section id="decision-rules">
-<h3><span class="section-number">5.4.4.4. </span>decision rules<a class="headerlink" href="#decision-rules" title="Link to this heading">#</a></h3>
+<h3>Decision rules<a class="headerlink" href="#decision-rules" title="Link to this heading">#</a></h3>
+<p class="section-lead">A rule is an if-then on a few features. Rules trade support (how many points a rule covers) against accuracy, and are learned one feature at a time (oneR), one rule at a time (sequential covering), or from mined patterns. RuleFit uses rules from trees as features in a sparse linear model.</p>
 <ul class="simple">
 <li><p>if-thens, rule can contain ands</p></li>
 <li><p>good rules have large <strong>support</strong> and high accuracy (they tradeoff)</p></li>
@@ -848,7 +974,8 @@ document.write(`
 </ul>
 </section>
 <section id="gaussian-processes">
-<h3><span class="section-number">5.4.4.5. </span>gaussian processes<a class="headerlink" href="#gaussian-processes" title="Link to this heading">#</a></h3>
+<h3>Gaussian processes<a class="headerlink" href="#gaussian-processes" title="Link to this heading">#</a></h3>
+<p class="section-lead">A Gaussian process puts a multivariate Gaussian on the function’s values, with a kernel as the covariance. Predicting means conditioning that Gaussian on the observed values.</p>
 <ul class="simple">
 <li><p>model the relationship between a function’s values at different inputs as a multivariate gaussian</p>
 <ul>
@@ -860,11 +987,13 @@ document.write(`
 </section>
 </section>
 <section id="generative">
-<h2><span class="section-number">5.4.5. </span>generative<a class="headerlink" href="#generative" title="Link to this heading">#</a></h2>
+<span id="sec-classification-generative"></span><h2>Generative<a class="headerlink" href="#generative" title="Link to this heading">#</a></h2>
 <section id="gaussian-class-conditioned-classifiers">
-<h3><span class="section-number">5.4.5.1. </span>gaussian class-conditioned classifiers<a class="headerlink" href="#gaussian-class-conditioned-classifiers" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>binary case: posterior probability $<span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta)\)</span><span class="math notranslate nohighlight">\( is a sigmoid \)</span>\frac{1}{1+e^{-z}}<span class="math notranslate nohighlight">\( where \)</span>z = \beta^Tx+\gamma$</p>
+<h3>Gaussian class-conditioned classifiers<a class="headerlink" href="#gaussian-class-conditioned-classifiers" title="Link to this heading">#</a></h3>
+<p class="section-lead">Model each class as a Gaussian and apply Bayes’ rule. The posterior is a sigmoid (softmax for many classes). Its boundary is linear when the classes share one covariance (LDA) and quadratic when each class has its own (QDA).</p>
+<figure class="nb-viz-figure" id="viz-lda-qda"><div class="nb-viz" data-viz="lda-qda" data-params="{&quot;alpha&quot;: 1, &quot;spread&quot;: 1.8, &quot;tilt&quot;: 0.6}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> Two classes, each fit with a Gaussian by maximum likelihood; shading is the posterior \(p(Y=1\vert x)\). The α slider is regularized discriminant analysis, \(\Sigma_k = \alpha \Sigma_k + (1-\alpha)\Sigma\). At α = 1 (QDA) the boundary bends around the wider class. Slide α to 0 (LDA) and it becomes a straight line. Set the spread to 1 and the tilt to 0 so both classes really share a covariance, and the two boundaries nearly agree.</figcaption></figure><ul class="simple">
+<li><p>binary case: posterior probability <span class="math notranslate nohighlight">\(p(Y=1\vert x, \theta)\)</span> is a sigmoid <span class="math notranslate nohighlight">\(\frac{1}{1+e^{-z}}\)</span> where <span class="math notranslate nohighlight">\(z = \beta^Tx+\gamma\)</span></p>
 <ol class="arabic simple">
 <li><p>multiclass extends to <em>softmax function</em>: <span class="math notranslate nohighlight">\(\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}\)</span> - <span class="math notranslate nohighlight">\(\beta\)</span>s can be used for dim reduction</p></li>
 </ol>
@@ -882,7 +1011,7 @@ document.write(`
 <li><p>decision boundary are points satisfying <span class="math notranslate nohighlight">\(P(C_i\vert X) = P(C_j\vert X)\)</span></p></li>
 </ol>
 </li>
-<li><p><em>regularized discriminant analysis</em> - shrink the separate covariance matrices towards a common matrix</p>
+<li><p><span id="def-regularized-discriminant-analysis" class="def-anchor"></span><em>regularized discriminant analysis</em> - shrink the separate covariance matrices towards a common matrix</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma\)</span></p></li>
 </ul>
@@ -897,20 +1026,21 @@ document.write(`
 </ul>
 </section>
 <section id="naive-bayes-classifier">
-<h3><span class="section-number">5.4.5.2. </span>naive bayes classifier<a class="headerlink" href="#naive-bayes-classifier" title="Link to this heading">#</a></h3>
-<ul>
-<li><p>assume multinomial <span class="math notranslate nohighlight">\(Y\)</span></p></li>
-<li><p>with clever tricks, can produce $<span class="math notranslate nohighlight">\(P(Y^i=1\vert x, \eta)\)</span>$ again as a softmax</p></li>
-<li><p>let $<span class="math notranslate nohighlight">\(y_1,...y_l\)</span>$ be the classes of Y</p></li>
-<li><p>want <span class="cpurple">Posterior</span> <span class="math notranslate nohighlight">\(\cpurple{P(Y\vert X)} = \frac{\cblue{P(X\vert Y)}(\corange{P(Y)}}{\cgreen{P(X)}}\)</span></p>
+<h3>Naive bayes classifier<a class="headerlink" href="#naive-bayes-classifier" title="Link to this heading">#</a></h3>
+<p class="section-lead">The naive assumption is that features are independent given the class. Then <span class="math notranslate nohighlight">\(P(X_1, ..., X_p\vert Y)\)</span> factors into <span class="math notranslate nohighlight">\(p\)</span> one-dimensional distributions, so the number of distributions to learn grows with the sum of the feature sizes instead of their product.</p>
 <ul class="simple">
+<li><p>assume multinomial <span class="math notranslate nohighlight">\(Y\)</span></p></li>
+<li><p>with clever tricks, can produce <span class="math notranslate nohighlight">\(P(Y^i=1\vert x, \eta)\)</span> again as a softmax</p></li>
+<li><p>let <span class="math notranslate nohighlight">\(y_1,...y_l\)</span> be the classes of Y</p></li>
+<li><p>want <span class="cpurple">Posterior</span> <span class="math notranslate nohighlight">\(\cpurple{P(Y\vert X)} = \frac{\cblue{P(X\vert Y)}(\corange{P(Y)}}{\cgreen{P(X)}}\)</span></p>
+<ul>
 <li><p><span class="cblue">likelihood</span>, <span class="corange">prior</span>, <span class="cgreen">evidence</span></p></li>
 </ul>
 </li>
 <li><p>MAP rule - maximum a posterior rule</p>
-<ul class="simple">
+<ul>
 <li><p>use <span class="corange">prior P(Y)</span></p></li>
-<li><p>given x, predict $<span class="math notranslate nohighlight">\(\hat{y}=\text{argmax}_y \cpurple{P(y\vert X_1,...,X_p)}=\text{argmax}_y \cblue{P(X_1,...,X_p\vert y)} \corange{P(y)}\)</span>$</p>
+<li><p>given x, predict <span class="math notranslate nohighlight">\(\hat{y}=\text{argmax}_y \cpurple{P(y\vert X_1,...,X_p)}=\text{argmax}_y \cblue{P(X_1,...,X_p\vert y)} \corange{P(y)}\)</span></p>
 <ul>
 <li><p>generally ignore constant <span class="cgreen">denominator</span></p></li>
 </ul>
@@ -919,23 +1049,24 @@ document.write(`
 </li>
 <li><p>naive assumption - assume that all input attributes are conditionally independent given y</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$$&lt;!-- --&gt;
-- learning
-  - learn $L$ priors $$P(y_1),P(y_2),...,P(y_l)\]</div>
+<li><p><span class="math notranslate nohighlight">\(P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)\)</span></p></li>
+</ul>
 </li>
+<li><p>learning</p>
+<ul>
+<li><p>learn <span class="math notranslate nohighlight">\(L\)</span> priors <span class="math notranslate nohighlight">\(P(y_1),P(y_2),...,P(y_l)\)</span></p></li>
 <li><p>for i in 1:<span class="math notranslate nohighlight">\(\vert Y \vert\)</span></p>
-<ul class="simple">
+<ul>
 <li><p>learn <span class="math notranslate nohighlight">\(P(X \vert y_i)\)</span></p></li>
 <li><p>for discrete case we store <span class="math notranslate nohighlight">\(P(X_j\vert y_i)\)</span>, otherwise we assume a prob. distr. form</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>naive: $<span class="math notranslate nohighlight">\(\vert Y\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )\)</span>$ distributions</p></li>
-<li><p>otherwise: $<span class="math notranslate nohighlight">\(\vert Y\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )\)</span>$</p></li>
+<li><p>naive: <span class="math notranslate nohighlight">\(\vert Y\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )\)</span> distributions</p></li>
+<li><p>otherwise: <span class="math notranslate nohighlight">\(\vert Y\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )\)</span></p></li>
 <li><p>smoothing - used to fill in <span class="math notranslate nohighlight">\(0\)</span>s</p>
-<ul class="simple">
+<ul>
 <li><p><span class="math notranslate nohighlight">\(P(x_i\vert y_j) = \frac{N(x_i, y_j) +1}{N(y_j)+\vert X_i\vert }\)</span></p></li>
 <li><p>then, <span class="math notranslate nohighlight">\(\sum_i P(x_i\vert y_j) = 1\)</span></p></li>
 </ul>
@@ -943,26 +1074,33 @@ document.write(`
 </ul>
 </section>
 <section id="exponential-family-class-conditioned-classifiers">
-<h3><span class="section-number">5.4.5.3. </span>exponential family class-conditioned classifiers<a class="headerlink" href="#exponential-family-class-conditioned-classifiers" title="Link to this heading">#</a></h3>
-<ol class="arabic">
+<h3>Exponential family class-conditioned classifiers<a class="headerlink" href="#exponential-family-class-conditioned-classifiers" title="Link to this heading">#</a></h3>
+<p class="section-lead">The Gaussian result generalizes: if every class-conditional distribution is in the exponential family, the posterior is a logistic function of a linear function of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<ol class="arabic simple">
 <li><p>includes Gaussian, binomial, Poisson, gamma, Dirichlet</p></li>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}p(x\vert \eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$$&lt;!-- --&gt;
-3. for classification, anything from exponential family will result in posterior probability that is logistic function of a linear function of x\\### text classification\\- bag of words - represent text as a vector of word frequencies X
-  - remove stopwords, stemming, collapsing multiple - NLTK package in python
-  - assumes word order isn't important
-  - can store n-grams
-- multivariate Bernoulli: $$P(X\vert Y)=P(w_1=true,w_2=false,...\vert Y)\end{aligned}\end{align} \]</div>
-</li>
+<li><p><span class="math notranslate nohighlight">\(p(x\vert \eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)\)</span></p></li>
+<li><p>for classification, anything from exponential family will result in posterior probability that is logistic function of a linear function of x</p></li>
 </ol>
-<ul>
-<li><p>multivariate Binomial: $<span class="math notranslate nohighlight">\(P(X\vert Y)=P(w_1=n_1,w_2=n_2,...\vert Y)\)</span>$</p>
+</section>
+<section id="text-classification">
+<h3>Text classification<a class="headerlink" href="#text-classification" title="Link to this heading">#</a></h3>
+<p class="section-lead">Naive Bayes on bag-of-words vectors, which ignore word order. In practice the probabilities are summed as logs, <span class="corange">log prior</span> plus <span class="cblue">log likelihood</span>, so the product of many small numbers doesn’t underflow to 0.</p>
 <ul class="simple">
+<li><p>bag of words - represent text as a vector of word frequencies X</p>
+<ul>
+<li><p>remove stopwords, stemming, collapsing multiple - NLTK package in python</p></li>
+<li><p>assumes word order isn’t important</p></li>
+<li><p>can store n-grams</p></li>
+</ul>
+</li>
+<li><p>multivariate Bernoulli: <span class="math notranslate nohighlight">\(P(X\vert Y)=P(w_1=true,w_2=false,...\vert Y)\)</span></p></li>
+<li><p>multivariate Binomial: <span class="math notranslate nohighlight">\(P(X\vert Y)=P(w_1=n_1,w_2=n_2,...\vert Y)\)</span></p>
+<ul>
 <li><p>this is inherently naive</p></li>
 </ul>
 </li>
 <li><p>time complexity</p>
-<ul class="simple">
+<ul>
 <li><p>training O(n*average_doc_length_train+<span class="math notranslate nohighlight">\(\vert c\vert \vert dict\vert \)</span>)</p></li>
 <li><p>testing O(<span class="math notranslate nohighlight">\(\vert Y\vert \)</span> average_doc_length_test)</p></li>
 </ul>
@@ -971,26 +1109,55 @@ document.write(`
 <ul>
 <li><p>have symbol for unknown words</p></li>
 <li><p>underflow prevention - take logs of all probabilities so we don’t get 0</p></li>
-<li><div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}y = \text{argmax }\corange{\log \:P(y)} + \cblue{\sum_i \log \: P(X_i\vert y)}$$&lt;!-- --&gt;
-    - log &lt;span class=&quot;corange&quot;&gt;prior&lt;/span&gt; + log &lt;span class=&quot;cblue&quot;&gt;likelihood&lt;/span&gt;\\## instance-based (nearest neighbors)\\- also called lazy learners = nonparametric models
-- make Voronoi diagrams
-- can take majority vote of neighbors or weight them by distance
-- distance can be Euclidean, cosine, or other
-  - should scale attributes so large-valued features don't dominate
-  - *Mahalanobois* distance metric accounts for covariance between neighbors
-  - in higher dimensions, distances tend to be much farther, worse extrapolation
-  - sometimes need to use *invariant metrics*
-    - ex. rotate digits to find the most similar angle before computing pixel difference
-      - could just augment data, but can be infeasible
-      - computationally costly so we can approximate the curve these rotations make in pixel space with the *invariant tangent line*
-      - stores this line for each point and then find distance as the distance between these lines
-- comparisons
-  - error rate of 1 NN is never more than twice that of Bayes error\\
-## likelihood calcs\\### single Bernoulli\\- $L(p) = P$[Train \| Bernoulli(p)]= $$P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}\end{aligned}\end{align} \]</div>
+<li><p><span class="math notranslate nohighlight">\(y = \text{argmax }\corange{\log \:P(y)} + \cblue{\sum_i \log \: P(X_i\vert y)}\)</span></p>
+<ul>
+<li><p>log <span class="corange">prior</span> + log <span class="cblue">likelihood</span></p></li>
+</ul>
 </li>
 </ul>
 </li>
+</ul>
+</section>
+</section>
+<section id="instance-based-nearest-neighbors">
+<span id="sec-classification-instance-based-nearest-neighbors"></span><h2>Instance-based (nearest neighbors)<a class="headerlink" href="#instance-based-nearest-neighbors" title="Link to this heading">#</a></h2>
+<p class="section-lead">No model is fit. A new point is labeled by a vote of the closest training points, so the choice of distance does all the work.</p>
+<ul class="simple">
+<li><p>also called lazy learners = nonparametric models</p></li>
+<li><p>make Voronoi diagrams</p></li>
+<li><p>can take majority vote of neighbors or weight them by distance</p></li>
+<li><p>distance can be Euclidean, cosine, or other</p>
+<ul>
+<li><p>should scale attributes so large-valued features don’t dominate</p></li>
+<li><p><em>Mahalanobois</em> distance metric accounts for covariance between neighbors</p></li>
+<li><p>in higher dimensions, distances tend to be much farther, worse extrapolation</p></li>
+<li><p>sometimes need to use <em>invariant metrics</em></p>
+<ul>
+<li><p>ex. rotate digits to find the most similar angle before computing pixel difference</p>
+<ul>
+<li><p>could just augment data, but can be infeasible</p></li>
+<li><p>computationally costly so we can approximate the curve these rotations make in pixel space with the <em>invariant tangent line</em></p></li>
+<li><p>stores this line for each point and then find distance as the distance between these lines</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>comparisons</p>
+<ul>
+<li><p>error rate of 1 NN is never more than twice that of Bayes error</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="likelihood-calcs">
+<span id="sec-classification-likelihood-calcs"></span><h2>Likelihood calcs<a class="headerlink" href="#likelihood-calcs" title="Link to this heading">#</a></h2>
+<p class="section-lead">The maximum likelihood estimates behind naive Bayes on text: set the derivative of the log likelihood to zero, and the estimates come out as observed fractions.</p>
+<section id="single-bernoulli">
+<h3>Single Bernoulli<a class="headerlink" href="#single-bernoulli" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L(p) = P\)</span>[Train | Bernoulli(p)]= <span class="math notranslate nohighlight">\(P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(=p^x (1-p)^{n-x}\)</span> where x = <span class="math notranslate nohighlight">\(\sum x_i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\log[L(p)] = \log[p^x (1-p)^{n-x}]=x \log(p) + (n-x) \log(1-p)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np\)</span></p></li>
@@ -998,9 +1165,9 @@ document.write(`
 </ul>
 </section>
 <section id="multinomial">
-<h3><span class="section-number">5.4.5.4. </span>multinomial<a class="headerlink" href="#multinomial" title="Link to this heading">#</a></h3>
+<h3>Multinomial<a class="headerlink" href="#multinomial" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>$<span class="math notranslate nohighlight">\(L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}\)</span>$- ignore factorials because they are always same</p>
+<li><p><span class="math notranslate nohighlight">\(L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}\)</span>- ignore factorials because they are always same</p>
 <ul>
 <li><p>require <span class="math notranslate nohighlight">\(\sum \theta_i = 1\)</span></p></li>
 </ul>
@@ -1010,8 +1177,10 @@ document.write(`
 </section>
 </section>
 <section id="boosting">
-<h2><span class="section-number">5.4.6. </span>boosting<a class="headerlink" href="#boosting" title="Link to this heading">#</a></h2>
-<ol class="arabic">
+<span id="sec-classification-boosting"></span><h2>Boosting<a class="headerlink" href="#boosting" title="Link to this heading">#</a></h2>
+<p class="section-lead">Boosting trains weak learners one after another, each focused on what the previous ones got wrong. AdaBoost reweights the data points; gradient boosting fits the residuals. The table lists the loss each variant minimizes.</p>
+<figure class="nb-viz-figure" id="viz-adaboost-stumps"><div class="nb-viz" data-viz="adaboost-stumps" data-params="{&quot;rounds&quot;: 5, &quot;shape&quot;: &quot;diagonal&quot;}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 3.</span> AdaBoost with decision stumps (one split on one feature) on toy data. Each round fits the stump with the lowest weighted error \(\epsilon_t\), gives it the vote \(\alpha_t = \frac{1}{2}\log\frac{1-\epsilon_t}{\epsilon_t}\), and multiplies the weights of the points it got wrong by \(e^{\alpha_t}\) and the rest by \(e^{-\alpha_t}\) (marker size shows the weights the current stump was trained on; outlined points are the ones it gets wrong). Raise the rounds and watch the big points sit along the boundary, and the ensemble's staircase follow the diagonal until its training error reaches 0, even though each new stump is only a bit better than chance.</figcaption></figure><ol class="arabic">
 <li><p>adaboost</p>
 <ol class="arabic simple">
 <li><p>freund &amp; schapire</p></li>
@@ -1045,7 +1214,7 @@ document.write(`
 <li><p>Catboost (2017)</p></li>
 </ol>
 </li>
-<li><p>boosting with different cost function ($<span class="math notranslate nohighlight">\(y \in \{-1, 1\}\)</span><span class="math notranslate nohighlight">\(, or for \)</span>L_2<span class="math notranslate nohighlight">\(Boost, also \)</span>y \in \mathbb R$)</p>
+<li><p>boosting with different cost function (<span class="math notranslate nohighlight">\(y \in \{-1, 1\}\)</span>, or for <span class="math notranslate nohighlight">\(L_2\)</span>Boost, also <span class="math notranslate nohighlight">\(y \in \mathbb R\)</span>)</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Adaboost</p></th>
@@ -1063,7 +1232,18 @@ document.write(`
 </div>
 </li>
 </ol>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Discriminative models fit <span class="math notranslate nohighlight">\(P(Y\vert X)\)</span> and usually reach a lower asymptotic error; generative models fit <span class="math notranslate nohighlight">\(P(X, Y)\)</span>, converge faster and can handle missing data.</p></li>
+<li><p>Perceptron, linear SVM and logistic regression all minimize a regularizer plus a loss on the margin <span class="math notranslate nohighlight">\(y_i \theta^T x_i\)</span>, and differ only in the loss.</p></li>
+<li><p>The SVM maximizes the margin, which acts like regularization, and its dual uses only dot products, so a kernel can replace them.</p></li>
+<li><p>A single decision tree has high variance; pruning, bagging and random forests reduce it.</p></li>
+<li><p>Gaussian class-conditioned classifiers give a sigmoid or softmax posterior, with a linear boundary when the classes share a covariance (LDA) and a quadratic one otherwise (QDA).</p></li>
+<li><p>Boosting combines weak learners trained one after another, by reweighting the points (AdaBoost) or by fitting residuals (gradient boosting).</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../ml/unsupervised.html"><span class="related-part">Machine learning</span><span class="related-title">Unsupervised</span><span class="related-hook">Clustering, dimensionality reduction, deep generative models (VAEs, GANs, diffusion, flows), and self-supervised and contrastive learning.</span></a><a class="related-card" href="../stat/stat.html"><span class="related-part">Statistics</span><span class="related-title">Stat basics</span><span class="related-hook">Expectations and variances, the usual distributions, the law of large numbers and CLT, and the bias-variance trade-off.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1097,20 +1277,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="comp_vision.html"
+       href="../../parts/ml.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.3. </span>computer vision</p>
+        <p class="prev-next-title">Machine learning</p>
       </div>
     </a>
     <a class="right-next"
-       href="unsupervised.html"
+       href="evaluation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.5. </span>unsupervised</p>
+        <p class="prev-next-title">Evaluation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1130,25 +1310,32 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.4.1. overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">5.4.2. binary classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">5.4.3. multiclass classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminative">5.4.4. discriminative</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">5.4.4.1. logistic regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svms">5.4.4.2. svms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3">5.4.4.3. decision trees / rfs - Russell &amp; Norvig 18.3; Hastie, Tibshirani &amp; Friedman 9.2.1-9.2.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rules">5.4.4.4. decision rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-processes">5.4.4.5. gaussian processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">Multiclass classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discriminative">Discriminative</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-models">Binary models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svms">SVMs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-rfs-russell-norvig-18-3-hastie-tibshirani-friedman-9-2-1-9-2-3">Decision trees / rfs - Russell &amp; Norvig 18.3; Hastie, Tibshirani &amp; Friedman 9.2.1-9.2.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rules">Decision rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-processes">Gaussian processes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative">5.4.5. generative</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-class-conditioned-classifiers">5.4.5.1. gaussian class-conditioned classifiers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-classifier">5.4.5.2. naive bayes classifier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-family-class-conditioned-classifiers">5.4.5.3. exponential family class-conditioned classifiers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">5.4.5.4. multinomial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative">Generative</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-class-conditioned-classifiers">Gaussian class-conditioned classifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-classifier">Naive bayes classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-family-class-conditioned-classifiers">Exponential family class-conditioned classifiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-classification">Text classification</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">5.4.6. boosting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-based-nearest-neighbors">Instance-based (nearest neighbors)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-calcs">Likelihood calcs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-bernoulli">Single Bernoulli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial">Multinomial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">Boosting</a></li>
 </ul>
   </nav></div>
 
@@ -1173,7 +1360,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

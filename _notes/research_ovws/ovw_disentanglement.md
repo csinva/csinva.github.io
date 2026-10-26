@@ -90,7 +90,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 - vae ([kingma & welling, 2013](https://arxiv.org/abs/1312.6114))
 - beta-vae ([higgins et al. 2017](https://openreview.net/references/pdf?id=Sy2fzU9gl)) - add hyperparameter $\beta$ to weight the <span class="corange">compactness prior term</span>
 - beta-vae H ([burgess et al. 2018](https://arxiv.org/pdf/1804.03599.pdf)) - add parameter $C$ to control the contribution of the <span class="corange">compactness prior term</span>
-  - $$\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \cblue{\underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} -C\vert$$<!-- -->
+  - $$\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \cblue{\underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \corange{\underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}}} -C\vert$$
   - C is gradually increased from zero (allowing for a larger <span class="corange">compactness prior loss</span>) until good quality <span class="cblue">reconstruction</span> is achieved
 - factor-vae ([kim & minh 2018](https://arxiv.org/abs/1802.05983)) - adds <span class="cgreen">total correlation loss</span> term
   - computes *total correlation loss term* using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)

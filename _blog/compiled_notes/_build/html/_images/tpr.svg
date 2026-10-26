@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 -8 680 436" role="img" aria-labelledby="title desc">
+  <title id="title">Tensor product representation</title>
+  <desc id="desc">Three filler-role bindings. Each filler (3, 7, 3) is embedded as a 2-dimensional yellow vector and each role (r1, r2, r3) as a 3-dimensional blue vector; their outer product gives a green 2-by-3 matrix. The three outer products are summed (plus node) into a single 2-by-3 tensor product representation.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .cell { stroke: #2b2b2b; stroke-width: 1.8; }
+      .cl { stroke: #2b2b2b; stroke-width: 1.5; }
+      .e { fill: none; stroke: #2b2b2b; stroke-width: 1.8; stroke-linecap: round; }
+      .num { font: 34px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect x="22" y="173" width="38" height="77" fill="#f3dc6a" class="cell"/>
+  <line class="cl" x1="22" y1="211.5" x2="60" y2="211.5"/>
+  <rect x="90" y="173" width="115" height="77" fill="#a8dcae" class="cell"/>
+  <line class="cl" x1="128.3" y1="173" x2="128.3" y2="250"/>
+  <line class="cl" x1="166.7" y1="173" x2="166.7" y2="250"/>
+  <line class="cl" x1="90" y1="211.5" x2="205" y2="211.5"/>
+  <rect x="90" y="278" width="115" height="38" fill="#aab2ec" class="cell"/>
+  <line class="cl" x1="128.3" y1="278" x2="128.3" y2="316"/>
+  <line class="cl" x1="166.7" y1="278" x2="166.7" y2="316"/>
+  <path class="e" d="M60 192 L88 192" marker-end="url(#a)"/>
+  <path class="e" d="M60 230 L88 230" marker-end="url(#a)"/>
+  <path class="e" d="M109 278 L109 253" marker-end="url(#a)"/>
+  <path class="e" d="M148 278 L148 253" marker-end="url(#a)"/>
+  <path class="e" d="M186 278 L186 253" marker-end="url(#a)"/>
+  <line class="e" x1="41" y1="364" x2="41" y2="256"/>
+  <path class="e" d="M41 300 L41 253" marker-end="url(#a)"/>
+  <circle cx="41" cy="394" r="30" fill="#f3dc6a" class="cell"/><text class="num" x="41" y="406">3</text>
+  <circle cx="132" cy="390" r="30" fill="#aab2ec" class="cell"/><text class="num" x="124" y="402">r<tspan font-size="22" dy="8">1</tspan></text>
+  <path class="e" d="M134 360 L146 320" marker-end="url(#a)"/>
+  <line class="e" x1="148" y1="173" x2="363.3" y2="129.0"/>
+  <rect x="252" y="173" width="38" height="77" fill="#f3dc6a" class="cell"/>
+  <line class="cl" x1="252" y1="211.5" x2="290" y2="211.5"/>
+  <rect x="320" y="173" width="115" height="77" fill="#a8dcae" class="cell"/>
+  <line class="cl" x1="358.3" y1="173" x2="358.3" y2="250"/>
+  <line class="cl" x1="396.7" y1="173" x2="396.7" y2="250"/>
+  <line class="cl" x1="320" y1="211.5" x2="435" y2="211.5"/>
+  <rect x="320" y="278" width="115" height="38" fill="#aab2ec" class="cell"/>
+  <line class="cl" x1="358.3" y1="278" x2="358.3" y2="316"/>
+  <line class="cl" x1="396.7" y1="278" x2="396.7" y2="316"/>
+  <path class="e" d="M290 192 L318 192" marker-end="url(#a)"/>
+  <path class="e" d="M290 230 L318 230" marker-end="url(#a)"/>
+  <path class="e" d="M339 278 L339 253" marker-end="url(#a)"/>
+  <path class="e" d="M378 278 L378 253" marker-end="url(#a)"/>
+  <path class="e" d="M416 278 L416 253" marker-end="url(#a)"/>
+  <line class="e" x1="271" y1="364" x2="271" y2="256"/>
+  <path class="e" d="M271 300 L271 253" marker-end="url(#a)"/>
+  <circle cx="271" cy="394" r="30" fill="#f3dc6a" class="cell"/><text class="num" x="271" y="406">7</text>
+  <circle cx="362" cy="390" r="30" fill="#aab2ec" class="cell"/><text class="num" x="354" y="402">r<tspan font-size="22" dy="8">2</tspan></text>
+  <path class="e" d="M364 360 L376 320" marker-end="url(#a)"/>
+  <line class="e" x1="378" y1="173" x2="378" y2="141"/>
+  <rect x="482" y="173" width="38" height="77" fill="#f3dc6a" class="cell"/>
+  <line class="cl" x1="482" y1="211.5" x2="520" y2="211.5"/>
+  <rect x="550" y="173" width="115" height="77" fill="#a8dcae" class="cell"/>
+  <line class="cl" x1="588.3" y1="173" x2="588.3" y2="250"/>
+  <line class="cl" x1="626.7" y1="173" x2="626.7" y2="250"/>
+  <line class="cl" x1="550" y1="211.5" x2="665" y2="211.5"/>
+  <rect x="550" y="278" width="115" height="38" fill="#aab2ec" class="cell"/>
+  <line class="cl" x1="588.3" y1="278" x2="588.3" y2="316"/>
+  <line class="cl" x1="626.7" y1="278" x2="626.7" y2="316"/>
+  <path class="e" d="M520 192 L548 192" marker-end="url(#a)"/>
+  <path class="e" d="M520 230 L548 230" marker-end="url(#a)"/>
+  <path class="e" d="M569 278 L569 253" marker-end="url(#a)"/>
+  <path class="e" d="M608 278 L608 253" marker-end="url(#a)"/>
+  <path class="e" d="M646 278 L646 253" marker-end="url(#a)"/>
+  <line class="e" x1="501" y1="364" x2="501" y2="256"/>
+  <path class="e" d="M501 300 L501 253" marker-end="url(#a)"/>
+  <circle cx="501" cy="394" r="30" fill="#f3dc6a" class="cell"/><text class="num" x="501" y="406">3</text>
+  <circle cx="592" cy="390" r="30" fill="#aab2ec" class="cell"/><text class="num" x="584" y="402">r<tspan font-size="22" dy="8">3</tspan></text>
+  <path class="e" d="M594 360 L606 320" marker-end="url(#a)"/>
+  <line class="e" x1="608" y1="173" x2="392.7" y2="129.0"/>
+  <circle cx="378" cy="126" r="15" fill="none" class="cell"/><path class="e" d="M370 126 H386 M378 118 V134"/>
+  <path class="e" d="M378 111 L378 89" marker-end="url(#a)"/>
+  <rect x="320" y="10" width="115" height="77" fill="#a8dcae" class="cell"/>
+  <line class="cl" x1="358.3" y1="10" x2="358.3" y2="87"/>
+  <line class="cl" x1="396.7" y1="10" x2="396.7" y2="87"/>
+  <line class="cl" x1="320" y1="48.5" x2="435" y2="48.5"/>
+  <line class="e" x1="378" y1="10" x2="378" y2="-6"/>
+</svg>

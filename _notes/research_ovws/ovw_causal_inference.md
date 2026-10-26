@@ -91,11 +91,11 @@ C(Location of Car) --> B
 - which pathway do causes flow through from X to Y (direct/indirect?)
 - <img style="width: 400px; max-width: 100%;" src="../assets/mediation_graph.svg" alt="Mediation graph"/>
 - consider potential outcomes with hypothetical intervention on $T$:
-  - $$\{M(t), Y(t)\}$$<!-- -->
+  - $$\{M(t), Y(t)\}$$
 - hypothetical intervention on $T$ and $M$:
-  - $$\{Y(t, m)\}$$<!-- -->
+  - $$\{Y(t, m)\}$$
 - hypothetical intervention on $T$ fixing $M$ to $$M(t') = M_{t'}$$ (nested potential outcome, robs & greenland, 1992; pearl, 2001)
-  - $$\{Y(t, M_{t'})\}$$<!-- -->
+  - $$\{Y(t, M_{t'})\}$$
   - has also been called a priori counterfactual (frangakis & rubin, 2002)
   - when $$t \neq t'$$, this can't be observed and can't be falsified
 - **total effect** $$\tau=E\{Y(1)-Y(0)\} = \cblue{\textrm{NDE}} + \corange{\textrm{NIE}}$$
@@ -107,11 +107,11 @@ C(Location of Car) --> B
 - w/ composition: $$=E\left\{Y\left( 1 \right)-Y\left(1, M_0\right)\right\}$$
 - **mediation formula**
   - can condition effects on $x$
-    - $$\operatorname{NDE}(x)=E\left\{Y\left(1, M_{0}\right)-Y\left(0, M_{0}\right) \mid X=x\right\}$$<!-- -->
-    - $$\operatorname{NIE}(x)=E\left\{Y\left(1, M_{1}\right)-Y\left(1, M_{0}\right) \mid X=x\right\}$$<!-- -->
+    - $$\operatorname{NDE}(x)=E\left\{Y\left(1, M_{0}\right)-Y\left(0, M_{0}\right) \mid X=x\right\}$$
+    - $$\operatorname{NIE}(x)=E\left\{Y\left(1, M_{1}\right)-Y\left(1, M_{0}\right) \mid X=x\right\}$$
   - estimators
-    - $$\widehat{NDE}(x) = E\left\{Y\left(t, M_{t^{\prime}}\right) \mid X=x\right\}=\sum_{m} E(Y \mid T=t, M=m, X=x) \operatorname{pr}\left(M=m \mid T=t^{\prime}, X=x\right)$$<!-- -->
-    - $$\widehat{NIE}(x) = E\left\{Y\left(t, M_{t^{\prime}}\right)\right\}=\sum_{x} E\left\{Y\left(t, M_{t^{\prime}}\right) \mid X=x\right\} P(X=x)$$<!-- -->
+    - $$\widehat{NDE}(x) = E\left\{Y\left(t, M_{t^{\prime}}\right) \mid X=x\right\}=\sum_{m} E(Y \mid T=t, M=m, X=x) \operatorname{pr}\left(M=m \mid T=t^{\prime}, X=x\right)$$
+    - $$\widehat{NIE}(x) = E\left\{Y\left(t, M_{t^{\prime}}\right)\right\}=\sum_{x} E\left\{Y\left(t, M_{t^{\prime}}\right) \mid X=x\right\} P(X=x)$$
   - estimators depend on 4 assumptions
     1. no treatment-outcome confounding: $T \perp Y(t, m) \mid X$
     2. no mediator-outcome confounding: $M \perp Y(t, m) \mid (X, T)$
@@ -141,9 +141,9 @@ C(Location of Car) --> B
       - finally, combine effects $$\hat{\tau}(x)=g(x) \hat{\tau}_{0}(x)+(1-g(x)) \hat{\tau}_{1}(x)$$
         - $g(x)$ is weighting function, e.g. estimated propensity score
     - e.g. R-learner ([robinson, 1988](https://www.jstor.org/stable/1912705?casa_token=MIFpVeGtg_AAAAAA%3ASw_iZBgtJwx_P6jezFPxHXy8USBdJugzBzt5S9I2sc1j83K_dmYJmskt-l8cTxMBHffbZFTjPCO7KQzrPGkr4SyAAOID7engZqQrMLQy2fv2yQ-C0rs&seq=1#metadata_info_tab_contents); nie-wager, 20) - regularized semiparametric learner
-      - $$\hat{\tau}_{R}(\cdot)=\operatorname{argmin}_{\hat \tau}\left\{\frac{1}{n} \sum_{i=1}^{n}\left(\cblue{\underbrace{Y_{i}-\hat \mu\left(X_{i}\right)}_{\text{Y residual}}}-\corange{\left(T_{i}-\hat e\left(X_{i}\right)\right)} \hat \tau\left(X_{i}\right)\right)^{2}\right. \left.+ \cgreen{\underbrace{\Lambda_{n}\left(\hat \tau(\cdot)\right)}_{\text{regularization}}}\right\}$$<!-- -->
+      - $$\hat{\tau}_{R}(\cdot)=\operatorname{argmin}_{\hat \tau}\left\{\frac{1}{n} \sum_{i=1}^{n}\left(\cblue{\underbrace{Y_{i}-\hat \mu\left(X_{i}\right)}_{\text{Y residual}}}-\corange{\left(T_{i}-\hat e\left(X_{i}\right)\right)} \hat \tau\left(X_{i}\right)\right)^{2}\right. \left.+ \cgreen{\underbrace{\Lambda_{n}\left(\hat \tau(\cdot)\right)}_{\text{regularization}}}\right\}$$
         - <span class="cblue">Y residual</span> fit by <span class="corange">T residual</span> $\times \hat \tau$, plus <span class="cgreen">regularization</span>
-        - $$\hat \mu(x) = E[Y_i\vert X=x]$$<!-- -->
+        - $$\hat \mu(x) = E[Y_i\vert X=x]$$
         - use cross-fitting to estimate $\hat \tau$ and $\hat \mu$
         - $\tau$ takes a form, e.g. LASSO
   - tree-based methods

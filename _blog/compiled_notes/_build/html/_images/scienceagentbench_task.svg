@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 12 1986 1110" role="img" aria-labelledby="title desc">
+  <title id="title">ScienceAgentBench task example</title>
+  <desc id="desc">Example ScienceAgentBench task with four parts. (a) Task instruction: train a multitask model on the ClinTox dataset to predict a drug's toxicity and FDA approval status and save test set predictions to pred_results/clintox_test_pred.csv. (b) Dataset information: the directory tree (clintox/ with clintox_test.csv and clintox_train.csv) and a preview of clintox_train.csv with columns smiles, FDA_APPROVED, CT_TOX. (c) Expert-provided knowledge about the task and about featurization with Extended-Connectivity Fingerprints in deepchem. (d) The annotated program: a deepchem script defining a MyClintoxLoader, loading ECFP train and test datasets, fitting a MultitaskClassifier, predicting and writing the CSV.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      .box { fill: none; stroke: #2b2b2b; stroke-width: 2.5; }
+      .s { font: 29px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .cap { font: bold 32px "Times New Roman", Times, Georgia, serif; fill: #2b2b2b; }
+      .mono { font: 26px Menlo, Consolas, "Courier New", monospace; fill: #2b2b2b; white-space: pre; }
+      .kw { fill: #1f8a4c; } .cl { fill: #d9822b; } .fn { fill: #1f6fb2; }
+    </style>
+  </defs>
+  <rect class="box" x="16" y="22" width="758" height="228"/>
+  <text class="s" x="36" y="72" text-anchor="start">Train a multitask model on the Clintox dataset to predict a</text>
+  <text class="s" x="36" y="109" text-anchor="start">drug&#x27;s toxicity and FDA approval status. Save the test set</text>
+  <text class="s" x="36" y="146" text-anchor="start">predictions, including the SMILES representation of</text>
+  <text class="s" x="36" y="183" text-anchor="start">drugs and the probability of positive labels, to</text>
+  <text class="s" x="36" y="220" text-anchor="start">&quot;pred_results/clintox_test_pred.csv&quot;.</text>
+  <text class="cap" x="395" y="304" text-anchor="middle">(a) Task Instruction</text>
+  <rect class="box" x="16" y="334" width="758" height="714"/>
+  <text class="s" x="36" y="384" text-anchor="start"><tspan text-decoration="underline" font-style="italic">Dataset Directory</tspan>:</text>
+  <text class="mono" x="36" y="420" text-anchor="start">|-- clintox/</text>
+  <text class="mono" x="36" y="457" text-anchor="start">|---- clintox_test.csv</text>
+  <text class="mono" x="36" y="494" text-anchor="start">|---- clintox_train.csv</text>
+  <text class="s" x="36" y="606" text-anchor="start"><tspan text-decoration="underline" font-style="italic">Dataset Preview</tspan>:</text>
+  <text class="s" x="36" y="642" text-anchor="start">[START Preview of clintox/clintox_train.csv]</text>
+  <text class="s" x="36" y="679" text-anchor="start">smiles,FDA_APPROVED,CT_TOX</text>
+  <text class="s" x="36" y="716" text-anchor="start">CCC(/C=C/Cl)(C#C)O,1,0</text>
+  <text class="s" x="36" y="753" text-anchor="start">C[C@H]1C[C@H]2[C@@H]3CC[C@@H]([C@]3(C[C</text>
+  <text class="s" x="36" y="790" text-anchor="start">@@H]([C@@H]2[C@@]4(C1=CC(=O)CC4)C)O)C)C(</text>
+  <text class="s" x="36" y="827" text-anchor="start">=O)C,1,0</text>
+  <text class="s" x="36" y="864" text-anchor="start">C[C@@H]1CCN([C@H](C1)C(=O)[O-])C(=O)[C@H](</text>
+  <text class="s" x="36" y="901" text-anchor="start">CCC[NH+]=C(N)N)NS(=O)(=O)c2cccc3c2NC[C@@H](</text>
+  <text class="s" x="36" y="938" text-anchor="start">C3)C,1,0</text>
+  <text class="s" x="36" y="975" text-anchor="start">...</text>
+  <text class="s" x="36" y="1012" text-anchor="start">[END Preview of clintox/clintox_train.csv]</text>
+  <text class="cap" x="395" y="1104" text-anchor="middle">(b) Dataset Information</text>
+  <rect class="box" x="798" y="22" width="1186" height="154"/>
+  <text class="s" x="818" y="72" text-anchor="start">1. *On the task*: The ClinTox dataset contains drugs approved by ……</text>
+  <text class="s" x="818" y="108" text-anchor="start">2. *On featurization*: To represent the molecular structure, use Extended-Connectivity</text>
+  <text class="s" x="818" y="144" text-anchor="start">Fingerprints (ECFPs) featurization in deepchem……</text>
+  <text class="cap" x="1390" y="230" text-anchor="middle">(c) Expert-Provided Knowledge</text>
+  <rect class="box" x="798" y="260" width="1186" height="788"/>
+  <text class="mono" x="818" y="308" text-anchor="start"><tspan class="kw">import</tspan> deepchem <tspan class="kw">as</tspan> dc</text>
+  <text class="mono" x="818" y="345" text-anchor="start">……</text>
+  <text class="mono" x="818" y="382" text-anchor="start"><tspan class="kw">from</tspan> deepchem.molnet.load_function.molnet_loader  <tspan class="kw">import</tspan></text>
+  <text class="mono" x="818" y="419" text-anchor="start">_MolnetLoader</text>
+  <text class="mono" x="818" y="456" text-anchor="start"></text>
+  <text class="mono" x="818" y="493" text-anchor="start"><tspan class="kw">class</tspan> <tspan class="cl">MyClintoxLoader</tspan>(_MolnetLoader):</text>
+  <text class="mono" x="818" y="530" text-anchor="start">&#160; &#160; <tspan class="kw">def</tspan> <tspan class="fn">create_dataset</tspan>(<tspan class="kw">self</tspan>):</text>
+  <text class="mono" x="818" y="567" text-anchor="start">&#160; &#160; &#160;  ……</text>
+  <text class="mono" x="818" y="604" text-anchor="start"></text>
+  <text class="mono" x="818" y="641" text-anchor="start">CLINTOX_TASKS = ['FDA_APPROVED', 'CT_TOX']</text>
+  <text class="mono" x="818" y="678" text-anchor="start">train_loader = <tspan class="cl">MyClintoxLoader</tspan>('ECFP', ……)</text>
+  <text class="mono" x="818" y="715" text-anchor="start">train_dataset = ……</text>
+  <text class="mono" x="818" y="752" text-anchor="start">test_loader = <tspan class="cl">MyClintoxLoader</tspan>('ECFP', ……)</text>
+  <text class="mono" x="818" y="789" text-anchor="start">test_dataset = ……</text>
+  <text class="mono" x="818" y="826" text-anchor="start">……</text>
+  <text class="mono" x="818" y="863" text-anchor="start">model = dc.models.<tspan class="cl">MultitaskClassifier</tspan>(……)</text>
+  <text class="mono" x="818" y="900" text-anchor="start">model.<tspan class="fn">fit</tspan>(train_dataset)</text>
+  <text class="mono" x="818" y="937" text-anchor="start">test_scores = model.<tspan class="fn">predict</tspan>(test_dataset, ……)</text>
+  <text class="mono" x="818" y="974" text-anchor="start">……</text>
+  <text class="mono" x="818" y="1011" text-anchor="start">test_scores_df.<tspan class="fn">to_csv</tspan>('pred_results/clintox_test_pred.csv')</text>
+  <text class="cap" x="1390" y="1104" text-anchor="middle">(d) Annotated Program</text>
+</svg>

@@ -1,0 +1,181 @@
+# Overlay for _notes/ai/search.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Search, logic           # short name on the start-page topic map
+hook: Uninformed and A* search, local search, constraint satisfaction, propositional and first-order logic, planning, and rule learning.
+intro: |
+  The first half follows Russell & Norvig on search. A problem is an initial state, actions, a transition
+  model, goal states and a path cost, and the search strategies differ only in which frontier node they
+  expand next. Uninformed search uses only the path cost $g(n)$. A* adds a heuristic $h(n)$, and the
+  heuristic sections say when that keeps the answer optimal and how to build good heuristics from relaxed
+  problems. Local search and constraint satisfaction drop the path and look only for a goal state.
+
+  The second half is logic: knowledge-based agents, resolution and chaining over Horn clauses, SAT solvers,
+  first-order logic with unification, and classical planning in PDDL. The chapter ends with notes on
+  Fürnkranz et al.'s book on rule learning, where finding a rule is again a search, over a graph of
+  rules scored by heuristics such as precision.
+sections:
+  problem-solving agents:
+    lead: |
+      Before it searches, the agent turns its goal into a problem. The five components listed here define a
+      problem, and every algorithm in the first half of the chapter works on this same definition.
+  searching for solutions:
+    lead: |
+      Search grows a tree from the initial state. The frontier holds the leaves waiting to be expanded, and the
+      search strategy decides which one comes next. Graph search also keeps an explored set so that it never
+      expands the same state twice.
+  infrastructure:
+    lead: |
+      How search algorithms are compared: are they complete, are they optimal, and what do they cost in time
+      and memory. The costs are written in terms of the branching factor $b$, the depth $d$ and the maximum path
+      length $m$, as in the table below.
+  uninformed search = blind search:
+    lead: |
+      The table compares strategies by completeness, optimality, time and space, in terms of the branching
+      factor $b$, the depth $d$ of the shallowest solution and the maximum depth $m$. Breadth-first search and
+      iterative deepening find the shallowest goal; uniform-cost search finds the cheapest one.
+  informed search:
+    lead: |
+      Each strategy here is best-first search with a different evaluation function $f$. Uniform-cost search
+      uses $f = g$, greedy best-first search uses $f = h$, and A* uses their sum, the estimated cost of the
+      cheapest solution through $n$.
+    viz:
+      - name: astar-grid
+        params: {mode: astar}
+        caption: |
+          Search from S to G on a grid where a step costs 1 (a diagonal step $\sqrt 2$) and $h$ is the cost of
+          the path to G if there were no walls, so it never overestimates. Uniform-cost search spreads out in
+          every direction. A* expands far fewer nodes and still finds the optimal path, because $h$ is
+          admissible. Greedy search expands the fewest, but it heads into the cup-shaped wall and returns a
+          longer path. Drag the slider to replay the expansion order, and click cells to move walls.
+  heuristic functions:
+    lead: |
+      A* expands every node with $f(n) < C^*$, so a larger admissible heuristic means fewer expansions. The
+      bullets give ways to get one: a heuristic that dominates another, the exact cost of a relaxed problem,
+      the max of several heuristics, or exact subproblem costs stored in a pattern database.
+  Local Search - Russell & Norvig 4.1-4.2:
+    lead: |
+      Local search keeps only a current state and moves to one of its neighbors. It uses little memory and
+      returns a goal state rather than a path, so it is really optimization.
+  discrete space:
+    lead: |
+      Hill climbing always moves uphill and can stop at a local maximum. The other methods add randomness to
+      get out: simulated annealing sometimes accepts a worse move, beam search keeps $k$ states, and genetic
+      algorithms recombine a population.
+  continuous space:
+    lead: |
+      In a continuous space the gradient gives the uphill direction. Solve $\nabla f = 0$ when possible,
+      otherwise take gradient steps; Newton-Raphson also uses the Hessian to choose the step.
+  Constraint satisfaction problems - Russell & Norvig 6.1-6.5:
+    lead: |
+      A CSP opens up the state: it is a set of variables, their domains and constraints between them. That
+      structure allows a solver to prune domains by inference before and during backtracking, and the shape of the
+      constraint graph (trees, cycle cutsets, tree width) bounds how hard the problem is.
+  inference (prunes search space before backtracking):
+    lead: |
+      Inference shrinks domains by enforcing local consistency. Node consistency handles unary constraints,
+      arc consistency (AC-3) makes every binary constraint satisfiable from both ends, and path and
+      $k$-consistency look at larger groups of variables at a higher cost.
+  backtracking:
+    lead: |
+      Backtracking search is depth-first search that assigns one variable at a time and backs up when a
+      variable has no legal value left. The three improvements below are choosing the next variable and value
+      well, running inference after each assignment, and backing up to the cause of a failure rather than to the
+      last assignment.
+    viz:
+      - name: csp-forward-check
+        params: {method: bt}
+        caption: |
+          Backtracking search for a 3-coloring: neighbors must get different colors. Variables are taken in the
+          order X1, X2, ... and values in the order blue, orange, green. Drag the step slider back to 0 and replay.
+          Plain backtracking finds a problem only when it reaches a variable with no legal value, and then backs up
+          one assignment at a time. Forward checking deletes each assigned value from the neighbors' domains (the
+          dots under each node) and backs up as soon as a domain is empty. With the minimum-remaining-values
+          heuristic as well, the solver always picks the variable with the fewest values left and solves this graph
+          without backtracking.
+  local search for csps:
+    lead: |
+      Local search starts from a complete assignment and repairs it. Min-conflicts moves a variable to the
+      value that violates the fewest constraints.
+  structure of problems:
+    lead: |
+      The shape of the constraint graph bounds the cost. A tree-structured CSP is solved in time linear in the
+      number of variables, so both methods here reduce a graph to a tree: assign a cycle cutset, or group the
+      variables into a tree decomposition.
+  logical agents - Russell & Norvig 7.1-7.7 (omitting 7.5.2):
+    lead: |
+      A knowledge-based agent tells its knowledge base what it perceives and asks it what to do. The basic
+      question is entailment, $A \vDash B$: $B$ is true in every model where $A$ is true. Model checking answers
+      it by trying every truth assignment.
+  theorem proving:
+    lead: |
+      Two ways to decide entailment. Resolution on clauses in CNF is complete for all of propositional logic.
+      Forward and backward chaining only handle Horn clauses but run in time linear in the size of the KB.
+      Checking satisfiability (DPLL, WalkSAT) closes the section.
+  agents based on propositional logic:
+    lead: |
+      To act over time, propositions get a time index (fluents). Successor-state axioms say a fluent keeps its
+      value unless an action changes it. SATPLAN then finds a plan by giving these axioms and the goal to a SAT
+      solver.
+  first-order logic - Russell & Norvig 8.1-8.3.3:
+    lead: |
+      Propositional logic only has facts. First-order logic adds objects, relations, functions and the
+      quantifiers $\forall, \exists$. The table compares what each logic assumes exists and what an agent can
+      believe about it.
+  inference in first-order logic - Russell & Norvig 9.1-9.4:
+    lead: |
+      One route is propositionalization: replace the quantified variables with ground terms and use
+      propositional inference. The other works on first-order sentences directly: unification finds a
+      substitution that makes two expressions identical, and forward and backward chaining apply generalized
+      modus ponens. Entailment in first-order logic is only semidecidable.
+  classical planning - Russell & Norvig 10.1-10.2:
+    lead: |
+      PDDL describes a planning problem with action schemas: preconditions that must hold, and effects that
+      list only what changes. Planning is then search over states, forward from the start or backward from
+      the goal.
+  algorithms for planning as state-space search:
+    lead: |
+      Forward search applies actions from the initial state. Backward search starts from the goal and regresses
+      through actions that could achieve it. Both need heuristics, and the ones here relax the problem, for
+      example by ignoring preconditions or delete lists.
+  foundations of rule learning (furnkranz et al. 2014):
+    lead: |
+      A rule is a conjunction of binary conditions (the body) that implies a class (the head). $P$ and $N$
+      count the positives and negatives in the data, and $\hat P = TP$, $\hat N = FP$ count those a rule
+      covers. The evaluation measures in chapter 7 are all functions of these counts.
+  categorization of tasks (ch 1):
+    lead: |
+      Predictive rule learning learns rules for a class, as in concept learning. Descriptive rule learning finds
+      patterns instead: association rules, or subgroups whose class distribution differs from the whole
+      population.
+  basics of learning rules (ch 2):
+    lead: |
+      Finding a rule is a search over a refinement graph, where each rule is a node and refinement operators
+      connect rules. Sequential covering builds a rule set one rule at a time, removing the examples each rule
+      covers.
+  (binary split) features (ch 4):
+    lead: |
+      Rules are built from binary features. The chapter covers how to make them from categorical and continuous
+      attributes (a covering table), when a feature is irrelevant, and how to handle missing or imprecise values.
+  learning single rules (ch 6):
+    lead: |
+      Learning one rule is a search: refine a candidate rule, score it with a heuristic, keep the best. The
+      search algorithms listed after the pseudocode differ in how many candidates they keep.
+  rule evaluation measures (ch 7):
+    lead: |
+      Many of these measures are equivalent: compatible heuristics rank every rule in the same order. In the
+      coverage space below, each rule is a point (covered negatives, covered positives).
+takeaways:
+  - Every search strategy works on the same problem definition and differs only in which frontier node it expands next.
+  - A* expands nodes in order of $f = g + h$. With tree search it is optimal when $h$ never overestimates the cost to the goal, and with graph search when $h$ is consistent.
+  - The exact cost of a relaxed problem is an admissible heuristic, and a larger admissible heuristic means fewer expansions.
+  - In a CSP, inference such as forward checking or arc consistency prunes domains during backtracking, and the minimum-remaining-values heuristic picks the most constrained variable first.
+  - With Horn clauses, forward and backward chaining decide entailment in time linear in the size of the KB; general propositional logic needs resolution or a SAT solver.
+  - Planning and rule learning are search again, over states described in PDDL and over a graph of rules scored by heuristics.
+figures:
+  logic_graph.svg: |
+    Horn clauses (a) and their AND-OR graph (b). Arcs joined at a dot are conjunctions: both premises must
+    hold before the arrow to the conclusion fires. Forward chaining starts from the known facts A and B at the
+    bottom and works up toward Q.
+  posneg.svg: |
+    Coverage space. A rule is a point: x is the number of negatives it covers (0 to N), y the number of
+    positives (0 to P). The dotted diagonal joins covering nothing, (0, 0), to covering everything, (N, P).
+    Good rules sit toward the top left.

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 6 568 334" role="img" aria-labelledby="title desc">
+  <title id="title">Entropy Venn diagram</title>
+  <desc id="desc">Two overlapping circles: H(X) (red) and H(Y) (blue). The left-only region is H(X|Y), the overlap is the mutual information I(X;Y), the right-only region is H(Y|X), and a brace under both circles marks the joint entropy H(X,Y).</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/>
+    </marker>
+    <marker id="garrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/>
+    </marker>
+    <marker id="ra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="ba" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4040d8"/></marker>
+    <style>
+      .circ { stroke: #2b2b2b; stroke-width: 3.5; }
+      .lab { font: 30px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .brace { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .pa { fill: none; stroke: #d1342f; stroke-width: 2.5; stroke-linecap: round; }
+      .ba { fill: none; stroke: #4040d8; stroke-width: 2.5; stroke-linecap: round; }
+    </style>
+  </defs>
+  <circle cx="199" cy="153" r="141" fill="#d1342f" fill-opacity="0.32"/>
+  <circle cx="368" cy="153" r="141" fill="#4040d8" fill-opacity="0.34"/>
+  <circle class="circ" cx="199" cy="153" r="141" fill="none"/>
+  <circle class="circ" cx="368" cy="153" r="141" fill="none"/>
+  <text class="lab" x="128" y="153">H(X|Y)</text>
+  <text class="lab" x="275" y="153">I(X;Y)</text>
+  <text class="lab" x="440" y="156">H(Y|X)</text>
+  <text class="lab" x="26" y="46">H(X)</text>
+  <path class="pa" d="M52 46 L72 62" marker-end="url(#ra)"/>
+  <text class="lab" x="540" y="46">H(Y)</text>
+  <path class="ba" d="M514 44 L492 58" marker-end="url(#ba)"/>
+  <path class="brace" d="M65 234 Q66 276 110 279 L268 283 Q283 284 284 297 Q285 284 300 283 L455 279 Q489 276 489 246"/>
+  <text class="lab" x="286" y="330">H(X,Y)</text>
+</svg>

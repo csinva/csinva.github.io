@@ -89,7 +89,7 @@ category: stat
     - In other words, there exists a function $c: \mathbb Z \to \mathbb R$ such that for all t and k we have $c(k) = \text{cov} (X_t, X_{t+k})$
     - strict stationary and $$E\vert X_T^2\vert  < \infty \implies$$ second-order stationary
   - **ergodic** - stronger condition, says samples approach the expectation of functions on the time series: for any function $g$ and shift $$\tau_1, ... \tau_k$$:
-    - $$\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]$$<!-- -->
+    - $$\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]$$
 - **causal** - can predict given only past values (for Gaussian processes no difference)
 
 ## ch 3 - linear time series
@@ -104,7 +104,7 @@ category: stat
     - if we don't account for issues, things can go wrong
       - model will not be stationary
       - model may be misspecified
-      - $$E(\epsilon_t\vert X_{t-p}) \neq 0$$<!-- -->
+      - $$E(\epsilon_t\vert X_{t-p}) \neq 0$$
     - this represents a set of difference equations, and as such, must have a solution
   - ex. $AR(1)$ model - if $$\vert \phi\vert  < 0$$, then soln is in terms of past values of {$\epsilon_t$}, otherwise it is in terms of future values
     - ex. simulating - if we know $\phi$ and $$\{\epsilon_t\}$$, we still need to use the backshift operator to solve for $$\{ X_t \}$$
@@ -160,8 +160,8 @@ category: stat
   - $\underline\gamma_p = \Gamma_p \underline \phi_p$
     - $(\Gamma_p)_{i, j} = \gamma(i - j)$
     - $\hat{\Gamma}_p$ is nonegative definite (and nonsingular if there is at least one nonzero $Y_i$)
-  - $$\underline \gamma_p = [\gamma(1), ..., \gamma(p)]$$<!-- -->
-  - $$\underline \phi_p = (\phi_1, ..., \phi_p)$$<!-- -->
+  - $$\underline \gamma_p = [\gamma(1), ..., \gamma(p)]$$
+  - $$\underline \phi_p = (\phi_1, ..., \phi_p)$$
     - this minimizes the mse $\mathbb E [X_{t+1} - \sum_{j=1}^p \phi_j X_{t+1-j}]^2$
 - use estimates to solve: $\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p $
 - the innovations algorithm

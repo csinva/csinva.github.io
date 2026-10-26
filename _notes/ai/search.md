@@ -104,7 +104,7 @@ typora-copy-images-to: ../assets
   - $$A^*$$ (with tree search) is optimal and complete if h(n) is *admissible*
     - $h(n)$ never overestimates the cost to reach the goal
   - $$A^*$$ (with graph search) is optimal and complete if h(n) is *consistent* (stronger than admissible) = *monotonicity*
-    - $$h(n) \leq cost(n \to n') + h(n')$$<!-- -->
+    - $$h(n) \leq cost(n \to n') + h(n')$$
     - can draw contours of f (because nondecreasing)
   - $$A^*$$ is also *optimally efficient* (guaranteed to expand fewest nodes) for any given consisten heuristic because any algorithm that that expands fewer nodes runs the risk of missing the optimal solution
     - for a heuristic, *absolute error* $$\delta := h^*-h$$ and *relative error* $\epsilon := \delta / h^*$
@@ -642,6 +642,6 @@ typora-copy-images-to: ../assets
 - *likelihood ratio statistic* - compare distr in rule to distr in full dataset
 - complexity-based heuristics
   - $Length$
-  - $$MDL(r) = \cblue{I(r)} + \corange{I(\epsilon\vert r)}$$<!-- -->
+  - $$MDL(r) = \cblue{I(r)} + \corange{I(\epsilon\vert r)}$$
     - <span class="cblue">bits to encode the rule</span> + <span class="corange">bits to encode its errors given the rule</span>
     - hard to compute

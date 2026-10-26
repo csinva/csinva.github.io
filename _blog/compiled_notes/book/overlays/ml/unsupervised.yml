@@ -1,0 +1,154 @@
+# Overlay for _notes/ml/unsupervised.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Clustering, dimensionality reduction, deep generative models (VAEs, GANs, diffusion, flows), and self-supervised and contrastive learning.
+intro: |
+  Everything here learns from data without labels, in four groups. Clustering assigns points to groups,
+  from hierarchical merging to K-means and Gaussian mixtures fit with EM. Dimensionality reduction finds a
+  few coordinates that keep what matters. PCA and ICA are linear; MDS, t-SNE, UMAP and PaCMAP try to keep
+  distances or neighbors. Read K-means and PCA first, since most of the later methods are compared against them.
+
+  The generative models section learns $p(x)$ itself. Autoregressive models, VAEs and flows fit a likelihood or a
+  bound on it; GANs drop the likelihood for a learned discriminator, and diffusion models learn to undo
+  added noise. The last part covers self-supervised, semi-supervised and contrastive learning, which make labels
+  out of the data itself, plus a short section on compression.
+sections:
+  clustering:
+    lead: |
+      A clustering is only as good as its distance. The properties listed first are what make a distance a
+      metric; the Minkowski family covers Manhattan, Euclidean and sup distance.
+  hierarchical:
+    lead: |
+      Agglomerative clustering builds a tree (dendrogram) by repeatedly merging the two closest clusters. The
+      linkage function decides what "closest" means between groups of points, and it shapes the clusters.
+  partitional:
+    lead: |
+      Partitional methods split the points into a fixed number $K$ of clusters, usually by minimizing the sum of
+      squared distances to each cluster's centroid. Trying every partition is too slow, so methods like K-means
+      search locally and can get stuck; k-means++ starts with the centers spread apart.
+  statistical clustering (j 10):
+    lead: |
+      K-means and Gaussian mixtures both alternate two steps: assign points to clusters (E), then refit each
+      cluster (M). K-means makes hard assignments to the nearest center; a GMM makes soft ones weighted by
+      posterior probability.
+    viz:
+      - name: kmeans-steps
+        params: {k: 5, seed: 5}
+        caption: |
+          Step through K-means by hand. E assigns each point to its nearest center, M moves each center to the
+          mean of its points, and the distortion $J$ never goes up. From this start, run to convergence: two
+          centers end up sharing one blob while another center covers two, and K-means stops there, at a $J$
+          about three times the best. Press "new start" a few times to see other local minima. Starting with
+          k-means++, which spreads the initial centers apart, gets stuck like this less often.
+      - name: gmm-em
+        params:
+          k: 3
+          seed: 2
+        caption: 'EM for a mixture of $K$ Gaussians on made-up 2-d data. E splits each point between the components by
+      
+          its responsibilities (the pies), M refits each $\pi_i$ (the number on each mean, in percent), $\mu_i$ and
+      
+          $\Sigma_i$ as averages weighted by them, and the log-likelihood $l(\theta\vert x)$ on the right never goes
+      
+          down. Unlike K-means'' hard assignments, points where two clusters overlap stay split at convergence. Press
+      
+          "new start" a few times: some starts stop at a lower $l$.
+      
+          '
+  conditional mixture models - regression/classification (j 10):
+    lead: |
+      The mixture is now conditional on the input $x$. A gate, the
+      <span class="cblue">mixing proportions</span> $\pi_i(x, \xi)$, decides which
+      <span class="corange">mixture component</span> (here a regression or a classifier) explains $y$ near
+      $x$.
+  dim reduction:
+    lead: |
+      The table compares methods by what they preserve. The tension in the opening sentence is the main axis:
+      PCA keeps global variance, while neighbor methods like t-SNE keep local structure.
+  spectral clustering:
+    lead: |
+      Reduce dimension first, then cluster: take a few eigenvectors of the similarity (adjacency) matrix and run a
+      simple clustering in that space. The kernels chapter covers it in more detail.
+  pca:
+    lead: |
+      PCA finds orthogonal directions of greatest variance. These are the top eigenvectors of the covariance
+      matrix, and each eigenvalue is the variance explained along its direction.
+  sparse coding = sparse dictionary learning:
+    lead: |
+      Each input is written as a <span class="cblue">reconstruction</span> from a few dictionary columns, with an
+      $\ell_1$ <span class="corange">sparsity penalty</span> on the codes $a^{(t)}$. Learning alternates between
+      the codes and the dictionary $D$.
+  ica:
+    lead: |
+      ICA assumes the data are a linear mix $X = Az$ of independent, non-Gaussian sources and tries to unmix
+      them. PCA only makes components uncorrelated; ICA asks for full independence.
+  topological:
+    lead: |
+      These methods place points in two or three dimensions so that distances or neighborhoods from the
+      original space survive. MDS matches distances; t-SNE matches neighbor probabilities; PaCMAP balances
+      attractive and repulsive forces between pairs.
+  generative models:
+    lead: |
+      Maximizing likelihood is the same as minimizing the KL divergence from the data distribution to the model,
+      which is why most models below are trained by (a bound on) likelihood.
+  autoregressive models:
+    lead: |
+      Factor $p(x)$ as a product of conditionals $p(x_i\vert x_{1:i-1})$, each given by a neural net. Masks keep
+      each output from seeing the inputs it is predicting. Sampling is slow because it goes one variable at a
+      time.
+  vaes:
+    lead: |
+      A VAE is an autoencoder whose code is pushed toward a standard normal. The posterior $p(z\vert x)$ can't be
+      computed, so an encoder $q_\phi(z\vert x)$ approximates it and training maximizes the
+      <span class="cgreen">ELBO</span>, a lower bound on $\log p(x)$.
+  gans:
+    lead: |
+      A generator $G$ and a discriminator $D$ play a game: $D$ tries to tell data from samples and $G$ tries to
+      fool it. With no likelihood to report, GANs are evaluated with scores like the inception score and FID.
+  diffusion / energy-based models:
+    lead: |
+      A fixed procedure gradually turns data into noise, and a network learns to undo it one step at a time. One
+      network with shared parameters handles every noise level.
+  flow models:
+    lead: |
+      A flow maps noise $z$ to data $x$ through an invertible function, so the likelihood is exact by the change
+      of variables formula. The work is in making the map invertible with a determinant that is cheap to compute.
+  self-supervised:
+    lead: |
+      Hide part of the input and predict it from the rest: the future from the past, a word from its context, color
+      from grayscale. The task needs no labels; the representation learned along the way is what gets kept.
+  semi-supervised:
+    lead: |
+      A few labels plus many unlabeled points. Most tricks push the model to be confident and consistent on the
+      unlabeled data.
+  compression:
+    lead: |
+      Compression and generative modeling are linked: a code is short when frequent symbols get short codewords,
+      as in a Huffman code. Arithmetic coding encodes groups of symbols at once and gets better with a good
+      autoregressive model.
+  contrastive learning:
+    lead: |
+      InfoNCE is a cross-entropy over one <span class="cblue">positive pair</span> and
+      <span class="corange">K negatives</span>: pull the two views of a point together, push other points away.
+takeaways:
+  - K-means and Gaussian mixtures alternate assigning points to clusters and refitting the clusters; K-means assigns hard, a GMM soft, and both can stop at a local optimum.
+  - PCA finds orthogonal directions of greatest variance, the top eigenvectors of the covariance matrix, and each eigenvalue is the variance explained along its direction.
+  - ICA asks for independent, non-Gaussian components rather than merely uncorrelated ones; t-SNE, UMAP and PaCMAP keep local neighborhoods rather than global variance.
+  - Maximizing likelihood minimizes the KL divergence from the data to the model; autoregressive models and flows compute the likelihood exactly, VAEs maximize a lower bound (the ELBO), and GANs replace it with a learned discriminator.
+  - Self-supervised learning makes a prediction task from the data itself, and contrastive losses like InfoNCE pull two views of a point together while pushing other points away.
+figures:
+  j10_1.svg: A mixture model as a graphical model. The latent node Z picks one of K components, and the observed X is drawn from that component.
+  j5_16.png: |
+    Two conditional mixtures of regressions, from Jordan's book. In (a) the latent Zₙ depends on Xₙ: the
+    dashed curves are p(zₙ | xₙ), so each line covers its own region of x. In (b) Zₙ does not depend
+    on Xₙ, so both lines apply everywhere.
+  infogan.svg: |
+    A GAN's discriminator only asks which source an image came from. InfoGAN also feeds a code C to the
+    generator and adds a second head that predicts the code from the image. The extra head shares the
+    discriminator's network, so it is cheap.
+  semi.svg: Ways to get more labeled training data, from hand labeling by experts to weak supervision, semi-supervised learning and transfer learning.
+  trie.svg: |
+    A Huffman code (for the text ABRACADABRA!) drawn as a binary trie. Each codeword is the path from the root to a leaf, so the
+    frequent A gets the one-bit code 0 and no codeword is a prefix of another.
+  icon_table.svg: |
+    The I-Con table. Each method is a choice of supervisory distribution (column) and learned distribution
+    (row), and the colors group them into dimensionality reduction, clustering, self-supervised and
+    supervised learning.

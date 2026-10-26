@@ -1,0 +1,85 @@
+# Overlay for _notes/ml/nlp.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: NLP
+subtitle: NLP tasks and benchmarks, tokenization, word embeddings, language models, and grammars and parsing.
+hook: NLP tasks and benchmarks, tokenization, word embeddings, n-gram language models, and parse trees.
+intro: |
+  The first half is a reference: the standard NLP tasks, the benchmarks used to measure them (GLUE,
+  SuperGLUE, NLI and QA datasets, a table of text classification datasets), and the metrics, mainly
+  cross-entropy and perplexity. The second half goes through the pieces of a pipeline in order: tokenization
+  turns text into tokens, embeddings turn tokens into vectors, and language models assign probabilities to
+  token sequences.
+
+  The grammar section is older, from the NLTK book: context-free grammars, phrase-structure and dependency
+  trees, and the parsing algorithms that build them. The chapter ends with definitions from linguistics
+  (semantics, syntax, pragmatics). Transformers and LLMs have their own notes in the research overviews.
+sections:
+  tasks:
+    lead: |
+      Roughly in pipeline order: the first few tasks turn raw text into units and labels (tokens, embeddings,
+      parts of speech, entities, parse trees), and the rest are end tasks built on top of them.
+  datasets:
+    lead: |
+      Benchmarks grouped by style: open-ended collections of many tasks, the widely used GLUE and SuperGLUE
+      suites, inference (NLI) and question-answering sets, and the classification datasets in the table.
+  eval/training metrics:
+    lead: |
+      A language model is trained to minimize the average negative log probability of each next token.
+      Perplexity is the exponent of that loss, so lower is better. It depends on the vocabulary, so it only
+      compares models that share one.
+  tokenization:
+    lead: |
+      Word vocabularies are too big and characters make sequences too long, so most models use subwords. Byte-pair
+      encoding (BPE) builds the subword vocabulary from data by merging frequent pairs.
+    viz:
+      - name: bpe-merges
+        params: {merges: 4}
+        caption: |
+          BPE on a small corpus, with each word's count on the right and "_" marking the end of a word. Each merge
+          takes the most frequent adjacent pair of tokens across the corpus (counting each word as many times as it
+          occurs) and makes it one token. Step the slider: "es" and "est" form first because newest and widest
+          share them, and frequent whole words end up as single tokens. Edit the corpus to try your own text.
+  token / word embeddings:
+    lead: |
+      Two kinds of word vectors: long sparse ones built from counts (tf-idf, pointwise mutual information), and
+      short dense ones learned by prediction (word2vec, GloVe, ELMo).
+  language modeling:
+    lead: |
+      A language model gives a probability to a sequence of words. An n-gram model conditions each word only on
+      the few words before it (the Markov assumption), with probabilities estimated from counts. Counts leave
+      many n-grams at zero, which is why n-gram models are smoothed.
+    viz:
+      - name: ngram-smoothing
+        params: {k: 0.1, test: the dog saw the cat}
+        caption: |
+          A bigram model trained on five short sentences, with add-$k$ smoothing
+          $P(w\vert v) = (c(v, w) + k)/(c(v) + kV)$. Left: the probability of each word of the test sentence given
+          the word before it; pink bars are bigrams never seen in training. Right: perplexity against $k$. At
+          $k = 0$ an unseen bigram has probability 0 and the test perplexity is infinite. Raising $k$ moves
+          probability to unseen bigrams, so the training perplexity rises while the test perplexity first falls.
+          For large $k$ every word gets probability $1/V$ and both perplexities approach $V$. Type a sentence made
+          only of seen bigrams and $k = 0$ becomes best.
+  grammar / parse-tree exraction:
+    lead: |
+      A grammar is a set of rules that generates exactly the grammatical sentences. Constituency grammars group
+      words into nested phrases; dependency grammars link each word to the word it depends on.
+  language:
+    lead: |
+      Definitions from linguistics: the six fields used to study language, from sounds (phonetics, phonology) to
+      structure (morphology, syntax) to meaning (semantics, pragmatics), and what "semantic" means to different
+      fields.
+takeaways:
+  - The standard tasks run from turning text into units (tokenization, embeddings, tagging, parsing) to end tasks like translation and question answering, each measured on shared benchmarks.
+  - Language models are trained on the average negative log probability of the next token, and perplexity is its exponent, comparable only across models with the same vocabulary.
+  - Subword tokenizers such as BPE sit between word vocabularies, which are too big, and characters, which make sequences too long.
+  - Word embeddings are either long sparse count vectors (tf-idf, PMI) or short dense vectors learned by prediction (word2vec, GloVe).
+  - A context-free grammar generates sentences from rules; parsing recovers phrase-structure trees, and dependency grammars link each word to its head.
+figures:
+  phrase_tree.svg: |
+    A phrase-structure parse of "the little bear saw the fine fat trout in the brook". The sentence S splits into a
+    noun phrase and a verb phrase; the prepositional phrase "in the brook" attaches to the verb phrase.
+  dep_grammar.svg: |
+    A dependency parse of "I shot an elephant in my pajamas". Arrows go from each head to its dependents; the
+    verb "shot" is the root, with "I" as subject and "elephant" as object.
+  dep_tree.svg: |
+    The two dependency trees for the ambiguous "I shot an elephant in my pajamas". On the left "in my pajamas"
+    depends on "elephant" (the elephant wore them); on the right it depends on "shot".

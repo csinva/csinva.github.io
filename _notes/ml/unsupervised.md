@@ -63,7 +63,7 @@ A mixture model represented as a graphical model. The latent variable Z is a mul
   - partition amounts to Voronoi diagram
   - can be viewed as minimizing *distortion measure* $$J=\sum_n \sum_i z_n^i \vert \vert x_n - \mu_i\vert \vert ^2$$
 - *GMMs*: $$p(x\vert \theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x\vert \mu_i, \Sigma_i)$$
-  - $$l(\theta\vert x) = \sum_n \log \: p(x_n\vert \theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n\vert \mu_i, \Sigma_i)$$<!-- -->
+  - $$l(\theta\vert x) = \sum_n \log \: p(x_n\vert \theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n\vert \mu_i, \Sigma_i)$$
   - hard to maximize bcause log acts on a sum
   - "soft" version of K-means - update means as weighted sums of data instead of just normal mean
   - sometimes initialize K-means w/ GMMs
@@ -83,7 +83,7 @@ graph LR;
     - ex. $ \frac{e^{\xi_i^Tx}}{\sum_je^{\xi_j^Tx}}$
   - <span class="corange">mixture components</span>: $$\corange{p(y\vert Z^i=1, x, \theta_i)}$$ ~ different choices
   - ex. mixture of linear regressions
-    - $$p(y\vert  x, \theta) = \sum_i \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mathcal{N}(y\vert \beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}}$$<!-- -->
+    - $$p(y\vert  x, \theta) = \sum_i \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mathcal{N}(y\vert \beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}}$$
   - ex. mixtures of logistic regressions
     - $$p(y\vert x, \theta_i) = \cblue{\underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}}} \cdot \corange{\underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}}$$ where $\mu$ is the logistic function
 - also, nonlinear optimization for this (including EM)
@@ -253,7 +253,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## misc
 - Sparse Component Analysis ([zimnik...cunningham, paninski, churchland, & glaser, 2024](https://www.biorxiv.org/content/10.1101/2024.02.05.578988v1.full.pdf))
-  - $$\arg \min _{U, V}\left(\cblue{\vert W(X-X U V)\vert _F^2}+\corange{\lambda_{\text {sparse }}\vert X U\vert _1}+\cgreen{\lambda_{\text {orth }}\left\vert V V^{\top}-I\right\vert _F^2}\right)$$<!-- -->
+  - $$\arg \min _{U, V}\left(\cblue{\vert W(X-X U V)\vert _F^2}+\corange{\lambda_{\text {sparse }}\vert X U\vert _1}+\cgreen{\lambda_{\text {orth }}\left\vert V V^{\top}-I\right\vert _F^2}\right)$$
     - <span class="cblue">reconstruction</span> + <span class="corange">sparsity</span> + <span class="cgreen">orthogonality</span>
     - where $U$ is encoding matrix and $V$ is decoding, <span class="cgreen">the final loss term is imposing orthogonality of the columns of V</span>
 - NNK-Means: Dictionary Learning using Non-Negative Kernel regression ([shekkizhar & ortega, 2021](https://arxiv.org/abs/2110.08212))
@@ -267,7 +267,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - overview: https://blog.openai.com/generative-models/
 - notes for [deep unsupervised learning](https://sites.google.com/view/berkeley-cs294-158-sp20/home)
 - MLE equivalent to minimizing KL for density estimation:
-  - $$\min_\theta KL(p\vert \vert  p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]$$<!-- -->
+  - $$\min_\theta KL(p\vert \vert  p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]$$
 
 ## autoregressive models
 
@@ -408,7 +408,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - transform some $p(x)$ to some $p(z)$
   - $x \to z = f_\theta (x)$, where $z \sim p_Z(z)$
   - $p_\theta (x) dx = p(z)dz$
-  - $$p_\theta(x) = p(f_\theta(x))\vert \frac {\partial f_\theta (x)}{\partial x}\vert $$<!-- -->
+  - $$p_\theta(x) = p(f_\theta(x))\vert \frac {\partial f_\theta (x)}{\partial x}\vert $$
 - autoregressive flows
   - map $x\to z$ invertible
     - $x \to z$ is same as log-likelihood computation

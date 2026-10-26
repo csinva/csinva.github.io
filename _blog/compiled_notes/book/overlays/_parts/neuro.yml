@@ -1,0 +1,11 @@
+intro: |
+  Notes on how the brain works, mostly from Purves's "Neuroscience" textbook and a few courses. The first
+  chapters go from the parts of the brain and the electrical and chemical signaling of single neurons,
+  through the senses and the motor system, to how circuits develop and how memory is stored. Vision gets
+  its own long chapter, from the retina to cortex and the methods used to record it.
+
+  The last two chapters turn to models and data. Computational neuroscience covers models of neurons,
+  neural codes and learning rules, then encoding models, datasets and neuro-inspired AI; the disease
+  chapter covers Alzheimer's and Parkinson's and how pathology slides are graded and analyzed with deep
+  learning. Start with brain basics: the later chapters assume its vocabulary.
+blurb: How neurons signal, how the senses, motor system and memory work, and the models and data used to study them.

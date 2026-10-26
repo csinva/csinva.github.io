@@ -1,0 +1,73 @@
+# Overlay for _notes/stat/testing.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Null and alternative hypotheses, p-values, type 1 and 2 errors and power, t- and F-tests, confidence intervals, and ANOVA.
+intro: |
+  A test asks whether the data would be surprising if the null hypothesis $H_0$ were true. The basics section
+  sets up the vocabulary: type 1 error $\alpha$, type 2 error $\beta$, power $1 - \beta$, p-values, and the
+  corrections needed when many tests are run at once (Bonferroni, Benjamini-Hochberg).
+
+  The Gaussian theory section derives the t-test for one regression coefficient and the F-test for a group of
+  them from the chi-squared and t distributions. The later sections cover what a confidence interval does and
+  doesn't promise, confidence intervals for regression coefficients, and the formulas of simple linear
+  regression ($S_{xx}$, $S_{xy}$, SSE, SST, $r^2$) that ANOVA is built on.
+sections:
+  gaussian theory:
+    lead: |
+      With normal errors, $\hat\theta$ is normal and the residual sum of squares is $\sigma^2\chi^2_{n-p}$,
+      independent of $\hat\theta$. Ratios of these give the t-statistic for one coefficient and the F-statistic
+      for a group of coefficients.
+  tests on hypotheses:
+    lead: |
+      In practice $\alpha$ is picked first, which sets where the test starts rejecting. $\beta$ then depends on
+      how far the truth is from $H_0$ and on the sample size.
+    viz:
+      - name: test-power
+        params: {theta: 0.5, n: 10, alpha: 0.05}
+        caption: |
+          An upper-tailed test of $\theta = 0$ against $\theta > 0$ from the mean of $n$ draws. $\alpha$ is the blue
+          area of the $H_0$ curve past the cutoff and $\beta$ is the orange area of the $H_1$ curve before it.
+          Lowering $\alpha$ moves the cutoff right and raises $\beta$. Raising $n$ narrows both curves like
+          $1/\sqrt{n}$, which shrinks $\beta$ at the same $\alpha$. At $\theta = 0$ the power equals $\alpha$.
+  ANOVA (analysis of variance):
+    lead: |
+      Least squares with one predictor, written with the sums $S_{xx}$, $S_{xy}$ and $S_{yy}$. The total sum
+      of squares splits into the part explained by the regression and SSE, and $r^2$ is the explained fraction.
+  basics:
+    lead: |
+      A test fixes a null hypothesis $H_0$ and asks how surprising the data would be if it were true. Two errors
+      are possible: rejecting a true $H_0$ (type 1, rate $\alpha$) and keeping a false one (type 2, rate
+      $\beta$). Running many tests at once needs a correction, or type 1 errors pile up.
+    viz:
+      - name: multiple-testing
+        params:
+          m: 50
+          k: 10
+          alpha: 0.05
+        caption: '50 one-sided tests, $k$ of them with a true effect (illustrative effect size of 3 standard errors).
+          Each dot
+      
+          is a p-value, sorted, and filled dots are the ones Benjamini-Hochberg rejects. Set $k = 0$: without a
+      
+          correction most repeats have at least one false discovery, while Bonferroni and BH keep that rate near
+      
+          $\alpha$. Raise $k$: Bonferroni''s flat line stays strict, BH''s line rises with the rank, so it finds more
+      
+          true effects while keeping the share of false ones below $\alpha$.
+      
+          '
+  statistical intervals:
+    lead: |
+      An interval estimate comes with a confidence level, and the level describes the procedure, not one
+      interval: over repeated samples, 95% of the intervals built this way contain the true value.
+  testing LR coefficients:
+    lead: |
+      The same construction for a regression coefficient. With $\sigma$ known,
+      $(\hat\beta_1 - \beta_1)/\sigma(\hat\beta_1)$ is standard normal; with $\sigma$ estimated it has a
+      $t_{n-2}$ distribution, and the interval is the estimate plus or minus $t_{n-2,\alpha/2}$ standard errors.
+takeaways:
+  - The p-value is the probability, computed assuming $H_0$, of a test statistic at least as contradictory to $H_0$ as the one observed.
+  - $\alpha$ is picked first. $\beta$ then depends on how far the truth is from $H_0$ and on the sample size, and the power is $1 - \beta$.
+  - Running many tests inflates false positives. Bonferroni keeps the chance of any false rejection at $\alpha$; Benjamini-Hochberg controls the false discovery rate.
+  - With normal errors, the t-statistic tests one regression coefficient and the F-statistic tests a group of them.
+  - A 95% confidence interval is a statement about the procedure. Over repeated samples, 95% of the intervals contain the true parameter.
+  - In simple regression SST = SSR + SSE, and $r^2$ = SSR/SST is the fraction of variation the regression explains.
+figures: {}

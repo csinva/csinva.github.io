@@ -1,0 +1,58 @@
+# Overlay for _notes/math/math_basics.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Math basics
+hook: Handy bounds, common functions, sets and logic, proof techniques, log and trig identities, and complex numbers in polar form.
+intro: |
+  A grab bag of facts that the other math chapters use without stating. It starts with a few bounds,
+  such as Stirling's formula for $n!$, and a short list of named functions (gamma, sigmoid, softmax).
+  Then come one-line definitions from stochastic processes, abstract algebra and discrete math, and a
+  list of proof techniques.
+
+  The last sections are reference material: log and trig identities, partial fractions, and complex
+  numbers. Polar form $z = |z| e^{i\theta}$ is the one idea worth slowing down for, since it is what
+  makes multiplying complex numbers easy and it comes back in the Fourier transform.
+sections:
+  misc:
+    lead: |
+      Bounds that come up when counting and when analyzing algorithms. Stirling's formula says $n!$ grows
+      like $(n/e)^n$, so $\log(n!)$ is $O(n \log n)$.
+  discrete math:
+    lead: |
+      Definitions for sets and propositional logic, then the standard ways to prove an implication
+      $p \to q$: directly, by contradiction, by the contrapositive, or by induction.
+  imaginary numbers:
+    lead: |
+      Euler's formula turns a complex number into a <span class="cblue">magnitude</span> times a
+      <span class="corange">phase</span>. In that form, multiplying two numbers multiplies their magnitudes and
+      adds their angles.
+    viz:
+      - name: complex-polar
+        params: {r1: 1.5, t1: 30, r2: 1.2, t2: 60, op: mul}
+        caption: |
+          Set the magnitude and angle of $z_1$ and $z_2$. The product's magnitude (blue circle) is
+          $|z_1||z_2|$ and its angle (orange arc) is $\theta_1 + \theta_2$. Set $|z_2| = 1$ to see that
+          multiplying by $e^{i\theta}$ is a pure rotation, and switch to division to see the angles subtract.
+  functions:
+    lead: |
+      Named functions that show up in later chapters. The gamma function extends the factorial, $\Gamma(n) =
+      (n-1)!$, and the sigmoid and softmax turn real numbers into probabilities.
+  stochastic processes:
+    lead: |
+      A stochastic process is a random variable evolving in time. The Markov property says the next value
+      depends on the past only through the current value.
+  proofs:
+    lead: |
+      Notes on what proofs can and can't do: induction checks a formula you already have but doesn't explain it,
+      and a non-existence proof has to rule out every case. The subsection lists famous results and puzzles,
+      with a worked pigeonhole argument.
+  identities:
+    lead: |
+      Log rules, change of base, partial fractions and the angle-sum formulas for sine and cosine. Change of
+      base is why logs in different bases differ only by a constant factor.
+takeaways:
+  - Stirling's formula is $n!\approx (n/e)^n$, which gives $\log(n!) = O(n \log n)$, the bound behind sorting.
+  - The Poisson pmf approximates the binomial when $N$ is large and $p$ is small.
+  - An implication $p \to q$ can be proved directly, by contradiction, by the contrapositive $\neg q \to \neg
+    p$, or by induction.
+  - Logs in different bases differ by a constant factor, $\log_b x = \log_d x / \log_d b$.
+  - In polar form $z = |z| e^{i\theta}$, multiplying complex numbers multiplies magnitudes and adds angles.
+figures: {}

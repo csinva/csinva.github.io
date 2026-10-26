@@ -59,7 +59,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - reranking with a cross-encoder for topk results
 
 # losses
-- $$\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$$<!-- -->
+- $$\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$$
   - large batch sizes are important, can speed up computation with gradcache ([gao et al. 2021](https://arxiv.org/abs/2101.06983)) (computes loss wrt embs, then backprops through whole computation different examples at at time)
   - low temp. signals "focus on the hardest cases" while high temp says "treat all negatives equally"
   - note: this is the same as cross-entropy loss using the exp(similarity score) as the probability

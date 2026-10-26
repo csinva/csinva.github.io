@@ -1,0 +1,288 @@
+# Overlay for _notes/neuro/vissci.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: The visual system from photoreceptors and retinal circuits to V1 and beyond, with the methods used to record it and the diseases that damage it.
+intro: |
+  The chapter follows the signal. It starts in the retina: rods and cones, horizontal cells that subtract
+  the surround, amacrine and ganglion cells that split the image into parallel channels, and the glia,
+  pigment epithelium and blood supply that keep it all running (and the retinal diseases where they fail).
+  It then goes through the LGN to V1 and out along the dorsal "where" and ventral "what" streams, ending
+  with attention, lesion studies, development and plasticity.
+
+  Two other threads run through it. One is methods: patch clamp, electrode arrays and spike-triggered
+  averages, calcium and voltage imaging, EEG, fMRI and PET, each placed on a map of spatial and temporal
+  resolution. The other is theory: natural images are highly redundant, and center-surround receptive
+  fields, whitening, efficient and sparse coding, and predictive coding are all ways of removing that
+  redundancy before sending spikes down an expensive optic nerve.
+sections:
+  neural signals:
+    lead: |
+      A short review of the signaling facts used later. Spikes travel faster with dense, fast channels, wide
+      axons and high membrane resistance; the last two set the length constant $\lambda = \sqrt{r_m / r_a}$,
+      how far a voltage spreads along the axon.
+      An inhibitory synapse whose reversal potential is 0 (as $E_{Cl}$ sometimes is) divides the response
+      instead of subtracting from it: shunting inhibition.
+  electrophysiology:
+    lead: |
+      How single cells are recorded. The figures show the recording circuit and the junction potentials
+      that have to be canceled for the voltage reading to be right.
+  recording + imaging:
+    lead: |
+      Recording many cells at once. A multi-electrode array under a piece of retina records many
+      ganglion cells; showing white noise and averaging the frames before each spike gives each cell's
+      receptive field.
+  electrode arrays:
+    lead: |
+      Spike sorting assigns each recorded spike to a cell by its amplitude, shape and refractory period. The
+      spike-triggered average then shows more than a blob: a ganglion cell's field is a few small spots, one
+      per cone it connects to, and clustering cells by their STA time course sorts them into types that tile
+      the retina.
+    viz:
+      - name: sta-cone-mosaic
+        params: {frames: 3}
+        caption: |
+          A toy ganglion cell whose receptive field is eight cones (right), shown Gaussian white noise and
+          firing Poisson spikes at a rate that grows exponentially with its filtered input. Any single frame
+          that drew a spike looks like noise (left); the average of all of them does not (middle). Slide up
+          the number of frames: the cone spots stand out once about a thousand spikes are averaged, because the
+          noise in each pixel shrinks like $1/\sqrt{\text{spikes}}$ while the signal stays the same.
+  imaging - voltage:
+    lead: |
+      Voltage-sensitive dyes would record many cells' voltages at once, but they are toxic and give tiny
+      signals, since spikes are brief and small. Calcium imaging with GCaMPs is the practical substitute, at
+      the cost of a slower signal than the voltage itself.
+  rod and cone photoreceptor function:
+    lead: |
+      Rods and cones trade sensitivity for speed: rods are sensitive and slow and saturate in daylight,
+      cones are less sensitive, fast, and pack the fovea.
+  horizontal cells - outer retinal signaling and lateral inhibition:
+    lead: |
+      An on-center cell responds best to a small light spot. Make the spot bigger and it reaches the
+      surround, where horizontal cells feed inhibition back onto the photoreceptors, so the response drops.
+      In predictive coding terms, the surround predicts the center and only the difference is sent on.
+    viz:
+      - name: center-surround
+        params: {radius: 1, k: 0.8}
+        caption: |
+          An on-center receptive field as a narrow positive center minus a wide negative surround (left), and
+          its response to a centered light spot (right). Grow the spot: the response rises while the spot fills
+          the center, then falls as it spreads into the surround. Set the surround strength to 0 and the
+          response just keeps rising (dashed curve); at full strength a uniform field gives almost no response.
+  signaling pathways through the retina - amacrine cells and inner retinal processing of visual information:
+    lead: |
+      Bipolar cells start the parallel channels, and amacrine cells shape them on the way to the ganglion
+      cells. Starburst amacrine cells are where the retina's direction selectivity comes from.
+  retinal ganglion cells:
+    lead: |
+      The retina's output. Midget cells (most of them, high acuity) feed the parvocellular pathway and
+      parasol cells (high temporal resolution) the magnocellular one; direction-selective cells get their
+      tuning from starburst amacrine cells.
+  non-neuronal retina stuff:
+    lead: |
+      The cells that keep the retina running: glia, the pigment epithelium and two separate blood supplies.
+      Each comes back in the diseases section, since that is where things fail.
+  retinal glia:
+    lead: |
+      Müller cells span the whole retina and do most of the housekeeping (support, energy, glutamate
+      recycling, K⁺ balance). Astrocytes sit along the vessels, and microglia are immune cells that also
+      maintain synapses.
+  retinal pigment epithelium (rpe):
+    lead: |
+      A single layer of pigmented cells around the photoreceptor tips. It absorbs stray light, eats the outer
+      segments as they are shed (a photoreceptor is renewed in about 11 days), and recycles retinoids for the
+      visual cycle.
+  retinal blood supply:
+    lead: |
+      The retina has the highest metabolic demand of any tissue. The choroid feeds the outer third and the
+      central retinal artery the inner two thirds, with no capillaries over the fovea, where they would block
+      light.
+  retinal diseases:
+    lead: |
+      Three diseases, each damaging a different layer: macular degeneration (photoreceptors, RPE and choroid
+      in the macula), diabetic retinopathy (leaky capillaries), and glaucoma (ganglion cells and the optic
+      nerve).
+  age-related macular degeneration:
+    lead: |
+      Loss of the outer retina in the macula, so the center of the visual field goes. The dry form (drusen,
+      lipofuscin in the RPE) usually comes first and can turn into the wet form, where leaky vessels grow and
+      anti-VEGF injections are the treatment.
+  experimental methods:
+    lead: |
+      No method is good on every axis. The figure places each one by the size of tissue it sees and the
+      timescale it resolves; the sections below go through them by what they measure: spikes,
+      electromagnetic fields, dyes, or blood.
+  single cell:
+    lead: |
+      Electrodes give the best temporal resolution, and intracellular recording measures the membrane
+      potential directly. The cost is invasiveness and biased sampling: the few neurons recorded tend to be
+      large, excitatory, and shown unnatural stimuli.
+  alteration:
+    lead: |
+      Methods that change activity instead of recording it: optogenetics (light-sensitive opsins delivered by
+      virus, transgenic animals or electroporation), TMS (a brief pulse from a coil on the head), and
+      microstimulation through electrodes.
+  measure electromagnetic signals:
+    lead: |
+      EEG records synchronous activity from the scalp and is analyzed by frequency band or as event-related
+      potentials. MEG measures the magnetic fields instead, which the skull distorts much less.
+  blood:
+    lead: |
+      These methods read activity through blood flow, so they are slow. fMRI's BOLD signal follows oxygenated
+      hemoglobin: activity first uses up oxygen, then blood flow overcompensates, and the signal cannot tell
+      excitation from inhibition.
+  mapping visual cortex:
+    lead: |
+      Maps of visual cortex. A rotating wedge maps polar angle, which mirrors at each border between areas;
+      expanding rings map eccentricity. Central vision gets far more of V1 than its share of the retina
+      (cortical magnification).
+  info processing in the visual system:
+    lead: |
+      Vision is ill-posed: the same retinal image can come from many scenes, so the brain has to bring in
+      priors. Color constancy and the shadow illusions are examples of those priors at work.
+  dynamic range of rods + cones:
+    lead: |
+      Spontaneous isomerizations set the lower limit of light detection. Above it, rods saturate and cones
+      turn on then off, and the two types of horizontal cell (HI and HII, contacting different photoreceptors)
+      add lateral inhibition for contrast.
+  whitening and tiling:
+    lead: |
+      Neighboring pixels in natural images are correlated, with power falling as frequency rises. Barlow's
+      redundancy reduction says the optic nerve should remove those correlations, and the filter that
+      flattens the spectrum looks like a center-surround receptive field.
+  visual pathways:
+    lead: |
+      Everything visual passes through the thalamus on its way to cortex. The LGN keeps the parvo and magno
+      channels in separate layers, and other retinal targets handle eye movements, circadian rhythm and the
+      pupil.
+  lgn:
+    lead: |
+      Six layers: the upper four parvocellular (from midget cells), the bottom two magnocellular (from parasol
+      cells). The split by spatial and temporal frequency that starts in the retina stays separate here.
+  color:
+    lead: |
+      More is known about color from psychophysics than from recordings. L and M cone signals are strongly
+      correlated, so PCA turns them into a luminance channel plus two color-difference channels that can be
+      blurred, which is why color costs only about 10% more than black and white.
+  v1 (primary):
+    lead: |
+      V1 is where orientation and direction selectivity first appear. Inputs from the two eyes stay apart in
+      layer 4 (ocular dominance columns) and mix in layers 2/3; the standard model is an oriented linear
+      filter, normalization by neighbors, and a pointwise nonlinearity.
+    viz:
+      - name: gabor-orientation
+        params: {theta: 60, sigma: 0.5}
+        caption: |
+          The oriented linear filter of the standard model, drawn as a Gabor receptive field (top left) and
+          tested with gratings at its preferred spatial frequency (bottom left). The curve is the response at
+          the grating's best phase. Turn the grating away from vertical and the response falls. Widen the
+          envelope σ so more carrier cycles fit inside it and the tuning narrows, from about ±45° at
+          σ = 0.25 to about ±11° at σ = 1: a field with more stripes is more selective for orientation.
+  extrastriate cortex:
+    lead: |
+      Beyond V1 the areas split into a dorsal stream through MT (motion, where things are, vision for
+      action) and a ventral stream through V4 and IT (color, form, objects, faces).
+  dorsal stream:
+    lead: |
+      MT has columns for direction of motion, STS responds to biological motion (a dozen moving dots that look
+      like a person), and parietal cortex handles spatial attention.
+  ventral stream:
+    lead: |
+      V4 follows perceived color rather than wavelength. IT has cells that respond to single people or
+      objects, and areas such as the FFA (faces) and PPA (places).
+  sparse coding:
+    lead: |
+      Why V1 has oriented, localized, bandpass receptive fields: representing natural images with as few
+      active neurons as possible produces them.
+  object recognition:
+    lead: |
+      The Gabor function (a sinusoid under a Gaussian envelope) is the standard model of a V1 simple cell. The
+      section then treats perception as inference in a generative model: higher areas make guesses and send
+      corrections back down (Lee and Mumford).
+  top-down modulation:
+    lead: |
+      Attention changes responses in V4 and even V1. Endogenous attention is voluntary and slow, exogenous
+      attention is involuntary and fast.
+  visual search:
+    lead: |
+      Search is slow when targets share features with distractors. In feature-integration theory each feature
+      has its own map, so finding a conjunction such as a red circle takes longer.
+  visual neuropsychology:
+    lead: |
+      What lesions show: blindsight after V1 damage, motion blindness after MT damage, loss of color after V4
+      damage, and agnosias such as prosopagnosia.
+  visual cortical development + plasticity:
+    lead: |
+      The steps any nervous system goes through as it is built, then three stages for the retina-LGN-V1
+      pathway: wiring set up before experience (with retinal waves), a critical period in which inputs
+      compete, and more limited plasticity in adults.
+  adult plasticity:
+    lead: |
+      Aftereffects such as color afterimages and the tilt aftereffect are usually explained by fatigue of the
+      stimulated neurons, but some last far too long for that. Perceptual learning shows adults can still
+      learn new visual tasks, though how far it generalizes is unclear.
+  alzheimer's:
+    lead: |
+      Alzheimer's shows up in the retina as well. The goal is to find its markers (amyloid plaques, pTau) with
+      noninvasive retinal imaging instead of a stain after death.
+takeaways:
+  - 'The retina already processes the image: horizontal cells subtract the surround, bipolar cells split on and
+    off channels, and midget and parasol ganglion cells start the parvo and magno pathways.'
+  - Natural images are redundant, with power falling as spatial frequency rises; center-surround whitening and
+    sparse coding are both ways of removing that redundancy before the expensive optic nerve.
+  - V1 is where orientation and direction selectivity first appear, and the standard model is an oriented
+    linear filter, normalization by neighbors and a pointwise nonlinearity.
+  - Beyond V1 the dorsal stream (MT, parietal cortex) handles motion and where things are and the ventral
+    stream (V4, IT) color, form and objects; lesions in each remove those functions.
+  - Every recording method trades spatial resolution, temporal resolution and coverage against each other, so
+    the question decides the method.
+  - White noise plus a spike-triggered average is the basic way to measure a receptive field.
+figures:
+  clamp_main.svg: |
+    A single-cell recording circuit. The pipette's Ag/AgCl wire sits in "intracellular" solution, a second
+    Ag/AgCl wire grounds the bath, and an amplifier reads the voltage between them.
+  clamp_junction.svg: |
+    Where the junction potential at each Ag/AgCl electrode comes from. A few mM Cl⁻ in both solutions keeps
+    it stable, and the potentials at the pipette and the bath ground roughly cancel.
+  clamp_tip.svg: |
+    The liquid junction potential at the pipette tip: ions in the pipette and the bath diffuse at different
+    speeds, which separates charge and leaves the tip about −10 mV from the bath.
+  circuit_model.svg: |
+    A branching neuron as a compartmental circuit: each patch of membrane is a resistor and capacitor to
+    ground, linked to its neighbors by axial resistors.
+  layers.png: |
+    The layers of the retina, from the pigment epithelium at the back to the inner limiting membrane. Light
+    enters from the bottom and passes through the ganglion, amacrine, bipolar and horizontal cells before
+    reaching the rods and cones.
+  receptor_densities.png: |
+    Rod and cone density across the retina. Cones peak sharply at the fovea (0°), where there are no rods;
+    rods peak around 20° and fall off toward the periphery. Neither is present at the optic disc.
+  glia.png: |
+    The three kinds of retinal glia: Müller cells (M) spanning the whole retina, astrocytes (As) around
+    the blood vessels and nerve fiber layer, and microglia (Mi) in the synaptic layers.
+  method_coverage.svg: |
+    Neuroscience methods placed by the size of tissue they see (log mm, from synapse to whole brain) and the
+    time span they cover (log seconds). Patch clamp and single units are fine in space and time; fMRI and PET
+    see the whole brain but over seconds to minutes; lesions cover days or longer.
+  hrf.svg: |
+    The fMRI response to a brief burst of neural activity: a small initial dip (a), a peak around 5 s (b),
+    and a long undershoot (c) before returning to baseline about 20 s later.
+  vmap.png: |
+    Retinotopic maps on flattened visual cortex. Left: a rotating wedge maps polar angle, which reverses
+    at each border between V1, V2 and V3. Middle: expanding rings map eccentricity, which changes smoothly
+    with no reversals. Right: fMRI time courses from three locations peak at different phases of the
+    stimulus.
+  horizontal.svg: |
+    Horizontal cells take excitation from cones and feed inhibition back onto them. Gap junctions spread
+    the signal across neighboring horizontal cells, so each cone is inhibited by activity in its
+    surround.
+  visual_pathways.svg: |
+    Retina to LGN to V1, then V2, V4 and inferotemporal cortex (ventral) and MT and posterior parietal
+    cortex (dorsal). The superior colliculus and pulvinar give a second route from the retina to cortex.
+  magno_parvo.svg: |
+    Parvo (P) cells cover high spatial and low temporal frequencies, magno (M) cells lower spatial and
+    higher temporal frequencies, so the two split the spatiotemporal spectrum between them.
+  vmap_main.png: |
+    The connections between visual areas in the macaque (after Wallisch & Movshon 2008), from V1 and V2
+    on the left through V4 and MT to inferotemporal and parietal areas.
+  column.svg: |
+    Laminar connections of V1. Magnocellular LGN layers project to layer IVCα and parvocellular layers to
+    IVCβ; both feed layers II/III, which project to other cortical areas. Layer V projects to the superior
+    colliculus and layer VI back to the LGN.

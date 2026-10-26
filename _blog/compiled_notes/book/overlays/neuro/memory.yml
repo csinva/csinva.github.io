@@ -1,0 +1,41 @@
+# Overlay for _notes/neuro/memory.md. Keys under `sections` are the note's header text (case and markup ignored).
+subtitle: How memory came to be understood, from the neuron doctrine to Kandel's work on synapses, genes and long-term potentiation.
+hook: A history of memory research, from Cajal's neurons to the molecules that turn a short-term memory into a long-term one.
+intro: |
+  A historical account in two parts. The first covers how neurons were found to be separate cells that
+  signal in one direction (Cajal, Sherrington), that the signal is electrical along the axon (Adrian,
+  Hodgkin and Huxley), and that it is chemical across the synapse (Dale, Loewi, Katz).
+
+  The second part is about memory itself. Patient H.M. showed that memory is a separate function and that
+  the hippocampus is needed to turn short-term memories into long-term ones. Kandel's work on Aplysia then
+  found the mechanism: short-term memory changes how much transmitter a synapse releases, while long-term
+  memory needs new proteins (cAMP, PKA, CREB) and grows or removes synapses. The chapter closes with place
+  cells, Alzheimer's and consciousness. The brain basics chapter covers the same molecules in more detail.
+sections:
+  history:
+    lead: |
+      The neuron doctrine has four parts: the neuron is the unit, synapses separate neurons, specific neurons
+      connect to specific others, and signals flow one way.
+  next generation:
+    lead: |
+      The next steps: Sherrington found that neurons integrate inputs and that some inputs inhibit, Adrian
+      that spikes all have the same size and intensity is coded by their frequency, Hodgkin and Huxley found
+      the voltage-gated Na⁺ and K⁺ channels, and Dale, Loewi and Katz showed that most synapses are chemical
+      and release transmitter in quanta.
+  modern generation:
+    lead: |
+      Read the Aplysia bullets as a chain: serotonin from a modulatory interneuron raises cAMP in the sensory
+      neuron, which boosts glutamate release for minutes; repeated pulses send PKA into the nucleus to switch
+      on CREB, and the resulting proteins build new synapses that last.
+takeaways:
+  - 'The neuron doctrine: neurons are separate cells, connected at synapses to specific partners, with signals
+    flowing one way.'
+  - Signals are electrical along the axon (spikes of fixed size, with intensity coded by their rate) and
+    chemical across most synapses (transmitter released in quanta).
+  - Patient H.M. showed that memory is a separate function and that the hippocampus is needed to turn
+    short-term memories into long-term ones.
+  - Short-term memory changes how much transmitter existing synapses release; long-term memory needs new
+    proteins (PKA, CREB) and grows or removes synapses.
+  - Hippocampal LTP needs the NMDA receptor, which passes Ca²⁺ only when presynaptic release and postsynaptic
+    depolarization coincide.
+figures: {}

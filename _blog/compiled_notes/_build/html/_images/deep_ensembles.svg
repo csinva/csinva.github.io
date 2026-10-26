@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 0 1420 740" role="img" aria-labelledby="title desc">
+  <title id="title">Ensembles vs. variational methods</title>
+  <desc id="desc">Schematic over the space of solutions with a solid training curve and a dashed validation curve, each with three modes. Blue arrows mark the single points that ensemble members land on, one per mode: ensembles identify different modes but ignore local uncertainty and might not pick the best point from each mode. A red band around the middle mode shows that variational methods capture local uncertainty around a mode.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f3fd1"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d1342f"/></marker>
+    <marker id="aK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      .curve { fill: none; stroke: #2b2b2b; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+      .dash { fill: none; stroke: #2b2b2b; stroke-width: 7; stroke-dasharray: 22 14; }
+      .band { fill: none; stroke: #d1342f; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+      .vb { stroke: #1f3fd1; stroke-width: 5; }
+      .dotB { fill: none; stroke: #1f3fd1; stroke-width: 5; stroke-dasharray: 5 5; }
+      .dotR { fill: none; stroke: #d1342f; stroke-width: 5; stroke-dasharray: 5 5; }
+      .dotK { fill: none; stroke: #2b2b2b; stroke-width: 4; stroke-dasharray: 4 5; }
+      .t { font: 36px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+    </style>
+  </defs>
+  <path class="band" d="M540 510 C550 485 582 398 600 360 C618 322 635 298 650 280 C665 262 677 255 690 255 C703 255 715 261 730 280 C745 299 764 338 780 370 C796 402 818 453 825 470"/>
+  <path class="dash" d="M105 430 C118 428 152 432 180 415 C208 398 242 360 270 330 C298 300 327 242 345 237 C363 232 368 261 380 300 C392 339 407 433 420 470 C433 507 443 522 460 520 C477 518 497 485 520 460 C543 435 575 389 600 370 C625 351 647 343 670 345 C693 347 712 344 740 380 C768 416 810 516 840 560 C870 604 893 635 920 642 C947 649 973 644 1000 600 C1027 556 1052 441 1080 380 C1108 319 1142 249 1165 232 C1188 215 1199 245 1220 280 C1241 315 1273 387 1290 440 C1307 493 1315 573 1320 600"/>
+  <path class="curve" d="M105 430 C112 430 126 435 150 428 C174 421 220 408 250 390 C280 372 308 342 330 320 C352 298 370 258 385 258 C400 258 408 285 420 320 C432 355 447 435 460 470 C473 505 486 528 500 528 C514 528 525 505 545 470 C565 435 596 355 620 320 C644 285 667 256 690 258 C713 260 735 290 760 330 C785 370 815 462 840 500 C865 538 887 562 910 555 C933 548 958 506 980 460 C1002 414 1025 318 1040 280 C1055 242 1058 235 1070 235 C1082 235 1088 244 1110 280 C1132 316 1172 404 1200 450 C1228 496 1255 530 1280 555 C1305 580 1338 591 1350 598"/>
+  <line x1="95" y1="650" x2="1362" y2="650" stroke="#2b2b2b" stroke-width="6"/>
+  <text x="725" y="705" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="50" fill="#2b2b2b">Space of solutions</text>
+  <line class="vb" x1="387" y1="650" x2="387" y2="288" marker-end="url(#aB)"/>
+  <circle cx="387" cy="258" r="20" fill="#1f3fd1"/>
+  <line class="vb" x1="688" y1="650" x2="688" y2="288" marker-end="url(#aB)"/>
+  <circle cx="688" cy="258" r="20" fill="#1f3fd1"/>
+  <line class="vb" x1="1072" y1="650" x2="1072" y2="263" marker-end="url(#aB)"/>
+  <circle cx="1072" cy="233" r="20" fill="#1f3fd1"/>
+  <!-- ensemble box -->
+  <rect x="686" y="10" width="740" height="144" fill="none" stroke="#1f3fd1" stroke-width="5"/>
+  <text class="t" x="702" y="52">Ensembles identify different modes</text>
+  <text class="t" x="702" y="92">but ignore local uncertainty and might</text>
+  <text class="t" x="702" y="132">not pick the best point from each mode</text>
+  <path class="dotB" d="M790 156 L425 245" marker-end="url(#aB)"/>
+  <path class="dotB" d="M790 156 L725 225" marker-end="url(#aB)"/>
+  <path class="dotB" d="M790 156 L1022 222" marker-end="url(#aB)"/>
+  <!-- variational box -->
+  <rect x="22" y="100" width="626" height="94" fill="none" stroke="#d1342f" stroke-width="5"/>
+  <text class="t" x="38" y="138">Variational methods capture</text>
+  <text class="t" x="44" y="178">local uncertainty around a mode</text>
+  <path class="dotR" d="M340 196 L598 268" marker-end="url(#aR)"/>
+  <!-- curve labels -->
+  <text class="t" x="1190" y="202">Validation</text>
+  <path class="dotK" d="M1280 222 L1258 368" marker-end="url(#aK)"/>
+  <text class="t" x="1100" y="728">Training</text>
+  <path class="dotK" d="M1185 690 L1192 448" marker-end="url(#aK)"/>
+</svg>

@@ -1,0 +1,112 @@
+# Overlay for _notes/stat/linear_models.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Least squares and its geometry, ridge, lasso and elastic net, GLS and GLMs, and nonparametric extensions like kernel regression and GAMs.
+intro: |
+  The chapter starts from $Y = X\beta + \epsilon$ and the least-squares solution $\hat\theta = (X^TX)^{-1}X^TY$,
+  shown two ways: by setting the derivative to zero, and by seeing $HY$ as the projection of $Y$ onto the column
+  space of $X$. The Freedman sections are about when this works: the assumptions behind unbiasedness and the
+  covariance $\sigma^2(X^TX)^{-1}$, what breaks when $X^TX$ isn't invertible, and the penalties that fix it.
+
+  The advanced topics loosen the model in different directions: correlated errors (GLS), non-Gaussian outcomes
+  (GLMs), nonlinear basis functions, lowess and kernel regression, additive models, and correlated features.
+  The chapter ends with the geometry of least squares and the LMS algorithm from Jordan's book, and line-by-line
+  derivations of the normal equations and the ridge solution.
+sections:
+  regularization:
+    lead: |
+      Both penalties keep the squared-error fit and add a cost on the size of $\beta$. Ridge uses
+      $\|\beta\|_2^2$ and has a closed form; lasso uses $\|\beta\|_1$, needs an iterative solver, and sets
+      coefficients exactly to 0.
+    viz:
+      - name: reg-path
+        params: {lam: 30}
+        caption: |
+          Coefficient paths on one dataset with six standardized features, where $x_1$ and $x_2$ have correlation
+          about 0.9 and $\beta_4 = \beta_6 = 0$. As $\lambda$ grows, ridge shrinks every coefficient toward 0 but
+          none reaches it, and it splits the weight between the correlated pair almost evenly. Lasso drops features
+          one at a time. By $\lambda \approx 65$ it has dropped $\beta_2$ and kept $\beta_1$, the stronger of the pair.
+  multiple regression (freedman ch 4):
+    lead: |
+      Freedman's assumptions for OLS and what they buy: conditional unbiasedness, the covariance formula, and an
+      unbiased estimate of $\sigma^2$ that divides by $n-p$. The hat matrix $H$ projects $Y$ onto the column
+      space of $X$, so the residuals are orthogonal to $X$.
+  GLS = GLM:
+    lead: |
+      Two separate relaxations share this section. GLMs change the distribution of $Y$ and tie its mean to
+      $w^Tx$ through a link function. GLS keeps the linear model but allows the errors a general covariance
+      $G$; rescaling by $G^{-1/2}$ makes OLS BLUE again.
+  multicollinearity:
+    lead: |
+      With highly correlated predictors, fitted coefficients can change size or even flip sign. VIF measures
+      this for each feature. The papers below select variables in this setting, by screening on marginal
+      regressions or by reweighting the lasso.
+  geometry - Jordan ch 6:
+    lead: |
+      Two pictures of least squares. In parameter space, each data point defines a line of exact solutions and
+      LMS steps toward it. In data space, the fit $\hat y$ is the orthogonal projection of $y$ onto the column
+      space of $X$.
+  introduction:
+    lead: |
+      Least squares picks $\beta$ to minimize $\|Y - X\beta\|_2^2$, with solution $(X^TX)^{-1}X^TY$. The hat
+      matrix $H$ maps the responses to the predictions, $\hat y = Hy$, and its diagonal entry $H_{ii}$ measures how
+      much point $i$ influences the fit. The section then lists the assumptions and some variants (weighted LS, LAD).
+    viz:
+      - name: hat-influence
+        params:
+          x: 4
+          y: 5
+        caption: 'Least squares on twelve fixed points (gray) and one point you move (pink). Each point''s area is proportional
+          to its diagonal entry $H_{ii}$ of the hat matrix. Because $\hat y = Hy$, raising $y_i$ by 1 raises the point''s
+          own fitted value by $H_{ii}$. Near the middle of the gray points $H_{ii}$ is under 0.1, and moving the pink
+          point up or down barely changes the line (dashed is the fit without it). Slide it to $x = 13$ and $H_{ii}$ reaches
+          about 0.7: the line now swings to follow the point.'
+  the regression line (freedman ch 2):
+    lead: |
+      With one predictor the regression line goes through $(\bar x, \bar y)$ with slope $r s_y/s_x$. The SD line
+      has slope $\pm s_y/s_x$, so the regression line is flatter whenever $|r| < 1$, and its MSE is
+      $(1-r^2)Var(Y)$.
+  BLUE:
+    lead: |
+      The Gauss-Markov theorem needs less than independent normal errors: mean 0 and covariance $\sigma^2 I$
+      given $X$. Under these, OLS has the smallest variance among linear unbiased estimators.
+  binary variables:
+    lead: |
+      Categorical predictors enter as 0/1 indicator columns. One level is dropped as the baseline, since
+      otherwise the matrix is singular. An interaction term $x_{i1}x_{i2}$ allows one predictor's effect to depend
+      on the other.
+  LR with non-linear basis functions:
+    lead: |
+      The model stays linear in the parameters while the features become nonlinear functions of $x$, such as
+      polynomials or Gaussian radial basis functions.
+  kernel regression:
+    lead: |
+      Plug kernel density estimates of $f(x,y)$ and $f(x)$ into $E(Y\vert X=x) = \int y f(x,y)/f(x)\,dy$. The
+      integral collapses to a weighted average of the $y_i$ with weights $K_h(x - x_i)$.
+  GAM = generalized additive model:
+    lead: |
+      A GAM keeps additivity but drops linearity: the mean, through a link $g$, is a sum of one function per
+      variable, each learned with splines. Interaction terms can be added back one at a time.
+  sums interpretation:
+    lead: |
+      Three sums of squares and how they relate. The <span class="cpurple">total variation</span> in $y$ splits into the part
+      <span class="cblue">explained by the predictors</span> and the <span class="corange">residual</span> part, and $R^2$ is the
+      explained share.
+  normal equation:
+    lead: |
+      Expand the squared loss, differentiate and set the gradient to zero. The result is the normal equations
+      $X^TX\theta = X^Ty$.
+  ridge regression:
+    lead: |
+      The same steps with the <span class="corange">penalty</span> added. It contributes $2\lambda\theta$ to
+      the gradient, which puts $\lambda I$ on the diagonal of $X^TX$.
+takeaways:
+  - The least-squares fit $\hat y = Hy$ is the orthogonal projection of $y$ onto the column space of $X$, so the residuals are orthogonal to every column of $X$.
+  - Under Freedman's assumptions OLS is unbiased with covariance $\sigma^2(X^TX)^{-1}$, and by the Gauss-Markov theorem it is the best linear unbiased estimator.
+  - Ridge adds $\lambda I$ to $X^TX$, which makes it invertible and shrinks every coefficient; the lasso's $\ell_1$ penalty sets some coefficients exactly to 0.
+  - Correlated features make coefficients unstable, and the VIF $1/(1-R_j^2)$ measures how much for each feature.
+  - Lowess, kernel regression and GAMs drop the global linear form, fitting local weighted averages or sums of one-variable functions.
+  - With Gaussian errors, maximizing the log-likelihood is the same as minimizing the squared error.
+figures:
+  j6_1.svg: LMS for one data point. The dashed line is every $\theta$ whose projection onto $x_n$ equals $y_n$, the exact solutions for that point.
+  j6_2.svg: With two inputs the solution lines meet at $\theta^*$. LMS alternates between them and zig-zags toward it.
+  j6_3.svg: With three inputs in two dimensions the lines meet pairwise but share no point, so no $\theta$ fits all three exactly.
+  j6_4.svg: Least squares as projection. $\hat y$ is the point of col(X) closest to $y$, and the residual $y - \hat y$ is orthogonal to the plane.

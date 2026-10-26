@@ -1,0 +1,68 @@
+# Overlay for _notes/neuro/development.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: How the nervous system builds itself, from the neural tube and morphogen gradients to axon guidance, competition, critical periods and repair.
+intro: |
+  Purves chapters 22 to 25, in the order a nervous system is built. Early development folds the embryo into
+  a neural tube, and gradients of morphogens (BMP from the roof plate, hedgehog from the floor plate) tell
+  each cell what to become. Growth cones then steer axons to their targets with attractive and repulsive
+  cues such as netrin, slit and ephrins.
+
+  Once axons arrive they compete. Targets make only a limited amount of neurotrophin, so many of the first
+  connections are removed, and activity decides which ones stay during critical periods (the ocular
+  dominance experiments in cats are the main example). The last section asks why the peripheral nervous
+  system can regrow and the central one mostly can't.
+sections:
+  22 early development:
+    lead: |
+      A cell's position along the neural tube sets its fate: low hedgehog near the roof plate gives sensory
+      neurons and interneurons, high hedgehog near the floor plate makes motor neurons. Hox genes then
+      pattern the head-to-tail axis.
+  23 circuit formation:
+    lead: |
+      Growth cones read a combinatorial code of guidance molecules. Ephrin gradients map the retina onto the
+      tectum, netrin draws axons to the midline, and slit pushes them away once they have crossed. Then
+      neurotrophins decide which connections survive.
+    viz:
+      - name: axon-competition
+        params: {n: 5, advantage: 1, seed: 3}
+        caption: |
+          Several motor axons start out innervating one muscle fiber and share its fixed supply of
+          neurotrophin; an axon that takes up more grows and takes up more still. With equal axons, whichever
+          starts a little bigger ends up with the whole fiber and the rest retract. Give axon 1 (orange) an
+          activity advantage, as an open eye has over a patched one, and press "new random start" a few times:
+          the bigger the advantage, the more often it wins. (A toy model of the note's "whichever sucks up
+          most, kills all the others".)
+  24 plasticity in systems:
+    lead: |
+      Experience shapes circuits most during critical periods, which differ by system (the table). Hebb's
+      rule is the mechanism: inputs that fire together, like the two eyes, strengthen their synapses
+      through NMDA receptors, and inputs that are silenced lose territory.
+  25 repair and regeneration:
+    lead: |
+      The PNS regrows along the Schwann cell sheath at about the speed of slow axonal transport. The CNS
+      forms a glial scar instead, and adult neurogenesis is limited to a few places such as the hippocampus
+      and the olfactory bulb.
+takeaways:
+  - 'Position sets fate: BMP from the roof plate and hedgehog from the floor plate tell neural tube cells what
+    to become, and Hox genes pattern head to tail.'
+  - 'Growth cones steer with a combinatorial code of attractive and repulsive cues: netrin, slit, ephrins and
+    semaphorins.'
+  - About half of developing cells die, and targets make only enough neurotrophin for some connections, so
+    inputs compete and the losers retract.
+  - 'Activity decides the competition during critical periods: closing one eye early shrinks its ocular dominance
+    columns.'
+  - The PNS regrows along Schwann cells at 1-2 mm a day; the CNS forms a glial scar, and new neurons appear
+    only in a few places such as the hippocampus.
+figures:
+  22_1.png: |
+    The neural crest pinches off the top of the neural tube (B) and migrates through the embryo (A). Its
+    cells become sensory neurons, sympathetic adrenergic and cholinergic neurons, melanocytes and chromaffin
+    cells, depending on the signals they meet (C).
+  23_1.png: |
+    Mapping the retina onto the tectum (superior colliculus). Temporal retinal axons, which carry more Eph
+    receptor, are repelled by the high ephrin in posterior tectum and stop in anterior tectum. In a stripe
+    assay (C) temporal axons avoid posterior membranes while nasal axons grow on both. A frog with its eye
+    rotated (B) strikes in the wrong direction because the map is hard-wired.
+  23_2.png: |
+    The main classes of axon guidance molecules: extracellular matrix with integrins, CAMs such as NCAM,
+    cadherins, netrin and slit with their receptors DCC and Robo, semaphorins with plexins, and ephrins with
+    Eph receptors.

@@ -122,7 +122,7 @@ typora-copy-images-to: ../assets
   - value of info = difference in best expected value <span class="cgreen">with</span>/<span class="corange">without</span> info
   - maximum $$EU(\alpha\vert e) = \underset{a}{\max} \sum_{s'} P(Result(a)=s'\vert a, e) U(s')$$
 - *value of perfect information VPI* - assume we can obtain exact evidence for a variable (ex. variable $T=t$)
-  - $$VPI(T) =  \cgreen{\mathbb{E}_{T}\left[ EU(\alpha\vert e, T) \right]} - \underbrace{\corange{EU(\alpha \vert e)}}_{\text{original EU}}$$<!-- -->
+  - $$VPI(T) =  \cgreen{\mathbb{E}_{T}\left[ EU(\alpha\vert e, T) \right]} - \underbrace{\corange{EU(\alpha \vert e)}}_{\text{original EU}}$$
   - <span class="cgreen">first term</span> expands to $\sum_t P(T=t \vert e) \cdot EU(\alpha \vert  e, T=t) $
     - within each of these EU, we take a max over actions
   - VPI not linearly additive, but is order-independent
@@ -156,7 +156,7 @@ typora-copy-images-to: ../assets
     - ex. agent is guaranteed to get to terminal state eventually - *proper policy*
 - expected utility executing $\pi$: $$U^\pi (s) = \mathbb E_{s_1,...,s_t}\left[\sum_t \gamma^t R(s_t)\right]$$
   - when we use discounted utilities, $\pi$ is independent of starting state
-  - $$\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U(s')$$<!-- -->
+  - $$\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U(s')$$
 - *experience replay* - instead of learning from samples one by one, want to reduce correlation between subsequent samples
   - take a large batch of samples and sample randomly from it, rather than going sequentially
 
@@ -181,7 +181,7 @@ typora-copy-images-to: ../assets
 - another way to find optimal policies
   1. *policy evaluation* - given a policy $\pi_i$, calculate $U_i=U^{\pi_i}$, the utility of each state if $\pi_i$ were to be executed
     - like value iteration, but with a set policy so there's no max
-      - $$U_i(s) = R(s) + \gamma \: \sum_{s'} P(s' \vert s, \pi_i(s)) U_i(s')$$<!-- -->
+      - $$U_i(s) = R(s) + \gamma \: \sum_{s'} P(s' \vert s, \pi_i(s)) U_i(s')$$
       - can solve exactly for small spaces, or approximate (set of lin. eqs.)
   2. *policy improvement* - calculate a new MEU policy $\pi_{i+1}$ using $U_i$
     - same as above, just $$\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U'(s)$$
@@ -200,7 +200,7 @@ typora-copy-images-to: ../assets
   - changes because state space is now continuous
 - value iteration
   1. expected utility of executing p in belief state is just $b \cdot \alpha_p$ (dot product)
-  2. $$U(b) = U^{\pi^*}(b)=\underset{p}{\max} \: b \cdot \alpha_p$$<!-- -->
+  2. $$U(b) = U^{\pi^*}(b)=\underset{p}{\max} \: b \cdot \alpha_p$$
 
   - belief space is continuous [0, 1] so we represent it as piecewise linear, and store these discrete lines in memory
     - do this by iterating and keeping any values that are optimal at some point
@@ -240,7 +240,7 @@ typora-copy-images-to: ../assets
       - use $$P(h\vert e)$$ to calculate optimal policy: $\pi^* = \underset{\pi}{\operatorname*{argmax}} \sum_h P(h \vert e) u_h^\pi$
         - $u_h^\pi$= expected utility over all possible start states, obtained by executing policy $\pi$ in model h
     2. *robust control theory* - give best outcome in the worst case over H
-      - $$\pi^* = \underset{\pi}{\operatorname*{argmax}}\:  \underset{h}{\min} \: u_h^\pi$$<!-- -->
+      - $$\pi^* = \underset{\pi}{\operatorname*{argmax}}\:  \underset{h}{\min} \: u_h^\pi$$
 - **temporal-difference learning** - adjust utility estimates towards local equilibrium for correct utilities
   - like an approximation of ADP
   - when we transition $$s \to s'$$, update $$U^\pi(s) = \cgreen{U^\pi (s)} + \cpurple{\alpha} \cblue{\left[R(s) - U^\pi (s) + \gamma \:U^\pi (s') \right]}$$
@@ -271,7 +271,7 @@ typora-copy-images-to: ../assets
 
 ### learning action-utility function $Q(s, a)$
 
-- $$U(s) = \underset{a}{\max} \: Q(s,a)$$<!-- -->
+- $$U(s) = \underset{a}{\max} \: Q(s,a)$$
   - ADP version: $$Q(s, a) = R(s) + \gamma \sum_{s'} P(s'\vert s, a) \underset{a'}{\max} Q(s', a')$$
   - TD version: $$Q(s,a) = \cgreen{Q(s,a)} + \cpurple{\alpha} [R(s) - Q(s,a) + \gamma \: \corange{\underset{a'}{\max} Q(s', a')}]$$ - **this is what is usually referred to as Q-learning**
   - this is *off-policy* (<span class="corange">only uses best Q-value</span>, doesn't pay attention to actualy policy being followed) - more flexible
@@ -323,7 +323,7 @@ typora-copy-images-to: ../assets
   - fit a model / estimate the return
   - improve the policy
   - generate samples (i.e. run the policy)
-- $$\theta^{\star}=\arg \max _{\theta} E_{\tau \sim p_{\theta}(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]$$<!-- -->
+- $$\theta^{\star}=\arg \max _{\theta} E_{\tau \sim p_{\theta}(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]$$
   - *Value-based*: estimate value function or $Q$-function of the optimal policy (no explicit policy)
   - *Policy gradients*: directly differentiate the above objective
     - policy network $$\pi_\theta(a\vert s)$$

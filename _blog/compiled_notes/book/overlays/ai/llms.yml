@@ -1,0 +1,92 @@
+# Overlay for _notes/ai/llms.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: LLMs
+subtitle: How a transformer works, from the shape of each matrix to self-attention, and a reading list of foundational transformer-based models.
+hook: The shapes inside a decoder-only transformer, KV caching, self-attention worked by hand, and a reading list of influential transformer models.
+intro: |
+  The chapter opens with two diagrams of a decoder-only transformer. The first tracks the shape of every
+  matrix from input tokens to next-token probabilities; the second shows how KV caching reuses keys and
+  values while generating. If attention is new to you, read these together with the section "visual
+  explanation of self-attention", which works one example through by hand.
+
+  The middle of the chapter is a reading list of influential models grouped by area (language, vision,
+  text-vision, RL, code, science, audio), followed by n-gram language models such as infini-gram. The later
+  sections give the formal view of transformers after Phuong & Hutter, the three families of models
+  (GPT-like, BERT-like, BART/T5-like), and the RNN seq2seq models that came before.
+sections:
+  basics:
+    lead: |
+      Two diagrams to keep in mind: the shape of every matrix in a decoder-only transformer, and how KV caching
+      saves work during generation. The bullets give the one-line meaning of attention: estimate an element as
+      a weighted sum of the values of the elements it attends to.
+  historically influential transformer-based models:
+    lead: |
+      A reading list rather than a history to read in order. Indented papers are related to the paper above
+      them: variants, predecessors or follow-ups.
+  ngram-based models:
+    lead: |
+      An n-gram model predicts the next token from counts of what followed the same context in the training
+      data. Infini-gram scales this up with backoff (use the longest context that appears in the corpus) and a
+      suffix array for fast counting.
+    viz:
+      - name: ngram-backoff
+        params: {prompt: my dog sat on the}
+        caption: |
+          An n-gram model with backoff on a corpus of five short sentences. Try the prompt's suffixes from longest
+          to shortest and use the longest one that occurs in the corpus; the next-token probabilities are the
+          counts of what followed it. "my dog sat on the" never occurs, but "dog sat on the" occurs once, so the
+          model predicts "rug" with probability 1: a long match gives a sharp estimate from very few counts. Start
+          from "a bird" to see it back off all the way to single-token counts, and click a bar to extend the
+          prompt. These sparse counts are why the smoothing methods in the note mix in shorter n-grams.
+  mathematical overview of transformers:
+    lead: |
+      The notation of Phuong & Hutter in brief: the two tasks, how tokens become vectors, the three kinds of
+      attention, and how the last hidden state becomes a prediction.
+  visual explanation of self-attention:
+    lead: |
+      Each token emits a query, a key and a value. A token's output is a weighted sum of all the values, with
+      weights from a softmax over its query's dot products with every key. The figure below works this out for
+      a two-token input.
+    viz:
+      - name: attention-scores
+        params: {d: 16, scale: true, mask: true}
+        caption: |
+          Attention weights $\text{softmax}(QK^T/\sqrt{d})$ for five tokens with random queries and keys. Row
+          $i$ shows how much token $i$ attends to each token, and every row sums to 1. Switch the scores to
+          unscaled and raise $d$: dot products of $d$-dimensional vectors have spread $\sqrt d$, so the softmax
+          saturates and each row puts nearly all its weight on one token. Dividing by $\sqrt d$ (the "divide by
+          8" step in the figure below, where $d = 64$) keeps the weights soft. The causal mask blanks the upper
+          triangle so each token sees only itself and earlier tokens, as in a decoder.
+  huggingface tutorial:
+    lead: |
+      The three families differ in what they are trained to predict. GPT-like models predict the next token
+      from the earlier ones, BERT-like models fill in masked tokens using both sides, and BART/T5-like models
+      map an input sequence to an output sequence.
+  pre-transformer nlp models:
+    lead: |
+      Before transformers, seq2seq models were RNNs: an encoder compressed the input into one context vector
+      and a decoder generated from it. The attention section above shows the fix, letting the decoder look at
+      every encoder state.
+takeaways:
+  - A decoder-only transformer keeps a $T \times D$ matrix through every layer. Each layer adds an attention output and an MLP output to it, and the last layer is projected to next-token probabilities over the vocabulary.
+  - In self-attention each token's output is a weighted sum of all the values, with weights from a softmax over its query's dot products with the keys, divided by $\sqrt{d}$.
+  - With a causal mask each token sees only earlier tokens, and KV caching reuses the earlier keys and values so each generation step computes only the new token's row.
+  - Transformer models come in three families: GPT-like (auto-regressive), BERT-like (auto-encoding) and BART/T5-like (sequence-to-sequence).
+  - An n-gram model predicts the next token from counts. Infini-gram uses the longest suffix of the prompt found in the corpus, counts with a suffix array, and improves an LLM's perplexity when the two are combined.
+figures:
+  transformer_sizes.png: |
+    A decoder-only transformer with the shape of every matrix. $T$ tokens become a $T \times D$ embedding,
+    plus positional encodings. Each layer adds a self-attention output and an MLP output to it, so the shape
+    stays $T \times D$, and the last layer is projected to $T \times \vert Voc \vert$ next-token probabilities.
+    The inset opens one layer: $QK^T$ gives the $T \times T$ attention scores, masked so tokens only see
+    earlier tokens, and $H$ heads of size $D'$ are concatenated.
+  kv_caching_diagram.png: |
+    KV caching. When generating the next token, the keys and values of earlier tokens (purple) come from a
+    cache. Only the new token's row (red) of Q, K, V, the attention scores and the outputs has to be computed.
+  attention.svg: |
+    Self-attention for the two-token input "Thinking Machines", at the first position. The scores
+    $q_1 \cdot k_1 = 112$ and $q_1 \cdot k_2 = 96$ are divided by 8 ($\sqrt{d_k}$) and softmaxed into
+    weights 0.88 and 0.12. The output $z_1$ is the weighted sum of the values.
+  nmt.svg: |
+    Decoding in a seq2seq model with attention. At each step the decoder's hidden state scores the encoder
+    states $h_1, h_2, h_3$ to form a context vector $C$; the context vector and the hidden state are
+    concatenated and passed through a feed-forward layer to output the next word.

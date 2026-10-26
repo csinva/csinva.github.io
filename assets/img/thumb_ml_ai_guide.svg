@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="ML-AI Guide: pages of outlined notes">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#11161c"/><stop offset="1" stop-color="#07090c"/></linearGradient>
+  <radialGradient id="glow" cx="0.75" cy="0.2" r="0.75"><stop offset="0" stop-color="#5bc0de" stop-opacity="0.14"/><stop offset="1" stop-color="#5bc0de" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#glow)"/><g transform="translate(45,2)">
+<rect x="154" y="66" width="466" height="420" rx="22" fill="#141a21" stroke="#2b3440" stroke-width="2"/>
+<rect x="122" y="88" width="498" height="420" rx="22" fill="#171e26" stroke="#2f3a46" stroke-width="2"/>
+<rect x="90" y="110" width="530" height="420" rx="22" fill="#1b232c" stroke="#3a4654" stroke-width="2.5"/>
+<clipPath id="pg"><rect x="90" y="110" width="530" height="420" rx="22"/></clipPath><g clip-path="url(#pg)">
+<rect x="90" y="110" width="120" height="420" fill="#161d25"/>
+<rect x="112" y="148" width="57" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="184" width="51" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="220" width="68" height="10" rx="5" fill="#5bc0de"/>
+<rect x="112" y="256" width="48" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="292" width="64" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="328" width="58" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="364" width="48" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="400" width="63" height="10" rx="5" fill="#3b4754"/>
+<rect x="112" y="436" width="47" height="10" rx="5" fill="#3b4754"/>
+<rect x="240" y="160" width="180" height="18" rx="9.0" fill="#d5dae0"/>
+<circle cx="245" cy="205.5" r="5" fill="#c7ccd2"/>
+<rect x="260" y="200" width="135" height="11" rx="5.5" fill="#7a8591"/>
+<rect x="405" y="200" width="43" height="11" rx="5.5" fill="#3b4754"/>
+<circle cx="275" cy="233.5" r="4" fill="#8b939e"/>
+<rect x="290" y="228" width="281" height="11" rx="5.5" fill="#58646f"/>
+<circle cx="275" cy="261.5" r="4" fill="#8b939e"/>
+<rect x="290" y="256" width="219" height="11" rx="5.5" fill="#58646f"/>
+<rect x="519" y="256" width="48" height="11" rx="5.5" fill="#3b4754"/>
+<circle cx="245" cy="289.5" r="5" fill="#c7ccd2"/>
+<rect x="260" y="284" width="325" height="11" rx="5.5" fill="#7a8591"/>
+<rect x="595" y="284" width="25" height="11" rx="5.5" fill="#3b4754"/>
+<circle cx="275" cy="317.5" r="4" fill="#8b939e"/>
+<rect x="290" y="312" width="191" height="11" rx="5.5" fill="#58646f"/>
+<rect x="240" y="348" width="190" height="18" rx="9.0" fill="#d5dae0"/>
+<circle cx="245" cy="393.5" r="5" fill="#c7ccd2"/>
+<rect x="260" y="388" width="238" height="11" rx="5.5" fill="#7a8591"/>
+<circle cx="275" cy="421.5" r="4" fill="#8b939e"/>
+<rect x="290" y="416" width="138" height="11" rx="5.5" fill="#58646f"/>
+<circle cx="305" cy="449.5" r="4" fill="#8b939e"/>
+<rect x="320" y="444" width="144" height="11" rx="5.5" fill="#58646f"/>
+<rect x="474" y="444" width="51" height="11" rx="5.5" fill="#3b4754"/>
+<circle cx="245" cy="477.5" r="5" fill="#c7ccd2"/>
+<rect x="260" y="472" width="250" height="11" rx="5.5" fill="#7a8591"/>
+<circle cx="275" cy="505.5" r="4" fill="#8b939e"/>
+<rect x="290" y="500" width="210" height="11" rx="5.5" fill="#58646f"/>
+</g></g></svg>

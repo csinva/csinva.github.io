@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 20 960 460" role="img" aria-labelledby="title desc">
+  <title id="title">Competitive learning with two output neurons</title>
+  <desc id="desc">Left: inputs (u1, u2) plotted as crosses forming two clusters; cluster A (red circle) around (0, 1) with weight vector wA at its centre, cluster B (green circle) around (1, 0.2) with weight vector wB at its centre. Right: a network with inputs u1 and u2 fully connected to outputs vA and vB through weights wA and wB. Below: v_i = w_i · u = w_i^T u = u^T w_i.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#d1342f" stroke-width="1.8"/></marker>
+    <style>
+      .ax { stroke: #2b2b2b; stroke-width: 2; fill: none; }
+      .n { font: 26px Helvetica, Arial, sans-serif; fill: #2b2b2b; text-anchor: middle; }
+      .x { stroke: #2b2b2b; stroke-width: 1.8; stroke-linecap: round; }
+      .m { font: italic 32px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .b { font: bold 34px Georgia, "Times New Roman", serif; fill: #2b2b2b; }
+      .sub { font-size: 22px; font-style: normal; font-weight: normal; }
+      .c { font: 28px Georgia, "Times New Roman", serif; }
+      .node { fill: none; stroke: #2b2b2b; stroke-width: 2.2; }
+      .hand { font: 20px Helvetica, Arial, sans-serif; fill: #d1342f; }
+    </style>
+  </defs>
+
+  <!-- ===== scatter ===== -->
+  <path class="ax" d="M115 60 V360 H418"/>
+  <g class="ax"><line x1="115" y1="360" x2="115" y2="352"/><text class="n" x="115" y="392">−1</text><line x1="215" y1="360" x2="215" y2="352"/><text class="n" x="215" y="392">0</text><line x1="317" y1="360" x2="317" y2="352"/><text class="n" x="317" y="392">1</text><line x1="418" y1="360" x2="418" y2="352"/><text class="n" x="418" y="392">2</text><line x1="115" y1="65" x2="123" y2="65"/><text class="n" x="100" y="74" text-anchor="end">2</text><line x1="115" y1="160" x2="123" y2="160"/><text class="n" x="100" y="169" text-anchor="end">1</text><line x1="115" y1="262" x2="123" y2="262"/><text class="n" x="100" y="271" text-anchor="end">0</text><line x1="115" y1="360" x2="123" y2="360"/><text class="n" x="100" y="369" text-anchor="end">−1</text></g>
+  <text class="m" x="250" y="446">u<tspan class="sub" dy="7">1</tspan></text>
+  <text class="m" x="20" y="228">u<tspan class="sub" dy="7">2</tspan></text>
+  <g class="x"><path d="M230 98 L242 110 M230 110 L242 98"/><path d="M241 94 L253 106 M241 106 L253 94"/><path d="M201 115 L213 127 M201 127 L213 115"/><path d="M206 121 L218 133 M206 133 L218 121"/><path d="M246 135 L258 147 M246 147 L258 135"/><path d="M175 141 L187 153 M175 153 L187 141"/><path d="M185 144 L197 156 M185 156 L197 144"/><path d="M194 151 L206 163 M194 163 L206 151"/><path d="M204 154 L216 166 M204 166 L216 154"/><path d="M224 147 L236 159 M224 159 L236 147"/><path d="M252 160 L264 172 M252 172 L264 160"/><path d="M180 166 L192 178 M180 178 L192 166"/><path d="M190 164 L202 176 M190 176 L202 164"/><path d="M195 172 L207 184 M195 184 L207 172"/><path d="M216 180 L228 192 M216 192 L228 180"/><path d="M226 177 L238 189 M226 189 L238 177"/><path d="M174 196 L186 208 M174 208 L186 196"/><path d="M202 202 L214 214 M202 214 L214 202"/><path d="M208 184 L220 196 M208 196 L220 184"/><path d="M237 179 L249 191 M237 191 L249 179"/><path d="M200 145 L212 157 M200 157 L212 145"/><path d="M188 157 L200 169 M188 169 L200 157"/><path d="M332 175 L344 187 M332 187 L344 175"/><path d="M298 214 L310 226 M298 226 L310 214"/><path d="M279 226 L291 238 M279 238 L291 226"/><path d="M324 224 L336 236 M324 236 L336 224"/><path d="M335 234 L347 246 M335 246 L347 234"/><path d="M344 238 L356 250 M344 250 L356 238"/><path d="M294 237 L306 249 M294 249 L306 237"/><path d="M304 242 L316 254 M304 254 L316 242"/><path d="M314 259 L326 271 M314 271 L326 259"/><path d="M349 259 L361 271 M349 271 L361 259"/><path d="M346 270 L358 282 M346 282 L358 270"/><path d="M354 276 L366 288 M354 288 L366 276"/><path d="M289 275 L301 287 M289 287 L301 275"/><path d="M314 280 L326 292 M314 292 L326 280"/><path d="M319 287 L331 299 M319 299 L331 287"/><path d="M307 297 L319 309 M307 309 L319 297"/><path d="M309 304 L321 316 M309 316 L321 304"/><path d="M299 259 L311 271 M299 271 L311 259"/><path d="M339 252 L351 264 M339 264 L351 252"/></g>
+  <ellipse cx="220" cy="156" rx="86" ry="74" fill="none" stroke="#d1342f" stroke-width="2.5"/>
+  <ellipse cx="325" cy="246" rx="86" ry="76" fill="none" stroke="#1f8a4c" stroke-width="2.5"/>
+  <circle cx="222" cy="157" r="9" fill="#d1342f"/>
+  <circle cx="320" cy="243" r="9" fill="#1f8a4c"/>
+  <text class="b" x="164" y="136" font-size="24" style="fill:#d1342f">w<tspan class="sub" dy="6" font-size="17">A</tspan></text>
+  <text class="b" x="260" y="270" font-size="24" style="fill:#1f8a4c">w<tspan class="sub" dy="6" font-size="17">B</tspan></text>
+  <text class="c" x="172" y="60" fill="#d1342f">Cluster A</text>
+  <text class="c" x="344" y="148" fill="#1f8a4c">Cluster B</text>
+
+  <!-- ===== network ===== -->
+  <g stroke="#2b2b2b" stroke-width="1.6">
+    <line x1="682" y1="160" x2="798" y2="170"/>
+    <line x1="682" y1="160" x2="798" y2="280"/>
+    <line x1="682" y1="272" x2="798" y2="170"/>
+    <line x1="682" y1="272" x2="798" y2="280"/>
+  </g>
+  <circle class="node" cx="660" cy="160" r="22"/>
+  <circle class="node" cx="660" cy="272" r="22"/>
+  <circle class="node" cx="840" cy="170" r="42"/>
+  <circle class="node" cx="840" cy="280" r="42"/>
+  <text class="m" x="816" y="182" font-size="36">v<tspan class="sub" dy="6">A</tspan></text>
+  <text class="m" x="816" y="292" font-size="36">v<tspan class="sub" dy="6">B</tspan></text>
+  <text class="b" x="722" y="136">w<tspan class="sub" dy="7">A</tspan></text>
+  <text class="b" x="732" y="326">w<tspan class="sub" dy="7">B</tspan></text>
+  <text class="b" x="584" y="230">u</text>
+  <text class="hand" x="618" y="138">u<tspan font-size="14" dy="5">1</tspan></text>
+  <text class="hand" x="618" y="250">u<tspan font-size="14" dy="5">2</tspan></text>
+  <path d="M922 100 L888 132" fill="none" stroke="#d1342f" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M922 212 L888 244" fill="none" stroke="#d1342f" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- equation -->
+  <text class="m" x="540" y="442" font-size="30">v<tspan class="sub" dy="6" font-style="italic">i</tspan><tspan dy="-6" font-style="normal"> = </tspan><tspan font-weight="bold" font-style="normal">w</tspan><tspan class="sub" dy="6" font-style="italic">i</tspan><tspan dy="-6" font-style="normal"> · </tspan><tspan font-weight="bold" font-style="normal">u</tspan><tspan font-style="normal"> = </tspan><tspan font-weight="bold" font-style="normal">w</tspan><tspan class="sub" dy="6" font-style="italic">i</tspan><tspan class="sub" dy="-18" font-style="italic">T</tspan><tspan dy="12" font-weight="bold" font-style="normal">u</tspan><tspan font-style="normal"> = </tspan><tspan font-weight="bold" font-style="normal">u</tspan><tspan class="sub" dy="-12" font-style="italic">T</tspan><tspan dy="12" font-weight="bold" font-style="normal">w</tspan><tspan class="sub" dy="6" font-style="italic">i</tspan></text>
+</svg>

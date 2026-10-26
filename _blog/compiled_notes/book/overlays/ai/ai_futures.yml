@@ -1,0 +1,89 @@
+# Overlay for _notes/ai/ai_futures.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: AI futures
+hook: Short thoughts on AGI, then notes on Stuart Russell's Human Compatible and the essays in Possible Minds.
+intro: |
+  A few opening thoughts on AGI: a definition based on replacing human labor, and why deliberate misuse by
+  people may be a bigger risk than loss of control. Most of the chapter is book notes. Stuart Russell's
+  Human Compatible argues that a machine optimizing a fixed objective will pursue it at any cost, even by
+  disabling its own off-switch, and proposes instead that AI be uncertain about human preferences and learn
+  them, as in inverse RL.
+
+  Possible Minds collects short essays responding to Norbert Wiener: Pearl on the limits of opaque learning
+  machines, Russell on value alignment, Dennett on AI as tools, Tegmark on risk, Pinker's skepticism, Deutsch
+  on creating new explanations, Griffiths on human learning, and others. The notes record each author's
+  view, not a consensus.
+sections:
+  🤖 AGI thoughts:
+    lead: |
+      Three short opinions: a definition of AGI as AI that can substitute for human labor, deliberate misuse by
+      people as a larger risk than loss of control, and data limits (as in medicine) slowing general progress.
+  what if we succeed?:
+    lead: |
+      Russell starts from a definition: machines are beneficial to the extent that their actions can be expected
+      to achieve our objectives, not theirs. The section also traces how AI moved from goals and logic to
+      utilities and probabilities, and lists what a superhuman AI could do.
+  harms of ai:
+    lead: |
+      The near-term harms: surveillance and persuasion, lethal autonomous weapons, automated blackmail, fake
+      media, and automation of jobs.
+  value alignment:
+    lead: |
+      The King Midas problem: an AI given a slightly wrong objective pursues it exactly, with unintended
+      results. Almost any objective also gives it a reason to stop people from switching it off.
+  possible solns:
+    lead: |
+      The main proposal is that the AI should be uncertain about human preferences and infer them from
+      behavior. The complications list why that is hard.
+  possible minds:
+    lead: |
+      Short essays responding to Norbert Wiener, one section per author. Each section records that author's
+      view.
+  intro (brockman):
+    lead: |
+      Brockman frames the book with Wiener: we create tools and are reshaped by using them. Wiener's analog,
+      pessimistic cybernetics fell out of fashion, but it helped inspire the field.
+  the limitations of opaque learning machines (judea pearl):
+    lead: |
+      Pearl separates three levels of reasoning: statistical, causal and counterfactual. He sees deep learning
+      as opaque and more about speed than learning.
+  the purpose put into the machine (stuart russell):
+    lead: |
+      Human Compatible in brief: AI research studies how to achieve objectives, not how to choose them. A robot
+      that learns its reward from a human (cooperative inverse RL) stays uncertain about it, and that
+      uncertainty gives it a reason to preserve its off-switch.
+  the third law (george dyson):
+    lead: |
+      Dyson contrasts digital and analog computing and ends with three laws, the last being that any system
+      simple enough to be understandable will not be complicated enough to behave intelligently, and vice versa.
+  what can we do? (daniel dennett):
+    lead: |
+      Dennett wants AI kept as tools, intelligent but not conscious, more like oracles. The danger he sees is
+      people drifting into dependence on it.
+  lets aspire to more than making ourselves obsolete (max tegmark):
+    lead: |
+      Tegmark argues that the real risk of AGI is competence, not malice, and that safety research must come
+      before the systems. He gives three reasons the danger is downplayed.
+  tech prophecy and the underappreciated causal power of ideas (steven pinker):
+    lead: |
+      Pinker doubts both feared outcomes, a surveillance state and an AI takeover. Intelligence is the ability
+      to reach a goal by new means, and says nothing about what the goal is.
+  beyond reward and punishment (david deutsch):
+    lead: |
+      For Deutsch, thinking means creating new hypotheses, not only updating Bayesian beliefs. Current AI
+      searches a restricted space, while an AGI would have to come up with the space itself.
+  the artificial use of human beings (tom griffiths):
+    lead: |
+      Griffiths ties value alignment to human learning. Inverse RL infers rewards from behavior, but people
+      follow simple heuristics and trade time against the importance of a decision (bounded optimality), so
+      their actions are not simply rational.
+  Information for wiener, Shannon, and for Us (david kaiser):
+    lead: |
+      Kaiser contrasts Wiener's semantic view of information with Shannon's entropy, and revisits Wiener's
+      warning that machines would dominate us only when individuals become the same.
+takeaways:
+  - A machine that optimizes a fixed objective pursues it exactly, with unintended results (the King Midas problem), and almost any objective gives it a reason to disable its off-switch.
+  - Russell's alternative is an AI that is uncertain about human preferences and infers them from behavior, as in inverse RL; that uncertainty is what makes it keep its off-switch.
+  - Learning preferences is hard because instructions are ambiguous, people differ, preferences change, and utilities are hard to compare across people.
+  - The Possible Minds essays disagree. Pearl and Deutsch stress the limits of current learning machines, Russell, Tegmark and Tallinn stress risk, and Pinker doubts takeover scenarios.
+  - The opening view is that deliberate misuse by people, such as concentrating power, may be a greater risk than loss of control.
+figures: {}

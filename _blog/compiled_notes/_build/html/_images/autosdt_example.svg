@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 670" role="img" aria-labelledby="title desc">
+  <title id="title">AutoSDT example record</title>
+  <desc id="desc">One AutoSDT training record with three string fields. instruction: the system prompt telling the model it is an expert Python programming assistant that writes a complete program and wraps it in a python code block. input: a task to generate material property features (mean atomic weight, mean column, mean row, differences in atomic numbers, covalent radii, electronegativities) for compositions Fe2O3, NaCl, CaTiO3, SiO2, Al2O3 and MgO and save them to pred_results/MeredigAttributeGenerator_pred.csv. output: the beginning of the Python solution defining a CompositionEntry class.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <style>
+      text { fill: #2b2b2b; font-family: Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+      .hd { font-size: 24px; font-weight: bold; }
+      .ty { font-size: 20px; fill: #8a8a8a; }
+      .tx { font-size: 20.5px; }
+    </style>
+  </defs>
+  <text class="hd" x="14" y="36">instruction</text>
+  <text class="ty" x="14" y="66">string · <tspan font-style="italic">classes</tspan></text>
+  <text class="tx" x="14" y="122">You are an expert Python programming assistant</text>
+  <text class="tx" x="14" y="149">that helps scientist users to write</text>
+  <text class="tx" x="14" y="176">high-quality code to solve their tasks.</text>
+  <text class="tx" x="14" y="203">Given a user request, you are expected to write</text>
+  <text class="tx" x="14" y="230">a complete program that accomplishes the</text>
+  <text class="tx" x="14" y="257">requested task and save any outputs in the</text>
+  <text class="tx" x="14" y="284">correct format.</text>
+  <text class="tx" x="14" y="311">Please wrap your program in a code block that</text>
+  <text class="tx" x="14" y="338">specifies the script type, python. For example:</text>
+  <text class="tx" x="14" y="365">```python</text>
+  <text class="tx" x="14" y="392">print(&quot;Hello World!&quot;)</text>
+  <text class="tx" x="14" y="419">```</text>
+  <text class="hd" x="634" y="36">input</text>
+  <text class="ty" x="634" y="66">string · <tspan font-style="italic">lengths</tspan></text>
+  <text class="tx" x="634" y="122">Generate material property features for a set</text>
+  <text class="tx" x="634" y="149">of chemical compositions specified in the</text>
+  <text class="tx" x="634" y="176">code, which includes &quot;Fe2O3&quot;, &quot;NaCl&quot;,</text>
+  <text class="tx" x="634" y="203">&quot;CaTiO3&quot;, &quot;SiO2&quot;, &quot;Al2O3&quot;, and &quot;MgO&quot;. The</text>
+  <text class="tx" x="634" y="230">program will compute various attributes such</text>
+  <text class="tx" x="634" y="257">as mean atomic weight, mean column, mean row,</text>
+  <text class="tx" x="634" y="284">and differences in atomic numbers, covalent</text>
+  <text class="tx" x="634" y="311">radii, and electronegativities based on the</text>
+  <text class="tx" x="634" y="338">elemental composition of each material. Save</text>
+  <text class="tx" x="634" y="365">the resulting features to a CSV file named &quot;p</text>
+  <text class="tx" x="634" y="392">red_results/MeredigAttributeGenerator_pred.cs</text>
+  <text class="tx" x="634" y="419">v&quot; without including the index. The output</text>
+  <text class="tx" x="634" y="446">file will contain a header row with the names</text>
+  <text class="tx" x="634" y="473">of the computed features along with the</text>
+  <text class="tx" x="634" y="500">corresponding compositions.</text>
+  <text class="hd" x="1232" y="36">output</text>
+  <text class="ty" x="1232" y="66">string · <tspan font-style="italic">lengths</tspan></text>
+  <text class="tx" x="1232" y="122">```python</text>
+  <text class="tx" x="1232" y="149">import os</text>
+  <text class="tx" x="1232" y="176">import numpy as np</text>
+  <text class="tx" x="1232" y="203">import pandas as pd</text>
+  <text class="tx" x="1232" y="230">import sys</text>
+  <text class="tx" x="1232" y="257"></text>
+  <text class="tx" x="1232" y="284">class CompositionEntry:</text>
+  <text class="tx" x="1232" y="311">&quot;&quot;&quot;Class to represent composition entries.</text>
+  <text class="tx" x="1232" y="338"></text>
+  <text class="tx" x="1232" y="365">This is a simplified version of the original</text>
+  <text class="tx" x="1232" y="392">CompositionEntry class.</text>
+  <text class="tx" x="1232" y="419">&quot;&quot;&quot;</text>
+  <text class="tx" x="1232" y="446"></text>
+  <text class="tx" x="1232" y="473">def __init__(self, composition):</text>
+  <text class="tx" x="1232" y="500">&quot;&quot;&quot;Initialize a CompositionEntry with a composition string.</text>
+  <text class="tx" x="1232" y="527"></text>
+  <text class="tx" x="1232" y="554">Parameters</text>
+  <text class="tx" x="1232" y="581">----------</text>
+  <text class="tx" x="1232" y="608">composition : str</text>
+  <text class="tx" x="1232" y="635">…</text>
+  <line x1="620" y1="0" x2="620" y2="670" stroke="#8a8a8a" stroke-width="1.5"/>
+  <line x1="1218" y1="0" x2="1218" y2="670" stroke="#8a8a8a" stroke-width="1.5"/>
+  <line x1="0" y1="86" x2="2000" y2="86" stroke="#8a8a8a" stroke-width="1.5"/>
+</svg>

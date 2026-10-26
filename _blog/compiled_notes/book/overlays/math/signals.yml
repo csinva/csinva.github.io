@@ -1,0 +1,80 @@
+# Overlay for _notes/math/signals.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Signals           # short name on the start-page topic map
+title: Signal processing
+hook: Sampling, filters, the Fourier transform and DFT, and wavelets, which are localized in both time and frequency.
+intro: |
+  A signal can be studied in time, in frequency, or in both at once. The intro covers sampling and the
+  common filters, and the figure at its end compares how each representation tiles the time-frequency
+  plane. Fourier analysis is the frequency view: the discrete Fourier transform (DFT) writes a sequence as
+  a sum of sinusoids and is computed with the FFT.
+
+  Wavelets give up some frequency precision to keep time information. The wavelet sections describe the
+  basis (shifts and dilations of a mother wavelet), common choices such as Haar and Morlet, how the
+  discrete wavelet transform is computed with low-pass and high-pass filters, and what properties
+  (vanishing moments, regularity) separate one wavelet basis from another.
+sections:
+  intro:
+    lead: |
+      Sampling turns a continuous signal into numbers. Shannon's statement below is the condition for
+      losing nothing: a signal with no frequencies above $B$ needs samples at least $2B$ times per second.
+    viz:
+      - name: sampling-alias
+        params: {f: 3, fs: 10}
+        caption: |
+          A 3 Hz sine sampled 10 times a second. Lower the sampling rate below $2f$ (or raise $f$ above
+          $f_s/2$) and the same samples also fit a slower sinusoid (green, dashed): from the samples alone
+          the two can't be told apart.
+  fourier analysis:
+    lead: |
+      Each DFT coefficient $X_k$ is the correlation between the <span class="cblue">signal</span> and one
+      <span class="corange">complex sinusoid</span>; its <span class="cgreen">real part</span> comes from the
+      cosine and its <span class="cpink">imaginary part</span> from the sine.
+    viz:
+      - name: fourier-partial-sums
+        params: {wave: square, K: 5}
+        caption: |
+          A Fourier series rebuilt one harmonic at a time. The bars are the power spectrum, the squared
+          coefficient of each harmonic. The triangle wave has no jumps and its power falls off fast, so a few
+          harmonics are enough. The square wave and sawtooth jump: they need many more, and the partial sums
+          keep wiggling next to each jump.
+  wavelet analysis:
+    lead: |
+      A sinusoid lasts forever, so a Fourier coefficient says nothing about when a frequency occurs.
+      A wavelet is a short wave: shifting it gives time information and stretching it gives frequency.
+  wavelet basics:
+    lead: |
+      Every wavelet basis is built from one mother wavelet $\phi$ by <span class="cblue">translations</span>
+      $b$ and <span class="corange">dilations</span> $a$. The discrete wavelet transform restricts these to
+      powers of 2 and integer shifts; the examples (Haar, Morlet, Mexican hat, Daubechies) differ in the shape of $\phi$.
+  properties of different wavelet bases:
+    lead: |
+      What separates one basis from another. More vanishing moments give a smoother, more complex wavelet
+      with longer support, and inverting the transform needs a wavelet with zero mean.
+  more general wavelets:
+    lead: |
+      Extensions of the wavelet idea: generalized Daubechies and coiflet families, shearlets and curvelets for
+      anisotropic features, and wavelets learned from data.
+takeaways:
+  - A signal with no frequencies above $B$ is determined by samples taken at least $2B$ times per second; sampling slower aliases high frequencies onto low ones.
+  - Each DFT coefficient $X_k$ is the correlation between the signal and one complex sinusoid, and the sinusoids form an orthogonal basis.
+  - The FFT computes the DFT in $O(n \log n)$ instead of $O(n^2)$.
+  - Fourier coefficients have no time information; wavelets, shifted and stretched copies of one mother wavelet, are localized in both time and frequency.
+  - The discrete wavelet transform repeatedly splits a signal into low-pass approximation and high-pass detail coefficients.
+figures:
+  transforms.svg: |
+    How each representation tiles the time-frequency plane. The raw time series resolves time but not
+    frequency, the Fourier transform the reverse, and the short-time FT uses a uniform grid. The wavelet
+    transform uses narrow, tall cells at high frequencies and wide, short cells at low frequencies.
+  haar.svg: |
+    The Haar mother wavelet, $+1$ on the first half of its interval and $-1$ on the second, and four
+    scaled and shifted copies: two at the original width and two at half the width.
+  wavelet_coefs.svg: |
+    Ways to lay out a 2-D wavelet decomposition in pywt: the standard dyadic pyramid, a fully separable
+    decomposition, and full and custom wavelet packets, which also split the detail bands.
+  amplitude-period-ex3.svg: |
+    A sinusoid and its parameters: amplitude (here 3), period ($0.02\pi$) and phase shift (0.01).
+  wavelet_comp.png: |
+    The discrete wavelet transform of a chirp, a sinusoid whose frequency rises over time. Left: each
+    level splits the previous low-pass (LP) output into a new low-pass and a high-pass (HP) part. Right:
+    the approximation (low-pass) and detail (high-pass) coefficients for levels 1 to 5. The fast end of the
+    chirp shows up in the first levels' details, the slow start only at the deepest levels.

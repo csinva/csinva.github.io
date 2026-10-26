@@ -1,0 +1,12 @@
+# Part page for the math part. intro: shown on the part page; blurb: shown under the part on the start page.
+intro: |
+  The math the rest of the book uses. Math basics, calculus and linear algebra are reference chapters:
+  identities, derivative tables, matrix facts, norms and decompositions. Optimization builds on them,
+  from convex sets and duality to gradient descent and the optimizers used for neural networks.
+
+  The other chapters go deeper into single topics: real analysis proves the calculus facts from the
+  axioms of the real numbers, differential equations and nonlinear dynamics cover how systems evolve
+  in time, and signal processing covers the Fourier and wavelet transforms.
+blurb: |
+  Reference chapters on calculus, linear algebra and optimization, plus real analysis, differential
+  equations, nonlinear dynamics and signal processing.

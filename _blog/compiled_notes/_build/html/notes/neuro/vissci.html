@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.3. vision</title>
+    <title>Vision &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/neuro/vissci';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.4. comp neuro" href="comp_neuro.html" />
-    <link rel="prev" title="7.2. brain basics" href="brain_basics.html" />
+    <link rel="next" title="Motor system" href="motor.html" />
+    <link rel="prev" title="Sensory input" href="sensory_input.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws_section.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="neuro_section.html">7. neuro</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_omics.html">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/neuro/vissci.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>vision</h1>
+    <h1>Vision</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,78 +471,78 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-signals">7.3.1. neural signals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology">7.3.2. electrophysiology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-imaging">7.3.3. recording + imaging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrode-arrays">7.3.3.1. electrode arrays</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imaging-voltage">7.3.3.2. imaging - voltage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-signals">Neural signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology">Electrophysiology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-imaging">Recording + imaging</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrode-arrays">Electrode arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imaging-voltage">Imaging - voltage</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rod-and-cone-photoreceptor-function">7.3.4. rod and cone photoreceptor function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-cells-outer-retinal-signaling-and-lateral-inhibition">7.3.5. horizontal cells - outer retinal signaling and lateral inhibition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information">7.3.6. signaling pathways through the retina - amacrine cells and inner retinal processing of visual information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-ganglion-cells">7.3.7. retinal ganglion cells</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primate-retina">7.3.7.1. primate retina</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rod-and-cone-photoreceptor-function">Rod and cone photoreceptor function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-cells-outer-retinal-signaling-and-lateral-inhibition">Horizontal cells - outer retinal signaling and lateral inhibition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information">Signaling pathways through the retina - amacrine cells and inner retinal processing of visual information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-ganglion-cells">Retinal ganglion cells</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primate-retina">Primate retina</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-neuronal-retina-stuff">7.3.8. non-neuronal retina stuff</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-glia">7.3.8.1. retinal glia</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-pigment-epithelium-rpe">7.3.8.2. retinal pigment epithelium (rpe)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-blood-supply">7.3.8.3. retinal blood supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-neuronal-retina-stuff">Non-neuronal retina stuff</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-glia">Retinal glia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-pigment-epithelium-rpe">Retinal pigment epithelium (rpe)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-blood-supply">Retinal blood supply</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-diseases">7.3.9. retinal diseases</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-related-macular-degeneration">7.3.9.1. age-related macular degeneration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry">7.3.9.1.1. dry</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wet">7.3.9.1.2. wet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-diseases">Retinal diseases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-related-macular-degeneration">Age-related macular degeneration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry">Dry</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wet">Wet</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diabetic-retinopathy">7.3.9.2. diabetic retinopathy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glaucoma">7.3.9.3. glaucoma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diabetic-retinopathy">Diabetic retinopathy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glaucoma">Glaucoma</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-methods">7.3.10. experimental methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell">7.3.10.1. single cell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alteration">7.3.10.2. alteration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-electromagnetic-signals">7.3.10.3. measure electromagnetic signals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dyes">7.3.10.4. dyes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blood">7.3.10.5. blood</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pet">7.3.10.6. PET</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-visual-cortex">7.3.10.7. mapping visual cortex</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-resonance-spectroscopy-mrs">7.3.10.7.1. magnetic resonance spectroscopy (mrs)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#event-related-optical-signal">7.3.10.7.2. event-related optical signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-methods">Experimental methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell">Single cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alteration">Alteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-electromagnetic-signals">Measure electromagnetic signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dyes">Dyes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blood">Blood</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pet">PET</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-visual-cortex">Mapping visual cortex</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-resonance-spectroscopy-mrs">Magnetic resonance spectroscopy (mrs)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#event-related-optical-signal">Event-related optical signal</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#info-processing-in-the-visual-system">7.3.11. info processing in the visual system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-range-of-rods-cones">7.3.12. dynamic range of rods + cones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitening-and-tiling">7.3.13. whitening and tiling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-pathways">7.3.14. visual pathways</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3.14.1. visual pathways</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lgn">7.3.14.2. lgn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color">7.3.14.3. color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eye-movements">7.3.14.4. eye movements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#info-processing-in-the-visual-system">Info processing in the visual system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-range-of-rods-cones">Dynamic range of rods + cones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitening-and-tiling">Whitening and tiling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-pathways">Visual pathways</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visual pathways</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lgn">Lgn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color">Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eye-movements">Eye movements</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-primary">7.3.15. v1 (primary)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrastriate-cortex">7.3.16. extrastriate cortex</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dorsal-stream">7.3.16.1. dorsal stream</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventral-stream">7.3.16.2. ventral stream</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-primary">V1 (primary)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrastriate-cortex">Extrastriate cortex</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dorsal-stream">Dorsal stream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventral-stream">Ventral stream</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding">7.3.17. sparse coding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-recognition">7.3.18. object recognition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-modulation">7.3.19. top-down modulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endogenous">7.3.19.1. endogenous</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous">7.3.19.2. exogenous</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-search">7.3.19.3. visual search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding">Sparse coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-recognition">Object recognition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-modulation">Top-down modulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endogenous">Endogenous</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous">Exogenous</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-search">Visual search</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-neuropsychology">7.3.20. visual neuropsychology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-cortical-development-plasticity">7.3.21. visual cortical development + plasticity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adult-plasticity">7.3.22. adult plasticity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">7.3.23. alzheimer’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-neuropsychology">Visual neuropsychology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-cortical-development-plasticity">Visual cortical development + plasticity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adult-plasticity">Adult plasticity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">Alzheimer’s</a></li>
 </ul>
             </nav>
         </div>
@@ -504,10 +554,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="vision">
-<h1><span class="section-number">7.3. </span>vision<a class="headerlink" href="#vision" title="Link to this heading">#</a></h1>
-<section id="neural-signals">
-<h2><span class="section-number">7.3.1. </span>neural signals<a class="headerlink" href="#neural-signals" title="Link to this heading">#</a></h2>
+  <p class="breadcrumb"><a href="../../parts/neuro.html">Neuroscience</a> &nbsp;·&nbsp; chapter 3 of 8 &nbsp;·&nbsp; 22 min read</p><section class="tex2jax_ignore mathjax_ignore" id="vision">
+<h1>Vision<a class="headerlink" href="#vision" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some notes on vision science, from photoreceptors and retinal circuits to recording and imaging methods.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>The chapter follows the signal. It starts in the retina: rods and cones, horizontal cells that subtract the surround, amacrine and ganglion cells that split the image into parallel channels, and the glia, pigment epithelium and blood supply that keep it all running (and the retinal diseases where they fail). It then goes through the LGN to V1 and out along the dorsal “where” and ventral “what” streams, ending with attention, lesion studies, development and plasticity.</p>
+<p>Two other threads run through it. One is methods: patch clamp, electrode arrays and spike-triggered averages, calcium and voltage imaging, EEG, fMRI and PET, each placed on a map of spatial and temporal resolution. The other is theory: natural images are highly redundant, and center-surround receptive fields, whitening, efficient and sparse coding, and predictive coding are all ways of removing that redundancy before sending spikes down an expensive optic nerve.</p>
+</div>
+<details class="chapter-outline"><summary>Chapter outline: 23 sections</summary><ol><li><a href="#sec-vissci-neural-signals">Neural signals</a><span class="ol-lead">A short review of the signaling facts used later.</span></li><li><a href="#sec-vissci-electrophysiology">Electrophysiology</a><span class="ol-badge">4 figures</span><span class="ol-lead">How single cells are recorded.</span></li><li><a href="#sec-vissci-recording-imaging">Recording + imaging</a><span class="ol-badge">1 interactive</span><span class="ol-lead">Recording many cells at once.</span></li><li><a href="#sec-vissci-rod-and-cone-photoreceptor-function">Rod and cone photoreceptor function</a><span class="ol-badge">2 figures</span><span class="ol-lead">Rods and cones trade sensitivity for speed: rods are sensitive and slow and saturate in daylight, cones are less sensitive, fast, and pack the fovea.</span></li><li><a href="#sec-vissci-horizontal-cells-outer-retinal-signaling-and-lat">Horizontal cells - outer retinal signaling and lateral inhibition</a><span class="ol-badge">1 interactive</span><span class="ol-lead">An on-center cell responds best to a small light spot.</span></li><li><a href="#sec-vissci-signaling-pathways-through-the-retina-amacrine-c">Signaling pathways through the retina - amacrine cells and inner retinal processing of visual information</a><span class="ol-lead">Bipolar cells start the parallel channels, and amacrine cells shape them on the way to the ganglion cells.</span></li><li><a href="#sec-vissci-retinal-ganglion-cells">Retinal ganglion cells</a><span class="ol-lead">The retina&#x27;s output.</span></li><li><a href="#sec-vissci-non-neuronal-retina-stuff">Non-neuronal retina stuff</a><span class="ol-badge">1 figure</span><span class="ol-lead">The cells that keep the retina running: glia, the pigment epithelium and two separate blood supplies.</span></li><li><a href="#sec-vissci-retinal-diseases">Retinal diseases</a><span class="ol-lead">Three diseases, each damaging a different layer: macular degeneration (photoreceptors, RPE and choroid in the macula), diabetic retinopathy (leaky capillaries), and glaucoma (ganglion cells and the optic nerve).</span></li><li><a href="#sec-vissci-experimental-methods">Experimental methods</a><span class="ol-badge">3 figures</span><span class="ol-lead">No method is good on every axis.</span></li><li><a href="#sec-vissci-info-processing-in-the-visual-system">Info processing in the visual system</a><span class="ol-lead">Vision is ill-posed: the same retinal image can come from many scenes, so the brain has to bring in priors.</span></li><li><a href="#sec-vissci-dynamic-range-of-rods-cones">Dynamic range of rods + cones</a><span class="ol-badge">1 figure</span><span class="ol-lead">Spontaneous isomerizations set the lower limit of light detection.</span></li><li><a href="#sec-vissci-whitening-and-tiling">Whitening and tiling</a><span class="ol-lead">Neighboring pixels in natural images are correlated, with power falling as frequency rises.</span></li><li><a href="#sec-vissci-visual-pathways">Visual pathways</a><span class="ol-badge">2 figures</span><span class="ol-lead">Everything visual passes through the thalamus on its way to cortex.</span></li><li><a href="#sec-vissci-v1-primary">V1 (primary)</a><span class="ol-badge">1 interactive</span><span class="ol-badge">2 figures</span><span class="ol-lead">V1 is where orientation and direction selectivity first appear.</span></li><li><a href="#sec-vissci-extrastriate-cortex">Extrastriate cortex</a><span class="ol-lead">Beyond V1 the areas split into a dorsal stream through MT (motion, where things are, vision for action) and a ventral stream through V4 and IT (color, form, objects, faces).</span></li><li><a href="#sec-vissci-sparse-coding">Sparse coding</a><span class="ol-lead">Why V1 has oriented, localized, bandpass receptive fields: representing natural images with as few active neurons as possible produces them.</span></li><li><a href="#sec-vissci-object-recognition">Object recognition</a><span class="ol-lead">The Gabor function (a sinusoid under a Gaussian envelope) is the standard model of a V1 simple cell.</span></li><li><a href="#sec-vissci-top-down-modulation">Top-down modulation</a><span class="ol-lead">Attention changes responses in V4 and even V1.</span></li><li><a href="#sec-vissci-visual-neuropsychology">Visual neuropsychology</a><span class="ol-lead">What lesions show: blindsight after V1 damage, motion blindness after MT damage, loss of color after V4 damage, and agnosias such as prosopagnosia.</span></li><li><a href="#sec-vissci-visual-cortical-development-plasticity">Visual cortical development + plasticity</a><span class="ol-lead">The steps any nervous system goes through as it is built, then three stages for the retina-LGN-V1 pathway: wiring set up before experience (with retinal waves), a critical period in which inputs compete, and more limited plasticity in adults.</span></li><li><a href="#sec-vissci-adult-plasticity">Adult plasticity</a><span class="ol-lead">Aftereffects such as color afterimages and the tilt aftereffect are usually explained by fatigue of the stimulated neurons, but some last far too long for that.</span></li><li><a href="#sec-vissci-alzheimer-s">Alzheimer&#x27;s</a><span class="ol-lead">Alzheimer&#x27;s shows up in the retina as well.</span></li></ol></details><section id="neural-signals">
+<span id="sec-vissci-neural-signals"></span><h2>Neural signals<a class="headerlink" href="#neural-signals" title="Link to this heading">#</a></h2>
+<p class="section-lead">A short review of the signaling facts used later. Spikes travel faster with dense, fast channels, wide axons and high membrane resistance; the last two set the length constant <span class="math notranslate nohighlight">\(\lambda = \sqrt{r_m / r_a}\)</span>, how far a voltage spreads along the axon. An inhibitory synapse whose reversal potential is 0 (as <span class="math notranslate nohighlight">\(E_{Cl}\)</span> sometimes is) divides the response instead of subtracting from it: shunting inhibition.</p>
 <ul class="simple">
 <li><p>ion channel properties</p>
 <ul>
@@ -540,7 +596,8 @@ document.write(`
 </ul>
 </section>
 <section id="electrophysiology">
-<h2><span class="section-number">7.3.2. </span>electrophysiology<a class="headerlink" href="#electrophysiology" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-electrophysiology"></span><h2>Electrophysiology<a class="headerlink" href="#electrophysiology" title="Link to this heading">#</a></h2>
+<p class="section-lead">How single cells are recorded. The figures show the recording circuit and the junction potentials that have to be canceled for the voltage reading to be right.</p>
 <ul>
 <li><p>EEG - whole brain</p></li>
 <li><p>ERG (electroretinogram) - whole retina</p></li>
@@ -563,11 +620,29 @@ document.write(`
 </li>
 <li><p>clamp</p>
 <ul>
-<li><img style="width: 700px; max-width: 100%;" src="../assets/clamp_main.svg" alt="Single-cell recording"/>
+<li><figure class="align-default" id="id2">
+<a class="note-figure reference internal image-reference" href="../../_images/clamp_main.svg"><img alt="A single-cell recording circuit. The pipette's Ag/AgCl wire sits in &quot;intracellular&quot; solution, a second Ag/AgCl wire grounds the bath, and an amplifier reads the voltage between them." class="note-figure" src="../../_images/clamp_main.svg" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> A single-cell recording circuit. The pipette’s Ag/AgCl wire sits in “intracellular” solution, a second Ag/AgCl wire grounds the bath, and an amplifier reads the voltage between them.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
-<li><img style="width: 700px; max-width: 100%;" src="../assets/clamp_junction.svg" alt="Junction potentials"/>
+<li><figure class="align-default" id="id3">
+<a class="note-figure reference internal image-reference" href="../../_images/clamp_junction.svg"><img alt="Where the junction potential at each Ag/AgCl electrode comes from. A few mM Cl⁻ in both solutions keeps it stable, and the potentials at the pipette and the bath ground roughly cancel." class="note-figure" src="../../_images/clamp_junction.svg" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> Where the junction potential at each Ag/AgCl electrode comes from. A few mM Cl⁻ in both solutions keeps it stable, and the potentials at the pipette and the bath ground roughly cancel.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
-<li><img style="width: 700px; max-width: 100%;" src="../assets/clamp_tip.svg" alt="Liquid junction potential"/>
+<li><figure class="align-default" id="id4">
+<a class="note-figure reference internal image-reference" href="../../_images/clamp_tip.svg"><img alt="The liquid junction potential at the pipette tip: ions in the pipette and the bath diffuse at different speeds, which separates charge and leaves the tip about −10 mV from the bath." class="note-figure" src="../../_images/clamp_tip.svg" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> The liquid junction potential at the pipette tip: ions in the pipette and the bath diffuse at different speeds, which separates charge and leaves the tip about −10 mV from the bath.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -593,15 +668,24 @@ document.write(`
 <li><p>I - maximal current evoked by clamping at this voltage</p></li>
 </ul>
 </li>
-<li><img style="width: 650px; max-width: 100%;" src="../assets/circuit_model.svg" alt="Circuit model"/>
+<li><figure class="align-default" id="id5">
+<a class="note-figure reference internal image-reference" href="../../_images/circuit_model.svg"><img alt="A branching neuron as a compartmental circuit: each patch of membrane is a resistor and capacitor to ground, linked to its neighbors by axial resistors." class="note-figure" src="../../_images/circuit_model.svg" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text"><span class="fig-num">Figure 4.</span> A branching neuron as a compartmental circuit: each patch of membrane is a resistor and capacitor to ground, linked to its neighbors by axial resistors.</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </section>
 <section id="recording-imaging">
-<h2><span class="section-number">7.3.3. </span>recording + imaging<a class="headerlink" href="#recording-imaging" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-recording-imaging"></span><h2>Recording + imaging<a class="headerlink" href="#recording-imaging" title="Link to this heading">#</a></h2>
+<p class="section-lead">Recording many cells at once. A multi-electrode array under a piece of retina records many ganglion cells; showing white noise and averaging the frames before each spike gives each cell’s receptive field.</p>
 <section id="electrode-arrays">
-<h3><span class="section-number">7.3.3.1. </span>electrode arrays<a class="headerlink" href="#electrode-arrays" title="Link to this heading">#</a></h3>
-<ul class="simple">
+<h3>Electrode arrays<a class="headerlink" href="#electrode-arrays" title="Link to this heading">#</a></h3>
+<p class="section-lead">Spike sorting assigns each recorded spike to a cell by its amplitude, shape and refractory period. The spike-triggered average then shows more than a blob: a ganglion cell’s field is a few small spots, one per cone it connects to, and clustering cells by their STA time course sorts them into types that tile the retina.</p>
+<figure class="nb-viz-figure" id="viz-sta-cone-mosaic"><div class="nb-viz" data-viz="sta-cone-mosaic" data-params="{&quot;frames&quot;: 3}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 1.</span> A toy ganglion cell whose receptive field is eight cones (right), shown Gaussian white noise and firing Poisson spikes at a rate that grows exponentially with its filtered input. Any single frame that drew a spike looks like noise (left); the average of all of them does not (middle). Slide up the number of frames: the cone spots stand out once about a thousand spikes are averaged, because the noise in each pixel shrinks like \(1/\sqrt{\text{spikes}}\) while the signal stays the same.</figcaption></figure><ul class="simple">
 <li><p>multi-electrode array recording (MEA)</p>
 <ul>
 <li><p>well-suited for retina</p></li>
@@ -617,7 +701,7 @@ document.write(`
 </ul>
 </li>
 <li><p>spatiotemporal white noise stimulu - sequence of stimulus frames with randomly assigned pixel intensities (Bernoulli or Gaussian)</p></li>
-<li><p><em>spike-triggered average stimulus</em> - averagin frames that correspond to spikes - yields receptive field</p>
+<li><p><span id="def-spike-triggered-average-stimulus" class="def-anchor"></span><em>spike-triggered average stimulus</em> - averagin frames that correspond to spikes - yields receptive field</p>
 <ul>
 <li><p>requires finding timing (too short and spike won’t fire, too long and won’t repeatedly fire)</p></li>
 </ul>
@@ -629,7 +713,7 @@ document.write(`
 </ul>
 </li>
 <li><p>cell mosaics - ganglion cells tile entire retina</p></li>
-<li><p>ganglion cell receptive field instead of one blob is several small blobs (the cone array)</p>
+<li><p>ganglion cell <a class="term-link" href="comp_neuro.html#def-receptive-field" data-def="the things that make a neuron fire · Computational neuroscience">receptive field</a> instead of one blob is several small blobs (the cone array)</p>
 <ul>
 <li><p>each blob corresponds to one cone cell</p></li>
 </ul>
@@ -644,9 +728,10 @@ document.write(`
 </ul>
 </section>
 <section id="imaging-voltage">
-<h3><span class="section-number">7.3.3.2. </span>imaging - voltage<a class="headerlink" href="#imaging-voltage" title="Link to this heading">#</a></h3>
+<h3>Imaging - voltage<a class="headerlink" href="#imaging-voltage" title="Link to this heading">#</a></h3>
+<p class="section-lead">Voltage-sensitive dyes would record many cells’ voltages at once, but they are toxic and give tiny signals, since spikes are brief and small. Calcium imaging with GCaMPs is the practical substitute, at the cost of a slower signal than the voltage itself.</p>
 <ul class="simple">
-<li><p><strong>voltage-sensitive dyes</strong> - would be great</p>
+<li><p><span id="def-voltage-sensitive-dyes" class="def-anchor"></span><strong>voltage-sensitive dyes</strong> - would be great</p>
 <ul>
 <li><p>could provide spatially localized, non invasive recordings</p></li>
 <li><p>doesn’t exists - usually toxic and inefficient (small fluorescence change / voltage change)</p>
@@ -699,18 +784,25 @@ document.write(`
 </section>
 </section>
 <section id="rod-and-cone-photoreceptor-function">
-<h2><span class="section-number">7.3.4. </span>rod and cone photoreceptor function<a class="headerlink" href="#rod-and-cone-photoreceptor-function" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>retina - large metabolic rate</p>
+<span id="sec-vissci-rod-and-cone-photoreceptor-function"></span><h2>Rod and cone photoreceptor function<a class="headerlink" href="#rod-and-cone-photoreceptor-function" title="Link to this heading">#</a></h2>
+<p class="section-lead">Rods and cones trade sensitivity for speed: rods are sensitive and slow and saturate in daylight, cones are less sensitive, fast, and pack the fovea.</p>
 <ul>
+<li><p>retina - large metabolic rate</p>
+<ul class="simple">
 <li><p>at the back of the eye, fairly regular array</p></li>
 <li><p>~1.2 mil optic nerve fibers</p></li>
 </ul>
 </li>
-<li><p><img alt="" src="../../_images/layers.png" /></p></li>
+<li><figure class="align-default" id="id6">
+<img alt="The layers of the retina, from the pigment epithelium at the back to the inner limiting membrane. Light enters from the bottom and passes through the ganglion, amacrine, bipolar and horizontal cells b" class="note-figure" src="../../_images/layers.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text"><span class="fig-num">Figure 5.</span> The layers of the retina, from the pigment epithelium at the back to the inner limiting membrane. Light enters from the bottom and passes through the ganglion, amacrine, bipolar and horizontal cells before reaching the rods and cones.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p>pigment absorbs stray photons to reduce noise</p></li>
 <li><p>cones</p>
-<ul>
+<ul class="simple">
 <li><p>~6 mil cones</p></li>
 <li><p>low sensitivity</p></li>
 <li><p>fast responses</p></li>
@@ -719,17 +811,23 @@ document.write(`
 </ul>
 </li>
 <li><p>rods</p>
-<ul>
+<ul class="simple">
 <li><p>~120 mil</p></li>
 <li><p>high sensitivity to light</p></li>
 <li><p>slow responses</p></li>
 <li><p>saturate</p></li>
 </ul>
 </li>
-<li><p><img alt="" src="../../_images/receptor_densities.png" /></p></li>
-<li><p><em>photo-transduction</em> - converts photons into voltage-changes</p></li>
+<li><figure class="align-default" id="id7">
+<img alt="Rod and cone density across the retina. Cones peak sharply at the fovea (0°), where there are no rods; rods peak around 20° and fall off toward the periphery. Neither is present at the optic disc." class="note-figure" src="../../_images/receptor_densities.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text"><span class="fig-num">Figure 6.</span> Rod and cone density across the retina. Cones peak sharply at the fovea (0°), where there are no rods; rods peak around 20° and fall off toward the periphery. Neither is present at the optic disc.</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><span id="def-photo-transduction" class="def-anchor"></span><em>photo-transduction</em> - converts photons into voltage-changes</p></li>
 <li><p>terminals</p>
-<ul>
+<ul class="simple">
 <li><p>cone <em>pedicle</em></p></li>
 <li><p>rod <em>spherule</em></p></li>
 <li><p>glutamate release modulated by voltage + Ca</p></li>
@@ -738,8 +836,10 @@ document.write(`
 </ul>
 </section>
 <section id="horizontal-cells-outer-retinal-signaling-and-lateral-inhibition">
-<h2><span class="section-number">7.3.5. </span>horizontal cells - outer retinal signaling and lateral inhibition<a class="headerlink" href="#horizontal-cells-outer-retinal-signaling-and-lateral-inhibition" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<span id="sec-vissci-horizontal-cells-outer-retinal-signaling-and-lat"></span><h2>Horizontal cells - outer retinal signaling and lateral inhibition<a class="headerlink" href="#horizontal-cells-outer-retinal-signaling-and-lateral-inhibition" title="Link to this heading">#</a></h2>
+<p class="section-lead">An on-center cell responds best to a small light spot. Make the spot bigger and it reaches the surround, where horizontal cells feed inhibition back onto the photoreceptors, so the response drops. In predictive coding terms, the surround predicts the center and only the difference is sent on.</p>
+<figure class="nb-viz-figure" id="viz-center-surround"><div class="nb-viz" data-viz="center-surround" data-params="{&quot;radius&quot;: 1, &quot;k&quot;: 0.8}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 2.</span> An on-center receptive field as a narrow positive center minus a wide negative surround (left), and its response to a centered light spot (right). Grow the spot: the response rises while the spot fills the center, then falls as it spreads into the surround. Set the surround strength to 0 and the response just keeps rising (dashed curve); at full strength a uniform field gives almost no response.</figcaption></figure><ul class="simple">
 <li><p>on-center - responds to white small circle</p></li>
 <li><p>off-center - responds to black small circle</p></li>
 <li><p>horizontal cells - if you make circle to big, these inhibit the photoreceptors</p></li>
@@ -751,7 +851,7 @@ document.write(`
 </li>
 <li><p>natural scenes contain strong spatial correlations</p>
 <ul>
-<li><p><em>predictive coding</em> - use surrounding regions to predict the center value</p></li>
+<li><p><span id="def-predictive-coding" class="def-anchor"></span><em>predictive coding</em> - use surrounding regions to predict the center value</p></li>
 <li><p>subtract predicted value from actually measured value</p></li>
 <li><p>send nothing if you could have predicted, otherwise info you send is <em>interesting</em></p></li>
 </ul>
@@ -759,7 +859,8 @@ document.write(`
 </ul>
 </section>
 <section id="signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information">
-<h2><span class="section-number">7.3.6. </span>signaling pathways through the retina - amacrine cells and inner retinal processing of visual information<a class="headerlink" href="#signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-signaling-pathways-through-the-retina-amacrine-c"></span><h2>Signaling pathways through the retina - amacrine cells and inner retinal processing of visual information<a class="headerlink" href="#signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information" title="Link to this heading">#</a></h2>
+<p class="section-lead">Bipolar cells start the parallel channels, and amacrine cells shape them on the way to the ganglion cells. Starburst amacrine cells are where the retina’s direction selectivity comes from.</p>
 <ul class="simple">
 <li><p>bipolar cells begin parallel signalling in the visual system</p></li>
 <li><p>amacrine cells - generally modulate bipolar cells / ganglion cells</p>
@@ -773,16 +874,17 @@ document.write(`
 <li><p>generated by lateral inhibition</p></li>
 </ul>
 </li>
-<li><p><em>starburst amacrine cells</em> - generate directional signals in the retina</p></li>
+<li><p><span id="def-starburst-amacrine-cells" class="def-anchor"></span><em>starburst amacrine cells</em> - generate directional signals in the retina</p></li>
 </ul>
 </section>
 <section id="retinal-ganglion-cells">
-<h2><span class="section-number">7.3.7. </span>retinal ganglion cells<a class="headerlink" href="#retinal-ganglion-cells" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-retinal-ganglion-cells"></span><h2>Retinal ganglion cells<a class="headerlink" href="#retinal-ganglion-cells" title="Link to this heading">#</a></h2>
+<p class="section-lead">The retina’s output. Midget cells (most of them, high acuity) feed the parvocellular pathway and parasol cells (high temporal resolution) the magnocellular one; direction-selective cells get their tuning from starburst amacrine cells.</p>
 <ul class="simple">
 <li><p>takes inputs from bipolar cells</p></li>
 </ul>
 <section id="primate-retina">
-<h3><span class="section-number">7.3.7.1. </span>primate retina<a class="headerlink" href="#primate-retina" title="Link to this heading">#</a></h3>
+<h3>Primate retina<a class="headerlink" href="#primate-retina" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>primate retina has 2 major types of ganglion cells</p>
 <ol class="arabic simple">
@@ -817,14 +919,23 @@ document.write(`
 </section>
 </section>
 <section id="non-neuronal-retina-stuff">
-<h2><span class="section-number">7.3.8. </span>non-neuronal retina stuff<a class="headerlink" href="#non-neuronal-retina-stuff" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-non-neuronal-retina-stuff"></span><h2>Non-neuronal retina stuff<a class="headerlink" href="#non-neuronal-retina-stuff" title="Link to this heading">#</a></h2>
+<p class="section-lead">The cells that keep the retina running: glia, the pigment epithelium and two separate blood supplies. Each comes back in the diseases section, since that is where things fail.</p>
 <section id="retinal-glia">
-<h3><span class="section-number">7.3.8.1. </span>retinal glia<a class="headerlink" href="#retinal-glia" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>glia greek for “glue”</p></li>
-<li><p>3 types <img alt="" src="../../_images/glia.png" /></p></li>
-<li><p>Muller cells</p>
+<h3>Retinal glia<a class="headerlink" href="#retinal-glia" title="Link to this heading">#</a></h3>
+<p class="section-lead">Müller cells span the whole retina and do most of the housekeeping (support, energy, glutamate recycling, K⁺ balance). Astrocytes sit along the vessels, and microglia are immune cells that also maintain synapses.</p>
 <ul>
+<li><p>glia greek for “glue”</p></li>
+<li><p>3 types</p>
+<figure class="align-default" id="id8">
+<img alt="The three kinds of retinal glia: Müller cells (M) spanning the whole retina, astrocytes (As) around the blood vessels and nerve fiber layer, and microglia (Mi) in the synaptic layers." class="note-figure" src="../../_images/glia.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text"><span class="fig-num">Figure 7.</span> The three kinds of retinal glia: Müller cells (M) spanning the whole retina, astrocytes (As) around the blood vessels and nerve fiber layer, and microglia (Mi) in the synaptic layers.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Muller cells</p>
+<ul class="simple">
 <li><p>from multiplotent retinal progenitor cells (same that make neurons)</p>
 <ul>
 <li><p>in fish, with damage muller cells can become neurons (forced in mammals)</p></li>
@@ -845,7 +956,7 @@ document.write(`
 </ul>
 </li>
 <li><p>astrocytes</p>
-<ul>
+<ul class="simple">
 <li><p>originate from brain, enter via optic nerve</p></li>
 <li><p>look star shaped</p></li>
 <li><p>functions: lots of neurovascular</p>
@@ -857,7 +968,7 @@ document.write(`
 </ul>
 </li>
 <li><p>microglia</p>
-<ul>
+<ul class="simple">
 <li><p>myeloid origin</p></li>
 <li><p>concentrated in synaptic layers</p></li>
 <li><p>immune cells - phagocytosis</p></li>
@@ -870,7 +981,8 @@ document.write(`
 </ul>
 </section>
 <section id="retinal-pigment-epithelium-rpe">
-<h3><span class="section-number">7.3.8.2. </span>retinal pigment epithelium (rpe)<a class="headerlink" href="#retinal-pigment-epithelium-rpe" title="Link to this heading">#</a></h3>
+<h3>Retinal pigment epithelium (rpe)<a class="headerlink" href="#retinal-pigment-epithelium-rpe" title="Link to this heading">#</a></h3>
+<p class="section-lead">A single layer of pigmented cells around the photoreceptor tips. It absorbs stray light, eats the outer segments as they are shed (a photoreceptor is renewed in about 11 days), and recycles retinoids for the visual cycle.</p>
 <ul class="simple">
 <li><p>monolayer of pigmented, hexagonally-shaped epithelium cells</p></li>
 <li><p>surround outer segments of photoreceptors</p></li>
@@ -894,7 +1006,8 @@ document.write(`
 </ul>
 </section>
 <section id="retinal-blood-supply">
-<h3><span class="section-number">7.3.8.3. </span>retinal blood supply<a class="headerlink" href="#retinal-blood-supply" title="Link to this heading">#</a></h3>
+<h3>Retinal blood supply<a class="headerlink" href="#retinal-blood-supply" title="Link to this heading">#</a></h3>
+<p class="section-lead">The retina has the highest metabolic demand of any tissue. The choroid feeds the outer third and the central retinal artery the inner two thirds, with no capillaries over the fovea, where they would block light.</p>
 <ul class="simple">
 <li><p>retina has highest metabolic demand of any tissue</p></li>
 <li><p>vasculature - eye is only place we can noninvasively view vasculature</p>
@@ -943,12 +1056,14 @@ document.write(`
 </section>
 </section>
 <section id="retinal-diseases">
-<h2><span class="section-number">7.3.9. </span>retinal diseases<a class="headerlink" href="#retinal-diseases" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-retinal-diseases"></span><h2>Retinal diseases<a class="headerlink" href="#retinal-diseases" title="Link to this heading">#</a></h2>
+<p class="section-lead">Three diseases, each damaging a different layer: macular degeneration (photoreceptors, RPE and choroid in the macula), diabetic retinopathy (leaky capillaries), and glaucoma (ganglion cells and the optic nerve).</p>
 <ul class="simple">
 <li><p>these are the 3 retinal diseases deepmind is studying</p></li>
 </ul>
 <section id="age-related-macular-degeneration">
-<h3><span class="section-number">7.3.9.1. </span>age-related macular degeneration<a class="headerlink" href="#age-related-macular-degeneration" title="Link to this heading">#</a></h3>
+<h3>Age-related macular degeneration<a class="headerlink" href="#age-related-macular-degeneration" title="Link to this heading">#</a></h3>
+<p class="section-lead">Loss of the outer retina in the macula, so the center of the visual field goes. The dry form (drusen, lipofuscin in the RPE) usually comes first and can turn into the wet form, where leaky vessels grow and anti-VEGF injections are the treatment.</p>
 <ul class="simple">
 <li><p>degenerates outer retina (photoreceptors/RPE/choroid) in <strong>macula</strong> = central 5-6 mm of retina (contains fovea, which is central 1.5mm)</p></li>
 <li><p>leading cause of vision loss in &gt;50 yo</p></li>
@@ -960,17 +1075,17 @@ document.write(`
 </ul>
 </li>
 <li><p>usually get dry then wet (worse)</p></li>
-<li><p><em>OCT</em> = optical coherence tomography</p>
+<li><p><span id="def-oct" class="def-anchor"></span><em>OCT</em> = optical coherence tomography</p>
 <ul>
 <li><p>visualizes cross-sectional retina view with infrared</p></li>
 </ul>
 </li>
 </ul>
 <section id="dry">
-<h4><span class="section-number">7.3.9.1.1. </span>dry<a class="headerlink" href="#dry" title="Link to this heading">#</a></h4>
+<h4>Dry<a class="headerlink" href="#dry" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>drusen</strong> - show up as yellow spots on fundus image</p></li>
-<li><p><strong>lipofuscin</strong> - undigested material from photoreceptor turniover accumulates in the RPE (and some in Bruch’s membrane)</p></li>
+<li><p><span id="def-drusen" class="def-anchor"></span><strong>drusen</strong> - show up as yellow spots on fundus image</p></li>
+<li><p><span id="def-lipofuscin" class="def-anchor"></span><strong>lipofuscin</strong> - undigested material from photoreceptor turniover accumulates in the RPE (and some in Bruch’s membrane)</p></li>
 <li><p>drusen - leads to degeneration of photoreceptors</p>
 <ul>
 <li><p>inflammation - activates immune cells</p></li>
@@ -980,7 +1095,7 @@ document.write(`
 </ul>
 </section>
 <section id="wet">
-<h4><span class="section-number">7.3.9.1.2. </span>wet<a class="headerlink" href="#wet" title="Link to this heading">#</a></h4>
+<h4>Wet<a class="headerlink" href="#wet" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>bleeding</p></li>
 <li><p>treatments</p>
@@ -1001,7 +1116,7 @@ document.write(`
 </section>
 </section>
 <section id="diabetic-retinopathy">
-<h3><span class="section-number">7.3.9.2. </span>diabetic retinopathy<a class="headerlink" href="#diabetic-retinopathy" title="Link to this heading">#</a></h3>
+<h3>Diabetic retinopathy<a class="headerlink" href="#diabetic-retinopathy" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>leaky blood vessels - often diagnose diabetes through retinopathy</p></li>
 <li><p>diabetes types</p>
@@ -1023,7 +1138,7 @@ document.write(`
 </li>
 <li><p>non-proliferative</p>
 <ul>
-<li><p><em>microangiopathy</em> - mainly affects capillaries</p></li>
+<li><p><span id="def-microangiopathy" class="def-anchor"></span><em>microangiopathy</em> - mainly affects capillaries</p></li>
 <li><p>patients probably won’t notice this unless its in the macula - this is why diagnosis w/ ml could be useful</p></li>
 </ul>
 </li>
@@ -1034,7 +1149,7 @@ document.write(`
 </ul>
 </section>
 <section id="glaucoma">
-<h3><span class="section-number">7.3.9.3. </span>glaucoma<a class="headerlink" href="#glaucoma" title="Link to this heading">#</a></h3>
+<h3>Glaucoma<a class="headerlink" href="#glaucoma" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>optic neuropathy with ganglion cell death and visual field loss</p></li>
 <li><p>people say “pressure in the eye” - but this is just a risk factor</p></li>
@@ -1045,13 +1160,20 @@ document.write(`
 <li><p>~40% of total afferent input to the brain/</p></li>
 </ul>
 </li>
-<li><p><em>cup</em> - region where there are no axons</p></li>
+<li><p><span id="def-cup" class="def-anchor"></span><em>cup</em> - region where there are no axons</p></li>
 </ul>
 </section>
 </section>
 <section id="experimental-methods">
-<h2><span class="section-number">7.3.10. </span>experimental methods<a class="headerlink" href="#experimental-methods" title="Link to this heading">#</a></h2>
-<img style="width: 620px; max-width: 100%;" src="../assets/method_coverage.svg" alt="Spatiotemporal coverage of neuroscience methods"/>
+<span id="sec-vissci-experimental-methods"></span><h2>Experimental methods<a class="headerlink" href="#experimental-methods" title="Link to this heading">#</a></h2>
+<p class="section-lead">No method is good on every axis. The figure places each one by the size of tissue it sees and the timescale it resolves; the sections below go through them by what they measure: spikes, electromagnetic fields, dyes, or blood.</p>
+<figure class="align-default" id="id9">
+<a class="note-figure reference internal image-reference" href="../../_images/method_coverage.svg"><img alt="Neuroscience methods placed by the size of tissue they see (log mm, from synapse to whole brain) and the time span they cover (log seconds). Patch clamp and single units are fine in space and time; fM" class="note-figure" src="../../_images/method_coverage.svg" style="width: 620px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text"><span class="fig-num">Figure 8.</span> Neuroscience methods placed by the size of tissue they see (log mm, from synapse to whole brain) and the time span they cover (log seconds). Patch clamp and single units are fine in space and time; fMRI and PET see the whole brain but over seconds to minutes; lesions cover days or longer.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>7 dimensions</p>
 <ul>
@@ -1066,7 +1188,8 @@ document.write(`
 </li>
 </ul>
 <section id="single-cell">
-<h3><span class="section-number">7.3.10.1. </span>single cell<a class="headerlink" href="#single-cell" title="Link to this heading">#</a></h3>
+<h3>Single cell<a class="headerlink" href="#single-cell" title="Link to this heading">#</a></h3>
+<p class="section-lead">Electrodes give the best temporal resolution, and intracellular recording measures the membrane potential directly. The cost is invasiveness and biased sampling: the few neurons recorded tend to be large, excitatory, and shown unnatural stimuli.</p>
 <ul class="simple">
 <li><p>fluorescence imaging</p>
 <ul>
@@ -1110,7 +1233,8 @@ document.write(`
 </ul>
 </section>
 <section id="alteration">
-<h3><span class="section-number">7.3.10.2. </span>alteration<a class="headerlink" href="#alteration" title="Link to this heading">#</a></h3>
+<h3>Alteration<a class="headerlink" href="#alteration" title="Link to this heading">#</a></h3>
+<p class="section-lead">Methods that change activity instead of recording it: optogenetics (light-sensitive opsins delivered by virus, transgenic animals or electroporation), TMS (a brief pulse from a coil on the head), and microstimulation through electrodes.</p>
 <ul class="simple">
 <li><p>optogenetic probes</p>
 <ul>
@@ -1143,7 +1267,8 @@ document.write(`
 </ul>
 </section>
 <section id="measure-electromagnetic-signals">
-<h3><span class="section-number">7.3.10.3. </span>measure electromagnetic signals<a class="headerlink" href="#measure-electromagnetic-signals" title="Link to this heading">#</a></h3>
+<h3>Measure electromagnetic signals<a class="headerlink" href="#measure-electromagnetic-signals" title="Link to this heading">#</a></h3>
+<p class="section-lead">EEG records synchronous activity from the scalp and is analyzed by frequency band or as event-related potentials. MEG measures the magnetic fields instead, which the skull distorts much less.</p>
 <ul>
 <li><p>EEG (electroencephalography)</p>
 <ul>
@@ -1187,7 +1312,7 @@ document.write(`
 </ul>
 </section>
 <section id="dyes">
-<h3><span class="section-number">7.3.10.4. </span>dyes<a class="headerlink" href="#dyes" title="Link to this heading">#</a></h3>
+<h3>Dyes<a class="headerlink" href="#dyes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>voltage-sensitive dyes</p>
 <ul>
@@ -1199,10 +1324,11 @@ document.write(`
 </ul>
 </section>
 <section id="blood">
-<h3><span class="section-number">7.3.10.5. </span>blood<a class="headerlink" href="#blood" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>intrinsic signal optical imaging</p>
+<h3>Blood<a class="headerlink" href="#blood" title="Link to this heading">#</a></h3>
+<p class="section-lead">These methods read activity through blood flow, so they are slow. fMRI’s BOLD signal follows oxygenated hemoglobin: activity first uses up oxygen, then blood flow overcompensates, and the signal cannot tell excitation from inhibition.</p>
 <ul>
+<li><p>intrinsic signal optical imaging</p>
+<ul class="simple">
 <li><p>shine in light and see what’s reflected - oxygenated is more reddish, deoxygenated more bluish</p></li>
 <li><p>have to expose surface of brain (but can do pre-surgical imaging in humans)</p></li>
 <li><p>spatial res limited by capillaries (100 micrometers)</p></li>
@@ -1216,8 +1342,8 @@ document.write(`
 <li><p>protons emit energy at resonance frequency proportional to local magnetic field strength (this called <em>nuclear magnetic resonance</em>)</p></li>
 <li><p>magnetic field gradients allow for spatial localization of MR signal in 3d</p></li>
 <li><p>rate of energy decay in brain depends on local biochemistry + <strong>oxygenated hemoglobin</strong></p></li>
-<li><p><em>BOLD</em> = blood oxygenation level-dependent signal</p>
-<ul>
+<li><p><span id="def-bold" class="def-anchor"></span><em>BOLD</em> = blood oxygenation level-dependent signal</p>
+<ul class="simple">
 <li><p>blood oxygenation has linear relationship with decay</p></li>
 </ul>
 </li>
@@ -1225,19 +1351,27 @@ document.write(`
 <ul>
 <li><p>activity -&gt; more oxygen use + cerebral blood flow -&gt; magnetic field distortions -&gt; MRI signal intensity</p>
 <ul>
-<li><p>activity make oxygen go down real quick then blood flow over compensates, then saturates <img style="width: 520px; max-width: 100%;" src="../assets/hrf.svg" alt="Hemodynamic response function (HRF)"/></p></li>
+<li><p>activity make oxygen go down real quick then blood flow over compensates, then saturates</p>
+<figure class="align-default" id="id10">
+<a class="note-figure reference internal image-reference" href="../../_images/hrf.svg"><img alt="The fMRI response to a brief burst of neural activity: a small initial dip (a), a peak around 5 s (b), and a long undershoot (c) before returning to baseline about 20 s later." class="note-figure" src="../../_images/hrf.svg" style="width: 520px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text"><span class="fig-num">Figure 9.</span> The fMRI response to a brief burst of neural activity: a small initial dip (a), a peak around 5 s (b), and a long undershoot (c) before returning to baseline about 20 s later.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p>can’t separate excitatory / inhibitory</p></li>
 </ul>
 </li>
 <li><p>LFP predicts BOLD well (only slightly better than MUA)</p>
-<ul>
+<ul class="simple">
 <li><p>all are really pretty well correlated</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>fMRI analysis</p>
-<ul>
+<ul class="simple">
 <li><p>block design - usually have block of nothing between stimuli blocks</p>
 <ul>
 <li><p>activation statistics - compare activation between conditions</p></li>
@@ -1251,7 +1385,7 @@ document.write(`
 </ul>
 </section>
 <section id="pet">
-<h3><span class="section-number">7.3.10.6. </span>PET<a class="headerlink" href="#pet" title="Link to this heading">#</a></h3>
+<h3>PET<a class="headerlink" href="#pet" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>PET</p>
 <ul>
@@ -1268,13 +1402,14 @@ document.write(`
 </ul>
 </section>
 <section id="mapping-visual-cortex">
-<h3><span class="section-number">7.3.10.7. </span>mapping visual cortex<a class="headerlink" href="#mapping-visual-cortex" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>cortical flat mapping</p>
+<h3>Mapping visual cortex<a class="headerlink" href="#mapping-visual-cortex" title="Link to this heading">#</a></h3>
+<p class="section-lead">Maps of visual cortex. A rotating wedge maps polar angle, which mirrors at each border between areas; expanding rings map eccentricity. Central vision gets far more of V1 than its share of the retina (cortical magnification).</p>
 <ul>
-<li><p>gray matter has ~ 100,000 somas / mm^3, ~3km axon /mm^3</p></li>
+<li><p>cortical flat mapping</p>
+<ul class="simple">
+<li><p><a class="term-link" href="brain_basics.html#def-gray-matter" data-def="has more cell bodies · Brain basics">gray matter</a> has ~ 100,000 somas / mm^3, ~3km axon /mm^3</p></li>
 <li><p>folds in cortical topology make some things much farther than they seem</p></li>
-<li><p>most stuff is white matter</p></li>
+<li><p>most stuff is <a class="term-link" href="brain_basics.html#def-white-matter" data-def="has more axons · Brain basics">white matter</a></p></li>
 <li><p>sulci - negative curvature (indent)</p></li>
 <li><p>gyri - postive curvature (outdent)</p></li>
 <li><p>some sulci are common among all people (landmarks)</p></li>
@@ -1282,20 +1417,20 @@ document.write(`
 </li>
 <li><p>columns are organized into “pinwheels” - columns in a circle prefer different orientations in spinning pattern</p></li>
 <li><p>weaknesses</p>
-<ul>
+<ul class="simple">
 <li><p>expensive</p></li>
 <li><p>poor temporal / spatial resolution</p></li>
 </ul>
 </li>
 <li><p>topographic mapping</p>
-<ul>
+<ul class="simple">
 <li><p>pimary visual cortex - visual maps seem to be replicated</p></li>
 </ul>
 </li>
 <li><p>history</p>
 <ul>
 <li><p>gun people - between franco-prussian war, russo-japanese war</p>
-<ul>
+<ul class="simple">
 <li><p>sir joseph whitworth</p></li>
 <li><p>alfred drupp</p></li>
 <li><p>william ellis metford</p></li>
@@ -1307,20 +1442,25 @@ document.write(`
 <ul>
 <li><p>each visual areas has some retinotopic mapping</p></li>
 <li><p>moving points</p></li>
-<li><p><img alt="" src="../../_images/vmap.png" /></p>
-<ul>
+<li><figure class="align-default" id="id11">
+<img alt="Retinotopic maps on flattened visual cortex. Left: a rotating wedge maps polar angle, which reverses at each border between V1, V2 and V3. Middle: expanding rings map eccentricity, which changes smoot" class="note-figure" src="../../_images/vmap.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text"><span class="fig-num">Figure 10.</span> Retinotopic maps on flattened visual cortex. Left: a rotating wedge maps polar angle, which reverses at each border between V1, V2 and V3. Middle: expanding rings map eccentricity, which changes smoothly with no reversals. Right: fMRI time courses from three locations peak at different phases of the stimulus.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>periodic mapping stimuli - rotating wedge / other things (fig left) <span class="math notranslate nohighlight">\(\implies\)</span> between visual areas (e.g. v1 + v2) mirror image tiling of locations (borders between regions are like mirrors)</p></li>
 <li><p>eccentricity mapping (fig right) - rings spread out evenly - no mirrors</p></li>
 </ul>
 </li>
 <li><p>cortical magnification - way more v1 for central locations</p>
-<ul>
+<ul class="simple">
 <li><p>more than proportion of retina dedicated to v1</p></li>
 <li><p>somehow this is offset to give us our normal perception</p></li>
 </ul>
 </li>
 <li><p>population receptive field mapping</p>
-<ul>
+<ul class="simple">
 <li><p>predefine each fMRI voxel will respond to Gaussian</p></li>
 <li><p>over time show stimulus</p></li>
 <li><p>optimization model finds best point point for each voxel</p></li>
@@ -1333,7 +1473,7 @@ document.write(`
 </li>
 </ul>
 <section id="magnetic-resonance-spectroscopy-mrs">
-<h4><span class="section-number">7.3.10.7.1. </span>magnetic resonance spectroscopy (mrs)<a class="headerlink" href="#magnetic-resonance-spectroscopy-mrs" title="Link to this heading">#</a></h4>
+<h4>Magnetic resonance spectroscopy (mrs)<a class="headerlink" href="#magnetic-resonance-spectroscopy-mrs" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>just like NMR - put in something like water</p></li>
 <li><p>gives chemical composition of a region of brain</p>
@@ -1349,7 +1489,7 @@ document.write(`
 </ul>
 </section>
 <section id="event-related-optical-signal">
-<h4><span class="section-number">7.3.10.7.2. </span>event-related optical signal<a class="headerlink" href="#event-related-optical-signal" title="Link to this heading">#</a></h4>
+<h4>Event-related optical signal<a class="headerlink" href="#event-related-optical-signal" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>=near-infrared spectroscopy - changes blood-oxygentation</p></li>
 <li><p>active neural tissue scatters infrared light</p>
@@ -1370,7 +1510,8 @@ document.write(`
 </section>
 </section>
 <section id="info-processing-in-the-visual-system">
-<h2><span class="section-number">7.3.11. </span>info processing in the visual system<a class="headerlink" href="#info-processing-in-the-visual-system" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-info-processing-in-the-visual-system"></span><h2>Info processing in the visual system<a class="headerlink" href="#info-processing-in-the-visual-system" title="Link to this heading">#</a></h2>
+<p class="section-lead">Vision is ill-posed: the same retinal image can come from many scenes, so the brain has to bring in priors. Color constancy and the shadow illusions are examples of those priors at work.</p>
 <ul class="simple">
 <li><p>vision is ill-posed problem</p></li>
 <li><p>light reflection depends on multiple things</p>
@@ -1394,7 +1535,7 @@ document.write(`
 <li><p>3d shadow helps make this better</p></li>
 </ul>
 </li>
-<li><p><em>color constancy</em> - see same colors under different lighting conditions</p></li>
+<li><p><span id="def-color-constancy" class="def-anchor"></span><em>color constancy</em> - see same colors under different lighting conditions</p></li>
 <li><p>very large individual differences in ratios of l, m, s cones</p></li>
 <li><p>eyes develop very suddenly around cambrian explosion ~500 mya</p>
 <ul>
@@ -1417,7 +1558,8 @@ document.write(`
 </ul>
 </section>
 <section id="dynamic-range-of-rods-cones">
-<h2><span class="section-number">7.3.12. </span>dynamic range of rods + cones<a class="headerlink" href="#dynamic-range-of-rods-cones" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-dynamic-range-of-rods-cones"></span><h2>Dynamic range of rods + cones<a class="headerlink" href="#dynamic-range-of-rods-cones" title="Link to this heading">#</a></h2>
+<p class="section-lead">Spontaneous isomerizations set the lower limit of light detection. Above it, rods saturate and cones turn on then off, and the two types of horizontal cell (HI and HII, contacting different photoreceptors) add lateral inhibition for contrast.</p>
 <ul>
 <li><p>spontaneous isomerizations determine lower limit of light detection</p></li>
 <li><p>rods</p>
@@ -1444,7 +1586,13 @@ document.write(`
 <li><p>dendrites contact S, M/L cones</p></li>
 </ul>
 </li>
-<li><img style="width: 600px; max-width: 100%;" src="../assets/horizontal.svg" alt="Horizontal cell feedback"/>
+<li><figure class="align-default" id="id12">
+<a class="note-figure reference internal image-reference" href="../../_images/horizontal.svg"><img alt="Horizontal cells take excitation from cones and feed inhibition back onto them. Gap junctions spread the signal across neighboring horizontal cells, so each cone is inhibited by activity in its surrou" class="note-figure" src="../../_images/horizontal.svg" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text"><span class="fig-num">Figure 11.</span> Horizontal cells take excitation from cones and feed inhibition back onto them. Gap junctions spread the signal across neighboring horizontal cells, so each cone is inhibited by activity in its surround.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -1463,12 +1611,13 @@ document.write(`
 </ul>
 </section>
 <section id="whitening-and-tiling">
-<h2><span class="section-number">7.3.13. </span>whitening and tiling<a class="headerlink" href="#whitening-and-tiling" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-whitening-and-tiling"></span><h2>Whitening and tiling<a class="headerlink" href="#whitening-and-tiling" title="Link to this heading">#</a></h2>
+<p class="section-lead">Neighboring pixels in natural images are correlated, with power falling as frequency rises. Barlow’s redundancy reduction says the optic nerve should remove those correlations, and the filter that flattens the spectrum looks like a center-surround receptive field.</p>
 <ul class="simple">
-<li><p><strong>redundancy reduction</strong> (horace barlow 1961) - pixels are correlated, want to compress info</p>
+<li><p><span id="def-redundancy-reduction" class="def-anchor"></span><strong>redundancy reduction</strong> (horace barlow 1961) - pixels are correlated, want to compress info</p>
 <ul>
 <li><p>second-order statistics (auto-correlation function) - pixel correlation vs. spatial separation of pixels</p></li>
-<li><p>power spectrum of natural images - average power over angles</p>
+<li><p><a class="term-link" href="../math/signals.html#def-power-spectrum" data-def="how much of the signal is at a frequency ...? - square of the magnitude of the coefficients of the Fourier coefficients for ... · Signal processing">power spectrum</a> of natural images - average power over angles</p>
 <ul>
 <li><p>power goes down for higher spatial frequencies (white noise would be flat)</p></li>
 <li><p>seems to go down as ~1/freq universally</p></li>
@@ -1480,7 +1629,7 @@ document.write(`
 <li><p>this is because nerves + spikes are expensive</p></li>
 <li><p>multiply by filter = frequency to get filter that is flat (whitening - atick &amp; redlich 1992)</p>
 <ul>
-<li><p>this is a lowpass filter</p></li>
+<li><p>this is a <a class="term-link" href="../ml/comp_vision.html#def-lowpass-filter" data-def="removes high frequencies · Computer vision">lowpass filter</a></p></li>
 <li><p>this filter looks like center-surround 2D filter (looks like edges)</p></li>
 </ul>
 </li>
@@ -1494,7 +1643,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><strong>efficient coding model</strong> (karklin + simoncelli 2012)</p>
+<li><p><strong><a class="term-link" href="comp_neuro.html#def-efficient-coding" data-def="in order to have maximum entropy output, a good encoder should match its outputs to the distribution of its inputs · Computational neuroscience">efficient coding</a> model</strong> (karklin + simoncelli 2012)</p>
 <ul>
 <li><p>why need on and off type - duplicates each cone</p>
 <ul>
@@ -1534,11 +1683,18 @@ document.write(`
 </ul>
 </section>
 <section id="visual-pathways">
-<h2><span class="section-number">7.3.14. </span>visual pathways<a class="headerlink" href="#visual-pathways" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-visual-pathways"></span><h2>Visual pathways<a class="headerlink" href="#visual-pathways" title="Link to this heading">#</a></h2>
+<p class="section-lead">Everything visual passes through the thalamus on its way to cortex. The LGN keeps the parvo and magno channels in separate layers, and other retinal targets handle eye movements, circadian rhythm and the pupil.</p>
 <section id="id1">
-<h3><span class="section-number">7.3.14.1. </span>visual pathways<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Visual pathways<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul>
-<li><img style="width: 650px; max-width: 100%;" src="../assets/visual_pathways.svg" alt="Visual pathways"/>
+<li><figure class="align-default" id="id13">
+<a class="note-figure reference internal image-reference" href="../../_images/visual_pathways.svg"><img alt="Retina to LGN to V1, then V2, V4 and inferotemporal cortex (ventral) and MT and posterior parietal cortex (dorsal). The superior colliculus and pulvinar give a second route from the retina to cortex." class="note-figure" src="../../_images/visual_pathways.svg" style="width: 650px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text"><span class="fig-num">Figure 12.</span> Retina to LGN to V1, then V2, V4 and inferotemporal cortex (ventral) and MT and posterior parietal cortex (dorsal). The superior colliculus and pulvinar give a second route from the retina to cortex.</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 <li><p>organization</p>
 <ul class="simple">
@@ -1556,7 +1712,7 @@ document.write(`
 <li><p>has 6 layers</p></li>
 </ul>
 </li>
-<li><p>superior colliculus (midbrain)</p>
+<li><p><a class="term-link" href="development.html#def-superior-colliculus" data-def="integrate visual, auditory, motor to get X,Y coordinate · Development">superior colliculus</a> (midbrain)</p>
 <ul>
 <li><p>eye movements - sensory map on top of motor map - can make eyes move to a location</p>
 <ul>
@@ -1581,7 +1737,8 @@ document.write(`
 </ul>
 </section>
 <section id="lgn">
-<h3><span class="section-number">7.3.14.2. </span>lgn<a class="headerlink" href="#lgn" title="Link to this heading">#</a></h3>
+<h3>Lgn<a class="headerlink" href="#lgn" title="Link to this heading">#</a></h3>
+<p class="section-lead">Six layers: the upper four parvocellular (from midget cells), the bottom two magnocellular (from parasol cells). The split by spatial and temporal frequency that starts in the retina stays separate here.</p>
 <ul>
 <li><p>has six layers</p></li>
 <li><p>parvocellular are upper 4 layers</p>
@@ -1596,16 +1753,23 @@ document.write(`
 </ul>
 </li>
 <li><p>losing magno seems to lose spatial frequency, control different temporal frequencies, parvo gives you color</p></li>
-<li><p><strong>important</strong> - different spatial/temporal frequencies - differentiate from the beginning</p>
+<li><p><span id="def-important" class="def-anchor"></span><strong>important</strong> - different spatial/temporal frequencies - differentiate from the beginning</p>
 <ul>
-<li><img style="width: 550px; max-width: 100%;" src="../assets/magno_parvo.svg" alt="Parvo and magno coverage"/>
+<li><figure class="align-default" id="id14">
+<a class="note-figure reference internal image-reference" href="../../_images/magno_parvo.svg"><img alt="Parvo (P) cells cover high spatial and low temporal frequencies, magno (M) cells lower spatial and higher temporal frequencies, so the two split the spatiotemporal spectrum between them." class="note-figure" src="../../_images/magno_parvo.svg" style="width: 550px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text"><span class="fig-num">Figure 13.</span> Parvo (P) cells cover high spatial and low temporal frequencies, magno (M) cells lower spatial and higher temporal frequencies, so the two split the spatiotemporal spectrum between them.</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="color">
-<h3><span class="section-number">7.3.14.3. </span>color<a class="headerlink" href="#color" title="Link to this heading">#</a></h3>
+<h3>Color<a class="headerlink" href="#color" title="Link to this heading">#</a></h3>
+<p class="section-lead">More is known about color from psychophysics than from recordings. L and M cone signals are strongly correlated, so PCA turns them into a luminance channel plus two color-difference channels that can be blurred, which is why color costs only about 10% more than black and white.</p>
 <ul class="simple">
 <li><p>L, M, S cones (red, green, blue)</p></li>
 <li><p>have learned more from psychophysics than from neural recording</p></li>
@@ -1635,7 +1799,7 @@ document.write(`
 </ul>
 </section>
 <section id="eye-movements">
-<h3><span class="section-number">7.3.14.4. </span>eye movements<a class="headerlink" href="#eye-movements" title="Link to this heading">#</a></h3>
+<h3>Eye movements<a class="headerlink" href="#eye-movements" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>saccades - old, human vision is fundamentally dynamic</p>
 <ol class="arabic simple">
@@ -1657,10 +1821,12 @@ document.write(`
 </section>
 </section>
 <section id="v1-primary">
-<h2><span class="section-number">7.3.15. </span>v1 (primary)<a class="headerlink" href="#v1-primary" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<span id="sec-vissci-v1-primary"></span><h2>V1 (primary)<a class="headerlink" href="#v1-primary" title="Link to this heading">#</a></h2>
+<p class="section-lead">V1 is where orientation and direction selectivity first appear. Inputs from the two eyes stay apart in layer 4 (ocular dominance columns) and mix in layers 2/3; the standard model is an oriented linear filter, normalization by neighbors, and a pointwise nonlinearity.</p>
+<figure class="nb-viz-figure" id="viz-gabor-orientation"><div class="nb-viz" data-viz="gabor-orientation" data-params="{&quot;theta&quot;: 60, &quot;sigma&quot;: 0.5}"></div>
+<figcaption class="mathjax_process"><span class="nb-viz-label">Interactive 3.</span> The oriented linear filter of the standard model, drawn as a Gabor receptive field (top left) and tested with gratings at its preferred spatial frequency (bottom left). The curve is the response at the grating's best phase. Turn the grating away from vertical and the response falls. Widen the envelope σ so more carrier cycles fit inside it and the tuning narrows, from about ±45° at σ = 0.25 to about ±11° at σ = 1: a field with more stripes is more selective for orientation.</figcaption></figure><ul>
 <li><p>pathways</p>
-<ul>
+<ul class="simple">
 <li><p>right part of eyes go to right brain (sees left visual field)</p></li>
 <li><p>corpus collosum connects left/right brains but nothing else</p>
 <ul>
@@ -1680,20 +1846,33 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p><img alt="vmap_main" src="../../_images/vmap_main.png" />retinotopy</p>
-<ul>
+<li><p>retinotopy</p>
+<figure class="align-default" id="id15">
+<img alt="The connections between visual areas in the macaque (after Wallisch &amp; Movshon 2008), from V1 and V2 on the left through V4 and MT to inferotemporal and parietal areas." class="note-figure" src="../../_images/vmap_main.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text"><span class="fig-num">Figure 14.</span> The connections between visual areas in the macaque (after Wallisch &amp; Movshon 2008), from V1 and V2 on the left through V4 and MT to inferotemporal and parietal areas.</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>v1 has map of retina that’s flattened (proportional to ganglion cells)</p></li>
 <li><p>probably no “fixed up” image of the world somewhere</p></li>
 <li><p>could understand perception in terms of action</p></li>
 </ul>
 </li>
 <li><p>LGN wires don’t interact with each other too much</p>
-<ul>
+<ul class="simple">
 <li><p>some inhibitory interneurons</p></li>
 </ul>
 </li>
-<li><p>cortex <img style="width: 460px; max-width: 100%;" src="../assets/column.svg" alt="Laminar connections of V1"/></p>
-<ul>
+<li><p>cortex</p>
+<figure class="align-default" id="id16">
+<a class="note-figure reference internal image-reference" href="../../_images/column.svg"><img alt="Laminar connections of V1. Magnocellular LGN layers project to layer IVCα and parvocellular layers to IVCβ; both feed layers II/III, which project to other cortical areas. Layer V projects to the supe" class="note-figure" src="../../_images/column.svg" style="width: 460px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text"><span class="fig-num">Figure 15.</span> Laminar connections of V1. Magnocellular LGN layers project to layer IVCα and parvocellular layers to IVCβ; both feed layers II/III, which project to other cortical areas. Layer V projects to the superior colliculus and layer VI back to the LGN.</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>~2mm thick</p></li>
 <li><p>layer 1 - mostly axons</p></li>
 <li><p>layer 2/3 - association layer</p>
@@ -1710,14 +1889,14 @@ document.write(`
 </ul>
 </li>
 <li><p>comes back tho LGN (adam sillito)</p>
-<ul>
+<ul class="simple">
 <li><p>unclear what it does - experiments with cooling cortex don’t yield too many profound changes</p></li>
 </ul>
 </li>
 <li><p>neurons from different eyes go to different regions of layer 4 (and then mix in layer 2/3)</p>
-<ul>
-<li><p><strong>ocular dominance columns</strong> (only within layer 4) - one eye has bands, other eye has other bands</p></li>
-<li><p><strong>hypercolumn</strong> - put 2 eyes together</p>
+<ul class="simple">
+<li><p><span id="def-ocular-dominance-columns" class="def-anchor"></span><strong>ocular dominance columns</strong> (only within layer 4) - one eye has bands, other eye has other bands</p></li>
+<li><p><span id="def-hypercolumn" class="def-anchor"></span><strong>hypercolumn</strong> - put 2 eyes together</p>
 <ul>
 <li><p>lots of metabolic blobs tiles this</p></li>
 <li><p>contains lots of neurons with different orientation selectivities</p></li>
@@ -1731,40 +1910,40 @@ document.write(`
 </li>
 <li><p>v1 is highly overcomplete - way more neurons than needed</p></li>
 <li><p>electrophysiology</p>
-<ul>
+<ul class="simple">
 <li><p>electrode pics up microvolts</p></li>
 </ul>
 </li>
 <li><p>v1 properties not in LGN</p>
-<ul>
+<ul class="simple">
 <li><p>orientation selectivity</p></li>
 <li><p>direction selectivity</p></li>
-<li><p>simple cells sum LGN inputs</p></li>
+<li><p><a class="term-link" href="../ml/comp_vision.html#def-simple-cells" data-def="sensitive to oriented lines · Computer vision">simple cells</a> sum LGN inputs</p></li>
 </ul>
 </li>
 <li><p>retina and other things are wired up before birth</p></li>
 <li><p>standard model of V1</p>
-<ul>
+<ul class="simple">
 <li><p>neurons have oriented receptive fields (inhibited by bars around bar) with some temporal component</p></li>
 <li><p>response normalization, based on neighboring neurons</p></li>
 <li><p>pointwise non-linearity</p></li>
 </ul>
 </li>
 <li><p>bruno doesn’t really believe this leads to perception</p>
-<ul>
+<ul class="simple">
 <li><p>neurons are highly nonlinear</p></li>
 <li><p>recurrent circuits of neurons are even more nonlinear</p></li>
 <li><p>there is no general method for characterizing nonlinear systems</p></li>
 </ul>
 </li>
 <li><p>good model</p>
-<ul>
+<ul class="simple">
 <li><p>should be in the structure of layers</p></li>
 <li><p>why do we need so many neurons</p></li>
 </ul>
 </li>
 <li><p>problems</p>
-<ul>
+<ul class="simple">
 <li><p>biased sampling - single units, ignore inhibitory, only find neurons that fire for what you want</p></li>
 <li><p>biased stimuli - bars/spots/etc.</p></li>
 <li><p>biased theories - data-driven vs. theory</p></li>
@@ -1773,7 +1952,7 @@ document.write(`
 </ul>
 </li>
 <li><p>power spectrum</p>
-<ul>
+<ul class="simple">
 <li><p>horizontal spatial frequency of 0 - vertical grating</p></li>
 <li><p>fft function assumes image at boundary is tiled - artifacts giving artificial edges (spatial frequencies of 0)</p>
 <ul>
@@ -1785,7 +1964,8 @@ document.write(`
 </ul>
 </section>
 <section id="extrastriate-cortex">
-<h2><span class="section-number">7.3.16. </span>extrastriate cortex<a class="headerlink" href="#extrastriate-cortex" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-extrastriate-cortex"></span><h2>Extrastriate cortex<a class="headerlink" href="#extrastriate-cortex" title="Link to this heading">#</a></h2>
+<p class="section-lead">Beyond V1 the areas split into a dorsal stream through MT (motion, where things are, vision for action) and a ventral stream through V4 and IT (color, form, objects, faces).</p>
 <ul class="simple">
 <li><p>striate cortex - v1 (has some kind of stripe - not striatum)</p></li>
 <li><p>extrastriate cortex - everything else</p></li>
@@ -1810,7 +1990,7 @@ document.write(`
 <li><p>ventral stream - what</p>
 <ul>
 <li><p>v4</p></li>
-<li><p>object recognition pathway</p></li>
+<li><p><a class="term-link" href="../ml/comp_vision.html#def-object-recognition" data-def="visual similarity via labels · Computer vision">object recognition</a> pathway</p></li>
 <li><p>high resolution and form</p></li>
 </ul>
 </li>
@@ -1820,7 +2000,8 @@ document.write(`
 <li><p>V2 / V3 aren’t clearly in either stream</p></li>
 </ul>
 <section id="dorsal-stream">
-<h3><span class="section-number">7.3.16.1. </span>dorsal stream<a class="headerlink" href="#dorsal-stream" title="Link to this heading">#</a></h3>
+<h3>Dorsal stream<a class="headerlink" href="#dorsal-stream" title="Link to this heading">#</a></h3>
+<p class="section-lead">MT has columns for direction of motion, STS responds to biological motion (a dozen moving dots that look like a person), and parietal cortex handles spatial attention.</p>
 <ul class="simple">
 <li><p>adaptation - like psychophysicist’s electrode</p></li>
 <li><p>area MT (middle temporal of macaque, although farther back in human)</p>
@@ -1838,7 +2019,8 @@ document.write(`
 </ul>
 </section>
 <section id="ventral-stream">
-<h3><span class="section-number">7.3.16.2. </span>ventral stream<a class="headerlink" href="#ventral-stream" title="Link to this heading">#</a></h3>
+<h3>Ventral stream<a class="headerlink" href="#ventral-stream" title="Link to this heading">#</a></h3>
+<p class="section-lead">V4 follows perceived color rather than wavelength. IT has cells that respond to single people or objects, and areas such as the FFA (faces) and PPA (places).</p>
 <ul class="simple">
 <li><p>V1 -&gt; V4 -&gt; IT -&gt;LGN</p></li>
 <li><p>we’re constantly adjusting for changes in illumination</p></li>
@@ -1887,7 +2069,8 @@ document.write(`
 </section>
 </section>
 <section id="sparse-coding">
-<h2><span class="section-number">7.3.17. </span>sparse coding<a class="headerlink" href="#sparse-coding" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-sparse-coding"></span><h2>Sparse coding<a class="headerlink" href="#sparse-coding" title="Link to this heading">#</a></h2>
+<p class="section-lead">Why V1 has oriented, localized, bandpass receptive fields: representing natural images with as few active neurons as possible produces them.</p>
 <ul class="simple">
 <li><p><strong>this isn’t really sparse coding, move elsewhere</strong>: power spectrum falls off with frequency as <span class="math notranslate nohighlight">\(1/f^2\)</span>(amplitude falls as 1/f)</p>
 <ul>
@@ -1936,7 +2119,8 @@ similar to finding edges</p></li>
 </ul>
 </section>
 <section id="object-recognition">
-<h2><span class="section-number">7.3.18. </span>object recognition<a class="headerlink" href="#object-recognition" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-object-recognition"></span><h2>Object recognition<a class="headerlink" href="#object-recognition" title="Link to this heading">#</a></h2>
+<p class="section-lead">The Gabor function (a sinusoid under a Gaussian envelope) is the standard model of a V1 simple cell. The section then treats perception as inference in a generative model: higher areas make guesses and send corrections back down (Lee and Mumford).</p>
 <ul class="simple">
 <li><p>gabor function - convolve Gaussian with sinusoids of different frequency</p>
 <ul>
@@ -1955,7 +2139,7 @@ similar to finding edges</p></li>
 <li><p>comments:</p>
 <ul>
 <li><p>“vision is about more than object recognition so deep nets don’t work”</p></li>
-<li><p>turing test for vision</p></li>
+<li><p><a class="term-link" href="../ai/cogsci.html#def-turing-test" data-def="is human mind deterministic { turing1950computing } · Cognitive science">turing test</a> for vision</p></li>
 </ul>
 </li>
 <li><p><em>affordance</em> = prior</p></li>
@@ -1967,7 +2151,7 @@ similar to finding edges</p></li>
 <li><p>perception as inference</p>
 <ul>
 <li><p>generative model we’re trying to fit data too</p></li>
-<li><p>bayes rules: $<span class="math notranslate nohighlight">\(P(E\vert D) \propto P(D\vert E) \cdot P(E)\)</span>$ where E is environment and D is data about environment</p></li>
+<li><p>bayes rules: <span class="math notranslate nohighlight">\(P(E\vert D) \propto P(D\vert E) \cdot P(E)\)</span> where E is environment and D is data about environment</p></li>
 <li><p>lee + mumford, 2003 - hierarchical bayesian inference in visual cortex</p>
 <ul>
 <li><p>each area makes guesses and higher areas send back corrections</p></li>
@@ -1980,24 +2164,25 @@ similar to finding edges</p></li>
 </ul>
 </section>
 <section id="top-down-modulation">
-<h2><span class="section-number">7.3.19. </span>top-down modulation<a class="headerlink" href="#top-down-modulation" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-top-down-modulation"></span><h2>Top-down modulation<a class="headerlink" href="#top-down-modulation" title="Link to this heading">#</a></h2>
+<p class="section-lead">Attention changes responses in V4 and even V1. Endogenous attention is voluntary and slow, exogenous attention is involuntary and fast.</p>
 <ul class="simple">
 <li><p>attention is most-studied (refers to some different things)</p>
 <ul>
-<li><p><em>endogenous attention</em> - voluntary, slow, effortful, interruptible</p></li>
-<li><p><em>exogenous attention</em> - involuntary, fast effortless, disruptive</p></li>
+<li><p><span id="def-endogenous-attention" class="def-anchor"></span><em>endogenous attention</em> - voluntary, slow, effortful, interruptible</p></li>
+<li><p><span id="def-exogenous-attention" class="def-anchor"></span><em>exogenous attention</em> - involuntary, fast effortless, disruptive</p></li>
 </ul>
 </li>
 <li><p>attention is about more than where the eye is pointing</p></li>
-<li><p><em>change blindness</em> - blind to things you’re not attending to</p>
+<li><p><span id="def-change-blindness" class="def-anchor"></span><em>change blindness</em> - blind to things you’re not attending to</p>
 <ul>
 <li><p>invisible gorrila, door study</p></li>
 </ul>
 </li>
-<li><p><em>covert attention</em> - posner cueing task</p></li>
+<li><p><span id="def-covert-attention" class="def-anchor"></span><em>covert attention</em> - posner cueing task</p></li>
 </ul>
 <section id="endogenous">
-<h3><span class="section-number">7.3.19.1. </span>endogenous<a class="headerlink" href="#endogenous" title="Link to this heading">#</a></h3>
+<h3>Endogenous<a class="headerlink" href="#endogenous" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>better studied because it’s hard to disentangle stimulus vs. attention in exogenous case</p></li>
 <li><p>v4 very filtered by attention (ex. reynolds + chelazzi 04)</p></li>
@@ -2011,18 +2196,19 @@ similar to finding edges</p></li>
 </ul>
 </section>
 <section id="exogenous">
-<h3><span class="section-number">7.3.19.2. </span>exogenous<a class="headerlink" href="#exogenous" title="Link to this heading">#</a></h3>
+<h3>Exogenous<a class="headerlink" href="#exogenous" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>inhibition of return - if we have attended a region, less like we return to that region</p></li>
 </ul>
 </section>
 <section id="visual-search">
-<h3><span class="section-number">7.3.19.3. </span>visual search<a class="headerlink" href="#visual-search" title="Link to this heading">#</a></h3>
+<h3>Visual search<a class="headerlink" href="#visual-search" title="Link to this heading">#</a></h3>
+<p class="section-lead">Search is slow when targets share features with distractors. In feature-integration theory each feature has its own map, so finding a conjunction such as a red circle takes longer.</p>
 <ul class="simple">
 <li><p>having more similar objects makes it difficult</p></li>
 <li><p>feature-integration theory - different visual features are coded in parallel in separate feature maps (orientation, size, color)</p>
 <ul>
-<li><p><em>conjunction search</em> - conjunction of features (ex. red circle) takes longer</p></li>
+<li><p><span id="def-conjunction-search" class="def-anchor"></span><em>conjunction search</em> - conjunction of features (ex. red circle) takes longer</p></li>
 </ul>
 </li>
 <li><p>plenty of other areas</p>
@@ -2031,7 +2217,7 @@ similar to finding edges</p></li>
 <li><p>ex. driving - people in car will stop talking in serious situations unlike on phone</p></li>
 </ul>
 </li>
-<li><p><strong>predictive coding</strong> - unpredicted response evokes larger response</p>
+<li><p><span id="def-predictive-coding-2" class="def-anchor"></span><strong>predictive coding</strong> - unpredicted response evokes larger response</p>
 <ul>
 <li><p>fits with bayesian method - only need large response when you don’t predict what’s going to happen</p></li>
 <li><p>in this way, prediction is opposite to attention</p></li>
@@ -2041,7 +2227,8 @@ similar to finding edges</p></li>
 </section>
 </section>
 <section id="visual-neuropsychology">
-<h2><span class="section-number">7.3.20. </span>visual neuropsychology<a class="headerlink" href="#visual-neuropsychology" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-visual-neuropsychology"></span><h2>Visual neuropsychology<a class="headerlink" href="#visual-neuropsychology" title="Link to this heading">#</a></h2>
+<p class="section-lead">What lesions show: blindsight after V1 damage, motion blindness after MT damage, loss of color after V4 damage, and agnosias such as prosopagnosia.</p>
 <ul class="simple">
 <li><p>blindsight - damage to V1; aren’t aware of visual stimuli but can do tasks in forced-choice paradigms</p>
 <ul>
@@ -2062,7 +2249,7 @@ similar to finding edges</p></li>
 <li><p>damage to V4 causes loss of color perception, can’t even imagine colors</p></li>
 <li><p>patient DF (well-known) - can only do vision for perception + action, couldn’t describe it = <em>visual agnosia</em> - perception as an object is impaired</p></li>
 <li><p>lots of different kinds</p></li>
-<li><p><em>prosopagnosia</em> - can’t recognize faces - FFA, PPA (up to 1%)</p></li>
+<li><p><span id="def-prosopagnosia" class="def-anchor"></span><em>prosopagnosia</em> - can’t recognize faces - FFA, PPA (up to 1%)</p></li>
 </ul>
 </li>
 <li><p>spatial neglect - failure to acknowledge objects in field contralateral to the lesion</p>
@@ -2075,7 +2262,8 @@ similar to finding edges</p></li>
 </ul>
 </section>
 <section id="visual-cortical-development-plasticity">
-<h2><span class="section-number">7.3.21. </span>visual cortical development + plasticity<a class="headerlink" href="#visual-cortical-development-plasticity" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-visual-cortical-development-plasticity"></span><h2>Visual cortical development + plasticity<a class="headerlink" href="#visual-cortical-development-plasticity" title="Link to this heading">#</a></h2>
+<p class="section-lead">The steps any nervous system goes through as it is built, then three stages for the retina-LGN-V1 pathway: wiring set up before experience (with retinal waves), a critical period in which inputs compete, and more limited plasticity in adults.</p>
 <ul class="simple">
 <li><p>development things</p>
 <ul>
@@ -2113,7 +2301,8 @@ similar to finding edges</p></li>
 </ul>
 </section>
 <section id="adult-plasticity">
-<h2><span class="section-number">7.3.22. </span>adult plasticity<a class="headerlink" href="#adult-plasticity" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-adult-plasticity"></span><h2>Adult plasticity<a class="headerlink" href="#adult-plasticity" title="Link to this heading">#</a></h2>
+<p class="section-lead">Aftereffects such as color afterimages and the tilt aftereffect are usually explained by fatigue of the stimulated neurons, but some last far too long for that. Perceptual learning shows adults can still learn new visual tasks, though how far it generalizes is unclear.</p>
 <ul class="simple">
 <li><p>these are due to “fatigue” of stimulated neurons</p>
 <ul>
@@ -2146,7 +2335,8 @@ similar to finding edges</p></li>
 </ul>
 </section>
 <section id="alzheimer-s">
-<h2><span class="section-number">7.3.23. </span>alzheimer’s<a class="headerlink" href="#alzheimer-s" title="Link to this heading">#</a></h2>
+<span id="sec-vissci-alzheimer-s"></span><h2>Alzheimer’s<a class="headerlink" href="#alzheimer-s" title="Link to this heading">#</a></h2>
+<p class="section-lead">Alzheimer’s shows up in the retina as well. The goal is to find its markers (amyloid plaques, pTau) with noninvasive retinal imaging instead of a stain after death.</p>
 <ul class="simple">
 <li><p>manifests in the eye</p></li>
 <li><p>two biomarkers - can find with PET or MRI</p>
@@ -2167,7 +2357,18 @@ similar to finding edges</p></li>
 </ul>
 </li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>The retina already processes the image: horizontal cells subtract the surround, bipolar cells split on and off channels, and midget and parasol ganglion cells start the parvo and magno pathways.</p></li>
+<li><p>Natural images are redundant, with power falling as spatial frequency rises; center-surround whitening and sparse coding are both ways of removing that redundancy before the expensive optic nerve.</p></li>
+<li><p>V1 is where orientation and direction selectivity first appear, and the standard model is an oriented linear filter, normalization by neighbors and a pointwise nonlinearity.</p></li>
+<li><p>Beyond V1 the dorsal stream (MT, parietal cortex) handles motion and where things are and the ventral stream (V4, IT) color, form and objects; lesions in each remove those functions.</p></li>
+<li><p>Every recording method trades spatial resolution, temporal resolution and coverage against each other, so the question decides the method.</p></li>
+<li><p>White noise plus a spike-triggered average is the basic way to measure a receptive field.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../neuro/comp_neuro.html"><span class="related-part">Neuroscience</span><span class="related-title">Computational neuroscience</span><span class="related-hook">Models of neurons, neural codes and learning rules, then data-driven neuroscience, brain encoding models and neuro-inspired AI.</span></a><a class="related-card" href="../neuro/sensory_input.html"><span class="related-part">Neuroscience</span><span class="related-title">Sensory input</span><span class="related-hook">How touch, pain, sight, hearing, balance and taste get from receptors through the thalamus to cortex.</span></a><a class="related-card" href="../neuro/brain_basics.html"><span class="related-part">Neuroscience</span><span class="related-title">Brain basics</span><span class="related-hook">The parts of the brain, then how a neuron makes a voltage, fires, and talks to the next neuron through synapses and transmitters.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2201,20 +2402,20 @@ similar to finding edges</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="brain_basics.html"
+       href="sensory_input.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>brain basics</p>
+        <p class="prev-next-title">Sensory input</p>
       </div>
     </a>
     <a class="right-next"
-       href="comp_neuro.html"
+       href="motor.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>comp neuro</p>
+        <p class="prev-next-title">Motor system</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2234,78 +2435,78 @@ similar to finding edges</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-signals">7.3.1. neural signals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology">7.3.2. electrophysiology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-imaging">7.3.3. recording + imaging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrode-arrays">7.3.3.1. electrode arrays</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imaging-voltage">7.3.3.2. imaging - voltage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-signals">Neural signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrophysiology">Electrophysiology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-imaging">Recording + imaging</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrode-arrays">Electrode arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imaging-voltage">Imaging - voltage</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rod-and-cone-photoreceptor-function">7.3.4. rod and cone photoreceptor function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-cells-outer-retinal-signaling-and-lateral-inhibition">7.3.5. horizontal cells - outer retinal signaling and lateral inhibition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information">7.3.6. signaling pathways through the retina - amacrine cells and inner retinal processing of visual information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-ganglion-cells">7.3.7. retinal ganglion cells</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primate-retina">7.3.7.1. primate retina</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rod-and-cone-photoreceptor-function">Rod and cone photoreceptor function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-cells-outer-retinal-signaling-and-lateral-inhibition">Horizontal cells - outer retinal signaling and lateral inhibition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signaling-pathways-through-the-retina-amacrine-cells-and-inner-retinal-processing-of-visual-information">Signaling pathways through the retina - amacrine cells and inner retinal processing of visual information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-ganglion-cells">Retinal ganglion cells</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primate-retina">Primate retina</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-neuronal-retina-stuff">7.3.8. non-neuronal retina stuff</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-glia">7.3.8.1. retinal glia</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-pigment-epithelium-rpe">7.3.8.2. retinal pigment epithelium (rpe)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-blood-supply">7.3.8.3. retinal blood supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-neuronal-retina-stuff">Non-neuronal retina stuff</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-glia">Retinal glia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-pigment-epithelium-rpe">Retinal pigment epithelium (rpe)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-blood-supply">Retinal blood supply</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-diseases">7.3.9. retinal diseases</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-related-macular-degeneration">7.3.9.1. age-related macular degeneration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry">7.3.9.1.1. dry</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wet">7.3.9.1.2. wet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retinal-diseases">Retinal diseases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-related-macular-degeneration">Age-related macular degeneration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dry">Dry</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wet">Wet</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diabetic-retinopathy">7.3.9.2. diabetic retinopathy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glaucoma">7.3.9.3. glaucoma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diabetic-retinopathy">Diabetic retinopathy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glaucoma">Glaucoma</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-methods">7.3.10. experimental methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell">7.3.10.1. single cell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alteration">7.3.10.2. alteration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-electromagnetic-signals">7.3.10.3. measure electromagnetic signals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dyes">7.3.10.4. dyes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blood">7.3.10.5. blood</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pet">7.3.10.6. PET</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-visual-cortex">7.3.10.7. mapping visual cortex</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-resonance-spectroscopy-mrs">7.3.10.7.1. magnetic resonance spectroscopy (mrs)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#event-related-optical-signal">7.3.10.7.2. event-related optical signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-methods">Experimental methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell">Single cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alteration">Alteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-electromagnetic-signals">Measure electromagnetic signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dyes">Dyes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blood">Blood</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pet">PET</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-visual-cortex">Mapping visual cortex</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetic-resonance-spectroscopy-mrs">Magnetic resonance spectroscopy (mrs)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#event-related-optical-signal">Event-related optical signal</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#info-processing-in-the-visual-system">7.3.11. info processing in the visual system</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-range-of-rods-cones">7.3.12. dynamic range of rods + cones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitening-and-tiling">7.3.13. whitening and tiling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-pathways">7.3.14. visual pathways</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3.14.1. visual pathways</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lgn">7.3.14.2. lgn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color">7.3.14.3. color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eye-movements">7.3.14.4. eye movements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#info-processing-in-the-visual-system">Info processing in the visual system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-range-of-rods-cones">Dynamic range of rods + cones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitening-and-tiling">Whitening and tiling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-pathways">Visual pathways</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visual pathways</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lgn">Lgn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color">Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eye-movements">Eye movements</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-primary">7.3.15. v1 (primary)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrastriate-cortex">7.3.16. extrastriate cortex</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dorsal-stream">7.3.16.1. dorsal stream</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventral-stream">7.3.16.2. ventral stream</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-primary">V1 (primary)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extrastriate-cortex">Extrastriate cortex</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dorsal-stream">Dorsal stream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventral-stream">Ventral stream</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding">7.3.17. sparse coding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-recognition">7.3.18. object recognition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-modulation">7.3.19. top-down modulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endogenous">7.3.19.1. endogenous</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous">7.3.19.2. exogenous</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-search">7.3.19.3. visual search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sparse-coding">Sparse coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-recognition">Object recognition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-down-modulation">Top-down modulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endogenous">Endogenous</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous">Exogenous</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-search">Visual search</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-neuropsychology">7.3.20. visual neuropsychology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-cortical-development-plasticity">7.3.21. visual cortical development + plasticity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adult-plasticity">7.3.22. adult plasticity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">7.3.23. alzheimer’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-neuropsychology">Visual neuropsychology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-cortical-development-plasticity">Visual cortical development + plasticity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adult-plasticity">Adult plasticity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alzheimer-s">Alzheimer’s</a></li>
 </ul>
   </nav></div>
 
@@ -2330,7 +2531,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

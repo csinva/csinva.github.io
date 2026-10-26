@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.3. omics</title>
+    <title>Omics &#8212; ML-AI Guide</title>
   
   
   
@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=311e8403" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,13 +59,108 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color[RGB]{31,111,178}{#1}}", 1], "corange": ["{\\color[RGB]{217,130,43}{#1}}", 1], "cgreen": ["{\\color[RGB]{31,138,76}{#1}}", 1], "cpink": ["{\\color[RGB]{199,60,130}{#1}}", 1], "cpurple": ["{\\color[RGB]{123,79,181}{#1}}", 1], "cyellow": ["{\\color[RGB]{168,132,0}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"bold": ["\\mathbf{#1}", 1], "underbar": ["\\underline{#1}", 1], "ra": "\\rightarrow", "empty": "\\emptyset", "cblue": ["{\\color{var(--nb-c-blue)}{#1}}", 1], "corange": ["{\\color{var(--nb-c-orange)}{#1}}", 1], "cgreen": ["{\\color{var(--nb-c-green)}{#1}}", 1], "cpink": ["{\\color{var(--nb-c-pink)}{#1}}", 1], "cpurple": ["{\\color{var(--nb-c-purple)}{#1}}", 1], "cyellow": ["{\\color{var(--nb-c-yellow)}{#1}}", 1]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_omics';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="../../_static/js/nb-viz.js?v=d6b223d4"></script>
+    <script src="../../_static/js/viz/adaboost-stumps.js?v=aeb90ef1"></script>
+    <script src="../../_static/js/viz/aliasing-sampler.js?v=4d067429"></script>
+    <script src="../../_static/js/viz/allreduce-steps.js?v=00c02c91"></script>
+    <script src="../../_static/js/viz/alpha-beta.js?v=a370fd24"></script>
+    <script src="../../_static/js/viz/ar-process.js?v=0c56186e"></script>
+    <script src="../../_static/js/viz/astar-grid.js?v=3919b09b"></script>
+    <script src="../../_static/js/viz/attention-scores.js?v=d0dc4b76"></script>
+    <script src="../../_static/js/viz/axon-competition.js?v=0293ca5d"></script>
+    <script src="../../_static/js/viz/backdoor-paths.js?v=6a9e38f1"></script>
+    <script src="../../_static/js/viz/backprop-graph.js?v=68cc943e"></script>
+    <script src="../../_static/js/viz/basal-ganglia-gate.js?v=d63da5ae"></script>
+    <script src="../../_static/js/viz/base-rate.js?v=d46bba4f"></script>
+    <script src="../../_static/js/viz/bayes-update.js?v=f6fc7cfa"></script>
+    <script src="../../_static/js/viz/beta-vae-tradeoff.js?v=9148c683"></script>
+    <script src="../../_static/js/viz/bias-variance.js?v=3a9127c7"></script>
+    <script src="../../_static/js/viz/bpe-merges.js?v=7b1272db"></script>
+    <script src="../../_static/js/viz/burglary-net.js?v=ca3ce9d0"></script>
+    <script src="../../_static/js/viz/cache-locality.js?v=90f55014"></script>
+    <script src="../../_static/js/viz/canal-adaptation.js?v=b6e99a0d"></script>
+    <script src="../../_static/js/viz/center-surround.js?v=7215f39d"></script>
+    <script src="../../_static/js/viz/central-limit.js?v=4d8e94c5"></script>
+    <script src="../../_static/js/viz/char-roots.js?v=c957c951"></script>
+    <script src="../../_static/js/viz/complex-polar.js?v=fd264af5"></script>
+    <script src="../../_static/js/viz/conformal-intervals.js?v=7867e9af"></script>
+    <script src="../../_static/js/viz/covariate-shift.js?v=2c98dbe2"></script>
+    <script src="../../_static/js/viz/csp-forward-check.js?v=47dc84f3"></script>
+    <script src="../../_static/js/viz/eigen-directions.js?v=5dac1fb3"></script>
+    <script src="../../_static/js/viz/epsilon-n.js?v=979002ed"></script>
+    <script src="../../_static/js/viz/fairness-thresholds.js?v=5406df2e"></script>
+    <script src="../../_static/js/viz/float-bits.js?v=354426ef"></script>
+    <script src="../../_static/js/viz/fourier-partial-sums.js?v=c59e6399"></script>
+    <script src="../../_static/js/viz/gabor-orientation.js?v=80503cf9"></script>
+    <script src="../../_static/js/viz/gmm-em.js?v=675d357c"></script>
+    <script src="../../_static/js/viz/grad-flow.js?v=7ee6ab77"></script>
+    <script src="../../_static/js/viz/gradient-descent.js?v=72fe92f8"></script>
+    <script src="../../_static/js/viz/gram-psd.js?v=5d4f1025"></script>
+    <script src="../../_static/js/viz/hash-probing.js?v=5ffe9537"></script>
+    <script src="../../_static/js/viz/hat-influence.js?v=eb5ea59a"></script>
+    <script src="../../_static/js/viz/hawk-dove.js?v=068a113a"></script>
+    <script src="../../_static/js/viz/hodgkin-huxley.js?v=7c5f6621"></script>
+    <script src="../../_static/js/viz/hopfield-memory.js?v=51c09936"></script>
+    <script src="../../_static/js/viz/huffman-code.js?v=b4084c2f"></script>
+    <script src="../../_static/js/viz/image-filters.js?v=63b7a2ef"></script>
+    <script src="../../_static/js/viz/infonce-temperature.js?v=fb539dba"></script>
+    <script src="../../_static/js/viz/ipw-confounding.js?v=2d531f80"></script>
+    <script src="../../_static/js/viz/kalman-1d.js?v=d2cb4505"></script>
+    <script src="../../_static/js/viz/kernel-smoother.js?v=14c24f93"></script>
+    <script src="../../_static/js/viz/kfold-cv.js?v=0f71ea9d"></script>
+    <script src="../../_static/js/viz/kl-divergence.js?v=6d101f79"></script>
+    <script src="../../_static/js/viz/kmeans-steps.js?v=c94879b9"></script>
+    <script src="../../_static/js/viz/knapsack-table.js?v=187326c0"></script>
+    <script src="../../_static/js/viz/lagrange-geometry.js?v=69fe8be2"></script>
+    <script src="../../_static/js/viz/lda-qda.js?v=792c4c09"></script>
+    <script src="../../_static/js/viz/lif-neuron.js?v=73cf7964"></script>
+    <script src="../../_static/js/viz/logistic-cobweb.js?v=7af31245"></script>
+    <script src="../../_static/js/viz/min-norm-gd.js?v=5899c426"></script>
+    <script src="../../_static/js/viz/missing-data.js?v=260447fa"></script>
+    <script src="../../_static/js/viz/multiple-testing.js?v=5e1ea34d"></script>
+    <script src="../../_static/js/viz/mutual-info.js?v=faefec31"></script>
+    <script src="../../_static/js/viz/nernst-potential.js?v=994139e4"></script>
+    <script src="../../_static/js/viz/nfa-run.js?v=a892abad"></script>
+    <script src="../../_static/js/viz/ngram-backoff.js?v=709463ff"></script>
+    <script src="../../_static/js/viz/ngram-smoothing.js?v=b6d65ed6"></script>
+    <script src="../../_static/js/viz/oja-rule.js?v=deaba221"></script>
+    <script src="../../_static/js/viz/page-replacement.js?v=0d3f1a8c"></script>
+    <script src="../../_static/js/viz/perceptron-train.js?v=fda99d39"></script>
+    <script src="../../_static/js/viz/platt-calibration.js?v=921ca477"></script>
+    <script src="../../_static/js/viz/population-vector.js?v=e19b50f7"></script>
+    <script src="../../_static/js/viz/power-iteration.js?v=d652abdd"></script>
+    <script src="../../_static/js/viz/propensity-overlap.js?v=10cdee51"></script>
+    <script src="../../_static/js/viz/q-learning-grid.js?v=3c65ab56"></script>
+    <script src="../../_static/js/viz/quantal-release.js?v=b99589b9"></script>
+    <script src="../../_static/js/viz/rater-kappa.js?v=60f60fff"></script>
+    <script src="../../_static/js/viz/rectangle-game.js?v=6d16e50a"></script>
+    <script src="../../_static/js/viz/reg-path.js?v=ec0063cc"></script>
+    <script src="../../_static/js/viz/ridgeless-risk.js?v=a93a691f"></script>
+    <script src="../../_static/js/viz/roc-threshold.js?v=69e41e7a"></script>
+    <script src="../../_static/js/viz/sampling-alias.js?v=0623139c"></script>
+    <script src="../../_static/js/viz/self-consistency.js?v=fa75ed55"></script>
+    <script src="../../_static/js/viz/shapley-values.js?v=8a66e37a"></script>
+    <script src="../../_static/js/viz/simpson-paradox.js?v=3306bcc3"></script>
+    <script src="../../_static/js/viz/sort-steps.js?v=fb44af23"></script>
+    <script src="../../_static/js/viz/spectral-rings.js?v=c95d9c67"></script>
+    <script src="../../_static/js/viz/sta-cone-mosaic.js?v=22c5eaf5"></script>
+    <script src="../../_static/js/viz/svd-ellipse.js?v=78ea8842"></script>
+    <script src="../../_static/js/viz/taylor-approx.js?v=3a98455b"></script>
+    <script src="../../_static/js/viz/test-power.js?v=8cd0aeae"></script>
+    <script src="../../_static/js/viz/topic-map.js?v=e78cc2b7"></script>
+    <script src="../../_static/js/viz/two-slit-amplitudes.js?v=fd818a54"></script>
+    <script src="../../_static/js/viz/uniform-convergence.js?v=8bd8f735"></script>
+    <script src="../../_static/js/viz/value-iteration.js?v=d5692bd7"></script>
+    <script src="../../_static/js/viz/vc-shatter.js?v=b21a52bd"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.4. llms" href="ovw_llms.html" />
-    <link rel="prev" title="1.2. disentanglement" href="ovw_disentanglement.html" />
+    <link rel="next" title="Scattering transform" href="ovw_scat.html" />
+    <link rel="prev" title="Causal inference" href="ovw_causal_inference.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +252,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
-    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="ML-AI Guide - Home"/>
+    <script>document.write(`<img src="../../_static/logo_dark.png" class="logo__image only-dark" alt="ML-AI Guide - Home"/>`);</script>
   
   
 </a></div>
@@ -174,90 +270,108 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws_section.html">1. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ovw_transfer_learning.html">1.1. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">1.2. disentanglement</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_llms.html">1.4. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_complexity.html">1.5. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">1.6. interesting science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">1.7. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">1.8. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_embeddings.html">1.9. embeddings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">1.10. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">1.11. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">1.12. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">1.13. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">1.14. generalization</a></li>
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Notes on ML, AI, and neuroscience
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computer science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/cs.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/algo.html">Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/languages_parallel.html">Languages and parallel computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/os.html">Operating systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/retrieval_databases.html">Information retrieval and databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/comp_theory.html">Theory of computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cs/quantum.html">Quantum computing</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs_section.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.1. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.2. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.3. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages_parallel.html">2.4. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.6. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval_databases.html">2.7. info retrieval + databases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.8. cs theory</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/math.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/math_basics.html">Math basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/calculus.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/linear_algebra.html">Linear algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/differential_equations.html">Differential equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/analysis.html">Real analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/signals.html">Signal processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/chaos.html">Nonlinear dynamics and chaos</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math_section.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.2. real analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.3. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.4. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.5. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.6. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.7. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.8. math basics</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/stat.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/stat.html">Stat basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/data_analysis.html">Data science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/linear_models.html">Linear models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/time_series.html">Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/info_theory.html">Information theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/graphical_models.html">Graphical models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stat/causal_inference.html">Causal inference</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat_section.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/stat.html">4.1. stat basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.3. data science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.4. testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.5. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.6. info theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.7. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.8. time series</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ml.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/unsupervised.html">Unsupervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/kernels.html">Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/deep_learning.html">Deep learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/comp_vision.html">Computer vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/nlp.html">NLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ml/learning_theory.html">Learning theory</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml_section.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.4. classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.5. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.6. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.7. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.8. evaluation</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Artificial intelligence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/ai.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/search.html">Search and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/rl_decisions.html">RL and decisions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/psychology.html">Psychology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/cogsci.html">Cognitive science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/fairness_sts.html">Fairness and STS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/ai_futures.html">AI futures</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai_section.html">6. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">6.1. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">6.2. search and logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/rl_decisions.html">6.3. rl, decisions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">6.4. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">6.5. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">6.6. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">6.7. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">6.8. psychology</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neuroscience</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/neuro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/brain_basics.html">Brain basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/sensory_input.html">Sensory input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/vissci.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/motor.html">Motor system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/memory.html">Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/disease.html">Disease</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neuro/comp_neuro.html">Computational neuroscience</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro_section.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research overviews</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../parts/research.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_interesting_science.html">Interesting science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_ml_medicine.html">ML in medicine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_embeddings.html">Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_llms.html">LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_transfer_learning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_uncertainty.html">Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_interp.html">Interpretability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_generalization.html">Generalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_disentanglement.html">Disentanglement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_causal_inference.html">Causal inference</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Omics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_scat.html">Scattering transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_complexity.html">Complexity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ovw_dl_theory.html">Deep learning theory</a></li>
 </ul>
-</details></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/figures.html">Interactive figures</a></li>
 </ul>
 
     </div>
@@ -316,70 +430,6 @@
 
 
 
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/notes/research_ovws/ovw_omics.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -411,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>omics</h1>
+    <h1>Omics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,27 +471,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">1.3.1. overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary">1.3.1.1. vocabulary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">1.3.1.2. data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">1.3.1.3. code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary">Vocabulary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-structure-prediction">1.3.2. rna structure prediction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-basics">1.3.2.1. rna basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">1.3.2.2. algorithms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-rna-structure-prediction">1.3.2.3. 3d rna structure prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-structure-prediction">Rna structure prediction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-basics">Rna basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-rna-structure-prediction">3d rna structure prediction</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-structure-prediction-dna">1.3.3. protein structure prediction (dna)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-basics">1.3.3.1. protein basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-basics">1.3.3.2. algorithm basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-papers">1.3.3.3. deep-learning papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covid">1.3.3.4. covid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-structure-prediction-dna">Protein structure prediction (dna)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-basics">Protein basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-basics">Algorithm basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-papers">Deep-learning papers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covid">Covid</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-using-viruses-for-treatment">1.3.4. TIPs - using viruses for treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-papers">1.3.5. random papers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-using-viruses-for-treatment">TIPs - using viruses for treatment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-papers">Random papers</a></li>
 </ul>
             </nav>
         </div>
@@ -453,31 +503,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="omics">
-<h1><span class="section-number">1.3. </span>omics<a class="headerlink" href="#omics" title="Link to this heading">#</a></h1>
+  <p class="breadcrumb"><a href="../../parts/research.html">Research overviews</a> &nbsp;·&nbsp; chapter 11 of 14 &nbsp;·&nbsp; 6 min read</p><section class="tex2jax_ignore mathjax_ignore" id="omics">
+<h1>Omics<a class="headerlink" href="#omics" title="Link to this heading">#</a></h1>
+<p class="note-subtitle">Some papers involving proteins and ml, especially predicting protein structure from dna/rna.</p><div class="chapter-intro admonition">
+<p class="admonition-title">About this chapter</p>
+<p>Most of this page is about one problem: predicting a molecule’s structure from its sequence. It starts with the databases and code, then RNA, where most work predicts secondary structure (which bases pair up) with dynamic programming over pairing energies, and newer methods add deep learning or go to full 3d structure.</p>
+<p>The protein section follows the same path from basics to deep learning: multiple sequence alignments, contact prediction, and then AlphaFold and the MSA Transformer. The page ends with therapeutic interfering particles, engineered virus fragments that spread like a virus but suppress it.</p>
+</div>
 <section id="overview">
-<h2><span class="section-number">1.3.1. </span>overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-omics-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <section id="vocabulary">
-<h3><span class="section-number">1.3.1.1. </span>vocabulary<a class="headerlink" href="#vocabulary" title="Link to this heading">#</a></h3>
+<h3>Vocabulary<a class="headerlink" href="#vocabulary" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><em>oligonucleotide</em> = <em>oligo</em> = short single strands of synthetic DNA or <em>RNA</em></p></li>
+<li><p><span id="def-oligonucleotide" class="def-anchor"></span><em>oligonucleotide</em> = <em>oligo</em> = short single strands of synthetic DNA or <em>RNA</em></p></li>
 </ul>
 </section>
 <section id="data">
-<h3><span class="section-number">1.3.1.2. </span>data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<p class="section-lead">Where solved structures live: the nucleic acid database for RNA and DNA and the protein databank for proteins, plus chemical probing (SHAPE) as an experimental signal about RNA structure.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://ndbserver.rutgers.edu/">nucleic acid database</a> (NDB)</p></li>
 <li><p><a class="reference external" href="https://www.rcsb.org/">protein databank</a> (PDB)</p></li>
 <li><p>rna</p>
 <ul>
-<li><p>~~<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC165459/">RNABase: an annotated database of RNA structures</a>~~ (2003) - no longer maintained</p></li>
+<li><p><s><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC165459/">RNABase: an annotated database of RNA structures</a></s> (2003) - no longer maintained</p></li>
 <li><p>Accurate SHAPE-directed RNA structure determination | PNAS (<a class="reference external" href="https://www.pnas.org/content/106/1/97">deigan et al. 2009</a>) - chemical probing</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="code">
-<h3><span class="section-number">1.3.1.3. </span>code<a class="headerlink" href="#code" title="Link to this heading">#</a></h3>
+<h3>Code<a class="headerlink" href="#code" title="Link to this heading">#</a></h3>
+<p class="section-lead">Tools for RNA work: the Galaxy workbench and ViennaRNA for classic folding with constraints, and neural folding models (SPOT-RNA, mxfold2) that later sections describe.</p>
 <ul class="simple">
 <li><p>rna</p>
 <ul>
@@ -499,34 +556,41 @@ document.write(`
 </section>
 </section>
 <section id="rna-structure-prediction">
-<h2><span class="section-number">1.3.2. </span>rna structure prediction<a class="headerlink" href="#rna-structure-prediction" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-omics-rna-structure-prediction"></span><h2>Rna structure prediction<a class="headerlink" href="#rna-structure-prediction" title="Link to this heading">#</a></h2>
+<p class="section-lead">RNA first, because its problem is simpler to state: most of the stabilizing energy is in which bases pair, so prediction mostly means secondary structure, with 3d prediction as a harder follow-up.</p>
 <section id="rna-basics">
-<h3><span class="section-number">1.3.2.1. </span>rna basics<a class="headerlink" href="#rna-basics" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>rna does many things</p>
+<h3>Rna basics<a class="headerlink" href="#rna-basics" title="Link to this heading">#</a></h3>
+<p class="section-lead">RNA structure is described at three levels: the sequence (primary), the base pairs (secondary) and the 3d shape (tertiary). For RNA most of the stabilizing energy comes from the secondary structure, which is why “RNA folding” usually means predicting base pairs.</p>
 <ul>
+<li><p>rna does many things</p>
+<ul class="simple">
 <li><p>certain structures of RNA lend themselves to catalytic activities</p></li>
 <li><p>tRNA/mRNA convert DNA into proteins</p></li>
 <li><p>RNA also serves as the information storage and replication agent in some viruses</p></li>
 </ul>
 </li>
 <li><p>rna components</p>
-<ul>
+<ul class="simple">
 <li><p>4 bases: adenine-uracil (instead of dna’s thymine), cytosine-guanine</p></li>
 <li><p>ribose sugar in RNA is more flexible than DNA</p></li>
 </ul>
 </li>
 <li><p>RNA World Hypothesis (Walter Gilbert, 1986) - suggests RNA was precursor to modern life</p>
-<ul>
+<ul class="simple">
 <li><p>later dna stepped in for info storage (more stable) and proteins took over for catalyzing reactions</p></li>
 </ul>
 </li>
 <li><p>rna structure</p>
 <ul>
-<li><p><img alt="rna_structure" src="../../_images/rna_structure.png" /></p>
-<ul>
+<li><figure class="align-default" id="id1">
+<img alt="The three levels of RNA structure: the base sequence (primary), base pairs forming stems and loops (secondary, red bars are pairs), and the folded 3d shape (tertiary)." class="note-figure" src="../../_images/rna_structure.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text"><span class="fig-num">Figure 1.</span> The three levels of RNA structure: the base sequence (primary), base pairs forming stems and loops (secondary, red bars are pairs), and the folded 3d shape (tertiary).</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>primary - sequence in which the bases are aligned - relatively simple, comes from sequencing</p></li>
-<li><p><strong>secondary</strong> - 2d analysis of hydrogen bonds between rna parts (double-strands, hairpins, loops) - most of stabilizing free energy comes from here (unlike proteins, where tertiary is most important)</p>
+<li><p><span id="def-secondary" class="def-anchor"></span><strong>secondary</strong> - 2d analysis of hydrogen bonds between rna parts (double-strands, hairpins, loops) - most of stabilizing free energy comes from here (unlike proteins, where tertiary is most important)</p>
 <ul>
 <li><p>most work on “RNA folding” predicts secondary structure from primary structure</p></li>
 <li><p>a lot of this comes from hydrogen bonds between pairs (watson-crick edge)</p>
@@ -539,14 +603,23 @@ document.write(`
 <li><p>tertiary - complete 3d structure (e.g. bends, twists)</p></li>
 </ul>
 </li>
-<li><p>decomposition of an RNA secondary structure into structural elements. Energy contributions are assigned to the plane faces depending on their type and the nucleotides delimiting them. “Stem loops”, i.e., stacked pairs of base pairs, from the unit of helices <img style="width: 450px; max-width: 100%;" src="../assets/rna_secondary.svg" alt="RNA secondary structure elements"/></p></li>
+<li><p>decomposition of an RNA secondary structure into structural elements. Energy contributions are assigned to the plane faces depending on their type and the nucleotides delimiting them. “Stem loops”, i.e., stacked pairs of base pairs, from the unit of helices</p>
+<figure class="align-default" id="id2">
+<a class="note-figure reference internal image-reference" href="../../_images/rna_secondary.svg"><img alt="A secondary structure split into elements by color: stems of stacked pairs, hairpin loops at the tips, a multi-loop joining three helices, a bulge and an interior loop. Energy models assign a contribu" class="note-figure" src="../../_images/rna_secondary.svg" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 202 </span><span class="caption-text"><span class="fig-num">Figure 2.</span> A secondary structure split into elements by color: stems of stacked pairs, hairpin loops at the tips, a multi-loop joining three helices, a bulge and an interior loop. Energy models assign a contribution to each element.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/RNA-Seq">RNA-Seq</a> - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome</p></li>
 </ul>
 </section>
 <section id="algorithms">
-<h3><span class="section-number">1.3.2.2. </span>algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h3>
+<h3>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h3>
+<p class="section-lead">Two families: minimize total pairing energy with dynamic programming (Nussinov, Zuker), or fit a probabilistic grammar. Both rely on the no-crossings assumption, which gives the problem a tree structure; later work relaxes it, and recent work plugs neural-net scores into the Zuker-style recursion.</p>
 <ul class="simple">
 <li><p>computational bio book ch 10 (<a class="reference external" href="https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf">kellis, 2016</a>)</p>
 <ul>
@@ -568,7 +641,7 @@ document.write(`
 <ul>
 <li><p>dynamic programming approach: given energy value for each pair, minimize total energy by pairing up appropriate base pairs</p>
 <ul>
-<li><p><strong>assumption</strong>: no crossings - given a subsequence <span class="math notranslate nohighlight">\([i,j]\)</span>, there is either no edge connecting to the ith base (meaning it is unpaired) or there is some edge connecting the ith base to the kth base where <span class="math notranslate nohighlight">\(i &lt; k \leq j\)</span> (meaning the ith base is paired to the kth base)</p>
+<li><p><span id="def-assumption" class="def-anchor"></span><strong>assumption</strong>: no crossings - given a subsequence <span class="math notranslate nohighlight">\([i,j]\)</span>, there is either no edge connecting to the ith base (meaning it is unpaired) or there is some edge connecting the ith base to the kth base where <span class="math notranslate nohighlight">\(i &lt; k \leq j\)</span> (meaning the ith base is paired to the kth base)</p>
 <ul>
 <li><p>this induces a tree-structure to theh problem</p></li>
 </ul>
@@ -636,9 +709,10 @@ document.write(`
 </ul>
 </section>
 <section id="d-rna-structure-prediction">
-<h3><span class="section-number">1.3.2.3. </span>3d rna structure prediction<a class="headerlink" href="#d-rna-structure-prediction" title="Link to this heading">#</a></h3>
+<h3>3d rna structure prediction<a class="headerlink" href="#d-rna-structure-prediction" title="Link to this heading">#</a></h3>
+<p class="section-lead">Full 3d prediction is usually a search: propose structures, score them with an energy function, keep the most stable. ARES replaces the hand-built energy function with a rotation-equivariant network.</p>
 <ul>
-<li><p>Geometric deep learning of RNA structure (<a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">townshend, …, dror 2021</a> - atomic ai + stanford, <em>science</em>)</p>
+<li><p>Geometric deep learning of RNA structure (<a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">townshend, …, dror 2021</a> - atomic ai + stanford, <a class="term-link" href="../ai/philosophy.html#def-science" data-def="organization of knowledge · Philosophy"><em>science</em></a>)</p>
 <ul class="simple">
 <li><p>uses neural network as scoring mode (called ARES = Atomic Rotationally Equivariant Scorer)</p>
 <ul>
@@ -678,12 +752,12 @@ document.write(`
 <li><p>ex. graph-based: 2d structure mapped to a graph</p></li>
 <li><p>three open-source papers that yield all-atom structure</p>
 <ul>
-<li><p><strong>IsRNA1</strong>: <em>De Novo</em> Prediction and Blind Screening of RNA 3D Structures (<a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.0c01148">zhang et al. 2021</a>)</p>
+<li><p><span id="def-isrna1" class="def-anchor"></span><strong>IsRNA1</strong>: <em>De Novo</em> Prediction and Blind Screening of RNA 3D Structures (<a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.0c01148">zhang et al. 2021</a>)</p>
 <ul>
 <li><p>origina IsRNA (<a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b01228">zhang &amp; chen, 2018</a>)</p></li>
 </ul>
 </li>
-<li><p><strong>iFoldRNA</strong>: three-dimensional RNA structure prediction and folding (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18579566/">sharma et al. 2008</a> )</p></li>
+<li><p><span id="def-ifoldrna" class="def-anchor"></span><strong>iFoldRNA</strong>: three-dimensional RNA structure prediction and folding (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18579566/">sharma et al. 2008</a> )</p></li>
 <li><p><strong>SimRNA</strong> (<a class="reference external" href="https://academic.oup.com/nar/article-abstract/44/7/e63/2467805">boiecki et al. 2016</a>)</p></li>
 </ul>
 </li>
@@ -695,9 +769,11 @@ document.write(`
 </section>
 </section>
 <section id="protein-structure-prediction-dna">
-<h2><span class="section-number">1.3.3. </span>protein structure prediction (dna)<a class="headerlink" href="#protein-structure-prediction-dna" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-omics-protein-structure-prediction-dna"></span><h2>Protein structure prediction (dna)<a class="headerlink" href="#protein-structure-prediction-dna" title="Link to this heading">#</a></h2>
+<p class="section-lead">Protein methods start from a multiple sequence alignment of related proteins, modeled one column at a time (PSSM) or in pairs of positions (Potts model). The usual targets are a contact map or the full 3d structure.</p>
 <section id="protein-basics">
-<h3><span class="section-number">1.3.3.1. </span>protein basics<a class="headerlink" href="#protein-basics" title="Link to this heading">#</a></h3>
+<h3>Protein basics<a class="headerlink" href="#protein-basics" title="Link to this heading">#</a></h3>
+<p class="section-lead">Why prediction is worth it: solving one structure experimentally (X-ray crystallography, NMR) is slow and expensive, while sequences are cheap and shaped by evolution through mutation and selection.</p>
 <ul class="simple">
 <li><p>the standard way to obtain the 3D structure of a protein is X-ray crystallography</p>
 <ul>
@@ -719,13 +795,14 @@ document.write(`
 </ul>
 </section>
 <section id="algorithm-basics">
-<h3><span class="section-number">1.3.3.2. </span>algorithm basics<a class="headerlink" href="#algorithm-basics" title="Link to this heading">#</a></h3>
+<h3>Algorithm basics<a class="headerlink" href="#algorithm-basics" title="Link to this heading">#</a></h3>
+<p class="section-lead">The inputs and targets that the deep learning papers build on: an MSA of related proteins, modeled per column or per pair of positions, and either a contact map or full 3d coordinates as output. TAPE adds a benchmark for protein embeddings.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.sciencedirect.com/topics/medicine-and-dentistry/multiple-sequence-alignment">multiple-sequence-alignment</a> (MSA) - alignment of 3 or more amino acid (or nucleic acid) sequences, which show conserved regions within a protein family which are of structural and functional importance</p>
 <ul>
 <li><p>matrix is (n_proteins x n_amino_acids)</p></li>
 <li><p>independent model (PSSM) - model likelihood for each column independently</p></li>
-<li><p>pairwise sites (potts model) - model likelihood for pairs of positions</p></li>
+<li><p>pairwise sites (<a class="term-link" href="../stat/graphical_models.html#def-potts-model" data-def="x is multiclass · Graphical models">potts model</a>) - model likelihood for pairs of positions</p></li>
 </ul>
 </li>
 <li><p>prediction problems</p>
@@ -747,10 +824,11 @@ document.write(`
 </ul>
 </section>
 <section id="deep-learning-papers">
-<h3><span class="section-number">1.3.3.3. </span>deep-learning papers<a class="headerlink" href="#deep-learning-papers" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>De novo protein design by deep network hallucination | Nature (<a class="reference external" href="https://www.nature.com/articles/s41586-021-04184-w">anishchenko…baker, 2021</a>)</p>
+<h3>Deep-learning papers<a class="headerlink" href="#deep-learning-papers" title="Link to this heading">#</a></h3>
+<p class="section-lead">AlphaFold takes two inputs, the MSA and a residue-by-residue pair representation, refines both with the Evoformer, and turns them into coordinates with a structure module that respects rotations and translations.</p>
 <ul>
+<li><p>De novo protein design by deep network hallucination | Nature (<a class="reference external" href="https://www.nature.com/articles/s41586-021-04184-w">anishchenko…baker, 2021</a>)</p>
+<ul class="simple">
 <li><p>deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins</p></li>
 </ul>
 </li>
@@ -760,11 +838,17 @@ document.write(`
 <li><p><a class="reference external" href="https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/">best blog post</a> (<a class="reference external" href="https://towardsdatascience.com/unfolding-alphafold-683d576a54a3">other blog post</a>)</p></li>
 <li><p>model overview</p>
 <ul>
-<li><p><img alt="alphafold" src="../../_images/alphafold.png" /></p></li>
+<li><figure class="align-default" id="id3">
+<img alt="AlphaFold's pipeline. The input sequence is searched against genetic and structure databases to build an MSA and templates; the MSA and pair representations pass through 48 Evoformer blocks and 8 stru" class="note-figure" src="../../_images/alphafold.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 203 </span><span class="caption-text"><span class="fig-num">Figure 3.</span> AlphaFold’s pipeline. The input sequence is searched against genetic and structure databases to build an MSA and templates; the MSA and pair representations pass through 48 Evoformer blocks and 8 structure module blocks, and the whole thing is recycled three times. The output structure is colored by confidence.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 </li>
 <li><p>preprocessing</p>
-<ul>
+<ul class="simple">
 <li><p>MSA (<span class="math notranslate nohighlight">\(N_{seq} \times N_{res}\)</span>)</p>
 <ul>
 <li><p>uses evolutionary information</p></li>
@@ -779,13 +863,13 @@ document.write(`
 </ul>
 </li>
 <li><p>evoformer</p>
-<ul>
+<ul class="simple">
 <li><p>uses attention on graph network</p></li>
 <li><p>iterative</p></li>
 </ul>
 </li>
 <li><p>structure model - converts msa/pair representations into set of (x,y,z) coordinates</p>
-<ul>
+<ul class="simple">
 <li><p>“invariant point attention” - invariance to translations and rotations</p></li>
 <li><p>predicts a global frame (residue gas)</p></li>
 </ul>
@@ -793,7 +877,7 @@ document.write(`
 </ul>
 </li>
 <li><p>MSA Transformer (<a class="reference external" href="https://proceedings.mlr.press/v139/rao21a.html">rao et al. 2021</a>) - predicts contact prediction</p>
-<ul>
+<ul class="simple">
 <li><p>train via masking</p></li>
 <li><p>output (contact prediction) is just linear combination of attention heads finetuned on relatively little data</p></li>
 <li><p>some architecture tricks</p>
@@ -807,7 +891,7 @@ document.write(`
 </ul>
 </section>
 <section id="covid">
-<h3><span class="section-number">1.3.3.4. </span>covid<a class="headerlink" href="#covid" title="Link to this heading">#</a></h3>
+<h3>Covid<a class="headerlink" href="#covid" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The Coronavirus Nucleocapsid Is a Multifunctional Protein (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/">mcbride et al. 2014</a>)</p>
 <ul>
@@ -818,7 +902,8 @@ document.write(`
 </section>
 </section>
 <section id="tips-using-viruses-for-treatment">
-<h2><span class="section-number">1.3.4. </span>TIPs - using viruses for treatment<a class="headerlink" href="#tips-using-viruses-for-treatment" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-omics-tips-using-viruses-for-treatment"></span><h2>TIPs - using viruses for treatment<a class="headerlink" href="#tips-using-viruses-for-treatment" title="Link to this heading">#</a></h2>
+<p class="section-lead">A separate topic. Drugs don’t mutate and are hard to deliver; a TIP is a shortened copy of a virus that can’t replicate on its own, so it takes the virus’s replication machinery, picks up its mutations, and spreads along with it.</p>
 <ul class="simple">
 <li><p>videos</p>
 <ul>
@@ -881,12 +966,22 @@ document.write(`
 </ul>
 </section>
 <section id="random-papers">
-<h2><span class="section-number">1.3.5. </span>random papers<a class="headerlink" href="#random-papers" title="Link to this heading">#</a></h2>
+<span id="sec-ovw-omics-random-papers"></span><h2>Random papers<a class="headerlink" href="#random-papers" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/d41586-021-03697-8?utm_source=Nature+Briefing&amp;amp;utm_campaign=b0bda6ba48-briefing-dy-20211210&amp;amp;utm_medium=email&amp;amp;utm_term=0_c9dfd39373-b0bda6ba48-45837550">DeepMind AI tackles one of chemistry’s most valuable techniques</a></p></li>
 <li><p><a class="reference external" href="https://www.nature.com/articles/d41586-021-03593-1?utm_source=Nature+Briefing&amp;amp;utm_campaign=b0bda6ba48-briefing-dy-20211210&amp;amp;utm_medium=email&amp;amp;utm_term=0_c9dfd39373-b0bda6ba48-45837550">DeepMind’s AI helps untangle the mathematics of knots</a></p></li>
 </ul>
-</section>
+<div class="chapter-takeaways admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Structure prediction from sequence is the shared problem; RNA work targets mostly secondary structure, protein work mostly contacts or full 3d structure.</p></li>
+<li><p>Classic RNA folding is dynamic programming over pairing energies under a no-crossings assumption; newer work relaxes that assumption or feeds neural-net scores into the same recursion.</p></li>
+<li><p>3d prediction, for RNA and proteins, separates into proposing structures and scoring them, and learned scorers that respect rotations and translations replace hand-built energy functions.</p></li>
+<li><p>Protein methods rely on evolutionary information in multiple sequence alignments; AlphaFold and the MSA Transformer process the MSA with attention.</p></li>
+<li><p>TIPs are a different idea, engineered virus fragments that take the virus’s replication machinery and mutations, so the treatment evolves and spreads along with the virus.</p></li>
+</ul>
+</div>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_llms.html"><span class="related-part">Research overviews</span><span class="related-title">LLMs</span><span class="related-hook">Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a><a class="related-card" href="../neuro/comp_neuro.html"><span class="related-part">Neuroscience</span><span class="related-title">Computational neuroscience</span><span class="related-hook">Models of neurons, neural codes and learning rules, then data-driven neuroscience, brain encoding models and neuro-inspired AI.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -920,20 +1015,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ovw_disentanglement.html"
+       href="ovw_causal_inference.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>disentanglement</p>
+        <p class="prev-next-title">Causal inference</p>
       </div>
     </a>
     <a class="right-next"
-       href="ovw_llms.html"
+       href="ovw_scat.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.4. </span>llms</p>
+        <p class="prev-next-title">Scattering transform</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -953,27 +1048,27 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">1.3.1. overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary">1.3.1.1. vocabulary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">1.3.1.2. data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">1.3.1.3. code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary">Vocabulary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-structure-prediction">1.3.2. rna structure prediction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-basics">1.3.2.1. rna basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">1.3.2.2. algorithms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-rna-structure-prediction">1.3.2.3. 3d rna structure prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-structure-prediction">Rna structure prediction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rna-basics">Rna basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-rna-structure-prediction">3d rna structure prediction</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-structure-prediction-dna">1.3.3. protein structure prediction (dna)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-basics">1.3.3.1. protein basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-basics">1.3.3.2. algorithm basics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-papers">1.3.3.3. deep-learning papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covid">1.3.3.4. covid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-structure-prediction-dna">Protein structure prediction (dna)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-basics">Protein basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-basics">Algorithm basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-papers">Deep-learning papers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covid">Covid</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-using-viruses-for-treatment">1.3.4. TIPs - using viruses for treatment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-papers">1.3.5. random papers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-using-viruses-for-treatment">TIPs - using viruses for treatment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-papers">Random papers</a></li>
 </ul>
   </nav></div>
 
@@ -998,7 +1093,7 @@ By Chandan Singh
 
   <p class="copyright">
     
-      © Copyright None.
+      © Copyright 2026.
       <br/>
     
   </p>

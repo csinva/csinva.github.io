@@ -24,7 +24,7 @@
 - layers - if last layer is sufficient, it is more minimal (invariant) than previous layers
   - because going through a layer can only lose info
 - deep learning dataset D,
-  - $$\cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} = H(D\vert \theta) + I(\theta; D\vert w) + KL(q\vert p) - \corange{\underbrace{I(D; w, \theta)}_{overfitting}}$$<!-- -->
+  - $$\cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} = H(D\vert \theta) + I(\theta; D\vert w) + KL(q\vert p) - \corange{\underbrace{I(D; w, \theta)}_{overfitting}}$$
     - easy to <span class="corange">overfit</span> by storing w completely
   - minimizing $$\cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} + \corange{\underbrace{I(D; w, \theta)}_{overfitting}}$$ would minimize all the terms that we want, but <span class="corange">second term</span> is incomputable
   - instead SGVB (kingman and welling, 2015), minimize $$\underset{q(w\vert D)}{arg \min} \: \cblue{\underbrace{H_{p, q}(D\vert w)}_{cross-entropy}} + \beta \corange{\underbrace{I(D; w)}_{overfitting}}$$
@@ -35,7 +35,7 @@
     - amazing that SGD does this
   - for deep networks this and the normal information bottleneck are duals of each other
 - one layer $z = wx$
-  - $$\underbrace{g[I(w; D)]}_{weights} \leq \underbrace{I(z; x) + TC(z)}_{activations} \leq \underbrace{g[I(w; D)] +c}_{weights}$$<!-- -->
+  - $$\underbrace{g[I(w; D)]}_{weights} \leq \underbrace{I(z; x) + TC(z)}_{activations} \leq \underbrace{g[I(w; D)] +c}_{weights}$$
   - assume you get sufficiency (so probably need this for more layers)
   - weight minimality on past data bounds representation **minimality** of future data
   - corollary - less info in weights increases invariance and disentaglement of learned representation

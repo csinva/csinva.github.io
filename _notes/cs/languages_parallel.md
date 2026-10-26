@@ -210,7 +210,8 @@ pd.merge(df1, df2, how='left', on='x1')
 - there's a `torch.nn.Flatten` module
 - following example [here](https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51)
 - roofline analyses: https://jax-ml.github.io/scaling-book/roofline/
-  - 
+
+
 
 ## parallelization
 

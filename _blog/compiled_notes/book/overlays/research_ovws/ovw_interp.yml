@@ -1,0 +1,219 @@
+# Overlay for _notes/research_ovws/ovw_interp.md
+hook: Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.
+intro: |
+  The organizing idea, from Murdoch et al. 2019, is that an interpretation is only useful relative to an
+  audience and a problem. The cheat sheet at the top turns this into a decision: fit a model that is
+  interpretable by design if it is accurate enough, otherwise explain a black box after the fact, either for
+  one prediction or for the whole dataset. The chapter follows the same split after a first section on how
+  interpretations are evaluated and where they break.
+
+  Intrinsic interpretability covers transparent models: rule sets, rule lists, trees, GAMs, sparse scoring
+  systems, symbolic regression, and neural nets built around concepts or prototypes. Post-hoc
+  interpretability covers model-agnostic methods (LIME, SHAP, variable importances, importance curves), then
+  methods specific to tree ensembles and neural nets, interactions, influential training points, and
+  distillation into a simpler model. The final section collects other uses: improving models with
+  explanations, human-in-the-loop systems, recourse, RL, and interpretations that hold across a whole set of
+  good models. LLM interpretability has its own section in the LLM chapter.
+sections:
+  evaluating interpretability:
+    lead: |
+      The Doshi-Velez and Kim table sets the standard: real people doing the real task is the strongest test,
+      and proxy tasks with no people the weakest. Most papers below measure something narrower, for example
+      whether removing the pixels an attribution ranks highest actually lowers accuracy.
+  human-centric:
+    lead: |
+      User studies with data scientists and lay participants. A recurring finding is that people over-trust
+      interpretability tools, and that a more transparent model can make its large mistakes harder, not easier,
+      to spot.
+  interpretation weaknesses & sanity checks:
+    lead: |
+      Ways explanations fail: saliency maps that should change when the model's weights are randomized, small
+      input perturbations that drastically change an interpretation, and models built or manipulated so that
+      their explanations hide the features they actually use.
+  intrinsic interpretability (i.e. how can we fit a simpler model) = transparent models:
+    lead: |
+      Models that are interpretable as fitted. Many are implemented in the imodels package. Rules, trees and
+      GAMs come first, then sparse and symbolic models, then neural nets constrained to be readable.
+  decision rules overview:
+    lead: |
+      The three rule models differ in how rules combine. A rule set's rules may overlap and leave gaps, a rule
+      list applies the first rule that fires, and a tree splits the space into disjoint leaves. Each can be
+      converted into the next, as the bullets below explain.
+  rule sets:
+    lead: |
+      Independent if-then rules that may overlap and need not cover the whole space. Methods range from greedy
+      rule builders and boosting to RuleFit, which mines rules from many trees and fits a sparse linear model on
+      them, to Bayesian rule sets that OR together clauses of ANDs.
+  rule lists:
+    lead: |
+      Ordered if-then-else rules. Most methods first mine frequent patterns and then search over orderings of
+      them: Bayesian rule lists sample lists under a prior favoring short ones, and certifiably optimal rule
+      lists bound the loss to prune the search.
+  trees:
+    lead: |
+      Greedy trees (CART, C4.5) come first, then optimal sparse trees that minimize <span
+      class="cblue">loss</span> plus a <span class="corange">penalty per leaf</span> with dynamic programming,
+      bounds or integer programming. Later threads connect trees with boosting (FIGS, boosted stumps rewritten
+      as trees), Bayesian priors, regularization like hierarchical shrinkage, and density estimation.
+  decision diagrams:
+    lead: |
+      Trees whose paths may rejoin, which avoids replicated subtrees. Most methods post-process a fitted tree or
+      compress an ensemble into a diagram.
+  gams (generalized additive models):
+    lead: |
+      A GAM adds up one shape function per feature, so each feature's effect can be plotted on its own. The
+      papers differ in the basis for those shape functions (splines, trees, neural nets), in how they are fit
+      (backfitting or cyclic boosting), and in whether they add a few interaction terms.
+  supersparse models:
+    lead: |
+      Scoring systems with a few small integer points, like the seizure risk score below, which a clinician can
+      add up by hand.
+  symbolic regression:
+    lead: |
+      Searching over formulas instead of fitting parameters of a fixed form. The approaches are genetic search
+      over expression trees, distilling a fitted black box into a formula, and neural nets pretrained to output
+      an equation skeleton whose constants are then fit.
+  interpretable neural nets:
+    lead: |
+      Neural nets with interpretable pieces built in: a layer of human concepts (concept bottlenecks), parts of
+      the input they point to, or prototypes from the training set that each prediction is compared with.
+  concepts:
+    lead: |
+      Concept bottleneck models predict human-named concepts first and the label from those concepts. Recent
+      variants get the concepts without labels, by projecting embeddings onto text concepts or by asking LLMs to
+      propose and answer questions.
+  example-based = case-based (e.g. prototypes, nearest neighbor):
+    lead: |
+      Networks that classify by comparing an input with learned prototypes, each tied to a real training patch,
+      so a prediction reads as "this looks like that". ProtoPNet is the template; the rest extend it to trees,
+      transformers, shared prototypes and medical images.
+  connecting dnns and rules:
+    lead: |
+      Two directions: train trees with neural-net tools (soft splits learned by backprop, TAO's alternating node
+      updates, trees on network features), or put rules into networks as priors and extract rules back out of
+      trained nets.
+  constrained models (e.g. monotonicity):
+    lead: |
+      Instead of a simpler model class, keep a flexible model and constrain its shape: monotonic, convex or
+      unimodal in chosen features. Lattice models and monotonic gradient boosting are the main tools listed.
+  posthoc interpretability (i.e. how can we interpret a fitted model):
+    lead: |
+      Explanations of a model that is already trained. Model-agnostic methods only need predictions; the later
+      subsections use the structure of tree ensembles or neural nets.
+  model-agnostic:
+    lead: |
+      Many of these methods remove or perturb features and watch the prediction change. LIME fits a simple
+      model around one point; SHAP averages a feature's contribution over subsets of the other features.
+    viz:
+      - name: shapley-values
+        params:
+          x1: 1
+          x2: 1.5
+          x3: 0.5
+          gamma: 2
+        caption: Exact Shapley values for an illustrative model with an interaction, $f(x) = 1 + 2x_1 + x_2 - 1.5x_3 +
+          \gamma x_1 x_2$, explained against the baseline $b = 0$. Each row adds the features in one order; a feature's
+          Shapley value is its average marginal contribution over the 6 orders, and the values always sum to $f(x) - f(b)$.
+          Raise $\gamma$ to see the interaction split between $x_1$ and $x_2$, or set $x_3 = 0$ to see its value drop
+          to 0.
+  variable importances (VIs):
+    lead: |
+      A taxonomy of global importance measures from the sensitivity-analysis literature: derivative-based,
+      regression-based, hypothesis tests, variance-based Sobol indices built on the ANOVA decomposition, and
+      moment-independent measures. Sobol indices connect back to SHAP.
+  importance curves:
+    lead: |
+      Curves show how the prediction changes as one feature varies. PDP and ICE plots can evaluate the model on
+      unrealistic points when features are correlated; M-plots and ALE plots fix this in different ways, as the
+      closing summary contrasts.
+  tree ensembles:
+    lead: |
+      Importances that use the structure of random forests and boosted trees. MDI and permutation importance
+      measure marginal importance and inflate correlated features; TreeSHAP computes exact Shapley values per
+      prediction and adds interaction scores.
+  neural networks (dnns):
+    lead: |
+      Visualizing what units respond to, concept vectors like TCAV, causal attribution, saliency maps, and
+      transformer-specific methods.
+  dnn visualization:
+    lead: |
+      Methods for seeing what units in a network respond to: visualizing filters, finding or generating images
+      that maximally activate a unit, and the circuits work that traces curve detectors through InceptionV1.
+      Counterfactual and prototype explanations close the section.
+  dnn causal-motivated attribution:
+    lead: |
+      Attribution framed as a causal question: learn a causal graph between the model's predictions and
+      candidate causes, treat the network as a structural causal model, or remove a property from a
+      representation and watch the prediction change.
+  dnn feature importance:
+    lead: |
+      Saliency maps for a single input. Perturbation methods occlude or randomly mask parts of the image;
+      gradient methods (gradient times input, integrated gradients, SmoothGrad, Grad-CAM) read sensitivity off
+      the network, and integrated gradients depends on the choice of baseline.
+  interactions:
+    lead: |
+      Single-feature importances miss effects that only show up when features act together. These methods
+      score such interactions for any model, for trees, for neural nets, and inside linear models.
+  model-agnostic interactions:
+    lead: |
+      Interactions are hard to define, since they can change under monotonic transformations of the output. The
+      H-statistic, functional ANOVA and Shapley interaction indices each give a definition; SPEX-style methods
+      scale interaction search to LLMs.
+  dnn interactions:
+    lead: |
+      Interactions read from a trained network: contextual decomposition and its hierarchical version ACD,
+      interactions detected from the weights, and network dissection, which matches units to concepts.
+  finding influential examples:
+    lead: |
+      Explaining a prediction by the training points that shaped it: delete a point and refit, or approximate
+      that with influence functions.
+  model summarization / distillation:
+    lead: |
+      Global explanations by fitting a simpler surrogate to a model's predictions: an additive model, a tree or
+      a rule list, or an exact tree equivalent of a tree ensemble. When the model is nonlinear or features are
+      correlated, no additive surrogate is unique.
+  different problems / perspectives:
+    lead: |
+      Uses of interpretation beyond explaining one fitted model: improving models with explanations, systems
+      where humans and models share decisions, recourse, RL, stability of interpretations across many good
+      models, and AI safety.
+  improving models:
+    lead: |
+      Explanations used as a training signal, for example penalizing attributions on features known to be
+      irrelevant. A second thread, complementarity, has a model defer to a human, or an interpretable model to
+      a black box, on the points where the other does better.
+  human-in-the-loop (HITL):
+    lead: |
+      Most systems use the human as a backup for low-confidence predictions. The alternatives listed change
+      where the human acts: how they direct the machine, how they specify what they want, and what the system
+      outputs.
+  interpretation over sets / perturbations:
+    lead: |
+      Many different models fit the data about equally well. These papers look at how much an interpretation,
+      such as a variable's importance, varies across that whole set of good models.
+  ai safety:
+    lead: |
+      Definitions of AGI, the concrete problems in AI safety (distribution shift, safe exploration, side
+      effects, reward hacking, oversight), the argument that power-seeking AI is an existential risk, and the
+      split of LLM alignment into outer and inner alignment.
+takeaways:
+  - An interpretation is only useful relative to an audience and a problem, so the strongest evaluation is real people
+    on the real task; most papers measure narrower proxies.
+  - Post-hoc explanations can fail sanity checks, change under small input perturbations, and be manipulated to hide
+    the features a model uses.
+  - Transparent models (rules, optimal sparse trees, GAMs, integer scoring systems) are the first choice when they are
+    accurate enough, and much of the work is making them faster to fit or more accurate.
+  - Many post-hoc methods remove or perturb features and watch the prediction change; they differ in how they handle
+    correlated features and interactions, which remain hard to define.
+  - Explanations are also used to improve models, to divide work between humans and models, and to give recourse.
+  - Many models fit the data about equally well, so an open question is how much an interpretation varies across that
+    Rashomon set.
+figures:
+  interp.svg: Interpretability cheat sheet. If a simpler model is accurate enough, fit one (rule list, tree, GAM); otherwise use a black box and explain it post hoc, either one prediction (LIME, SHAP, ACD) or the whole dataset (importances, curves, example-based methods).
+  vims.svg: Families of variable importance measures, from difference-based and regression-based to variance-based, moment-independent and graphic ones.
+  interp_fragility_intuition.svg: Why attributions can be fragile. Near a bend in the decision boundary, a small perturbation $\delta$ of the test point turns the loss gradient toward a different training point, so the most influential example changes.
+  rule_models.svg: The same two-feature space partitioned by a rule set (overlapping rules), a rule list (first matching rule wins) and a rule tree (disjoint leaves), each giving $p(+)$ per region.
+  2helps2b.svg: The 2HELPS2B seizure risk score. Six yes/no items worth 1 or 2 points are summed, and the total maps to a seizure risk, from under 5% at 0 points to 95% at 6 or more.
+  cbm_tradeoffs.svg: Where concept bottleneck models sit between a black box (accurate, not interpretable) and a linear model on embeddings. Post-hoc CBMs are closest to the black box in accuracy; supervised CBMs are more interpretable but less accurate.
+  curves.png: How curve detectors are built up across the layers of InceptionV1, from Gabor filters to lines to early curves to full curve detectors.
+  mcr_depiction.svg: Model class reliance. Among all models within $\epsilon$ of the best loss (the Rashomon set, green), reliance on $X_1$ ranges from MCR$^-$ to MCR$^+$, which bounds how much any good model must or can rely on that feature.

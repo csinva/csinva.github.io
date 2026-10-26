@@ -1,0 +1,174 @@
+# Overlay for _notes/ai/rl_decisions.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: RL           # short name on the start-page topic map
+title: RL and decisions
+hook: Game trees, utility theory, the value of information, MDPs, reinforcement learning, deep RL, and RL for LLMs.
+intro: |
+  The chapter goes from one decision to many. Game trees cover adversarial search with minimax and alpha-beta
+  pruning. Decision theory then says how a rational agent picks a single action: maximize expected utility,
+  where the utility function follows from a few axioms about preferences, and information is worth
+  gathering when it might change the plan.
+
+  Markov decision processes chain these decisions over time. Value iteration and policy iteration solve an
+  MDP when the transition model $P(s' \vert s, a)$ and the reward $R(s)$ are known, and POMDPs add
+  uncertainty about the state. Reinforcement learning drops the known model and learns from observed
+  rewards, with TD learning, Q-learning or policy search. The last sections are notes from Sergey Levine's
+  deep RL course and on training LLMs with RL (PPO, DPO, GRPO, on-policy distillation).
+sections:
+  game trees - Russell & Norvig 5.2-5.5:
+    lead: |
+      Minimax backs values up a game tree: each player picks the move that is best for them, assuming the
+      opponent does the same. The rest of the section is about making that affordable: pruning, cutting the
+      search off with a heuristic evaluation, and handling chance nodes.
+    viz:
+      - name: alpha-beta
+        params:
+          seed: 2
+          order: random
+        caption: 'Minimax with alpha-beta pruning on a 3-ply tree with random leaf values. Drag the step slider back to
+          0 and
+      
+          step through: each node keeps a window [α, β], and once a node''s value falls outside it, its remaining
+      
+          branches are pruned (dashed). Switch the move ordering: with the best moves first only 11 of the 27 leaves
+      
+          are evaluated, with the worst first none are pruned.
+      
+          '
+  utilities / decision theory -- Russell & Norvig 16.1-16.3, mazzonni quant finance book:
+    lead: |
+      A rational agent picks the action with maximum expected utility. The six axioms are the conditions on
+      preferences under which such a utility function exists. The risk bullets show how the shape of the
+      utility of money (sublinear, linear, supralinear) sets an agent's attitude to gambles.
+  utility functions:
+    lead: |
+      Preference elicitation finds a utility function by asking the agent to compare a state with a lottery
+      between the best and the worst outcome. For money, the curvature of the utility function sets the
+      attitude to risk. The descriptive-theory bullets list ways real people depart from the normative theory.
+  decision theory / VPI -- Russell & Norvig 16.5 & 16.6:
+    lead: |
+      A decision network adds decision nodes and a utility node to a Bayesian network. To evaluate it, set the
+      evidence, try each value of the decision node, compute the expected utility of each, and return the best
+      action.
+  the value of information:
+    lead: |
+      VPI is the expected gain from learning a variable's value before acting: the expected best utility after
+      seeing $T$, minus the best utility now. The two intuition bullets say when it is large.
+  mdps and rl - Russell & Norvig 17.1-17.4:
+    lead: |
+      An MDP fixes states, actions, a transition model $P(s' \vert s,a)$ and a reward $R(s)$. A policy $\pi(s)$
+      picks an action in each state, and the discount $\gamma$ turns an infinite sequence of rewards into a
+      finite utility.
+  value iteration:
+    lead: |
+      Value iteration applies the Bellman update to every state until the utilities stop changing. It converges
+      because the update is a contraction: each iteration shrinks the error by a factor of $\gamma$.
+    viz:
+      - name: value-iteration
+        params: {k: 5, gamma: 1, reward: -0.04, slip: 0.2}
+        caption: |
+          Russell & Norvig's 4×3 grid world. Each Bellman update sets $U(s)$ to the reward $R(s)$ plus the
+          discounted expected utility of the next state under the best action; the arrows show that action.
+          Step $k$ up and watch
+          the values spread out from the +1 and −1 squares one step per update and then settle (the bottom-left
+          state converges to 0.705). Then change the reward. A large penalty per step sends the agent to the
+          nearest exit, even −1. A positive reward makes it avoid both exits (lower $\gamma$ below 1 so the
+          values stay finite).
+  policy iteration:
+    lead: |
+      Instead of iterating on utilities, alternate two steps: evaluate a fixed policy, which is a set of linear
+      equations with no max, then improve the policy greedily using those utilities.
+  partially observable markov decision processes (POMDP):
+    lead: |
+      When the agent cannot see its state, it keeps a belief $b(s)$ and updates it after each action and
+      observation, like filtering in an HMM. The optimal action depends only on $b$, so a POMDP is an MDP
+      over the continuous space of beliefs.
+  reinforcement learning -- Russell & Norvig 21.1-21.6:
+    lead: |
+      Now the agent does not know $P(s' \vert s, a)$ or $R(s)$. Passive RL evaluates a fixed policy; active RL
+      also chooses actions, which brings in the trade-off between exploring and exploiting. Model-based agents
+      learn the model and plan with it; model-free agents learn $Q(s, a)$ or a policy directly.
+  passive reinforcement learning (estimate value function given policy):
+    lead: |
+      The policy is fixed and the agent must learn $U^\pi(s)$ without knowing the model. Three ways: average
+      the observed returns from each state (direct utility estimation), learn the model and solve the Bellman
+      equations (ADP), or move each estimate toward the reward plus the estimate at the next state (TD
+      learning).
+  active reinforcement learning:
+    lead: |
+      Now the agent chooses its actions. Acting greedily on its current estimates can lock in a poor policy,
+      so it also has to explore. Bandit problems study the same trade-off with a single state, and GLIE
+      schemes explore every state infinitely often but become greedy in the limit.
+  "learning action-utility function $Q(s, a)$":
+    lead: |
+      Learning $Q(s, a)$ instead of $U(s)$ removes the need for a model, because the best action is just
+      $\text{argmax}_a Q(s, a)$. Q-learning is the TD update applied to $Q$. It is off-policy: its target uses the
+      best next action, whatever the agent actually does next, while SARSA uses the action actually taken.
+    viz:
+      - name: q-learning-grid
+        params: {episodes: 500, eps: 0.1, seed: 1}
+        caption: |
+          Q-learning with ε-greedy exploration on the 4×3 grid world from the value iteration figure, without a
+          model of the transitions. Each cell shows $\max_a Q(s, a)$, the true utility $U$ below it, and the
+          greedy action (green if it is optimal). With ε = 0 the agent always takes its current best action; in
+          this run it settles on a worse route and never finds out. A little exploration (ε from about 0.05 to
+          0.2) finds the optimal policy and still collects high reward. With ε = 1 the agent acts at random.
+          Because Q-learning is off-policy its greedy policy still improves, but the reward it collects while
+          learning is poor. Press "another run" to see how much single runs vary.
+  policy search:
+    lead: |
+      Policy search adjusts the parameters $\theta$ of a policy directly to maximize its expected reward. A
+      softmax policy makes this objective smooth in $\theta$, and REINFORCE estimates its gradient from sampled
+      actions.
+  "\"supervised rl\" (imitation learning)":
+    lead: |
+      Imitation learning treats control as supervised learning on an expert's (observation, action) pairs.
+      Plain behavioral cloning is usually not enough. DAgger has humans label the observations the learned
+      policy actually reaches, and goal-conditioned cloning learns $\pi_\theta(a \vert s, g)$.
+  rl algorithms overview:
+    lead: |
+      Every algorithm repeats three steps: run the policy to generate samples, fit a model or estimate the
+      return, and improve the policy. The table shows how value-based methods, policy gradients, actor-critic
+      and model-based RL fill in the last two.
+  inverse rl:
+    lead: |
+      Inverse RL runs the problem backward: from an agent's behavior, infer the reward function it is
+      optimizing. The same idea is the main proposal for value alignment in the AI futures chapter.
+  metalearning:
+    lead: |
+      Learning to learn: train across many tasks so that a new task needs only a few samples. The learned part
+      can be the optimizer, the representation or the way to explore.
+  offline rl:
+    lead: |
+      Offline RL learns from data collected once, by any policy. The new policy should improve on the one that
+      collected the data, but it cannot move far from it because of distribution shift.
+  RL for LLMs:
+    lead: |
+      Here the policy is a language model. The signal comes from a separate reward model, from preference
+      pairs, or from a checker such as a code solver. On-policy distillation keeps the student's own rollouts
+      but has a teacher grade every token.
+  on-policy distillation:
+    lead: |
+      SFT trains on the teacher's outputs; RL trains on the student's own rollouts with a reward. On-policy
+      distillation combines them: the student samples its own rollouts and the teacher grades every token by
+      reverse KL. The self-distillation variants use the student itself, given privileged information such as
+      the answer, as the teacher.
+takeaways:
+  - Minimax backs values up a game tree, and alpha-beta pruning skips branches that cannot change the decision; how much it skips depends on move ordering.
+  - A rational agent picks the action with maximum expected utility, and information is worth gathering when it might change that action.
+  - In an MDP the Bellman equation ties each state's utility to its successors', and value iteration or policy iteration solves it when the model is known.
+  - Without a model, TD learning and Q-learning move each estimate toward the observed reward plus the estimate at the next state.
+  - An agent that learns while acting must trade off exploring and exploiting. Q-learning is off-policy, so it can learn the optimal $Q$ while following an exploratory policy.
+  - In RL for LLMs the policy is the language model, and the methods differ in the signal: a reward model (PPO), preference pairs (DPO), comparisons within a group of samples (GRPO), or a teacher grading each token (on-policy distillation).
+figures:
+  decision_nets.svg: |
+    The airport-siting problem as a decision network. Left: the decision node Airport Site (rectangle) and the
+    chance nodes Air Traffic, Litigation and Construction feed the outcomes Deaths, Noise and Cost, which feed
+    the utility node U (diamond). Right: the outcome nodes are dropped and U depends directly on the decision
+    and the other chance nodes, an action-utility function.
+  online_pomdp.svg: |
+    A dynamic decision network unrolled three steps into the future. Shaded nodes are known: past actions,
+    evidence and rewards. To choose $A_t$ the agent looks ahead over states $X$, evidence $E$ and rewards $R$,
+    with a utility $U_{t+3}$ for the state at the horizon.
+  rl_sample_efficiency.svg: |
+    RL methods ordered by how many samples they need, from model-based methods (fewest) to evolutionary and
+    gradient-free methods (most). Off-policy methods sit left of actor-critic, on-policy methods right.

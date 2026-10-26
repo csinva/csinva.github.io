@@ -1,0 +1,209 @@
+# Overlay for _notes/ml/comp_vision.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Computer vision
+subtitle: Image formation, filtering and features, stereo and optical flow, structure from motion, human vision, and deep networks for vision.
+hook: How images form, how to filter them and find features, stereo and motion, human vision, and deep networks for vision.
+intro: |
+  The chapter follows a classical course. It starts with how a 3D scene becomes an image: perspective
+  projection, light and reflectance, color. Image processing comes next: the geometric transformations,
+  sampling and filtering, edges, texture, and optical flow. A short part on human vision (psychophysics, the
+  cell types in V1, Gestalt grouping) explains where many of these filters come from.
+
+  The longest part is correspondence: finding the same point in two images. It underlies stereo depth, optical
+  flow and structure from motion, and is built from keypoint detection, description and matching with RANSAC.
+  The last part covers deep networks for vision: CNNs, segmentation, detection with the R-CNN family, and
+  single-view 3D. The note opens with two older model-based methods, active shape models and snakes.
+sections:
+  useful packages:
+    lead: |
+      Two model-based methods for finding shapes in an image. Both fit a prior model of the expected shape to the
+      image instead of learning from labels.
+  projections:
+    lead: |
+      Lowercase $(x, y)$ is a point in the image and uppercase $(X, Y, Z)$ a point in the scene. Perspective
+      projection divides by depth: $x = fX/Z$. That one division explains vanishing points, why near objects look
+      bigger, and why they sit lower in the image.
+  phenomena from perspective projection:
+    lead: |
+      Each effect follows from $x = fX/Z$. Along a line, $x$ tends to $fD_x/D_z$ as the point goes to infinity, so
+      parallel lines meet at a vanishing point. Points on the ground plane $Y = -h$ land at $y = -fh/Z$, so nearer
+      points sit lower in the image.
+  frequencies and colors:
+    lead: |
+      Vision is more sensitive to some spatial frequencies and colors than others. Color comes from three cone
+      types, so different spectra can look the same (metamers), and color constancy and white balancing correct
+      for the color of the light.
+  radiometry:
+    lead: |
+      How bright a pixel is depends on the light, the angle between light and camera, and the surface. Lambertian
+      surfaces look equally bright from every direction; specular ones reflect like a mirror.
+  transformations:
+    lead: |
+      The table runs from the most general transformation (projective) to the most rigid (rotation). Each step
+      down adds a constraint, removes parameters and preserves more: projective maps parallel lines to
+      intersecting ones, affine keeps them parallel, Euclidean also keeps lengths, angles and area.
+  image preprocessing:
+    lead: |
+      An image is a sampled function, so signal processing applies. Undersampling makes high frequencies
+      masquerade as low ones (aliasing), so images are blurred with a Gaussian before they are shrunk. By the
+      convolution theorem, convolving in space is multiplying in frequency.
+    viz:
+      - name: aliasing-sampler
+        params: {f: 0.83}
+        caption: |
+          A cosine sampled once per time step. Below 0.5 cycle per sample, the samples follow the signal. Above it,
+          the same samples fit a slower cosine (orange) at the folded frequency $\vert f - \text{round}(f)\vert$.
+          At $f = 5/6$ the alias is $1/6$, as in the figures below; at $f = 1$ every sample is the same and the
+          signal looks constant. Blurring before sampling removes these high frequencies so they can't alias.
+      - name: image-filters
+        params:
+          kernel: sobelx
+          image: shapes
+          sigma: 0.8
+          row: 8
+          col: 4
+        caption: 'Pick a kernel and hover over (or tap) an output pixel: the pink square on the input is the patch whose
+      
+          weighted sum gives that pixel. The blurs have nonnegative weights that sum to 1, so flat regions keep their
+      
+          value; Sobel and the Laplacian sum to 0, so they respond only where intensity changes, which is why they find
+      
+          edges. On the stripes image, a blur wipes out the fine stripes on the left and keeps the wide ones, as a
+      
+          lowpass filter should.
+      
+          '
+  edges + templates:
+    lead: |
+      An edge is where intensity changes fast, so edge detectors take a derivative. Derivatives amplify noise,
+      so they smooth first. Smoothing and differentiating are both convolutions, so they combine into one filter,
+      the derivative of a Gaussian.
+  texture:
+    lead: |
+      Texture is described by statistics of filter responses rather than exact pixels. Textures are compared
+      through histograms of these responses, and new texture is synthesized by matching them.
+  optical flow:
+    lead: |
+      Optical flow is how points move in the image as the camera moves. It splits into a
+      <span class="cblue">translation component</span>, which depends on depth $Z$, and a
+      <span class="corange">rotation component</span>, which does not.
+  psychophysics:
+    lead: |
+      Julesz's experiments split human vision into a fast, parallel preattentive mode and a slow, serial attentive
+      one. Textons are what the fast mode notices.
+  neurophysiology:
+    lead: |
+      Several image-processing filters have counterparts in the visual system: center-surround cells look like a
+      Laplacian of Gaussian, simple cells like oriented Gaussian derivatives, and complex cells like max pooling
+      over simple cells.
+  perceptual organization:
+    lead: |
+      The Gestalt view: we perceive grouped wholes, not individual pixels. Cues such as surroundedness, size,
+      symmetry and convexity decide what is figure and what is ground.
+  binocular steropsis:
+    lead: |
+      Depth from two eyes or cameras. A point's disparity, the difference between its positions in the two
+      images, shrinks with depth. The three camera setups below differ in where the cameras point.
+  single point of fixation (common in eyes):
+    lead: |
+      Eyes rotate so that both fixate the same point, which then has zero disparity. Disparity of nearby points is
+      measured relative to it and grows with their change in depth, $b \cdot \delta Z / Z^2$.
+  optical axes parallel (common in robots):
+    lead: |
+      With parallel cameras, disparity is $d = bf/Z$. Depth error grows like $Z^2$, so stereo is precise up close
+      and poor far away.
+  general case (ex. reconstruct from lots of photos):
+    lead: |
+      When the cameras' relative rotation $R$ and translation $t$ are unknown, they are estimated from point
+      matches. The essential matrix $E$ encodes them, and each pair of matching points gives one linear
+      constraint on $E$.
+  solving for stereo correspondence:
+    lead: |
+      After rectification, the match for a pixel lies on the same row of the other image, so the search is one
+      dimensional. It fails where windows look alike: textureless regions, repeated patterns, occlusions.
+  optical flow II:
+    lead: |
+      Brightness constancy gives one equation per pixel for two unknowns $(u, v)$, which is the aperture problem.
+      Assuming the flow is the same in a small neighborhood gives enough equations to solve by least squares.
+  general correspondence + interest points:
+    lead: |
+      Rather than search every pixel, find a few distinctive keypoints in each image, describe each by a vector,
+      and match the vectors.
+  detection - identify key points:
+    lead: |
+      A good keypoint is a corner: shifting a small window in any direction changes it a lot. The Harris detector
+      measures this with the eigenvalues of the second moment matrix $M$: two large eigenvalues mean a corner, one
+      means an edge.
+  description - extract vector feature for each key point:
+    lead: |
+      Each keypoint gets a vector describing the patch around it. The simple MOPS descriptor samples a downsampled
+      patch at the keypoint's scale, rotated to the orientation of its gradient.
+  matching - determine correspondence between 2 views:
+    lead: |
+      Some matches will be wrong, and least squares on all of them is ruined by outliers. RANSAC fits the
+      transformation to many small random subsets and keeps the one most matches agree with.
+  correspondence for sfm / instance retrieval:
+    lead: |
+      Structure from motion solves for the cameras (calibration) and the 3D points (triangulation) together, by
+      minimizing the reprojection error over all images. Incremental systems start from two cameras and add the
+      rest one at a time. Retrieval finds images of the same scene by matching visual words, then checks that the
+      matches agree on one transformation.
+  cnns:
+    lead: |
+      CNNs learn the features that the earlier sections design by hand. Their internal representations carry
+      over to other tasks.
+  image segmentation:
+    lead: |
+      Segmentation labels each pixel with a region. The classical approach combines boundary and region cues
+      into an affinity graph and cuts it; the deep approach uses a fully convolutional net that upsamples back
+      to full resolution.
+  classification + localization:
+    lead: |
+      Detection outputs a box and a class for each object. The R-CNN family makes this fast by sharing computation:
+      first features shared across regions, then the region proposals themselves.
+  learning detection:
+    lead: |
+      A feature map keeps the layout of the image: where a feature fires says where something is, and its response
+      says what it is. Detection networks read boxes and contours from these maps at several scales.
+  single-view 3d construction:
+    lead: |
+      One image does not determine depth, so single-view 3D needs priors about the world: either an explicit model
+      fit to the image (vanishing points, simple shapes) or a model learned from data with 3D labels.
+takeaways:
+  - Perspective projection divides by depth, $x = fX/Z$, which explains vanishing points, foreshortening and why near objects look bigger.
+  - Images are sampled signals: blur before downsampling to avoid aliasing, and use derivative-of-Gaussian filters to find edges without amplifying noise.
+  - Depth from stereo comes from disparity, $d = bf/Z$ for parallel cameras, so depth error grows like $Z^2$.
+  - Correspondence (finding the same point in two images) underlies stereo, optical flow and structure from motion, and is built from keypoint detection, description and matching with RANSAC.
+  - Several hand-designed filters have counterparts in the visual system, and CNNs learn such features from data instead of having them designed.
+figures:
+  pinhole.svg: |
+    A pinhole camera. Rays from the scene pass through the pinhole and form an upside-down image on the back
+    wall, a distance f behind it: x = −fX/Z, y = −fY/Z.
+  perspective.svg: |
+    The same projection with the image plane placed in front of the eye, so the image is upright:
+    x = fX/Z, y = fY/Z. Every point on a ray through the center of projection lands on the same pixel.
+  sin1.svg: |
+    A sinusoid at 5/6 cycle per sample (grey) sampled at the vertical lines. The samples fit a much slower
+    sinusoid (black) just as well: an alias.
+  sin2.svg: Two different sinusoids, at 5/6 and 11/6 cycle per sample, pass through exactly the same samples.
+  laplacian.svg: |
+    A unit impulse minus a Gaussian is roughly a Laplacian of Gaussian. Convolving with it subtracts the blurred
+    image from the image, which leaves the high frequencies (edges and detail).
+  retina.png: |
+    Layers of the retina. Light enters from the bottom and passes through the ganglion, amacrine, bipolar and
+    horizontal cells before reaching the rods and cones at the top.
+  depth_disparity.svg: |
+    Disparity when both eyes fixate a point P at depth Z. A point δZ farther away changes each eye's
+    angle by δθ, so for small angles the disparity is 2δθ = b·δZ/Z².
+  vieth_muller.svg: |
+    The Vieth–Müller circle through both eyes and the fixation point P. Any point P′ on the circle makes the same
+    angle in both eyes, so it has zero disparity. Points off the circle, like Q, do not.
+  disparity_parallel.svg: Stereo with parallel optical axes. Similar triangles give x_L/f = (X + b/2)/Z and x_R/f = (X − b/2)/Z, so the disparity is x_L − x_R = bf/Z.
+  epipolar1.svg: |
+    Epipolar geometry. The scene point M and the two camera centers define a plane, which cuts each image along
+    an epipolar line. The match for M's image in one camera must lie on the epipolar line in the other.
+  parallel.svg: |
+    For two parallel cameras (R = I, t along the x axis) the epipolar constraint x′ᵀEx = 0 reduces to
+    v′ = v: corresponding points sit on the same image row.
+  bigraph.png: |
+    Evaluating a boundary against the ground truth. The two sets of boundary pixels are drawn in yellow and
+    cyan, and lines connect the pairs matched by a min-cost assignment on the bipartite graph between them.

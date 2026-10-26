@@ -25,7 +25,7 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 </ul>
 </details>
 
-![](assets/img/pres_demo.gif)
+![](assets/img/thumb_ml_slides.svg)
 
 ## Research and class notes
 

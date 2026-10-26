@@ -1,0 +1,139 @@
+# Overlay for _notes/math/analysis.md. Keys under `sections` are the note's header text (case and markup ignored).
+title: Real analysis
+hook: Completeness of the reals, sequences and series, open and compact sets, continuity, derivatives, uniform convergence and the Riemann integral.
+intro: |
+  Chapter-by-chapter notes on the textbook Understanding Analysis. Everything starts from the axiom of
+  completeness in chapter 1: it is what separates $\mathbb{R}$ from $\mathbb{Q}$, and chapter 2 shows it is
+  equivalent to the nested interval property, monotone convergence, Bolzano-Weierstrass and the Cauchy
+  criterion.
+
+  Later chapters reuse the same $\epsilon$-style definitions for limits of functions, continuity and
+  derivatives. Chapter 6 asks when a limit of functions keeps their properties, and the answer is
+  usually uniform convergence. The overview at the end lines up the parallel theorems (algebraic limit
+  theorems, sequential criteria, limit theorems) across chapters.
+sections:
+  ch 1 - the real numbers:
+    lead: |
+      The rationals have gaps (no rational squares to 2). The axiom of completeness fills them: every set
+      bounded above has a least upper bound. Countability arguments then show $\mathbb{Q}$ is countable and
+      $\mathbb{R}$ is not.
+  ch 2 - sequences and series:
+    lead: |
+      Convergence is defined with an $\epsilon$ and an $N$: past some index, every term is within
+      $\epsilon$ of the limit. A series converges when its sequence of partial sums does.
+    viz:
+      - name: epsilon-n
+        params:
+          seq: e
+          eps: 0.1
+        caption: The definition of convergence. Shrink $\epsilon$ and the smallest $N$ with $\vert a_n - a\vert < \epsilon$
+          for all $n \geq N$ moves right, but for a convergent sequence it always exists. Switch to $(-1)^n$, where no
+          $N$ works once $\epsilon \leq 1$.
+  "2.5":
+    lead: |
+      Subsequences inherit the limit of the sequence, which gives a quick divergence test: two subsequences
+      with different limits. Bolzano-Weierstrass says every bounded sequence has a convergent subsequence.
+  "2.6":
+    lead: |
+      A Cauchy sequence has terms that get close to each other, with no limit named. The Cauchy criterion
+      says this is the same as converging, and completes the chain of equivalent forms of completeness.
+  "2.7":
+    lead: |
+      Series results follow from the sequence results applied to the partial sums $s_m$. If a series
+      converges, its terms go to 0; the tests below (comparison, geometric, absolute, alternating) give
+      sufficient conditions the other way.
+  ch 3 - basic topology of R:
+    lead: |
+      Open, closed and compact sets. Heine-Borel says that in $\mathbb{R}$ compact means closed and
+      bounded, which is what the extreme value theorem in chapter 4 relies on.
+  3.1 cantor set:
+    lead: |
+      The Cantor set has small length but is uncountable, a first example that size by length and size by
+      cardinality can disagree.
+  3.2 open/closed sets:
+    lead: |
+      Open sets are defined with $\epsilon$-neighborhoods and closed sets with limit points. The two are
+      complements, and limit points can be described by sequences, which ties this chapter back to chapter 2.
+  "3.3":
+    lead: |
+      Compactness is defined through sequences: every sequence in $K$ has a subsequence converging inside
+      $K$. Heine-Borel gives two equivalent forms, closed and bounded, and every open cover has a finite subcover.
+  ch 4 - functional limits and continuity:
+    lead: |
+      The $\epsilon$-$N$ definition of chapter 2 becomes an $\epsilon$-$\delta$ definition for
+      $\lim_{x \to c} f(x)$. The sequential criterion translates each functional limit back into limits of sequences.
+  4.2 functional limits:
+    lead: |
+      Two equivalent definitions, one with $\epsilon$ and $\delta$ and one with neighborhoods. The
+      sequential criterion is the usual tool for showing a limit does not exist.
+  4.3 continuous functions:
+    lead: |
+      Continuity at $c$ is the functional limit definition with $L = f(c)$ and $x = c$ allowed. Compositions
+      of continuous functions are continuous.
+  4.4 continuous functions on compact sets:
+    lead: |
+      Continuous functions send compact sets to compact sets, which gives the extreme value theorem. On a
+      compact set, continuity also upgrades to uniform continuity, where one $\delta$ works for every point.
+  ch 5 - the derivative:
+    lead: |
+      The derivative is a functional limit of difference quotients. Its main results are the mean value
+      theorems, which turn information about $f'$ into information about $f$.
+  5.2 derivatives and the intermediate value property:
+    lead: |
+      Differentiable implies continuous, and the usual rules (product, quotient, chain) follow from the
+      algebraic limit theorem. Darboux's theorem says a derivative has the intermediate value property even
+      when it is not continuous.
+  5.3 mean value theorems:
+    lead: |
+      The mean value theorem finds a point where the slope equals the average slope over $[a, b]$. Its
+      consequences: $f' = 0$ forces $f$ constant, and two functions with the same derivative differ by a constant. L'Hospital's rules close the section.
+  ch 6 - sequences and series of function:
+    lead: |
+      Pointwise convergence fixes $x$ and sends $n$ to infinity. Uniform convergence asks for a single $N$ that
+      works for every $x$ at once. Uniform convergence is what carries continuity and integrals over to
+      the limit; for derivatives, the derivatives themselves must converge uniformly.
+  6.2 uniform convergence of a sequence of functions:
+    viz:
+      - name: uniform-convergence
+        params: {seq: pow, n: 5, eps: 0.1}
+        caption: |
+          Each $f_n$ converges pointwise to $f$ (orange). Uniform convergence means that for large $n$ all of
+          $f_n$ fits in the $\epsilon$-band. For $x^n$ on $[0, 1]$ no $n$ is enough: $f_n$ always leaves the
+          band just left of 1, and the limit is not continuous even though every $f_n$ is. Cut the domain to
+          $[0, 0.9]$ and it converges uniformly. The moving bump converges to a continuous limit, yet not uniformly.
+  6.3 uniform convergence and differentiation:
+    lead: |
+      Uniform convergence of $f_n$ is not enough to differentiate the limit. What is needed is uniform
+      convergence of the derivatives $f_n'$ plus convergence of $f_n$ at a single point.
+  6.4 series of functions:
+    lead: |
+      The results of 6.2 and 6.3 applied to partial sums of $\sum f_n$. The Weierstrass M-test is the
+      practical way to check uniform convergence: bound each term by a constant $M_n$ with $\sum M_n$ finite.
+  6.5 power series:
+    lead: |
+      A power series that converges at $x_0$ converges absolutely inside $\vert x \vert < \vert x_0 \vert$ and
+      uniformly on compact sets there. The differentiated series converges on the same interval, so power
+      series can be differentiated term by term as often as needed.
+  ch 7 - the Riemann Integral:
+    lead: |
+      The integral is built from upper and lower sums over partitions. A function is integrable when the
+      two can be squeezed together, and the fundamental theorem links integrals back to derivatives.
+  7.2 def of Riemann integral:
+    lead: |
+      Refining a partition raises lower sums and lowers upper sums. $f$ is integrable when $U(f) = L(f)$,
+      or equivalently when some partition makes $U(f,P) - L(f,P) < \epsilon$; every continuous function qualifies.
+  7.5 fundamental theorem of calculus:
+    lead: |
+      Two halves: an antiderivative computes the integral, and the integral $G(x)$ of a function continuous
+      at $c$ is differentiable at $c$ with $G'(c)$ equal to the integrand.
+  overview:
+    lead: |
+      The same few ideas repeated across chapters, listed side by side.
+takeaways:
+  - The axiom of completeness separates $\mathbb{R}$ from $\mathbb{Q}$, and it is equivalent to the nested interval property, monotone convergence, Bolzano-Weierstrass and the Cauchy criterion.
+  - Limits of sequences, functional limits, continuity and derivatives all use the same $\epsilon$-style definition, and sequential criteria translate each into statements about sequences.
+  - In $\mathbb{R}$, compact means closed and bounded, and continuous functions on compact sets attain their max and min and are uniformly continuous.
+  - The mean value theorem turns facts about $f'$ into facts about $f$.
+  - Pointwise limits can lose continuity; uniform convergence keeps continuity and integrals, and uniform convergence of the derivatives keeps differentiability.
+  - A bounded function is Riemann-integrable when upper and lower sums can be squeezed together, which holds for every continuous function.
+figures: {}

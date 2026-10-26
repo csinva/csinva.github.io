@@ -1,0 +1,125 @@
+# Overlay for _notes/research_ovws/ovw_dl_theory.md
+map_label: DL theory           # short name on the start-page topic map
+title: Deep learning theory
+subtitle: Research directions on why deep nets generalize, from implicit regularization and kernels to statistical physics, robustness and memorization.
+hook: Why overparameterized nets generalize, seen through implicit regularization, kernels, expressiveness, statistical physics and empirical studies.
+intro: |
+  Deep nets break classical expectations: more parameters can mean better generalization, and many things
+  (SGD, dropout, early stopping, architecture) shape what they learn all at once. The theoretical half of the
+  page collects directions that try to separate these effects: what a net can represent, which solutions
+  gradient descent prefers among the many that fit the data, why parameters are redundant, how infinitely
+  wide nets reduce to kernels, rewriting nets as implicit or constrained optimization problems, and analyses
+  from statistical physics.
+
+  The empirical half covers the lottery ticket hypothesis, adversarial robustness, tools for looking at
+  trained nets, and memorization, with shorter lists on optimizers, architecture search and boosting. The
+  "inductive bias" and "kernels" sections are the best place to start; the basics section at the end lists
+  class notes and demos.
+sections:
+  theoretical studies:
+    lead: |
+      The open questions behind the rest of the page: what happens past the point where training error stops
+      falling, what marks a well-trained net, and how to tell which of the many tangled ingredients actually
+      drive generalization.
+  functional approximation:
+    lead: |
+      Studying nets as functions rather than as parameters, since many parameter settings give the same
+      function. With composition, a net can approximate a function piece by piece on its level sets.
+  "inductive bias=implicit regularization: gradient descent finds good minima":
+    lead: |
+      Among the many solutions that fit the training data, gradient descent tends to find particular ones. The
+      simplest case is least squares started at 0: gradient descent stays in the row space of $X$ and converges
+      to the minimum-norm solution, the same endpoint as ridge as $\lambda \to 0$. The examples that follow find
+      the matching norm for matrix completion, logistic regression and convolutional nets.
+    viz:
+      - name: min-norm-gd
+        params:
+          w0x: 0
+          w0y: 0
+          steps: 20
+        caption: 'Least squares with one data point and two weights: every point on the blue line fits exactly. Each gradient
+          step moves along $a$, the row space of $X$, so from $w_0 = 0$ gradient descent stops at the min-norm solution
+          $w^*$, inside the dashed circle that every other solution lies outside of. Move $w_0$ off zero: the limit shifts
+          by the part of $w_0$ outside the row space and its norm grows. Step $t$ forward and compare with the ridge solution
+          at $\lambda = 1/(\eta t)$, which runs along the same ray.'
+  "semantic biases: what correlations will a net learn?":
+    lead: |
+      Which features a trained net ends up using, for example texture over shape on ImageNet, and what pushes
+      it toward simpler or spurious ones.
+  "expressiveness: what can a dnn represent?":
+    lead: |
+      A ReLU net is piecewise linear, so one measure of what it can represent is how many linear regions and
+      activation patterns it has. These papers count and bound them; trained nets turn out to use fewer than
+      the maximum.
+  "complexity + generalization: dnns are low-rank / redundant parameters":
+    lead: |
+      Evidence that trained nets need far fewer parameters than they have: low-rank weight matrices, pruning,
+      and lottery tickets that train well at a small fraction of the size.
+  nearest neighbor comparisons:
+    lead: |
+      Nearest neighbor rules that interpolate the training data can still generalize, which makes them a
+      simple reference point for nets that also fit the training set exactly.
+  kernels:
+    lead: |
+      In the infinite-width limit a randomly initialized net is a Gaussian process with a fixed kernel, and
+      training follows the neural tangent kernel, which barely changes during training. Gradient descent in
+      kernel space can be convex even when the problem is non-convex in parameter space.
+  implicit dl + optimization:
+    lead: |
+      Rewriting a net as an optimization problem. Implicit models define the hidden state by the equation
+      $x = \phi(\cblue{Ax + Bu})$, and a feedforward net is the special case where $A$ holds the weight
+      matrices just above its diagonal. Lifted nets turn each layer into a constraint. The robust optimization entries that
+      follow make guarantees hold under worst-case perturbations.
+  statistical physics:
+    lead: |
+      Ideas from physics applied to depth, initialization and generalization bounds. Generalization bounds
+      usually have the form <span class="cblue">train error</span> + <span class="corange">complexity
+      term</span>, and the physics view adds alternatives such as stability and symmetry-based conservation
+      laws.
+  empirical studies:
+    lead: |
+      Experiments rather than theorems. Many of these probe a claim from the theory half, for example whether
+      nets memorize, which layers matter, or how robustness trades off with accuracy.
+  interesting empirical papers:
+    lead: |
+      The lottery ticket hypothesis is the main entry: large nets that train well contain small subnetworks
+      that train as well on their own. The others test robustness to label noise, which layers matter, and
+      whether theoretical claims hold up in practice.
+  adversarial + robustness:
+    lead: |
+      Attacks are sorted by what the attacker knows (white, gray or black box) and when they act (poisoning at
+      training time or evasion at test time). Defenses either mask gradients, train against worst-case inputs,
+      or detect attacks. The later entries move from single inputs to robustness across groups and domains.
+  tools for analyzing:
+    lead: |
+      Ways to look inside trained nets: comparing representations with SVCCA, and plotting the loss along a
+      line or on a 2d grid of directions. Loss plots need care with scale invariance, so directions are
+      normalized per filter.
+  adam vs sgd:
+    lead: |
+      A short list on whether the optimizer changes what is learned: the regularization SGD imposes (balanced
+      layers), the limited value of adaptive methods, and a mean-field view of training.
+  memorization background:
+    lead: |
+      How nets that fit random labels differ from nets that generalize. Nets that generalize are close to linear
+      in deep layers for similar inputs; nets that memorize are not.
+  architecture search background:
+    lead: |
+      Three ways to search for an architecture: retrain each candidate (nested), make the choice
+      differentiable (joint), or train one large net and search for a subnet in it (one-shot), the last of
+      which connects back to pruning and lottery tickets.
+  basics:
+    lead: |
+      Starting points rather than research papers: class notes, interactive demos for building intuition, and
+      reviews of the theory.
+takeaways:
+  - The central puzzle is why overparameterized nets generalize when they could fit noise, and which of the
+    tangled ingredients (SGD, architecture, early stopping, dropout) is responsible.
+  - Implicit regularization is one answer. Among the solutions that fit the data, gradient descent finds
+    particular ones, such as the minimum-norm solution for least squares started at 0.
+  - In the infinite-width limit nets reduce to kernels (a Gaussian process at initialization, the neural
+    tangent kernel during training), and the open question is how far trained nets depart from this regime.
+  - Trained nets are highly redundant (low-rank weights, pruning, lottery tickets), which links parameter
+    count, effective complexity and generalization.
+  - Empirical work tests these ideas and adds its own threads, such as adversarial robustness and its trade-off with
+    accuracy, memorization of random labels, and tools for viewing loss surfaces and representations.

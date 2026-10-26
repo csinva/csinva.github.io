@@ -1,0 +1,63 @@
+# Overlay for _notes/stat/time_series.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Trend, seasonality and stationarity, AR, MA and ARMA models, autocovariance and Yule-Walker estimation, and similarity measures like DTW.
+intro: |
+  A time series breaks the iid assumption behind most of statistics: nearby points depend on each other. The
+  high-level section names the parts of a series (trend, seasonality, noise), the common model families and
+  moving averages. A short section then surveys ways to measure how similar two series are, including dynamic
+  time warping.
+
+  The core follows two textbooks. Stationarity (ch 2) is the assumption that stands in for iid. Linear models
+  (ch 3) write the current value in terms of past values (AR), past noise (MA) or both (ARMA), and the backshift
+  operator turns them into polynomials that can be inverted to solve for $X_t$. Ch 4 and 8 estimate the
+  parameters from the autocovariance function, through the Yule-Walker equations and the Durbin-Levinson recursion.
+sections:
+  similarity measures:
+    lead: |
+      Four families of distances from a survey that compares them on time series classification: lock-step,
+      feature-based, model-based, and elastic measures that let the time axes stretch.
+  ch 2 - stationary time series:
+    lead: |
+      The definitions say which parts of the distribution must stay fixed over time: all of it (strict), or only
+      the mean and the covariance at each lag (second-order). Ergodicity adds that averages over one long series
+      converge to expectations.
+  ch 3 - linear time series:
+    lead: |
+      Three linear models for a zero-mean series. AR writes $X_t$ as a weighted sum of its past values plus
+      white noise, MA as a weighted sum of past noise terms, and ARMA as both. With the backshift operator $B$
+      each becomes a polynomial equation, $\phi(B)X_t = \theta(B)\varepsilon_t$.
+    viz:
+      - name: ar-process
+        params: {phi: 0.7}
+        caption: |
+          An AR(1) series driven by the same white noise for every $\phi$. Near $\phi = 0$ the series looks like the
+          noise and the autocorrelation is near zero after lag 0. As $\phi$ approaches 1 the series moves in long
+          swings and the autocorrelation decays slowly, like $\phi^k$. Negative $\phi$ makes the series zig-zag and
+          the autocorrelation alternate in sign. Past $|\phi| = 1$ the process is not stationary and the series
+          leaves the plot.
+  basics:
+    lead: |
+      The vocabulary for a series: trend, seasonality, cycle and noise, combined additively or multiplicatively,
+      and stationarity, which means the mean, variance and autocorrelation don't change over time.
+  high-level modelling:
+    lead: |
+      The main model families: decomposition into components, frequency-based methods, and AR, MA and ARMA
+      models, which regress on past values, past noise, or both. Moving averages are the simplest smoothers and
+      differ in how they weight past points.
+  ch 1:
+    lead: |
+      Analysis usually starts by removing the trend and studying what is left. A polynomial fit, differencing or
+      a sliding window can remove it. Differencing $n$ times removes an $n$-th order polynomial trend but can
+      add dependence to the data.
+  ch 4 + 8 - the autocovariance function + parameter estimation:
+    lead: |
+      For an AR(p) process the autocovariances satisfy the Yule-Walker equations
+      $\gamma(i) = \sum_j \phi_j \gamma(i-j)$, so the coefficients can be estimated by plugging in sample
+      autocovariances and solving a linear system. Durbin-Levinson solves it recursively in the order; models
+      with MA terms need other algorithms.
+takeaways:
+  - Time series data are never iid. Stationarity, a constant mean and covariances that depend only on the lag, takes the place of that assumption.
+  - A series is often modeled as trend plus seasonality plus noise, and analysis usually starts by removing the trend.
+  - AR models regress on past values, MA models on past noise, ARMA on both. An AR(1) process with $|\phi_1| \geq 1$ is not stationary.
+  - The Yule-Walker equations link AR coefficients to autocovariances, so the coefficients can be estimated from sample autocovariances.
+  - Two series can be compared point by point, through features or model coefficients, or with elastic measures like dynamic time warping that let the time axis stretch.
+figures: {}

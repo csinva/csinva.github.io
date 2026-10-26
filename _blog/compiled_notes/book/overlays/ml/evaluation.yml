@@ -1,0 +1,76 @@
+# Overlay for _notes/ml/evaluation.md. Keys under `sections` are the note's header text (case and markup ignored).
+subtitle: Losses, classification metrics, cross-validation, stability, and metrics for text and ranking.
+hook: Losses and risk, precision, recall and ROC curves, cross-validation, and resampling for stability.
+intro: |
+  Two questions run through this chapter: what number to optimize, and how to estimate it honestly. The
+  first sections answer the first question. Losses define risk, the expected loss, and each loss has its own
+  optimal classifier. The measures built on the four outcomes of a binary prediction (true and false
+  positives and negatives) differ only in what they divide by.
+
+  Cross-validation and the resampling methods under stability answer the second question by reusing the same
+  data for fitting and testing. The last sections list model-selection criteria and the metrics used for
+  text generation and ranking.
+sections:
+  losses:
+    lead: |
+      Risk is the expected loss over the data distribution. The 0-1 loss counts mistakes but is hard to
+      minimize directly, so training uses smooth losses like cross-entropy.
+  measures:
+    lead: |
+      Every measure is a ratio of counts from the four outcomes. Recall, specificity and the false positive rate
+      divide by the true class counts P and N. Precision and negative predictive value divide by the number of
+      predictions of each kind. Cohen's kappa, under concordance, corrects the agreement between two raters
+      for the agreement expected by chance.
+    viz:
+      - name: roc-threshold
+        params: {sep: 1.5, threshold: 0.5}
+        caption: |
+          Scores for negatives and positives as two overlapping normal curves, with equal numbers of each. Points
+          right of the threshold are predicted positive: the orange shaded area is the true positive rate (recall),
+          the blue shaded area the false positive rate. Drag the threshold and the dot traces the ROC
+          curve, with recall rising only as false positives rise too. More class separation pushes the curve
+          toward the top-left corner and the AUC toward 1. With no separation the curve is the diagonal and the
+          AUC is 0.5.
+  cv:
+    lead: |
+      Cross-validation estimates test error without a separate test set: fit on part of the data, test on the
+      rest, rotate, and average. Because the folds share data, the estimates are correlated.
+    viz:
+      - name: kfold-cv
+        params: {k: 4, degree: 3, seed: 9}
+        caption: |
+          K-fold cross-validation choosing the degree of a polynomial fit to 24 noisy points from a sine curve.
+          Each degree is refit $k$ times, each time leaving one fold out and scoring on it; the blue curve averages
+          the $k$ fold errors (the dots). The orange curve is the true test error of the fit on all the data. The
+          training error (dashed) keeps falling with degree, while the CV curve turns up like the test error does,
+          and its minimum lands near the test minimum. The fold errors scatter widely, and at high degrees a single
+          fold can dominate the average. Set $k = 2$: each fit sees only 12 points, and the high-degree fits blow up.
+          At $k = 24$ (LOOCV) the readout also gets the same number from a single fit, through the diagonal $h_{ii}$ of the hat matrix.
+  stability:
+    lead: |
+      Stability asks how much the result changes under perturbation, either from randomness in the algorithm
+      or from resampling the data.
+  other considerations:
+    lead: |
+      Besides its error, a model is judged by its computational cost and how interpretable it is. The
+      model-selection criteria at the end ($R^2_p$, $C_p$, AIC, BIC, PRESS) score fits of different sizes, as in the
+      penalty that adjusted $R^2$ adds for the number of parameters.
+  nlp:
+    lead: |
+      Generated text is scored against references. BLEU, a number between 0 and 1, measures how similar a machine
+      translation is to a set of high-quality reference translations; ROUGE, BERTScore and BLEURT are used the same way.
+  ranking:
+    lead: |
+      Ranking metrics reward putting relevant results near the top. DCG divides each result's relevance by a
+      <span class="corange">log of its position</span>.
+takeaways:
+  - Risk is the expected loss; the 0-1 loss is what we care about for classification but is hard to minimize, so models are trained on smooth losses like cross-entropy.
+  - Every classification measure is a ratio of TP, FP, TN and FN; recall and specificity divide by the true class counts, precision by the number of positive predictions.
+  - An ROC curve traces recall against the false positive rate over all thresholds, and the AUC summarizes it in one number.
+  - Cross-validation reuses the data to estimate test error; its fold estimates are correlated, and it breaks down when n is small relative to the complexity of the predictor.
+  - The bootstrap, subsampling and the jackknife measure how stable a result is under perturbations of the data.
+figures:
+  eval_metrics.svg: |
+    The four outcomes of a binary classifier. The top half is the actual positives and the bottom half the
+    actual negatives. The diagonal line is the classifier's decision: everything above it is predicted
+    positive (TP, FP) and everything below it negative (FN, TN).

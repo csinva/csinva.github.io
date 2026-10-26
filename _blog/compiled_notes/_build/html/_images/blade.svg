@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 6 1980 962" role="img" aria-labelledby="title desc">
+  <title id="title">BLADE benchmark overview</title>
+  <desc id="desc">BLADE overview. (1) A research question/hypothesis (are soccer players with a dark skin tone more likely than those with a light skin tone to receive red cards from referees?) and a data table. (2) Crowd-sourced expert annotations, multi-round and LM-aided, produce (3) a ground-truth decision space: conceptual variables (DV: red cards received; IV: player skin tone; controls: player physicality, player position), statistical models (Spearman correlation, logistic regression, negative binomial regression with a log link) and data transforms (e.g. derive rater_mean from r1 and r2; groupby club; post_groupby aggregating games). (4) An LM agent with data understanding, domain knowledge and stats knowledge produces (5) a generated analysis: a DV choice, a transform function averaging rater1 and rater2 into skin_tone, and a logit model redCards ~ skin_tone + position + games. (6) Automatic evaluation converts the generated analysis, matches statistical models and conceptual variables with an LM, and matches data transformations by value and graph.</desc>
+  <!-- drawn dark-on-transparent: the notes CSS inverts images (keeping hue) for the black background -->
+  <defs>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4b2a8a"/></marker>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c9a227"/></marker>
+    <marker id="arrowK" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2b2b"/></marker>
+    <style>
+      text { fill: #2b2b2b; font-family: Helvetica, Arial, sans-serif; }
+      .hb { font-size: 29px; font-weight: bold; }
+      .hg { font-size: 27px; font-weight: bold; fill: #1f8a4c; }
+      .t { font-size: 27px; }
+      .t2 { font-size: 24px; }
+      .wb { font-size: 25px; font-weight: bold; fill: #fff; }
+      .badge { font-size: 30px; fill: #8a8a8a; font-weight: bold; }
+      .vd { font-size: 26px; font-weight: bold; }
+      .code { font-family: Menlo, Consolas, "Courier New", monospace; font-size: 20px; white-space: pre; }
+    </style>
+  </defs>
+  <rect x="58" y="44" width="730" height="174" rx="14" fill="#f6f6f6" stroke="#dddddd" stroke-width="3"/>
+  <circle cx="43" cy="42" r="26" fill="#e3e3e3"/>
+  <text class="badge" x="43" y="53" text-anchor="middle">1</text>
+  <text class="hb" x="82" y="84" text-anchor="start">Research Question/Hypothesis</text>
+  <text class="hb" x="614" y="84" text-anchor="start">Data Table</text>
+  <text class="t" x="82" y="138" text-anchor="start">Are soccer players with a dark skin tone</text>
+  <text class="t" x="82" y="168" text-anchor="start">more likely than those with a light skin</text>
+  <text class="t" x="82" y="198" text-anchor="start">tone to receive red cards from referees?</text>
+  <rect x="632" y="104" width="74" height="10" rx="1" fill="#d1342f" stroke="none" stroke-width="0"/>
+  <rect x="632" y="114" width="74" height="66" rx="1" fill="none" stroke="#1f6fb2" stroke-width="3"/>
+  <line x1="632" y1="128" x2="706" y2="128" stroke="#1f6fb2" stroke-width="2"/>
+  <line x1="632" y1="142" x2="706" y2="142" stroke="#1f6fb2" stroke-width="2"/>
+  <line x1="632" y1="156" x2="706" y2="156" stroke="#1f6fb2" stroke-width="2"/>
+  <line x1="632" y1="168" x2="706" y2="168" stroke="#1f6fb2" stroke-width="2"/>
+  <line x1="656" y1="114" x2="656" y2="180" stroke="#1f6fb2" stroke-width="2"/>
+  <line x1="680" y1="114" x2="680" y2="180" stroke="#1f6fb2" stroke-width="2"/>
+  <rect x="826" y="44" width="377" height="241" rx="14" fill="#e7e7f7" stroke="#d9d9ee" stroke-width="3"/>
+  <circle cx="818" cy="36" r="26" fill="#e3e3e3"/>
+  <text class="badge" x="818" y="47" text-anchor="middle">2</text>
+  <text class="hb" x="850" y="84" text-anchor="start">Crowd-Sourced Expert</text>
+  <text class="hb" x="850" y="112" text-anchor="start">Annotations</text>
+  <circle cx="872" cy="166" r="13" fill="#e8956b"/>
+  <circle cx="902" cy="166" r="13" fill="#79c2d0"/>
+  <circle cx="858" cy="196" r="13" fill="#f0c24b"/>
+  <circle cx="888" cy="196" r="13" fill="#d9d9d9"/>
+  <circle cx="918" cy="196" r="13" fill="#e35d5d"/>
+  <rect x="947" y="135" width="235" height="47" rx="6" fill="#fff" stroke="#c8c8e6" stroke-width="2"/>
+  <text class="t" x="1064" y="168" text-anchor="middle">Multi-round</text>
+  <rect x="947" y="201" width="235" height="47" rx="6" fill="#fff" stroke="#c8c8e6" stroke-width="2"/>
+  <text class="t" x="1064" y="234" text-anchor="middle">LM-aided</text>
+  <line x1="790" y1="180" x2="822" y2="180" stroke="#4b2a8a" stroke-width="3" marker-end="url(#arrowP)"/>
+  <line x1="1206" y1="175" x2="1238" y2="175" stroke="#4b2a8a" stroke-width="3" marker-end="url(#arrowP)"/>
+  <rect x="1243" y="44" width="740" height="908" rx="14" fill="#e7e7f7" stroke="none" stroke-width="0"/>
+  <circle cx="1240" cy="36" r="26" fill="#e3e3e3"/>
+  <text class="badge" x="1240" y="47" text-anchor="middle">3</text>
+  <text class="hb" x="1260" y="86" text-anchor="start">Ground Truth Decision Space</text>
+  <rect x="1262" y="116" width="286" height="402" rx="8" fill="none" stroke="#e07b28" stroke-width="3"/>
+  <text class="hb" x="1405" y="160" text-anchor="middle" style="fill:#e07b28;font-size:26px">Conceptual Variables</text>
+  <rect x="1271" y="189" width="269" height="69" rx="6" fill="#e07b28" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1405.5" y="220.5" text-anchor="middle">DV: Red Cards</text>
+  <text class="wb" x="1405.5" y="246.5" text-anchor="middle">Received</text>
+  <rect x="1271" y="268" width="269" height="50" rx="6" fill="#e07b28" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1405.5" y="303.0" text-anchor="middle">IV: Player Skin Tone</text>
+  <text class="vd" x="1405" y="346" text-anchor="middle">⋮</text>
+  <rect x="1271" y="352" width="269" height="74" rx="6" fill="#e07b28" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1405.5" y="386.0" text-anchor="middle">Control: Player</text>
+  <text class="wb" x="1405.5" y="412.0" text-anchor="middle">Physicality</text>
+  <rect x="1271" y="435" width="269" height="75" rx="6" fill="#e07b28" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1405.5" y="469.5" text-anchor="middle">Control: Player</text>
+  <text class="wb" x="1405.5" y="495.5" text-anchor="middle">Position</text>
+  <rect x="1264" y="570" width="284" height="350" rx="8" fill="none" stroke="#4b2a8a" stroke-width="3"/>
+  <text class="hb" x="1276" y="600" text-anchor="start" style="fill:#4b2a8a">Statistical Models</text>
+  <rect x="1276" y="630" width="261" height="72" rx="6" fill="#4b2a8a" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1406.5" y="663.0" text-anchor="middle">Spearman</text>
+  <text class="wb" x="1406.5" y="689.0" text-anchor="middle">Correlation</text>
+  <rect x="1276" y="720" width="261" height="50" rx="6" fill="#4b2a8a" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1406.5" y="755.0" text-anchor="middle">Logistic Regression</text>
+  <text class="vd" x="1405" y="796" text-anchor="middle">⋮</text>
+  <rect x="1276" y="806" width="261" height="102" rx="6" fill="#4b2a8a" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1406.5" y="841.0" text-anchor="middle">Negative Binomial</text>
+  <text class="wb" x="1406.5" y="867.0" text-anchor="middle">Regression with a</text>
+  <text class="wb" x="1406.5" y="893.0" text-anchor="middle">Log Link</text>
+  <line x1="1405" y1="522" x2="1405" y2="566" stroke="#2b2b2b" stroke-width="3" marker-end="url(#arrowK)" marker-start="url(#arrowK)"/>
+  <rect x="1585" y="116" width="383" height="808" rx="8" fill="none" stroke="#1f6fb2" stroke-width="3"/>
+  <text class="hb" x="1597" y="160" text-anchor="start" style="fill:#1f6fb2">Data Transforms</text>
+  <rect x="1597" y="190" width="359" height="230" rx="10" fill="#fff" stroke="#1f6fb2" stroke-width="3"/>
+  <text class="code" x="1612" y="236" text-anchor="start">df[<tspan style="fill:#1f8a4c">'rater_mean'</tspan>] =</text>
+  <text class="code" x="1612" y="262" text-anchor="start">  (df[<tspan style="fill:#1f8a4c">'r1'</tspan>] + df[<tspan style="fill:#1f8a4c">'r2'</tspan>])/ 2</text>
+  <text class="t2" x="1610" y="330" text-anchor="start"><tspan font-weight="bold">Verb:</tspan> derive</text>
+  <text class="t2" x="1610" y="357" text-anchor="start"><tspan font-weight="bold">Input cols:</tspan> [<tspan style="fill:#1f8a4c">'r1'</tspan>, <tspan style="fill:#1f8a4c">'r2'</tspan>]</text>
+  <text class="t2" x="1610" y="384" text-anchor="start"><tspan font-weight="bold">Output col:</tspan> <tspan style="fill:#1f8a4c">'rater_mean'</tspan></text>
+  <rect x="1597" y="446" width="359" height="214" rx="10" fill="#fff" stroke="#1f6fb2" stroke-width="3"/>
+  <text class="code" x="1612" y="492" text-anchor="start">df.groupby(<tspan style="fill:#1f8a4c">'club'</tspan>,</text>
+  <text class="code" x="1612" y="518" text-anchor="start">          as_index=False)</text>
+  <text class="t2" x="1610" y="570" text-anchor="start"><tspan font-weight="bold">Verb:</tspan> groupby</text>
+  <text class="t2" x="1610" y="597" text-anchor="start"><tspan font-weight="bold">Input cols:</tspan> [<tspan style="fill:#1f8a4c">'club'</tspan>]</text>
+  <text class="t2" x="1610" y="624" text-anchor="start"><tspan font-weight="bold">Output col:</tspan> none</text>
+  <rect x="1597" y="700" width="359" height="214" rx="10" fill="#fff" stroke="#1f6fb2" stroke-width="3"/>
+  <text class="code" x="1612" y="746" text-anchor="start">df_grp.agg(games_sum=</text>
+  <text class="code" x="1612" y="772" text-anchor="start">       (<tspan style="fill:#1f8a4c">'games'</tspan>,<tspan style="fill:#1f8a4c">'mean'</tspan>))</text>
+  <text class="t2" x="1610" y="824" text-anchor="start"><tspan font-weight="bold">Verb:</tspan> post_groupby</text>
+  <text class="t2" x="1610" y="851" text-anchor="start"><tspan font-weight="bold">Input cols:</tspan> [<tspan style="fill:#1f8a4c">'games'</tspan>]</text>
+  <text class="t2" x="1610" y="878" text-anchor="start"><tspan font-weight="bold">Output col:</tspan> <tspan style="fill:#1f8a4c">'rater_mean'</tspan></text>
+  <text class="vd" x="1765" y="686" text-anchor="middle">⋮</text>
+  <line x1="1551" y1="337" x2="1583" y2="337" stroke="#2b2b2b" stroke-width="3" marker-end="url(#arrowK)" marker-start="url(#arrowK)"/>
+  <line x1="1551" y1="725" x2="1583" y2="725" stroke="#2b2b2b" stroke-width="3" marker-end="url(#arrowK)" marker-start="url(#arrowK)"/>
+  <rect x="62" y="256" width="731" height="160" rx="14" fill="#fdf3d2" stroke="#f0e2b0" stroke-width="3"/>
+  <circle cx="43" cy="262" r="26" fill="#e3e3e3"/>
+  <text class="badge" x="43" y="273" text-anchor="middle">4</text>
+  <text class="hb" x="78" y="296" text-anchor="start">LM Agent</text>
+  <g transform="translate(170 354)">
+    <rect x="-4" y="-38" width="8" height="10" fill="#8a8a8a"/><circle cx="0" cy="-40" r="5" fill="#d1342f"/>
+    <rect x="-34" y="-28" width="68" height="44" rx="12" fill="#b8cde6"/><rect x="-24" y="-20" width="48" height="26" rx="8" fill="#f2f2f2"/>
+    <circle cx="-10" cy="-8" r="3.5" fill="#d1342f"/><circle cx="10" cy="-8" r="3.5" fill="#d1342f"/><line x1="-4" y1="-8" x2="4" y2="-8" stroke="#2b2b2b" stroke-width="2"/>
+    <rect x="-22" y="18" width="44" height="26" rx="6" fill="#b8cde6"/><rect x="-10" y="22" width="20" height="10" fill="#f0c24b"/>
+  </g>
+  <rect x="384" y="278" width="269" height="47" rx="6" fill="#fffaf0" stroke="#efe0b8" stroke-width="2"/>
+  <text class="t" x="518.5" y="312" text-anchor="middle">Data Understanding</text>
+  <rect x="248" y="344" width="255" height="48" rx="6" fill="#fffaf0" stroke="#efe0b8" stroke-width="2"/>
+  <text class="t" x="375.5" y="378" text-anchor="middle">Domain Knowledge</text>
+  <rect x="526" y="344" width="252" height="48" rx="6" fill="#fffaf0" stroke="#efe0b8" stroke-width="2"/>
+  <text class="t" x="652.0" y="378" text-anchor="middle">Stats Knowledge</text>
+  <line x1="408" y1="224" x2="408" y2="252" stroke="#c9a227" stroke-width="3" marker-end="url(#arrowO)"/>
+  <line x1="408" y1="420" x2="408" y2="452" stroke="#c9a227" stroke-width="3" marker-end="url(#arrowO)"/>
+  <rect x="58" y="460" width="730" height="502" rx="14" fill="#fdf3d2" stroke="#f0e2b0" stroke-width="3"/>
+  <circle cx="43" cy="458" r="26" fill="#e3e3e3"/>
+  <text class="badge" x="43" y="469" text-anchor="middle">5</text>
+  <text class="hb" x="80" y="500" text-anchor="start">Generated Analysis</text>
+  <rect x="80" y="520" width="688" height="57" rx="6" fill="#e07b28" stroke="none" stroke-width="0"/>
+  <text class="wb" x="100" y="557" text-anchor="start">DV: Red Cards using the 'redCards' column ...</text>
+  <rect x="82" y="594" width="684" height="168" rx="10" fill="#fff" stroke="#1f6fb2" stroke-width="4"/>
+  <text class="code" x="97" y="630" text-anchor="start"><tspan style="fill:#1f6fb2">def</tspan> <tspan style="fill:#1f6fb2;font-weight:bold">transform</tspan>(df: pd.DataFrame) → pd.DataFrame:</text>
+  <text class="code" x="97" y="657" text-anchor="start">    df[<tspan style="fill:#1f8a4c">'skin_tone'</tspan>] = df[[<tspan style="fill:#1f8a4c">'rater1'</tspan>,</text>
+  <text class="code" x="97" y="684" text-anchor="start">                    <tspan style="fill:#1f8a4c">'rater2'</tspan>] ].mean(axis=1)</text>
+  <text class="code" x="97" y="711" text-anchor="start">    df.dropna(subset=[<tspan style="fill:#1f8a4c">'skin_tone'</tspan>], inplace=True)</text>
+  <text class="code" x="97" y="738" text-anchor="start">    <tspan style="fill:#1f6fb2">return</tspan> df</text>
+  <rect x="82" y="788" width="684" height="132" rx="10" fill="#fff" stroke="#4b2a8a" stroke-width="4"/>
+  <text class="code" x="97" y="822" text-anchor="start"><tspan style="fill:#1f6fb2">def</tspan> <tspan style="fill:#1f6fb2;font-weight:bold">model</tspan>(df: pd.DataFrame):</text>
+  <text class="code" x="97" y="849" text-anchor="start">    formula = <tspan style="fill:#1f8a4c">'redCards ~ skin_tone + position + games'</tspan></text>
+  <text class="code" x="97" y="876" text-anchor="start">    model = smf.logit(formula, data=df).fit()</text>
+  <text class="code" x="97" y="903" text-anchor="start">    <tspan style="fill:#1f6fb2">return</tspan> model</text>
+  <rect x="826" y="412" width="377" height="540" rx="14" fill="#f6faf6" stroke="#1f8a4c" stroke-width="3"/>
+  <circle cx="824" cy="414" r="26" fill="#e3e3e3"/>
+  <text class="badge" x="824" y="425" text-anchor="middle">6</text>
+  <text class="hb" x="860" y="454" text-anchor="start">Automatic Evaluation</text>
+  <rect x="840" y="486" width="352" height="76" rx="8" fill="#eef5ee" stroke="#d6e6d6" stroke-width="2"/>
+  <text class="hg" x="1016" y="518" text-anchor="middle">Convert Generated</text>
+  <text class="hg" x="1016" y="546" text-anchor="middle">Analysis</text>
+  <rect x="840" y="590" width="352" height="146" rx="8" fill="#eef5ee" stroke="#d6e6d6" stroke-width="2"/>
+  <text class="hg" x="1016" y="630" text-anchor="middle">LM-based Matching</text>
+  <rect x="846" y="650" width="164" height="68" rx="6" fill="#4b2a8a" stroke="none" stroke-width="0"/>
+  <text class="wb" x="928.0" y="681.0" text-anchor="middle">Statistical</text>
+  <text class="wb" x="928.0" y="707.0" text-anchor="middle">Models</text>
+  <rect x="1020" y="650" width="165" height="68" rx="6" fill="#e07b28" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1102.5" y="681.0" text-anchor="middle">Conceptual</text>
+  <text class="wb" x="1102.5" y="707.0" text-anchor="middle">Variables</text>
+  <rect x="840" y="774" width="352" height="142" rx="8" fill="#eef5ee" stroke="#d6e6d6" stroke-width="2"/>
+  <text class="hg" x="1016" y="814" text-anchor="middle">Value and Graph-based</text>
+  <text class="hg" x="1016" y="842" text-anchor="middle">Matching</text>
+  <rect x="877" y="855" width="271" height="50" rx="6" fill="#1f6fb2" stroke="none" stroke-width="0"/>
+  <text class="wb" x="1012.5" y="890.0" text-anchor="middle">Data Transformations</text>
+  <line x1="790" y1="568" x2="822" y2="568" stroke="#c9a227" stroke-width="3" marker-end="url(#arrowO)"/>
+  <line x1="1240" y1="565" x2="1208" y2="565" stroke="#4b2a8a" stroke-width="3" marker-end="url(#arrowP)"/>
+</svg>

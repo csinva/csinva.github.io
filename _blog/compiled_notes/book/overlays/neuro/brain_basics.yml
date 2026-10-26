@@ -1,0 +1,187 @@
+# Overlay for _notes/neuro/brain_basics.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: The parts of the brain, then how a neuron makes a voltage, fires, and talks to the next neuron through synapses and transmitters.
+intro: |
+  The chapter starts with anatomy: the cortex, limbic system and brain stem, what each lobe and nucleus is
+  for, and a few numbers (86 billion neurons, 16 billion of them in cortex). The numbered sections then
+  follow Purves's chapters 1 to 8, from the cell types and organization of the nervous system to the
+  electrical and chemical machinery of a single neuron.
+
+  Read the electrical sections in order. Ion pumps build concentration gradients, the Nernst equation turns
+  a gradient into a voltage, and voltage-gated Na⁺ and K⁺ channels turn that voltage into an action
+  potential. Synapses convert the spike back into chemistry: Ca²⁺ entry releases vesicles of transmitter,
+  which open ionotropic channels or start metabotropic G-protein cascades. The last section shows how those
+  same cascades (cAMP, PKA, CREB, NMDA receptors) change synapses for minutes or for good, which is the
+  basis of memory.
+sections:
+  delineations:
+    lead: |
+      A coarse map first: three big divisions, with the cerebellum set apart because it holds most of the
+      brain's neurons.
+  whole brain:
+    lead: |
+      The cerebrum's four lobes and what each one does, then the cerebellum, which is older and holds 60% of
+      the neurons. The subsections cover the three systems below the cortex in more detail.
+  thalamocortical system:
+    lead: |
+      Cortex is a layered sheet, and its areas differ in how cells are spread across the layers (Brodmann's
+      map has about 50). The thalamus sits in front of it and gates what reaches it.
+  limbic system:
+    lead: |
+      The limbic structures tie together emotion, memory and hormones: the amygdala for fear and emotional
+      memories, the hippocampus for turning temporary memories into permanent ones, the hypothalamus for
+      thirst, hunger and temperature, and the thalamus for monitoring what comes in.
+  brain stem:
+    lead: |
+      The simplest and oldest part, and the one that keeps you alive: heartbeat, blood pressure and breathing
+      start here. It has three parts, the midbrain, pons and medulla.
+  1 - introduction:
+    lead: |
+      Purves chapter 1: how nervous systems are studied (model organisms, stains, recording and imaging) and
+      the vocabulary for describing them (afferent vs. efferent, CNS vs. PNS, nuclei, tracts, gray and white
+      matter).
+  cellular components:
+    lead: |
+      Cajal used Golgi's stain to show that neurons are separate cells, not a continuous net. There are two
+      kinds of cells: neurons, described by how many inputs converge on them and how many targets they diverge
+      to, and glia, which support, insulate and repair.
+  organization of the human nervous system:
+    lead: |
+      The names used for the parts of the nervous system: CNS (brain and spinal cord) vs. PNS, the somatic and
+      autonomic motor divisions, and the words for groups of cell bodies (ganglia, nuclei, cortex) and bundles
+      of axons (nerves in the PNS, tracts in the CNS).
+  neural systems:
+    lead: |
+      Three ideas for dividing the brain into systems: each system has a function, each represents its
+      information in a map, and each splits into parallel subsystems (vision into color, form and motion).
+  functional analysis of neural systems:
+    lead: |
+      Two ways to watch a system work. Electrodes record single neurons and give their receptive fields;
+      imaging (CT, MRI, fMRI, PET, MEG and others) records local activity from outside the head.
+  2 - electrical signals of nerve cells:
+    lead: |
+      Every cell has a voltage across its membrane. Pumps keep ions at different concentrations inside and
+      out, and whichever ion can leak through the membrane pulls the voltage toward its own Nernst potential.
+    viz:
+      - name: nernst-potential
+        params: {ion: K, ratio: 0.1}
+        caption: |
+          The Nernst potential $V_{ion} = 58/z \cdot \log(X_{out}/X_{in})$ in mV. Start with K⁺ at 10 times more
+          inside than out: the result is the note's −58 mV. Each tenfold change in the ratio moves $V$ by
+          58 mV for a +1 ion, 29 mV for Ca²⁺, and flips sign for Cl⁻. Equal concentrations give 0 mV.
+  3 - voltage-dependent membranes:
+    lead: |
+      Clamping the voltage and measuring the current is how Hodgkin and Huxley separated the fast,
+      self-inactivating Na⁺ current from the slower K⁺ current. Myelin then speeds the resulting spike along
+      the axon.
+  4 - ion channel transporters:
+    lead: |
+      The proteins behind the electrical behavior: patch-clamp configurations for studying single channels,
+      the families of voltage-gated and ligand-gated channels, and the pumps that pay for the gradients.
+  5 - synapses:
+    lead: |
+      Electrical synapses pass current straight through gap junctions. Chemical synapses are slower and can
+      excite or inhibit: Ca²⁺ entry fuses vesicles, transmitter crosses the cleft, and receptors on
+      the next cell open.
+  neurotransmitter types:
+    lead: |
+      Two families. Small, fast transmitters (glutamate, ACh, GABA) are loaded into vesicles at the terminal
+      and taken back up after release. Peptides are packed at the cell body, need longer Ca²⁺ entry to be
+      released, and spread to all the neurons nearby.
+  synaptic transmission:
+    lead: |
+      Release is quantal: a vesicle empties all or nothing, so one vesicle gives a small "mini" and evoked
+      responses come in whole multiples of it. SNAREs on the vesicle and SNAPs on the membrane lock together
+      to prime a vesicle, and Ca²⁺ entry makes it fuse.
+    viz:
+      - name: quantal-release
+        params: {cv: 0.15, m: 1.5}
+        caption: |
+          A toy model of quantal release. Each spike releases a whole number of vesicles, $m$ on average, and
+          each vesicle adds one mini of size $q$. The histogram of evoked responses has peaks at 0, $q$, $2q$,
+          $3q$ (dashed lines): the note's "1, 2, 3, etc". Lower $m$ and most trials release nothing; raise the
+          spread of a single quantum and the peaks blur into one bump. The mean response divided by the mini
+          size gives back $m$. (Illustrative numbers.)
+  6 - neurotransmitters:
+    lead: |
+      The tables list receptors by type: ionotropic receptors are channels, metabotropic ones act through
+      G-proteins. Glutamate and ACh excite, GABA and glycine inhibit, and the monoamines and peptides
+      modulate more slowly and over wider areas.
+  receptors:
+    lead: |
+      The tables sort receptors by mechanism. Ionotropic receptors are channels, listed with the ion each one
+      passes; metabotropic receptors act through G-proteins. Table 6.1 then gives each transmitter's
+      precursor, the enzyme that limits how fast it is made, and how it is removed.
+  excitatory:
+    lead: |
+      Acetylcholine and glutamate, each followed from release to removal. Removal matters: nerve gases stop
+      acetylcholinesterase, so ACh stays and the muscles stay on. Glutamate acts on fast AMPA receptors and on
+      slower NMDA receptors that also need the cell to be depolarized.
+  neuromodulators:
+    lead: |
+      Slower transmitters with wide effects. They share one life cycle (synthesis, loading into vesicles by
+      VMAT, reuptake by DAT, NET or SERT, breakdown by MAO), and each comes from a small nucleus: dopamine
+      from the substantia nigra, norepinephrine from the locus coeruleus, serotonin from the raphe nuclei.
+  7 - molecular signaling:
+    lead: |
+      What happens inside the cell after a receptor binds: G-proteins, second messengers like cAMP and Ca²⁺,
+      kinases that switch proteins on, and transcription factors such as CREB that make lasting changes.
+  localization:
+    lead: |
+      How far a chemical signal travels: synaptic (local), paracrine (to nearby targets) or endocrine (through
+      the blood to the whole body). Spines keep signals local, because their thin neck is hard for proteins to
+      pass.
+  celllular receptors:
+    lead: |
+      Four kinds of receptor: channel-linked (ionotropic), enzyme-linked, G-protein-coupled (metabotropic),
+      and intracellular receptors for molecules such as estrogen that cross the membrane and act on
+      transcription.
+  second messengers:
+    lead: |
+      Enzymes downstream of the receptor make the second messengers: adenylyl cyclase makes cAMP, which
+      activates PKA; guanylyl cyclase makes cGMP for PKG; phospholipase C leads to PKC and to IP₃, which releases
+      Ca²⁺ from the ER.
+  long-term alteration:
+    lead: |
+      A lasting change needs new transcription. CREB acts only when three signals arrive at once (Ca²⁺ through
+      CaM kinase, PKA, and MAP kinase), which is convergent signaling; TrkA is the reverse, one receptor
+      feeding three pathways.
+  short-term:
+    lead: |
+      Short-term plasticity changes how much transmitter a synapse releases, from milliseconds
+      (facilitation) to minutes (augmentation). The Aplysia sensitization experiments show the same cAMP
+      pathway doing both short-term and long-term memory.
+  long-term:
+    lead: |
+      Long-term potentiation in the hippocampus depends on the NMDA receptor, which only passes Ca²⁺ when
+      the cell is already depolarized and glutamate is bound. That coincidence is what makes the timing of
+      pre- and postsynaptic firing matter.
+takeaways:
+  - The membrane voltage comes from ion gradients built by pumps, and each ion that can leak pulls the voltage
+    toward its Nernst potential, $58/z \cdot \log(X_{out}/X_{in})$ mV.
+  - An action potential is a fast, self-inactivating Na⁺ current followed by a slower K⁺ current; myelin
+    raises conduction speed from about 10 to 100 m/s.
+  - At a chemical synapse, Ca²⁺ entry fuses vesicles, and release is quantal because each vesicle is all or
+    nothing.
+  - Ionotropic receptors are channels and act fast; metabotropic receptors act through G-proteins and second
+    messengers such as cAMP and Ca²⁺.
+  - Glutamate and ACh excite, GABA and glycine inhibit, and the monoamines and peptides modulate more slowly
+    and more widely.
+  - Long-term change needs CREB and new proteins; in LTP the NMDA receptor passes Ca²⁺ only when glutamate is
+    bound and the cell is already depolarized.
+figures:
+  map.png: |
+    Cross-sections from cortex down to spinal cord (left) and where the main relay nuclei sit in each
+    (right): thalamic nuclei for each sense, the colliculi, olive, cuneate/gracile and cochlear nuclei, and the
+    dorsal root ganglion. The text lists the main pathways, e.g. PNS to spinal cord to brain stem to thalamus to
+    cortex.
+  4_A.png: |
+    The four patch-clamp configurations. Cell-attached keeps the membrane intact; whole-cell breaks it so
+    the pipette joins the cytoplasm; inside-out and outside-out pull off a patch with the cytoplasmic or the
+    extracellular face exposed.
+  7_6.svg: |
+    The three heterotrimeric G-protein pathways. Gs (norepinephrine) raises cAMP and PKA activity, Gq
+    (glutamate, mGluR) splits into DAG/PKC and IP₃/Ca²⁺ release, and Gi (dopamine D2) lowers cAMP.
+  8_5.png: |
+    Sensitization in Aplysia. Serotonin from a facilitatory interneuron raises cAMP in the sensory neuron.
+    In the short term PKA closes K⁺ channels so more transmitter is released; in the long term persistent
+    PKA activates CREB in the nucleus and the synapse grows.

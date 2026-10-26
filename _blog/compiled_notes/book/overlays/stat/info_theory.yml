@@ -1,0 +1,73 @@
+# Overlay for _notes/stat/info_theory.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Info theory           # short name on the start-page topic map
+title: Information theory
+hook: Entropy, KL divergence and mutual information, their chain rules and inequalities, and minimum description length.
+intro: |
+  Information theory measures uncertainty in bits. Entropy $H(X)$ is the average surprise $-\log p(x)$, and
+  roughly the number of yes/no questions needed to pin down $X$. KL divergence $D(p\|q)$ counts the extra bits
+  paid for using a code built for $q$ when the data come from $p$, and mutual information is the KL divergence
+  between a joint distribution and the product of its marginals. The Venn diagram shows how the joint,
+  conditional and mutual quantities fit together.
+
+  Jensen's inequality gives the basic inequalities: $D(p\|q) \geq 0$, conditioning can't increase entropy, and the
+  uniform distribution has the most entropy. The last section works through an introduction to minimum
+  description length (MDL), which treats learning as compression: distributions and code lengths are
+  interchangeable, so the model that compresses the data best is the one to pick.
+sections:
+  relative entropy / mutual info:
+    lead: |
+      KL divergence $D(p\|q)$ is the number of extra bits paid for coding data from $p$ with a code built for
+      $q$. Mutual information is the KL divergence between the joint $p(x,y)$ and the product of the marginals,
+      so it is 0 exactly when $X$ and $Y$ are independent.
+    viz:
+      - name: kl-divergence
+        params: {p: 0.3, q: 0.6}
+        caption: |
+          A binary variable with $P(X = 1) = p$. The blue curve is the average code length when the code is built
+          for $q$ instead. It touches the entropy $H(p)$ only at $q = p$, so $D(p\|q) \geq 0$ with equality only
+          there. Move $q$ toward 0 or 1 and the cost of the outcome the code treats as rare blows up. The readout
+          also gives $D(q\|p)$, which is usually different: KL divergence is not symmetric.
+      - name: mutual-info
+        params:
+          px: 0.5
+          py0: 0.2
+          py1: 0.7
+        caption: 'Two binary variables. The square on the left has area 1 and each cell''s area is $p(x,y)$: the columns
+          are $X = 0$ and $X = 1$, and the purple part of each column is $P(Y = 1\vert X = x)$. On the right, the bars
+          $H(X)$ and $H(Y)$ overlap by $I(X;Y)$, like the Venn diagram in this section. Set the two conditionals equal:
+          the splits line up with the dashed line, $X$ and $Y$ are independent, and the overlap vanishes. Pull them apart
+          and the overlap grows. At 0 and 1 with $P(X = 1) = 0.5$, $Y$ copies $X$ and $I(X;Y) = H(X) = 1$ bit.'
+  mdl:
+    lead: |
+      MDL picks the hypothesis that gives the shortest total description: the bits to describe the model plus
+      the bits to describe the data with it. Because any distribution $P$ defines code lengths $-\log P(x)$
+      (chapter 2.2.2), the second part is just the negative log-likelihood.
+  entropy:
+    lead: |
+      Entropy $H(X) = -\sum p(x)\log p(x)$ is the average surprise of $X$. It is highest for a uniform
+      distribution and 0 when $X$ is certain, and the average number of yes/no questions needed to determine $X$
+      lies between $H(X)$ and $H(X)+1$.
+  chain rules:
+    lead: |
+      Joint quantities break into sums of conditional ones, one variable at a time: joint entropy into
+      conditional entropies, mutual information with $Y$ into conditional mutual informations, and the KL
+      divergence of two joints into a marginal and a conditional term.
+  axiomatic approach:
+    lead: |
+      Entropy is the only measure of uncertainty that satisfies the four axioms below. The section then derives
+      its basic bounds, $H \leq \log M$ and $H(X,Y) \leq H(X) + H(Y)$, and sets up coding: assign code words to
+      symbols so the average length is short.
+  jensen's inequality:
+    lead: |
+      For convex $f$, $f(E[X]) \leq E[f(X)]$. Its main consequence is the information inequality
+      $D(p\|q) \geq 0$, and from that come the other bounds: the uniform distribution has the most entropy, and
+      conditioning can't increase it.
+takeaways:
+  - Entropy $H(X) = -\sum p(x)\log p(x)$ is the average surprise. It is at most $\log|X|$, with equality for the uniform distribution.
+  - $D(p\|q) \geq 0$ counts the extra bits paid for coding data from $p$ with a code built for $q$, and it is not symmetric.
+  - Mutual information $I(X;Y) = H(X) + H(Y) - H(X,Y)$ is 0 exactly when $X$ and $Y$ are independent.
+  - Conditioning can't increase entropy, $H(X\vert Y) \leq H(X)$.
+  - Distributions and code lengths are interchangeable through $L(x) = -\log P(x)$, so MDL picks the model that compresses the data best.
+figures:
+  entropy_venn_diagram.svg: $H(X)$ and $H(Y)$ as overlapping circles. The overlap is the mutual information $I(X;Y)$, each remaining crescent is a conditional entropy, and the two circles together are the joint entropy $H(X,Y)$.
+  cross_entropy.svg: Cross-entropy is entropy plus KL divergence. Coding data from $p$ with a code built for $q$ costs $H(p)$ bits plus $D(p\|q)$ extra.

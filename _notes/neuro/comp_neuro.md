@@ -236,7 +236,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - if $$P(s_1\vert spike) \approx P(s_1)$$ then response doesn't seem to have to do with stimulus
 - incorporating many features *$$f_1,...,f_n$$*
   - here, each $f_i$ is a vector of weights
-  - $$r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)$$<!-- -->
+  - $$r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)$$
   - could use *PCA* - discovers low-dimensional structure in high-dimensional data
   - each f represents a feature (maybe a curve over time) that fires the neuron
 
@@ -264,7 +264,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     1. can test if distr is Poisson with *Fano factor*=mean/var=1
       2. interspike intervals have exponential distribution	- if fires a lot, this can be bad assumption (due to refractory period)
 - generalized linear model adds explicit spike-generation / post-spike filter (Pillow et al. 2008)
-  - $$P(\text{spike at }t)\sim\exp((f_1*s + h_1*r)) $$<!-- -->
+  - $$P(\text{spike at }t)\sim\exp((f_1*s + h_1*r)) $$
   - post-spike filter models refractory period
   - *Paninski* showed that using exponential nonlinearity allows this to be optimized
   - could add in firing of other neurons
@@ -288,10 +288,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - can set a threshold on r by maximizing likelihood
       - P(r\|+) and P(r\|-) are likelihoods
     - *Neyman-Pearson lemma* - likelihood ratio test is the most efficient statistic, in that is has the most power for a given size
-      - $$\frac{p(r\vert +)}{p(r\vert -)} > 1?$$<!-- -->
+      - $$\frac{p(r\vert +)}{p(r\vert -)} > 1?$$
 - accumulated evidence - we can accumulate evidence over time by multiplying these probabilities
   - instead we take sum the logs, and compare to 0
-  - $$\sum_i \ln \frac{p(r_i\vert +)}{p(r_i\vert -)} > 0?$$<!-- -->
+  - $$\sum_i \ln \frac{p(r_i\vert +)}{p(r_i\vert -)} > 0?$$
   - once we hit some threshold for this sum, we can make a decision + or -
 - experimental evidence (Kiani, Hanks, & Shadlen, Nat. Neurosci 2006)
   - monkey is making decision about whether dots are moving left/right
@@ -307,7 +307,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - cut your losses: answer + when average Loss$$_+$$ < Loss$$_-$$
     - i.e. $$L_+ \cdot P[-\vert r]$$ < $$L_- \cdot P[+\vert r]$$
   - rewriting with Baye's rule yields new test:
-    - $$\frac{p(r\vert +)}{p(r\vert -)}> L_+ \cdot P[-] / L_- \cdot P[+]$$<!-- -->
+    - $$\frac{p(r\vert +)}{p(r\vert -)}> L_+ \cdot P[-] / L_- \cdot P[+]$$
     - here the loss term replaces the 1 in the Neyman-Pearson lemma
 
 **population coding and bayesian estimation**
@@ -319,7 +319,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - not general - some neurons aren't tuned, are noisier
   - not *optimal* - making use of all information in the stimulus/response distributions
 - *bayesian inference*
-  - $$\cgreen{p(s\vert r)} = \frac{\cblue{p(r\vert s)}\corange{p(s)}}{p( r)}$$<!-- -->
+  - $$\cgreen{p(s\vert r)} = \frac{\cblue{p(r\vert s)}\corange{p(s)}}{p( r)}$$
   - maximum <span class="cblue">likelihood</span>: s* which maximizes p(r\|s)
   - MAP = maximum <span class="cgreen">a posteriori</span>: s* which mazimizes p(s\|r)
 - simple continuous stimulus example
@@ -339,8 +339,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - if all the $\sigma$ are same, $s^* = \frac{\sum r_a s_a}{\sum r_a}$
         - this is the population vector
     - maximum *a posteriori*
-      - $$\ln \: \cgreen{p(s\vert r)} = \ln \: \cblue{P(r\vert s)} + \ln \: \corange{p(s)} = \ln \: P(r )$$<!-- -->
-      - $$s^* = \frac{\cblue{T \sum r_a s_a / \sigma^2_a} + \corange{s_{prior} / \sigma^2_{prior}}}{\cblue{T \sum r_a / \sigma^2_a} + \corange{1/\sigma^2_{prior}}}$$<!-- -->
+      - $$\ln \: \cgreen{p(s\vert r)} = \ln \: \cblue{P(r\vert s)} + \ln \: \corange{p(s)} = \ln \: P(r )$$
+      - $$s^* = \frac{\cblue{T \sum r_a s_a / \sigma^2_a} + \corange{s_{prior} / \sigma^2_{prior}}}{\cblue{T \sum r_a / \sigma^2_a} + \corange{1/\sigma^2_{prior}}}$$
       - this takes into account the <span class="corange">prior</span>
         - narrow prior makes it matter more
     - doesn't incorporate correlations in the population
@@ -376,8 +376,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - code might not align spikes with what we are encoding
 - how much of the variability in r is encoding s
   - define q as en error
-    - $$P(r_+\vert s=+)=1-q$$<!-- -->
-    - $$P(r_-\vert s=+)=q$$<!-- -->
+    - $$P(r_+\vert s=+)=1-q$$
+    - $$P(r_-\vert s=+)=q$$
     - similar for when s=-
   - <span class="cblue">total entropy</span>: $$\cblue{H(R )} = - P(r_+) \log P(r_+) - P(r_-)\log P(r_-)$$
   - <span class="corange">noise entropy</span>: $$\corange{H(R\vert S=+)} = -q \log q - (1-q) \log (1-q)$$
@@ -387,7 +387,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - for each s
     - P(R\|s) - take one stimulus and repeat many times (or run for a long time)
     - H(R\|s) - noise entropy
-  - $$H(R\vert S)=\sum_s P(s) H(R\vert s)$$<!-- -->
+  - $$H(R\vert S)=\sum_s P(s) H(R\vert s)$$
   - $H(R ) $ calculated using $$P(R ) = \sum_s P(s) P(R\vert s)$$
 
 **info in spike trains**
@@ -543,7 +543,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - hopfield nets can store / retrieve memories
   - marr-pogio stereo algorithm
 - binary Hopfield networks were introduced as associative memories that can store and retrieve patterns (Hopfield, 1982)
-  - network with dimension $d$ can store $d$ uncorrelated patterns, but fewer correlated patterns
+  - with Hebbian storage, a network with dimension $d$ can reliably store about $0.14d$ uncorrelated patterns, and fewer correlated patterns
   - in contrast to the storage capacity, the number of energy minima (spurious states, stable states) of Hopfield networks is exponential in $d$​ (Tanaka & Edwards, 1980; Bruck & Roychowdhury, 1990; Wainrib & Touboul, 2013)
   - energy function only has pairwise connections
   - fully connected (no input/output) - activations are what matter

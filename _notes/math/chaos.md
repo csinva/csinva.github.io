@@ -117,7 +117,7 @@ $$
 # Ref
 - $\frac{\partial}{\partial x}(f_1 * f_2 * f_3) = \frac{\partial f_1}{\partial x} f_2 f_3 + \frac{\partial f_2}{\partial x} f_1 f_3 + \frac{\partial f_3}{\partial x} f_1 f_2$
 - $e^{\mu it} = \cos(\mu t)+ isin(\mu t)$
-- $$x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' \sin(t) + B' \cos(t)) e^{\lambda t} $$<!-- -->
+- $$x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' \sin(t) + B' \cos(t)) e^{\lambda t} $$
 If we have $\dot{x_1},\dot{x_2}$ then we can get $x_2(x_1) with \frac{dx_1}{dx_2} = \frac{\dot{x_1}}{\dot{x_2}}$
 
 # Benard Convection
@@ -178,7 +178,7 @@ M=
 $
 
 # Linearization of Lorenz Equations about FPs $\bar{\underline{x}}$
-- $$\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}\vert _ \bar{\underline{x}}= -\sigma$$<!-- -->
+- $$\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}\vert _ \bar{\underline{x}}= -\sigma$$
 - $$\frac{d}{dt}\delta y(t) = \frac{\partial f_2}{\partial x}\vert _ \bar{\underline{x}}*\delta x(t) + \frac{\partial f_2}{\partial y}\vert _ \bar{\underline{x}}*\delta y(t) + \frac{\partial f_2}{\partial z}\vert _ \bar{\underline{x}}*\delta z(t) +...$$ (higher order derivatives)
-	- $$ = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z$$<!-- -->
+	- $$ = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z$$
 - do the same thing for $\delta z(t)$

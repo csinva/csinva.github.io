@@ -39,6 +39,23 @@
 </body>
 
 <!--js-->
+<script>
+    // kramdown renders a list item that is only an equation (`- $$x$$`) as display math (\[x\]);
+    // show single-line ones inline instead so they sit next to their bullet
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".note-box li").forEach(function (li) {
+            var node = li.firstChild;
+            if (!node || node.nodeType !== 3) return;
+            var m = node.nodeValue.match(/^\s*\\\[([\s\S]*?)\\\]\s*$/);
+            if (!m) return;
+            // keep real multi-line equations as display math: a top-level \\ (line breaks inside
+            // matrices/cases/aligned blocks don't count) or an align-type environment
+            var flat = m[1].replace(/\\begin\{([a-zA-Z]*matrix|cases|array|aligned|split)\*?\}[\s\S]*?\\end\{\1\*?\}/g, "");
+            if (/\\\\|\\begin\{(align|eqnarray|gather|multline)/.test(flat)) return;
+            node.nodeValue = "\\(" + m[1] + "\\)";
+        });
+    });
+</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({ TeX: {
         equationNumbers: { autoNumber: "all" },

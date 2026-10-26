@@ -54,7 +54,7 @@ typora-copy-images-to: ../assets
   - $X_{2\pi}(\omega) = \sum_{n=-\infty}^{\infty} x_n \,e^{-i \omega n}$
     - $\omega$ is frequency
 - **discrete Fourier transform** (DFT or the analysis equation) - this is by far the most common
-    - $$\begin{align}X_k &= \sum_{n=0}^{N-1} \cblue{x_n} \corange{e^{-2\pi i k n / N}}\\&=\sum_{n=0}^{N-1} \cblue{x_n} \left[ \cgreen{\cos(2\pi k \frac n N )} - i \cpink{\sin(2 \pi k \frac n N )}\right]\end{align}$$<!-- -->
+    - $$\begin{align}X_k &= \sum_{n=0}^{N-1} \cblue{x_n} \corange{e^{-2\pi i k n / N}}\\&=\sum_{n=0}^{N-1} \cblue{x_n} \left[ \cgreen{\cos(2\pi k \frac n N )} - i \cpink{\sin(2 \pi k \frac n N )}\right]\end{align}$$
     - larger k is higher freq.
     - **inverse transform**: $x_n = \frac{1}{N} \sum_{k=0}^{N-1} X_k\cdot e^{i 2 \pi k n / N}$
     - $$x_0, x_1, ... x_{N-1}$$ is a sequence of N complex numbers (i.e. time domain) and we transform to another sequence of complex numbers $$X_0, X_1, ..., X_{N-1}$$

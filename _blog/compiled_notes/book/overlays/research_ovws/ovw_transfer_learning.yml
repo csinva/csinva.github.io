@@ -1,0 +1,60 @@
+# Overlay for _notes/research_ovws/ovw_transfer_learning.md
+map_label: Transfer learning           # short name on the start-page topic map
+hook: Training models that hold up when the test data shift, from domain adaptation and test-time training to adversarial attacks.
+intro: |
+  All of these papers deal with test data that differ from the training data. The opening table sorts the
+  learning settings (supervised, transfer, multitask, meta-, continual learning and more) by what each one
+  has access to. The domain adaptation section then lists algorithms: plain ERM, then methods that find features whose best classifier is the same in every domain, minimize the
+  worst-group error, or meta-learn parameters that finetune well.
+
+  Shorter sections cover learning a representation that can't tell domains apart, picking among pretrained
+  classifiers per test point, and adapting the model on the test data itself. The last section is about
+  adversarial attacks, a worst-case version of shift: how attacks are built, the main families of defenses,
+  and the trade-off between robustness and accuracy. Transformer-specific finetuning is in the LLM chapter,
+  and causal inference has close connections.
+sections:
+  overviews:
+    lead: |
+      Read across a row to see what a setting assumes: labeled or unlabeled data, one task or many, data that
+      arrive all at once or as a stream.
+  domain adaptation algorithms:
+    lead: |
+      ERM just minimizes average training error. The rest add an assumption about how domains relate: the
+      same features should work everywhere (IRM), the worst domain should be fit well (GroupDRO, VREx), or
+      prior knowledge marks some features as spurious.
+  domain invariance:
+    lead: |
+      Train the features so that a classifier can't predict which domain an input came from. Swapping the
+      domain label for a sensitive attribute gives the same recipe for fair representations.
+    viz:
+      - name: covariate-shift
+        params:
+          shift: 1.5
+        caption: 'Covariate shift with a misspecified model (illustrative): a line fit to $y = \sin x$ + noise, with training
+          $x$ from $p_\text{train}$ and test $x$ from $p_\text{test}$. Ordinary least squares fits the training region;
+          weighting each point by $w(x) = p_\text{test}(x)/p_\text{train}(x)$ (dot size) fits the test region instead.
+          Increase the shift: the weighted fit stays on target on average, but the effective sample size falls until a
+          few points decide the line.'
+  dynamic selection:
+    lead: |
+      Keep a pool of trained classifiers and decide per test point which to trust, based on how well each did
+      on nearby training points. The note lists the three steps: define the region, select, combine.
+  test-time adaptation:
+    lead: |
+      Update the model on unlabeled test data before predicting: re-estimate batch-norm statistics, minimize
+      the entropy of the predictions, or train on a self-supervised task such as rotation prediction or masked
+      reconstruction.
+  adv attacks:
+    lead: |
+      An adversarial example is a small input change, bounded by $\epsilon$, chosen to change the prediction.
+      Adversarial training adds the worst such loss to the objective; the constrained version instead caps
+      the adversarial loss at $c$.
+takeaways:
+  - Each learning setting in the opening table differs in what it can see (labels, tasks, a stream of data), and that decides which methods apply.
+  - Domain adaptation methods add an assumption about how domains relate, such as invariant features (IRM) or a well-fit worst group (GroupDRO), on top of plain ERM.
+  - Test-time adaptation updates the model on unlabeled test data, through batch-norm statistics, entropy minimization or a self-supervised task.
+  - Adversarial attacks are a worst-case shift; defenses include adversarial training, randomization, preprocessing and robustness as a constraint, and robustness may be at odds with accuracy.
+figures:
+  transfer_taxonomy.svg: Learning settings (rows), grouped as in- or out-of-distribution and batch or streaming, against what each setting has access to (columns). Y means present, O optional.
+  domain_adv_training.svg: Domain-adversarial training (DANN). Shared features (green) feed a label predictor (blue) and, through a gradient reversal layer, a domain classifier (pink). Flipping the sign of the domain gradient pushes the features to hide the domain while still predicting the label.
+  ttt_lm.svg: A test-time training layer. Its hidden state is a weight matrix $W_t$ that takes a gradient step on a self-supervised reconstruction loss at every token, so the layer keeps adapting as it reads.

@@ -1,0 +1,134 @@
+# Overlay for _notes/stat/data_analysis.md. Keys under `sections` are the note's header text (case and markup ignored).
+hook: Sampling, clear plots, smoothing, imbalanced and missing data, feature selection, and tools and principles for reproducible analysis.
+intro: |
+  This chapter is the practical side of working with data. It opens with the PQRS frame for an analysis
+  (population, question, representative data, scrutinizing answers), then the advice from the book Storytelling
+  with Data on making plots that make one point clearly, then visual summaries, transformations and smoothers
+  for looking at relationships.
+
+  The middle sections are about fixing data before modeling: rebalancing rare classes, imputing missing values
+  (where the missingness mechanism decides what is possible), preprocessing, and three families of feature
+  selection. The chapter ends with tools for reproducible experiments and notes on Breiman, Box and Tukey's
+  views of what statistics should be.
+sections:
+  pqrs:
+    lead: |
+      The steps of an analysis aimed at inference. The sampling formulas show why the R matters: under simple
+      random sampling the variance of $\bar X$ is $\sigma^2/n$, a bit smaller when sampling without replacement.
+  visualization:
+    lead: |
+      The first five subsections follow the book's steps: understand the context, choose a visual, cut clutter,
+      focus attention, and tell a story. The images are examples of the chart types and fixes it recommends.
+  visual summaries:
+    lead: |
+      Numerical and visual summaries, then transformations and smoothers for looking at relationships. A kernel
+      smoother replaces each point with a weighted average of the $y$ values near it, and the bandwidth $h$ sets
+      how wide "near" is.
+    viz:
+      - name: kernel-smoother
+        params: {h: 0.08, method: nw}
+        caption: |
+          Sixty noisy points from a smooth curve. A small $h$ averages only a few neighbors, so the smooth follows
+          the noise; a large $h$ averages almost everything and flattens the curve. The right panel scores each $h$
+          by leave-one-out prediction error, one way to find the optimal bandwidth. At $h$ around 0.1, switch to
+          local linear and watch the two ends: the local average is pulled toward the inside points there, the
+          local line much less.
+  imbalanced data:
+    lead: |
+      Fixes for a rare class, roughly from simplest to most involved: resample, reweight the loss, synthesize new
+      minority points, remove majority points near the boundary, or change the features or the model.
+  missing-data imputation:
+    lead: |
+      What can be done depends on why values are missing. Under MCAR and MAR the missingness can be modeled from
+      what is observed. Under MNAR it also depends on the unobserved values, and sensitivity analysis checks how
+      much that matters.
+    viz:
+      - name: missing-data
+        params:
+          mech: mar
+          s: 2
+        caption: '300 rows where $X$ is always observed and about 40% of the $Y$ values are missing (hollow circles are
+          the values that were never seen). The horizontal lines are three estimates of the mean of $Y$: over all rows,
+          which would need the missing values; after dropping incomplete rows; and after imputing each missing $Y$ (green)
+          from a linear regression on $X$ fit to the complete rows. Under MCAR all three agree up to noise. Under MAR,
+          larger $X$ makes $Y$ more likely to be missing: dropping rows biases the mean down, but the regression on the
+          observed $X$ corrects it. Under MNAR, larger $Y$ itself makes $Y$ missing, and both estimates stay biased.'
+  feature selection:
+    lead: |
+      Three families, by how they use the predictor: filters score features with a summary statistic and no
+      model, wrappers search over subsets with the model as a black box, and embedded methods select features
+      while fitting (e.g. the lasso).
+  principles:
+    lead: |
+      Notes on papers and talks about what statistics is for: Breiman's two cultures, Box and Tukey on data
+      analysis as a science, and Kass on how claims get exaggerated.
+  understand the context (1):
+    lead: |
+      Before drawing anything, decide who the audience is and what they should know or do. Exploratory analysis
+      is for finding things; explanatory analysis shows the one thing found, distilled to a one-sentence Big
+      Idea.
+  choose an effective visual (2):
+    lead: |
+      Which chart to use. The examples favor simple bars, lines and minimal tables over pie charts, 3D charts
+      and secondary y-axes, and bar charts start at 0.
+  eliminate clutter (3):
+    lead: |
+      Every element that doesn't support the point competes for attention. The gestalt principles say which
+      things a viewer sees as a group; the rest are concrete fixes: titles top-left, no diagonal or centered
+      text, lines labeled directly.
+  tell a story / think like a designer (5):
+    lead: |
+      A presentation works like a story: a beginning that poses a problem, a middle that shows what could be,
+      and an end that calls for action. Horizontal logic means the slide titles alone tell that story.
+  matrix completion:
+    lead: |
+      Filling in the missing entries of a matrix by assuming the full matrix has low rank. Minimizing the rank
+      is NP-hard, so the formulations below relax it: the nuclear norm, a rank constraint on a noisy fit, or a
+      factorization $UV^T$ that is faster but non-convex.
+  preprocessing:
+    lead: |
+      Two transformations applied before modeling: discretizing features, and whitening, which maps inputs $X$
+      to decorrelated features $Z$ with $\Sigma_Z = I$. The choice of whitening matrix $W$ (PCA, ZCA, Cholesky)
+      decides what else $Z$ preserves.
+  filtering - select based on summary statistic:
+    lead: |
+      Filters score features without the final model. Univariate scores are fast but judge each feature alone,
+      and they differ in what they detect: correlation sees only linear dependence, mutual information sees any
+      dependence.
+  wrapper - recursively eliminate features:
+    lead: |
+      Wrappers treat the model as a black box and search over feature subsets, scoring each subset on held-out
+      data. Forward selection adds features one at a time, backward elimination removes them.
+  reproducibility:
+    lead: |
+      Tools for rerunning an analysis and getting the same answer: containers for the software environment, data
+      version control for data and models, and trackers for hyperparameters, metrics and workflows.
+  data version control:
+    lead: |
+      DVC works alongside git: small `.dvc` metafiles in the repository track large data and model files, and
+      `git checkout` plus `dvc checkout` bring back an old state. The other tools log parameters, metrics and
+      outputs for each run.
+  breiman:
+    lead: |
+      Breiman's two cultures. The generative culture assumes a stochastic model produced the data and checks it
+      by goodness of fit; the predictive culture treats the mechanism as unknown and checks models by prediction
+      accuracy. He argued statistics leaned too far toward the first.
+  box + tukey:
+    lead: |
+      Two older papers on what statistics is for. Box describes science as iteration between theory and practice
+      and warns against cookbookery and mathematistry. Tukey argues that data analysis is a science of its own,
+      that all models have flaws, and that there is no best model.
+  exaggerated claims:
+    lead: |
+      From a talk by Rob Kass. Concepts like "central tendency" or "information" have several mathematical
+      versions, and "controlling for" a variable in a regression makes causal assumptions, so a claim can say
+      more than the analysis supports.
+takeaways:
+  - Under simple random sampling $var(\bar X) = \sigma^2/n$, smaller by the factor $1 - n/N$ when sampling without replacement.
+  - A good plot is built for one audience and one point; choose a simple visual, cut clutter, and use contrast to direct attention.
+  - For a rare class, resample, reweight the loss, synthesize minority points (SMOTE), or remove majority points near the boundary.
+  - What can be done about missing values depends on the mechanism. Under MCAR and MAR the missingness can be modeled from observed data; under MNAR it cannot, and sensitivity analysis is the fallback.
+  - Feature selection methods differ in how they use the model. Filters ignore it, wrappers search with it as a black box, and embedded methods select while fitting.
+  - Breiman, Box and Tukey judge models by usefulness rather than truth. All models have flaws and there is no best one.
+figures:
+  smote.svg: SMOTE. Each synthetic minority point (red) lies on a segment between a minority point and one of its nearest minority neighbors.

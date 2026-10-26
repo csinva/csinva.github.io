@@ -1,0 +1,339 @@
+# Overlay for _notes/neuro/comp_neuro.md. Keys under `sections` are the note's header text (case and markup ignored).
+map_label: Comp neuro           # short name on the start-page topic map
+title: Computational neuroscience
+hook: Models of neurons, neural codes and learning rules, then data-driven neuroscience, brain encoding models and neuro-inspired AI.
+intro: |
+  The first half is the classic course material: model a single neuron (from Hodgkin-Huxley down to integrate-and-fire), describe what it encodes (receptive
+  fields, spike-triggered averages, tuning curves) and how to read it out (likelihood ratios, population
+  vectors, Bayesian decoding, information theory), then connect neurons into recurrent networks and let the
+  synapses learn (Hebb and Oja rules, which find principal components, then sparse coding, which finds V1's
+  receptive fields).
+
+  The second half is a reading list. It covers kinds of neural data and public datasets, encoding and
+  decoding models that predict fMRI, MEG and ECoG from language model features, brain foundation models,
+  hyperdimensional computing, place and grid cells, and how neuroscience has fed ideas into deep learning.
+  Each part stands on its own; the networks and learning sections are the ones that lean on the earlier
+  material.
+sections:
+  overview:
+    lead: |
+      Why theory is hard here: it is not clear the brain runs on principles at all ("god is a hacker"), and
+      there are many scales to model, from cortex and columns down to neurons and synapses.
+  history:
+    lead: |
+      Neural networks and neuroscience grew up together: McCulloch and Pitts and Rosenblatt on the network
+      side, Hubel and Wiesel's simple and complex cells and Fukushima's neocognitron on the vision side, and
+      Marr's levels (theory, representation, implementation) for asking what a circuit does.
+  types of models:
+    lead: |
+      Three kinds of question: what a neuron responds to (descriptive), how it produces that response
+      (mechanistic), and why the circuit works that way (interpretive, e.g. efficient coding).
+  biophysical models:
+    lead: |
+      Models of single neurons, from the full Hodgkin-Huxley equation down to integrate-and-fire and the theta
+      neuron, then dendrites and axons as cables.
+  modeling neurons:
+    lead: |
+      The membrane is a capacitor in parallel with conductances, each in series with a battery at that ion's
+      Nernst potential. Hodgkin and Huxley's equation sums those currents, with gating variables $n$, $m$,
+      $h$ that open and close with voltage.
+    viz:
+      - name: hodgkin-huxley
+        params:
+          I: 10
+          dur: 1
+          gap: 12
+          view: currents
+        caption: 'The Hodgkin-Huxley equation with the classic squid-axon parameters, driven by current pulses (pink).
+      
+          Lower the pulse current below about 7 µA/cm² and no spike fires: the threshold is sharp, and it drops as
+      
+          the pulse gets longer. During the spike the <span class="cgreen">sodium current</span> rushes in first and
+      
+          the <span class="corange">potassium current</span> follows; the second pulse fails until about 15 ms after
+      
+          the first (the refractory period), which the gating view shows as $h$ still low and $n$ still high.
+      
+          '
+  simplified model neurons:
+    lead: |
+      Integrate-and-fire keeps only the passive membrane plus a rule: when $V$ hits threshold, record a spike
+      and reset. That is enough to get firing rates out of input currents.
+    viz:
+      - name: lif-neuron
+        params: {I: 20, tau: 20}
+        caption: |
+          A leaky integrate-and-fire neuron with $E_L = -65$ mV, $V_{th} = -50$ mV and a 2 ms refractory period.
+          Below 15 mV of input, $V$ settles at $E_L + RI$ and never fires. Above it, the neuron fires regularly and
+          the rate grows with input, steeply at first and then nearly linearly (right). A longer $\tau$ makes the
+          membrane charge more slowly, so the rate drops.
+  modeling dendrites / axons:
+    lead: |
+      Cable theory treats a dendrite as a leaky cable, so the voltage depends on position as well as time. In
+      practice the cable is cut into compartments linked by coupling conductances, and Rall showed that
+      branches obeying $d_1^{3/2} = d_{11}^{3/2} + d_{12}^{3/2}$ can be collapsed into a single cable.
+  circuit-modeling basics:
+    lead: |
+      The membrane is an RC circuit with time constant $\tau = RC$. Capacitance grows with diameter but axial
+      resistance falls with its square, so bigger axons charge faster.
+  physics of computation:
+    lead: |
+      Drift and diffusion together give a Boltzmann distribution, which shows up in the Nernst potential, in
+      the current-voltage curve of voltage-gated channels and in a MOS transistor: each is an energy barrier
+      that charges have to cross.
+  spiking neurons:
+    lead: |
+      Two views of what spikes carry. The rate code treats irregular timing as noise, which leads to the LNP
+      model and its Poisson spikes; the timing view points to responses that are very precise when the input
+      varies in time.
+  neural coding:
+    lead: |
+      Encoding asks what makes a neuron fire, decoding asks what its spikes say about the stimulus, and
+      information theory measures how much they say without a model of either.
+  neural encoding:
+    lead: |
+      Encoding is $P(\text{response} \mid \text{stimulus})$. The usual model filters the stimulus linearly,
+      passes the result through a nonlinearity, and draws Poisson spikes from that rate (LNP). With white
+      noise input, the spike-triggered average recovers the filter.
+  neural decoding:
+    lead: |
+      Decoding runs the other way, $P(\text{stimulus} \mid \text{response})$. For two choices the best test is
+      the likelihood ratio; for a continuous stimulus coded by a population, maximum likelihood with Gaussian
+      tuning curves reduces to the population vector, and a prior turns it into MAP.
+    viz:
+      - name: population-vector
+        params:
+          dir: 60
+          noise: 10
+          n: 8
+        caption: 'Each neuron has a rectified cosine tuning curve with a peak rate of 50 Hz (illustrative) and adds its
+      
+          preferred direction weighted by its firing rate; the sum is the population vector. Raise the noise and
+      
+          the decoded direction wobbles; add neurons and the average error shrinks. With only 3 neurons the
+      
+          population vector is off by up to 30° even without noise, which is why the note needs an overcomplete basis.
+      
+          '
+  information theory:
+    lead: |
+      Mutual information is total response entropy minus the noise entropy left when the stimulus is known.
+      It measures how much a response says about a stimulus without needing a model of the code.
+  computing with networks:
+    lead: |
+      From synapses to networks: a kinetic model of a synaptic conductance, a firing-rate model that averages
+      the spikes away, then recurrent networks and Hopfield nets.
+  modeling connections between neurons:
+    lead: |
+      A synapse is a conductance $g_s$ with its own reversal potential, scaled by the chance of release and
+      the fraction of channels open. The open fraction follows a two-state kinetic model; AMPA fits a single
+      exponential, GABA and NMDA an alpha function with a delay.
+  intro to network models:
+    lead: |
+      Firing-rate models replace spike trains with smooth rates, which loses timing and synchrony but is much
+      cheaper. With fast synapses and static input the model becomes an artificial neuron, $\nu_\infty =
+      F(\mathbf{w} \cdot \mathbf{u})$.
+  recurrent networks:
+    lead: |
+      For a linear recurrent network with symmetric weights, each eigenvector of $M$ evolves on its own.
+      Eigenvalues below 1 decay to a steady state amplified by $1/(1-\lambda)$; an eigenvalue of exactly 1
+      holds its input forever, which is a memory.
+  learning:
+    lead: |
+      How synapses could learn: supervised networks that reproduce gain fields, then unsupervised rules (Hebb,
+      Oja, competitive learning) that find principal components or clusters, then sparse coding.
+  supervised learning:
+    lead: |
+      People looked for receptive fields fixed to the world rather than the retina and did not find them.
+      Networks trained to map pixels to head-centered coordinates found what cortex has instead: gain fields,
+      whose gain depends on where the eye points.
+  hebbian learning and pca:
+    lead: |
+      A linear neuron trained with Hebb's rule follows the input correlations and points its weights along the
+      top principal component. PCA's features are global checkerboards, though, which are hard for neurons to
+      build; the retina whitens instead, and competitive learning finds clusters like k-means.
+  synaptic plasticity, hebb's rule, and statistical learning:
+    lead: |
+      The plain Hebb rule follows the input correlation matrix $Q$, so $\mathbf{w}$ lines up with its top
+      eigenvector, but its length grows without bound. Oja's decay term fixes the length at $1/\sqrt{\alpha}$
+      and leaves the direction alone, so a single neuron learns the first principal component.
+    viz:
+      - name: oja-rule
+        params: {rule: oja, rho: 0.8, alpha: 1, steps: 400}
+        caption: |
+          A neuron $v = \mathbf{w} \cdot \mathbf{x}$ sees one 2-d input at a time and updates $\mathbf{w}$. With
+          Oja's rule the weight (orange) swings onto the principal eigenvector (dashed green) and stops on the
+          circle of radius $1/\sqrt{\alpha}$. Switch to plain Hebb: same direction, but $|\mathbf{w}|$ keeps
+          growing. Flip the sign of the correlation to see the learned direction rotate by 90°.
+  tensor product representation (TPR):
+    lead: |
+      A way to put symbols into vectors: bind each filler to its role with an outer product and sum the
+      bindings. If the roles are linearly independent, each constituent can be read back out.
+  sparse coding and predictive coding:
+    lead: |
+      PCA gives global, checkerboard-like features. Asking for a sparse code instead (most coefficients near
+      zero for any given image) gives localized, oriented features like V1 simple cells.
+  sparse, distributed coding:
+    lead: |
+      The sparse coding objective: rebuild each input from a dictionary $D$ while an $L_1$ penalty keeps the
+      code $\mathbf{h}$ sparse. Trained on natural images, the dictionary elements match V1 simple cells:
+      localized, oriented and bandpass.
+  self-organizing maps = kohonen maps:
+    lead: |
+      A Kohonen map updates the winning unit and its neighbors, so nearby units learn similar features. That
+      is one account of V1's orientation maps, which change smoothly across cortex (in cats and monkeys, not
+      mice).
+  boltzmann machines:
+    lead: |
+      A Boltzmann machine is a stochastic Hopfield net: states follow a Boltzmann distribution over the
+      energy, and learning compares statistics under the data with statistics under the model. Allowing only
+      visible-hidden connections (the RBM) makes sampling easy, and stacked RBMs are what Hinton argues
+      started deep learning.
+  data-driven neuroscience:
+    lead: |
+      Recording methods trade coverage for resolution (the table), so every dataset is a compromise. The
+      dataset lists below are grouped by modality, with language datasets first.
+  interventions:
+    lead: |
+      Ways to perturb the brain instead of recording it. Most of the section is on electroconvulsive therapy:
+      how it is given differently now (unilateral, briefer pulses) and theories of how it works.
+  cross-subject modeling:
+    lead: |
+      Brains line up only coarsely, especially for language. Hyperalignment and the shared response model
+      learn a map from each subject into a shared space, so data can be pooled across people.
+  language (mostly fMRI):
+    lead: |
+      Most of this section is about encoding models: predict each voxel's or electrode's response to natural
+      language from features of a language model, then ask which features and which layers predict best.
+  semantic decoding / bmi:
+    lead: |
+      Decoding runs the encoding model backwards. For stimulus-driven experiments the encoding direction is
+      the causal one; the papers decode text from fMRI, MEG and fNIRS, images from fMRI, and control signals
+      for brain-computer interfaces.
+  theories of explanation:
+    lead: |
+      How to turn verbal theories into quantitative models, then coordinate-based meta-analysis: tools from
+      BrainMap and Neurosynth to NeuroQuery and Text2Brain that map the words in papers to brain maps.
+  brain foundation models:
+    lead: |
+      Large models trained on the recordings themselves (fMRI, iEEG, EEG, MEG) rather than on stimuli. Several
+      differ mainly in how they encode position in the brain and in time.
+  high-dimensional (hyperdimensional) computing:
+    lead: |
+      Random vectors in thousands of dimensions are almost always nearly orthogonal. Three operations
+      (adding, multiplying, permuting) then let a single vector hold sets, sequences and key-value records
+      that can still be queried.
+  dynamic routing between capsules:
+    lead: |
+      Hinton's 1981 point that seeing needs reference frames, carried through dynamic routing circuits to
+      capsules: units that output a vector whose length is the probability an object is there and whose
+      direction holds its pose.
+  hierarchical temporal memory (htm, numenta):
+    lead: |
+      Numenta's model of neocortex, now called the Thousand Brains Theory: every region runs the same
+      algorithm on sparse distributed representations, takes copies of motor commands as input, and learns
+      sequences online by predicting its next input.
+  forgetting:
+    lead: |
+      Catastrophic forgetting is the stability-plasticity dilemma. The figure shows two answers from the
+      brain: homeostatic plasticity that keeps Hebbian plasticity in check, and a fast hippocampus and slow
+      neocortex that trade memories through replay.
+  maximal exciting inputs:
+    lead: |
+      Finding the stimulus that drives a neuron hardest, by gradient ascent or genetic algorithms through a
+      model of the neuron, and closing the loop by choosing each next stimulus adaptively.
+  population coding:
+    lead: |
+      What a population carries beyond single neurons: correlated variability, low-dimensional subspaces that
+      relate to behavior, and the coding schemes (population vector, correlation, sparse).
+  navigation:
+    lead: |
+      Place cells in the hippocampus fire at one location; grid cells in entorhinal cortex fire on a
+      hexagonal lattice of locations, at several scales and offsets.
+  hopfield nets:
+    lead: |
+      A Hopfield net stores patterns as minima of an energy function, with weights set by a Hebbian rule, and
+      recalls one by moving downhill from a noisy cue. With pairwise weights $d$ units hold about $0.14d$
+      uncorrelated patterns; higher-order interactions raise the capacity.
+    viz:
+      - name: hopfield-memory
+        params:
+          P: 5
+          noise: 0.2
+        caption: 'A net of $d = 100$ units stores $P$ patterns with the Hebbian rule; pattern 1 is the smiley, the rest
+          are
+      
+          random. Reset to the cue and step through the sweeps: no update raises the energy, and the state
+      
+          settles into a minimum. Push $P$ up and recall of pattern 1 falls off long before $P$ reaches $d$, ending in
+      
+          states that are not any stored pattern.
+      
+          '
+  neuromorphic computing:
+    lead: |
+      Hardware that computes the way neurons do, with transistor physics at tiny currents; the brain runs on
+      about 20 watts. The silicon retina, with center-surround receptive fields at very low energy, is the
+      classic example.
+  neuro-inspired ai (niAI):
+    lead: |
+      A reading list on neuro-inspired AI: reviews, credit assignment beyond backpropagation, and constraints
+      from biology that make networks more brain-like or more robust.
+  biological constraints for DNNs:
+    lead: |
+      Two routes. Fit a network's intermediate representations to recorded brain data, or build the biology in
+      by hand (Gabor front ends, surround inhibition, place- and grid-cell-like codes).
+takeaways:
+  - A neuron can be modeled at many levels, from Hodgkin-Huxley conductances to integrate-and-fire, which
+    keeps only the passive membrane and a threshold.
+  - Encoding models filter the stimulus, apply a nonlinearity and draw Poisson spikes; with white noise the
+    spike-triggered average recovers the filter.
+  - 'Decoding is Bayesian: a likelihood ratio for two choices, the population vector or a MAP estimate for a continuous
+    stimulus, and mutual information to measure how much a response says.'
+  - In a linear recurrent network each eigenvector evolves on its own; eigenvalues near 1 amplify input and an
+    eigenvalue of exactly 1 stores it.
+  - Hebbian learning finds principal components (Oja's rule keeps the weights bounded), while sparse coding of
+    natural images finds V1-like localized, oriented filters.
+  - 'The second half''s threads: encoding models that predict brain responses from language model features, decoding
+    text and images from recordings, brain foundation models, and ideas moving between neuroscience and AI.'
+figures:
+  5_3_1.svg: |
+    The theta neuron: the state is a phase $\theta$ on a circle, $d\theta/dt = 1 - \cos\theta + (1 + \cos\theta) I(t)$.
+    It rests near $V_{rest}$, and once input pushes it past $V_{th}$ it goes around through $V_{spike}$ and
+    back, which is one spike.
+  5_4_1.svg: |
+    The cable equation. Current down the cable works against the internal resistance $r_i$, which adds a
+    $\partial^2 V/\partial x^2$ term to the membrane equation. The time constant is $\tau_m = r_m c_m$ and the
+    space constant is $\lambda = \sqrt{r_m / r_i}$.
+  4_3_1.svg: |
+    Adaptation to stimulus statistics: the same filter $f_1$ and input/output function, but when the input's
+    spread changes (red vs. blue), the input/output function rescales so the output range is still used.
+  7_2_1.svg: |
+    Competitive learning with two output neurons. Each input goes to the neuron whose weight vector is
+    closest, and that weight moves toward the input, so $\mathbf{w}_A$ and $\mathbf{w}_B$ end up at the cluster
+    centers.
+  tpr.svg: |
+    A tensor product representation of the sequence 3, 7, 3: each filler (yellow) is bound to its role
+    $r_1, r_2, r_3$ (blue) by an outer product, and the bindings are summed into one matrix.
+  7_3_1.svg: |
+    Predictive coding. Top: an estimator sends a prediction back and only the error goes forward. Bottom:
+    the same loop as a network, where feedback synapses carry the prediction and feedforward synapses carry
+    the error into the internal representation $\mathbf{v}$.
+  fedorenko_fig1.png: |
+    The language network (purple, center) sits between perception areas (speech, blue) and motor planning
+    (Broca's area, red) on one side, and the networks for knowledge and reasoning (green) on the other.
+    Arrows show the flow for comprehension (blue) and production (red).
+  cortical_columns.svg: |
+    The cortical column, simple version (left: input to L4, up to L2/3 for output, down to L5 and L6) and a
+    more detailed one (right) with thalamic and cortical inputs and two outputs, direct from L3 and via
+    the thalamus from L5.
+  forgetting.svg: |
+    Two ideas for avoiding catastrophic forgetting. (a) Hebbian plasticity is stabilized by homeostatic
+    control of activity. (b) Complementary learning systems: the hippocampus learns episodes fast, the
+    neocortex learns structure slowly, and replay moves memories between them.
+  mouse.svg: |
+    A mouse in a box, one place cell that fires at a single spot, and one grid cell that fires at the
+    vertices of a hexagonal lattice covering the whole box.
+  retina.png: |
+    The retina is built inside out: light passes through the ganglion, amacrine, bipolar and horizontal
+    cells before reaching the rods and cones at the back, an example the note gives of a design not to copy.

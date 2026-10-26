@@ -91,8 +91,8 @@ category: math
   - difference between log 10n and log 2n is always a constant (about 3.322)
 - $\log_b (x) = \log_d (x) / \log_d (b)$
 - partial fractions: $\frac{3x+11}{(x-3)(x+2)} = \frac{A}{x-3} + \frac{B}{x+2}$
-- $$(ax+b)^k = \frac{A_1}{ax+b}+\frac{A_2}{(ax+b)^2}+...$$<!-- -->
-- $$(ax^2+bx+c)^k = \frac{A_1x+B_1}{ax^2+bx+c}+...$$<!-- -->
+- $$(ax+b)^k = \frac{A_1}{ax+b}+\frac{A_2}{(ax+b)^2}+...$$
+- $$(ax^2+bx+c)^k = \frac{A_1x+B_1}{ax^2+bx+c}+...$$
 - $\cos(a\pm b) = \cos(a)\cos(b)\mp \sin(a)\sin(b)$
 - $\sin(a \pm b) = \sin(a)\cos(b) \pm \sin(b)\cos(a)$
 
