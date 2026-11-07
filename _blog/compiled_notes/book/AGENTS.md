@@ -152,7 +152,7 @@ placed with `viz:` in an overlay. Rules:
 - Check every widget in both themes with tools/shoot.py.
 
 ## Theme
-`static/css/book.css` holds all styling (the top previous/next links are copied from the footer by nb-viz.js; on wide screens both sidebars tuck into 48px strips and slide out on hover/focus: "distraction-free reading" block); colors are tokens on `:root` redefined under
+`static/css/book.css` holds all styling (the start page and part overviews keep both sidebars open via a hidden `.sidebars-open` marker; the top previous/next links are copied from the footer by nb-viz.js; on wide screens both sidebars tuck into 48px strips and slide out on hover/focus: "distraction-free reading" block); colors are tokens on `:root` redefined under
 `html[data-theme="dark"]`. Notes' images are drawn dark-on-transparent and get inverted in dark mode
 (same as the website). Fonts: Inter (text), Source Serif 4 (headings), JetBrains Mono (code).
 

@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=14bb7c13" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -741,24 +741,24 @@ document.write(`
 <section id="pytorch">
 <h3>Pytorch<a class="headerlink" href="#pytorch" title="Link to this heading">#</a></h3>
 <p class="section-lead">The three levels of splitting a model across GPUs differ in what is split. Data parallelism splits batches and copies the model, tensor parallelism splits parts of an input, and pipeline parallelism puts different layers on different GPUs. The rest lists which pytorch wrapper fits one machine or many.</p>
-<ul>
+<ul class="simple">
 <li><p>new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable</p></li>
 <li><p>huggingface <a class="reference external" href="https://huggingface.co/docs/transformers/main/en/performance">performance</a> overview</p></li>
 <li><p>overview links from <a class="reference external" href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">huggingface</a> and <a class="reference external" href="https://pytorch.org/tutorials/beginner/dist_overview.html">pytorch</a></p></li>
 <li><p>levels of <a class="reference external" href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">parallelism</a></p>
 <ol class="arabic simple">
 <li><p>DataParallel - split <strong>batches</strong> across gpus and replicate model on each gpu (model must fit on single gpu)</p>
-<ul class="simple">
+<ul>
 <li><p>gpt2 &amp; T5 models have naive PP support</p></li>
 </ul>
 </li>
 <li><p>TensorParallel - split <strong>parts of an input</strong> across gpus</p>
-<ul class="simple">
+<ul>
 <li><p><a class="reference external" href="https://github.com/tunib-ai/parallelformers">parallelformers</a> provides easy support for inference-only</p></li>
 </ul>
 </li>
 <li><p>PipelineParallel - split <strong>different layers</strong> across gpus</p>
-<ul class="simple">
+<ul>
 <li><p>naive - diff layers on diff gpus (increases mem but not speed)</p></li>
 <li><p>pipeline parallel - separates so more gpus can work at once</p></li>
 <li><p>Deepspeed/Megatron/Varuna/Sagemaker combine dataparallel with pipeline parallel</p></li>
@@ -767,7 +767,7 @@ document.write(`
 </ol>
 </li>
 <li><p><a class="reference external" href="https://pytorch.org/tutorials/beginner/dist_overview.html">pytorch parallel overview</a></p>
-<ul class="simple">
+<ul>
 <li><p>single-machine multi-GPU: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.DataParallel.html">DataParallel</a> - relatively simple</p>
 <ul>
 <li><p>just wrap model <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">nn.DataParallel(model)</span></code> (some attributes may become inaccessible)</p></li>
@@ -784,14 +784,13 @@ document.write(`
 </ul>
 </li>
 <li><p>dataset has <code class="docutils literal notranslate"><span class="pre">__init__,</span> <span class="pre">__getitem__,</span> <span class="pre">&amp;</span> <span class="pre">__len__</span></code></p>
-<ul class="simple">
+<ul>
 <li><p>rather than storing images, can load image from filename in <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code></p></li>
 </ul>
 </li>
 <li><p>there’s a <code class="docutils literal notranslate"><span class="pre">torch.nn.Flatten</span></code> module</p></li>
 <li><p>following example <a class="reference external" href="https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51">here</a></p></li>
-<li><h2 class="rubric" id="roofline-analyses-https-jax-ml-github-io-scaling-book-roofline">roofline analyses: https://jax-ml.github.io/scaling-book/roofline/</h2>
-</li>
+<li><p>roofline analyses: https://jax-ml.github.io/scaling-book/roofline/</p></li>
 </ul>
 </section>
 <section id="parallelization">

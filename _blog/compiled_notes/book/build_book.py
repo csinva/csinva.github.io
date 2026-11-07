@@ -358,6 +358,7 @@ def main():
             continue
         ov = load_yaml(HERE / "overlays/_parts" / f"{cat}.yml")
         lines = [f"# {ov.get('title', title)}", ""]
+        lines += ["```{raw} html", '<div class="sidebars-open" hidden></div>', "```", ""]   # part overview pages keep both sidebars open
         if ov.get("intro"):
             for p in re.split(r"\n\s*\n", ov["intro"].strip()):
                 lines += ["{.part-intro}", re.sub(r"\s+", " ", p.strip()), ""]
@@ -381,6 +382,7 @@ def main():
     (SRC / "_static/data").mkdir(parents=True, exist_ok=True)
     (SRC / "_static/data/topic_map.json").write_text(json.dumps(tm))
     lines = ["# " + land.get("title", "Notes on ML, AI, and neuroscience"), ""]
+    lines += ["```{raw} html", '<div class="sidebars-open" hidden></div>', "```", ""]   # the start page keeps both sidebars open
     if land.get("lead"):
         lines += ["```{raw} html", f'<p class="landing-lead">{land["lead"].strip()}</p>', "```", ""]
     for p in re.split(r"\n\s*\n", (land.get("intro") or "").strip()):

@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400&display=swap" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=d567833e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/book.css?v=14bb7c13" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -480,6 +480,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-transformer-nlp-models">Pre-transformer nlp models</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-optimization">Inference optimization</a></li>
 </ul>
             </nav>
         </div>
@@ -491,14 +492,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p class="breadcrumb"><a href="../../parts/ai.html">Artificial intelligence</a> &nbsp;·&nbsp; chapter 3 of 8 &nbsp;·&nbsp; 9 min read</p><section class="tex2jax_ignore mathjax_ignore" id="llms">
+  <p class="breadcrumb"><a href="../../parts/ai.html">Artificial intelligence</a> &nbsp;·&nbsp; chapter 3 of 8 &nbsp;·&nbsp; 10 min read</p><section class="tex2jax_ignore mathjax_ignore" id="llms">
 <h1>LLMs<a class="headerlink" href="#llms" title="Link to this heading">#</a></h1>
 <p class="note-subtitle">How a transformer works, from the shape of each matrix to self-attention, and a reading list of foundational transformer-based models.</p><div class="chapter-intro admonition">
 <p class="admonition-title">About this chapter</p>
 <p>The chapter opens with two diagrams of a decoder-only transformer. The first tracks the shape of every matrix from input tokens to next-token probabilities; the second shows how KV caching reuses keys and values while generating. If attention is new to you, read these together with the section “visual explanation of self-attention”, which works one example through by hand.</p>
 <p>The middle of the chapter is a reading list of influential models grouped by area (language, vision, text-vision, RL, code, science, audio), followed by n-gram language models such as infini-gram. The later sections give the formal view of transformers after Phuong &amp; Hutter, the three families of models (GPT-like, BERT-like, BART/T5-like), and the RNN seq2seq models that came before.</p>
 </div>
-<p>See related papers in the <a class="reference internal" href="../research_ovws/ovw_llms.html"><span class="std std-doc">📌 llm research</span></a> and <a class="reference internal" href="../research_ovws/ovw_interp.html"><span class="std std-doc">📌 interpretability</span></a> pages.</p>
+<details class="chapter-outline"><summary>Chapter outline: 6 sections</summary><ol><li><a href="#sec-llms-basics">Basics</a><span class="ol-badge">2 figures</span><span class="ol-lead">Two diagrams to keep in mind: the shape of every matrix in a decoder-only transformer, and how KV caching saves work during generation.</span></li><li><a href="#sec-llms-historically-influential-transformer-based-model">Historically influential transformer-based models</a><span class="ol-lead">A reading list rather than a history to read in order.</span></li><li><a href="#sec-llms-ngram-based-models">Ngram-based models</a><span class="ol-badge">1 interactive</span><span class="ol-lead">An n-gram model predicts the next token from counts of what followed the same context in the training data.</span></li><li><a href="#sec-llms-mathematical-overview-of-transformers">Mathematical overview of transformers</a><span class="ol-lead">The notation of Phuong &amp; Hutter in brief: the two tasks, how tokens become vectors, the three kinds of attention, and how the last hidden state becomes a prediction.</span></li><li><a href="#sec-llms-visual-explanation-of-self-attention">Visual explanation of self-attention</a><span class="ol-badge">1 interactive</span><span class="ol-badge">2 figures</span><span class="ol-lead">Each token emits a query, a key and a value.</span></li><li><a href="#sec-llms-inference-optimization">Inference optimization</a></li></ol></details><p>See related papers in the <a class="reference internal" href="../research_ovws/ovw_llms.html"><span class="std std-doc">📌 llm research</span></a> and <a class="reference internal" href="../research_ovws/ovw_interp.html"><span class="std std-doc">📌 interpretability</span></a> pages.</p>
 <section id="basics">
 <span id="sec-llms-basics"></span><h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
 <p class="section-lead">Two diagrams to keep in mind: the shape of every matrix in a decoder-only transformer, and how KV caching saves work during generation. The bullets give the one-line meaning of attention: estimate an element as a weighted sum of the values of the elements it attends to.</p>
@@ -1008,6 +1009,35 @@ document.write(`
 </ul>
 </li>
 </ul>
+</section>
+</section>
+<section id="inference-optimization">
+<span id="sec-llms-inference-optimization"></span><h2>Inference optimization<a class="headerlink" href="#inference-optimization" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>https://x.com/philipkiely/status/2112272656217297224?s=20</p>
+<ul>
+<li><p>problem with attention: kv cache grows with sequence-length n so it’s big for long sequences</p>
+<ul>
+<li><p>attention basically needs to compute softmax(QK^T)V</p></li>
+<li><p>If we could multiply Q after doing K^TV then KV cached is O(d^2) — so constant with n!</p>
+<ul>
+<li><p>But we need to get around softmax, so we swap it out to use some activation function like f(Q) f(V) T with f = ELU</p></li>
+</ul>
+</li>
+<li><p>One issue: d^2 struggles to store info - thus we add a beta parameter for how much to overwrite state matrix</p>
+<ul>
+<li><p>another issue: you have to go one token at a time, you can’t just mask the entire upper right</p>
+<ul>
+<li><p>another improvement made this one big multiply (like running a kernel convolution by padding with a bunch of zeros and making it a big matrix multiply)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <div class="chapter-takeaways admonition">
 <p class="admonition-title">Key ideas</p>
 <ul class="simple">
@@ -1018,8 +1048,7 @@ document.write(`
 <li><p>An n-gram model predicts the next token from counts. Infini-gram uses the longest suffix of the prompt found in the corpus, counts with a suffix array, and improves an LLM’s perplexity when the two are combined.</p></li>
 </ul>
 </div>
-<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_llms.html"><span class="related-part">Research overviews</span><span class="related-title">LLMs</span><span class="related-hook">Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.</span></a><a class="related-card" href="../research_ovws/ovw_embeddings.html"><span class="related-part">Research overviews</span><span class="related-title">Embeddings</span><span class="related-hook">Training embedding models, contrastive losses, approximate nearest-neighbor search, RAG and interpretable embeddings.</span></a><a class="related-card" href="../research_ovws/ovw_interp.html"><span class="related-part">Research overviews</span><span class="related-title">Interpretability</span><span class="related-hook">Evaluating interpretations, transparent models like rules, trees and GAMs, and post-hoc explanations of fitted models.</span></a></div></nav></section>
-</section>
+<nav class="related-chapters"><p class="related-heading">Related chapters</p><div class="related-grid"><a class="related-card" href="../research_ovws/ovw_llms.html"><span class="related-part">Research overviews</span><span class="related-title">LLMs</span><span class="related-hook">Prompting, architectures and reasoning, mechanistic interpretability, and LLMs that explain data and do science.</span></a><a class="related-card" href="../research_ovws/ovw_embeddings.html"><span class="related-part">Research overviews</span><span class="related-title">Embeddings</span><span class="related-hook">Training embedding models, contrastive losses, approximate nearest-neighbor search, RAG and interpretable embeddings.</span></a><a class="related-card" href="../neuro/comp_neuro.html"><span class="related-part">Neuroscience</span><span class="related-title">Computational neuroscience</span><span class="related-hook">Models of neurons, neural codes and learning rules, then data-driven neuroscience, brain encoding models and neuro-inspired AI.</span></a></div></nav></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1095,6 +1124,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-transformer-nlp-models">Pre-transformer nlp models</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-optimization">Inference optimization</a></li>
 </ul>
   </nav></div>
 

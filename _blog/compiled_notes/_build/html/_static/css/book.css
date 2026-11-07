@@ -316,3 +316,13 @@ nav.top-prev-next a { color: var(--nb-muted); text-decoration: none; border: 1px
   padding: 0.15rem 0.75rem; max-width: 48%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 nav.top-prev-next a:hover { color: var(--nb-accent); border-color: var(--nb-accent); }
 nav.top-prev-next a.tpn-next { margin-left: auto; }
+
+/* the start page and part overview pages (they contain .sidebars-open) keep both sidebars open, with the
+   article laid out between them instead of under them */
+@media (min-width: 992px) {
+  body:has(.sidebars-open) .bd-sidebar-primary, body:has(.sidebars-open) .bd-sidebar-secondary { transform: none; box-shadow: none; }
+  body:has(.sidebars-open) .bd-sidebar-primary > *, body:has(.sidebars-open) .bd-sidebar-secondary > * { opacity: 1 !important; }
+  body:has(.sidebars-open) .bd-sidebar-primary::after, body:has(.sidebars-open) .bd-sidebar-secondary::after { display: none; }
+  body:has(.sidebars-open) .bd-main { margin-left: 21rem; margin-right: 19rem; }
+  body:has(.sidebars-open) .bd-content .bd-article-container { padding-left: 2rem; padding-right: 2rem; }
+}

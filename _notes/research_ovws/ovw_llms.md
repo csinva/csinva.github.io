@@ -192,7 +192,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - A Simple Zero-shot Prompt Weighting Technique to Improve Prompt Ensembling in Text-Image Models ([alingham…lakshminarayanan, 2023](https://proceedings.mlr.press/v202/allingham23a.html)) - use confidence (max output logit) after appropriate normalization as weight
   - few-shot text classification
     - FastFit ([yehudai & bandel, 2024](https://arxiv.org/abs/2404.12365.pdf)) - fit few-shot batch with contrastive examples then predict using similarities to shots rather than a classification head (base model is roberta)
-      - SetFit ([tunstal…pereg, 2022](https://arxiv.org/abs/2209.11055)) - finetune stentence transformer with contrastive loss, then train classification head
+      - SetFit ([tunstal…pereg, 2022](https://arxiv.org/abs/2209.11055)) - finetune sentence transformer with contrastive loss, then train classification head
   - zero-shot text classification
     - Jev: Introducing System One Models ([almeida / typesafe, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev)) - generally accurate and efficient, trained by something called "RLCD"
     - SemIf ([theoleecj, 2026](https://github.com/TheoLeeCJ/SemIf)) - open Jev alternative that uses the naive approach of reading a softmax over the answer letters' next-token logits of a frozen open model
