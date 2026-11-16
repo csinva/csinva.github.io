@@ -587,6 +587,12 @@ label {
         border-top-color: var(--hairline);
     }
 
+    /* indented list of papers under a research box heading */
+    .research_box .rb-items {
+        margin-top: 10px;
+        padding-left: 1.4em;
+    }
+
 /* ---------- research table (DataTables) ---------- */
 
     #research_table_wrapper {
